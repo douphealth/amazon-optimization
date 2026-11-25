@@ -1,0 +1,37 @@
+name: Weekly commission audit
+
+on:
+  schedule:
+    - cron: "17 5 * * 1"   # Mondays 05:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      - name: Pull Search Console data (skipped until the secret exists)
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -n "$GSC_SERVICE_ACCOUNT_JSON" ]; then python -m ace gsc-pull --days 28; else echo "No GSC secret: using the CSVs already in data/gsc"; fi
+
+      - name: Crawl, score and draft fixes
+        run: python -m ace run
+
+      - name: Commit the report
+        run: |
+          git config user.name "commission-audit"
+          git config user.email "actions@users.noreply.github.com"
+          git add reports data/gsc
+          git diff --cached --quiet || git commit -m "Weekly commission audit $(date -u +%F)"
+          git push

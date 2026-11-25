@@ -1,0 +1,206 @@
+"""Parse one HTML page and extract everything that affects Amazon commission."""
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass, field
+from html.parser import HTMLParser
+from urllib.parse import parse_qs, urlsplit
+
+AMAZON_TLDS = (
+    r"com|ca|co\.uk|de|fr|it|es|nl|se|pl|com\.au|co\.jp|in|com\.mx|com\.br|sg|ae|sa|com\.tr|eg|com\.be"
+)
+AMAZON_HOST = re.compile(rf"^(?:www\.|smile\.|m\.)?amazon\.(?:{AMAZON_TLDS})$", re.I)
+SHORT_HOST = re.compile(r"^(?:www\.)?(?:amzn\.to|amzn\.com|a\.co)$", re.I)
+ASIN = re.compile(r"/(?:dp|gp/product|gp/aw/d|exec/obidos/ASIN|product)/([A-Z0-9]{10})(?:[/?]|$)")
+CLOAK_PATH = re.compile(r"^/(?:go|recommends|recommend|out|refer|link|aff)/[^/]+/?$", re.I)
+DISCLOSURE = re.compile(r"as an amazon associate", re.I)
+# The OneLink loader script. Matching the bare word "onelink" gave false positives.
+ONELINK = re.compile(r"amazon-adsystem\.com/widgets/onejs", re.I)
+COMMERCIAL = re.compile(r"\b(best|top[- ]\d+|review|reviews|vs|versus|comparison|buying guide|worth it)\b", re.I)
+GENERIC_ANCHOR = re.compile(
+    r"^(view|shop|check|see|buy|get|find|compare)?\b.*\b(amazon|price|prices|deal|deals|it here|now)\b.*$|^(click here|buy now|here)$",
+    re.I,
+)
+
+# Text inside these elements is site chrome, not article content.
+CHROME = {"nav", "header", "footer", "aside", "form"}
+NO_TEXT = {"script", "style", "noscript", "svg", "template"}
+
+
+@dataclass
+class Link:
+    href: str
+    kind: str  # product | search | short | other
+    tag: str = ""
+    asin: str = ""
+    rel_ok: bool = False
+    in_chrome: bool = False
+    offset: int = 0  # characters of article text before this link
+    text: str = ""
+    alt: str = ""
+
+    @property
+    def name(self) -> str:
+        """Best human name for the product: a descriptive anchor, else the image alt text."""
+        text = " ".join(self.text.split())
+        if text and not GENERIC_ANCHOR.match(text) and len(text) > 3:
+            return text
+        return " ".join(self.alt.split())
+
+
+@dataclass
+class Page:
+    url: str
+    status: int = 0
+    final_url: str = ""
+    title: str = ""
+    h1: str = ""
+    meta_description: str = ""
+    canonical: str = ""
+    noindex: bool = False
+    words: int = 0
+    text_len: int = 0
+    links: list[Link] = field(default_factory=list)
+    cloaked_links: int = 0
+    amazon_images: int = 0
+    disclosure: bool = False
+    onelink: bool = False
+    error: str = ""
+
+    @property
+    def content_links(self) -> list[Link]:
+        return [l for l in self.links if not l.in_chrome]
+
+    @property
+    def first_link_depth(self) -> float | None:
+        """How far down the article the first Amazon link sits, 0.0 (top) to 1.0 (bottom)."""
+        links = self.content_links
+        if not links or not self.text_len:
+            return None
+        return round(min(l.offset for l in links) / self.text_len, 3)
+
+    @property
+    def commercial(self) -> bool:
+        return bool(COMMERCIAL.search(f"{self.title} {urlsplit(self.url).path.replace('-', ' ')}"))
+
+
+def classify(href: str) -> Link | None:
+    """Return a Link if href points at Amazon, else None."""
+    try:
+        parts = urlsplit(href.strip())
+    except ValueError:
+        return None
+    host = parts.netloc.lower()
+    if SHORT_HOST.match(host):
+        return Link(href=href, kind="short")
+    if not AMAZON_HOST.match(host):
+        return None
+    tag = (parse_qs(parts.query).get("tag") or [""])[0]
+    asin = ASIN.search(parts.path)
+    if asin:
+        return Link(href=href, kind="product", tag=tag, asin=asin.group(1))
+    if parts.path.rstrip("/") in ("/s", "/gp/search") or parts.path.startswith("/s/"):
+        return Link(href=href, kind="search", tag=tag)
+    return Link(href=href, kind="other", tag=tag)
+
+
+class _Parser(HTMLParser):
+    def __init__(self, page: Page, skip_chrome: bool):
+        super().__init__(convert_charrefs=True)
+        self.page = page
+        self.skip_chrome = skip_chrome
+        self.chrome = 0
+        self.no_text = 0
+        self.cur: Link | None = None
+        self.in_title = False
+        self.in_h1 = False
+        self.own_host = urlsplit(page.url).netloc.lower().removeprefix("www.")
+
+    def handle_starttag(self, tag, attrs):
+        a = {k: (v or "") for k, v in attrs}
+        p = self.page
+        if tag in NO_TEXT:
+            self.no_text += 1
+            if tag == "script" and ONELINK.search(a.get("src", "")):
+                p.onelink = True
+        elif tag in CHROME:
+            self.chrome += 1
+        elif tag == "title":
+            self.in_title = True
+        elif tag == "h1" and not p.h1:
+            self.in_h1 = True
+        elif tag == "meta":
+            name = a.get("name", "").lower()
+            if name == "description":
+                p.meta_description = a.get("content", "").strip()
+            elif name in ("robots", "googlebot") and "noindex" in a.get("content", "").lower():
+                p.noindex = True
+        elif tag == "link" and "canonical" in a.get("rel", "").lower():
+            p.canonical = a.get("href", "").strip()
+        elif tag == "a":
+            href = a.get("href", "")
+            link = classify(href)
+            if link:
+                rel = a.get("rel", "").lower()
+                link.rel_ok = "sponsored" in rel or "nofollow" in rel
+                link.in_chrome = self.skip_chrome and self.chrome > 0
+                link.offset = p.text_len
+                self.cur = link
+            else:
+                parts = urlsplit(href)
+                same_site = parts.netloc.lower().removeprefix("www.") in ("", self.own_host)
+                if same_site and CLOAK_PATH.match(parts.path):
+                    p.cloaked_links += 1
+        elif tag == "img":
+            if self.cur is not None and not self.cur.alt:
+                self.cur.alt = a.get("alt", "")
+            if "media-amazon.com" in a.get("src", "") or "ssl-images-amazon.com" in a.get("src", ""):
+                p.amazon_images += 1
+
+    def handle_endtag(self, tag):
+        if tag in NO_TEXT:
+            self.no_text = max(0, self.no_text - 1)
+        elif tag in CHROME:
+            self.chrome = max(0, self.chrome - 1)
+        elif tag == "title":
+            self.in_title = False
+        elif tag == "h1":
+            self.in_h1 = False
+        elif tag == "a" and self.cur is not None:
+            self.page.links.append(self.cur)
+            self.cur = None
+
+    def handle_data(self, data):
+        p = self.page
+        if self.in_title:
+            p.title += data
+            return
+        if self.no_text:
+            return
+        if self.in_h1:
+            p.h1 += data
+        if self.cur is not None:
+            self.cur.text += data
+        if self.skip_chrome and self.chrome:
+            return
+        stripped = data.strip()
+        if stripped:
+            p.text_len += len(stripped)
+            p.words += len(stripped.split())
+
+
+def parse(url: str, html: str) -> Page:
+    """Parse html into a Page. Falls back to counting all text if chrome-skipping ate the article
+    (a theme with an unclosed <nav> or <aside> would otherwise hide every link)."""
+    page = Page(url=url)
+    _Parser(page, skip_chrome=True).feed(html)
+    if page.words < 80:
+        retry = Page(url=url)
+        _Parser(retry, skip_chrome=False).feed(html)
+        if retry.words > 3 * max(page.words, 1):
+            page = retry
+    page.title = " ".join(page.title.split())
+    page.h1 = " ".join(page.h1.split())
+    page.disclosure = bool(DISCLOSURE.search(html))
+    page.onelink = page.onelink or bool(ONELINK.search(html))
+    return page

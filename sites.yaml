@@ -1,0 +1,60 @@
+# Portfolio config. One entry per site that carries (or should carry) Amazon links.
+# tags: the Associates tracking IDs this site is expected to use. Leave empty to
+#       accept any tag that starts with account_tag_prefix.
+# gsc_property: the Search Console property ID (used by `ace gsc-pull`).
+
+account_tag_prefix: papalex
+marketplace: www.amazon.com
+
+defaults:
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+  max_urls: 1500
+  concurrency: 4
+  # Sitemaps whose URL matches this regex are skipped (taxonomy archives).
+  skip_sitemaps: "(category|post_tag|tag|author|product_cat)-sitemap|sitemap-(categories|tags|authors)"
+
+sites:
+  - domain: gearuptofit.com
+    name: GearUpToFit
+    gsc_property: "sc-domain:gearuptofit.com"
+    tags: [papalex-gutf-20]
+
+  - domain: plantastichaven.com
+    name: Plantastic Haven
+    gsc_property: "sc-domain:plantastichaven.com"
+    tags: [papalex-ph-20]
+
+  - domain: micegoneguide.com
+    name: Mice Gone Guide
+    gsc_property: "sc-domain:micegoneguide.com"
+    tags: [papalex-mgg-20]
+
+  - domain: gearuptogrow.com
+    name: GearUpToGrow
+    gsc_property: "sc-domain:gearuptogrow.com"
+    tags: [papalex-gutg-20]
+
+  - domain: affiliatemarketingforsuccess.com
+    name: Affiliate Marketing for Success
+    gsc_property: "sc-domain:affiliatemarketingforsuccess.com"
+    tags: [papalex-amfs-20]
+
+  - domain: frenchyfab.com
+    name: FrenchyFab
+    gsc_property: "sc-domain:frenchyfab.com"
+    tags: [papalex-ff-20]
+
+  - domain: mysticaldigits.com
+    name: Mystical Digits
+    gsc_property: "sc-domain:mysticaldigits.com"
+    tags: [papalex-md-20]
+
+  - domain: outdoormisting.com
+    name: Outdoor Misting
+    gsc_property: "sc-domain:outdoormisting.com"
+    tags: []
+
+  - domain: efficientgptprompts.com
+    name: Efficient GPT Prompts
+    gsc_property: "sc-domain:efficientgptprompts.com"
+    tags: []

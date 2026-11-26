@@ -18,15 +18,18 @@ blocked_asins:
 
 # Fixes `ace fix --apply` may make on its own. Remove a name to switch that fix off.
 # See ace/fixer.py for exactly what each one does.
-# `tags` and `disclosure` are off: on these sites tracking IDs and disclosures are added when the
-# page is rendered (the "Hermes Portfolio Amazon Product Box OS" and "PGCC Amazon disclosure"
-# code snippets), so editing the post body does not change the live page. Verified 2026-11-26.
-# Decision 2026-11-26: those snippets own tracking IDs and disclosures; this engine owns product
-# boxes, link attributes and blocked-product links.
-auto_fix: [rel, blocked, box]
+# `tags` is off: on these sites tracking IDs are set when the page is rendered (the "Hermes
+# Portfolio Amazon Product Box OS" code snippet), so editing the post body does not change the
+# live page. Verified 2026-11-26. Decision 2026-11-26: that snippet owns tracking IDs; this engine
+# owns product boxes, link attributes, blocked-product links and missing disclosures.
+# `disclosure` only touches pages whose live HTML shows Amazon links and no affiliate statement,
+# i.e. pages the "PGCC Amazon disclosure" snippet does not cover.
+auto_fix: [rel, blocked, box, disclosure]
 
-# Auto-generated boxes only go on pages with at least this many Google clicks in the data window.
-box_min_clicks: 1
+# Auto-generated boxes go on pages with at least this many measured visits. 0 = every page whose
+# first Amazon link sits late, measured or not (owner's instruction 2026-11-26: fix all findings).
+# A box only repeats products the page already links to.
+box_min_clicks: 0
 
 defaults:
   user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"

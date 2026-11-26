@@ -1,7 +1,9 @@
 site,url,status,words,commercial_intent,amazon_links,product_links,search_links,short_links,first_link_depth,tags,disclosure,gsc_clicks,gsc_impressions,gsc_position,ga_sessions,ga_amazon_clicks,score,near_duplicate_group,issues
 gearuptofit.com,https://gearuptofit.com/running/running-pace-calculator/,200,1575,0,1,1,0,0,0.663,papalex-20,0,,,,,,0.0,,no_meta_description first_link_very_late other_site_tag
 gearuptofit.com,https://gearuptofit.com/running/running-calorie-calculator/,200,4682,0,2,2,0,0,0.749,papalex-20,0,,,,,,0.0,,first_link_very_late other_site_tag
+gearuptofit.com,https://gearuptofit.com/review/best-compression-boots/,200,4101,1,24,24,0,0,0.032,papalex-gutf-20,1,,,,,3.0,0.3,,
 gearuptofit.com,https://gearuptofit.com/review/asics-gel-nimbus-27/,200,2785,1,8,8,0,0,0.134,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/best-treadmills-for-home/,200,3964,1,12,8,4,0,0.185,papalex-gutf-20,1,,,,,4.0,0.4,,
 gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-ball-of-foot-pain/,200,2703,1,14,14,0,0,0.077,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-supination-high-arches/,200,2453,1,14,14,0,0,0.066,papalex-gutf-20,1,,,,,4.0,0.4,,
 gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-shin-splints/,200,3005,1,14,14,0,0,0.06,papalex-gutf-20,1,,,,,3.0,0.3,,
@@ -23,7 +25,7 @@ gearuptofit.com,https://gearuptofit.com/review/adidas-adios-pro-4-vs-nike-alphaf
 gearuptofit.com,https://gearuptofit.com/weight-loss/ways-to-lose-weight-for-summer/,200,1857,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/how-to-start-running-from-scratch-the-smart-guide/,200,728,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-plantar-fasciitis/,200,2560,1,7,7,0,0,0.156,papalex-gutf-20,1,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/fitness/mobility-training/,200,2393,0,4,4,0,0,0.775,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/fitness/mobility-training/,200,2416,0,6,6,0,0,0.041,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/low-intensity-interval-training/,200,1930,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/improve-your-running-technique/,200,4803,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/running-outside-weather-conditions/,200,3042,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -91,7 +93,7 @@ gearuptofit.com,https://gearuptofit.com/fitness/breathing-exercises-for-runners/
 gearuptofit.com,https://gearuptofit.com/fitness/does-planet-fitness-have-showers/,200,2002,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-iron-supplement-for-women/,200,2497,1,6,6,0,0,0.214,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-energy-supplements-for-chronic-fatigue/,200,2430,1,2,2,0,0,0.137,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-calcium-supplement-for-women/,200,5414,1,25,24,0,0,0.078,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-calcium-supplement-for-women/,200,5414,1,24,24,0,0,0.078,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/nutrition/post-workout-protein-shakes-recipes/,200,1646,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/different-types-of-fitness/,200,4560,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/headphones/aftershokz-trekz-air-review/,200,2028,1,10,10,0,0,0.766,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
@@ -117,7 +119,6 @@ gearuptofit.com,https://gearuptofit.com/fitness/how-many-calories-does-hiit-burn
 gearuptofit.com,https://gearuptofit.com/fitness/crossfit-for-teens/,200,1585,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/crossfit-workouts-for-beginners/,200,3655,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/stretching-101-a-beginners-guide-to-flexibility-and-mobility/,200,1825,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/running/nike-running-shorts/,200,3806,0,60,60,0,0,0.302,papalex-gutf-20,0,,,,,,0.0,,first_link_late
 gearuptofit.com,https://gearuptofit.com/running/running-for-seniors/,200,1682,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/how-to-avoid-injuries-while-working-out/,200,3159,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/health/easy-exercises-to-help-you-relieve-from-tinnitus-and-vertigo/,200,5083,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -146,8 +147,9 @@ gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/find-your
 gearuptofit.com,https://gearuptofit.com/weight-loss/billie-eilish-weight-loss/,200,3623,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/running-motivation/,200,1691,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/nike-vomero-18/,200,3437,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/,200,2854,1,20,20,0,0,0.26,papalex-gutf-20,1,,,,,1.0,0.1,,
 gearuptofit.com,https://gearuptofit.com/review/hoka-clifton-pro/,200,3558,1,0,0,0,0,,,0,,,,,,0.0,2,no_amazon_links near_duplicate
-gearuptofit.com,https://gearuptofit.com/review/garmin-training-readiness-score-body-battery-recovery-fix/,200,3523,1,3,2,1,0,0.59,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/review/garmin-training-readiness-score-body-battery-recovery-fix/,200,3539,1,4,3,1,0,0.014,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-forerunner-70/,200,3317,1,2,2,0,0,0.26,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/amazfit-falcon/,200,3140,1,1,1,0,0,0.857,papalex-gutf-20,0,,,,,1.0,0.7,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/review/suunto-vertical-2-2/,200,2846,1,3,3,0,0,0.045,papalex-gutf-20,1,,,,,,0.0,,
@@ -161,7 +163,7 @@ gearuptofit.com,https://gearuptofit.com/nutrition/glycogen-metabolism/,200,3350,
 gearuptofit.com,https://gearuptofit.com/running/fueling-tips-for-every-runner/,200,2447,0,3,3,0,0,0.061,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/fitbit-sense-2-review/,200,1523,1,1,1,0,0,0.081,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/asics-megablast/,200,4803,1,6,6,0,0,0.064,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/apple-watch-ultra-3-vs-apple-watch-series-11/,200,6219,1,24,18,0,0,0.02,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/apple-watch-ultra-3-vs-apple-watch-series-11/,200,6219,1,18,18,0,0,0.02,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/suunto-race-2/,200,3457,1,2,2,0,0,0.271,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-venu-4/,200,3631,1,6,6,0,0,0.082,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-fenix-8-pro/,200,1353,1,4,4,0,0,0.123,papalex-gutf-20,0,,,,,,0.0,,
@@ -174,8 +176,6 @@ gearuptofit.com,https://gearuptofit.com/review/garmin-instinct-3/,200,2449,1,4,4
 gearuptofit.com,https://gearuptofit.com/nutrition/keto-diet-in-endurance-sports/,200,6037,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/running-biomechanics-and-injury-prevention/,200,2593,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/how-effective-are-short-hiit-workouts/,200,2674,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/review/nike-pegasus-turbo-review/,200,2587,1,10,10,0,0,0.513,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
-gearuptofit.com,https://gearuptofit.com/review/garmin-fenix-8-vs-enduro-3/,200,1900,1,2,2,0,0,0.61,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/review/apple-watch-series-10-vs-ultra-2/,200,3051,1,1,1,0,0,0.093,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/how-much-cardio-should-i-do-a-day/,200,6729,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/nutrition/are-broiler-eggs-good-for-your-health-or-not/,200,2583,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -185,12 +185,12 @@ gearuptofit.com,https://gearuptofit.com/review/new-balance-1080-v14/,200,4274,1,
 gearuptofit.com,https://gearuptofit.com/review/galaxy-watch-ultra/,200,2850,1,1,1,0,0,0.1,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/running/running-shoe-trends/,200,2175,0,8,8,0,0,0.263,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/nutrition/the-best-times-to-drink-water-throughout-the-day/,200,2166,1,2,2,0,0,0.293,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-overpronation/,200,2781,1,8,0,8,0,0.323,papalex-gutf-20,0,,,,,,0.0,,first_link_late search_links_only
+gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-overpronation/,200,2803,1,9,0,9,0,0.06,papalex-gutf-20,1,,,,,,0.0,,search_links_only
 gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/body-fat-calculator/,200,1099,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/running/running-outside-for-beginners/,200,3406,0,4,4,0,0,0.836,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/running/running-outside-for-beginners/,200,3429,0,6,6,0,0,0.031,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/benefits-of-fasted-training/,200,4930,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/amazfit-band-7/,200,5285,1,2,2,0,0,0.489,papalex-gutf-20,0,,,,,,0.0,,first_link_late
-gearuptofit.com,https://gearuptofit.com/review/garmin-fenix-8/,200,1877,1,4,4,0,0,0.727,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/review/garmin-fenix-8/,200,1901,1,6,6,0,0,0.055,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/cardio-workout-for-fat-loss/,200,2870,0,1,0,0,1,0.895,,0,,,,,,0.0,,first_link_very_late short_link
 gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/fat-burning-heart-rate-calculator/,200,2829,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/outdoor-running-vs-treadmill/,200,5576,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -228,7 +228,7 @@ gearuptofit.com,https://gearuptofit.com/nutrition/everything-you-need-to-know-ab
 gearuptofit.com,https://gearuptofit.com/nutrition/diet-for-calisthenics/,200,2663,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/when-was-running-invented/,200,2925,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/does-calisthenics-burn-fat/,200,2174,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/running/return-to-running-after-injury/,200,2535,0,4,4,0,0,0.783,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/running/return-to-running-after-injury/,200,2558,0,6,6,0,0,0.037,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/running/impact-of-running-surfaces-and-injury-risk/,200,2754,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/elite-runners-optimizing-training-for-race-performance/,200,4111,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/understanding-vo2-max/,200,2798,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -275,9 +275,9 @@ gearuptofit.com,https://gearuptofit.com/fitness/pyramid-lifting/,200,2729,0,0,0,
 gearuptofit.com,https://gearuptofit.com/fitness/pistol-squats-exercise/,200,2034,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/how-long-does-it-take-to-increase-flexibility/,200,2880,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/12-week-crossfit-program-for-beginners/,200,1761,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/review/garmin-forerunner-265/,200,3397,1,2,2,0,0,0.673,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/review/garmin-forerunner-265/,200,3417,1,3,3,0,0,0.04,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-venu-sq-2/,200,2969,1,7,7,0,0,0.045,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/garmin-instinct-2x-review/,200,3243,1,2,2,0,0,0.931,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/review/garmin-instinct-2x-review/,200,3265,1,3,3,0,0,0.043,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/amazfit-gts-4-mini-review/,200,3771,1,4,4,0,0,0.034,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/crossfit-for-endurance/,200,3138,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/health/metabolism-slow-symptoms/,200,3655,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -290,7 +290,6 @@ gearuptofit.com,https://gearuptofit.com/weight-loss/what-to-wear-in-a-sauna-to-l
 gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-women/,200,2533,1,14,14,0,0,0.256,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/beginners-guide-to-strength-training-for-women-over-50/,200,4642,0,1,1,0,0,0.95,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/fitness/how-to-track-your-fitness-progress/,200,2642,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/,200,2433,0,6,6,0,0,0.69,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/fitness/how-to-stay-motivated-to-work-out/,200,1570,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/why-are-you-running/,200,3019,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/how-effective-is-20-minutes-of-hiit/,200,2615,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -348,7 +347,7 @@ gearuptofit.com,https://gearuptofit.com/running/running-vs-walking-calories/,200
 gearuptofit.com,https://gearuptofit.com/fitness/strength-training-with-dumbbells-at-home-for-women-over-60/,200,3366,0,5,5,0,0,0.107,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/how-to-train-after-the-age-of-40/,200,5053,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-multivitamin-for-women-over-50/,200,4548,1,4,4,0,0,0.096,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-protein-powder-for-weight-loss-female/,200,4935,1,7,6,0,0,0.024,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-protein-powder-for-weight-loss-female/,200,4935,1,6,6,0,0,0.024,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-fish-oil-supplements/,200,4289,1,6,6,0,0,0.027,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-creatine-for-men/,200,2782,1,2,2,0,0,0.107,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-supplements-that-gain-weight/,200,4583,1,6,6,0,0,0.068,papalex-gutf-20,0,,,,,,0.0,,
@@ -381,7 +380,7 @@ gearuptofit.com,https://gearuptofit.com/running/hill-training-for-runners/,200,2
 gearuptofit.com,https://gearuptofit.com/health/supplements/best-supplements-for-increasing-muscle-mass-after-60/,200,2275,1,6,6,0,0,0.46,papalex-gutf-20,1,,,,,4.0,1.6,,first_link_late
 gearuptofit.com,https://gearuptofit.com/review/amazfit-balance-2/,200,2531,1,0,0,0,0,,papalex-gutf-20,1,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/best-budget-smartwatches-for-fitness-tracking/,200,3689,1,12,10,2,0,0.233,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-without-a-carbon-plate/,200,2122,1,7,6,1,0,0.3,papalex-gutf-20,0,,,,,,0.0,,first_link_late
+gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-without-a-carbon-plate/,200,2141,1,8,6,2,0,0.02,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/amazfit-stratos-3/,200,2168,1,5,3,2,0,0.055,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/10-health-benefits-of-wearing-a-fitness-tracker/,200,6181,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/fascia-release-methods/,200,1835,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -392,16 +391,15 @@ gearuptofit.com,https://gearuptofit.com/nutrition/36-hour-fasting/,200,3918,0,0,
 gearuptofit.com,https://gearuptofit.com/health/supplements/ranking-the-best-over-the-counter-weight-loss-pills/,200,2721,1,6,6,0,0,0.514,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/review/best-yoga-mats-for-beginners/,200,4254,1,5,5,0,0,0.192,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/low-impact-workout/,200,2824,0,1,0,1,0,0.426,papalex-gutf-20,0,,,,,,0.0,,first_link_late search_links_only
-gearuptofit.com,https://gearuptofit.com/review/fitbit-air/,200,2896,1,2,2,0,0,0.562,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/review/fitbit-air/,200,2915,1,3,3,0,0,0.014,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/running/zone-2-running-calculator/,200,2211,0,2,1,1,0,0.185,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/nike-vomero-plus/,200,4243,1,6,2,4,0,0.014,papalex-gutf-20,1,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/adidas-adizero-dropset-pro/,200,3030,1,8,0,8,0,0.573,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late search_links_only
+gearuptofit.com,https://gearuptofit.com/review/adidas-adizero-dropset-pro/,200,3074,1,12,0,12,0,0.017,papalex-gutf-20,1,,,,,,0.0,,search_links_only
 gearuptofit.com,https://gearuptofit.com/review/best-running-shoes/,200,4315,1,5,5,0,0,0.259,papalex-gutf-20,0,,,,,2.0,0.2,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-hrm-600/,200,3224,1,11,9,2,0,0.071,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-forerunner-970/,200,5199,1,5,5,0,0,0.135,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/li-ning-feidian-6-elite/,200,3101,1,3,3,0,0,0.163,papalex-gutf-20,0,,,,,2.0,0.2,,
 gearuptofit.com,https://gearuptofit.com/running/how-to-choose-the-right-running-shoes/,200,4110,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/review/bowflex-selecttech-552/,200,2331,1,4,4,0,0,0.691,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/weight-loss/how-to-lose-weight-in-2-weeks/,200,3006,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness/sample-weekly-meal-plan-for-vegetarian-athletes/,200,2747,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/nutrition/how-to-gain-weight-with-a-fast-metabolism/,200,4761,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -437,9 +435,8 @@ gearuptofit.com,https://gearuptofit.com/review/apple-watch-vs-garmin/,200,7656,1
 gearuptofit.com,https://gearuptofit.com/nutrition/ranking-the-best-lecithin-supplements/,200,5234,1,10,10,0,0,0.098,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/puma-deviate-elite-4/,200,218,1,6,0,0,6,0.629,,0,,,,,,0.0,,thin_content first_link_very_late short_link
 gearuptofit.com,https://gearuptofit.com/nutrition/healthy-weight-management-strategies/,200,2407,0,3,3,0,0,0.119,papalex-gutf-20,1,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/apple-watch-series-12/,200,8578,1,3,3,0,0,0.419,papalex-gutf-20,1,,,,,,0.0,,first_link_late
 gearuptofit.com,https://gearuptofit.com/weight-loss/how-to-get-rid-of-a-pooch-stomach/,200,3030,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/running/running-for-weight-loss/,200,2861,0,4,4,0,0,0.787,papalex-gutf-20,1,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/running/running-for-weight-loss/,200,2885,0,6,6,0,0,0.033,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/nutrition/meal-planning-for-athletes/,200,3541,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/best-fitness-trackers/,200,2721,1,20,20,0,0,0.214,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/paleotraining-an-effective-training-method/,200,2945,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -451,13 +448,12 @@ gearuptofit.com,https://gearuptofit.com/weight-loss/getting-into-ketosis-in-24-h
 gearuptofit.com,https://gearuptofit.com/review/best-smartwatches-for-runners/,200,2318,1,14,14,0,0,0.246,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/nutrition/ranking-the-best-multivitamins-for-women/,200,3824,1,14,14,0,0,0.179,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/best-massage-guns-for-muscle-recovery/,200,1982,1,14,14,0,0,0.075,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/resistance-bands-vs-free-weights/,200,2027,1,4,4,0,0,0.678,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/fitness/why-back-and-biceps-workouts-are-effective/,200,3212,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/samsung-galaxy-watch-8-classic/,200,5191,1,6,3,3,0,0.182,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/garmin-fenix-6-series/,200,1164,1,8,8,0,0,0.233,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/amazfit-t-rex-ultra-2/,200,2717,1,12,12,0,0,0.027,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/saucony-endorphin-azura/,200,5108,1,12,12,0,0,0.033,papalex-gutf-20,1,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/nutrition/best-keto-supplements/,200,7606,1,40,39,0,0,0.062,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/nutrition/best-keto-supplements/,200,7606,1,39,39,0,0,0.062,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/running/the-best-running-sneakers-for-achilles-tendonitis/,200,3588,1,18,18,0,0,0.116,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/saucony-endorphin-speed-5/,200,3533,1,2,2,0,0,0.256,papalex-gutf-20,0,,,,,,0.0,2,near_duplicate
 gearuptofit.com,https://gearuptofit.com/review/nike-pegasus-trail-5/,200,4608,1,2,2,0,0,0.08,papalex-gutf-20,1,,,,,,0.0,,
@@ -488,15 +484,22 @@ gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/how-body-
 gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/calculate-bmi-bmr-and-whr-now/,200,3262,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/fat-loss-protein-calculator/,200,2828,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/fitness-and-health-calculators/calories-unveiled-mastering-daily-calorie-needs-and-meal-planning/,200,1699,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/running/creatine-for-runners/,200,4522,0,6,6,0,0,0.573,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
+gearuptofit.com,https://gearuptofit.com/running/creatine-for-runners/,200,4556,0,10,10,0,0,0.01,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/fitness/walking-on-an-incline-vs-running/,200,4541,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running/best-running-shoes-outdoor-workouts/,200,4724,1,15,15,0,0,0.071,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/nutrition/top-10-fat-burners-of-2025/,200,2222,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/review/garmin-instinct-3-crossover-amoled/,200,4332,1,14,14,0,0,0.033,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/review/airpods-pro-3/,200,4073,1,12,10,0,0,0.032,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/airpods-pro-3/,200,4073,1,10,10,0,0,0.032,papalex-gutf-20,0,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/review/amazfit-t-rex-3-pro/,200,3142,1,5,5,0,0,0.09,papalex-gutf-20,0,,,,,,0.0,,
-gearuptofit.com,https://gearuptofit.com/running/garmin-enduro-3/,200,2371,1,4,4,0,0,0.534,papalex-gutf-20,0,,,,,,0.0,,first_link_very_late
 gearuptofit.com,https://gearuptofit.com/fitness/boxing-for-weight-loss-results-the-complete-guide/,200,5611,0,6,6,0,0,0.042,papalex-gutf-20,0,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/running/nike-running-shorts/,200,3839,0,64,64,0,0,0.019,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/nike-pegasus-turbo-review/,200,2629,1,14,14,0,0,0.037,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/garmin-fenix-8-vs-enduro-3/,200,1916,1,3,3,0,0,0.022,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/bowflex-selecttech-552/,200,2355,1,6,6,0,0,0.135,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/apple-watch-series-12/,200,8601,1,4,4,0,0,0.009,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/review/resistance-bands-vs-free-weights/,200,2050,1,6,6,0,0,0.142,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/running/garmin-enduro-3/,200,2387,1,5,5,0,0,0.016,papalex-gutf-20,1,,,,,,0.0,,
+gearuptofit.com,https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/,200,2476,0,9,9,0,0,0.052,papalex-gutf-20,1,,,,,,0.0,,
 gearuptofit.com,https://gearuptofit.com/tools/,200,176,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running-shoe-decision-guide/,200,255,0,0,0,0,0,,,0,,,,,,0.0,,no_meta_description thin_content no_amazon_links
 gearuptofit.com,https://gearuptofit.com/strength-training-hub/,200,221,0,0,0,0,0,,,0,,,,,,0.0,,no_meta_description thin_content no_amazon_links
@@ -514,11 +517,11 @@ gearuptofit.com,https://gearuptofit.com/running-training-plans/,200,621,0,0,0,0,
 gearuptofit.com,https://gearuptofit.com/beginner-running-guide/,200,626,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/running-injury-prevention/,200,635,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/terms-of-service/,200,460,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/running/,200,1205,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptofit.com,https://gearuptofit.com/running/,200,1207,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/about-us/,200,1053,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/fitness/,200,1148,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptofit.com,https://gearuptofit.com/fitness/,200,1142,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/nutrition/,200,1281,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptofit.com,https://gearuptofit.com/reviews/,200,1197,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptofit.com,https://gearuptofit.com/reviews/,200,1160,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptofit.com,https://gearuptofit.com/runmatch-unsubscribe/,200,78,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 gearuptofit.com,https://gearuptofit.com/runmatch-thank-you/,200,59,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 gearuptofit.com,https://gearuptofit.com/corrections-policy/,200,179,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
@@ -800,13 +803,10 @@ gearuptofit.com,https://gearuptofit.com/watch-match/compare/amazfit-bip-5-vs-fit
 gearuptofit.com,https://gearuptofit.com/watch-match/compare/coros-pace-3-vs-garmin-forerunner-165,200,724,1,2,2,0,0,0.038,papalex-20,1,,,,,,0.0,177,other_site_tag near_duplicate
 gearuptofit.com,https://gearuptofit.com/watch-match/compare/garmin-forerunner-165-vs-garmin-forerunner-265,200,713,1,2,2,0,0,0.04,papalex-20,1,,,,,,0.0,177,other_site_tag near_duplicate
 gearuptofit.com,https://gearuptofit.com/watch-match/compare/amazfit-t-rex-3-vs-garmin-instinct-3,200,764,1,1,1,0,0,0.091,papalex-20,1,,,,,,0.0,177,other_site_tag near_duplicate
-gearuptofit.com,https://gearuptofit.com/review/best-treadmills-for-home/,200,3964,1,12,8,4,0,0.185,papalex-gutf-20,1,,,,,4.0,0.4,,
-gearuptofit.com,https://gearuptofit.com/review/best-compression-boots/,200,4101,1,24,24,0,0,0.032,papalex-gutf-20,1,,,,,3.0,0.3,,
 gearuptofit.com,https://gearuptofit.com/shoe-finder/shoes/topo-ultrafly-6/,200,413,0,1,1,0,0,0.212,papalex-20,1,,,,,4.0,0.4,,noindex other_site_tag earning_page_noindexed
 gearuptofit.com,https://gearuptofit.com/shoe-finder/results/overpronation-10k-road-wide,200,1003,0,0,0,0,0,,,1,,,,,2.0,2.0,4,canonical_elsewhere no_amazon_links near_duplicate duplicate_title
 gearuptofit.com,https://gearuptofit.com/shoe-finder/results/underpronation-5k-road-flat,200,1003,0,0,0,0,0,,,1,,,,,2.0,2.0,4,canonical_elsewhere no_amazon_links near_duplicate duplicate_title
 gearuptofit.com,https://gearuptofit.com/shoe-finder/results/unsure-10k-road-neutral,200,1003,0,0,0,0,0,,,1,,,,,1.0,1.0,4,canonical_elsewhere no_amazon_links near_duplicate duplicate_title
-gearuptofit.com,https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/,200,2854,1,20,20,0,0,0.26,papalex-gutf-20,1,,,,,1.0,0.1,,
 plantastichaven.com,https://plantastichaven.com/african-house-plants/,200,1203,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/maranta-vs-calathea/,200,1152,1,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/spider-cactus-plant/,200,702,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
@@ -828,45 +828,23 @@ plantastichaven.com,https://plantastichaven.com/snake-plant-propagation/,200,182
 plantastichaven.com,https://plantastichaven.com/brown-spots-on-houseplant-leaves/,200,2665,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/,200,2228,0,0,0,0,0,,,1,0.0,192.0,50.1,,,1.54,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/pothos-care-guide/,200,2709,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
-plantastichaven.com,https://plantastichaven.com/succulent-soil-mix/,200,1444,0,3,0,3,0,0.796,papalex-ph-20,1,1.0,67.0,27.6,,,0.7,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/terracotta-pots-for-indoor-plants/,200,1454,0,3,0,3,0,0.767,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/mold-on-houseplant-soil/,200,1902,0,3,0,3,0,0.824,papalex-ph-20,1,0.0,88.0,50.5,,,0.49,,first_link_very_late search_links_only
 plantastichaven.com,https://plantastichaven.com/snake-plant-mushy-leaves/,200,1138,0,1,0,1,0,0.685,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/snake-plant-yellow-leaves/,200,2110,0,12,12,0,0,0.712,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
-plantastichaven.com,https://plantastichaven.com/snake-plant-watering-guide/,200,1261,0,12,12,0,0,0.497,papalex-ph-20,1,0.0,119.0,48.8,,,0.38,,first_link_late
-plantastichaven.com,https://plantastichaven.com/snake-plant-light-requirements/,200,1243,1,12,12,0,0,0.49,papalex-ph-20,1,0.0,89.0,41.5,,,0.28,,first_link_late
-plantastichaven.com,https://plantastichaven.com/monstera-not-splitting/,200,1370,0,12,12,0,0,0.49,papalex-ph-20,1,0.0,91.0,35.7,,,0.29,,first_link_late
-plantastichaven.com,https://plantastichaven.com/monstera-yellow-leaves/,200,1171,0,12,12,0,0,0.505,papalex-ph-20,1,0.0,72.0,61.1,,,0.4,,first_link_very_late
-plantastichaven.com,https://plantastichaven.com/monstera-watering-guide/,200,1194,0,12,12,0,0,0.49,papalex-ph-20,1,0.0,141.0,40.4,,,0.45,,first_link_late
 plantastichaven.com,https://plantastichaven.com/monstera-light-requirements/,200,831,0,7,7,0,0,0.172,papalex-ph-20,1,,,,,,0.0,,
-plantastichaven.com,https://plantastichaven.com/pothos-propagation/,200,1052,0,1,0,1,0,0.705,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/pothos-yellow-leaves/,200,3104,0,6,6,0,0,0.785,papalex-ph-20,1,,,,,,0.0,2,first_link_very_late near_duplicate
-plantastichaven.com,https://plantastichaven.com/how-often-to-water-pothos/,200,967,0,4,4,0,0,0.735,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/pothos-light-requirements/,200,1195,0,7,7,0,0,0.131,papalex-ph-20,1,,,,,,0.0,,
-plantastichaven.com,https://plantastichaven.com/monstera-care-guide/,200,2961,0,1,0,1,0,0.353,papalex-ph-20,1,0.0,68.0,38.4,,,0.22,,first_link_late search_links_only
 plantastichaven.com,https://plantastichaven.com/indoor-plant-care/,200,3247,0,1,0,1,0,0.611,papalex-ph-20,1,0.0,124.0,54.0,,,0.69,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/houseplant-subscription-boxes/,200,1334,1,12,12,0,0,0.502,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/kitchen-houseplants/,200,927,1,7,7,0,0,0.158,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/houseplants-for-bedrooms/,200,931,0,6,6,0,0,0.113,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/houseplants-for-bathrooms/,200,1075,1,7,7,0,0,0.096,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/houseplants-for-air-conditioning/,200,1067,1,8,8,0,0,0.605,papalex-ph-20,1,1.0,105.0,32.5,,,0.7,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/houseplants-for-mental-health/,200,1140,0,6,6,0,0,0.095,papalex-ph-20,1,0.0,64.0,11.1,,,0.05,,
 plantastichaven.com,https://plantastichaven.com/houseplants-for-office-spaces/,200,1428,1,7,7,0,0,0.221,papalex-ph-20,1,0.0,199.0,60.5,,,0.16,,
-plantastichaven.com,https://plantastichaven.com/air-purifying-houseplants/,200,849,0,3,0,3,0,0.834,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/houseplants-for-low-light/,200,1269,1,1,0,1,0,0.618,papalex-ph-20,1,0.0,229.0,59.5,,,1.28,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/philodendron-gloriosum/,200,542,0,7,7,0,0,0.404,papalex-ph-20,1,,,,,,0.0,,first_link_late
-plantastichaven.com,https://plantastichaven.com/philodendron-mayoi/,200,1289,0,6,6,0,0,0.639,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
-plantastichaven.com,https://plantastichaven.com/philodendron-light-requirements/,200,2018,1,2,2,0,0,0.664,papalex-ph-20,1,0.0,64.0,37.0,,,0.36,,first_link_very_late
-plantastichaven.com,https://plantastichaven.com/philodendron-soil-mix/,200,1706,0,3,3,0,0,0.799,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/troubleshooting-philodendron-plants/,200,2961,0,7,6,1,0,0.205,papalex-ph-20,1,0.0,147.0,8.3,,,0.44,,low_serp_ctr
 plantastichaven.com,https://plantastichaven.com/fertilizing-philodendron-plants-for-optimal-growth/,200,1858,0,8,8,0,0,0.242,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/philodendron-plants-pests-and-diseases/,200,1781,0,7,6,1,0,0.062,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/philodendron-silver-stripe-care/,200,3227,0,8,8,0,0,0.038,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/white-princess-philodendron-care/,200,1394,0,7,7,0,0,0.081,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/philodendron-burle-marx/,200,2857,0,8,8,0,0,0.216,papalex-ph-20,1,0.0,106.0,21.7,,,0.08,,
-plantastichaven.com,https://plantastichaven.com/pothos-and-philodendron-differences/,200,817,1,8,8,0,0,0.677,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/how-to-stake-philodendron/,200,1689,0,8,8,0,0,0.05,papalex-ph-20,1,1.0,132.0,29.2,,,0.11,,
-plantastichaven.com,https://plantastichaven.com/preventing-drooping-leaves-in-philodendrons/,200,1197,0,12,12,0,0,0.485,papalex-ph-20,1,,,,,,0.0,,first_link_late
 plantastichaven.com,https://plantastichaven.com/how-to-repot-a-philodendron/,200,1287,0,7,7,0,0,0.088,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/pruning-spider-plants/,200,858,0,5,5,0,0,0.174,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/transplanting-spider-plants/,200,941,0,8,8,0,0,0.162,papalex-ph-20,1,,,,,,0.0,,
@@ -879,37 +857,27 @@ plantastichaven.com,https://plantastichaven.com/philodendron-squamiferum/,200,11
 plantastichaven.com,https://plantastichaven.com/fuzzy-petiole-philodendron-care/,200,3274,0,8,8,0,0,0.048,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/lemon-lime-philodendron-care/,200,2121,0,8,8,0,0,0.049,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/philodendron-billietiae-care/,200,3496,0,8,8,0,0,0.04,papalex-ph-20,1,,,,,,0.0,,
-plantastichaven.com,https://plantastichaven.com/house-plants-with-purple-leaves/,200,2668,1,6,6,0,0,0.848,papalex-ph-20,1,0.0,153.0,46.6,,,0.86,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/hydrangeas-where-to-plant-them/,200,3295,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/painted-lady-philodendron-care/,200,3076,0,8,8,0,0,0.045,papalex-ph-20,1,,,,,,0.0,,
-plantastichaven.com,https://plantastichaven.com/philodendron-imperial-red-care/,200,2162,0,2,2,0,0,0.391,papalex-ph-20,1,,,,,,0.0,,first_link_late
 plantastichaven.com,https://plantastichaven.com/philodendron-birkin/,200,919,0,0,0,0,0,,,1,0.0,63.0,47.7,,,0.5,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/philodendron-care/,200,1601,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/philodendron-propagation-methods-guide/,200,6245,0,8,8,0,0,0.018,papalex-ph-20,1,0.0,168.0,14.8,,,0.13,,
-plantastichaven.com,https://plantastichaven.com/pet-friendly-houseplants/,200,2872,0,5,4,1,0,0.811,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/snake-plant-care-guide/,200,2926,0,0,0,0,0,,,1,,,,,,0.0,2,no_amazon_links near_duplicate
 plantastichaven.com,https://plantastichaven.com/philodendron-pink-princess-care/,200,3181,0,0,0,0,0,,,1,,,,,,0.0,,no_meta_description no_amazon_links
 plantastichaven.com,https://plantastichaven.com/choosing-the-perfect-pot-for-your-spider-plant/,200,2012,0,7,7,0,0,0.039,papalex-ph-20,1,1.0,98.0,20.8,,,0.1,,
 plantastichaven.com,https://plantastichaven.com/spider-plant-vs-dracaena/,200,1700,1,0,0,0,0,,,1,2.0,190.0,8.6,,,4.75,,no_amazon_links low_serp_ctr
-plantastichaven.com,https://plantastichaven.com/yellow-house-plants/,200,1411,0,3,0,3,0,0.641,papalex-ph-20,1,3.0,292.0,18.0,,,2.1,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/snake-plant-soil-mix/,200,1464,0,3,0,3,0,0.779,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/are-spider-plants-toxic-to-cats/,200,4235,0,5,0,5,0,0.732,papalex-ph-20,1,0.0,153.0,60.2,,,0.86,,first_link_very_late search_links_only
 plantastichaven.com,https://plantastichaven.com/philodendron-red-emerald-care/,200,1932,0,8,8,0,0,0.082,papalex-ph-20,1,0.0,84.0,38.8,,,0.07,,
 plantastichaven.com,https://plantastichaven.com/heart-shaped-leaves/,200,1874,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/airplane-plant-vs-spider-plant/,200,917,1,0,0,0,0,,,1,0.0,68.0,19.6,,,0.54,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/watering-needs-of-philodendrons/,200,1356,0,8,8,0,0,0.128,papalex-ph-20,1,,,,,,0.0,,
-plantastichaven.com,https://plantastichaven.com/winter-houseplant-care-guide/,200,1503,0,2,2,0,0,0.403,papalex-ph-20,1,,,,,,0.0,,first_link_late
 plantastichaven.com,https://plantastichaven.com/plant-house-nursery/,200,813,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
-plantastichaven.com,https://plantastichaven.com/diy-macrame-plant-hangers/,200,2172,0,3,0,3,0,0.869,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
 plantastichaven.com,https://plantastichaven.com/how-to-propagate-a-philodendron-birkin/,200,2478,0,8,8,0,0,0.053,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/bonnie-spider-plant/,200,2024,0,8,8,0,0,0.282,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/humidity-and-spider-plants/,200,2625,0,8,8,0,0,0.052,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/philodendron-white-knight-care/,200,2631,0,0,0,0,0,,,1,,,,,,0.0,,no_meta_description no_amazon_links
-plantastichaven.com,https://plantastichaven.com/spider-plant-repotting/,200,2595,0,2,2,0,0,0.328,papalex-ph-20,1,,,,,,0.0,,first_link_late
 plantastichaven.com,https://plantastichaven.com/cane-house-plants/,200,2838,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/houseplant-styling-tips/,200,1319,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/rare-philodendron-varieties/,200,1819,0,8,8,0,0,0.224,papalex-ph-20,1,0.0,145.0,26.2,,,0.12,,
-plantastichaven.com,https://plantastichaven.com/houseplants-with-fragrant-flowers/,200,1553,0,2,2,0,0,0.41,papalex-ph-20,1,,,,,,0.0,,first_link_late
 plantastichaven.com,https://plantastichaven.com/philodendron-cordatum-care/,200,1796,0,8,8,0,0,0.064,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/how-to-propagate-philodendron-selloum/,200,1698,0,8,8,0,0,0.072,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/terrarium-building-for-beginners/,200,2635,0,2,2,0,0,0.202,papalex-20,1,,,,,,0.0,,other_site_tag
@@ -921,25 +889,57 @@ plantastichaven.com,https://plantastichaven.com/philodendron-micans-care/,200,24
 plantastichaven.com,https://plantastichaven.com/plant-room-in-house/,200,1130,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/split-leaf-philodendron-care/,200,2697,0,8,8,0,0,0.062,papalex-ph-20,1,0.0,122.0,27.3,,,0.1,,
 plantastichaven.com,https://plantastichaven.com/pink-spider-plant/,200,1034,0,7,7,0,0,0.167,papalex-ph-20,1,1.0,166.0,24.7,,,0.13,,
-plantastichaven.com,https://plantastichaven.com/how-to-make-spider-plant-bushier/,200,1911,0,5,5,0,0,0.513,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/house-plants-with-variegated-leaves/,200,2045,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/crochet-house-plants-patterns/,200,1754,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/how-cold-can-philodendron-tolerate/,200,5053,0,9,9,0,0,0.017,papalex-ph-20,1,10.0,518.0,4.0,,,4.14,,low_serp_ctr
 plantastichaven.com,https://plantastichaven.com/solid-green-spider-plants/,200,772,0,8,6,2,0,0.205,papalex-ph-20,1,,,,,,0.0,,
-plantastichaven.com,https://plantastichaven.com/why-is-philodendron-turning-yellow/,200,1711,0,8,6,2,0,0.792,papalex-ph-20,1,,,,,,0.0,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/where-to-buy-a-philodendron/,200,1012,1,6,2,4,0,0.092,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/is-your-spider-plant-dying/,200,935,0,8,6,2,0,0.172,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/spider-plant-leaves-curling/,200,718,0,8,6,2,0,0.2,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/spider-plant-leaves-bending/,200,1558,0,8,6,2,0,0.089,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/orange-spider-plant/,200,696,0,8,6,2,0,0.216,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/can-spider-plants-live-outside/,200,2246,0,8,6,2,0,0.049,papalex-ph-20,1,0.0,231.0,15.8,,,0.18,,
-plantastichaven.com,https://plantastichaven.com/purple-spider-plant/,200,1966,0,5,4,1,0,0.855,papalex-ph-20,1,0.0,65.0,21.7,,,0.36,,first_link_very_late
 plantastichaven.com,https://plantastichaven.com/plants-that-look-like-spider-plants/,200,3811,0,4,3,1,0,0.108,papalex-ph-20,1,20.0,915.0,10.8,,,2.0,,
 plantastichaven.com,https://plantastichaven.com/philodendron-leaves-curling-and-yellow/,200,2798,0,6,4,2,0,0.057,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/overwatered-spider-plant/,200,2562,0,8,6,2,0,0.059,papalex-ph-20,1,,,,,,0.0,,
 plantastichaven.com,https://plantastichaven.com/dripping-water-in-philodendron-plants/,200,1617,0,8,8,0,0,0.043,papalex-ph-20,1,8.0,391.0,4.8,,,2.74,,low_serp_ctr
 plantastichaven.com,https://plantastichaven.com/string-of-pearls-plant-care/,200,3812,0,3,1,2,0,0.018,papalex-ph-20,1,0.0,512.0,10.7,,,0.41,,no_meta_description low_serp_ctr
 plantastichaven.com,https://plantastichaven.com/how-to-start-a-philodendron/,200,1395,0,8,8,0,0,0.238,papalex-ph-20,1,0.0,940.0,8.3,,,2.82,,low_serp_ctr
+plantastichaven.com,https://plantastichaven.com/pothos-yellow-leaves/,200,3133,0,9,9,0,0,0.006,papalex-ph-20,1,,,,,,0.0,2,near_duplicate
+plantastichaven.com,https://plantastichaven.com/how-often-to-water-pothos/,200,999,0,8,8,0,0,0.062,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/philodendron-gloriosum/,200,580,0,10,10,0,0,0.133,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/philodendron-mayoi/,200,1328,0,9,9,0,0,0.013,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/philodendron-light-requirements/,200,2041,1,3,3,0,0,0.006,papalex-ph-20,1,0.0,64.0,37.0,,,0.05,,
+plantastichaven.com,https://plantastichaven.com/pothos-and-philodendron-differences/,200,856,1,12,12,0,0,0.062,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/house-plants-with-purple-leaves/,200,2703,1,9,9,0,0,0.041,papalex-ph-20,1,0.0,153.0,46.6,,,0.12,,
+plantastichaven.com,https://plantastichaven.com/philodendron-imperial-red-care/,200,2178,0,3,3,0,0,0.003,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/pet-friendly-houseplants/,200,2905,0,7,6,1,0,0.002,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/winter-houseplant-care-guide/,200,1526,0,3,3,0,0,0.056,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/spider-plant-repotting/,200,2617,0,3,3,0,0,0.002,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/houseplants-with-fragrant-flowers/,200,1576,0,3,3,0,0,0.035,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/how-to-make-spider-plant-bushier/,200,1944,0,7,7,0,0,0.004,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/why-is-philodendron-turning-yellow/,200,1742,0,11,9,2,0,0.038,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/purple-spider-plant/,200,1993,0,9,8,1,0,0.003,papalex-ph-20,1,0.0,65.0,21.7,,,0.05,,
+plantastichaven.com,https://plantastichaven.com/snake-plant-yellow-leaves/,200,2140,0,16,16,0,0,0.008,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/snake-plant-watering-guide/,200,1295,0,16,16,0,0,0.015,papalex-ph-20,1,0.0,119.0,48.8,,,0.1,,
+plantastichaven.com,https://plantastichaven.com/snake-plant-light-requirements/,200,1283,1,16,16,0,0,0.013,papalex-ph-20,1,0.0,89.0,41.5,,,0.07,,
+plantastichaven.com,https://plantastichaven.com/monstera-not-splitting/,200,1408,0,16,16,0,0,0.012,papalex-ph-20,1,0.0,91.0,35.7,,,0.07,,
+plantastichaven.com,https://plantastichaven.com/monstera-yellow-leaves/,200,1206,0,16,16,0,0,0.014,papalex-ph-20,1,0.0,72.0,61.1,,,0.06,,
+plantastichaven.com,https://plantastichaven.com/monstera-watering-guide/,200,1233,0,16,16,0,0,0.014,papalex-ph-20,1,0.0,141.0,40.4,,,0.11,,
+plantastichaven.com,https://plantastichaven.com/houseplant-subscription-boxes/,200,1376,1,16,16,0,0,0.015,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/preventing-drooping-leaves-in-philodendrons/,200,1235,0,16,16,0,0,0.013,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/succulent-soil-mix/,200,1477,0,6,0,6,0,0.027,papalex-ph-20,1,1.0,67.0,27.6,,,0.1,,search_links_only
+plantastichaven.com,https://plantastichaven.com/terracotta-pots-for-indoor-plants/,200,1477,0,4,0,4,0,0.028,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/mold-on-houseplant-soil/,200,1932,0,5,0,5,0,0.022,papalex-ph-20,1,0.0,88.0,50.5,,,0.07,,search_links_only
+plantastichaven.com,https://plantastichaven.com/pothos-propagation/,200,1074,0,2,0,2,0,0.121,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/monstera-care-guide/,200,2984,0,2,0,2,0,0.045,papalex-ph-20,1,0.0,68.0,38.4,,,0.05,,search_links_only
+plantastichaven.com,https://plantastichaven.com/air-purifying-houseplants/,200,878,0,5,0,5,0,0.047,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/houseplants-for-low-light/,200,1291,1,2,0,2,0,0.1,papalex-ph-20,1,0.0,229.0,59.5,,,0.18,,search_links_only
+plantastichaven.com,https://plantastichaven.com/philodendron-soil-mix/,200,1733,0,6,6,0,0,0.045,papalex-ph-20,1,,,,,,0.0,,
+plantastichaven.com,https://plantastichaven.com/yellow-house-plants/,200,1450,0,6,0,6,0,0.012,papalex-ph-20,1,3.0,292.0,18.0,,,0.3,,search_links_only
+plantastichaven.com,https://plantastichaven.com/snake-plant-soil-mix/,200,1492,0,5,0,5,0,0.029,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/are-spider-plants-toxic-to-cats/,200,4263,0,7,0,7,0,0.014,papalex-ph-20,1,0.0,153.0,60.2,,,0.12,,search_links_only
+plantastichaven.com,https://plantastichaven.com/diy-macrame-plant-hangers/,200,2203,0,5,0,5,0,0.018,papalex-ph-20,1,,,,,,0.0,,search_links_only
 plantastichaven.com,https://plantastichaven.com/,200,3149,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/plant-care-starter/,200,240,0,0,0,0,0,,,1,,,,,,0.0,,no_meta_description thin_content no_amazon_links
 plantastichaven.com,https://plantastichaven.com/about/,200,819,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
@@ -956,54 +956,54 @@ plantastichaven.com,https://plantastichaven.com/plant-care-tips/,200,234,0,0,0,0
 plantastichaven.com,https://plantastichaven.com/privacy-policy/,200,143,0,0,0,0,0,,,1,,,,,,0.0,,thin_content no_amazon_links
 plantastichaven.com,https://plantastichaven.com/review-methodology/,200,820,1,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 plantastichaven.com,https://plantastichaven.com/terms-of-use/,200,80,0,0,0,0,0,,,1,,,,,,0.0,,thin_content no_amazon_links
-plantastichaven.com,https://plantastichaven.com/house-plants-with-orange-flowers/,200,1194,0,2,0,2,0,0.947,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
 plantastichaven.com,https://plantastichaven.com/shop/,200,2516,0,12,0,12,0,0.172,papalex-ph-20,1,,,,,,0.0,,search_links_only
-plantastichaven.com,https://plantastichaven.com/how-to-repot-houseplants/,200,505,0,3,0,3,0,0.845,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/plant-propagation-guide/,200,718,0,4,0,4,0,0.533,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/plant-light-requirements/,200,1316,0,1,0,1,0,0.815,papalex-ph-20,1,0.0,79.0,37.3,,,0.44,,first_link_very_late search_links_only
 plantastichaven.com,https://plantastichaven.com/best-indoor-plants/,200,1364,1,1,0,1,0,0.866,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/houseplant-pest-control/,200,1179,0,1,0,1,0,0.801,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
 plantastichaven.com,https://plantastichaven.com/easy-indoor-plants-for-beginners/,200,1842,0,1,0,1,0,0.83,papalex-ph-20,1,0.0,78.0,42.5,,,0.44,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/yellow-leaves-on-houseplants/,200,1091,0,3,0,3,0,0.775,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/how-often-to-water-indoor-plants/,200,1323,0,1,0,1,0,0.818,papalex-ph-20,1,0.0,66.0,42.5,,,0.37,,first_link_very_late search_links_only
-plantastichaven.com,https://plantastichaven.com/plant-care-checklist/,200,907,0,3,0,3,0,0.937,papalex-ph-20,1,,,,,,0.0,,first_link_very_late search_links_only
+plantastichaven.com,https://plantastichaven.com/house-plants-with-orange-flowers/,200,1217,0,3,0,3,0,0.053,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/how-to-repot-houseplants/,200,541,0,6,0,6,0,0.041,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/plant-propagation-guide/,200,763,0,8,0,8,0,0.028,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/plant-light-requirements/,200,1338,0,2,0,2,0,0.097,papalex-ph-20,1,0.0,79.0,37.3,,,0.06,,search_links_only
+plantastichaven.com,https://plantastichaven.com/houseplant-pest-control/,200,1202,0,2,0,2,0,0.114,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/yellow-leaves-on-houseplants/,200,1120,0,5,0,5,0,0.022,papalex-ph-20,1,,,,,,0.0,,search_links_only
+plantastichaven.com,https://plantastichaven.com/how-often-to-water-indoor-plants/,200,1346,0,2,0,2,0,0.099,papalex-ph-20,1,0.0,66.0,42.5,,,0.05,,search_links_only
+plantastichaven.com,https://plantastichaven.com/plant-care-checklist/,200,943,0,6,0,6,0,0.065,papalex-ph-20,1,,,,,,0.0,,search_links_only
 micegoneguide.com,https://micegoneguide.com,200,2084,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/can-mice-climb-walls/,200,709,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/snap-traps-for-mice/,200,1886,0,1,1,0,0,0.694,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
-micegoneguide.com,https://micegoneguide.com/best-bait-for-mouse-traps/,200,2457,1,3,3,0,0,0.697,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
-micegoneguide.com,https://micegoneguide.com/how-small-a-hole-can-a-mouse-fit-through/,200,1890,0,2,1,1,0,0.518,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/best-bait-for-mouse-traps/,200,2507,1,4,4,0,0,0.018,papalex-mgg-20,1,,,,,,0.0,,
+micegoneguide.com,https://micegoneguide.com/how-small-a-hole-can-a-mouse-fit-through/,200,1945,0,4,2,2,0,0.023,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/mouse-droppings/,200,1624,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/best-mouse-traps-for-homes/,200,2273,1,1,1,0,0,0.764,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
-micegoneguide.com,https://micegoneguide.com/how-to-remove-mice-droppings-safely/,200,3150,0,3,1,2,0,0.773,papalex-mgg-20,1,0.0,129.0,59.8,,,0.72,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/how-to-remove-mice-droppings-safely/,200,3205,0,5,1,4,0,0.014,papalex-mgg-20,1,0.0,129.0,59.8,,,0.1,,
 micegoneguide.com,https://micegoneguide.com/identifying-mouse-nests-in-your-home/,200,1531,0,8,8,0,0,0.059,papalex-mgg-20,1,,,,,,0.0,,
-micegoneguide.com,https://micegoneguide.com/signs-of-mice-infestation/,200,1678,0,3,1,2,0,0.525,papalex-mgg-20,0,,,,,1.0,0.7,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/signs-of-mice-infestation/,200,1727,0,5,1,4,0,0.025,papalex-mgg-20,1,,,,,1.0,0.1,,
 micegoneguide.com,https://micegoneguide.com/natural-mouse-repellents/,200,1961,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/diseases-from-mice/,200,1527,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice-in-attic-under-insulation/,200,1899,0,3,1,2,0,0.047,papalex-mgg-20,1,0.0,304.0,27.9,,,0.24,,
-micegoneguide.com,https://micegoneguide.com/the-mouse-life-cycle-from-birth-to-maturity/,200,2424,0,1,1,0,0,0.718,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/the-mouse-life-cycle-from-birth-to-maturity/,200,2457,0,2,2,0,0,0.025,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/rodent-infestation-cleanup-protocols/,200,1046,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/rats-vs-mice-whats-the-difference/,200,1162,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/,200,2262,0,3,1,2,0,0.794,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/,200,2319,0,5,1,4,0,0.02,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/foods-that-attract-mice/,200,1562,0,0,0,0,0,,,0,0.0,175.0,23.3,,,1.4,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice-in-garage/,200,1839,0,6,3,3,0,0.05,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice/,200,4437,0,3,1,2,0,0.022,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/role-of-cats-in-controlling-mice-populations/,200,2217,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/mice-allergy-risks/,200,1793,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-micegoneguide.com,https://micegoneguide.com/safely-remove-mice/,200,1918,0,8,8,0,0,0.524,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/safely-remove-mice/,200,1955,0,12,12,0,0,0.037,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/peppermint-oil-for-mouse-repellent/,200,2067,0,8,8,0,0,0.264,papalex-mgg-20,1,0.0,67.0,76.9,,,0.05,,
 micegoneguide.com,https://micegoneguide.com/humane-mouse-traps/,200,1930,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/the-hidden-health-risks-of-a-mouse-infestation/,200,2646,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice-in-car/,200,1315,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/diy-mouse-traps/,200,2605,0,8,8,0,0,0.094,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/how-to-get-rid-of-mice-in-apartment/,200,1174,0,3,1,2,0,0.078,papalex-mgg-20,1,,,,,,0.0,,
-micegoneguide.com,https://micegoneguide.com/prevent-mice-in-kitchen/,200,2256,0,3,3,0,0,0.775,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/prevent-mice-in-kitchen/,200,2315,0,6,6,0,0,0.031,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/affiliate-disclosure/,200,182,0,0,0,0,0,,,1,,,,,,0.0,,thin_content no_amazon_links
 micegoneguide.com,https://micegoneguide.com/steel-wool-vs-copper-mesh-for-mice/,200,1565,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-micegoneguide.com,https://micegoneguide.com/where-to-place-mouse-traps/,200,2368,0,3,3,0,0,0.824,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
-micegoneguide.com,https://micegoneguide.com/mouse-proofing/,200,3049,0,3,3,0,0,0.451,papalex-mgg-20,1,,,,,1.0,0.4,,first_link_late
+micegoneguide.com,https://micegoneguide.com/where-to-place-mouse-traps/,200,2427,0,6,6,0,0,0.027,papalex-mgg-20,1,,,,,,0.0,,
+micegoneguide.com,https://micegoneguide.com/mouse-proofing/,200,3098,0,5,5,0,0,0.01,papalex-mgg-20,1,,,,,1.0,0.1,,
 micegoneguide.com,https://micegoneguide.com/mouse-traps-baits/,200,1928,0,6,3,3,0,0.041,papalex-mgg-20,1,,,,,,0.0,,
-micegoneguide.com,https://micegoneguide.com/mouse-cleanup-safety/,200,1645,0,13,11,2,0,0.32,papalex-mgg-20,1,,,,,,0.0,,first_link_late
-micegoneguide.com,https://micegoneguide.com/mouse-removal/,200,1018,0,3,1,2,0,0.929,papalex-mgg-20,1,,,,,,0.0,,first_link_very_late
+micegoneguide.com,https://micegoneguide.com/mouse-cleanup-safety/,200,1706,0,17,15,2,0,0.034,papalex-mgg-20,1,,,,,,0.0,,
+micegoneguide.com,https://micegoneguide.com/mouse-removal/,200,1048,0,5,1,4,0,0.03,papalex-mgg-20,1,,,,,,0.0,,
 micegoneguide.com,https://micegoneguide.com/mouse-elimination-plan/,200,769,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 micegoneguide.com,https://micegoneguide.com/review-methodology/,200,215,1,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 micegoneguide.com,https://micegoneguide.com/editorial-policy-micegoneguide/,200,183,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
@@ -1027,7 +1027,6 @@ gearuptogrow.com,https://gearuptogrow.com/learning-development/conscious-practic
 gearuptogrow.com,https://gearuptogrow.com/personal-development/reward-yourself/,200,1572,0,3,0,3,0,0.234,papalex-gutg-20,1,,,,,,0.0,,search_links_only
 gearuptogrow.com,https://gearuptogrow.com/learning-development/self-expression/,200,3199,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/personal-development/build-confidence/,200,990,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/mental-wellness/journaling-benefits/,200,2538,0,3,0,3,0,0.528,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late search_links_only
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/stress-response/,200,1282,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/learning-development/employee-empowerment/,200,875,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/ditch-todo-lists/,200,848,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1038,24 +1037,12 @@ gearuptogrow.com,https://gearuptogrow.com/personal-development/success-habits/,2
 gearuptogrow.com,https://gearuptogrow.com/personal-development/break-habits/,200,2269,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/time-blocking-for-adhd-adults/,200,1483,0,3,3,0,0,0.611,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/productivity/80-20-rule/,200,1725,0,3,3,0,0,0.684,papalex-gutg-20,1,,,,,,0.0,4,first_link_very_late near_duplicate
-gearuptogrow.com,https://gearuptogrow.com/mental-wellness/burnout-symptoms/,200,1849,0,3,3,0,0,0.682,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/health/brain-foods/,200,2211,0,8,8,0,0,0.606,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/health/focus-supplements/,200,2574,0,8,8,0,0,0.521,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/productivity/end-procrastination/,200,1697,0,3,3,0,0,0.69,papalex-gutg-20,1,,,,,,0.0,4,first_link_very_late near_duplicate
-gearuptogrow.com,https://gearuptogrow.com/health/cognitive-function/,200,2067,0,8,8,0,0,0.629,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/productivity/productivity-secrets/,200,2925,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/personal-development/life-management/,200,2014,0,8,8,0,0,0.677,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/personal-development/goal-achievement/,200,1917,0,8,8,0,0,0.683,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/personal-development/comfort-zone/,200,2016,0,8,8,0,0,0.703,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/learning-development/chunking-method/,200,2077,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/personal-development/visualization/,200,958,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/best-habit-tracker-apps/,200,3858,1,0,0,0,0,,,0,0.0,124.0,43.6,,,0.99,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/mental-wellness/mindfulness-exercises/,200,2321,0,3,3,0,0,0.697,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/productivity/best-todo-list-apps/,200,6308,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/quick-meditation/,200,1718,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/productivity/deep-work-schedule-examples/,200,2722,0,3,3,0,0,0.769,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/productivity/focus-at-work-when-interrupted/,200,2198,0,3,3,0,0,0.768,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/productivity/how-to-prioritize-tasks-when-everything-feels-urgent/,200,1813,0,3,3,0,0,0.799,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/health/sleep-productivity/,200,2534,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/beat-fomo/,200,2176,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/personal-development/mini-habits/,200,2162,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1067,19 +1054,16 @@ gearuptogrow.com,https://gearuptogrow.com/productivity/productivity-mindset/,200
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/stress-relief/,200,1435,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/motivational-quotes/,200,1242,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/free-time-blocking-template/,200,3350,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/productivity/context-switching/,200,2062,0,3,3,0,0,0.808,papalex-gutg-20,1,0.0,157.0,64.9,,,0.88,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/productivity/task-priority/,200,1657,0,3,3,0,0,0.665,papalex-gutg-20,1,,,,,,0.0,4,first_link_very_late near_duplicate
 gearuptogrow.com,https://gearuptogrow.com/productivity/time-management/,200,3236,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/weekly-review-checklist/,200,3093,1,3,0,3,0,0.201,papalex-gutg-20,1,0.0,143.0,45.0,,,0.11,,search_links_only
 gearuptogrow.com,https://gearuptogrow.com/personal-development/morning-routine/,200,1826,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/how-to-recover-from-burnout-while-working/,200,1946,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/productivity/neuroplastic-micro-habits-stress-focus/,200,1889,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptogrow.com,https://gearuptogrow.com/productivity/neuroplastic-micro-habits-stress-focus/,200,1888,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/virtual-body-doubling-adhd/,200,1719,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/ai-cognitive-offloading/,200,1813,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/interleaving-vs-blocked-practice/,200,1727,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/vagus-nerve-desk-workers/,200,1818,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/learning-development/assertiveness-training/,200,2507,0,3,3,0,0,0.979,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
-gearuptogrow.com,https://gearuptogrow.com/personal-development/habit-stacking/,200,2121,0,2,2,0,0,0.65,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/productivity/pomodoro-technique-vs-deep-work/,200,2350,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/habit-stacking-executive-dysfunction/,200,2052,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/time-blocking-guide/,200,2104,0,0,0,0,0,,,0,0.0,432.0,7.8,,,12.96,,no_amazon_links low_serp_ctr
@@ -1091,13 +1075,29 @@ gearuptogrow.com,https://gearuptogrow.com/mental-wellness/daily-affirmations/,20
 gearuptogrow.com,https://gearuptogrow.com/health/sleep-better/,200,1996,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/chronic-stress/,200,2779,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/personal-development/journaling-self-improvement/,200,1789,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/personal-development/development-plan/,200,2827,0,3,0,3,0,0.656,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late search_links_only
-gearuptogrow.com,https://gearuptogrow.com/productivity/deep-work/,200,2632,0,3,3,0,0,0.678,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/growth-mindset/,200,1596,0,3,3,0,0,0.659,papalex-gutg-20,1,,,,,,0.0,4,first_link_very_late near_duplicate
 gearuptogrow.com,https://gearuptogrow.com/learning-development/rapid-skill-learning/,200,2283,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/learning-development/learn-faster/,200,1397,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/productivity/improve-focus-7-day-protocol/,200,2113,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/personal-development/self-esteem/,200,1608,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptogrow.com,https://gearuptogrow.com/health/brain-foods/,200,2278,0,12,12,0,0,0.044,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/health/focus-supplements/,200,2635,0,12,12,0,0,0.036,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/health/cognitive-function/,200,2128,0,12,12,0,0,0.036,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/personal-development/life-management/,200,2074,0,12,12,0,0,0.039,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/personal-development/goal-achievement/,200,1983,0,12,12,0,0,0.041,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/personal-development/comfort-zone/,200,2077,0,12,12,0,0,0.033,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/mental-wellness/journaling-benefits/,200,2567,0,6,0,6,0,0.109,papalex-gutg-20,1,,,,,,0.0,,search_links_only
+gearuptogrow.com,https://gearuptogrow.com/mental-wellness/burnout-symptoms/,200,1900,0,6,6,0,0,0.051,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/productivity/end-procrastination/,200,1751,0,6,6,0,0,0.022,papalex-gutg-20,1,,,,,,0.0,4,near_duplicate
+gearuptogrow.com,https://gearuptogrow.com/mental-wellness/mindfulness-exercises/,200,2381,0,6,6,0,0,0.044,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/productivity/deep-work-schedule-examples/,200,2753,0,6,6,0,0,0.04,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/productivity/focus-at-work-when-interrupted/,200,2229,0,6,6,0,0,0.043,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/productivity/how-to-prioritize-tasks-when-everything-feels-urgent/,200,1843,0,6,6,0,0,0.048,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/productivity/context-switching/,200,2093,0,6,6,0,0,0.048,papalex-gutg-20,1,0.0,157.0,64.9,,,0.13,,
+gearuptogrow.com,https://gearuptogrow.com/productivity/task-priority/,200,1712,0,6,6,0,0,0.023,papalex-gutg-20,1,,,,,,0.0,4,near_duplicate
+gearuptogrow.com,https://gearuptogrow.com/personal-development/habit-stacking/,200,2169,0,4,4,0,0,0.04,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/personal-development/development-plan/,200,2856,0,6,0,6,0,0.015,papalex-gutg-20,1,,,,,,0.0,,search_links_only
+gearuptogrow.com,https://gearuptogrow.com/productivity/deep-work/,200,2632,0,3,3,0,0,0.678,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/,200,2756,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/contact/,200,180,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/review-methodology/,200,250,1,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
@@ -1108,25 +1108,25 @@ gearuptogrow.com,https://gearuptogrow.com/growth-plan/,200,748,0,0,0,0,0,,,0,,,,
 gearuptogrow.com,https://gearuptogrow.com/about-the-editor/,200,286,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/editorial-policy/,200,262,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/learning/,200,3521,0,3,3,0,0,0.051,papalex-gutg-20,1,,,,,,0.0,,
-gearuptogrow.com,https://gearuptogrow.com/focus/,200,3326,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/habits/,200,3793,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptogrow.com,https://gearuptogrow.com/focus/,200,3325,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptogrow.com,https://gearuptogrow.com/habits/,200,3792,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/about/,200,2458,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/mental-wellness/,200,3774,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/methodology/,200,438,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/learning/spaced-repetition/,200,2538,1,3,3,0,0,0.8,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/tools/,200,780,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/learning/active-recall/,200,2379,0,3,3,0,0,0.682,papalex-gutg-20,1,1.0,152.0,44.3,,,0.85,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/productivity/,200,3496,0,4,4,0,0,0.037,papalex-gutg-20,1,,,,,,0.0,,
 gearuptogrow.com,https://gearuptogrow.com/focus-habit-reset/,200,864,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/personal-development/,200,1266,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 gearuptogrow.com,https://gearuptogrow.com/health/,200,1005,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-gearuptogrow.com,https://gearuptogrow.com/mental-wellness/burnout-vs-stress/,200,2957,1,3,3,0,0,0.825,papalex-gutg-20,1,,,,,,0.0,,first_link_very_late
 gearuptogrow.com,https://gearuptogrow.com/guides/,200,2885,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+gearuptogrow.com,https://gearuptogrow.com/learning/spaced-repetition/,200,2567,1,6,6,0,0,0.032,papalex-gutg-20,1,,,,,,0.0,,
+gearuptogrow.com,https://gearuptogrow.com/learning/active-recall/,200,2408,0,6,6,0,0,0.035,papalex-gutg-20,1,1.0,152.0,44.3,,,0.12,,
+gearuptogrow.com,https://gearuptogrow.com/mental-wellness/burnout-vs-stress/,200,2989,1,6,6,0,0,0.029,papalex-gutg-20,1,,,,,,0.0,,
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/blog/,200,666,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/affiliate-marketing-tips-for-beginners/,200,2445,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/affiliate-marketing-email-sequence-template/,200,1700,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/ai-affiliate-marketing-2026/,200,1466,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/first-10-affiliate-blog-posts/,200,1448,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/first-10-affiliate-blog-posts/,200,1463,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/how-to-use-seo-for-affiliate-marketing/,200,2465,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/seo/programmatic-seo/,200,1881,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/affiliate-disclosure-examples/,200,1729,0,0,0,0,0,,,1,,,,,,0.0,,no_amazon_links
@@ -1138,7 +1138,7 @@ affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/tools/
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/tools/email-marketing-template-generator/,200,738,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/tools/script-timer-tool/,200,788,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/frase-vs-surfer/,200,1670,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/how-to-start/how-to-choose-your-niche/,200,6705,0,2,0,0,0,0.111,papalex-amfs-20,0,,,,,,0.0,,
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/how-to-start/how-to-choose-your-niche/,200,6705,0,0,0,0,0,,papalex-amfs-20,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/seo/generative-engine-optimization/,200,1266,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/seo/answer-engine-optimization/,200,1174,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/how-to-track-and-measure-your-affiliate-marketing-performance/,200,3065,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1148,8 +1148,8 @@ affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affili
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/discover-why-affiliate-marketing-is-the-best-business-model/,200,1482,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/how-to-start/how-to-choose-a-web-host/,200,1074,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/blogging/update-old-blog-content/,200,1117,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/affiliate-gap-analysis-metrics/,200,6933,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/kinsta-wordpress-hosting-review/,200,2835,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/affiliate-gap-analysis-metrics/,200,6947,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/kinsta-wordpress-hosting-review/,200,2834,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/email-marketing/convertkit-pricing/,200,3864,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/blogging/blog-monetization-strategies/,200,1158,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/how-to-promote-affiliate-products-without-a-website/,200,2343,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1168,7 +1168,7 @@ affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affili
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/skool-affiliate-program-review/,200,3489,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/systeme-io-affiliate-program-review/,200,3818,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/lasso-vs-pretty-links-vs-thirstyaffiliates/,200,3580,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/awin-formerly-shareasale-vs-impact/,200,3565,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/awin-formerly-shareasale-vs-impact/,200,3559,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/impact-affiliate-network-review/,200,3613,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/getresponse-vs-mailchimp/,200,3493,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/ai/originality-ai-review/,200,2529,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1198,8 +1198,8 @@ affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affili
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/seo/write-meta-descriptions-that-convert/,200,1197,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/bramework-review/,200,1894,1,0,0,0,0,,,0,,,,,,0.0,8,no_amazon_links near_duplicate
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/how-many-affiliate-programs-should-i-join-guide/,200,4630,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/writesonic-vs-seowriting-ai/,200,3708,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/earning-timeframe/,200,5109,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/writesonic-vs-seowriting-ai/,200,3718,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/earning-timeframe/,200,5106,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/how-to-do-affiliate-marketing-on-shopify/,200,3274,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-marketing/how-to-make-money-with-affiliate-marketing/,200,2977,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/review/inkforall-review-2024/,200,1123,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1237,7 +1237,7 @@ affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affili
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/editorial-policy/,200,1032,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/how-we-use-ai-in-our-content/,200,1069,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-tools/,200,415,0,0,0,0,0,,,0,,,,,,0.0,,no_meta_description no_amazon_links
-affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/cookie-policy/,200,1524,0,1,0,0,0,0.334,papalex-amfs-20,1,,,,,,0.0,,first_link_late
+affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/cookie-policy/,200,1524,0,0,0,0,0,,papalex-amfs-20,1,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/recommended-tools-for-affiliate-site-builders/,200,3196,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/start-here/,200,736,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 affiliatemarketingforsuccess.com,https://affiliatemarketingforsuccess.com/affiliate-growth-checklist/,200,2132,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1264,14 +1264,14 @@ frenchyfab.com,https://frenchyfab.com/best-pet-insurance-for-french-bulldogs/,20
 frenchyfab.com,https://frenchyfab.com/french-bulldog-c-section-guide/,200,986,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/how-long-can-french-bulldogs-be-left-alone/,200,2620,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-sleeping-habits/,200,1431,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/probiotics-french-bulldogs-guide/,200,1117,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/probiotics-french-bulldogs-guide/,200,1125,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-drooling-guide/,200,879,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-chewing-solutions/,200,977,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/safest-way-to-hold-french-bulldog/,200,957,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-winter-care-bible/,200,1268,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/are-french-bulldogs-good-with-kids/,200,942,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/training-games-and-fun-activities-for-french-bulldogs/,200,973,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/french-bulldog-tantrum-management/,200,939,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/french-bulldog-tantrum-management/,200,948,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/homemade-dog-treat-recipes-french-bulldogs/,200,1046,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-training-tips/,200,1879,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-vaccination-guide/,200,2902,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1283,33 +1283,22 @@ frenchyfab.com,https://frenchyfab.com/french-bulldog-heat-cycle-guide/,200,1383,
 frenchyfab.com,https://frenchyfab.com/can-french-bulldogs-swim-and-should-they-guide/,200,1233,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/senior-french-bulldog-care-guide/,200,1052,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-healthy-treats-guide/,200,1583,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/french-bulldog-skin-fold-yeast-infection/,200,1732,0,3,3,0,0,0.382,papalex-ff-20,1,,,,,,0.0,,first_link_late
-frenchyfab.com,https://frenchyfab.com/best-dog-food-for-french-bulldogs-with-sensitive-stomach/,200,1949,1,3,3,0,0,0.436,papalex-ff-20,1,,,,,,0.0,,first_link_late
-frenchyfab.com,https://frenchyfab.com/best-wipes-for-french-bulldog-skin-folds/,200,1702,1,3,3,0,0,0.322,papalex-ff-20,1,,,,,,0.0,,first_link_late
 frenchyfab.com,https://frenchyfab.com/best-slow-feeder-bowl-for-french-bulldogs/,200,1837,1,4,4,0,0,0.294,papalex-ff-20,1,,,,,,0.0,,
-frenchyfab.com,https://frenchyfab.com/best-cooling-mat-for-french-bulldogs/,200,1855,1,8,6,2,0,0.14,papalex-ff-20,1,,,,,,0.0,,
-frenchyfab.com,https://frenchyfab.com/french-bulldog-overheating-playbook/,200,2062,0,2,2,0,0,0.833,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
-frenchyfab.com,https://frenchyfab.com/frenchie-homemade-dog-food-recipes/,200,1780,0,10,10,0,0,0.512,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
+frenchyfab.com,https://frenchyfab.com/best-cooling-mat-for-french-bulldogs/,200,1852,1,8,6,2,0,0.14,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/travel-essentials-for-french-bulldog-owners/,200,1256,0,3,3,0,0,0.275,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/french-bulldog-mental-stimulation-toys/,200,1262,1,3,3,0,0,0.262,papalex-ff-20,1,,,,,,0.0,,
-frenchyfab.com,https://frenchyfab.com/french-bulldog-socialization-guide/,200,1694,0,10,10,0,0,0.493,papalex-ff-20,1,,,,,,0.0,,first_link_late
-frenchyfab.com,https://frenchyfab.com/french-bulldog-behavior-issues-guide/,200,1941,0,10,10,0,0,0.551,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
-frenchyfab.com,https://frenchyfab.com/supplements-for-french-bulldogs-what-you-need-to-know/,200,1273,1,3,3,0,0,0.275,papalex-ff-20,1,,,,,1.0,0.1,,
+frenchyfab.com,https://frenchyfab.com/supplements-for-french-bulldogs-what-you-need-to-know/,200,1270,1,3,3,0,0,0.275,papalex-ff-20,1,,,,,1.0,0.1,,
 frenchyfab.com,https://frenchyfab.com/best-hypoallergenic-dog-food-french-bulldogs/,200,1364,1,3,3,0,0,0.269,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/french-bulldog-stress-signs-fixes/,200,1299,0,3,3,0,0,0.262,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/french-bulldog-life-jacket-guide/,200,1344,1,3,3,0,0,0.266,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/recall-training-teaching-your-french-bulldog-to-come-when-called/,200,1823,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/best-harness-for-french-bulldog-that-pulls/,200,2115,1,4,4,0,0,0.308,papalex-ff-20,1,,,,,,0.0,,first_link_late
-frenchyfab.com,https://frenchyfab.com/best-dog-foods-for-french-bulldogs/,200,1807,1,4,0,4,0,0.775,papalex-ff-20,1,,,,,,0.0,,first_link_very_late search_links_only
 frenchyfab.com,https://frenchyfab.com/french-bulldog-weight-guide/,200,1713,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/the-origins-of-the-french-bulldog-breed/,200,2541,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/raw-food-diet-for-french-bulldogs/,200,3062,0,3,3,0,0,0.714,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
 frenchyfab.com,https://frenchyfab.com/french-bulldog-dietary-supplements-guide/,200,1490,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/the-ultimate-puppy-shopping-list-for-french-bulldog-owners/,200,2896,0,3,3,0,0,0.705,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
 frenchyfab.com,https://frenchyfab.com/omega-3-supplements-french-bulldogs/,200,955,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/common-french-bulldog-breathing-issues/,200,1911,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-digestive-problems/,200,2851,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/understanding-common-health-issues-in-french-bulldogs/,200,1119,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/understanding-common-health-issues-in-french-bulldogs/,200,1112,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/understanding-skin-allergies-in-french-bulldogs/,200,3334,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-feeding-guide/,200,1302,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-hiking/,200,2433,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1326,36 +1315,31 @@ frenchyfab.com,https://frenchyfab.com/calm-whiny-french-bulldog/,200,1788,0,1,1,
 frenchyfab.com,https://frenchyfab.com/french-bulldog-names-2025-guide/,200,1357,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-genetic-testing-complete-guide/,200,1701,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/how-to-cut-french-bulldog-nails/,200,2606,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/french-bulldog-hydration-tips/,200,6186,0,2,2,0,0,0.936,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
 frenchyfab.com,https://frenchyfab.com/recognizing-and-managing-arthritis-in-french-bulldogs/,200,3215,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/why-do-french-bulldogs-have-no-tail/,200,2895,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/why-do-french-bulldogs-sleep-so-much/,200,2513,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-health-problems-guide/,200,2020,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/legal-considerations-for-french-bulldog-ownership/,200,3328,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/french-bulldog-care-guide/,200,3476,0,3,0,3,0,0.522,papalex-ff-20,1,,,,,,0.0,,first_link_very_late search_links_only
 frenchyfab.com,https://frenchyfab.com/french-bulldog-weight-management-framework/,200,3012,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/high-protein-diet-french-bulldogs-muscle-fat-energy/,200,2061,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/promoting-mental-stimulation-for-french-bulldogs/,200,3643,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-puppy-health-check/,200,3003,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/crate-training-french-bulldog-guide/,200,2904,0,3,3,0,0,0.701,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
 frenchyfab.com,https://frenchyfab.com/stopping-french-bulldog-destruction/,200,1987,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/why-french-bulldogs-fart-so-much/,200,1231,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-licking-paws-at-night/,200,2189,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-hip-dysplasia-prevention-mastery/,200,1309,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/the-role-of-fiber-in-your-french-bulldogs-diet/,200,3123,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/french-bulldog-potty-training/,200,3015,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/owning-a-french-bulldog-guide/,200,2021,0,12,12,0,0,0.509,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
+frenchyfab.com,https://frenchyfab.com/french-bulldog-potty-training/,200,3018,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-puppy-nutrition/,200,1785,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-health-and-wellness/,200,2678,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/breeding-french-bulldogs-guide/,200,1320,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/bite-prevention-in-french-bulldogs/,200,1858,0,0,0,0,0,,papalex-ff-20,1,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-dental-care/,200,1322,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/grooming-your-french-bulldog-complete-guide/,200,2395,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/grooming-your-french-bulldog-complete-guide/,200,2394,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/training-games-and-activities-for-french-bulldog-puppies/,200,2361,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/what-do-french-bulldogs-usually-die-from/,200,1471,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/cost-of-owning-a-french-bulldog/,200,1413,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/are-french-bulldogs-hypoallergenic/,200,3528,0,6,0,6,0,0.588,papalex-ff-20,1,,,,,,0.0,,first_link_very_late search_links_only
-frenchyfab.com,https://frenchyfab.com/fluffy-french-bulldog-guide/,200,4471,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/fluffy-french-bulldog-guide/,200,4483,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/territorial-french-bulldog-fix/,200,2037,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/begging-deterrence-in-french-bulldogs/,200,1848,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-size-and-appearance-characteristics/,200,1756,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1367,7 +1351,7 @@ frenchyfab.com,https://frenchyfab.com/are-french-bulldogs-protective-of-owners-t
 frenchyfab.com,https://frenchyfab.com/french-bulldog-body-language-and-communication-style/,200,1913,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/leash-training-french-bulldogs/,200,1595,0,4,4,0,0,0.047,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/stop-french-bulldog-barking/,200,1349,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/french-bulldog-exercise-needs-and-activities/,200,3396,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/french-bulldog-exercise-needs-and-activities/,200,3399,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-family-integration-protocol/,200,1699,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/baby-proofing-your-home-for-a-french-bulldog-puppy/,200,2304,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/puppy-proofing-your-home-a-french-bulldog-owners-checklist/,200,2900,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1375,11 +1359,10 @@ frenchyfab.com,https://frenchyfab.com/french-bulldog-mixes-guide/,200,1680,0,0,0
 frenchyfab.com,https://frenchyfab.com/preventing-joint-issues-in-french-bulldogs/,200,1285,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-health-101-guide/,200,1654,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/best-grooming-tools-for-french-bulldogs/,200,1912,1,4,4,0,0,0.254,papalex-ff-20,1,,,,,,0.0,,
-frenchyfab.com,https://frenchyfab.com/french-bulldog-separation-anxiety/,200,2048,0,4,4,0,0,0.331,papalex-ff-20,1,,,,,,0.0,,first_link_late
 frenchyfab.com,https://frenchyfab.com/french-bulldog-instagram-stars/,200,2586,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/nutritious-dog-food-toppers-french-bulldogs/,200,2155,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/food-aggression-in-french-bulldogs/,200,1785,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-frenchyfab.com,https://frenchyfab.com/best-brushes-for-french-bulldogs/,200,4240,1,8,6,0,0,0.096,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/best-brushes-for-french-bulldogs/,200,4240,1,6,6,0,0,0.096,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/french-bulldog-vs-other-breeds-a-comparison/,200,2255,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/teaching-calmness-and-relaxation-to-your-energetic-french-bulldog/,200,4512,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/training-against-french-bulldog-guarding/,200,2239,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1388,6 +1371,23 @@ frenchyfab.com,https://frenchyfab.com/french-bulldog-behavior-modification/,200,
 frenchyfab.com,https://frenchyfab.com/french-bulldog-vet-check-ups-guide/,200,3115,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/essential-vitamins-and-minerals-for-french-bulldogs/,200,1934,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/managing-french-bulldog-hyperactivity/,200,4515,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+frenchyfab.com,https://frenchyfab.com/french-bulldog-overheating-playbook/,200,2076,0,3,3,0,0,0.053,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/frenchie-homemade-dog-food-recipes/,200,1817,0,14,14,0,0,0.022,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/french-bulldog-socialization-guide/,200,1744,0,14,14,0,0,0.024,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/french-bulldog-behavior-issues-guide/,200,1969,0,14,14,0,0,0.021,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/french-bulldog-hydration-tips/,200,6209,0,3,3,0,0,0.007,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/owning-a-french-bulldog-guide/,200,2055,0,16,16,0,0,0.02,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/best-dog-foods-for-french-bulldogs/,200,1838,1,8,0,8,0,0.04,papalex-ff-20,1,,,,,,0.0,,search_links_only
+frenchyfab.com,https://frenchyfab.com/raw-food-diet-for-french-bulldogs/,200,3089,0,6,6,0,0,0.014,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/the-ultimate-puppy-shopping-list-for-french-bulldog-owners/,200,2927,0,6,6,0,0,0.015,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/french-bulldog-care-guide/,200,3515,0,6,0,6,0,0.014,papalex-ff-20,1,,,,,,0.0,,search_links_only
+frenchyfab.com,https://frenchyfab.com/crate-training-french-bulldog-guide/,200,2937,0,5,5,0,0,0.015,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/are-french-bulldogs-hypoallergenic/,200,3563,0,10,0,10,0,0.097,papalex-ff-20,1,,,,,,0.0,,search_links_only
+frenchyfab.com,https://frenchyfab.com/french-bulldog-skin-fold-yeast-infection/,200,1762,0,6,6,0,0,0.041,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/best-dog-food-for-french-bulldogs-with-sensitive-stomach/,200,1984,1,5,5,0,0,0.036,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/best-wipes-for-french-bulldog-skin-folds/,200,1739,1,6,6,0,0,0.042,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/best-harness-for-french-bulldog-that-pulls/,200,2140,1,7,7,0,0,0.076,papalex-ff-20,1,,,,,,0.0,,
+frenchyfab.com,https://frenchyfab.com/french-bulldog-separation-anxiety/,200,2069,0,8,8,0,0,0.035,papalex-ff-20,1,,,,,,0.0,,
 frenchyfab.com,https://frenchyfab.com/,200,1521,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/terms-and-conditions/,200,572,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/privacy-policy/,200,685,0,0,0,0,0,,,0,,,,,,0.0,,no_meta_description no_amazon_links
@@ -1400,7 +1400,7 @@ frenchyfab.com,https://frenchyfab.com/editorial-policy/,200,450,0,0,0,0,0,,,0,,,
 frenchyfab.com,https://frenchyfab.com/review-methodology/,200,504,1,0,0,0,0,,,0,,,,,,0.0,,no_meta_description no_amazon_links
 frenchyfab.com,https://frenchyfab.com/affiliate-disclosure/,200,377,0,0,0,0,0,,,1,,,,,,0.0,,no_meta_description no_amazon_links
 frenchyfab.com,https://frenchyfab.com/contact-us/,200,350,0,0,0,0,0,,,0,,,,,,0.0,,no_meta_description no_amazon_links
-frenchyfab.com,https://frenchyfab.com/cookie-policy/,200,409,0,1,0,0,0,0.705,papalex-ff-20,1,,,,,,0.0,,first_link_very_late
+frenchyfab.com,https://frenchyfab.com/cookie-policy/,200,409,0,0,0,0,0,,papalex-ff-20,1,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/about-us/,200,1016,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 frenchyfab.com,https://frenchyfab.com/french-bulldog-care-plan/,200,554,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/blog-articles/,200,292,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links duplicate_title
@@ -1429,15 +1429,11 @@ mysticaldigits.com,https://mysticaldigits.com/discover-the-meaning-of-your-birth
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-your-name-what-does-it-say-about-your-personality/,200,1331,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-self-expression/,200,1307,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-enigmatic-life-path-17-8/,200,763,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/exploring-numerological-traditions-within-jewish-culture/,200,798,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/exploring-numerological-traditions-within-jewish-culture/,200,794,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/life-path-number-compatibility/,200,1273,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-power-and-symbolism-of-number-seven-in-numerology/,200,1173,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/aquarius-december-2023-horoscope/,200,1231,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/life-path-number-6-traits-compatibility-and-more/,200,4120,0,4,3,1,0,0.801,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/numbers-and-mental-wellness/,200,2930,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/essence-of-number-five-guide/,200,4013,0,4,3,1,0,0.781,papalex-md-20,1,,,,,,0.0,,first_link_very_late
-mysticaldigits.com,https://mysticaldigits.com/the-power-of-life-path-number-1-2/,200,4084,0,4,3,1,0,0.762,papalex-md-20,1,,,,,,0.0,,first_link_very_late
-mysticaldigits.com,https://mysticaldigits.com/dive-into-enigmatic-world-number-2-numerology/,200,4108,0,4,3,1,0,0.755,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/astro-seeks-insights-on-numerology/,200,4647,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/in-numerology-what-does-11-mean/,200,1602,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-celebrities-what-can-we-learn-from-their-numbers/,200,3392,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1445,8 +1441,6 @@ mysticaldigits.com,https://mysticaldigits.com/why-astrology-is-nonsense/,200,127
 mysticaldigits.com,https://mysticaldigits.com/numerology-for-kids/,200,4435,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-spiritual-synchronicities/,200,1968,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-444-meaning-love-twin-flames-career/,200,1625,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/why-do-i-keep-seeing-1111/,200,3417,0,3,0,3,0,0.673,papalex-md-20,1,,,,,,0.0,,first_link_very_late search_links_only
-mysticaldigits.com,https://mysticaldigits.com/angel-number-666-meaning/,200,3957,0,4,0,4,0,0.699,papalex-md-20,1,,,,,,0.0,,first_link_very_late search_links_only
 mysticaldigits.com,https://mysticaldigits.com/what-are-angel-numbers/,200,1622,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-4444-meaning/,200,1601,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-3333-meaning/,200,1581,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1456,7 +1450,7 @@ mysticaldigits.com,https://mysticaldigits.com/angel-number-707-meaning/,200,1187
 mysticaldigits.com,https://mysticaldigits.com/angel-number-919-meaning/,200,1239,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-808-meaning/,200,1241,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-1010-meaning/,200,1257,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/angel-number-1212-meaning/,200,1250,0,0,0,0,0,,,0,,,,,,0.0,2,no_amazon_links near_duplicate
+mysticaldigits.com,https://mysticaldigits.com/angel-number-1212-meaning/,200,1251,0,0,0,0,0,,,0,,,,,,0.0,2,no_amazon_links near_duplicate
 mysticaldigits.com,https://mysticaldigits.com/angel-number-999-meaning/,200,1249,0,0,0,0,0,,,0,,,,,,0.0,2,no_amazon_links near_duplicate
 mysticaldigits.com,https://mysticaldigits.com/angel-number-777-meaning/,200,1546,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-1111-meaning/,200,1657,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1465,26 +1459,24 @@ mysticaldigits.com,https://mysticaldigits.com/karmic-debt-number-calculator-13-1
 mysticaldigits.com,https://mysticaldigits.com/angel-number-888-meaning-money-career-manifestation/,200,3383,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/angel-number-555-meaning-love-career-money/,200,3564,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/life-path-number-calculator/,200,1858,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/chaldean-numerology-calculator/,200,800,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/chaldean-numerology-calculator/,200,794,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/pythagorean-numerology-calculator-guide/,200,286,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/life-path-number-7/,200,3730,0,4,3,1,0,0.791,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/angel-number-333-meaning-in-career-and-money/,200,794,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-parent-child-relationships-compatibility-guide/,200,767,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/star-signs-impact-numerology-true-impact/,200,502,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/demystifying-numerology-3-secrets-revealed/,200,525,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/esoteric-numerology-spiritual-pathways/,200,521,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/esoteric-numerology-spiritual-pathways/,200,516,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/number-synchronicities-significance-guide/,200,633,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-is-number-8-in-numerology/,200,1396,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-read-numerology-chart/,200,999,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/life-path-3-8-compatibility-guide/,200,1461,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/love-compatibility-life-path-five-and-six-guide/,200,1644,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/essence-of-number-five-exploration/,200,1462,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/life-path-number-9-meaning-compatibility/,200,3161,0,4,3,1,0,0.738,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/unveiling-the-power-of-numerology-number-10-in-marriage-life/,200,1229,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/house-numerology-calculator-guide/,200,1385,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/star-signs-numerology-impact-guide/,200,1294,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-answers-full-guide-2025/,200,1344,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/electional-astrology-for-weddings-2025-guide/,200,1417,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/electional-astrology-for-weddings-2025-guide/,200,1413,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/finding-harmony-compatibility-life-path-3-and-8/,200,1007,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-effective-is-numerology-2025/,200,1212,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-career-guidance/,200,798,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1495,7 +1487,7 @@ mysticaldigits.com,https://mysticaldigits.com/how-to-find-numerology-name-for-ne
 mysticaldigits.com,https://mysticaldigits.com/how-to-use-numerology-to-plan-important-events-like-weddings/,200,1822,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-compatibility-how-to-determine-compatibility-using-numerology/,200,1437,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/cafe-astrology-numerology-insights-into-your-destiny/,200,1327,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/career-best-suited-for-life-path-5/,200,491,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/career-best-suited-for-life-path-5/,200,496,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/decoding-the-essence-of-birth-number-2-personality/,200,1971,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-life-change-age/,200,1417,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-influence-of-numerology-in-career-and-success/,200,3465,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1521,7 +1513,6 @@ mysticaldigits.com,https://mysticaldigits.com/unlocking-the-hidden-meanings-behi
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-aromatherapy/,200,3639,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-colors/,200,2226,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-house-number-1-meaning/,200,582,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-historical-events-what-do-the-numbers-reveal/,200,3233,0,1,1,0,0,0.737,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/decode-the-alphabet-with-numerological-numbers/,200,1901,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/understanding-the-essence-of-house-three/,200,3680,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/meaning-of-name-number-55-in-numerology/,200,1750,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1531,9 +1522,9 @@ mysticaldigits.com,https://mysticaldigits.com/dive-into-the-enigmatic-life-patte
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-twin-flames-what-your-numbers-reveal-about-your-soulmate/,200,2954,0,3,3,0,0,0.248,papalex-md-20,1,,,,,,0.0,5,near_duplicate
 mysticaldigits.com,https://mysticaldigits.com/discover-compatibility-between-life-path-3-and-11/,200,1352,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-learn-vedic-numerology-at-home/,200,1936,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/navigating-lifes-journey-with-number-6/,200,1283,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/navigating-lifes-journey-with-number-6/,200,1284,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/where-does-numerology-come-from/,200,705,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/unlocking-karma-the-secrets-behind-karmic-number-sixteen/,200,1373,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/unlocking-karma-the-secrets-behind-karmic-number-sixteen/,200,1372,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-for-personal-development/,200,2075,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/personality-number-33-6-in-numerology/,200,2646,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/life-path-number-9-marriage/,200,2806,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1552,7 +1543,7 @@ mysticaldigits.com,https://mysticaldigits.com/explore-harmony-and-balance-with-t
 mysticaldigits.com,https://mysticaldigits.com/unraveling-the-insights-the-meaning-of-number-twenty-five/,200,3188,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/ancestor-attributes-calculator/,200,1293,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/expression-number-insight/,200,5195,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-best-career-paths-based-on-your-numerology-numbers/,200,2504,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/the-best-career-paths-based-on-your-numerology-numbers/,200,2505,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/embrace-the-energy-of-15-numerology/,200,2710,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-conflict-resolution/,200,2487,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/revealing-the-birth-number-3-personality/,200,1229,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1572,7 +1563,7 @@ mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-your-lucky-numbe
 mysticaldigits.com,https://mysticaldigits.com/numerology-for-personal-transformation/,200,1535,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/navigating-lifes-journey-personal-year-6-numerology/,200,2695,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-chakras-alignment/,200,3311,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/astrology-and-yoga-benefits/,200,2000,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/astrology-and-yoga-benefits/,200,2003,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/personal-year-numerology/,200,1655,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/exploring-compatibility-with-life-path-number-33/,200,1923,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/find-your-lucky-mobile-number-based-on-date-of-birth/,200,1693,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1608,7 +1599,6 @@ mysticaldigits.com,https://mysticaldigits.com/numerology-love-compatibility/,200
 mysticaldigits.com,https://mysticaldigits.com/personality-number-impact/,200,2067,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/what-are-my-astrology-houses/,200,4838,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/uncover-the-energies-within-your-home-with-number-six/,200,3186,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/how-to-find-your-true-zodiac-sign/,200,4799,0,2,2,0,0,0.93,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/how-to-learn-numerology-free/,200,4244,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/karmic-lessons-profiles/,200,2663,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/scorpio-and-aquarius-compatibility/,200,1224,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1619,7 +1609,6 @@ mysticaldigits.com,https://mysticaldigits.com/best-numerology-calculator/,200,59
 mysticaldigits.com,https://mysticaldigits.com/discover-your-spiritual-number/,200,3344,0,3,3,0,0,0.193,papalex-md-20,1,,,,,,0.0,5,near_duplicate
 mysticaldigits.com,https://mysticaldigits.com/the-essence-and-significance-of-numerology-number-four-revealed/,200,1458,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-in-other-cultures/,200,3570,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-your-pet-what-does-your-animals-number-reveal/,200,3427,0,1,1,0,0,0.942,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-in-numerology/,200,1013,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-meanings-how-to-interpret-the-meaning-of-numbers-in-your-life/,200,2629,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-angel-numbers-what-do-angel-numbers-mean/,200,4665,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1637,7 +1626,6 @@ mysticaldigits.com,https://mysticaldigits.com/understanding-birth-number-5-perso
 mysticaldigits.com,https://mysticaldigits.com/explore-the-characteristics-of-birth-number-8-personality/,200,2427,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-coincidences-what-do-they-mean/,200,4981,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/understanding-birth-number-4-personality/,200,2444,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/how-to-use-numerology-to-make-better-decisions/,200,4943,0,2,0,2,0,0.956,papalex-md-20,1,,,,,,0.0,,first_link_very_late search_links_only
 mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-flowers/,200,3283,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/revealing-insights-into-16-numerology/,200,570,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/find-your-lucky-name-with-the-ultimate-calculator/,200,3584,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1657,14 +1645,12 @@ mysticaldigits.com,https://mysticaldigits.com/the-art-of-reading-horoscopes-insi
 mysticaldigits.com,https://mysticaldigits.com/numerology-name-change-after-divorce/,200,4831,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-stress-management/,200,2437,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/what-are-master-numbers-exploring-numerological-mastery/,200,2622,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/personal-transformation-guide/,200,5773,0,1,1,0,0,0.967,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/revealing-the-secrets-of-houses-with-number-four/,200,3070,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-sustainable-development/,200,1161,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/dive-into-meaning-and-symbolism-behind-numerology-number-six/,200,1231,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-self-discovery/,200,3612,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-mysterious-power-of-gg33-numerology/,200,2807,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-in-architecture-and-design/,200,1596,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-crystals-how-can-crystals-connect-us-with-our-higher-self/,200,6562,0,1,1,0,0,0.972,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/numerology-in-art-and-creative-expressions/,200,1489,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-nature-how-can-we-connect-with-the-energy-of-numbers/,200,5187,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-and-personal-empowerment/,200,2239,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1706,7 +1692,6 @@ mysticaldigits.com,https://mysticaldigits.com/wisdom-and-guidance-from-29-numero
 mysticaldigits.com,https://mysticaldigits.com/numerology-for-handling-relationship-conflicts/,200,1226,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/dive-into-the-enigma-of-21-numerology/,200,3608,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-house-number-92-meaning/,200,2951,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-secrets-of-life-path-number-11/,200,3382,0,4,3,1,0,0.776,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/exploring-the-meaning-of-angel-numbers-in-numerology/,200,2147,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/zodiac-compatibility-a-comprehensive-guide-to-love-and-relationships/,200,4558,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/get-your-free-personalized-report-on-numerological-insights/,200,1265,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1718,17 +1703,16 @@ mysticaldigits.com,https://mysticaldigits.com/unlocking-the-secrets-behind-your-
 mysticaldigits.com,https://mysticaldigits.com/exploring-the-magic-of-life-path-number-32-in-numerology/,200,750,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/what-zodiac-are-water-signs/,200,1345,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/number-30-in-numerology-discover-its-hidden-meaning/,200,1096,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/demystifying-natal-astrology-understanding-your-birth-chart/,200,1592,0,2,2,0,0,0.901,papalex-md-20,1,,,,,,0.0,,first_link_very_late
+mysticaldigits.com,https://mysticaldigits.com/demystifying-natal-astrology-understanding-your-birth-chart/,200,1596,0,2,2,0,0,0.899,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-personal-development/,200,3924,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/aries-horoscope-tomorrow-love/,200,882,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-health-insights/,200,4112,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-your-home-how-to-create-a-more-harmonious-space/,200,3671,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/uncover-the-hidden-messages-in-todays-date/,200,1555,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/best-books-to-learn-chaldean-numerology/,200,1497,1,1,1,0,0,0.875,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/numerology-repeating-number-717-meaning/,200,1817,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-mystical-meaning-of-number-9-in-numerology/,200,1165,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrological-number-a-guide-to-understanding-its-significance/,200,1360,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/numerology-artificial-creativity/,200,1584,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/numerology-artificial-creativity/,200,1583,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-essence-of-life-path-number-eighteen/,200,1376,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-compatibility-how-to-find-your-soulmate-using-numerology/,200,2593,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/advanced-techniques-in-business-numerology/,200,1255,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1746,7 +1730,7 @@ mysticaldigits.com,https://mysticaldigits.com/zero-in-numerology-the-gateway-to-
 mysticaldigits.com,https://mysticaldigits.com/embrace-stability-with-path-number-four/,200,3335,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-where-should-i-live/,200,2050,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-business-names-for-success/,200,1756,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/life-path-interpretation/,200,1958,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/life-path-interpretation/,200,1961,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/discover-your-life-path-with-mobile-numerology-calculator/,200,1747,0,0,0,0,0,,,0,,,,,,0.0,2,no_amazon_links near_duplicate
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-dreams-how-can-we-interpret-our-dreams/,200,3097,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-numerology-compatibility/,200,1522,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1768,7 +1752,6 @@ mysticaldigits.com,https://mysticaldigits.com/numerology-in-literature/,200,2711
 mysticaldigits.com,https://mysticaldigits.com/calculating-your-birthday-number/,200,3779,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-choose-a-business-name-using-numerology/,200,2161,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/understanding-the-numerological-significance-of-birthdays/,200,2994,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/numerology-dream-interpretation/,200,3133,0,2,2,0,0,0.914,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/numerology-predictions-how-to-use-numerology-to-forecast-your-future/,200,2482,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-who-will-i-marry/,200,5821,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/unveiling-the-secrets-of-17-numerology/,200,2800,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1781,14 +1764,14 @@ mysticaldigits.com,https://mysticaldigits.com/cracking-the-code-unraveling-numer
 mysticaldigits.com,https://mysticaldigits.com/how-is-number-13-in-numerology/,200,4839,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/overcoming-relationship-challenges-with-numerology/,200,1959,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/love-and-harmony-numerology-number-9-marriage/,200,2458,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/numerology-in-relationship-counseling/,200,1175,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/numerology-in-relationship-counseling/,200,1177,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/compatibility-of-life-path-1-and-5/,200,3095,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/decoding-the-power-of-life-path-number-30/,200,2691,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-colors-how-to-use-colors-to-enhance-your-life/,200,2466,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-past-lives/,200,2482,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-dreams/,200,2196,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-truth-about-zodiac-signs/,200,3173,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/what-is-astrology-and-astronomy/,200,1159,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/what-is-astrology-and-astronomy/,200,1156,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-and-anniversary-date-selection/,200,2393,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-coincidences-how-can-we-understand-the-meaning-of-the-numbers-we-see-in-our-lives/,200,1995,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-pick-lottery-numbers-using-numerology/,200,2112,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1799,7 +1782,7 @@ mysticaldigits.com,https://mysticaldigits.com/delve-into-the-meaning-of-26-throu
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-politics-how-celestial-movements-impact-world-events/,200,2179,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-role-of-prime-numbers-in-numerology/,200,2753,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-meditation-practices/,200,4098,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/exploring-the-mysterious-energy-of-666-numerology/,200,936,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/exploring-the-mysterious-energy-of-666-numerology/,200,937,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/path-number-1/,200,2635,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-role-of-birthdays-in-relationships/,200,3385,0,3,3,0,0,0.215,papalex-md-20,1,,,,,,0.0,5,near_duplicate
 mysticaldigits.com,https://mysticaldigits.com/unveiling-the-secrets-of-master-numbers-11-22-and-33/,200,5677,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1814,7 +1797,6 @@ mysticaldigits.com,https://mysticaldigits.com/revealing-the-enigmatic-nature-of-
 mysticaldigits.com,https://mysticaldigits.com/the-role-of-numerology-in-health-and-well-being/,200,2566,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/advantages-of-using-numerology/,200,3240,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/decode-your-personality-birth-number-7/,200,6513,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-in-history/,200,5076,0,2,2,0,0,0.686,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/connection-between-the-bible-and-astrology/,200,3413,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-myths-and-legends-of-the-zodiac-signs/,200,2356,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/unlocking-compatibility-between-life-paths-1-and-11/,200,2806,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1825,26 +1807,21 @@ mysticaldigits.com,https://mysticaldigits.com/exploring-the-connection-between-n
 mysticaldigits.com,https://mysticaldigits.com/numerological-analysis-of-historical-events/,200,3533,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/calculate-destiny-number-by-name/,200,547,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-for-beginners-guide/,200,4131,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-wisdom-of-chinese-numerology/,200,3223,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/the-wisdom-of-chinese-numerology/,200,3216,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-spiritual-growth/,200,7435,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-in-pop-culture/,200,3692,0,1,1,0,0,0.919,papalex-md-20,1,,,,,,0.0,,first_link_very_late
-mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-careers/,200,3960,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-planetary-rulers/,200,4983,0,3,3,0,0,0.693,papalex-md-20,1,,,,,,0.0,,first_link_very_late
-mysticaldigits.com,https://mysticaldigits.com/the-influence-of-master-numbers-in-love/,200,3481,0,2,2,0,0,0.923,papalex-md-20,1,,,,,,0.0,,first_link_very_late
+mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-careers/,200,3950,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/soul-urge-personal-profiles/,200,3155,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/embrace-transformation-personal-year-7-numerology/,200,4019,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-calculate-your-gift-number-in-numerology/,200,4244,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/zodiac-12-september-sign/,200,2599,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/astrology-and-dream-interpretation/,200,4663,0,1,1,0,0,0.954,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/astrology-and-crystal-healing/,200,6842,0,1,1,0,0,0.877,papalex-md-20,1,,,,,,0.0,,first_link_very_late
 mysticaldigits.com,https://mysticaldigits.com/exploring-sacred-numerology/,200,2190,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/the-significance-of-life-path-numbers-and-how-to-calculate-yours/,200,1932,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-self-improvement/,200,3484,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/soul-destiny-number/,200,4065,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/soul-destiny-number/,200,4068,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-and-the-fibonacci-sequence/,200,1181,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/numerology-and-the-zodiac/,200,1165,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/what-is-my-master-number-in-numerology/,200,2362,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-mysticaldigits.com,https://mysticaldigits.com/challenge-numbers-overcome/,200,1597,0,1,1,0,0,0.897,papalex-20,1,,,,,,0.0,,first_link_very_late other_site_tag
 mysticaldigits.com,https://mysticaldigits.com/annual-numerology-cycles/,200,2615,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/exploring-the-personality-traits-of-number-6-in-numerology/,200,1291,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-learn-numerology-in-hindi/,200,1038,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -1853,6 +1830,29 @@ mysticaldigits.com,https://mysticaldigits.com/numerology-life-balance/,200,2060,
 mysticaldigits.com,https://mysticaldigits.com/how-is-14-in-numerology/,200,1987,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/compatibility-check-life-path-numbers-6-and-9/,200,1716,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/how-to-use-numerology-to-overcome-challenges/,200,3956,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+mysticaldigits.com,https://mysticaldigits.com/challenge-numbers-overcome/,200,1614,0,2,2,0,0,0.044,papalex-20,1,,,,,,0.0,,other_site_tag
+mysticaldigits.com,https://mysticaldigits.com/life-path-number-6-traits-compatibility-and-more/,200,4153,0,7,6,1,0,0.054,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/essence-of-number-five-guide/,200,4039,0,7,6,1,0,0.046,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-power-of-life-path-number-1-2/,200,4113,0,7,6,1,0,0.047,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/dive-into-enigmatic-world-number-2-numerology/,200,4142,0,7,6,1,0,0.048,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/life-path-number-7/,200,3758,0,7,6,1,0,0.047,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/life-path-number-9-meaning-compatibility/,200,3197,0,7,6,1,0,0.047,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-historical-events-what-do-the-numbers-reveal/,200,3256,0,2,2,0,0,0.02,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/how-to-find-your-true-zodiac-sign/,200,4826,0,4,4,0,0,0.019,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-your-pet-what-does-your-animals-number-reveal/,200,3452,0,2,2,0,0,0.029,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/personal-transformation-guide/,200,5796,0,2,2,0,0,0.016,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-numerology-of-crystals-how-can-crystals-connect-us-with-our-higher-self/,200,6583,0,2,2,0,0,0.017,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-secrets-of-life-path-number-11/,200,3417,0,7,6,1,0,0.052,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/best-books-to-learn-chaldean-numerology/,200,1525,1,2,2,0,0,0.036,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/numerology-dream-interpretation/,200,3156,0,4,4,0,0,0.021,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-in-history/,200,5105,0,3,3,0,0,0.022,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-in-pop-culture/,200,3712,0,2,2,0,0,0.024,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-zodiac-signs-and-their-planetary-rulers/,200,5020,0,6,6,0,0,0.016,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/the-influence-of-master-numbers-in-love/,200,3500,0,4,4,0,0,0.015,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/astrology-and-dream-interpretation/,200,4683,0,2,2,0,0,0.017,papalex-md-20,1,,,,,,0.0,,
+mysticaldigits.com,https://mysticaldigits.com/why-do-i-keep-seeing-1111/,200,3446,0,5,0,5,0,0.05,papalex-md-20,1,,,,,,0.0,,search_links_only
+mysticaldigits.com,https://mysticaldigits.com/angel-number-666-meaning/,200,3980,0,6,0,6,0,0.037,papalex-md-20,1,,,,,,0.0,,search_links_only
+mysticaldigits.com,https://mysticaldigits.com/how-to-use-numerology-to-make-better-decisions/,200,4962,0,3,0,3,0,0.042,papalex-md-20,1,,,,,,0.0,,search_links_only
 mysticaldigits.com,https://mysticaldigits.com/,200,2121,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links duplicate_title
 mysticaldigits.com,https://mysticaldigits.com/review-methodology/,200,697,1,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 mysticaldigits.com,https://mysticaldigits.com/corrections-policy/,200,210,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links
@@ -2025,17 +2025,14 @@ efficientgptprompts.com,https://efficientgptprompts.com/art-history-analysis-ess
 efficientgptprompts.com,https://efficientgptprompts.com/dystopian-world-building/,200,1830,0,0,0,0,0,,,0,,,,,,0.0,4,no_amazon_links near_duplicate
 efficientgptprompts.com,https://efficientgptprompts.com/satirical-comedy-concepts/,200,531,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/romantic-comedy-twists/,200,855,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/futuristic-tech-scenarios/,200,5219,0,6,6,0,0,0.913,papalex-20,1,,,,,,0.0,,first_link_very_late
 efficientgptprompts.com,https://efficientgptprompts.com/episodic-series-concepts/,200,795,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/dystopian-society-scenarios/,200,815,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/futuristic-technology-and-innovations/,200,672,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/space-opera-drama-prompts/,200,959,0,1,0,1,0,0.903,papalex-20,1,,,,,,0.0,,first_link_very_late search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/space-opera-drama-prompts/,200,981,0,2,0,2,0,0.093,papalex-20,1,,,,,,0.0,,search_links_only
 efficientgptprompts.com,https://efficientgptprompts.com/steampunk-adventure-ideas/,200,771,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/cyberpunk-dystopian-visions/,200,794,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/supernatural-abilities-and-powers/,200,827,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/galactic-empires-and-political-intrigue/,200,630,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/virtual-reality-and-simulated-worlds/,200,4665,0,6,6,0,0,0.9,papalex-20,1,,,,,,0.0,,first_link_very_late
-efficientgptprompts.com,https://efficientgptprompts.com/artificial-intelligence-and-consciousness/,200,3857,0,6,6,0,0,0.876,papalex-20,1,,,,,,0.0,,first_link_very_late
 efficientgptprompts.com,https://efficientgptprompts.com/magical-artifacts-and-their-powers/,200,1284,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/ancient-civilizations-myths-and-realities/,200,716,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-victorian-age-society-and-change/,200,749,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2072,7 +2069,6 @@ efficientgptprompts.com,https://efficientgptprompts.com/the-symphony-of-the-stre
 efficientgptprompts.com,https://efficientgptprompts.com/the-mystery-of-the-night-sky/,200,656,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-fabric-of-friendship/,200,904,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-evolution-of-education/,200,520,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/the-future-of-work-in-the-digital-age/,200,3912,0,6,6,0,0,0.878,papalex-20,1,,,,,,0.0,,first_link_very_late
 efficientgptprompts.com,https://efficientgptprompts.com/the-ethics-of-artificial-intelligence/,200,833,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-role-of-art-in-society/,200,714,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-power-of-language-and-communication/,200,785,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2252,17 +2248,14 @@ efficientgptprompts.com,https://efficientgptprompts.com/ya-horror-story-ideas/,2
 efficientgptprompts.com,https://efficientgptprompts.com/exploring-poetry-thematic-prompts/,200,1912,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/nature-and-environment-story-ideas/,200,1048,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/body-horror-writing-ideas/,200,1108,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/interstellar-exploration-prompts/,200,1001,0,1,0,1,0,0.76,papalex-20,0,,,,,,0.0,,first_link_very_late search_links_only
-efficientgptprompts.com,https://efficientgptprompts.com/creative-nonfiction-prompts-for-students/,200,916,0,2,1,1,0,0.741,papalex-20,0,,,,,,0.0,,first_link_very_late
-efficientgptprompts.com,https://efficientgptprompts.com/mythos-and-lore-creation-for-fantasy-worlds/,200,888,0,1,0,1,0,0.754,papalex-20,0,,,,,,0.0,,first_link_very_late search_links_only
-efficientgptprompts.com,https://efficientgptprompts.com/character-development-story-prompts/,200,947,0,1,0,1,0,0.872,papalex-20,0,,,,,,0.0,,first_link_very_late search_links_only
-efficientgptprompts.com,https://efficientgptprompts.com/inventor-and-innovation-story-prompts/,200,931,0,3,2,1,0,0.708,papalex-20,0,,,,,,0.0,,first_link_very_late
-efficientgptprompts.com,https://efficientgptprompts.com/fairy-tale-rewriting-ideas/,200,662,0,1,0,1,0,0.886,papalex-20,0,,,,,,0.0,,first_link_very_late search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/interstellar-exploration-prompts/,200,1023,0,2,0,2,0,0.039,papalex-20,1,,,,,,0.0,,search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/mythos-and-lore-creation-for-fantasy-worlds/,200,911,0,2,0,2,0,0.048,papalex-20,1,,,,,,0.0,,search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/character-development-story-prompts/,200,969,0,2,0,2,0,0.042,papalex-20,1,,,,,,0.0,,search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/fairy-tale-rewriting-ideas/,200,685,0,2,0,2,0,0.063,papalex-20,1,,,,,,0.0,,search_links_only
 efficientgptprompts.com,https://efficientgptprompts.com/outreach-email-prompt/,200,1699,0,0,0,0,0,,,0,,,,,,0.0,6,no_amazon_links near_duplicate
 efficientgptprompts.com,https://efficientgptprompts.com/cta-copy-prompt/,200,1700,0,0,0,0,0,,,0,,,,,,0.0,6,no_amazon_links near_duplicate
 efficientgptprompts.com,https://efficientgptprompts.com/the-magic-within-fantasy-prompts/,200,3314,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/ai-prompt-templates-for-consultants-2026-guide/,200,1566,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/persuasive-writing-topics-for-teenagers/,200,815,0,1,1,0,0,0.928,papalex-20,0,,,,,,0.0,,first_link_very_late
 efficientgptprompts.com,https://efficientgptprompts.com/landing-page-copy-prompt/,200,1432,0,0,0,0,0,,,0,,,,,,0.0,6,no_amazon_links near_duplicate
 efficientgptprompts.com,https://efficientgptprompts.com/offer-positioning-prompt/,200,1394,0,0,0,0,0,,,0,,,,,,0.0,6,no_amazon_links near_duplicate
 efficientgptprompts.com,https://efficientgptprompts.com/sales-email-prompt/,200,1420,0,0,0,0,0,,,0,,,,,,0.0,6,no_amazon_links near_duplicate
@@ -2282,7 +2275,7 @@ efficientgptprompts.com,https://efficientgptprompts.com/epic-fantasy-quests-magi
 efficientgptprompts.com,https://efficientgptprompts.com/romance-love-heartbreak-and-the-pursuit-of-happiness/,200,474,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/mystery-and-thriller-unraveling-enigmas-suspenseful-plots-and-intriguing-characters/,200,870,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/screenwriting-writing-for-film-and-television/,200,556,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/nonfiction-crafting-informative-and-captivating-narratives/,200,957,0,1,0,1,0,0.72,papalex-20,0,,,,,,0.0,,first_link_very_late search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/nonfiction-crafting-informative-and-captivating-narratives/,200,979,0,2,0,2,0,0.041,papalex-20,1,,,,,,0.0,,search_links_only
 efficientgptprompts.com,https://efficientgptprompts.com/writing-as-a-career-insights-into-the-writing-profession/,200,760,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-power-of-writing-groups-connecting-with-other-writers-for-support-and-growth/,200,797,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/chatgpt-prompt-template-for-seo-content-briefs/,200,1331,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2299,7 +2292,6 @@ efficientgptprompts.com,https://efficientgptprompts.com/psychological-horror-wri
 efficientgptprompts.com,https://efficientgptprompts.com/rebellion-and-revolution-in-dystopian-settings/,200,759,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/social-issue-exploration/,200,1130,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-melody-of-the-ocean/,200,717,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/the-rhythm-of-the-rain/,200,1597,0,1,1,0,0,0.856,papalex-20,0,,,,,,0.0,,first_link_very_late no_disclosure
 efficientgptprompts.com,https://efficientgptprompts.com/the-serenade-of-the-wind/,200,861,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-regency-era-romance-and-manners/,200,797,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/lost-in-nature-wilderness-prompts/,200,1987,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2310,7 +2302,6 @@ efficientgptprompts.com,https://efficientgptprompts.com/underwater-horror-story-
 efficientgptprompts.com,https://efficientgptprompts.com/boarding-school-ya-story-prompts/,200,1363,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/jungle-adventure-writing-ideas/,200,1446,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/absurdist-prompts-that-challenge-writers-to-create-bizarre-and-surreal-stories/,200,1407,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/coming-of-age-story-inspirations/,200,2240,0,6,6,0,0,0.829,papalex-20,1,,,,,,0.0,,first_link_very_late
 efficientgptprompts.com,https://efficientgptprompts.com/horror-comedy-writing-prompts/,200,1184,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/family-drama-ya-writing-prompts/,200,2087,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/fantasy-adventure-quests/,200,1472,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2319,7 +2310,6 @@ efficientgptprompts.com,https://efficientgptprompts.com/princess-and-prince-stor
 efficientgptprompts.com,https://efficientgptprompts.com/survival-scenario-challenges/,200,1624,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/film-noir-style-stories/,200,1390,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/labyrinth-of-the-mind-psychological-prompts/,200,1772,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/family-drama-dynamics/,200,1982,0,6,6,0,0,0.755,papalex-20,1,,,,,,0.0,,first_link_very_late
 efficientgptprompts.com,https://efficientgptprompts.com/mythology-and-legends/,200,1419,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/historical-events-report-prompts/,200,2094,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/life-lessons-and-morals-story-ideas/,200,1302,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2340,7 +2330,7 @@ efficientgptprompts.com,https://efficientgptprompts.com/war-and-conflict-storyli
 efficientgptprompts.com,https://efficientgptprompts.com/biographical-story-ideas/,200,1450,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/epic-quests-and-heroic-journeys/,200,1060,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/mythical-creatures-prompts-for-children/,200,1591,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/pirate-adventure-writing-prompts/,200,1250,0,1,0,1,0,0.843,papalex-20,1,,,,,,0.0,,first_link_very_late search_links_only
+efficientgptprompts.com,https://efficientgptprompts.com/pirate-adventure-writing-prompts/,200,1272,0,2,0,2,0,0.058,papalex-20,1,,,,,,0.0,,search_links_only
 efficientgptprompts.com,https://efficientgptprompts.com/time-travel-adventures-for-kids/,200,1127,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/forbidden-love-scenarios/,200,1101,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/a-glimpse-into-the-future-futuristic-prompts/,200,1928,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2349,8 +2339,7 @@ efficientgptprompts.com,https://efficientgptprompts.com/letting-go-journal-promp
 efficientgptprompts.com,https://efficientgptprompts.com/heist-and-conspiracy-plots/,200,1521,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/post-apocalyptic-survival-stories/,200,1222,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/utopian-worlds-and-ideal-societies/,200,1187,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/sci-fi-horror-crossover-prompts/,200,1164,0,1,0,1,0,0.83,papalex-20,1,,,,,,0.0,,first_link_very_late search_links_only
-efficientgptprompts.com,https://efficientgptprompts.com/talking-animals-and-their-adventures/,200,1250,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+efficientgptprompts.com,https://efficientgptprompts.com/sci-fi-horror-crossover-prompts/,200,1186,0,2,0,2,0,0.06,papalex-20,1,,,,,,0.0,,search_links_only
 efficientgptprompts.com,https://efficientgptprompts.com/overcoming-personal-fears-and-challenges/,200,1511,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/science-and-discovery-writing-prompts/,200,1297,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/daily-successes-journal-prompts/,200,1055,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
@@ -2360,9 +2349,20 @@ efficientgptprompts.com,https://efficientgptprompts.com/the-gilded-age-wealth-an
 efficientgptprompts.com,https://efficientgptprompts.com/teen-adventure-and-survival-prompts/,200,1089,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/exploring-personal-values-and-beliefs/,200,1463,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/the-role-of-activism-in-society/,200,969,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
-efficientgptprompts.com,https://efficientgptprompts.com/the-power-of-imagination-prompts-to-unleash-your-creativity/,200,1237,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/young-adult-fiction-exploring-the-complexities-of-adolescence/,200,1272,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/writing-for-social-impact-using-your-writing-to-make-a-difference-in-the-world/,200,931,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+efficientgptprompts.com,https://efficientgptprompts.com/talking-animals-and-their-adventures/,200,1250,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+efficientgptprompts.com,https://efficientgptprompts.com/the-power-of-imagination-prompts-to-unleash-your-creativity/,200,1237,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
+efficientgptprompts.com,https://efficientgptprompts.com/futuristic-tech-scenarios/,200,5250,0,9,9,0,0,0.003,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/virtual-reality-and-simulated-worlds/,200,4691,0,9,9,0,0,0.003,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/artificial-intelligence-and-consciousness/,200,3887,0,9,9,0,0,0.004,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/the-future-of-work-in-the-digital-age/,200,3945,0,9,9,0,0,0.003,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/creative-nonfiction-prompts-for-students/,200,935,0,3,2,1,0,0.044,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/inventor-and-innovation-story-prompts/,200,957,0,5,4,1,0,0.043,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/persuasive-writing-topics-for-teenagers/,200,834,0,2,2,0,0,0.049,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/the-rhythm-of-the-rain/,200,1619,0,2,2,0,0,0.105,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/coming-of-age-story-inspirations/,200,2267,0,9,9,0,0,0.027,papalex-20,1,,,,,,0.0,,
+efficientgptprompts.com,https://efficientgptprompts.com/family-drama-dynamics/,200,2008,0,9,9,0,0,0.041,papalex-20,1,,,,,,0.0,,
 efficientgptprompts.com,https://efficientgptprompts.com/,200,2540,0,0,0,0,0,,,0,,,,,,0.0,,no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/affiliate-disclosure/,200,152,0,0,0,0,0,,,1,,,,,,0.0,,no_meta_description thin_content no_amazon_links
 efficientgptprompts.com,https://efficientgptprompts.com/contact/,200,77,0,0,0,0,0,,,0,,,,,,0.0,,thin_content no_amazon_links

@@ -39,6 +39,7 @@ _TAGS = re.compile(r"<[^>]+>")
 CHROME = {"nav", "header", "footer", "aside", "form"}
 NO_TEXT = {"script", "style", "noscript", "svg", "template"}
 SKETCH_SIZE = 64
+HEADING_REACH = 60  # a heading names a link only when the link follows within this many words (one product card)
 
 
 @dataclass
@@ -52,6 +53,7 @@ class Link:
     offset: int = 0  # characters of article text before this link
     text: str = ""
     alt: str = ""
+    heading: str = ""  # nearest H3/H4 above a text link, e.g. the title of the product card it sits in
 
     @property
     def name(self) -> str:
@@ -85,7 +87,8 @@ class Page:
 
     @property
     def content_links(self) -> list[Link]:
-        return [l for l in self.links if not l.in_chrome]
+        """Shopping links in the article. Links to Amazon's own help or policy pages do not count."""
+        return [l for l in self.links if not l.in_chrome and l.kind != "other"]
 
     @property
     def first_link_depth(self) -> float | None:
@@ -128,6 +131,8 @@ class _Parser(HTMLParser):
         self.chrome = 0
         self.no_text = 0
         self.cur: Link | None = None
+        self.heading: list[str] | None = None  # text of the H3/H4 being read
+        self.last_heading = ("", 0)            # (text, words of article read when it ended)
         self.in_title = False
         self.in_h1 = False
         self.tokens: list[str] = []
@@ -146,6 +151,10 @@ class _Parser(HTMLParser):
             self.in_title = True
         elif tag == "h1" and not p.h1:
             self.in_h1 = True
+        elif tag in ("h3", "h4"):
+            self.heading = []
+        elif tag == "h2":
+            self.last_heading = ("", 0)
         elif tag == "meta":
             name = a.get("name", "").lower()
             if name == "description":
@@ -165,6 +174,8 @@ class _Parser(HTMLParser):
                 link.rel_ok = "sponsored" in rel or "nofollow" in rel
                 link.in_chrome = self.skip_chrome and self.chrome > 0
                 link.offset = p.text_len
+                if self.last_heading[0] and p.words - self.last_heading[1] <= HEADING_REACH:
+                    link.heading = self.last_heading[0]
                 self.cur = link
             else:
                 parts = urlsplit(href)
@@ -186,7 +197,12 @@ class _Parser(HTMLParser):
             self.in_title = False
         elif tag == "h1":
             self.in_h1 = False
+        elif tag in ("h3", "h4") and self.heading is not None:
+            self.last_heading = (" ".join(" ".join(self.heading).split()), self.page.words)
+            self.heading = None
         elif tag == "a" and self.cur is not None:
+            if not self.cur.text.strip():  # an image link often sits above the heading of its own card
+                self.cur.heading = ""
             self.page.links.append(self.cur)
             self.cur = None
 
@@ -199,6 +215,8 @@ class _Parser(HTMLParser):
             return
         if self.in_h1:
             p.h1 += data
+        if self.heading is not None:
+            self.heading.append(data)
         if self.cur is not None:
             self.cur.text += data
         if self.skip_chrome and self.chrome:

@@ -120,7 +120,8 @@ def replace_blocked(
 
 
 BLOCK_COMMENT = re.compile(r"<!--\s*(/?)wp:([a-z0-9/-]+)[^>]*?(/?)-->", re.I)
-CONTAINER = re.compile(r"<(/?)(?:div|section|article|aside|nav|table|ul|ol|blockquote|figure|details)\b[^>]*>", re.I)
+# header, footer and form count too: a box must not land inside an article's hero header.
+CONTAINER = re.compile(r"<(/?)(?:div|section|article|aside|nav|header|footer|form|main|table|ul|ol|blockquote|figure|details)\b[^>]*>", re.I)
 
 
 def _open_block(html: str, at: int) -> str | None:
@@ -163,6 +164,27 @@ def _depth(html: str, at: int) -> int:
     return sum(-1 if m.group(1) else 1 for m in CONTAINER.finditer(html, 0, at))
 
 
+CHROME_TAG = re.compile(r"<(/?)(?:header|footer|nav|aside|form)\b[^>]*>", re.I)
+
+
+RAW_TEXT_TAG = re.compile(r"<(/?)(style|script|textarea|template|noscript)\b[^>]*>", re.I)
+
+
+def _in_chrome(html: str, at: int) -> bool:
+    """True when position `at` is no place for a box: inside a header, footer, nav, aside or form
+    (e.g. an article's hero), or inside a <style> or <script> block, where HTML is not rendered.
+    Some posts carry a stylesheet with stray </p> tags in it, so this has to be checked."""
+    raw_open = ""
+    for m in RAW_TEXT_TAG.finditer(html, 0, at):
+        if not raw_open and not m.group(1):
+            raw_open = m.group(2).lower()
+        elif m.group(1) and m.group(2).lower() == raw_open:
+            raw_open = ""
+    if raw_open:
+        return True
+    return sum(-1 if m.group(1) else 1 for m in CHROME_TAG.finditer(html, 0, at)) > 0
+
+
 def add_disclosure(html: str, site_name: str) -> tuple[str, int]:
     """Put the Associates disclosure at the top of a post that has none."""
     if DISCLOSURE.search(html):
@@ -174,6 +196,19 @@ def add_disclosure(html: str, site_name: str) -> tuple[str, int]:
     if "<!-- wp:" in html:
         line = f"<!-- wp:html -->\n{line}\n<!-- /wp:html -->"
     return f"{line}\n\n{html}", 1
+
+
+GENERATED_BOX = re.compile(
+    r"(?:<!-- wp:html -->\s*)?<div class=\"" + BOX_CLASS + r"\"(?:(?!<div\b).)*?</div>\s*(?:<!-- /wp:html -->\s*)?", re.S)
+
+
+def remove_box(html: str) -> tuple[str, str]:
+    """Take a generated box (one with no nested <div>) out of a post. Returns (html, the box div)."""
+    m = GENERATED_BOX.search(html)
+    if not m:
+        return html, ""
+    box = re.search(r"<div.*?</div>", m.group(0), re.S).group(0)
+    return html[: m.start()].rstrip() + "\n\n" + html[m.end():].lstrip(), box
 
 
 PLACE_AFTER = re.compile(r"^\s*<!--\s*place-after:\s*(.+?)\s*-->\s*\n", re.I)
@@ -200,11 +235,11 @@ def insert_box(html: str, box: str) -> tuple[str, int]:
         if h2:
             h2_depth = _depth(html, h2.start())
             for p_end in FIRST_P_END.finditer(html, 0, h2.start()):
-                if _depth(html, p_end.end()) <= h2_depth:
+                if _depth(html, p_end.end()) <= h2_depth and not _in_chrome(html, p_end.end()):
                     at = p_end.end()
                     break
             intro_words = len(re.sub(r"<(style|script)\b.*?</\1>|<[^>]+>", " ", html[: h2.start()], flags=re.S | re.I).split())
-            if at is None and intro_words >= MIN_INTRO_WORDS:
+            if at is None and intro_words >= MIN_INTRO_WORDS and not _in_chrome(html, h2.start()):
                 at = h2.start()
     if at is None:
         return html, 0

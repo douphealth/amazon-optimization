@@ -621,3 +621,65 @@ def test_ensure_folders(tmp_path):
     data.ensure_folders(["example.com"], root=tmp_path)
     assert (tmp_path / "ga4" / "example.com" / ".gitkeep").exists() and (tmp_path / "associates" / ".gitkeep").exists()
     assert data.load_ga4("example.com", root=tmp_path / "ga4") == {}
+
+
+def test_short_name_keeps_product_names_and_rejects_calls_to_action():
+    assert fixes.short_name("XLUX Soil Moisture Meter, Plant Water Monitor, Hygrometer") == "XLUX Soil Moisture Meter"
+    assert fixes.short_name("Deep Work by Cal Newport Amazon product image") == "Deep Work by Cal Newport"
+    assert fixes.short_name("Time Timer MOD Home Edition 60 Minute Visual Timer Amazon product") == "Time Timer MOD Home Edition 60 Minute Visual Timer"
+    assert fixes.short_name("Snow Crash cover") == "Snow Crash"
+    assert fixes.short_name("VIVOSUN 6.5 Inch Gardening Scissors Hand Pruner Pruning Shear with Titanium") == "VIVOSUN 6.5 Inch Gardening Scissors Hand Pruner Pruning"
+    assert fixes.short_name("4 Pack Moss Pole - Stackable up to 48 inches") == "4 Pack Moss Pole"
+    assert fixes.short_name("Nike Men's Pegasus Turbo Next Nature Running Shoes (Mineral Teal/Barely Volt)") == "Nike Men's Pegasus Turbo Next Nature Running Shoes"
+    assert fixes.short_name("The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create") == "The Lean Startup"
+    assert fixes.short_name("Nature Made Vitamin D3 1,000 IU (25 mcg), 100 Softgels") == "Nature Made Vitamin D3 1,000 IU (25 mcg)"
+    for junk in ("Sweeten Naturally Today!", "Shop Black/Faded Black →", "Discover the fēnix 8", "Check price on Amazon", "View on Amazon", "Buy now", "B0", ""):
+        assert fixes.short_name(junk) == "", junk
+
+
+def test_box_stays_out_of_hero_header_and_can_be_moved():
+    from ace import transform as t
+    box = '<div class="ace-quick-picks"><p>Quick picks</p><ul><li>x</li></ul></div>'
+    intro = " ".join(["word"] * 40)
+    post = f'<article class="x"><header class="hero"><h1>T</h1><p>Hero line.</p></header><p>{intro}</p><h2>One</h2><p>Body</p></article>'
+    out, n = t.insert_box(post, box)
+    assert n == 1 and out.index("ace-quick-picks") > out.index("</header>") and out.index("ace-quick-picks") < out.index("<h2>")
+    nested = f'<article><header><p>{intro}</p></header><section><h2>One</h2><p>Body</p></section></article>'
+    out, n = t.insert_box(nested, box)  # the first H2 sits as deep as the hero paragraph: still not the header
+    assert n == 1 and out.index("</header>") < out.index("ace-quick-picks") < out.index("<h2>")
+    styled = f'<style>.a{{color:red}}</p>\n<p>.b{{margin:0}}</style><p>{intro}</p><h2>One</h2><p>Body</p>'
+    out, n = t.insert_box(styled, box)  # a stray </p> inside a stylesheet is not a place for a box
+    assert n == 1 and out.index("</style>") < out.index("ace-quick-picks") < out.index("<h2>")
+    assert t.insert_box(f'<style>p{{}}</p><h2>One</h2><p>{intro}</p></style>', box)[1] == 0
+    misplaced = post.replace("<p>Hero line.</p>", "<p>Hero line.</p>\n\n<!-- wp:html -->\n" + box + "\n<!-- /wp:html -->\n\n")
+    cleaned, taken = t.remove_box(misplaced)
+    assert taken == box and "ace-quick-picks" not in cleaned and "wp:html" not in cleaned
+    assert t.remove_box(post) == (post, "")
+
+
+def test_box_names_products_from_card_headings_and_adds_searches():
+    card = lambda asin, title, cta="Check Price on Amazon": (
+        f'<div class="card"><a href="https://www.amazon.com/dp/{asin}/?tag=me-20"><img src="x.jpg"></a>'
+        f'<h3>{title}</h3><p>Good for long runs.</p><a href="https://www.amazon.com/dp/{asin}/?tag=me-20">{cta}</a></div>')
+    filler = "<p>" + " ".join(["word"] * 300) + "</p>"
+    html_ = ("<html><body><h1>Guide</h1>" + filler + "<h2>Recommended gear</h2>"
+             + card("B000000001", "Garmin Fenix 8 AMOLED 47mm") + card("B000000002", "2. Coros Pace 3 GPS Watch")
+             + "<h3>Why trust us</h3><p>x</p>" + '<a href="https://www.amazon.com/dp/B000000003/?tag=me-20">View on Amazon</a>'
+             + '<p><a href="https://www.amazon.com/s?k=running+belt+with+bottle&tag=me-20">compare running belts on Amazon</a></p></body></html>')
+    page = parse("https://example.com/guide/", html_)
+    cta = [l for l in page.links if l.text.startswith("Check")]
+    assert [l.heading for l in cta] == ["Garmin Fenix 8 AMOLED 47mm", "2. Coros Pace 3 GPS Watch"]
+    assert all(l.heading == "" for l in page.links if not l.text.strip())  # image links take no heading
+    row = score.Row(site=Site(domain="example.com", name="Example"), page=page, gsc=None)
+    out = fixes.box(row)
+    assert ">Garmin Fenix 8 AMOLED 47mm</a>" in out and ">Coros Pace 3 GPS Watch</a>" in out and "Why trust us" not in out
+    assert ">Running belt with bottle</a> <span" in out and "(Amazon search)" in out and "B000000003" not in out
+    assert "Quick picks from this guide" in out
+    assert fixes.heading_name("Final Verdict") == "" and fixes.heading_name("How to choose a watch") == ""
+    assert fixes.heading_name("Fitbit Air Alternative Listing") == "" and fixes.short_name("McDavid Waist Trimmer Belt — Best low-profile gym belt") == "McDavid Waist Trimmer Belt"
+    prose = parse("https://example.com/p/", "<html><body>" + filler + '<h3>Smart Home Integration</h3><p>Pair it with an <a href="https://www.amazon.com/dp/B000000009/?tag=me-20">Amazon Alexa routine</a>.</p></body></html>')
+    assert fixes.box(score.Row(site=Site(domain="example.com", name="Example"), page=prose, gsc=None)) is None  # a text link is not a card button
+    only_search = parse("https://example.com/s/", "<html><body>" + filler + '<p><a href="https://www.amazon.com/s?k=outlet+timer+for+grow+lights&tag=me-20">compare timers on Amazon</a></p></body></html>')
+    assert "Quick links from this guide" in fixes.box(score.Row(site=Site(domain="example.com", name="Example"), page=only_search, gsc=None))
+    policy = parse("https://example.com/cookie-policy/", "<html><body>" + filler + '<p><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=1">Amazon privacy</a></p></body></html>')
+    assert policy.content_links == [] and policy.first_link_depth is None

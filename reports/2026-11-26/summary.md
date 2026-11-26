@@ -5,7 +5,7 @@
 | Site | Pages crawled | Loaded OK | Pages with Amazon links | Amazon links | Typical first-link depth | Pages Google showed | Google clicks |
 |---|---|---|---|---|---|---|---|
 | GearUpToFit | 801 | 801 | 483 | 2012 | 7% | 0 | 0 |
-| Plantastic Haven | 160 | 160 | 107 | 659 | 24% | 46 | 50 |
+| Plantastic Haven | 160 | 160 | 107 | 665 | 22% | 46 | 50 |
 | Mice Gone Guide | 46 | 46 | 22 | 95 | 52% | 4 | 0 |
 | GearUpToGrow | 109 | 109 | 29 | 117 | 68% | 5 | 1 |
 | Affiliate Marketing for Success | 120 | 120 | 2 | 3 | 22% | no data | no data |
@@ -27,11 +27,10 @@
 - No OneLink script found (non-US visitors land on amazon.com)
 
 ### Plantastic Haven (plantastichaven.com)
-- Tracking IDs in use: `papalex-ph-20` (657 links), `papalex-20` (2 links)
+- Tracking IDs in use: `papalex-ph-20` (663 links), `papalex-20` (2 links)
 - 53 pages: no Amazon link in the article
-- 40 pages: first Amazon link is in the bottom half
+- 37 pages: first Amazon link is in the bottom half
 - 24 pages: only Amazon search links, no product links
-- 12 pages: links to a product listed as wrong or gone in sites.yaml
 - 11 pages: first Amazon link is 30-50% down
 - 7 pages: Google shows it but few people click (title/description)
 - 4 pages: no meta description
@@ -103,6 +102,7 @@
 |---|---|---|---|---|
 | gearuptofit.com | Amazon links but no affiliate disclosure statement anywhere on the page | 165 | 0 | -165 |
 | plantastichaven.com | no Amazon link in the article | 54 | 53 | -1 |
+| plantastichaven.com | first Amazon link is in the bottom half | 40 | 37 | -3 |
 | micegoneguide.com | Amazon links but no affiliate disclosure statement anywhere on the page | 1 | 0 | -1 |
 | affiliatemarketingforsuccess.com | Amazon links but no affiliate disclosure statement anywhere on the page | 1 | 0 | -1 |
 | efficientgptprompts.com | Amazon links but no affiliate disclosure statement anywhere on the page | 9 | 1 | -8 |
@@ -113,17 +113,17 @@ Not compared (new checks the earlier report did not run): under 300 words of art
 
 | # | Page | Google clicks | Impressions | Position | First link | Problem | Score |
 |---|---|---|---|---|---|---|---|
-| 1 | https://plantastichaven.com/how-cold-can-philodendron-tolerate/ | 10 | 518 | 4.0 | 79% | first Amazon link is in the bottom half; Google shows it but few people click (title/description) | 29.01 |
-| 2 | https://plantastichaven.com/dripping-water-in-philodendron-plants/ | 8 | 391 | 4.8 | 57% | first Amazon link is in the bottom half; Google shows it but few people click (title/description) | 19.16 |
-| 3 | https://plantastichaven.com/plants-that-look-like-spider-plants/ | 20 | 915 | 10.8 | 73% | first Amazon link is in the bottom half; links to a product listed as wrong or gone in sites.yaml | 14.0 |
-| 4 | https://gearuptogrow.com/productivity/time-blocking-guide/ | 0 | 432 | 7.8 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 12.96 |
-| 5 | https://www.outdoormisting.com/outdoor-cooling-solutions-humid-climates/ | 7 | 161 | 12.7 | none | no Amazon link in the article | 7.0 |
-| 6 | https://plantastichaven.com/house-plants-in-fish-tank/ | 1 | 198 | 10.5 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.95 |
-| 7 | https://plantastichaven.com/spider-plant-vs-dracaena/ | 2 | 190 | 8.6 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.75 |
-| 8 | https://www.outdoormisting.com/popular-outdoor-cooling-brands/ | 0 | 552 | 18.0 | none | no Amazon link in the article | 4.42 |
-| 9 | https://plantastichaven.com/how-to-start-a-philodendron/ | 0 | 940 | 8.3 | 24% | Google shows it but few people click (title/description) | 2.82 |
-| 10 | https://plantastichaven.com/yellow-house-plants/ | 3 | 292 | 18.0 | 64% | first Amazon link is in the bottom half; only Amazon search links, no product links | 2.1 |
-| 11 | https://plantastichaven.com/blue-house-plants/ | 1 | 259 | 17.0 | none | no Amazon link in the article | 2.07 |
+| 1 | https://gearuptogrow.com/productivity/time-blocking-guide/ | 0 | 432 | 7.8 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 12.96 |
+| 2 | https://www.outdoormisting.com/outdoor-cooling-solutions-humid-climates/ | 7 | 161 | 12.7 | none | no Amazon link in the article | 7.0 |
+| 3 | https://plantastichaven.com/house-plants-in-fish-tank/ | 1 | 198 | 10.5 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.95 |
+| 4 | https://plantastichaven.com/spider-plant-vs-dracaena/ | 2 | 190 | 8.6 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.75 |
+| 5 | https://www.outdoormisting.com/popular-outdoor-cooling-brands/ | 0 | 552 | 18.0 | none | no Amazon link in the article | 4.42 |
+| 6 | https://plantastichaven.com/how-cold-can-philodendron-tolerate/ | 10 | 518 | 4.0 | 2% | Google shows it but few people click (title/description) | 4.14 |
+| 7 | https://plantastichaven.com/how-to-start-a-philodendron/ | 0 | 940 | 8.3 | 24% | Google shows it but few people click (title/description) | 2.82 |
+| 8 | https://plantastichaven.com/dripping-water-in-philodendron-plants/ | 8 | 391 | 4.8 | 4% | Google shows it but few people click (title/description) | 2.74 |
+| 9 | https://plantastichaven.com/yellow-house-plants/ | 3 | 292 | 18.0 | 64% | first Amazon link is in the bottom half; only Amazon search links, no product links | 2.1 |
+| 10 | https://plantastichaven.com/blue-house-plants/ | 1 | 259 | 17.0 | none | no Amazon link in the article | 2.07 |
+| 11 | https://plantastichaven.com/plants-that-look-like-spider-plants/ | 20 | 915 | 10.8 | 11% | links are placed well | 2.0 |
 | 12 | https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/ | 0 | 192 | 50.1 | none | no Amazon link in the article | 1.54 |
 | 13 | https://micegoneguide.com/foods-that-attract-mice/ | 0 | 175 | 23.3 | none | no Amazon link in the article | 1.4 |
 | 14 | https://plantastichaven.com/houseplants-for-low-light/ | 0 | 229 | 59.5 | 62% | first Amazon link is in the bottom half; only Amazon search links, no product links | 1.28 |
@@ -182,7 +182,7 @@ Google tends to stop indexing sites where many pages are thin or near-copies of 
 | Mystical Digits | `page-sitemap.xml` | 24 | 7 | 0 |  | 1 | 0 | no data |
 | Outdoor Misting | `post-sitemap.xml` | 18 | 0 | 0 |  | 0 | 0 | 4 |
 | Outdoor Misting | `page-sitemap.xml` | 3 | 2 | 0 |  | 0 | 0 | 0 |
-| Efficient GPT Prompts | `post-sitemap.xml` | 465 | 1 | 18 | 7 | 0 | 0 | no data |
+| Efficient GPT Prompts | `post-sitemap.xml` | 465 | 1 | 17 | 7 | 0 | 0 | no data |
 | Efficient GPT Prompts | `page-sitemap.xml` | 24 | 7 | 0 |  | 0 | 0 | no data |
 | Efficient GPT Prompts | `product-sitemap.xml` | 3 | 1 | 0 |  | 0 | 1 | no data |
 

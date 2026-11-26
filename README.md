@@ -127,7 +127,7 @@ changes nothing. `docs/experiments.md` records each live change with its baselin
 | Search Console API pull (`gsc-pull`) | Unit-tested against a fake API only. Not yet run with a real service account |
 | Associates CSV import | Unit-tested with a sample layout. Not yet run on a real Associates export |
 | GitHub Actions: tests | Passed on GitHub on 2026-11-26 |
-| GitHub Actions: weekly audit | Not yet run on GitHub. If Cloudflare challenges GitHub's servers, the report will say the crawl was blocked |
+| GitHub Actions: weekly audit | Ran on GitHub on 2026-11-26: all 2,384 pages loaded, report committed in about 100 seconds. The fixer step ran with no login secrets, so it changed nothing there |
 
 Not included: checking whether linked products are still in stock. Amazon answers automated
 requests with a robot check, so a reliable check needs Amazon's own product API.

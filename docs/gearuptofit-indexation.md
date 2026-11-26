@@ -23,22 +23,44 @@ The priority is to protect and grow that traffic, not to make risky changes in t
   also remove those pages from the engines that do send visitors.
 - Any future prune must check Analytics for visits and Amazon clicks first, not only Search Console.
 
-## Earning pages that are set to noindex
+## Pages wrongly kept out of search engines
 
-These pages produced Amazon clicks in the last 14 days and carry `noindex, follow` on the live page:
+**76 published posts carry `noindex` although they are not in the September prune list.** They
+include current buying guides and product reviews (Brooks Ghost 17, Saucony Ride 19, Apple Watch
+Series 10, Pixel Watch 3, best treadmills for home, best running shoes for beginners and for flat
+feet). 42 of them carry Amazon links, 302 links in total. The full list is in
+`docs/gearuptofit-noindexed-outside-prune.csv`.
+
+Three of them, plus one shoe-finder page, produced Amazon clicks in the last 14 days:
 
 | Page | Amazon clicks |
 |---|---|
 | /review/best-treadmills-for-home/ | 4 |
-| /review/best-compression-boots/ | 3 |
+| /review/best-compression-boots/ (this one is in the prune list) | 3 |
 | /review/best-running-shoes-for-heavy-runners/ | 1 |
 | /shoe-finder/shoes/topo-ultrafly-6/ | 4 |
 
-WordPress itself reports all three review posts as indexable, and only one of them
-(best-compression-boots) is in the September prune list. The noindex tag is added by whatever serves
-the review pages to visitors, which is not WordPress (the responses carry no WordPress headers). That
-layer cannot be read or changed with the WordPress login, so this fix has to be made there.
-Search engines that still list these pages will drop them while the tag stays.
+### Which layer decides (established 2026-11-26)
+
+| Test | Result |
+|---|---|
+| Yoast setting on the three review posts (edit screen) | Default, meaning index |
+| Every active code snippet on the site | Only the September prune list sets noindex, and two of the three posts are not in it |
+| 79 published posts that are in neither the prune list nor the sitemap | 76 are served noindex |
+| 25 sampled posts that are in the sitemap | All served index |
+| 63 posts that are in the prune list **and** in the sitemap | All served index |
+
+The last row is the decisive one. WordPress's prune snippet marks those 63 posts noindex, yet the
+live pages say index. So the robots tag visitors and search engines receive is set after WordPress,
+by a layer that indexes a page only if it is on a keep list of 498 posts (the same 498 the sitemap
+serves under the header `x-sitemap-source: wp-authoritative-post-sitemaps`). The site runs about a
+dozen Cloudflare Workers in front of WordPress, and the one that rewrites the head of post pages is
+`gutf-post-shell-edge-fix` (it stamps `x-gutf-post-shell-edge: 1` on these responses). Its source is
+not in any repository; it has to be downloaded from Cloudflare.
+
+**Fix:** add the pages that should be found to that keep list (and so to the sitemap), starting with
+the earning pages above. That needs Cloudflare Workers access. Per the site's own safety runbook:
+snapshot the Workers and routes first, confirm route ownership, validate the script, then smoke-test.
 
 ## What is confirmed
 

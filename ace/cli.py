@@ -15,8 +15,11 @@ def _sites(cfg, only):
 
 def cmd_audit(cfg, args) -> None:
     sites = _sites(cfg, args.site)
+    def one(site):  # also crawl pages analytics shows visitors on, even if no sitemap lists them
+        return crawl.crawl(site, extra_urls=[v["url"] for v in data.load_ga4(site.domain).values()])
+
     with ThreadPoolExecutor(max_workers=3) as pool:
-        results = list(pool.map(crawl.crawl, sites))
+        results = list(pool.map(one, sites))
     pages_by_site = {s.domain: pages for s, (pages, _) in zip(sites, results)}
     sitemaps = {s.domain: sm for s, (_, sm) in zip(sites, results)}
     share = crawl.loaded_share(pages_by_site)
@@ -29,7 +32,8 @@ def cmd_audit(cfg, args) -> None:
 def _scored(cfg, args):
     pages_by_site, sitemaps = report.load_audit(args.out)
     gsc_by_site = {s.domain: data.load_gsc(s.domain)[0] for s in cfg.sites}
-    return score.build_rows(cfg, pages_by_site, gsc_by_site, data.load_associates())
+    ga = {s.domain: data.load_ga4(s.domain) for s in cfg.sites}
+    return score.build_rows(cfg, pages_by_site, gsc_by_site, data.load_associates(), ga)
 
 
 def cmd_fix(cfg, args) -> None:
@@ -47,7 +51,8 @@ def cmd_rank(cfg, args) -> None:
         if rows or meta:  # an empty export still means "Google showed nothing"
             gsc_by_site[site.domain], gsc_meta[site.domain] = rows, meta
     tag_stats = data.load_associates()
-    rows = score.build_rows(cfg, pages_by_site, gsc_by_site, tag_stats)
+    ga = {s.domain: data.load_ga4(s.domain) for s in cfg.sites}
+    rows = score.build_rows(cfg, pages_by_site, gsc_by_site, tag_stats, ga)
     report.write_csvs(args.out, rows)
     report.write_summary(args.out, cfg, rows, sitemaps, gsc_meta, tag_stats, previous=changes.previous_report(args.out))
     written = fixes.write_fixes(rows, args.out / "fixes", top=args.fixes, blocked=cfg.blocked_asins)

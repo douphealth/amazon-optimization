@@ -66,6 +66,29 @@ def load_gsc(domain: str, root: str | Path = "data/gsc") -> tuple[dict[str, GscR
     return out, meta
 
 
+def load_ga4(domain: str, root: str | Path = "data/ga4") -> dict[str, dict]:
+    """Per-page numbers from Google Analytics, keyed by normalised URL.
+
+    data/ga4/<domain>/amazon_clicks.csv   page,amazon_clicks   outbound clicks to Amazon
+    data/ga4/<domain>/sessions.csv        page,sessions        visits that landed on the page
+
+    `page` is a path (/review/x/) or a full URL. Either file may be missing. Unlike Search
+    Console this counts visitors from every source, so it shows pages Google never sends anyone to."""
+    out: dict[str, dict] = {}
+    for name, key in (("amazon_clicks.csv", "amazon_clicks"), ("sessions.csv", "sessions")):
+        path = Path(root) / domain / name
+        if not path.exists():
+            continue
+        for row in csv.DictReader(io.StringIO(path.read_text(encoding="utf-8-sig"))):
+            page = (row.get("page") or "").strip()
+            if not page or "#" in page:
+                continue
+            url = page if page.startswith("http") else f"https://{domain}{page}"
+            entry = out.setdefault(norm_url(url), {"url": url, "amazon_clicks": 0.0, "sessions": 0.0})
+            entry[key] += _num(row.get(key, ""))
+    return out
+
+
 @dataclass
 class TagStats:
     clicks: float = 0

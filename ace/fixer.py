@@ -61,7 +61,7 @@ def plan(cfg: Config, rows: list[Row], sites: list[str] | None = None) -> list[A
         for name in ("rel", "disclosure", "blocked"):
             if issues & CLEARS[name]:
                 wanted.append(name)
-        clicks = row.gsc.clicks if row.gsc else 0
+        clicks = row.visits  # real visitors from any source, not only Google
         late = issues & {"first_link_late", "first_link_very_late"}
         if fixes.curated(row) or (late and clicks >= cfg.box_min_clicks and fixes.box(row, cfg.blocked_asins)):
             wanted.append("box")

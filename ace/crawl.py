@@ -10,7 +10,7 @@ from urllib.parse import urljoin
 
 import requests
 
-from .config import Site
+from .config import Site, norm_url
 from .page import Page, parse
 
 _local = threading.local()
@@ -99,8 +99,17 @@ def loaded_share(pages_by_site: dict[str, list[Page]]) -> float:
     return sum(p.status == 200 for p in pages) / len(pages) if pages else 1.0
 
 
-def crawl(site: Site, log=print) -> tuple[list[Page], dict[str, list[str]]]:
+ANALYTICS_ONLY = "(not in a sitemap; seen in analytics)"
+
+
+def crawl(site: Site, log=print, extra_urls: tuple[str, ...] | list[str] = ()) -> tuple[list[Page], dict[str, list[str]]]:
+    """Crawl every sitemap URL, plus `extra_urls` (pages analytics shows visitors on)."""
     sitemap_map = discover(site)
+    known = {norm_url(u) for u in sitemap_map}
+    for url in extra_urls:
+        if norm_url(url) not in known:
+            sitemap_map[url] = [ANALYTICS_ONLY]
+            known.add(norm_url(url))
     urls = list(sitemap_map)[: site.max_urls]
     log(f"[{site.domain}] {len(sitemap_map)} URLs in sitemaps, crawling {len(urls)}")
     with ThreadPoolExecutor(max_workers=site.concurrency) as pool:

@@ -4,7 +4,7 @@
 
 | Site | Pages crawled | Loaded OK | Pages with Amazon links | Amazon links | Typical first-link depth | Pages Google showed | Google clicks |
 |---|---|---|---|---|---|---|---|
-| GearUpToFit | 801 | 801 | 483 | 2012 | 7% | 0 | 0 |
+| GearUpToFit | 808 | 808 | 487 | 2069 | 7% | 0 | 0 |
 | Plantastic Haven | 160 | 160 | 107 | 665 | 22% | 46 | 50 |
 | Mice Gone Guide | 46 | 46 | 22 | 95 | 52% | 4 | 0 |
 | GearUpToGrow | 109 | 109 | 29 | 117 | 68% | 5 | 1 |
@@ -15,14 +15,15 @@
 | Efficient GPT Prompts | 492 | 492 | 24 | 57 | 79% | no data | no data |
 
 ### GearUpToFit (gearuptofit.com)
-- Tracking IDs in use: `papalex-gutf-20` (1474 links), `papalex-20` (522 links)
-- 318 pages: no Amazon link in the article
-- 268 pages: uses a tracking ID that is not this site's (clicks cannot be attributed to it)
+- Tracking IDs in use: `papalex-gutf-20` (1530 links), `papalex-20` (523 links)
+- 321 pages: no Amazon link in the article
+- 269 pages: uses a tracking ID that is not this site's (clicks cannot be attributed to it)
 - 33 pages: first Amazon link is in the bottom half
 - 16 pages: only Amazon search links, no product links
 - 14 pages: first Amazon link is 30-50% down
 - 5 pages: no meta description
 - 5 pages: amzn.to short link (tag cannot be checked)
+- 4 pages: produces Amazon clicks but is set to noindex, so search engines will drop it
 - 1 URLs are listed in more than one sitemap
 - No OneLink script found (non-US visitors land on amazon.com)
 
@@ -100,6 +101,8 @@
 
 | Site | Check | Before | Now | Change |
 |---|---|---|---|---|
+| gearuptofit.com | no Amazon link in the article | 318 | 321 | +3 |
+| gearuptofit.com | uses a tracking ID that is not this site's (clicks cannot be attributed to it) | 268 | 269 | +1 |
 | gearuptofit.com | Amazon links but no affiliate disclosure statement anywhere on the page | 165 | 0 | -165 |
 | plantastichaven.com | no Amazon link in the article | 54 | 53 | -1 |
 | plantastichaven.com | first Amazon link is in the bottom half | 40 | 37 | -3 |
@@ -109,40 +112,72 @@
 
 Not compared (new checks the earlier report did not run): under 300 words of article text, shares half or more of its text with another page on the site.
 
+## Pages that produce Amazon clicks (Google Analytics, all traffic sources)
+
+| Page | Amazon clicks | Indexable | In a sitemap | Amazon links | First link | Problems |
+|---|---|---|---|---|---|---|
+| https://gearuptofit.com/review/best-smartwatches-for-kids/ | 9 | yes | yes | 14 | 16% | none |
+| https://gearuptofit.com/review/best-dumbbells-for-home-workouts/ | 6 | yes | yes | 13 | 8% | none |
+| https://gearuptofit.com/shoe-finder/ | 5 | yes | yes | 0 | none | no Amazon link in the article |
+| https://gearuptofit.com/review/best-running-shoes-for-supination-high-arches/ | 4 | yes | yes | 14 | 7% | none |
+| https://gearuptofit.com/health/supplements/best-supplements-for-increasing-muscle-mass-after-60/ | 4 | yes | yes | 6 | 46% | first Amazon link is 30-50% down |
+| https://gearuptofit.com/review/best-treadmills-for-home/ | 4 | no | no | 12 | 18% | noindex; produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://gearuptofit.com/shoe-finder/shoes/topo-ultrafly-6/ | 4 | no | no | 1 | 21% | noindex; uses a tracking ID that is not this site's (clicks cannot be attributed to it); produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://gearuptofit.com/review/best-running-shoes-for-shin-splints/ | 3 | yes | yes | 14 | 6% | none |
+| https://gearuptofit.com/review/best-walking-pads-for-weight-loss/ | 3 | yes | yes | 18 | 9% | only Amazon search links, no product links |
+| https://gearuptofit.com/review/best-compression-boots/ | 3 | no | no | 24 | 3% | noindex; produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://gearuptofit.com/review/best-running-shoes/ | 2 | yes | yes | 5 | 26% | none |
+| https://gearuptofit.com/review/li-ning-feidian-6-elite/ | 2 | yes | yes | 3 | 16% | none |
+| https://gearuptofit.com/shoe-finder/results/overpronation-10k-road-wide | 2 | yes | no | 0 | none | canonical points to another URL; no Amazon link in the article |
+| https://gearuptofit.com/shoe-finder/results/underpronation-5k-road-flat | 2 | yes | no | 0 | none | canonical points to another URL; no Amazon link in the article |
+| https://gearuptofit.com/running/best-running-sunglasses/ | 1 | yes | yes | 18 | 18% | none |
+| https://gearuptofit.com/review/adidas-adios-9/ | 1 | yes | yes | 2 | 5% | none |
+| https://gearuptofit.com/review/amazfit-falcon/ | 1 | yes | yes | 1 | 86% | first Amazon link is in the bottom half |
+| https://gearuptofit.com/review/smartwatch-awards/ | 1 | yes | yes | 30 | 22% | none |
+| https://gearuptofit.com/review/adidas-takumi-sen-11/ | 1 | yes | yes | 1 | 9% | none |
+| https://gearuptofit.com/review/nordictrack-treadmill-the-ultimate-buying-guide/ | 1 | yes | yes | 4 | 8% | none |
+| https://gearuptofit.com/watch-match/compare/garmin-forerunner-970-vs-garmin-instinct-3 | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it) |
+| https://gearuptofit.com/watch-match/compare/garmin-forerunner-165-vs-garmin-forerunner-70 | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it) |
+| https://gearuptofit.com/shoe-finder/results/unsure-10k-road-neutral | 1 | yes | no | 0 | none | canonical points to another URL; no Amazon link in the article |
+| https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/ | 1 | no | no | 20 | 26% | noindex; produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://micegoneguide.com/signs-of-mice-infestation/ | 1 | yes | yes | 3 | 52% | first Amazon link is in the bottom half |
+| https://micegoneguide.com/mouse-proofing/ | 1 | yes | yes | 3 | 45% | first Amazon link is 30-50% down |
+| https://frenchyfab.com/supplements-for-french-bulldogs-what-you-need-to-know/ | 1 | yes | yes | 3 | 28% | none |
+
 ## Work queue: pages losing the most Amazon clicks
 
-| # | Page | Google clicks | Impressions | Position | First link | Problem | Score |
+| # | Page | Visits | Google impressions | Position | First link | Problem | Score |
 |---|---|---|---|---|---|---|---|
 | 1 | https://gearuptogrow.com/productivity/time-blocking-guide/ | 0 | 432 | 7.8 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 12.96 |
 | 2 | https://www.outdoormisting.com/outdoor-cooling-solutions-humid-climates/ | 7 | 161 | 12.7 | none | no Amazon link in the article | 7.0 |
-| 3 | https://plantastichaven.com/house-plants-in-fish-tank/ | 1 | 198 | 10.5 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.95 |
-| 4 | https://plantastichaven.com/spider-plant-vs-dracaena/ | 2 | 190 | 8.6 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.75 |
-| 5 | https://www.outdoormisting.com/popular-outdoor-cooling-brands/ | 0 | 552 | 18.0 | none | no Amazon link in the article | 4.42 |
-| 6 | https://plantastichaven.com/how-cold-can-philodendron-tolerate/ | 10 | 518 | 4.0 | 2% | Google shows it but few people click (title/description) | 4.14 |
-| 7 | https://plantastichaven.com/how-to-start-a-philodendron/ | 0 | 940 | 8.3 | 24% | Google shows it but few people click (title/description) | 2.82 |
-| 8 | https://plantastichaven.com/dripping-water-in-philodendron-plants/ | 8 | 391 | 4.8 | 4% | Google shows it but few people click (title/description) | 2.74 |
-| 9 | https://plantastichaven.com/yellow-house-plants/ | 3 | 292 | 18.0 | 64% | first Amazon link is in the bottom half; only Amazon search links, no product links | 2.1 |
-| 10 | https://plantastichaven.com/blue-house-plants/ | 1 | 259 | 17.0 | none | no Amazon link in the article | 2.07 |
-| 11 | https://plantastichaven.com/plants-that-look-like-spider-plants/ | 20 | 915 | 10.8 | 11% | links are placed well | 2.0 |
-| 12 | https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/ | 0 | 192 | 50.1 | none | no Amazon link in the article | 1.54 |
-| 13 | https://micegoneguide.com/foods-that-attract-mice/ | 0 | 175 | 23.3 | none | no Amazon link in the article | 1.4 |
-| 14 | https://plantastichaven.com/houseplants-for-low-light/ | 0 | 229 | 59.5 | 62% | first Amazon link is in the bottom half; only Amazon search links, no product links | 1.28 |
-| 15 | https://plantastichaven.com/snake-plant-leaves-curling-causes-and-fixes/ | 0 | 142 | 44.3 | none | no Amazon link in the article | 1.14 |
-| 16 | https://plantastichaven.com/houseplants-with-colorful-foliage/ | 0 | 139 | 38.5 | none | no Amazon link in the article | 1.11 |
-| 17 | https://www.outdoormisting.com/future-trends-outdoor-cooling-solutions/ | 1 | 91 | 36.3 | none | no Amazon link in the article | 1.0 |
-| 18 | https://gearuptogrow.com/productivity/best-habit-tracker-apps/ | 0 | 124 | 43.6 | none | no Amazon link in the article | 0.99 |
-| 19 | https://gearuptogrow.com/productivity/context-switching/ | 0 | 157 | 64.9 | 81% | first Amazon link is in the bottom half | 0.88 |
-| 20 | https://plantastichaven.com/house-plants-with-purple-leaves/ | 0 | 153 | 46.6 | 85% | first Amazon link is in the bottom half | 0.86 |
-| 21 | https://plantastichaven.com/are-spider-plants-toxic-to-cats/ | 0 | 153 | 60.2 | 73% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.86 |
-| 22 | https://gearuptogrow.com/learning/active-recall/ | 1 | 152 | 44.3 | 68% | first Amazon link is in the bottom half | 0.85 |
-| 23 | https://plantastichaven.com/what-does-philodendron-look-like/ | 0 | 94 | 21.1 | none | no Amazon link in the article | 0.75 |
-| 24 | https://micegoneguide.com/how-to-remove-mice-droppings-safely/ | 0 | 129 | 59.8 | 77% | first Amazon link is in the bottom half | 0.72 |
-| 25 | https://plantastichaven.com/succulent-soil-mix/ | 1 | 67 | 27.6 | 80% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.7 |
-| 26 | https://plantastichaven.com/houseplants-for-air-conditioning/ | 1 | 105 | 32.5 | 60% | first Amazon link is in the bottom half | 0.7 |
-| 27 | https://www.outdoormisting.com/how-evaporative-coolers-work/ | 0 | 88 | 62.7 | none | no Amazon link in the article | 0.7 |
-| 28 | https://plantastichaven.com/indoor-plant-care/ | 0 | 124 | 54.0 | 61% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.69 |
-| 29 | https://plantastichaven.com/airplane-plant-vs-spider-plant/ | 0 | 68 | 19.6 | none | no Amazon link in the article | 0.54 |
-| 30 | https://plantastichaven.com/philodendron-birkin/ | 0 | 63 | 47.7 | none | no Amazon link in the article | 0.5 |
+| 3 | https://gearuptofit.com/shoe-finder/ | 5 |  |  | none | no Amazon link in the article | 5.0 |
+| 4 | https://plantastichaven.com/house-plants-in-fish-tank/ | 1 | 198 | 10.5 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.95 |
+| 5 | https://plantastichaven.com/spider-plant-vs-dracaena/ | 2 | 190 | 8.6 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.75 |
+| 6 | https://www.outdoormisting.com/popular-outdoor-cooling-brands/ | 0 | 552 | 18.0 | none | no Amazon link in the article | 4.42 |
+| 7 | https://plantastichaven.com/how-cold-can-philodendron-tolerate/ | 10 | 518 | 4.0 | 2% | Google shows it but few people click (title/description) | 4.14 |
+| 8 | https://plantastichaven.com/how-to-start-a-philodendron/ | 0 | 940 | 8.3 | 24% | Google shows it but few people click (title/description) | 2.82 |
+| 9 | https://plantastichaven.com/dripping-water-in-philodendron-plants/ | 8 | 391 | 4.8 | 4% | Google shows it but few people click (title/description) | 2.74 |
+| 10 | https://plantastichaven.com/yellow-house-plants/ | 3 | 292 | 18.0 | 64% | first Amazon link is in the bottom half; only Amazon search links, no product links | 2.1 |
+| 11 | https://plantastichaven.com/blue-house-plants/ | 1 | 259 | 17.0 | none | no Amazon link in the article | 2.07 |
+| 12 | https://gearuptofit.com/shoe-finder/results/overpronation-10k-road-wide | 2 |  |  | none | no Amazon link in the article | 2.0 |
+| 13 | https://gearuptofit.com/shoe-finder/results/underpronation-5k-road-flat | 2 |  |  | none | no Amazon link in the article | 2.0 |
+| 14 | https://plantastichaven.com/plants-that-look-like-spider-plants/ | 20 | 915 | 10.8 | 11% | links are placed well | 2.0 |
+| 15 | https://gearuptofit.com/health/supplements/best-supplements-for-increasing-muscle-mass-after-60/ | 4 |  |  | 46% | first Amazon link is 30-50% down | 1.6 |
+| 16 | https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/ | 0 | 192 | 50.1 | none | no Amazon link in the article | 1.54 |
+| 17 | https://micegoneguide.com/foods-that-attract-mice/ | 0 | 175 | 23.3 | none | no Amazon link in the article | 1.4 |
+| 18 | https://plantastichaven.com/houseplants-for-low-light/ | 0 | 229 | 59.5 | 62% | first Amazon link is in the bottom half; only Amazon search links, no product links | 1.28 |
+| 19 | https://plantastichaven.com/snake-plant-leaves-curling-causes-and-fixes/ | 0 | 142 | 44.3 | none | no Amazon link in the article | 1.14 |
+| 20 | https://plantastichaven.com/houseplants-with-colorful-foliage/ | 0 | 139 | 38.5 | none | no Amazon link in the article | 1.11 |
+| 21 | https://gearuptofit.com/shoe-finder/results/unsure-10k-road-neutral | 1 |  |  | none | no Amazon link in the article | 1.0 |
+| 22 | https://www.outdoormisting.com/future-trends-outdoor-cooling-solutions/ | 1 | 91 | 36.3 | none | no Amazon link in the article | 1.0 |
+| 23 | https://gearuptogrow.com/productivity/best-habit-tracker-apps/ | 0 | 124 | 43.6 | none | no Amazon link in the article | 0.99 |
+| 24 | https://gearuptofit.com/review/best-smartwatches-for-kids/ | 9 |  |  | 16% | links are placed well | 0.9 |
+| 25 | https://gearuptogrow.com/productivity/context-switching/ | 0 | 157 | 64.9 | 81% | first Amazon link is in the bottom half | 0.88 |
+| 26 | https://plantastichaven.com/house-plants-with-purple-leaves/ | 0 | 153 | 46.6 | 85% | first Amazon link is in the bottom half | 0.86 |
+| 27 | https://plantastichaven.com/are-spider-plants-toxic-to-cats/ | 0 | 153 | 60.2 | 73% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.86 |
+| 28 | https://gearuptogrow.com/learning/active-recall/ | 1 | 152 | 44.3 | 68% | first Amazon link is in the bottom half | 0.85 |
+| 29 | https://plantastichaven.com/what-does-philodendron-look-like/ | 0 | 94 | 21.1 | none | no Amazon link in the article | 0.75 |
+| 30 | https://micegoneguide.com/how-to-remove-mice-droppings-safely/ | 0 | 129 | 59.8 | 77% | first Amazon link is in the bottom half | 0.72 |
 
 ## Title and description rewrites: shown on page 1 but rarely clicked
 
@@ -153,7 +188,7 @@ Not compared (new checks the earlier report did not run): under 300 words of art
 | https://plantastichaven.com/dripping-water-in-philodendron-plants/ | 391 | 4.8 | 8 | Philodendron Dripping Water? Guttation (When to Worry) |
 | https://gearuptogrow.com/productivity/time-blocking-guide/ | 432 | 7.8 | 0 | Time Blocking Template: Build a Weekly Schedule |
 | https://plantastichaven.com/troubleshooting-philodendron-plants/ | 147 | 8.3 | 0 | Troubleshooting Philodendron Plants: Yellow Leaves, Droop, Pests |
-| https://plantastichaven.com/string-of-pearls-plant-care/ | 512 | 10.7 | 0 | String of Pearls Plant Care: The Complete Guide to Growing Curio Rowleyanus Indoors - PlantasticHaven |
+| https://plantastichaven.com/string-of-pearls-plant-care/ | 512 | 10.7 | 0 | String of Pearls Indoor Care: Light, Watering, Soil & Fixes - PlantasticHaven |
 | https://plantastichaven.com/house-plants-in-fish-tank/ | 198 | 10.5 | 1 | Aquarium Plants: Best House Plants for Fish Tanks [2026] |
 | https://plantastichaven.com/spider-plant-vs-dracaena/ | 190 | 8.6 | 2 | Spider Plant vs Dracaena: Differences, Care & Pet Safety |
 
@@ -165,8 +200,9 @@ Google tends to stop indexing sites where many pages are thin or near-copies of 
 |---|---|---|---|---|---|---|---|---|
 | GearUpToFit | `sitemap-posts.xml` | 498 | 2 | 8 | 4 | 0 | 0 | 0 |
 | GearUpToFit | `sitemap-pages.xml` | 28 | 10 | 0 |  | 0 | 0 | 0 |
-| GearUpToFit | `sitemap-lovable.xml` | 3 | 0 | 0 |  | 0 | 0 | 0 |
+| GearUpToFit | `sitemap-lovable.xml` | 3 | 0 | 1 | 4 | 1 | 0 | 0 |
 | GearUpToFit | `watch-match/sitemap.xml` | 272 | 0 | 259 | 177 | 0 | 0 | 0 |
+| GearUpToFit | `(not in a sitemap; seen in analytics)` | 7 | 0 | 3 | 4 | 3 | 7 | 0 |
 | Plantastic Haven | `post-sitemap.xml` | 133 | 0 | 2 | 2 | 0 | 0 | 43 |
 | Plantastic Haven | `page-sitemap.xml` | 27 | 5 | 0 |  | 0 | 0 | 3 |
 | Mice Gone Guide | `sitemap-home.xml` | 1 | 0 | 0 |  | 0 | 0 | 0 |
@@ -182,7 +218,7 @@ Google tends to stop indexing sites where many pages are thin or near-copies of 
 | Mystical Digits | `page-sitemap.xml` | 24 | 7 | 0 |  | 1 | 0 | no data |
 | Outdoor Misting | `post-sitemap.xml` | 18 | 0 | 0 |  | 0 | 0 | 4 |
 | Outdoor Misting | `page-sitemap.xml` | 3 | 2 | 0 |  | 0 | 0 | 0 |
-| Efficient GPT Prompts | `post-sitemap.xml` | 465 | 1 | 17 | 7 | 0 | 0 | no data |
+| Efficient GPT Prompts | `post-sitemap.xml` | 465 | 1 | 18 | 7 | 0 | 0 | no data |
 | Efficient GPT Prompts | `page-sitemap.xml` | 24 | 7 | 0 |  | 0 | 0 | no data |
 | Efficient GPT Prompts | `product-sitemap.xml` | 3 | 1 | 0 |  | 0 | 1 | no data |
 

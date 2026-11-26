@@ -11,6 +11,7 @@ from urllib.parse import urlsplit
 
 from . import __version__, changes
 from .config import Config
+from .crawl import ANALYTICS_ONLY
 from .data import TagStats
 from .page import Link, Page
 from .score import Row
@@ -28,6 +29,7 @@ ISSUE_TEXT = {
     "search_links_only": "only Amazon search links, no product links",
     "cloaked_links": "redirect-style links (/go/, /recommends/)",
     "blocked_product": "links to a product listed as wrong or gone in sites.yaml",
+    "earning_page_noindexed": "produces Amazon clicks but is set to noindex, so search engines will drop it",
     "low_serp_ctr": "Google shows it but few people click (title/description)",
     "no_meta_description": "no meta description",
     "noindex": "noindex",
@@ -70,7 +72,7 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
         w.writerow([
             "site", "url", "status", "words", "commercial_intent", "amazon_links", "product_links",
             "search_links", "short_links", "first_link_depth", "tags", "disclosure", "gsc_clicks",
-            "gsc_impressions", "gsc_position", "score", "near_duplicate_group", "issues",
+            "gsc_impressions", "gsc_position", "ga_sessions", "ga_amazon_clicks", "score", "near_duplicate_group", "issues",
         ])
         for r in rows:
             p, links = r.page, r.page.content_links
@@ -80,7 +82,7 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
                 sum(l.kind == "short" for l in p.links), p.first_link_depth if links else "",
                 " ".join(sorted({l.tag for l in p.links if l.tag})), int(p.disclosure),
                 r.gsc.clicks if r.gsc else "", r.gsc.impressions if r.gsc else "",
-                round(r.gsc.position, 1) if r.gsc else "", r.score, r.cluster_size or "", " ".join(r.issues),
+                round(r.gsc.position, 1) if r.gsc else "", r.sessions or "", r.amazon_clicks or "", r.score, r.cluster_size or "", " ".join(r.issues),
             ])
     with (out / "links.csv").open("w", newline="") as f:
         w = csv.writer(f)
@@ -181,17 +183,30 @@ def write_summary(
             lines.append(f"| `{tag}` | {int(s.clicks)} | {int(s.items)} | ${s.earnings:.2f} | {epc} |")
         lines.append("")
 
+    earners = sorted((r for r in rows if r.amazon_clicks), key=lambda r: -r.amazon_clicks)
+    if earners:
+        lines += ["## Pages that produce Amazon clicks (Google Analytics, all traffic sources)", "",
+                  "| Page | Amazon clicks | Indexable | In a sitemap | Amazon links | First link | Problems |", "|---|---|---|---|---|---|---|"]
+        for r in earners[:40]:
+            listed = ANALYTICS_ONLY not in (sitemaps.get(r.site.domain, {}).get(r.page.url) or [])
+            problems = "; ".join(ISSUE_TEXT[c] for c in r.issues if c in ISSUE_TEXT and c not in INDEXATION - {"noindex", "canonical_elsewhere"}) or "none"
+            lines.append(
+                f"| {r.page.url} | {int(r.amazon_clicks)} | {'no' if r.page.noindex else 'yes'} | {'yes' if listed else 'no'} | "
+                f"{len(r.page.content_links)} | {_pct(r.page.first_link_depth) if r.page.content_links else 'none'} | {problems} |"
+            )
+        lines.append("")
+
     ranked = sorted((r for r in rows if r.score > 0), key=lambda r: -r.score)[:top]
     lines += ["## Work queue: pages losing the most Amazon clicks", ""]
     if ranked:
-        lines += ["| # | Page | Google clicks | Impressions | Position | First link | Problem | Score |",
+        lines += ["| # | Page | Visits | Google impressions | Position | First link | Problem | Score |",
                   "|---|---|---|---|---|---|---|---|"]
         for i, r in enumerate(ranked, 1):
             problems = "; ".join(ISSUE_TEXT[c] for c in r.issues if c in ISSUE_TEXT and c not in INDEXATION) or "links are placed well"
             depth = _pct(r.page.first_link_depth) if r.page.content_links else "none"
             lines.append(
-                f"| {i} | {r.page.url} | {int(r.gsc.clicks)} | {int(r.gsc.impressions)} | "
-                f"{r.gsc.position:.1f} | {depth} | {problems} | {r.score} |"
+                f"| {i} | {r.page.url} | {int(r.visits)} | {int(r.gsc.impressions) if r.gsc else ''} | "
+                f"{format(r.gsc.position, '.1f') if r.gsc else ''} | {depth} | {problems} | {r.score} |"
             )
     else:
         lines.append("No page has Search Console data yet. Add `data/gsc/<domain>/pages.csv` (see README).")

@@ -50,6 +50,14 @@ class Row:
     missed_serp_clicks: float = 0.0
     score: float = 0.0
     cluster_size: int = 0  # how many pages on the site share most of this page's text
+    amazon_clicks: float = 0.0  # outbound Amazon clicks recorded by analytics
+    sessions: float = 0.0       # visits that landed here, any traffic source
+
+    @property
+    def visits(self) -> float:
+        """Best available count of real visitors: Google clicks, analytics sessions, or at least
+        as many as clicked through to Amazon."""
+        return max(self.gsc.clicks if self.gsc else 0.0, self.sessions, self.amazon_clicks)
 
 
 def page_issues(page: Page, site: Site, cfg: Config) -> tuple[list[str], float]:
@@ -110,6 +118,7 @@ def build_rows(
     pages_by_site: dict[str, list[Page]],
     gsc_by_site: dict[str, dict[str, GscRow]],
     tag_stats: dict[str, TagStats],
+    ga_by_site: dict[str, dict[str, dict]] | None = None,
 ) -> list[Row]:
     epcs = {t: s.epc for t, s in tag_stats.items() if s.epc}
     avg_epc = sum(epcs.values()) / len(epcs) if epcs else None
@@ -118,6 +127,7 @@ def build_rows(
         site_epcs = [epcs[t] for t in site.tags if t in epcs]
         weight = (sum(site_epcs) / len(site_epcs)) / avg_epc if site_epcs and avg_epc else 1.0
         gsc = gsc_by_site.get(site.domain, {})
+        ga = (ga_by_site or {}).get(site.domain, {})
         pages = pages_by_site.get(site.domain, [])
         ok_pages = [p for p in pages if p.status == 200]
         near_dupes = dupes.clusters(ok_pages)
@@ -130,6 +140,11 @@ def build_rows(
                 row.issues.append("near_duplicate")
             if page.status == 200 and titles[page.title] > 1:
                 row.issues.append("duplicate_title")
+            seen = ga.get(norm_url(page.url))
+            if seen:
+                row.amazon_clicks, row.sessions = seen["amazon_clicks"], seen["sessions"]
+                if row.amazon_clicks and page.status == 200 and page.noindex:
+                    row.issues.append("earning_page_noindexed")
             if row.gsc and row.gsc.impressions:
                 g = row.gsc
                 exp = expected_ctr(g.position)
@@ -137,6 +152,7 @@ def build_rows(
                 row.missed_serp_clicks = max(0.0, g.impressions * exp - g.clicks)
                 if g.position <= 12 and g.impressions >= 100 and g.clicks < 0.5 * g.impressions * exp:
                     row.issues.append("low_serp_ctr")
-                row.score = round(row.reachable_clicks * row.gap * weight, 2)
+            row.reachable_clicks = max(row.reachable_clicks, row.visits)
+            row.score = round(row.reachable_clicks * row.gap * weight, 2)
             rows.append(row)
     return rows

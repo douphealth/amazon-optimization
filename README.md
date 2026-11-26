@@ -25,6 +25,8 @@ Console data, and writes one report. It never changes a website: every fix is a 
 - Pages that only use Amazon search links instead of product links
 - Missing `rel="sponsored"`, missing OneLink script, noindex, wrong canonical, missing meta description
 - With Search Console data: pages Google shows on page 1 that almost nobody clicks
+- With Google Analytics data: the pages that actually produce Amazon clicks, and whether each is
+  indexable, in a sitemap and well linked
 - Pages with Amazon links and no affiliate statement of any kind, and sites where the exact
   Amazon Associates statement appears nowhere
 - Indexation signals per sitemap: thin pages, pages that share half or more of their text with
@@ -38,7 +40,7 @@ Console data, and writes one report. It never changes a website: every fix is a 
 
 | Priority | Finding | Fix |
 |---|---|---|
-| 1 | **GearUpToFit holds 2,012 of the Amazon links and gets no Google traffic.** It has had almost no Google visibility since at least May 2025: 5 to 30 ranking keywords a month, briefly about 100 in spring 2026, none since August. No technical block was found. **259 of its 272 `watch-match` pages share half or more of their text with another page** (two template groups of 177 and 78). Its 498 posts do not: 8 are flagged | Full evidence and the staged plan are in `docs/gearuptofit-indexation.md`. No manual action exists (owner check, 2026-11-26), and the site was already near zero a year before `watch-match` was added, so `watch-match` is not being noindexed yet. Still open: the Search Console Page indexing breakdown |
+| 1 | **GearUpToFit gets no Google traffic but is still the main source of Amazon clicks.** Google Analytics shows 638 organic-search visits in 14 days (from engines other than Google) and 63 of the portfolio's 66 recorded Amazon clicks. Google itself has crawled the site and indexed 1 page of 702. Three review pages that produce Amazon clicks are set to noindex by the layer that serves them, outside WordPress | See `docs/gearuptofit-indexation.md`. Remove the noindex from the earning pages; do not noindex `watch-match`; find which search engines send the visits |
 | 2 | **Every WordPress site except Plantastic Haven rewrites Amazon links when the page is rendered.** Code snippets named "Hermes Portfolio Amazon Product Box OS v1" force a tracking ID on every Amazon link and "PGCC Amazon disclosure" adds a disclosure. Editing a post body there does not change the tracking ID on the live page (verified on one Mystical Digits post) | Change tracking IDs in those snippets, not in posts. On GearUpToFit, Mice Gone Guide and Efficient GPT Prompts the snippet is set to the bare `papalex-20` |
 | 3 | **582 live links use the bare `papalex-20` ID**: 512 on GearUpToFit `watch-match` pages and 57 on Efficient GPT Prompts. Their clicks can't be told apart in Associates reports | `watch-match` is a separate app; Efficient GPT Prompts needs its own tracking ID created in Associates Central first |
 | 4 | **Outdoor Misting has one untagged Amazon link** (`/comparing-outdoor-cooling-technologies/`, product B0BFGL8FBZ) and no affiliate statement on that page. The site is not WordPress, so the fixer cannot reach it | Add a tracking ID and a disclosure in the site's own code |
@@ -104,6 +106,11 @@ python -m pytest -q
 The data in `data/gsc/` today is partial: 14 days (Nov 11–24, 2026), only pages with more than
 60 impressions, for 5 sites.
 
+**Google Analytics (shows traffic Google never sends).** Put `amazon_clicks.csv` (columns `page,amazon_clicks`)
+and `sessions.csv` (columns `page,sessions`) in `data/ga4/<domain>/`. The audit then also crawls those
+pages even when no sitemap lists them, ranks by real visitors, and flags any page that produces
+Amazon clicks but is set to noindex. Today's files hold Nov 12-25, 2026, Amazon clicks only.
+
 **Amazon Associates (optional, sharpens the ranking).** Download Reports > Tracking ID Summary as
 CSV into `data/associates/`. Sites whose tracking ID earns more per click are then weighted higher.
 
@@ -119,7 +126,7 @@ changes nothing. `docs/experiments.md` records each live change with its baselin
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 28 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 30 unit tests pass |
 | Fixer: product boxes | Applied to 4 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: blocked-product links | Applied to 12 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: tracking IDs | Saved once on a live post; the save worked but a render-time layer overrode it |

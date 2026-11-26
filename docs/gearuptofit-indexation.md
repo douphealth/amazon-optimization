@@ -1,12 +1,44 @@
-# GearUpToFit: why Google shows almost none of it
+# GearUpToFit: no Google traffic, but still the main source of Amazon clicks
 
-Status on 2026-11-26. GearUpToFit holds 2,012 of the portfolio's 3,161 Amazon links and gets no
-Google traffic, so this is the largest commission problem in the portfolio.
+Status on 2026-11-26. GearUpToFit holds 2,012 of the portfolio's Amazon links.
 
-**Decision on 2026-11-26: do not noindex `watch-match` yet.** The owner confirmed there is no manual
-action. Re-reading the ranking history shows the site was already close to invisible a year before
-`watch-match` existed, so it cannot be the original cause. The next step is the Page indexing
-breakdown from Search Console; the plan below starts only after that.
+## The picture changed once Google Analytics was connected (2026-11-26)
+
+| Fact (Nov 12-25, 14 days) | Source |
+|---|---|
+| 638 organic-search visits, 430 of them engaged. Search Console shows 0 Google clicks in the same period, so these come from other search engines. Which ones is not yet known | Google Analytics vs Search Console |
+| 63 of the 66 Amazon clicks Analytics recorded across the portfolio came from GearUpToFit | Google Analytics outbound-click events |
+| The clicks come from buying guides: kids' smartwatches (9), dumbbells (6), supination shoes, muscle supplements and treadmills (4 each), plus the shoe-finder app (14 across its pages) | Same; full list in `reports/2026-11-26/summary.md` |
+| 6,033 "direct" visits with a 6% engagement rate. That pattern is typical of bots, not readers | Google Analytics |
+| Google's Page indexing report: 1 page indexed, 701 not. 366 "Crawled - currently not indexed", 279 "Discovered - currently not indexed", 46 noindex, 5 not found, 5 redirect, 0 server errors | Screenshot from the site owner, report dated 2026-11-16 |
+
+**What this means.** Google has crawled the site and chosen not to index it; nothing is blocking its
+crawler. That is an automated quality judgement and will not be fixed quickly. But the site still
+earns: other search engines send it about 45 visits a day, and those visitors click through to Amazon.
+The priority is to protect and grow that traffic, not to make risky changes in the hope of moving Google.
+
+**Decisions**
+
+- `watch-match` is not being noindexed. A noindex tag applies to every search engine, so it would
+  also remove those pages from the engines that do send visitors.
+- Any future prune must check Analytics for visits and Amazon clicks first, not only Search Console.
+
+## Earning pages that are set to noindex
+
+These pages produced Amazon clicks in the last 14 days and carry `noindex, follow` on the live page:
+
+| Page | Amazon clicks |
+|---|---|
+| /review/best-treadmills-for-home/ | 4 |
+| /review/best-compression-boots/ | 3 |
+| /review/best-running-shoes-for-heavy-runners/ | 1 |
+| /shoe-finder/shoes/topo-ultrafly-6/ | 4 |
+
+WordPress itself reports all three review posts as indexable, and only one of them
+(best-compression-boots) is in the September prune list. The noindex tag is added by whatever serves
+the review pages to visitors, which is not WordPress (the responses carry no WordPress headers). That
+layer cannot be read or changed with the WordPress login, so this fix has to be made there.
+Search engines that still list these pages will drop them while the tag stays.
 
 ## What is confirmed
 
@@ -28,46 +60,15 @@ breakdown from Search Console; the plan below starts only after that.
 - A crawl block, a stray noindex, a canonical error or a broken sitemap. None exists.
 - Serving different content to Google by user agent.
 
-## What the evidence now says
+## Plan
 
-- **This is an automated, site-wide demotion, and it is old.** With no manual action and no technical
-  block, Google is choosing not to index or rank the site. It was already doing so in May 2025, the
-  earliest month in the data. What first caused it is not visible from here.
-- **`watch-match` is not the original cause.** Its integration notes are dated June 2026, a year after
-  the site was already near zero. It may still weigh on the site (a third of the indexable pages are
-  templated), but removing it is unlikely to bring the site back by itself.
-- **The September prune has not helped so far.** 839 posts went to noindex on 2026-09-18 and
-  visibility has not returned in the two months since.
-
-Recovery from this kind of demotion is slow and uncertain. It should be treated as a months-long
-project, and near-term commission work should go to the sites and traffic sources that already
-produce Amazon clicks.
-
-## The check still open
-
-Page indexing, while signed in to Search Console:
-https://search.google.com/search-console/index?resource_id=sc-domain%3Agearuptofit.com
-
-A screenshot of the "Why pages aren't indexed" table is enough. The counts next to "Crawled -
-currently not indexed", "Discovered - currently not indexed", "Excluded by noindex tag" and any
-"Blocked" or "Server error" rows decide which step below comes first.
-
-## Plan once that answer is in
-
-In this order, one change at a time so each can be measured. If the table shows "Blocked" or
-"Server error" rows in volume, fix that first: it would mean Google's crawler is being turned away
-in a way a test from here cannot see.
-
-1. **Take `watch-match` out of Google's view.** Add `noindex, follow` to its pages and remove
-   `watch-match/sitemap.xml` from `sitemap_index.xml` and from Search Console. It is a separate
-   app, not WordPress, so this needs access to that app's code. It is reversible (remove the tag),
-   but Google takes weeks to react either way, so it needs an explicit go-ahead. Its 512 Amazon
-   links currently earn nothing because the pages get no traffic.
-2. **Clean up overlapping automation.** Two active copies of the prune snippet and five active
-   copies of the Amazon link snippet run on every page load. Keep one of each.
-3. **Wait 4 to 6 weeks and re-measure** with `python -m ace run` and the Search Console pull before
-   changing anything else. Recovery from a site-wide demotion normally follows a later Google
-   core update, not the change itself.
-
-Not recommended: further bulk rewrites or re-dating of the 498 posts. They are not the pages the
-evidence points at.
+1. **Remove the noindex tag from the earning pages above**, in the layer that serves them.
+2. **Find out which search engines send the 638 visits**, then register the site with that engine's
+   webmaster tools so its indexing and queries are visible. The Analytics pull for this is scheduled.
+3. **Feed Analytics into every weekly run** (`data/ga4/<domain>/`), so the engine ranks and protects
+   pages by real visitors.
+4. **Clean up overlapping automation.** Two active copies of the prune snippet and five active copies
+   of the Amazon link snippet run on every page load. Keep one of each. Do not edit the prune snippets
+   casually: both copies define the same function, and re-saving one may deactivate it and make all
+   837 pruned posts indexable at once.
+5. **Leave Google recovery as a slow track.** No bulk rewrites or re-dating of posts.

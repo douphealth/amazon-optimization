@@ -473,3 +473,27 @@ def test_loaded_share_detects_blocked_crawl():
     ok, blocked = Page(url="a", status=200), Page(url="b", status=403)
     assert crawl.loaded_share({"x.com": [ok, ok], "y.com": [blocked]}) == 2 / 3
     assert crawl.loaded_share({"x.com": [blocked, blocked, ok]}) < 0.5 and crawl.loaded_share({}) == 1.0
+
+
+def test_analytics_data_ranks_pages_google_ignores(tmp_path):
+    folder = tmp_path / "example.com"; folder.mkdir()
+    (folder / "amazon_clicks.csv").write_text("page,amazon_clicks\n/best-grow-lights/,4\n/other/#frag,9\n")
+    (folder / "sessions.csv").write_text("page,sessions\nhttps://www.example.com/best-grow-lights,120\n")
+    ga = data.load_ga4("example.com", tmp_path)
+    assert ga == {"example.com/best-grow-lights": {"url": "https://example.com/best-grow-lights/", "amazon_clicks": 4.0, "sessions": 120.0}}
+    page = parse("https://example.com/best-grow-lights/", HTML); page.status = 200
+    row = score.build_rows(CFG, {"example.com": [page]}, {}, {}, {"example.com": ga})[0]
+    assert row.visits == 120 and row.reachable_clicks == 120 and row.score == round(120 * 0.7, 2)
+    assert "earning_page_noindexed" not in row.issues
+    page.noindex = True
+    row = score.build_rows(CFG, {"example.com": [page]}, {}, {}, {"example.com": ga})[0]
+    assert "earning_page_noindexed" in row.issues
+
+
+def test_crawl_adds_analytics_pages_missing_from_sitemaps(monkeypatch):
+    from ace import crawl
+    monkeypatch.setattr(crawl, "discover", lambda site: {"https://example.com/a/": ["https://example.com/sitemap.xml"]})
+    monkeypatch.setattr(crawl, "audit_url", lambda url, site: crawl.Page(url=url, status=200))
+    pages, sm = crawl.crawl(Site(domain="example.com", name="E"), log=lambda *_: None, extra_urls=["https://example.com/a", "https://example.com/hidden/"])
+    assert [p.url for p in pages] == ["https://example.com/a/", "https://example.com/hidden/"]
+    assert sm["https://example.com/hidden/"] == [crawl.ANALYTICS_ONLY]

@@ -28,6 +28,20 @@ jobs:
       - name: Crawl, score and draft fixes
         run: python -m ace run
 
+      # Makes only the fixes listed under auto_fix in sites.yaml, and only on sites whose
+      # WP_AUTH_<DOMAIN> secret exists. With no secrets this step does nothing.
+      - name: Apply safe fixes
+        env:
+          WP_AUTH_PLANTASTICHAVEN_COM: ${{ secrets.WP_AUTH_PLANTASTICHAVEN_COM }}
+          WP_AUTH_GEARUPTOFIT_COM: ${{ secrets.WP_AUTH_GEARUPTOFIT_COM }}
+          WP_AUTH_MICEGONEGUIDE_COM: ${{ secrets.WP_AUTH_MICEGONEGUIDE_COM }}
+          WP_AUTH_GEARUPTOGROW_COM: ${{ secrets.WP_AUTH_GEARUPTOGROW_COM }}
+          WP_AUTH_AFFILIATEMARKETINGFORSUCCESS_COM: ${{ secrets.WP_AUTH_AFFILIATEMARKETINGFORSUCCESS_COM }}
+          WP_AUTH_FRENCHYFAB_COM: ${{ secrets.WP_AUTH_FRENCHYFAB_COM }}
+          WP_AUTH_MYSTICALDIGITS_COM: ${{ secrets.WP_AUTH_MYSTICALDIGITS_COM }}
+          WP_AUTH_EFFICIENTGPTPROMPTS_COM: ${{ secrets.WP_AUTH_EFFICIENTGPTPROMPTS_COM }}
+        run: python -m ace fix --apply --only-with-login
+
       - name: Commit the report
         run: |
           git config user.name "commission-audit"

@@ -264,7 +264,8 @@ def test_transforms_are_precise_and_idempotent():
     assert (done, manual) == (1, 1)  # descriptive anchor repointed, generic "Shop on Amazon" left
     assert 'href="https://www.amazon.com/s?k=All-purpose+potting+mix&amp;tag=papalex-ex-20" rel="sponsored">All-purpose potting mix</a>' in out3
     out4, done, manual = t.replace_blocked(RAW, {"B084KRDD5F": "indoor potting mix"}, "www.amazon.com", "papalex-ex-20")
-    assert (done, manual) == (2, 0) and out4.count("s?k=indoor+potting+mix&amp;tag=papalex-ex-20") == 2
+    assert (done, manual) == (2, 0)  # descriptive anchor keeps its own words, the generic button uses the fallback
+    assert "s?k=All-purpose+potting+mix&amp;tag=papalex-ex-20" in out4 and "s?k=indoor+potting+mix&amp;tag=papalex-ex-20" in out4
     assert t.replace_blocked(out4, {"B084KRDD5F": "indoor potting mix"}, "www.amazon.com", "x")[1] == 0
 
     out5, n = t.add_disclosure(RAW, "Example & Co")
@@ -336,7 +337,7 @@ def test_fixer_apply_saves_backs_up_and_verifies(tmp_path):
     assert (tmp_path / "b" / "example.com" / "7-2026-11-26.html").read_text() == raw
     saved = FakeWP.store[url]
     assert saved.startswith('<p class="ace-disclosure"') and "B000000002?tag=papalex-ex-20" in saved
-    assert "someoneelse-20" in saved and saved.count("s?k=indoor+potting+mix") == 2
+    assert "someoneelse-20" in saved and "s?k=indoor+potting+mix" in saved and "s?k=All-purpose+potting+mix" in saved and "B084KRDD5F" not in saved
     # Second run on the same audit: nothing left to change, nothing saved.
     again = fixer.run(cfg, rows, tmp_path / "2026-11-26", **kwargs)[0]
     assert again.status == "nothing_to_change_in_post_body" and len(FakeWP.saves) == 1
@@ -456,3 +457,11 @@ def test_fix_log_keeps_earlier_fixed_rows(tmp_path):
     fixer.run(cfg, rows, tmp_path / "r", **kwargs)  # second run finds nothing to change
     log = (tmp_path / "r" / "fix-log.csv").read_text()
     assert log.count(url) == 1 and ",fixed," in log and "nothing_to_change" not in log
+
+
+def test_unattended_fixer_skips_sites_without_login(tmp_path, monkeypatch):
+    fixer, cfg, rows, url, raw, verify = _fixer_setup(tmp_path)
+    kwargs = dict(apply=True, backups=tmp_path / "b", pause=0, wp_factory=FakeWP, verify=verify, log=lambda *_: None, require_login=True)
+    assert fixer.run(cfg, rows, tmp_path / "r", **kwargs) == [] and FakeWP.saves == []
+    monkeypatch.setenv("WP_AUTH_EXAMPLE_COM", "user:pass word")
+    assert [a.status for a in fixer.run(cfg, rows, tmp_path / "r", **kwargs)] == ["fixed"]

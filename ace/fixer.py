@@ -24,7 +24,7 @@ from urllib.parse import urlsplit
 from . import crawl, fixes, transform
 from .config import Config
 from .score import Row, page_issues
-from .wp import NoAccess, WordPress
+from .wp import NoAccess, WordPress, auth_for
 
 FIXES = ("tags", "rel", "disclosure", "blocked", "box")
 # The audit issues each fix is expected to clear on the live page.
@@ -93,9 +93,13 @@ def transform_post(cfg: Config, action: Action, raw: str) -> tuple[str, Counter]
 def run(
     cfg: Config, rows: list[Row], out: Path, apply: bool = False, sites: list[str] | None = None,
     limit: int | None = None, backups: Path = Path("backups"), pause: float = 0.5,
+    require_login: bool = False,
     wp_factory=WordPress, verify=crawl.audit_url, log=print,
 ) -> list[Action]:
-    actions = plan(cfg, rows, sites)[: limit or None]
+    actions = plan(cfg, rows, sites)
+    if require_login:  # unattended runs: leave sites alone unless their login is configured
+        actions = [a for a in actions if auth_for(a.row.site.domain)]
+    actions = actions[: limit or None]
     clients: dict[str, WordPress] = {}
     locked: set[str] = set()
     for action in actions:

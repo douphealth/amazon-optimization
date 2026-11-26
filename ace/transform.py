@@ -94,8 +94,9 @@ def replace_blocked(
 ) -> tuple[str, int, int]:
     """Point links to blocked products at an Amazon search instead.
 
-    The search phrase is the one configured for that product, else the link's own text when it
-    is descriptive. Returns (html, replaced, left_for_manual_review)."""
+    The search phrase is the link's own text when that is descriptive (so the search matches what
+    the reader was promised), else the fallback phrase configured for the product. Image links and
+    generic "Shop on Amazon" buttons use the fallback. Returns (html, replaced, left_for_manual_review)."""
     replaced = manual = 0
 
     def repl(match: re.Match) -> str:
@@ -107,7 +108,7 @@ def replace_blocked(
         m, link = found
         text = " ".join(htmllib.unescape(re.sub(r"<[^>]+>", " ", inner)).split())
         descriptive = len(text.split()) >= 2 and len(text) <= 80 and not GENERIC_ANCHOR.match(text)
-        query = blocked[link.asin] or (text if descriptive else None)
+        query = text if descriptive else blocked[link.asin]
         if not query:
             manual += 1
             return match.group(0)

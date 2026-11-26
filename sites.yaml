@@ -6,11 +6,11 @@
 account_tag_prefix: papalex
 marketplace: www.amazon.com
 
-# Products whose links should no longer be used, each with the Amazon search to link instead
-# (leave the phrase empty to reuse the link's own text). Pages linking to them are flagged.
+# Products whose links should no longer be used. The fixer points each link at an Amazon search:
+# the link's own text when it is descriptive, otherwise the fallback phrase given here.
 blocked_asins:
-  # Miracle-Gro potting mix + plant food bundle. On 2026-11-25 this ID no longer loaded its own
-  # page: Amazon served the plant food listing (B0071E21ZU) with no price for the bundle.
+  # Linked as Miracle-Gro potting mix. The page now shows Miracle-Gro Indoor Plant Food
+  # (data check 2026-11-25, confirmed by the site owner 2026-11-26).
   B084KRDD5F: "Miracle-Gro indoor potting mix"
 
 # Fixes `ace fix --apply` may make on its own. Remove a name to switch that fix off.
@@ -18,8 +18,9 @@ blocked_asins:
 # `tags` and `disclosure` are off: on these sites tracking IDs and disclosures are added when the
 # page is rendered (the "Hermes Portfolio Amazon Product Box OS" and "PGCC Amazon disclosure"
 # code snippets), so editing the post body does not change the live page. Verified 2026-11-26.
-# `blocked` is off until the product in blocked_asins is confirmed wrong by a second check.
-auto_fix: [rel, box]
+# Decision 2026-11-26: those snippets own tracking IDs and disclosures; this engine owns product
+# boxes, link attributes and blocked-product links.
+auto_fix: [rel, blocked, box]
 
 # Auto-generated boxes only go on pages with at least this many Google clicks in the data window.
 box_min_clicks: 1

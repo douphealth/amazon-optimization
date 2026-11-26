@@ -30,7 +30,8 @@ def _scored(cfg, args):
 
 
 def cmd_fix(cfg, args) -> None:
-    actions = fixer.run(cfg, _scored(cfg, args), args.out, apply=args.apply, sites=args.site, limit=args.limit)
+    actions = fixer.run(cfg, _scored(cfg, args), args.out, apply=args.apply, sites=args.site, limit=args.limit,
+                        require_login=args.only_with_login)
     print(fixer.summarize(actions))
     print(f"log: {args.out}/fix-log.csv" + ("" if args.apply else "  (dry run: nothing was changed; add --apply)"))
 
@@ -78,6 +79,7 @@ def main(argv=None) -> None:
         p.add_argument("--days", type=int, default=28, help="Search Console window")
         p.add_argument("--apply", action="store_true", help="fix: really save changes to WordPress")
         p.add_argument("--limit", type=int, help="fix: stop after this many pages")
+        p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
     args = parser.parse_args(argv)
     args.fn(config.load(args.config), args)
 

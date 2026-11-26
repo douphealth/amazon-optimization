@@ -61,9 +61,9 @@ page and `webmarketingbooks.com` now shows an unrelated business.
 
 - It edits only the post body, keeps a copy in `backups/` (not committed), relies on WordPress
   revisions for rollback, and re-audits the live page after every save.
-- `auto_fix` in `sites.yaml` lists the fixes it may make. Today that is `rel` and `box`. `tags` and
-  `disclosure` are off because the render-time snippets above override the post body. `blocked` is
-  off until the listed product is confirmed wrong by a second check.
+- `auto_fix` in `sites.yaml` lists the fixes it may make. Today that is `rel`, `blocked` and `box`.
+  `tags` and `disclosure` are off: by decision on 2026-11-26 the render-time snippets above own
+  tracking IDs and disclosures, and this engine owns boxes, link attributes and blocked products.
 - A generated box is used only on pages with Google clicks and only where a safe spot exists.
   A hand-written box in `boxes/<domain>/<url-slug>.html` overrides it and can name its own spot
   with a first line such as `<!-- place-after: </nav> -->`.
@@ -78,6 +78,8 @@ Changes made to live sites so far (`reports/2026-11-26/fix-log.csv`):
 | 2026-11-26 | plantastichaven.com/how-cold-can-philodendron-tolerate/ | Product box after the quick answer | Live |
 | 2026-11-26 | plantastichaven.com/string-of-pearls-plant-care/ | Product box before the first heading (the page had no Amazon links) | Live |
 | 2026-11-26 | plantastichaven.com/plants-that-look-like-spider-plants/ | Product box after the at-a-glance list | Live |
+| 2026-11-26 | 12 plantastichaven.com pages (listed in the fix log) | 22 links to a product that now shows plant food repointed to an Amazon search for potting mix | Live on all 12 |
+| 2026-11-26 | plantastichaven.com/dripping-water-in-philodendron-plants/ | FAQ block moved out of the table of contents, where an earlier edit had put it inside a link | Live |
 | 2026-11-26 | mysticaldigits.com/challenge-numbers-overcome/ | Tracking ID in the post body changed to `papalex-md-20` | No effect: a render-time layer still outputs `papalex-20` |
 
 ## Run it
@@ -106,17 +108,20 @@ CSV into `data/associates/`. Sites whose tracking ID earns more per click are th
 ## Weekly automation
 
 `.github/workflows/weekly-audit.yml` runs every Monday, commits the new report, and pulls Search
-Console data first if the `GSC_SERVICE_ACCOUNT_JSON` repository secret exists.
+Console data first if the `GSC_SERVICE_ACCOUNT_JSON` repository secret exists. It then runs the
+fixer, but only on sites whose `WP_AUTH_<DOMAIN>` repository secret is set; with no secrets it
+changes nothing. `docs/experiments.md` records each live change with its baseline.
 `.github/workflows/tests.yml` runs the unit tests on every push.
 
 ## What has and hasn't been tested
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 26 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 27 unit tests pass |
 | Fixer: product boxes | Applied to 4 live Plantastic Haven posts and confirmed on the rendered pages |
+| Fixer: blocked-product links | Applied to 12 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: tracking IDs | Saved once on a live post; the save worked but a render-time layer overrode it |
-| Fixer: rel, disclosure, blocked-product edits | Unit-tested and dry-run against live content. Not applied to a live site |
+| Fixer: rel and disclosure edits | Unit-tested and dry-run against live content. Not applied to a live site |
 | Change tracking between reports | Unit-tested, and run live once (no changes between the two days) |
 | Search Console CSV import | Tested with real data and with the Search Console export format |
 | Search Console API pull (`gsc-pull`) | Unit-tested against a fake API only. Not yet run with a real service account |

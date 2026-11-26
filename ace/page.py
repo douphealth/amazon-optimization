@@ -1,7 +1,9 @@
 """Parse one HTML page and extract everything that affects Amazon commission."""
 from __future__ import annotations
 
+import heapq
 import re
+import zlib
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
 from urllib.parse import parse_qs, urlsplit
@@ -25,6 +27,7 @@ GENERIC_ANCHOR = re.compile(
 # Text inside these elements is site chrome, not article content.
 CHROME = {"nav", "header", "footer", "aside", "form"}
 NO_TEXT = {"script", "style", "noscript", "svg", "template"}
+SKETCH_SIZE = 64
 
 
 @dataclass
@@ -66,6 +69,7 @@ class Page:
     disclosure: bool = False
     onelink: bool = False
     error: str = ""
+    sketch: list[int] = field(default_factory=list)  # content fingerprint, see ace/dupes.py
 
     @property
     def content_links(self) -> list[Link]:
@@ -114,6 +118,7 @@ class _Parser(HTMLParser):
         self.cur: Link | None = None
         self.in_title = False
         self.in_h1 = False
+        self.tokens: list[str] = []
         self.own_host = urlsplit(page.url).netloc.lower().removeprefix("www.")
 
     def handle_starttag(self, tag, attrs):
@@ -138,6 +143,9 @@ class _Parser(HTMLParser):
         elif tag == "link" and "canonical" in a.get("rel", "").lower():
             p.canonical = a.get("href", "").strip()
         elif tag == "a":
+            if self.cur is not None:  # previous <a> was never closed: keep it
+                p.links.append(self.cur)
+                self.cur = None
             href = a.get("href", "")
             link = classify(href)
             if link:
@@ -185,20 +193,41 @@ class _Parser(HTMLParser):
             return
         stripped = data.strip()
         if stripped:
+            words = stripped.split()
             p.text_len += len(stripped)
-            p.words += len(stripped.split())
+            p.words += len(words)
+            self.tokens.extend(words)
+
+
+def _run(url: str, html: str, skip_chrome: bool) -> tuple[Page, list[str]]:
+    page = Page(url=url)
+    parser = _Parser(page, skip_chrome)
+    parser.feed(html)
+    parser.close()
+    if parser.cur is not None:
+        page.links.append(parser.cur)
+    return page, parser.tokens
+
+
+def sketch(tokens: list[str]) -> list[int]:
+    """Bottom-k sketch of the page's 3-word shingles: the 64 smallest shingle hashes.
+    Two pages' sketches estimate how much of their text is shared (ace/dupes.py)."""
+    words = [t.lower() for t in tokens]
+    if len(words) < 3:
+        return []
+    hashes = {zlib.crc32(" ".join(words[i:i + 3]).encode()) for i in range(len(words) - 2)}
+    return heapq.nsmallest(SKETCH_SIZE, hashes)
 
 
 def parse(url: str, html: str) -> Page:
     """Parse html into a Page. Falls back to counting all text if chrome-skipping ate the article
     (a theme with an unclosed <nav> or <aside> would otherwise hide every link)."""
-    page = Page(url=url)
-    _Parser(page, skip_chrome=True).feed(html)
+    page, tokens = _run(url, html, skip_chrome=True)
     if page.words < 80:
-        retry = Page(url=url)
-        _Parser(retry, skip_chrome=False).feed(html)
+        retry, retry_tokens = _run(url, html, skip_chrome=False)
         if retry.words > 3 * max(page.words, 1):
-            page = retry
+            page, tokens = retry, retry_tokens
+    page.sketch = sketch(tokens)
     page.title = " ".join(page.title.split())
     page.h1 = " ".join(page.h1.split())
     page.disclosure = bool(DISCLOSURE.search(html))

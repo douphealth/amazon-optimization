@@ -131,3 +131,85 @@ def test_gsc_pull_writes_csv(tmp_path):
     assert body["startDate"] == "2026-10-26" and body["endDate"] == "2026-11-22"
     rows, meta = data.load_gsc("example.com", tmp_path)
     assert rows["example.com/a"].clicks == 3 and meta["end"] == "2026-11-22"
+
+
+def _page(url, text, title="T", status=200):
+    from ace.page import Page, sketch
+    words = text.split()
+    return Page(url=url, status=status, final_url=url, title=title, words=len(words),
+                text_len=len(text), sketch=sketch(words), meta_description="d")
+
+
+def test_near_duplicates_and_content_checks():
+    import random
+    from ace import dupes
+    rng = random.Random(1)
+    vocab = [f"w{i}" for i in range(4000)]
+    template = " ".join(rng.choices(vocab, k=600))
+    a = _page("https://example.com/watch/a", template + " " + " ".join(rng.choices(vocab, k=60)), "A")
+    b = _page("https://example.com/watch/b", template + " " + " ".join(rng.choices(vocab, k=60)), "B")
+    c = _page("https://example.com/unique", " ".join(rng.choices(vocab, k=660)), "A")
+    thin = _page("https://example.com/thin", "only a few words here", "Thin")
+    assert dupes.similarity(a.sketch, b.sketch) > 0.6 > 0.2 > dupes.similarity(a.sketch, c.sketch)
+    assert dupes.clusters([a, b, c, thin]) == {a.url: 2, b.url: 2}
+    rows = {r.page.url: r for r in score.build_rows(CFG, {"example.com": [a, b, c, thin]}, {}, {})}
+    assert "near_duplicate" in rows[a.url].issues and rows[a.url].cluster_size == 2
+    assert "near_duplicate" not in rows[c.url].issues
+    assert "duplicate_title" in rows[a.url].issues and "duplicate_title" in rows[c.url].issues
+    assert "thin_content" in rows[thin.url].issues and "thin_content" not in rows[a.url].issues
+
+
+def test_redirect_is_flagged():
+    page = _page("https://example.com/old/", "word " * 400)
+    page.final_url = "https://example.com/new/"
+    assert "redirects" in score.page_issues(page, SITE, CFG)[0]
+
+
+def test_unclosed_anchor_is_kept():
+    html = "<html><body><article>" + FILLER + '<a href="https://www.amazon.com/dp/B0CZPPGMWN?tag=a-20">one <a href="https://www.amazon.com/dp/B085CDPSMR?tag=a-20">two</article></body></html>'
+    assert [l.asin for l in parse("https://example.com/x/", html).links] == ["B0CZPPGMWN", "B085CDPSMR"]
+
+
+def test_sitemap_discovery_resolves_relative_and_follows_index(monkeypatch):
+    from ace import crawl
+
+    class R:
+        def __init__(self, text, ok=True):
+            self.text, self.ok = text, ok
+
+    ns = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+    web = {
+        "https://example.com/robots.txt": R("User-agent: *\nSitemap: /sitemap_index.xml\n"),
+        "https://example.com/sitemap_index.xml": R(
+            f"<sitemapindex {ns}><sitemap><loc>https://example.com/post-sitemap.xml</loc></sitemap>"
+            f"<sitemap><loc>https://example.com/category-sitemap.xml</loc></sitemap></sitemapindex>"),
+        "https://example.com/post-sitemap.xml": R(
+            f"<urlset {ns}><url><loc>https://example.com/a/</loc><lastmod>2026-01-01</lastmod></url>"
+            f"<url><loc> https://example.com/b/ </loc></url></urlset>"),
+    }
+    fetched = []
+    monkeypatch.setattr(crawl, "fetch", lambda url, ua: (fetched.append(url), web.get(url, R("", ok=False)))[1])
+    site = Site(domain="example.com", name="Example", skip_sitemaps="category-sitemap")
+    found = crawl.discover(site)
+    assert list(found) == ["https://example.com/a/", "https://example.com/b/"]
+    assert "https://example.com/category-sitemap.xml" not in fetched
+
+
+def test_changes_section(tmp_path):
+    from ace import changes
+    from ace.report import ISSUE_TEXT
+    prev, out = tmp_path / "2026-11-01", tmp_path / "2026-11-08"
+    prev.mkdir()
+    (prev / "pages.csv").write_text(
+        "site,url,amazon_links,issues\n"
+        "example.com,https://example.com/a/,3,first_link_very_late\n"
+        "example.com,https://example.com/b/,2,\n")
+    (tmp_path / "notes").mkdir()
+    assert changes.previous_report(out) == prev
+    a = _page("https://example.com/a/", "word " * 400)  # no Amazon links any more
+    rows = score.build_rows(CFG, {"example.com": [a]}, {}, {})
+    text = "\n".join(changes.section(prev, rows, sorted(ISSUE_TEXT), ISSUE_TEXT))
+    assert "| example.com | no Amazon link in the article | 0 | 1 | +1 |" in text
+    assert "| example.com | first Amazon link is in the bottom half | 1 | 0 | -1 |" in text
+    assert "- https://example.com/a/" in text and "https://example.com/b/" not in text
+    assert "Not compared" in text and "under 300 words" in text  # old report had no thin check

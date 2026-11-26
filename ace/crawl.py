@@ -6,9 +6,9 @@ import threading
 import time
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import urljoin
 
 import requests
-from urllib.parse import urljoin
 
 from .config import Site
 from .page import Page, parse
@@ -32,7 +32,8 @@ def fetch(url: str, ua: str, timeout: int = 25, tries: int = 3) -> requests.Resp
                 return r
         except requests.RequestException:
             r = None
-        time.sleep(2 ** attempt)
+        if attempt < tries - 1:
+            time.sleep(2 ** attempt)
     return r
 
 

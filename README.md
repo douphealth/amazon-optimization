@@ -12,7 +12,7 @@ Console data, and writes one report. It never changes a website: every fix is a 
 
 | File | What it is |
 |---|---|
-| `summary.md` | Portfolio table, per-site problems, the ranked work queue, title-rewrite candidates |
+| `summary.md` | Portfolio table, what changed since the last run, per-site problems, the ranked work queue, title-rewrite candidates, indexation signals |
 | `pages.csv` | One row per page: Amazon link counts, how deep the first link sits, tags, issues, score |
 | `links.csv` | One row per Amazon link: product ID, tracking ID, link type, product name |
 | `fixes/<site>/<page>.html` | Paste-ready "quick picks" box for pages whose links sit too deep |
@@ -26,18 +26,22 @@ Console data, and writes one report. It never changes a website: every fix is a 
 - Pages that only use Amazon search links instead of product links
 - Missing `rel="sponsored"`, missing OneLink script, noindex, wrong canonical, missing meta description
 - With Search Console data: pages Google shows on page 1 that almost nobody clicks
+- Indexation signals per sitemap: thin pages, pages that share half or more of their text with
+  another page (templated or programmatic content), duplicate titles, redirects in the sitemap
+- Every run after the first: what changed since the previous report, including pages that
+  lost their Amazon links
 
-## First run: 2026-11-25
+## Latest run: 2026-11-26
 
-2,384 pages on 9 sites, 3,152 Amazon links. Full detail in `reports/2026-11-25/summary.md`.
+2,384 pages on 9 sites, 3,152 Amazon links. Full detail in `reports/2026-11-26/summary.md`.
 
 | Priority | Finding | Fix |
 |---|---|---|
-| 1 | **GearUpToFit holds 2,012 of the 3,152 Amazon links and gets no Google traffic.** It ranked for 100 US keywords in May 2026 and none since August. No technical block was found | Check Search Console > Manual actions, then Pages > "Crawled, currently not indexed". The 272 programmatic `watch-match` pages are the first suspect |
+| 1 | **GearUpToFit holds 2,012 of the 3,152 Amazon links and gets no Google traffic.** It ranked for 100 US keywords in May 2026 and none since August. No technical block was found. **259 of its 272 `watch-match` pages share half or more of their text with another page** (two template groups of 177 and 78). Its 498 posts do not: 8 are flagged | Check Search Console > Manual actions and Pages > "Crawled, currently not indexed". If no manual action exists, the templated `watch-match` set is the most likely cause; this is evidence, not proof |
 | 2 | **165 GearUpToFit posts have Amazon links but no "As an Amazon Associate" disclosure.** Amazon requires it | Add one sitewide disclosure line above post content |
 | 3 | **582 links use the bare `papalex-20` ID**: 512 on GearUpToFit `watch-match` pages and 57 on Efficient GPT Prompts. Their clicks can't be told apart in Associates reports | Switch them to the site's own tracking ID |
 | 4 | **Outdoor Misting has one untagged Amazon link** (`/comparing-outdoor-cooling-technologies/`, product B0BFGL8FBZ). It earns nothing. The site's most-visited pages carry no Amazon links | Add a tracking ID to the link; add product links to the two pages Google already shows |
-| 5 | **Plantastic Haven: 40 pages have their first Amazon link in the bottom half**, 54 have none, 24 use only search links | 11 fix drafts are in `reports/2026-11-25/fixes/`; hand-written versions for the top 5 pages are in `docs/` |
+| 5 | **Plantastic Haven: 40 pages have their first Amazon link in the bottom half**, 54 have none, 24 use only search links | 11 fix drafts are in `reports/2026-11-26/fixes/`; hand-written versions for the top 5 pages are in `docs/` |
 | 6 | **No site loads Amazon OneLink**, so non-US visitors land on amazon.com | Join the regional programs and add the OneLink script |
 
 Two domains from Search Console were dropped from `sites.yaml`: `shocksensors.com` is a parked
@@ -47,9 +51,9 @@ page and `webmarketingbooks.com` now shows an unrelated business.
 
 ```bash
 pip install -r requirements.txt
-python -m ace run                      # crawl + score + fix drafts, about 3 minutes
+python -m ace run                      # crawl + score + fix drafts, 1-3 minutes
 python -m ace run --site plantastichaven.com
-python -m ace rank --out reports/2026-11-25   # re-score a saved crawl after adding data
+python -m ace rank --out reports/2026-11-26   # re-score a saved crawl after adding data (2 seconds)
 python -m pytest -q
 ```
 
@@ -70,16 +74,18 @@ CSV into `data/associates/`. Sites whose tracking ID earns more per click are th
 
 `.github/workflows/weekly-audit.yml` runs every Monday, commits the new report, and pulls Search
 Console data first if the `GSC_SERVICE_ACCOUNT_JSON` repository secret exists.
+`.github/workflows/tests.yml` runs the unit tests on every push.
 
 ## What has and hasn't been tested
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, reports, fix drafts | Run live on all 9 sites on 2026-11-25; 9 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 14 unit tests pass |
+| Change tracking between reports | Unit-tested, and run live once (no changes between the two days) |
 | Search Console CSV import | Tested with real data and with the Search Console export format |
 | Search Console API pull (`gsc-pull`) | Unit-tested against a fake API only. Not yet run with a real service account |
 | Associates CSV import | Unit-tested with a sample layout. Not yet run on a real Associates export |
-| GitHub Actions workflow | File is valid YAML. Not yet run on GitHub. If Cloudflare challenges GitHub's servers, pages will show as failed in the report |
+| GitHub Actions workflows | Files are valid YAML. Not yet run on GitHub. If Cloudflare challenges GitHub's servers, pages will show as failed in the report |
 
 Not included: checking whether linked products are still in stock. Amazon answers automated
 requests with a robot check, so a reliable check needs Amazon's own product API.
@@ -95,4 +101,5 @@ The score orders the work; it is not a revenue forecast.
 
 - Read-only against the websites. Nothing is published.
 - Fix drafts reuse only products already linked on that page, with that page's own tracking ID.
-- Keep this repository private: it holds Search Console data. Never commit a service-account key.
+- This repository holds Search Console data and a list of each site's weaknesses, so it is best
+  kept private. Never commit a service-account key.

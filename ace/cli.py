@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-from . import config, crawl, data, fixes, gsc, report, score
+from . import changes, config, crawl, data, fixes, gsc, report, score
 
 
 def _sites(cfg, only):
@@ -33,7 +33,7 @@ def cmd_rank(cfg, args) -> None:
     tag_stats = data.load_associates()
     rows = score.build_rows(cfg, pages_by_site, gsc_by_site, tag_stats)
     report.write_csvs(args.out, rows)
-    report.write_summary(args.out, cfg, rows, sitemaps, gsc_meta, tag_stats)
+    report.write_summary(args.out, cfg, rows, sitemaps, gsc_meta, tag_stats, previous=changes.previous_report(args.out))
     written = fixes.write_fixes(rows, args.out / "fixes", top=args.fixes)
     print(f"summary: {args.out}/summary.md | {len(written)} fix drafts in {args.out}/fixes/")
 

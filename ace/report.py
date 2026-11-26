@@ -7,7 +7,9 @@ from collections import Counter
 from dataclasses import asdict
 from pathlib import Path
 from statistics import median
+from urllib.parse import urlsplit
 
+from . import __version__, changes
 from .config import Config
 from .data import TagStats
 from .page import Link, Page
@@ -29,7 +31,13 @@ ISSUE_TEXT = {
     "no_meta_description": "no meta description",
     "noindex": "noindex",
     "canonical_elsewhere": "canonical points to another URL",
+    "redirects": "sitemap URL redirects somewhere else",
+    "thin_content": "under 300 words of article text",
+    "near_duplicate": "shares half or more of its text with another page on the site",
+    "duplicate_title": "same title as another page on the site",
 }
+# Indexation checks get their own section, so the work queue only names money problems.
+INDEXATION = {"redirects", "thin_content", "near_duplicate", "duplicate_title", "noindex", "canonical_elsewhere"}
 
 
 def save_audit(out: Path, pages_by_site: dict[str, list[Page]], sitemaps: dict[str, dict[str, list[str]]]) -> None:
@@ -61,7 +69,7 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
         w.writerow([
             "site", "url", "status", "words", "commercial_intent", "amazon_links", "product_links",
             "search_links", "short_links", "first_link_depth", "tags", "disclosure", "gsc_clicks",
-            "gsc_impressions", "gsc_position", "score", "issues",
+            "gsc_impressions", "gsc_position", "score", "near_duplicate_group", "issues",
         ])
         for r in rows:
             p, links = r.page, r.page.content_links
@@ -71,7 +79,7 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
                 sum(l.kind == "short" for l in p.links), p.first_link_depth if links else "",
                 " ".join(sorted({l.tag for l in p.links if l.tag})), int(p.disclosure),
                 r.gsc.clicks if r.gsc else "", r.gsc.impressions if r.gsc else "",
-                round(r.gsc.position, 1) if r.gsc else "", r.score, " ".join(r.issues),
+                round(r.gsc.position, 1) if r.gsc else "", r.score, r.cluster_size or "", " ".join(r.issues),
             ])
     with (out / "links.csv").open("w", newline="") as f:
         w = csv.writer(f)
@@ -107,10 +115,12 @@ def _site_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list
         tags = Counter(l.tag or "(none)" for r in ok for l in r.page.links if l.kind != "short")
         dupes = sum(1 for srcs in sitemaps.get(site.domain, {}).values() if len(srcs) > 1)
         block = [f"### {site.name} ({site.domain})"]
+        if len(ok) < 0.5 * len(rs):
+            block.append(f"- **Only {len(ok)} of {len(rs)} pages loaded. The crawl was probably blocked, so treat this site's numbers as unreliable.**")
         if tags:
             block.append("- Tracking IDs in use: " + ", ".join(f"`{t}` ({n} links)" for t, n in tags.most_common()))
         for code, n in counts.most_common():
-            if code in ISSUE_TEXT:
+            if code in ISSUE_TEXT and code not in INDEXATION:
                 block.append(f"- {n} pages: {ISSUE_TEXT[code]}")
             elif code.startswith("http_"):
                 block.append(f"- {n} sitemap URLs returned {code.removeprefix('http_')}")
@@ -123,12 +133,42 @@ def _site_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list
     return lines + [""] + details
 
 
+def _indexation_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list[str]]], gsc_meta: dict[str, dict]) -> list[str]:
+    lines = [
+        "## Indexation signals", "",
+        "Google tends to stop indexing sites where many pages are thin or near-copies of each other. "
+        "One row per sitemap, so programmatic sections show up separately.", "",
+        "| Site | Sitemap | Pages | Thin | Near-duplicates | Largest duplicate group | Duplicate titles | Redirect / noindex / other canonical | Pages Google showed |",
+        "|---|---|---|---|---|---|---|---|---|",
+    ]
+    for site in cfg.sites:
+        groups: dict[str, list[Row]] = {}
+        for r in rows:
+            if r.site.domain == site.domain and r.page.status == 200:
+                src = (sitemaps.get(site.domain, {}).get(r.page.url) or ["?"])[0]
+                groups.setdefault(urlsplit(src).path.lstrip("/") or src, []).append(r)
+        for name, rs in groups.items():
+            def n(code: str) -> int:
+                return sum(code in r.issues for r in rs)
+            shown = sum(1 for r in rs if r.gsc) if site.domain in gsc_meta else "no data"
+            lines.append(
+                f"| {site.name} | `{name}` | {len(rs)} | {n('thin_content')} | {n('near_duplicate')} | "
+                f"{max((r.cluster_size for r in rs), default=0) or ''} | {n('duplicate_title')} | "
+                f"{n('redirects') + n('noindex') + n('canonical_elsewhere')} | {shown} |"
+            )
+    return lines + [""]
+
+
 def write_summary(
     out: Path, cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list[str]]],
     gsc_meta: dict[str, dict], tag_stats: dict[str, TagStats], top: int = 30,
+    previous: Path | None = None,
 ) -> None:
+    (out / "meta.json").write_text(json.dumps({"engine": __version__, "checks": sorted(ISSUE_TEXT)}))
     lines = [f"# Amazon commission audit: {out.name}", ""]
     lines += ["## Portfolio", ""] + _site_block(cfg, rows, sitemaps, gsc_meta)
+    if previous:
+        lines += changes.section(previous, rows, sorted(ISSUE_TEXT), ISSUE_TEXT)
 
     if tag_stats:
         lines += ["## Earnings per click by tracking ID (Associates report)", "",
@@ -144,7 +184,7 @@ def write_summary(
         lines += ["| # | Page | Google clicks | Impressions | Position | First link | Problem | Score |",
                   "|---|---|---|---|---|---|---|---|"]
         for i, r in enumerate(ranked, 1):
-            problems = "; ".join(ISSUE_TEXT[c] for c in r.issues if c in ISSUE_TEXT) or "links are placed well"
+            problems = "; ".join(ISSUE_TEXT[c] for c in r.issues if c in ISSUE_TEXT and c not in INDEXATION) or "links are placed well"
             depth = _pct(r.page.first_link_depth) if r.page.content_links else "none"
             lines.append(
                 f"| {i} | {r.page.url} | {int(r.gsc.clicks)} | {int(r.gsc.impressions)} | "
@@ -162,6 +202,7 @@ def write_summary(
             lines.append(f"| {r.page.url} | {int(r.gsc.impressions)} | {r.gsc.position:.1f} | {int(r.gsc.clicks)} | {r.page.title} |")
         lines.append("")
 
+    lines += _indexation_block(cfg, rows, sitemaps, gsc_meta)
     lines += ["## Data used", ""]
     for site in cfg.sites:
         meta = gsc_meta.get(site.domain)

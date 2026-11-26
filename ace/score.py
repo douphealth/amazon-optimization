@@ -12,8 +12,10 @@ value_weight      earnings per Amazon click for the site's tracking ID, relative
 """
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass, field
 
+from . import dupes
 from .config import Config, Site, norm_url
 from .data import GscRow, TagStats
 from .page import Page
@@ -28,6 +30,7 @@ GAP_VERY_LATE = 0.7     # first link in the bottom half
 GAP_LATE = 0.4          # first link 30-50% down
 GAP_OK = 0.1            # first link in the top 30%
 LATE, VERY_LATE = 0.30, 0.50
+THIN_WORDS = 300        # below this an article is unlikely to satisfy a search
 
 
 def expected_ctr(position: float) -> float:
@@ -46,6 +49,7 @@ class Row:
     reachable_clicks: float = 0.0
     missed_serp_clicks: float = 0.0
     score: float = 0.0
+    cluster_size: int = 0  # how many pages on the site share most of this page's text
 
 
 def page_issues(page: Page, site: Site, cfg: Config) -> tuple[list[str], float]:
@@ -57,8 +61,12 @@ def page_issues(page: Page, site: Site, cfg: Config) -> tuple[list[str], float]:
         issues.append("noindex")
     if page.canonical and norm_url(page.canonical) != norm_url(page.url):
         issues.append("canonical_elsewhere")
+    if page.final_url and norm_url(page.final_url) != norm_url(page.url):
+        issues.append("redirects")
     if not page.meta_description:
         issues.append("no_meta_description")
+    if page.words < THIN_WORDS:
+        issues.append("thin_content")
 
     links = page.content_links
     depth = page.first_link_depth
@@ -108,9 +116,18 @@ def build_rows(
         site_epcs = [epcs[t] for t in site.tags if t in epcs]
         weight = (sum(site_epcs) / len(site_epcs)) / avg_epc if site_epcs and avg_epc else 1.0
         gsc = gsc_by_site.get(site.domain, {})
-        for page in pages_by_site.get(site.domain, []):
+        pages = pages_by_site.get(site.domain, [])
+        ok_pages = [p for p in pages if p.status == 200]
+        near_dupes = dupes.clusters(ok_pages)
+        titles = Counter(p.title for p in ok_pages if p.title)
+        for page in pages:
             row = Row(site=site, page=page, gsc=gsc.get(norm_url(page.url)))
             row.issues, row.gap = page_issues(page, site, cfg)
+            row.cluster_size = near_dupes.get(page.url, 0)
+            if row.cluster_size:
+                row.issues.append("near_duplicate")
+            if page.status == 200 and titles[page.title] > 1:
+                row.issues.append("duplicate_title")
             if row.gsc and row.gsc.impressions:
                 g = row.gsc
                 exp = expected_ctr(g.position)

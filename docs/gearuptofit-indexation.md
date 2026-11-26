@@ -3,11 +3,17 @@
 Status on 2026-11-26. GearUpToFit holds 2,012 of the portfolio's 3,161 Amazon links and gets no
 Google traffic, so this is the largest commission problem in the portfolio.
 
+**Decision on 2026-11-26: do not noindex `watch-match` yet.** The owner confirmed there is no manual
+action. Re-reading the ranking history shows the site was already close to invisible a year before
+`watch-match` existed, so it cannot be the original cause. The next step is the Page indexing
+breakdown from Search Console; the plan below starts only after that.
+
 ## What is confirmed
 
 | Fact | Source |
 |---|---|
-| US ranking keywords: 100 (May 2026), 37 (June), 7 (July), 0 (August to November) | DataforSEO history, 2026-11-25 |
+| Search Console > Manual actions: "No issues detected" | Site owner, 2026-11-26 |
+| US ranking keywords: between 5 and 30 every month from May 2025 to March 2026, none better than position 31. A brief rise to about 100 in April-May 2026 (still none in the top 30), then 37 (June), 7 (July), 0 (August to November) | DataforSEO history, 2026-11-25 |
 | Google impressions Nov 12-25: 19 in total, 0 clicks. 9 of them were someone searching `site:gearuptofit.com` | Search Console via Supermetrics, 2026-11-26 |
 | A `site:gearuptofit.com` search returns the homepage only | Live Google result, 2026-11-25 |
 | Google downloaded `sitemap_index.xml` on 2026-11-26 with no errors or warnings (1,262 URLs submitted) | Search Console sitemaps report |
@@ -22,33 +28,35 @@ Google traffic, so this is the largest commission problem in the portfolio.
 - A crawl block, a stray noindex, a canonical error or a broken sitemap. None exists.
 - Serving different content to Google by user agent.
 
-## What it does not settle
+## What the evidence now says
 
-Two explanations fit everything above. Only Search Console can tell them apart.
+- **This is an automated, site-wide demotion, and it is old.** With no manual action and no technical
+  block, Google is choosing not to index or rank the site. It was already doing so in May 2025, the
+  earliest month in the data. What first caused it is not visible from here.
+- **`watch-match` is not the original cause.** Its integration notes are dated June 2026, a year after
+  the site was already near zero. It may still weigh on the site (a third of the indexable pages are
+  templated), but removing it is unlikely to bring the site back by itself.
+- **The September prune has not helped so far.** 839 posts went to noindex on 2026-09-18 and
+  visibility has not returned in the two months since.
 
-1. **A manual action.** Shown under Security & Manual Actions. A site-wide spam action usually
-   removes the homepage too, and the homepage is still indexed, so this is the less likely one.
-2. **An automated site-wide quality demotion.** Google keeps the homepage and stops indexing the rest.
-   The templated `watch-match` section, a third of the indexable site, is the clearest trigger
-   candidate. The September prune removed weak posts and visibility did not return in the two
-   months since, which points at something the prune did not touch.
+Recovery from this kind of demotion is slow and uncertain. It should be treated as a months-long
+project, and near-term commission work should go to the sites and traffic sources that already
+produce Amazon clicks.
 
-## The one check that cannot be done from here
+## The check still open
 
-Open both while signed in to Search Console:
+Page indexing, while signed in to Search Console:
+https://search.google.com/search-console/index?resource_id=sc-domain%3Agearuptofit.com
 
-- Manual actions: https://search.google.com/search-console/manual-actions?resource_id=sc-domain%3Agearuptofit.com
-- Page indexing: https://search.google.com/search-console/index?resource_id=sc-domain%3Agearuptofit.com
-
-Note the manual-action message if any, and the counts next to "Crawled - currently not indexed"
-and "Excluded by noindex tag".
+A screenshot of the "Why pages aren't indexed" table is enough. The counts next to "Crawled -
+currently not indexed", "Discovered - currently not indexed", "Excluded by noindex tag" and any
+"Blocked" or "Server error" rows decide which step below comes first.
 
 ## Plan once that answer is in
 
-**If a manual action is listed:** fix the reason it names, then file a reconsideration request.
-Nothing else below should start first.
-
-**If none is listed**, in this order, one change at a time so each can be measured:
+In this order, one change at a time so each can be measured. If the table shows "Blocked" or
+"Server error" rows in volume, fix that first: it would mean Google's crawler is being turned away
+in a way a test from here cannot see.
 
 1. **Take `watch-match` out of Google's view.** Add `noindex, follow` to its pages and remove
    `watch-match/sitemap.xml` from `sitemap_index.xml` and from Search Console. It is a separate

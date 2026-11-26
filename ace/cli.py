@@ -19,6 +19,9 @@ def cmd_audit(cfg, args) -> None:
         results = list(pool.map(crawl.crawl, sites))
     pages_by_site = {s.domain: pages for s, (pages, _) in zip(sites, results)}
     sitemaps = {s.domain: sm for s, (_, sm) in zip(sites, results)}
+    share = crawl.loaded_share(pages_by_site)
+    if share < 0.5:  # blocked crawl (e.g. a firewall challenge): never overwrite a good report with it
+        raise SystemExit(f"Only {share:.0%} of pages loaded. The crawl looks blocked; nothing was saved.")
     report.save_audit(args.out, pages_by_site, sitemaps)
     print(f"audit saved to {args.out}/audit.json")
 

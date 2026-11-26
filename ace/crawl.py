@@ -93,6 +93,12 @@ def audit_url(url: str, site: Site) -> Page:
     return page
 
 
+def loaded_share(pages_by_site: dict[str, list[Page]]) -> float:
+    """Share of crawled pages that loaded (HTTP 200). 1.0 when nothing was crawled."""
+    pages = [p for site_pages in pages_by_site.values() for p in site_pages]
+    return sum(p.status == 200 for p in pages) / len(pages) if pages else 1.0
+
+
 def crawl(site: Site, log=print) -> tuple[list[Page], dict[str, list[str]]]:
     sitemap_map = discover(site)
     urls = list(sitemap_map)[: site.max_urls]

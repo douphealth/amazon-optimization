@@ -117,7 +117,7 @@ changes nothing. `docs/experiments.md` records each live change with its baselin
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 27 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 28 unit tests pass |
 | Fixer: product boxes | Applied to 4 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: blocked-product links | Applied to 12 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: tracking IDs | Saved once on a live post; the save worked but a render-time layer overrode it |

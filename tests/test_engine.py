@@ -465,3 +465,11 @@ def test_unattended_fixer_skips_sites_without_login(tmp_path, monkeypatch):
     assert fixer.run(cfg, rows, tmp_path / "r", **kwargs) == [] and FakeWP.saves == []
     monkeypatch.setenv("WP_AUTH_EXAMPLE_COM", "user:pass word")
     assert [a.status for a in fixer.run(cfg, rows, tmp_path / "r", **kwargs)] == ["fixed"]
+
+
+def test_loaded_share_detects_blocked_crawl():
+    from ace import crawl
+    from ace.page import Page
+    ok, blocked = Page(url="a", status=200), Page(url="b", status=403)
+    assert crawl.loaded_share({"x.com": [ok, ok], "y.com": [blocked]}) == 2 / 3
+    assert crawl.loaded_share({"x.com": [blocked, blocked, ok]}) < 0.5 and crawl.loaded_share({}) == 1.0

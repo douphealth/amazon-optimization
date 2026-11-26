@@ -218,7 +218,7 @@ Google tends to stop indexing sites where many pages are thin or near-copies of 
 | Mystical Digits | `page-sitemap.xml` | 24 | 7 | 0 |  | 1 | 0 | no data |
 | Outdoor Misting | `post-sitemap.xml` | 18 | 0 | 0 |  | 0 | 0 | 4 |
 | Outdoor Misting | `page-sitemap.xml` | 3 | 2 | 0 |  | 0 | 0 | 0 |
-| Efficient GPT Prompts | `post-sitemap.xml` | 465 | 1 | 18 | 7 | 0 | 0 | no data |
+| Efficient GPT Prompts | `post-sitemap.xml` | 465 | 1 | 17 | 7 | 0 | 0 | no data |
 | Efficient GPT Prompts | `page-sitemap.xml` | 24 | 7 | 0 |  | 0 | 0 | no data |
 | Efficient GPT Prompts | `product-sitemap.xml` | 3 | 1 | 0 |  | 0 | 1 | no data |
 

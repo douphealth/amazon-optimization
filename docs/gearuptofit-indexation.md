@@ -40,27 +40,35 @@ Three of them, plus one shoe-finder page, produced Amazon clicks in the last 14 
 | /review/best-running-shoes-for-heavy-runners/ | 1 |
 | /shoe-finder/shoes/topo-ultrafly-6/ | 4 |
 
-### Which layer decides (established 2026-11-26)
+### Which layer decides (corrected 2026-11-26)
 
-| Test | Result |
-|---|---|
-| Yoast setting on the three review posts (edit screen) | Default, meaning index |
-| Every active code snippet on the site | Only the September prune list sets noindex, and two of the three posts are not in it |
-| 79 published posts that are in neither the prune list nor the sitemap | 76 are served noindex |
-| 25 sampled posts that are in the sitemap | All served index |
-| 63 posts that are in the prune list **and** in the sitemap | All served index |
+An earlier version of this note blamed a Cloudflare Worker. That was wrong. All 85 Workers on the
+account were downloaded and read: none sets noindex on post pages, and the sitemap Worker simply
+mirrors WordPress's own post sitemaps.
 
-The last row is the decisive one. WordPress's prune snippet marks those 63 posts noindex, yet the
-live pages say index. So the robots tag visitors and search engines receive is set after WordPress,
-by a layer that indexes a page only if it is on a keep list of 498 posts (the same 498 the sitemap
-serves under the header `x-sitemap-source: wp-authoritative-post-sitemaps`). The site runs about a
-dozen Cloudflare Workers in front of WordPress, and the one that rewrites the head of post pages is
-`gutf-post-shell-edge-fix` (it stamps `x-gutf-post-shell-edge: 1` on these responses). Its source is
-not in any repository; it has to be downloaded from Cloudflare.
+**The rule lives in the child theme, `wp-content/themes/twentyten-child/functions.php`**, in the
+block that starts "Prune: noindex,follow for zero-value posts (added 2026-09-24)". It holds 848 post
+IDs in `gutf_prune_noindex_ids()` and applies them to Yoast's robots array, to core `wp_robots`, and
+to the sitemap exclusion filter. Its own change log reads:
 
-**Fix:** add the pages that should be found to that keep list (and so to the sitemap), starting with
-the earning pages above. That needs Cloudflare Workers access. Per the site's own safety runbook:
-snapshot the Workers and routes first, confirm route ownership, validate the script, then smoke-test.
+- 2026-09-24: 783 posts with 0 clicks and under 50 impressions on Bing and Google over 16 months.
+- 2026-10-04 to 2026-11-15: individual posts released by `release_pages.py`.
+- 2026-11-19: "added 90 IDs with zero Bing impressions, prune phase 2", by `prune_add.py`.
+
+All 76 posts in `docs/gearuptofit-noindexed-outside-prune.csv` are in that list, including the
+three earning review pages. The list is maintained by scripts in a local project folder
+(`backups/2026-10-12/owner/release_pages.py`), so it should be changed with those scripts, not by
+hand-editing the theme file, or the two will drift apart.
+
+**Fix:** release post IDs **92024** (best treadmills for home), **91836** (best running shoes for
+heavy runners) and **90633** (best compression boots) with `release_pages.py`. Before any further
+prune phase, check Google Analytics as well as Bing and Search Console: a page can show zero search
+impressions and still be one visitors reach and buy from.
+
+Left over and safe to remove: the two code snippets named "PGCC gearuptofit prune noindex
+2026-09-18" (#556 and #557). They are marked active but have no effect; 63 posts on their list are
+served as indexable. A trashed, inactive snippet "ACE temporary read-only robots diagnostic" (#564)
+from this investigation can be emptied from the snippet trash.
 
 ## What is confirmed
 
@@ -84,13 +92,10 @@ snapshot the Workers and routes first, confirm route ownership, validate the scr
 
 ## Plan
 
-1. **Remove the noindex tag from the earning pages above**, in the layer that serves them.
-2. **Find out which search engines send the 638 visits**, then register the site with that engine's
-   webmaster tools so its indexing and queries are visible. The Analytics pull for this is scheduled.
-3. **Feed Analytics into every weekly run** (`data/ga4/<domain>/`), so the engine ranks and protects
-   pages by real visitors.
-4. **Clean up overlapping automation.** Two active copies of the prune snippet and five active copies
-   of the Amazon link snippet run on every page load. Keep one of each. Do not edit the prune snippets
-   casually: both copies define the same function, and re-saving one may deactivate it and make all
-   837 pruned posts indexable at once.
+1. **Release the three earning posts from the theme's prune list** with `release_pages.py`.
+2. **Fix the IndexNow key file** so pages can be submitted to Bing and the other non-Google engines
+   (see `docs/indexnow.md`). They are where this site's search visitors come from.
+3. **Find out which search engines send the 638 visits.** The Analytics pull for this is scheduled.
+4. **Feed Analytics into every weekly run** (`data/ga4/<domain>/`), so the engine ranks and protects
+   pages by real visitors, and add an Analytics check to the prune scripts.
 5. **Leave Google recovery as a slow track.** No bulk rewrites or re-dating of posts.

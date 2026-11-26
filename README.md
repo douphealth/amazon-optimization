@@ -16,6 +16,7 @@ Console data, and writes one report. It never changes a website: every fix is a 
 | `pages.csv` | One row per page: Amazon link counts, how deep the first link sits, tags, issues, score |
 | `links.csv` | One row per Amazon link: product ID, tracking ID, link type, product name |
 | `fixes/<site>/<page>.html` | Paste-ready "quick picks" box for pages whose links sit too deep |
+| `indexnow-log.csv` | What `ace submit` sent to search engines, per site |
 
 ## What it checks on every page
 
@@ -40,7 +41,7 @@ Console data, and writes one report. It never changes a website: every fix is a 
 
 | Priority | Finding | Fix |
 |---|---|---|
-| 1 | **GearUpToFit gets no Google traffic but is still the main source of Amazon clicks.** Google Analytics shows 638 organic-search visits in 14 days (from engines other than Google) and 63 of the portfolio's 66 recorded Amazon clicks. Google itself has crawled the site and indexed 1 page of 702. Three review pages that produce Amazon clicks are set to noindex by the layer that serves them, outside WordPress | See `docs/gearuptofit-indexation.md`. Remove the noindex from the earning pages; do not noindex `watch-match`; find which search engines send the visits |
+| 1 | **GearUpToFit gets no Google traffic but is still the main source of Amazon clicks.** Google Analytics shows 638 organic-search visits in 14 days (from engines other than Google) and 63 of the portfolio's 66 recorded Amazon clicks. Google itself has crawled the site and indexed 1 page of 702. Three review pages that produce Amazon clicks are set to noindex by the prune list in the child theme's `functions.php`, extended on 2026-11-19 | See `docs/gearuptofit-indexation.md`. Release those three posts with the prune scripts; do not noindex `watch-match`; fix the IndexNow key file so pages can be submitted to the engines that send the visits (`docs/indexnow.md`) |
 | 2 | **Every WordPress site except Plantastic Haven rewrites Amazon links when the page is rendered.** Code snippets named "Hermes Portfolio Amazon Product Box OS v1" force a tracking ID on every Amazon link and "PGCC Amazon disclosure" adds a disclosure. Editing a post body there does not change the tracking ID on the live page (verified on one Mystical Digits post) | Change tracking IDs in those snippets, not in posts. On GearUpToFit, Mice Gone Guide and Efficient GPT Prompts the snippet is set to the bare `papalex-20` |
 | 3 | **582 live links use the bare `papalex-20` ID**: 512 on GearUpToFit `watch-match` pages and 57 on Efficient GPT Prompts. Their clicks can't be told apart in Associates reports | `watch-match` is a separate app; Efficient GPT Prompts needs its own tracking ID created in Associates Central first |
 | 4 | **Outdoor Misting has one untagged Amazon link** (`/comparing-outdoor-cooling-technologies/`, product B0BFGL8FBZ) and no affiliate statement on that page. The site is not WordPress, so the fixer cannot reach it | Add a tracking ID and a disclosure in the site's own code |
@@ -93,6 +94,8 @@ pip install -r requirements.txt
 python -m ace run                      # crawl + score + fix drafts, 1-3 minutes
 python -m ace run --site plantastichaven.com
 python -m ace rank --out reports/2026-11-26   # re-score a saved crawl after adding data (2 seconds)
+python -m ace fix --apply             # save the safe fixes to WordPress
+python -m ace submit --apply          # tell Bing and other engines about new and changed pages
 python -m pytest -q
 ```
 
@@ -126,9 +129,10 @@ changes nothing. `docs/experiments.md` records each live change with its baselin
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 30 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 32 unit tests pass |
 | Fixer: product boxes | Applied to 4 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: blocked-product links | Applied to 12 live Plantastic Haven posts and confirmed on the rendered pages |
+| Search-engine submission (`ace submit`) | 1,074 pages sent for 3 sites on 2026-11-26 and accepted; a repeat run sent nothing. Six sites are blocked by a wrong or missing key file |
 | Fixer: tracking IDs | Saved once on a live post; the save worked but a render-time layer overrode it |
 | Fixer: rel and disclosure edits | Unit-tested and dry-run against live content. Not applied to a live site |
 | Change tracking between reports | Unit-tested, and run live once (no changes between the two days) |

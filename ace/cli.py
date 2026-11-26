@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-from . import changes, config, crawl, data, fixer, fixes, gsc, report, score
+from . import changes, config, crawl, data, fixer, fixes, gsc, indexnow, report, score
 
 
 def _sites(cfg, only):
@@ -41,6 +41,12 @@ def cmd_fix(cfg, args) -> None:
                         require_login=args.only_with_login)
     print(fixer.summarize(actions))
     print(f"log: {args.out}/fix-log.csv" + ("" if args.apply else "  (dry run: nothing was changed; add --apply)"))
+
+
+def cmd_submit(cfg, args) -> None:
+    batches = indexnow.run(_scored(cfg, args), args.out, apply=args.apply, sites=args.site)
+    print(indexnow.summarize(batches))
+    print(f"log: {args.out}/indexnow-log.csv" + ("" if args.apply else "  (dry run: nothing was sent; add --apply)"))
 
 
 def cmd_rank(cfg, args) -> None:
@@ -78,6 +84,7 @@ def main(argv=None) -> None:
         ("run", cmd_run, "audit + rank"),
         ("gsc-pull", cmd_gsc_pull, "download Search Console page data (needs a service account)"),
         ("fix", cmd_fix, "apply the safe fixes to WordPress (dry run unless --apply)"),
+        ("submit", cmd_submit, "send new and changed pages to search engines via IndexNow (dry run unless --apply)"),
     ]:
         p = sub.add_parser(name, help=help_text)
         p.set_defaults(fn=fn)
@@ -85,7 +92,7 @@ def main(argv=None) -> None:
         p.add_argument("--site", action="append", help="limit to this domain (repeatable)")
         p.add_argument("--fixes", type=int, default=25, help="how many fix drafts to write")
         p.add_argument("--days", type=int, default=28, help="Search Console window")
-        p.add_argument("--apply", action="store_true", help="fix: really save changes to WordPress")
+        p.add_argument("--apply", action="store_true", help="fix/submit: really save changes or send URLs")
         p.add_argument("--limit", type=int, help="fix: stop after this many pages")
         p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
     args = parser.parse_args(argv)

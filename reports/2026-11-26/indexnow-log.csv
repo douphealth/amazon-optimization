@@ -1,0 +1,10 @@
+site,host,status,urls_new_or_changed,urls_unchanged,detail
+gearuptofit.com,gearuptofit.com,key_file_invalid,801,0,"https://gearuptofit.com/<key>.txt does not return the key, so engines would reject the submission"
+plantastichaven.com,plantastichaven.com,key_file_invalid,160,0,"https://plantastichaven.com/<key>.txt does not return the key, so engines would reject the submission"
+micegoneguide.com,micegoneguide.com,key_file_invalid,46,0,"https://micegoneguide.com/<key>.txt does not return the key, so engines would reject the submission"
+gearuptogrow.com,gearuptogrow.com,submitted,109,0,HTTP 200 accepted
+affiliatemarketingforsuccess.com,affiliatemarketingforsuccess.com,key_file_invalid,120,0,"https://affiliatemarketingforsuccess.com/<key>.txt does not return the key, so engines would reject the submission"
+frenchyfab.com,frenchyfab.com,key_file_invalid,161,0,"https://frenchyfab.com/<key>.txt does not return the key, so engines would reject the submission"
+mysticaldigits.com,mysticaldigits.com,submitted,474,0,HTTP 200 accepted
+outdoormisting.com,www.outdoormisting.com,key_file_invalid,21,0,"https://www.outdoormisting.com/<key>.txt does not return the key, so engines would reject the submission"
+efficientgptprompts.com,efficientgptprompts.com,submitted,491,0,HTTP 200 accepted

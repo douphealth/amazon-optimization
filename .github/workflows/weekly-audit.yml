@@ -42,10 +42,18 @@ jobs:
           WP_AUTH_EFFICIENTGPTPROMPTS_COM: ${{ secrets.WP_AUTH_EFFICIENTGPTPROMPTS_COM }}
         run: python -m ace fix --apply --only-with-login
 
+      # Tells Bing and the other IndexNow engines about pages that are new or changed since the
+      # last run. Skipped until the INDEXNOW_KEY secret exists.
+      - name: Submit new and changed pages to search engines
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          if [ -n "$INDEXNOW_KEY" ]; then python -m ace submit --apply; else echo "No INDEXNOW_KEY secret: skipping"; fi
+
       - name: Commit the report
         run: |
           git config user.name "commission-audit"
           git config user.email "actions@users.noreply.github.com"
-          git add reports data/gsc
+          git add reports data/gsc data/indexnow
           git diff --cached --quiet || git commit -m "Weekly commission audit $(date -u +%F)"
           git push

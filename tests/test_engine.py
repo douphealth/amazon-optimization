@@ -497,3 +497,49 @@ def test_crawl_adds_analytics_pages_missing_from_sitemaps(monkeypatch):
     pages, sm = crawl.crawl(Site(domain="example.com", name="E"), log=lambda *_: None, extra_urls=["https://example.com/a", "https://example.com/hidden/"])
     assert [p.url for p in pages] == ["https://example.com/a/", "https://example.com/hidden/"]
     assert sm["https://example.com/hidden/"] == [crawl.ANALYTICS_ONLY]
+
+
+def test_indexnow_submits_only_new_or_changed_indexable_pages(tmp_path):
+    from ace import indexnow
+
+    class Resp:
+        def __init__(self, code, text=""): self.status_code, self.text = code, text
+
+    key = "a" * 32
+    posted = []
+    get = lambda url, **kw: Resp(200, key if url == f"https://example.com/{key}.txt" else "other")
+    post = lambda url, json, **kw: (posted.append(json), Resp(202))[1]
+    a = _page("https://example.com/a/", "alpha " * 400, "A")
+    b = _page("https://example.com/b/", "beta " * 400, "B")
+    hidden = _page("https://example.com/hidden/", "gamma " * 400, "H"); hidden.noindex = True
+    rows = score.build_rows(CFG, {"example.com": [a, b, hidden]}, {}, {})
+    kw = dict(root=tmp_path / "state", key=key, get=get, post=post, log=lambda *_: None)
+
+    dry = indexnow.run(rows, tmp_path / "2026-11-26", **kw)[0]
+    assert dry.status == "would_submit" and posted == [] and sorted(dry.urls) == ["https://example.com/a/", "https://example.com/b/"]
+
+    first = indexnow.run(rows, tmp_path / "2026-11-26", apply=True, **kw)[0]
+    assert first.status == "submitted" and posted[0]["host"] == "example.com" and posted[0]["keyLocation"] == f"https://example.com/{key}.txt"
+    assert sorted(posted[0]["urlList"]) == ["https://example.com/a/", "https://example.com/b/"]  # noindexed page never sent
+
+    again = indexnow.run(rows, tmp_path / "2026-11-27", apply=True, **kw)[0]
+    assert again.status == "nothing_new" and again.unchanged == 2 and len(posted) == 1
+
+    b2 = _page("https://example.com/b/", "beta " * 200 + "delta " * 200, "B")
+    rows2 = score.build_rows(CFG, {"example.com": [a, b2, hidden]}, {}, {})
+    changed = indexnow.run(rows2, tmp_path / "2026-11-28", apply=True, **kw)[0]
+    assert changed.urls == ["https://example.com/b/"] and posted[-1]["urlList"] == ["https://example.com/b/"]
+    assert key not in (tmp_path / "state" / "example.com.json").read_text()  # the key is never stored
+
+
+def test_indexnow_refuses_when_key_file_is_wrong(tmp_path):
+    from ace import indexnow
+
+    class Resp:
+        status_code, text = 200, "some-other-key"
+
+    posted = []
+    rows = score.build_rows(CFG, {"example.com": [_page("https://example.com/a/", "alpha " * 400, "A")]}, {}, {})
+    kw = dict(root=tmp_path / "state", get=lambda *a, **k: Resp(), post=lambda *a, **k: posted.append(1), log=lambda *_: None)
+    assert indexnow.run(rows, tmp_path / "r", apply=True, key="b" * 32, **kw)[0].status == "key_file_invalid"
+    assert indexnow.run(rows, tmp_path / "r", apply=True, key="", **kw)[0].status == "no_key" and posted == []

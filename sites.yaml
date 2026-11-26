@@ -6,9 +6,16 @@
 account_tag_prefix: papalex
 marketplace: www.amazon.com
 
-# Products known to be wrong or gone. Pages linking to them are flagged and fix drafts skip them.
+# Products whose links should no longer be used, each with the Amazon search to link instead
+# (leave the phrase empty to reuse the link's own text). Pages linking to them are flagged.
 blocked_asins:
-  - B084KRDD5F   # anchored as potting mix, resolves to Miracle-Gro plant food (checked 2026-11-25)
+  # Miracle-Gro potting mix + plant food bundle. On 2026-11-25 this ID no longer loaded its own
+  # page: Amazon served the plant food listing (B0071E21ZU) with no price for the bundle.
+  B084KRDD5F: "Miracle-Gro indoor potting mix"
+
+# Fixes `ace fix --apply` may make on its own. Remove a name to switch that fix off.
+# See ace/fixer.py for exactly what each one does.
+auto_fix: [tags, rel, disclosure, blocked, box]
 
 defaults:
   user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
@@ -22,6 +29,7 @@ sites:
     name: GearUpToFit
     gsc_property: "sc-domain:gearuptofit.com"
     tags: [papalex-gutf-20]
+    skip_fix: "^/watch-match/"   # a separate app, not WordPress
 
   - domain: plantastichaven.com
     name: Plantastic Haven
@@ -57,6 +65,7 @@ sites:
     name: Outdoor Misting
     gsc_property: "sc-domain:outdoormisting.com"
     tags: []
+    wordpress: false
 
   - domain: efficientgptprompts.com
     name: Efficient GPT Prompts

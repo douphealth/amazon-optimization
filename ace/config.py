@@ -19,6 +19,8 @@ class Site:
     max_urls: int = 1500
     concurrency: int = 4
     skip_sitemaps: str = ""
+    wordpress: bool = True   # False: the fixer leaves this site alone
+    skip_fix: str = ""      # regex of URL paths the fixer must not touch (non-WordPress sections)
 
 
 @dataclass
@@ -26,7 +28,9 @@ class Config:
     account_tag_prefix: str
     marketplace: str
     sites: list[Site]
-    blocked_asins: set[str] = field(default_factory=set)
+    # {ASIN: search phrase to link instead, or None to reuse the link's own text}
+    blocked_asins: dict[str, str | None] = field(default_factory=dict)
+    auto_fix: list[str] = field(default_factory=list)
 
     def site(self, domain: str) -> Site:
         for s in self.sites:
@@ -47,8 +51,16 @@ def load(path: str | Path = "sites.yaml") -> Config:
         account_tag_prefix=raw.get("account_tag_prefix", ""),
         marketplace=raw.get("marketplace", "www.amazon.com"),
         sites=sites,
-        blocked_asins=set(raw.get("blocked_asins") or []),
+        blocked_asins=_blocked(raw.get("blocked_asins")),
+        auto_fix=list(raw.get("auto_fix") or []),
     )
+
+
+def _blocked(value) -> dict[str, str | None]:
+    """Accept either a list of ASINs or a mapping of ASIN to replacement search phrase."""
+    if isinstance(value, dict):
+        return {str(k): (str(v) if v else None) for k, v in value.items()}
+    return {str(k): None for k in (value or [])}
 
 
 def norm_url(url: str) -> str:

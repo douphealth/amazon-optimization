@@ -222,3 +222,143 @@ def test_changes_section(tmp_path):
     assert "| example.com | first Amazon link is in the bottom half | 1 | 0 | -1 |" in text
     assert "- https://example.com/a/" in text and "https://example.com/b/" not in text
     assert "Not compared" in text and "under 300 words" in text  # old report had no thin check
+
+
+# ---- fixer ----------------------------------------------------------------------------------
+
+def test_set_tag_keeps_ampersand_style():
+    from ace.transform import set_tag
+    assert set_tag("https://www.amazon.com/dp/B0CZPPGMWN", "x-20") == "https://www.amazon.com/dp/B0CZPPGMWN?tag=x-20"
+    assert set_tag("https://www.amazon.com/dp/B0CZPPGMWN?th=1", "x-20").endswith("?th=1&amp;tag=x-20")
+    assert set_tag("https://www.amazon.com/s?k=a&ref=b", "x-20").endswith("&ref=b&tag=x-20")
+    assert set_tag("https://www.amazon.com/dp/B0CZPPGMWN?tag=old-20&amp;th=1#x", "x-20") == "https://www.amazon.com/dp/B0CZPPGMWN?tag=x-20&amp;th=1#x"
+
+
+RAW = (
+    '<p>Intro paragraph.</p>\n<h2>Soil</h2>\n'
+    '<p><a href="https://www.amazon.com/dp/B000000002">untagged</a> '
+    '<a class="btn" href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-20" rel="noopener">main id</a> '
+    '<a href="https://www.amazon.com/dp/B085CDPSMR?tag=papalex-ex-20" rel="sponsored">fine</a> '
+    '<a href="https://www.amazon.com/dp/B000000003?tag=someoneelse-20" rel="nofollow">foreign</a> '
+    '<a href="https://amzn.to/abc">short</a> <a href="https://example.com/x">internal</a> '
+    '<a href="https://www.amazon.com/dp/B084KRDD5F?tag=papalex-ex-20" rel="sponsored">All-purpose potting mix</a> '
+    '<a href="https://www.amazon.com/dp/B084KRDD5F?tag=papalex-ex-20" rel="sponsored">Shop on Amazon</a></p>'
+)
+
+
+def test_transforms_are_precise_and_idempotent():
+    from ace import transform as t
+    out, n = t.fix_tags(RAW, "papalex-ex-20", ["papalex-ex-20"], "papalex")
+    assert n == 2
+    assert 'href="https://www.amazon.com/dp/B000000002?tag=papalex-ex-20"' in out
+    assert 'class="btn" href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ex-20" rel="noopener"' in out
+    assert "someoneelse-20" in out and 'href="https://amzn.to/abc"' in out  # foreign and short links untouched
+    assert t.fix_tags(out, "papalex-ex-20", ["papalex-ex-20"], "papalex") == (out, 0)
+
+    out2, n = t.fix_rel(out)
+    assert n == 3  # the untagged one (no rel), the rel="noopener" one, and the amzn.to short link
+    assert 'rel="noopener sponsored nofollow"' in out2 and 'B000000002?tag=papalex-ex-20" rel="sponsored nofollow noopener">' in out2
+    assert 'href="https://example.com/x">internal' in out2 and t.fix_rel(out2) == (out2, 0)
+
+    out3, done, manual = t.replace_blocked(RAW, {"B084KRDD5F": None}, "www.amazon.com", "papalex-ex-20")
+    assert (done, manual) == (1, 1)  # descriptive anchor repointed, generic "Shop on Amazon" left
+    assert 'href="https://www.amazon.com/s?k=All-purpose+potting+mix&amp;tag=papalex-ex-20" rel="sponsored">All-purpose potting mix</a>' in out3
+    out4, done, manual = t.replace_blocked(RAW, {"B084KRDD5F": "indoor potting mix"}, "www.amazon.com", "papalex-ex-20")
+    assert (done, manual) == (2, 0) and out4.count("s?k=indoor+potting+mix&amp;tag=papalex-ex-20") == 2
+    assert t.replace_blocked(out4, {"B084KRDD5F": "indoor potting mix"}, "www.amazon.com", "x")[1] == 0
+
+    out5, n = t.add_disclosure(RAW, "Example & Co")
+    assert n == 1 and out5.startswith("<!-- ace:disclosure -->") and "Example &amp; Co earns" in out5
+    assert out5.endswith(RAW) and t.add_disclosure(out5, "Example") == (out5, 0)
+
+    out6, n = t.insert_box(RAW, "<div>BOX</div>")
+    assert n == 1 and out6.index("Intro paragraph.</p>") < out6.index("ace:quick-picks") < out6.index("<h2>Soil")
+    assert t.insert_box(out6, "<div>BOX</div>") == (out6, 0)
+    assert t.insert_box("no paragraphs or headings", "<div>BOX</div>")[1] == 0
+    blocks, _ = t.insert_box("<!-- wp:paragraph --><p>Hi</p><!-- /wp:paragraph --><h2>x</h2>", "<div>BOX</div>")
+    assert "<!-- wp:html -->\n<!-- ace:quick-picks -->" in blocks
+
+
+class FakeWP:
+    """Stands in for WordPress: one post, records saves, serves the saved body as the live page."""
+    store: dict = {}
+    saves: list = []
+
+    def __init__(self, domain, user_agent):
+        pass
+
+    def find(self, url):
+        raw = FakeWP.store.get(url)
+        return None if raw is None else {"kind": "posts", "id": 7, "link": url, "modified": "x", "raw": raw}
+
+    def save(self, kind, post_id, content):
+        FakeWP.saves.append((kind, post_id))
+        url = next(iter(FakeWP.store))
+        FakeWP.store[url] = content
+        return content
+
+
+def _fixer_setup(tmp_path):
+    from ace import fixer
+    url = "https://example.com/soil-guide/"
+    body = "<html><head><title>Soil</title><meta name='description' content='d'></head><body><article>{}</article></body></html>"
+    raw = RAW.replace("<p>Intro paragraph.</p>", "<p>Intro paragraph. " + "word " * 300 + "</p>")
+    FakeWP.store, FakeWP.saves = {url: raw}, []
+    cfg = Config("papalex", "www.amazon.com", [SITE], blocked_asins={"B084KRDD5F": "indoor potting mix"},
+                 auto_fix=list(fixer.FIXES))
+    page = parse(url, body.format(raw))
+    page.status = 200
+    rows = score.build_rows(cfg, {"example.com": [page]}, {}, {})
+
+    def verify(live_url, site):
+        live = parse(url, body.format(FakeWP.store[url]))
+        live.status = 200
+        return live
+
+    return fixer, cfg, rows, url, raw, verify
+
+
+def test_fixer_dry_run_changes_nothing(tmp_path):
+    fixer, cfg, rows, url, raw, verify = _fixer_setup(tmp_path)
+    actions = fixer.run(cfg, rows, tmp_path / "2026-11-26", backups=tmp_path / "b", pause=0, wp_factory=FakeWP, verify=verify, log=lambda *_: None)
+    assert [a.status for a in actions] == ["would_change"] and set(actions[0].fixes) == {"tags", "rel", "disclosure", "blocked"}
+    assert FakeWP.saves == [] and FakeWP.store[url] == raw
+    assert "would_change" in (tmp_path / "2026-11-26" / "fix-log.csv").read_text()
+
+
+def test_fixer_apply_saves_backs_up_and_verifies(tmp_path):
+    fixer, cfg, rows, url, raw, verify = _fixer_setup(tmp_path)
+    kwargs = dict(apply=True, backups=tmp_path / "b", pause=0, wp_factory=FakeWP, verify=verify, log=lambda *_: None)
+    a = fixer.run(cfg, rows, tmp_path / "2026-11-26", **kwargs)[0]
+    assert a.status == "fixed" and a.remaining == [] and FakeWP.saves == [("posts", 7)]
+    assert (tmp_path / "b" / "example.com" / "7-2026-11-26.html").read_text() == raw
+    saved = FakeWP.store[url]
+    assert saved.startswith("<!-- ace:disclosure -->") and "B000000002?tag=papalex-ex-20" in saved
+    assert "someoneelse-20" in saved and saved.count("s?k=indoor+potting+mix") == 2
+    # Second run on the same audit: nothing left to change, nothing saved.
+    again = fixer.run(cfg, rows, tmp_path / "2026-11-26", **kwargs)[0]
+    assert again.status == "nothing_to_change_in_post_body" and len(FakeWP.saves) == 1
+
+
+def test_fixer_respects_config_and_access(tmp_path):
+    fixer, cfg, rows, url, raw, verify = _fixer_setup(tmp_path)
+    cfg.auto_fix = ["rel"]
+    assert [a.fixes for a in fixer.plan(cfg, rows)] == [["rel"]]
+    rows[0].site.skip_fix = "^/soil-"
+    assert fixer.plan(cfg, rows) == []
+    rows[0].site.skip_fix = ""
+
+    class Locked(FakeWP):
+        def find(self, url):
+            from ace.wp import NoAccess
+            raise NoAccess("401")
+
+    a = fixer.run(cfg, rows, tmp_path / "r", apply=True, backups=tmp_path / "b", pause=0, wp_factory=Locked, verify=verify, log=lambda *_: None)[0]
+    assert a.status == "no_access" and FakeWP.store[url] == raw
+
+
+def test_wp_auth_env(monkeypatch):
+    from ace import wp
+    monkeypatch.setenv("WP_AUTH_PLANTASTICHAVEN_COM", "alex:abcd efgh")
+    assert wp.auth_for("plantastichaven.com") == ("alex", "abcd efgh")
+    assert wp.auth_for("example.com") is None

@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-from . import changes, config, crawl, data, fixes, gsc, report, score
+from . import changes, config, crawl, data, fixer, fixes, gsc, report, score
 
 
 def _sites(cfg, only):
@@ -21,6 +21,18 @@ def cmd_audit(cfg, args) -> None:
     sitemaps = {s.domain: sm for s, (_, sm) in zip(sites, results)}
     report.save_audit(args.out, pages_by_site, sitemaps)
     print(f"audit saved to {args.out}/audit.json")
+
+
+def _scored(cfg, args):
+    pages_by_site, sitemaps = report.load_audit(args.out)
+    gsc_by_site = {s.domain: data.load_gsc(s.domain)[0] for s in cfg.sites}
+    return score.build_rows(cfg, pages_by_site, gsc_by_site, data.load_associates())
+
+
+def cmd_fix(cfg, args) -> None:
+    actions = fixer.run(cfg, _scored(cfg, args), args.out, apply=args.apply, sites=args.site, limit=args.limit)
+    print(fixer.summarize(actions))
+    print(f"log: {args.out}/fix-log.csv" + ("" if args.apply else "  (dry run: nothing was changed; add --apply)"))
 
 
 def cmd_rank(cfg, args) -> None:
@@ -56,6 +68,7 @@ def main(argv=None) -> None:
         ("rank", cmd_rank, "score a saved audit and write summary, CSVs and fix drafts"),
         ("run", cmd_run, "audit + rank"),
         ("gsc-pull", cmd_gsc_pull, "download Search Console page data (needs a service account)"),
+        ("fix", cmd_fix, "apply the safe fixes to WordPress (dry run unless --apply)"),
     ]:
         p = sub.add_parser(name, help=help_text)
         p.set_defaults(fn=fn)
@@ -63,6 +76,8 @@ def main(argv=None) -> None:
         p.add_argument("--site", action="append", help="limit to this domain (repeatable)")
         p.add_argument("--fixes", type=int, default=25, help="how many fix drafts to write")
         p.add_argument("--days", type=int, default=28, help="Search Console window")
+        p.add_argument("--apply", action="store_true", help="fix: really save changes to WordPress")
+        p.add_argument("--limit", type=int, help="fix: stop after this many pages")
     args = parser.parse_args(argv)
     args.fn(config.load(args.config), args)
 

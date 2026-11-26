@@ -14,7 +14,7 @@ from .score import Row
 
 MAX_PRODUCTS = 4
 
-BOX = """<!--
+BOX_COMMENT = """<!--
 Draft for: {url}
 Why: {why}
 Where: paste in Classic Editor (Text mode) right after the opening answer paragraph, before the first H2.
@@ -22,7 +22,9 @@ Before publishing: open every link once and confirm the product is still sold. T
 read from this page's own link text and image alt text.
 Rollback: delete this <div>.
 -->
-<div style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+"""
+
+BOX_DIV = """<div style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
 <p style="margin:0 0 8px;font-weight:700">{heading}</p>
 <ul style="margin:0 0 10px 18px;padding:0">
 {items}
@@ -41,8 +43,8 @@ def short_name(name: str, limit: int = 70) -> str:
     return name
 
 
-def draft(row: Row, blocked: frozenset[str] | set[str] = frozenset()) -> str | None:
-    """Return box HTML, or None if the page has fewer than two nameable, non-blocked products."""
+def box(row: Row, blocked: frozenset[str] | set[str] = frozenset()) -> str | None:
+    """Return the box <div>, or None if the page has fewer than two nameable, non-blocked products."""
     seen, items = set(), []
     for link in row.page.content_links:
         if link.kind != "product" or link.asin in seen or link.asin in blocked or not link.tag:
@@ -59,14 +61,17 @@ def draft(row: Row, blocked: frozenset[str] | set[str] = frozenset()) -> str | N
             break
     if len(items) < 2:
         return None
+    return BOX_DIV.format(heading="Quick picks from this guide", items="\n".join(items), site=row.site.name)
+
+
+def draft(row: Row, blocked: frozenset[str] | set[str] = frozenset()) -> str | None:
+    """The box plus a comment telling a human where to paste it."""
+    div = box(row, blocked)
+    if div is None:
+        return None
     depth = row.page.first_link_depth or 0
-    return BOX.format(
-        url=row.page.url,
-        why=f"first Amazon link is {depth:.0%} of the way down the article",
-        heading="Quick picks from this guide",
-        items="\n".join(items),
-        site=row.site.name,
-    )
+    comment = BOX_COMMENT.format(url=row.page.url, why=f"first Amazon link is {depth:.0%} of the way down the article")
+    return comment + div
 
 
 def write_fixes(rows: list[Row], out_dir: Path, top: int = 25, blocked: set[str] | None = None) -> list[Path]:
@@ -75,12 +80,12 @@ def write_fixes(rows: list[Row], out_dir: Path, top: int = 25, blocked: set[str]
     candidates = [r for r in rows if {"first_link_late", "first_link_very_late"} & set(r.issues)]
     candidates.sort(key=lambda r: (-r.score, -(r.page.first_link_depth or 0)))
     for row in candidates[:top]:
-        box = draft(row, blocked or set())
-        if not box:
+        text = draft(row, blocked or set())
+        if not text:
             continue
         slug = urlsplit(row.page.url).path.strip("/").replace("/", "__") or "home"
         path = out_dir / row.site.domain / f"{slug}.html"
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(box)
+        path.write_text(text)
         written.append(path)
     return written

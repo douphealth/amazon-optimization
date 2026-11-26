@@ -21,20 +21,27 @@ Console data, and writes one report. It never changes a website: every fix is a 
 ## Dashboard
 
 `python -m ace site` turns the latest report into a static dashboard: one page of HTML, one
-stylesheet, one script and `data.json`. No framework and nothing loaded from other servers.
+stylesheet, one script, `data.json` and `links.json`. No framework and no files loaded from other
+servers. Light and dark themes; works on a phone.
 
 | View | What it shows |
 |---|---|
-| Overview | Totals with the change since the previous report, the short list of things that need a decision, Amazon clicks and pages to fix by site, one card per site |
-| Site | Where the first Amazon link sits, every finding with its page count, tracking IDs in use, search engine submissions, the pages to work on first, changes the engine made |
-| Pages | Every audited page: search, filter by site or finding, sort by any column, open a row for its findings and what to do about each |
-| Work queue | Pages where measured demand meets a gap in Amazon links, highest priority first |
-| Activity | Page changes (live, or saved but not visible) and submissions to search engines |
+| Overview | A briefing written from the data, the engine's last and next run, totals with the change since the previous report (trend lines once three reports exist), what needs a decision, what changed, the pages sending most people to Amazon, one card per site |
+| Work queue | Pages where measured demand meets a gap in Amazon links, highest priority first. Tick pages off as you handle them (kept in your browser); pages the engine fixed are ticked for you |
+| Findings | Every check across all sites: pages affected, change since the last report, sites affected, and whether the engine fixes it on its own, could but is switched off, or leaves it to you |
+| Pages | Every audited page: search, one-click filters per finding, sort by any column, export or copy the filtered list |
+| Site | Where the first Amazon link sits, findings with their change, tracking IDs in use, submissions, the pages to work on first, changes the engine made |
+| Activity | Engine runs (live from GitHub), page changes (live, or saved but not visible) and submissions to search engines |
 | Notes | The full report and the files in `docs/` |
-| Controls | Links into this repository on GitHub: run the engine, see past runs, edit `sites.yaml`, add a product box, upload data, manage secrets |
+| Controls | Links into this repository on GitHub: run the engine, edit `sites.yaml`, add a product box, upload data, manage secrets, browse past reports |
 
-The dashboard is read-only. It cannot hold logins, so every action on the Controls view opens the
-real control in GitHub; `repository` in `sites.yaml` tells it where that is.
+Selecting any page opens its detail panel: numbers, each finding with what to do and who handles
+it, the product box written or drafted for it, and every Amazon link in the article with its
+tracking ID. `Ctrl K` (or `/`) opens a search over pages, sites, findings and actions.
+
+The dashboard is read-only. It cannot hold logins, so every action opens the real control in
+GitHub; `repository` in `sites.yaml` tells it where that is. The run status is the one live call it
+makes, to GitHub's public API, and it only works while the repository is public.
 
 `package.json` exists only so a static host such as Cloudflare Pages can build it: the build command
 is `npm run build`, and the site is written to `dist/` (copies go to `build/`, `public/`, `out/`,

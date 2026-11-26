@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light dark">
 <title>Commission Engine</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23257de0'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23257de0'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="app.css">
 <script>try{var t=localStorage.getItem("ace-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
@@ -15,7 +15,7 @@
 <div class="shell">
   <aside class="side" aria-label="Sections">
     <a class="brand" href="#/overview">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--data-1)"/><path d="M8 21l5-6 4 3 7-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--data-1)"/><path d="M8 21l5-6 4 3 7-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span><b>Commission Engine</b><small id="brand-date">Loading…</small></span>
     </a>
     <nav id="nav"></nav>
@@ -25,9 +25,29 @@
       </button>
     </div>
   </aside>
-  <main id="view" tabindex="-1"><p class="loading">Loading the latest report…</p></main>
+  <div class="col">
+    <div class="topbar">
+      <button id="search-open" type="button" class="search" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.8-3.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Search pages, sites and actions</span><kbd id="search-key">Ctrl K</kbd>
+      </button>
+      <span class="grow"></span>
+      <span id="run-pill"></span>
+      <span id="run-btn"></span>
+    </div>
+    <main id="view" tabindex="-1"><p class="loading">Loading the latest report…</p></main>
+  </div>
+</div>
+<div id="scrim" hidden></div>
+<aside id="drawer" role="dialog" aria-modal="true" aria-label="Page detail" hidden></aside>
+<div id="palette" role="dialog" aria-modal="true" aria-label="Search" hidden>
+  <div class="pal-in"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.8-3.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="pal-q" type="text" placeholder="Search pages, sites, findings and actions" aria-label="Search" autocomplete="off" spellcheck="false"><kbd>Esc</kbd></div>
+  <div id="pal-list" role="listbox" aria-label="Results"></div>
+  <div class="pal-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span></div>
 </div>
 <div id="tip" role="tooltip" hidden></div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
 <noscript><p style="padding:24px;font:16px system-ui">This dashboard needs JavaScript. The raw report is at <a href="downloads/summary.md">downloads/summary.md</a>.</p></noscript>
 <script src="app.js"></script>
 </body>

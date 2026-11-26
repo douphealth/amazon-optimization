@@ -5,7 +5,7 @@
 The build only reads files already in the repository (reports/, docs/, data/). It never crawls or
 contacts a website, so it is fast and cannot fail on network errors. Standard library only.
 
-Output: index.html, app.css, app.js (copied from ace/dashboard/) and data.json (built here).
+Output: index.html, app.css, app.js (copied from ace/dashboard/), data.json and links.json (built here).
 """
 from __future__ import annotations
 
@@ -18,7 +18,9 @@ import subprocess
 from collections import Counter
 from pathlib import Path
 from statistics import median
+from urllib.parse import urlsplit
 
+from .fixer import CLEARS
 from .report import INDEXATION, ISSUE_TEXT
 
 ASSETS = Path(__file__).parent / "dashboard"
@@ -54,11 +56,25 @@ ACTION = {
     "near_duplicate": "Differentiate the page or consolidate it with its near-copies.",
     "duplicate_title": "Give the page its own title.",
 }
+SHORT = {
+    "untagged_link": "No tracking ID", "foreign_tag": "Another account's ID", "earning_page_noindexed": "Earning but noindexed",
+    "blocked_product": "Blocked product", "no_disclosure": "No disclosure", "first_link_very_late": "First link in bottom half",
+    "first_link_late": "First link 30-50% down", "other_site_tag": "Other site's ID", "search_links_only": "Search links only",
+    "short_link": "amzn.to short link", "missing_rel_sponsored": "No rel=sponsored", "cloaked_links": "Cloaked links",
+    "low_serp_ctr": "Low click-through", "no_meta_description": "No meta description",
+}
 MONEY = {
     "untagged_link", "foreign_tag", "other_site_tag", "short_link", "missing_rel_sponsored", "no_disclosure",
     "search_links_only", "cloaked_links", "blocked_product", "earning_page_noindexed", "first_link_very_late",
     "first_link_late", "no_amazon_links",
 }
+
+# Findings that cost clicks or commission and call for a change (the neutral "note" ones are left out).
+TO_FIX = {c for c in MONEY if SEVERITY.get(c, "info") != "info"}
+# Which automatic fix clears each finding. A page with no Amazon link only gets a box when someone
+# has written one for it, so that finding is not listed as automatic.
+FIX_FOR = {code: name for name, codes in CLEARS.items() for code in codes if code != "no_amazon_links"}
+TREND = ("pages", "with_links", "links", "late", "to_fix")
 
 INLINE = [
     (re.compile(r"`([^`]+)`"), r"<code>\1</code>"),
@@ -184,6 +200,7 @@ def site_stats(rows: list[dict]) -> dict:
         "late": sum(1 for r in linked if r.get("first_link_depth") not in (None, "") and _num(r["first_link_depth"]) >= 0.30),
         "median_depth": round(median(depths), 3) if depths else None,
         "noindex": issues.get("noindex", 0),
+        "to_fix": sum(1 for r in rows if TO_FIX & set((r.get("issues") or "").split())),
         "ga_clicks": int(sum(_num(r.get("ga_amazon_clicks")) for r in rows)),
         "ga_sessions": int(sum(_num(r.get("ga_sessions")) for r in rows)),
         "gsc_clicks": int(sum(_num(r.get("gsc_clicks")) for r in rows)),
@@ -256,6 +273,37 @@ def attention(sites: list[dict], pages: list[dict]) -> list[dict]:
     return items
 
 
+def schedule(workflow: Path = Path(".github/workflows/weekly-audit.yml")) -> str:
+    """The cron line of the scheduled run, e.g. "17 5 * * 1", or "" when there is none."""
+    m = re.search(r'cron:\s*"([^"]+)"', workflow.read_text()) if workflow.exists() else None
+    return m.group(1) if m else ""
+
+
+def _box_files(root: Path, urls: set[str], by_site: dict[str, list[dict]]) -> dict[str, str]:
+    """{page url: repository path} for the box files under root/<domain>/, matched to audited pages."""
+    found: dict[str, str] = {}
+    for domain, site_rows in by_site.items():
+        folder = root / domain
+        if not folder.is_dir():
+            continue
+        names = {f.stem: f for f in folder.glob("*.html")}
+        for r in site_rows:
+            slug = urlsplit(r["url"]).path.strip("/").replace("/", "__") or "home"
+            if slug in names and r["url"] in urls:
+                found[r["url"]] = names[slug].as_posix()
+    return found
+
+
+def links_by_page(report: Path) -> dict[str, list[list]]:
+    """{page url: [[href, kind, tracking id, product id, name], ...]} for the page detail panel."""
+    out: dict[str, list[list]] = {}
+    for r in _csv(report / "links.csv"):
+        if r.get("in_site_chrome") == "1":
+            continue
+        out.setdefault(r["page"], []).append([r["href"], r.get("kind", ""), r.get("tag", ""), r.get("asin", ""), r.get("name", "")])
+    return out
+
+
 def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("docs"), state: Path = Path("data/indexnow"),
                gsc: Path = Path("data/gsc"), ga4: Path = Path("data/ga4")) -> dict:
     dirs = report_dirs(reports)
@@ -269,6 +317,20 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
         prev_by_site.setdefault(r["site"], []).append(r)
 
     domains = list(dict.fromkeys([s.domain for s in cfg.sites] if cfg else []) | dict.fromkeys(r["site"] for r in rows))
+    # One point per report, oldest first, so the dashboard can draw trends once a few runs exist.
+    history: dict[str, list[dict]] = {d: [] for d in domains}
+    total_history = []
+    for folder in dirs:
+        past = rows if folder == report else _csv(folder / "pages.csv")
+        grouped: dict[str, list[dict]] = {}
+        for r in past:
+            grouped.setdefault(r["site"], []).append(r)
+        whole = site_stats(past)
+        total_history.append({"date": folder.name, **{k: whole[k] for k in TREND}})
+        for d in domains:
+            if d in grouped:
+                stats = site_stats(grouped[d])
+                history[d].append({"date": folder.name, **{k: stats[k] for k in TREND}})
     conf = {s.domain: s for s in cfg.sites} if cfg else {}
     by_site: dict[str, list[dict]] = {d: [] for d in domains}
     for r in rows:
@@ -292,7 +354,10 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
             "has_ga": any((ga4 / d / f).exists() for f in ("amazon_clicks.csv", "sessions.csv")),
             "submitted": len(sent.get("submitted", {})), "last_submission": sent.get("last_submission"),
             "submission_status": (log.get(d) or {}).get("detail", ""),
-            "prev": ({k: v for k, v in site_stats(prev_by_site[d]).items() if k != "issues"} if d in prev_by_site else None),
+            "prev": site_stats(prev_by_site[d]) if d in prev_by_site else None,
+            "history": history[d],
+            "new_pages": len({r["url"] for r in by_site[d]} - {r["url"] for r in prev_by_site[d]}) if d in prev_by_site else None,
+            "gone_pages": len({r["url"] for r in prev_by_site[d]} - {r["url"] for r in by_site[d]}) if d in prev_by_site else None,
         })
         sites.append(s)
 
@@ -305,15 +370,20 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
         notes.append({"slug": n.stem, "title": text.splitlines()[0].lstrip("# ").strip() or n.stem, "html": markdown(text)})
 
     codes = sorted({c for r in rows for c in (r.get("issues") or "").split()} | set(ISSUE_TEXT))
+    auto_fix = list(getattr(cfg, "auto_fix", []) or [])
+    known = {r["url"] for r in rows}
     return {
         "generated": report.name, "previous": previous.name if previous else None,
         "repository": repository_slug(cfg),
-        "auto_fix": list(getattr(cfg, "auto_fix", []) or []),
+        "auto_fix": auto_fix, "box_min_clicks": getattr(cfg, "box_min_clicks", 1),
+        "schedule": schedule(), "history": total_history,
+        "drafts": _box_files(report / "fixes", known, by_site), "boxes": _box_files(Path("boxes"), known, by_site),
         "sites": sites, "cols": COLS, "pages": [_page_row(r, index) for r in rows],
         "issues": {
             c: {
-                "label": ISSUE_TEXT.get(c, c.replace("_", " ")), "severity": SEVERITY.get(c, "info"), "action": ACTION.get(c, ""),
+                "label": ISSUE_TEXT.get(c, c.replace("_", " ")), "short": SHORT.get(c, ""), "severity": SEVERITY.get(c, "info"), "action": ACTION.get(c, ""),
                 "group": "money" if c in MONEY else ("indexing" if c in INDEXATION else "search"),
+                "to_fix": c in TO_FIX, "fix": FIX_FOR.get(c, ""), "fix_on": FIX_FOR.get(c) in auto_fix,
             } for c in codes
         },
         "attention": attention(sites, rows),
@@ -334,6 +404,7 @@ def build(out: Path, cfg=None, reports: Path = Path("reports"), docs: Path = Pat
             shutil.copy(asset, out / asset.name)
     (out / "data.json").write_text(json.dumps(data, separators=(",", ":")))
     report = report_dirs(reports)[-1]
+    (out / "links.json").write_text(json.dumps(links_by_page(report), separators=(",", ":")))
     (out / "downloads").mkdir()
     for name in ("pages.csv", "links.csv", "fix-log.csv", "indexnow-log.csv", "summary.md"):
         if (report / name).exists():

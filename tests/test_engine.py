@@ -565,6 +565,10 @@ def test_site_build(tmp_path, monkeypatch):
         head + "example.com,https://example.com/a/,200,3,0.1,me-20,2,40,1.5,untagged_link\n"
         "example.com,https://example.com/b/,200,1,0.8,other-20,,,0,first_link_very_late other_site_tag\n"
         "example.com,https://example.com/c/,200,0,,,,,0,no_amazon_links\n")
+    (rep / "links.csv").write_text("site,page,href,kind,tag,asin,rel_ok,in_site_chrome,name\n"
+                                   "example.com,https://example.com/a/,https://www.amazon.com/dp/B000000001?tag=me-20,product,me-20,B000000001,1,0,Widget\n"
+                                   "example.com,https://example.com/a/,https://www.amazon.com/dp/B000000002?tag=me-20,product,me-20,B000000002,1,1,Footer\n")
+    fixes_dir = rep / "fixes" / "example.com"; fixes_dir.mkdir(parents=True); (fixes_dir / "b.html").write_text("<div></div>")
     (rep / "summary.md").write_text("# Audit\n\n| Site | Pages |\n|---|---|\n| Example | 3 |\n")
     (rep / "fix-log.csv").write_text("site,url,post_id,fixes,status,changes,still_failing_on_live_page\nexample.com,https://example.com/a/,7,box,fixed,box_added=1,\n"
                                      "example.com,https://example.com/b/,8,box,skipped,,\n")
@@ -576,7 +580,7 @@ def test_site_build(tmp_path, monkeypatch):
                  sites=[Site(domain="example.com", name="Example", tags=["me-20"], gsc_property="sc-domain:example.com")])
     out = site.build(tmp_path / "dist", cfg=cfg, reports=tmp_path / "reports", docs=docs, state=state, gsc=tmp_path / "gsc",
                      ga4=tmp_path / "ga4", mirrors=[tmp_path / "public"])
-    for name in ("index.html", "app.css", "app.js", "data.json", "_headers", "robots.txt", "downloads/pages.csv"):
+    for name in ("index.html", "app.css", "app.js", "data.json", "links.json", "_headers", "robots.txt", "downloads/pages.csv"):
         assert (out / name).exists() and (tmp_path / "public" / name).exists(), name
     assert 'name="robots" content="noindex, nofollow"' in (out / "index.html").read_text()
     data = json.loads((out / "data.json").read_text())
@@ -589,6 +593,14 @@ def test_site_build(tmp_path, monkeypatch):
     assert data["issues"]["untagged_link"]["severity"] == "critical" and data["issues"]["untagged_link"]["action"]
     assert data["attention"][0]["issue"] == "untagged_link" and any("Search Console" in a["title"] for a in data["attention"])
     assert [f["url"] for f in data["fixes"]] == ["https://example.com/a/"]  # skipped rows are not activity
+    assert json.loads((out / "links.json").read_text()) == {  # links in menus and footers are left out
+        "https://example.com/a/": [["https://www.amazon.com/dp/B000000001?tag=me-20", "product", "me-20", "B000000001", "Widget"]]}
+    assert [h["date"] for h in data["history"]] == ["2026-11-25", "2026-11-26"] and data["history"][-1]["to_fix"] == 2
+    assert s["history"][0]["links"] == 1 and s["new_pages"] == 2 and s["gone_pages"] == 0 and s["to_fix"] == 2 and s["prev"]["issues"] == {}
+    assert data["drafts"] == {"https://example.com/b/": (fixes_dir / "b.html").as_posix()}
+    late, untagged = data["issues"]["first_link_very_late"], data["issues"]["untagged_link"]
+    assert (late["fix"], late["fix_on"], untagged["fix"], untagged["fix_on"]) == ("box", True, "tags", False)
+    assert not data["issues"]["no_amazon_links"]["to_fix"] and data["issues"]["no_amazon_links"]["fix"] == ""
     assert data["submissions"][0]["total"] == 2 and {n["slug"] for n in data["notes"]} == {"full-report", "experiments"}
 
 
@@ -598,7 +610,7 @@ def test_dashboard_script_uses_only_fields_the_build_writes():
     from ace import site
     js = (site.ASSETS / "app.js").read_text()
     used = set(re.findall(r"\bp\.(\w+)\b", js))
-    derived = {"s", "codes", "path", "sev", "money", "visits", "url", "status"}
+    derived = {"s", "codes", "path", "sev", "fix", "visits", "url", "status"}
     assert used - derived <= set(site.COLS), used - derived - set(site.COLS)
 
 

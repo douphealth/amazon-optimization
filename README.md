@@ -38,7 +38,7 @@ Console data, and writes one report. It never changes a website: every fix is a 
 
 | Priority | Finding | Fix |
 |---|---|---|
-| 1 | **GearUpToFit holds 2,012 of the Amazon links and gets no Google traffic.** It ranked for 100 US keywords in May 2026 and none since August. No technical block was found. **259 of its 272 `watch-match` pages share half or more of their text with another page** (two template groups of 177 and 78). Its 498 posts do not: 8 are flagged | Check Search Console > Manual actions and Pages > "Crawled, currently not indexed". If no manual action exists, the templated `watch-match` set is the most likely cause; this is evidence, not proof |
+| 1 | **GearUpToFit holds 2,012 of the Amazon links and gets no Google traffic.** It ranked for 100 US keywords in May 2026 and none since August. No technical block was found. **259 of its 272 `watch-match` pages share half or more of their text with another page** (two template groups of 177 and 78). Its 498 posts do not: 8 are flagged | Full evidence and the staged plan are in `docs/gearuptofit-indexation.md`. One check is still open: Search Console > Manual actions |
 | 2 | **Every WordPress site except Plantastic Haven rewrites Amazon links when the page is rendered.** Code snippets named "Hermes Portfolio Amazon Product Box OS v1" force a tracking ID on every Amazon link and "PGCC Amazon disclosure" adds a disclosure. Editing a post body there does not change the tracking ID on the live page (verified on one Mystical Digits post) | Change tracking IDs in those snippets, not in posts. On GearUpToFit, Mice Gone Guide and Efficient GPT Prompts the snippet is set to the bare `papalex-20` |
 | 3 | **582 live links use the bare `papalex-20` ID**: 512 on GearUpToFit `watch-match` pages and 57 on Efficient GPT Prompts. Their clicks can't be told apart in Associates reports | `watch-match` is a separate app; Efficient GPT Prompts needs its own tracking ID created in Associates Central first |
 | 4 | **Outdoor Misting has one untagged Amazon link** (`/comparing-outdoor-cooling-technologies/`, product B0BFGL8FBZ) and no affiliate statement on that page. The site is not WordPress, so the fixer cannot reach it | Add a tracking ID and a disclosure in the site's own code |
@@ -80,6 +80,8 @@ Changes made to live sites so far (`reports/2026-11-26/fix-log.csv`):
 | 2026-11-26 | plantastichaven.com/plants-that-look-like-spider-plants/ | Product box after the at-a-glance list | Live |
 | 2026-11-26 | 12 plantastichaven.com pages (listed in the fix log) | 22 links to a product that now shows plant food repointed to an Amazon search for potting mix | Live on all 12 |
 | 2026-11-26 | plantastichaven.com/dripping-water-in-philodendron-plants/ | FAQ block moved out of the table of contents, where an earlier edit had put it inside a link | Live |
+| 2026-11-26 | plantastichaven.com/string-of-pearls-plant-care/ | Title changed to match the search it shows for | Live (title and heading) |
+| 2026-11-26 | plantastichaven.com/how-to-start-a-philodendron/ | Heading changed to match the search it shows for | Heading live; the search title needs pasting into Yoast |
 | 2026-11-26 | mysticaldigits.com/challenge-numbers-overcome/ | Tracking ID in the post body changed to `papalex-md-20` | No effect: a render-time layer still outputs `papalex-20` |
 
 ## Run it

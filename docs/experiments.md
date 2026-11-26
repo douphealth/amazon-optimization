@@ -32,3 +32,19 @@ No traffic effect expected; the gain is that a click lands on the right product.
 On /dripping-water-in-philodendron-plants/ a three-question FAQ block had been inserted inside the
 last table-of-contents link. It was moved to just below the table of contents. Words and tags are
 unchanged. Watch the page's position (4.8) in the next Search Console pull.
+
+## 2026-11-26: titles matched to the searches Google shows them for (Plantastic Haven)
+
+| Page | Query (impressions, position, clicks in 14 days) | Old title | New title |
+|---|---|---|---|
+| /string-of-pearls-plant-care/ | "string of pearls indoor care" (465, 8.9, 0) | String of Pearls Plant Care: The Complete Guide to Growing Curio Rowleyanus Indoors | String of Pearls Indoor Care: Light, Watering, Soil & Fixes |
+| /how-to-start-a-philodendron/ | "how to grow philodendron" (440, 8.7, 0) | How to Start a Philodendron: Beginner Setup and Early Care Guide | How to Grow a Philodendron: Beginner Setup, Light, Soil & Watering |
+
+- String of pearls: the page title and the on-page heading both changed.
+- Philodendron: only the on-page heading changed. Its search title is a custom value stored in
+  Yoast, which the WordPress API cannot write. Paste the new title into Yoast's "SEO title" field.
+- The philodendron page also shows for "when to plant philodendron" (316 impressions). The article
+  does not answer that, so the title does not promise it. Adding a sourced paragraph on timing
+  would be the way to earn that query.
+- URLs did not change. **Review on:** 2026-12-17. **Success:** click-through rate above 2% at a
+  similar position. **Roll back if:** the page's average position falls by more than 5 places.

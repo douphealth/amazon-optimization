@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-from . import changes, config, crawl, data, fixer, fixes, gsc, indexnow, report, score
+from . import changes, config, crawl, data, fixer, fixes, gsc, indexnow, report, score, site
 
 
 def _sites(cfg, only):
@@ -49,6 +49,11 @@ def cmd_submit(cfg, args) -> None:
     print(f"log: {args.out}/indexnow-log.csv" + ("" if args.apply else "  (dry run: nothing was sent; add --apply)"))
 
 
+def cmd_site(cfg, args) -> None:
+    out = site.build(args.site_out, mirrors=[Path(m) for m in args.mirror or []])
+    print(f"dashboard written to {out}/index.html")
+
+
 def cmd_rank(cfg, args) -> None:
     pages_by_site, sitemaps = report.load_audit(args.out)
     gsc_by_site, gsc_meta = {}, {}
@@ -85,6 +90,7 @@ def main(argv=None) -> None:
         ("gsc-pull", cmd_gsc_pull, "download Search Console page data (needs a service account)"),
         ("fix", cmd_fix, "apply the safe fixes to WordPress (dry run unless --apply)"),
         ("submit", cmd_submit, "send new and changed pages to search engines via IndexNow (dry run unless --apply)"),
+        ("site", cmd_site, "build the static dashboard from the latest report"),
     ]:
         p = sub.add_parser(name, help=help_text)
         p.set_defaults(fn=fn)
@@ -94,6 +100,8 @@ def main(argv=None) -> None:
         p.add_argument("--days", type=int, default=28, help="Search Console window")
         p.add_argument("--apply", action="store_true", help="fix/submit: really save changes or send URLs")
         p.add_argument("--limit", type=int, help="fix: stop after this many pages")
+        p.add_argument("--site-out", type=Path, default=Path("dist"), help="site: folder to write the dashboard to")
+        p.add_argument("--mirror", nargs="*", help="site: extra folders to receive a copy of the dashboard")
         p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
     args = parser.parse_args(argv)
     args.fn(config.load(args.config), args)

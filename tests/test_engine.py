@@ -543,3 +543,32 @@ def test_indexnow_refuses_when_key_file_is_wrong(tmp_path):
     kw = dict(root=tmp_path / "state", get=lambda *a, **k: Resp(), post=lambda *a, **k: posted.append(1), log=lambda *_: None)
     assert indexnow.run(rows, tmp_path / "r", apply=True, key="b" * 32, **kw)[0].status == "key_file_invalid"
     assert indexnow.run(rows, tmp_path / "r", apply=True, key="", **kw)[0].status == "no_key" and posted == []
+
+
+def test_markdown_renderer_covers_report_syntax():
+    from ace import site
+    out = site.markdown("# Title\n\nA **bold** `code` line with https://example.com/a/ in it.\n\n- one\n- two\n  continued\n\n| Page | Clicks |\n|---|---|\n| https://example.com/x/ | 3 |\n| b | 4 |\n\n1. first\n2. second <b>\n", max_rows=1)
+    assert '<h1 id="title">Title</h1>' in out and "<strong>bold</strong>" in out and "<code>code</code>" in out
+    assert '<a href="https://example.com/a/">https://example.com/a/</a>' in out
+    assert "<ul><li>one</li><li>two continued</li></ul>" in out and "<ol><li>first</li><li>second &lt;b&gt;</li></ol>" in out
+    assert "<th>Page</th>" in out and out.count("<tr>") == 2 and "Showing 1 of 2 rows." in out
+
+
+def test_site_build(tmp_path, monkeypatch):
+    from ace import site
+    rep = tmp_path / "reports" / "2026-11-26"; rep.mkdir(parents=True)
+    (tmp_path / "reports" / "2026-11-25").mkdir()
+    (rep / "summary.md").write_text("# Audit\n\n## Portfolio\n\n| Site | Pages |\n|---|---|\n| Example | 2 |\n\n### Example\n- detail\n\n## Work queue: pages losing the most Amazon clicks\n\n| # | Page |\n|---|---|\n| 1 | https://example.com/a/ |\n")
+    (rep / "pages.csv").write_text("site,url,amazon_links,ga_amazon_clicks\nexample.com,https://example.com/a/,3,2\nexample.com,https://example.com/b/,1,\n")
+    (rep / "fix-log.csv").write_text("site,url,post_id,fixes,status,changes,still_failing_on_live_page\nexample.com,https://example.com/a/,7,box,fixed,box_added=1,\n")
+    (rep / "indexnow-log.csv").write_text("site,host,status,urls_new_or_changed,urls_unchanged,detail\nexample.com,example.com,submitted,2,0,HTTP 200 accepted\n")
+    docs = tmp_path / "docs"; docs.mkdir(); (docs / "experiments.md").write_text("# Experiments\n\nText.\n")
+    state = tmp_path / "state"; state.mkdir(); (state / "example.com.json").write_text('{"submitted": {"a": "1", "b": "2"}}')
+    out = site.build(tmp_path / "dist", reports=tmp_path / "reports", docs=docs, state=state, mirrors=[tmp_path / "public"])
+    index = (out / "index.html").read_text()
+    assert "Report of 2026-11-26" in index and "<b>2</b><span>pages crawled</span>" in index and "<b>4</b><span>Amazon links found</span>" in index
+    assert "pages submitted to search engines" in index and 'name="robots" content="noindex, nofollow"' in index
+    assert "<h3" not in index  # per-site detail stays in the full report
+    assert "Example" in (out / "report.html").read_text() and "box added: 1" in (out / "changes.html").read_text()
+    assert (out / "notes" / "experiments.html").exists() and 'href="../index.html"' in (out / "notes" / "experiments.html").read_text()
+    assert (out / "_headers").read_text().startswith("/*") and (tmp_path / "public" / "index.html").exists() and (out / "data" / "pages.csv").exists()

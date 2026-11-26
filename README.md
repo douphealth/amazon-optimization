@@ -18,6 +18,16 @@ Console data, and writes one report. It never changes a website: every fix is a 
 | `fixes/<site>/<page>.html` | Paste-ready "quick picks" box for pages whose links sit too deep |
 | `indexnow-log.csv` | What `ace submit` sent to search engines, per site |
 
+## Dashboard
+
+`python -m ace site` turns the latest report into a small static website (overview, full report,
+changes made, notes). `package.json` exists only so a static host such as Cloudflare Pages can build
+it: the build command is `npm run build`, and the site is written to `dist/` (copies go to `build/`,
+`public/`, `out/`, `_site/` and the project root, so the host's output-folder setting does not
+matter). The build reads files in the repository only; it never crawls. Every push, including the
+weekly audit's, republishes it. The pages ask search engines not to index them, but the address is
+public unless the host restricts access.
+
 ## What it checks on every page
 
 - No Amazon link at all, or the first link sits in the bottom half of the article
@@ -97,6 +107,7 @@ python -m ace run --site plantastichaven.com
 python -m ace rank --out reports/2026-11-26   # re-score a saved crawl after adding data (2 seconds)
 python -m ace fix --apply             # save the safe fixes to WordPress
 python -m ace submit --apply          # tell Bing and other engines about new and changed pages
+python -m ace site                    # build the dashboard into dist/
 python -m pytest -q
 ```
 
@@ -130,7 +141,7 @@ changes nothing. `docs/experiments.md` records each live change with its baselin
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 32 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 34 unit tests pass |
 | Fixer: product boxes | Applied to 4 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: blocked-product links | Applied to 12 live Plantastic Haven posts and confirmed on the rendered pages |
 | Search-engine submission (`ace submit`) | 2,386 pages sent for all 9 sites on 2026-11-26 and accepted; a repeat run sends only changed pages |

@@ -7,3 +7,21 @@ service-account*.json
 .env
 reports/*/audit.json
 backups/
+# dashboard build output
+/dist/
+/build/
+/public/
+/out/
+/_site/
+/index.html
+/report.html
+/changes.html
+/notes.html
+/notes/
+/_headers
+/robots.txt
+/data/pages.csv
+/data/links.csv
+/data/fix-log.csv
+/data/indexnow-log.csv
+node_modules/

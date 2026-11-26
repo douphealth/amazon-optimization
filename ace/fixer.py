@@ -33,7 +33,7 @@ CLEARS = {
     "rel": {"missing_rel_sponsored"},
     "disclosure": {"no_disclosure"},
     "blocked": {"blocked_product"},
-    "box": {"first_link_late", "first_link_very_late"},
+    "box": {"first_link_late", "first_link_very_late", "no_amazon_links"},
 }
 
 
@@ -61,7 +61,9 @@ def plan(cfg: Config, rows: list[Row], sites: list[str] | None = None) -> list[A
         for name in ("rel", "disclosure", "blocked"):
             if issues & CLEARS[name]:
                 wanted.append(name)
-        if issues & CLEARS["box"] and row.score > 0 and fixes.box(row, cfg.blocked_asins):
+        clicks = row.gsc.clicks if row.gsc else 0
+        late = issues & {"first_link_late", "first_link_very_late"}
+        if fixes.curated(row) or (late and clicks >= cfg.box_min_clicks and fixes.box(row, cfg.blocked_asins)):
             wanted.append("box")
         wanted = [f for f in wanted if f in cfg.auto_fix]
         if wanted:
@@ -81,7 +83,8 @@ def transform_post(cfg: Config, action: Action, raw: str) -> tuple[str, Counter]
     if "rel" in action.fixes:
         html, counts["rel_added"] = transform.fix_rel(html)
     if "box" in action.fixes:
-        html, counts["box_added"] = transform.insert_box(html, fixes.box(action.row, cfg.blocked_asins) or "")
+        box = fixes.curated(action.row) or fixes.box(action.row, cfg.blocked_asins) or ""
+        html, counts["box_added"] = transform.insert_box(html, box)
     if "disclosure" in action.fixes:
         html, counts["disclosure_added"] = transform.add_disclosure(html, site.name)
     return html, +counts
@@ -102,7 +105,7 @@ def run(
             continue
         wp = clients.setdefault(site.domain, wp_factory(site.domain, site.user_agent))
         try:
-            post = wp.find(url)
+            post = wp.find(url, action.row.page.h1 or action.row.page.title)
             if post is None:
                 action.status = "not_in_wordpress"
                 continue
@@ -144,13 +147,28 @@ def run(
     return actions
 
 
+LOG_FIELDS = ["site", "url", "post_id", "fixes", "status", "changes", "still_failing_on_live_page"]
+
+
 def write_log(out: Path, actions: list[Action]) -> None:
+    """Write fix-log.csv, keeping earlier rows from the same report. A later run that finds
+    nothing left to do on a page must not erase the record that the page was fixed."""
     out.mkdir(parents=True, exist_ok=True)
-    with (out / "fix-log.csv").open("w", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["site", "url", "post_id", "fixes", "status", "changes", "still_failing_on_live_page"])
-        for a in actions:
-            w.writerow([a.row.site.domain, a.row.page.url, a.post_id or "", " ".join(a.fixes), a.status, a.detail, " ".join(a.remaining)])
+    path = out / "fix-log.csv"
+    rows: dict[str, dict] = {}
+    if path.exists():
+        with path.open() as f:
+            rows = {r["url"]: r for r in csv.DictReader(f)}
+    for a in actions:
+        new = dict(zip(LOG_FIELDS, [a.row.site.domain, a.row.page.url, a.post_id or "", " ".join(a.fixes), a.status, a.detail, " ".join(a.remaining)]))
+        old = rows.get(new["url"])
+        if old and old["status"] in ("fixed", "saved_but_live_page_unchanged") and a.status != "fixed":
+            continue
+        rows[new["url"]] = new
+    with path.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=LOG_FIELDS)
+        w.writeheader()
+        w.writerows(rows.values())
 
 
 def summarize(actions: list[Action]) -> str:

@@ -94,7 +94,7 @@ def page_issues(page: Page, site: Site, cfg: Config) -> tuple[list[str], float]:
         issues.append("short_link")
     if any(not l.rel_ok for l in page.links):
         issues.append("missing_rel_sponsored")
-    if page.links and not page.disclosure:
+    if page.links and not page.affiliate_notice:
         issues.append("no_disclosure")
     if links and all(l.kind == "search" for l in links):
         issues.append("search_links_only")

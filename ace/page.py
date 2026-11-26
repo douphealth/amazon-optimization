@@ -16,6 +16,14 @@ SHORT_HOST = re.compile(r"^(?:www\.)?(?:amzn\.to|amzn\.com|a\.co)$", re.I)
 ASIN = re.compile(r"/(?:dp|gp/product|gp/aw/d|exec/obidos/ASIN|product)/([A-Z0-9]{10})(?:[/?]|$)")
 CLOAK_PATH = re.compile(r"^/(?:go|recommends|recommend|out|refer|link|aff)/[^/]+/?$", re.I)
 DISCLOSURE = re.compile(r"as an amazon associate", re.I)
+# Any plain-language affiliate statement. A bare "Affiliate disclosure" footer link does not count.
+AFFILIATE_NOTICE = re.compile(
+    r"as an amazon associate|earns? from qualifying purchases"
+    r"|may earn (?:a |an )?(?:small )?(?:affiliate )?commission"
+    r"|commission from qualifying purchases"
+    r"|(?:are|contains?|may be|includes?) affiliate links",
+    re.I,
+)
 # The OneLink loader script. Matching the bare word "onelink" gave false positives.
 ONELINK = re.compile(r"amazon-adsystem\.com/widgets/onejs", re.I)
 COMMERCIAL = re.compile(r"\b(best|top[- ]\d+|review|reviews|vs|versus|comparison|buying guide|worth it)\b", re.I)
@@ -23,6 +31,9 @@ GENERIC_ANCHOR = re.compile(
     r"^(view|shop|check|see|buy|get|find|compare)?\b.*\b(amazon|price|prices|deal|deals|it here|now)\b.*$|^(click here|buy now|here)$",
     re.I,
 )
+
+_CODE = re.compile(r"<(script|style)\b.*?</\1\s*>", re.I | re.S)
+_TAGS = re.compile(r"<[^>]+>")
 
 # Text inside these elements is site chrome, not article content.
 CHROME = {"nav", "header", "footer", "aside", "form"}
@@ -66,7 +77,8 @@ class Page:
     links: list[Link] = field(default_factory=list)
     cloaked_links: int = 0
     amazon_images: int = 0
-    disclosure: bool = False
+    disclosure: bool = False        # the exact Amazon Associates statement is on the page
+    affiliate_notice: bool = False  # some plain-language affiliate statement is in the page text
     onelink: bool = False
     error: str = ""
     sketch: list[int] = field(default_factory=list)  # content fingerprint, see ace/dupes.py
@@ -231,5 +243,7 @@ def parse(url: str, html: str) -> Page:
     page.title = " ".join(page.title.split())
     page.h1 = " ".join(page.h1.split())
     page.disclosure = bool(DISCLOSURE.search(html))
+    visible = " ".join(_TAGS.sub(" ", _CODE.sub(" ", html)).split())
+    page.affiliate_notice = bool(AFFILIATE_NOTICE.search(visible))
     page.onelink = page.onelink or bool(ONELINK.search(html))
     return page

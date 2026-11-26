@@ -43,6 +43,16 @@ def short_name(name: str, limit: int = 70) -> str:
     return name
 
 
+CURATED = Path("boxes")  # hand-written boxes: boxes/<domain>/<url-slug>.html
+
+
+def curated(row: Row, root: Path = CURATED) -> str | None:
+    """A hand-written box for this page, if one exists. It overrides the generated one."""
+    slug = urlsplit(row.page.url).path.strip("/").replace("/", "__") or "home"
+    path = root / row.site.domain / f"{slug}.html"
+    return path.read_text() if path.exists() else None
+
+
 def box(row: Row, blocked: frozenset[str] | set[str] = frozenset()) -> str | None:
     """Return the box <div>, or None if the page has fewer than two nameable, non-blocked products."""
     seen, items = set(), []

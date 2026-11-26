@@ -118,9 +118,48 @@ def replace_blocked(
     return ANCHOR.sub(repl, html), replaced, manual
 
 
-def _wrap(html: str, fragment: str) -> str:
-    """Block-editor posts need raw HTML inside an HTML block."""
-    return f"<!-- wp:html -->\n{fragment}\n<!-- /wp:html -->" if "<!-- wp:" in html else fragment
+BLOCK_COMMENT = re.compile(r"<!--\s*(/?)wp:([a-z0-9/-]+)[^>]*?(/?)-->", re.I)
+CONTAINER = re.compile(r"<(/?)(?:div|section|article|aside|nav|table|ul|ol|blockquote|figure|details)\b[^>]*>", re.I)
+
+
+def _open_block(html: str, at: int) -> str | None:
+    """Name of the innermost block-editor block that is still open at position `at`, if any."""
+    stack: list[str] = []
+    for m in BLOCK_COMMENT.finditer(html, 0, at):
+        closing, name, self_closing = m.groups()
+        if self_closing:
+            continue
+        if closing:
+            if stack:
+                stack.pop()
+        else:
+            stack.append(name.lower())
+    return stack[-1] if stack else None
+
+
+def _place(html: str, fragment: str, at: int) -> str | None:
+    """Insert `fragment` at `at`, respecting the block editor's structure.
+
+    Top level of a block post: wrap in an HTML block. Inside an HTML block, or in a classic
+    post: insert as is. Inside any other block: refuse (None), since that would corrupt it."""
+    inside = _open_block(html, at)
+    if inside not in (None, "html"):
+        # Right at the end of a paragraph-like block: step past its closing comment instead.
+        closing = re.compile(rf"\s*<!--\s*/wp:{re.escape(inside)}\s*-->", re.I).match(html, at)
+        if not closing:
+            return None
+        at = closing.end()
+        inside = _open_block(html, at)
+        if inside not in (None, "html"):
+            return None
+    if inside is None and "<!-- wp:" in html:
+        fragment = f"<!-- wp:html -->\n{fragment}\n<!-- /wp:html -->"
+    return f"{html[:at].rstrip()}\n\n{fragment}\n\n{html[at:].lstrip()}"
+
+
+def _depth(html: str, at: int) -> int:
+    """How many container elements (div, section, table, list...) are open at position `at`."""
+    return sum(-1 if m.group(1) else 1 for m in CONTAINER.finditer(html, 0, at))
 
 
 def add_disclosure(html: str, site_name: str) -> tuple[str, int]:
@@ -131,22 +170,42 @@ def add_disclosure(html: str, site_name: str) -> tuple[str, int]:
         f'<p class="{DISCLOSURE_CLASS}" style="font-size:14px;color:#555;margin:0 0 16px"><em>As an Amazon '
         f"Associate, {htmllib.escape(site_name)} earns from qualifying purchases.</em></p>"
     )
-    return f"{_wrap(html, line)}\n\n{html}", 1
+    if "<!-- wp:" in html:
+        line = f"<!-- wp:html -->\n{line}\n<!-- /wp:html -->"
+    return f"{line}\n\n{html}", 1
+
+
+PLACE_AFTER = re.compile(r"^\s*<!--\s*place-after:\s*(.+?)\s*-->\s*\n", re.I)
+MIN_INTRO_WORDS = 30
 
 
 def insert_box(html: str, box: str) -> tuple[str, int]:
-    """Insert a product box after the opening paragraph (or before the first H2).
-    Skipped when the post has neither, or already has a box."""
+    """Insert a product box near the top of a post.
+
+    A box may start with `<!-- place-after: REGEX -->` to go right after the first match of
+    REGEX (hand-written boxes use this). Otherwise it goes after the first intro paragraph that
+    is not nested inside a callout, or failing that just before the first H2 when the post has
+    an intro. Skipped when no safe place exists or the post already has a box."""
     if BOX_CLASS in html or BOX_CLASS not in box:
         return html, 0
-    h2 = FIRST_H2.search(html)
-    limit = h2.start() if h2 else len(html)
-    p_end = FIRST_P_END.search(html, 0, limit)
-    if p_end:
-        at = p_end.end()
-    elif h2:
-        at = h2.start()
+    directive = PLACE_AFTER.match(box)
+    if directive:
+        spot = re.search(directive.group(1), html, re.I | re.S)
+        at = spot.end() if spot else None
+        box = box[directive.end():]
     else:
+        at = None
+        h2 = FIRST_H2.search(html)
+        if h2:
+            h2_depth = _depth(html, h2.start())
+            for p_end in FIRST_P_END.finditer(html, 0, h2.start()):
+                if _depth(html, p_end.end()) <= h2_depth:
+                    at = p_end.end()
+                    break
+            intro_words = len(re.sub(r"<(style|script)\b.*?</\1>|<[^>]+>", " ", html[: h2.start()], flags=re.S | re.I).split())
+            if at is None and intro_words >= MIN_INTRO_WORDS:
+                at = h2.start()
+    if at is None:
         return html, 0
-    fragment = _wrap(html, box.strip())
-    return f"{html[:at].rstrip()}\n\n{fragment}\n\n{html[at:].lstrip()}", 1
+    placed = _place(html, box.strip(), at)
+    return (placed, 1) if placed is not None else (html, 0)

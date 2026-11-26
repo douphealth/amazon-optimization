@@ -278,7 +278,7 @@ def test_transforms_are_precise_and_idempotent():
     assert t.insert_box("no paragraphs or headings", box)[1] == 0
     assert t.insert_box(RAW, "<div>unmarked</div>")[1] == 0  # refuses a box it could not find again
     blocks, _ = t.insert_box("<!-- wp:paragraph --><p>Hi</p><!-- /wp:paragraph --><h2>x</h2>", box)
-    assert '<!-- wp:html -->\n<div class="ace-quick-picks">' in blocks
+    assert '<!-- /wp:paragraph -->\n\n<!-- wp:html -->\n<div class="ace-quick-picks">' in blocks  # stepped past the block
 
 
 class FakeWP:
@@ -289,7 +289,7 @@ class FakeWP:
     def __init__(self, domain, user_agent):
         pass
 
-    def find(self, url):
+    def find(self, url, title=""):
         raw = FakeWP.store.get(url)
         return None if raw is None else {"kind": "posts", "id": 7, "link": url, "modified": "x", "raw": raw}
 
@@ -351,7 +351,7 @@ def test_fixer_respects_config_and_access(tmp_path):
     rows[0].site.skip_fix = ""
 
     class Locked(FakeWP):
-        def find(self, url):
+        def find(self, url, title=""):
             from ace.wp import NoAccess
             raise NoAccess("401")
 
@@ -364,3 +364,95 @@ def test_wp_auth_env(monkeypatch):
     monkeypatch.setenv("WP_AUTH_PLANTASTICHAVEN_COM", "alex:abcd efgh")
     assert wp.auth_for("plantastichaven.com") == ("alex", "abcd efgh")
     assert wp.auth_for("example.com") is None
+
+
+def test_affiliate_notice_wording_counts_as_disclosure():
+    base = "<html><body><article>{}<p>" + "word " * 100 + '</p><a href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ex-20" rel="sponsored">Mix</a></article><footer><a href="/affiliate-disclosure/">Affiliate disclosure</a></footer></body></html>'
+    for notice in ("<p>When you buy through links on our site, we may earn a commission at no cost to you.</p>",
+                   "<p>Transparency: Some product links on this page are affiliate links.</p>",
+                   "<p>GearUpToFit may earn a commission from qualifying purchases through links on this page.</p>"):
+        page = parse("https://example.com/a/", base.format(notice)); page.status = 200
+        assert page.affiliate_notice and not page.disclosure
+        assert "no_disclosure" not in score.page_issues(page, SITE, CFG)[0]
+    bare = parse("https://example.com/a/", base.format("")); bare.status = 200  # footer link alone is not a statement
+    assert not bare.affiliate_notice and "no_disclosure" in score.page_issues(bare, SITE, CFG)[0]
+
+
+def test_box_placement_rules():
+    from ace import transform as t
+    box = '<div class="ace-quick-picks">BOX</div>'
+    intro = "Intro sentence. " * 20
+    # Skips a paragraph nested in a callout; uses the first top-level paragraph instead.
+    html = f'<div class="answer"><p>Quick answer.</p></div><p>{intro}</p><h2>One</h2><p>Body</p>'
+    out, n = t.insert_box(html, box)
+    assert n == 1 and out.index("</div><p>Intro") < out.index("ace-quick-picks") < out.index("<h2>One")
+    assert out.index(f"{intro}</p>") < out.index("ace-quick-picks")
+    # No top-level paragraph before the H2, but there is an intro: goes just before the H2.
+    html = f'<div class="answer"><p>{intro}</p></div><nav><ul><li>toc</li></ul></nav><h2>One</h2>'
+    out, n = t.insert_box(html, box)
+    assert n == 1 and out.index("</nav>") < out.index("ace-quick-picks") < out.index("<h2>One")
+    # Post that opens with a heading and no intro: left alone.
+    assert t.insert_box("<h2>One</h2><p>Body</p><h2>Two</h2>", box)[1] == 0
+    # Hand-written placement.
+    placed, n = t.insert_box("<h2>One</h2><table><tr><td>x</td></tr></table><p>after</p>", "<!-- place-after: </table> -->\n" + box)
+    assert n == 1 and "</table>\n\n<div class=\"ace-quick-picks\">BOX</div>\n\n<p>after" in placed and "place-after" not in placed
+    assert t.insert_box("<h2>One</h2><p>x</p>", "<!-- place-after: </table> -->\n" + box)[1] == 0
+    # Block editor: wrapped at top level, raw inside an HTML block, refused inside other blocks.
+    top = f"<!-- wp:paragraph --><p>{intro}</p><!-- /wp:paragraph --><!-- wp:heading --><h2>One</h2><!-- /wp:heading -->"
+    out, n = t.insert_box(top, "<!-- place-after: <!-- /wp:paragraph --> -->\n" + box)
+    assert n == 1 and "<!-- wp:html -->\n<div class=\"ace-quick-picks\">" in out
+    inside_html = f"<!-- wp:html --><div class=\"a\"><p>Answer</p></div><h2>One</h2><!-- /wp:html -->"
+    out, n = t.insert_box(inside_html, '<!-- place-after: <div class="a">.*?</div> -->\n' + box)
+    assert n == 1 and out.count("<!-- wp:html -->") == 1 and '</div>\n\n<div class="ace-quick-picks">' in out
+    assert t.insert_box(top, "<!-- place-after: Intro sentence -->\n" + box)[1] == 0  # would land inside a paragraph block
+
+
+def test_curated_box_and_click_threshold(tmp_path, monkeypatch):
+    from ace import fixer, fixes
+    f, cfg, rows, url, raw, verify = _fixer_setup(tmp_path)
+    cfg.auto_fix = ["box"]
+    assert fixer.plan(cfg, rows) == []  # no Google clicks, no hand-written box
+    folder = tmp_path / "boxes" / "example.com"; folder.mkdir(parents=True)
+    (folder / "soil-guide.html").write_text('<!-- place-after: <h2>Soil</h2> -->\n<div class="ace-quick-picks">HAND</div>')
+    monkeypatch.setattr(fixes, "CURATED", tmp_path / "boxes")
+    monkeypatch.setattr(fixes.curated, "__defaults__", (tmp_path / "boxes",))
+    action = fixer.plan(cfg, rows)[0]
+    new, counts = fixer.transform_post(cfg, action, raw)
+    assert counts["box_added"] == 1 and '<h2>Soil</h2>\n\n<div class="ace-quick-picks">HAND</div>' in new
+
+
+def test_wp_find_falls_back_to_search():
+    from ace.wp import WordPress
+
+    class Resp:
+        status_code = 200
+        url = "x"
+        def __init__(self, data): self._d = data
+        def json(self): return self._d
+        def raise_for_status(self): pass
+
+    class Session:
+        headers = {}
+        calls = []
+        def get(self, url, params=None, timeout=0):
+            self.calls.append(url)
+            item = {"id": 9, "link": "https://example.com/custom-url/", "modified": "m", "status": "publish", "content": {"raw": "RAW"}}
+            if url.endswith("/search"):
+                return Resp([{"id": 9, "url": "https://example.com/custom-url/", "subtype": "post"}])
+            if url.endswith("/posts/9"):
+                return Resp(item)
+            return Resp([])  # slug lookups find nothing
+
+    wp = WordPress("example.com", "ua", session=Session())
+    assert wp.find("https://example.com/custom-url/") is None
+    found = wp.find("https://example.com/custom-url/", "The Title")
+    assert found == {"kind": "posts", "id": 9, "link": "https://example.com/custom-url/", "modified": "m", "raw": "RAW"}
+
+
+def test_fix_log_keeps_earlier_fixed_rows(tmp_path):
+    fixer, cfg, rows, url, raw, verify = _fixer_setup(tmp_path)
+    kwargs = dict(apply=True, backups=tmp_path / "b", pause=0, wp_factory=FakeWP, verify=verify, log=lambda *_: None)
+    fixer.run(cfg, rows, tmp_path / "r", **kwargs)
+    fixer.run(cfg, rows, tmp_path / "r", **kwargs)  # second run finds nothing to change
+    log = (tmp_path / "r" / "fix-log.csv").read_text()
+    assert log.count(url) == 1 and ",fixed," in log and "nothing_to_change" not in log

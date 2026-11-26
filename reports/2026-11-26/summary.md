@@ -5,7 +5,7 @@
 | Site | Pages crawled | Loaded OK | Pages with Amazon links | Amazon links | Typical first-link depth | Pages Google showed | Google clicks |
 |---|---|---|---|---|---|---|---|
 | GearUpToFit | 801 | 801 | 483 | 2012 | 7% | 0 | 0 |
-| Plantastic Haven | 160 | 160 | 106 | 656 | 24% | 46 | 50 |
+| Plantastic Haven | 160 | 160 | 107 | 659 | 24% | 46 | 50 |
 | Mice Gone Guide | 46 | 46 | 22 | 95 | 52% | 4 | 0 |
 | GearUpToGrow | 109 | 109 | 29 | 117 | 68% | 5 | 1 |
 | Affiliate Marketing for Success | 120 | 120 | 2 | 3 | 22% | no data | no data |
@@ -18,7 +18,6 @@
 - Tracking IDs in use: `papalex-gutf-20` (1474 links), `papalex-20` (522 links)
 - 318 pages: no Amazon link in the article
 - 268 pages: uses a tracking ID that is not this site's (clicks cannot be attributed to it)
-- 165 pages: Amazon links but no "As an Amazon Associate" disclosure
 - 33 pages: first Amazon link is in the bottom half
 - 16 pages: only Amazon search links, no product links
 - 14 pages: first Amazon link is 30-50% down
@@ -28,8 +27,8 @@
 - No OneLink script found (non-US visitors land on amazon.com)
 
 ### Plantastic Haven (plantastichaven.com)
-- Tracking IDs in use: `papalex-ph-20` (654 links), `papalex-20` (2 links)
-- 54 pages: no Amazon link in the article
+- Tracking IDs in use: `papalex-ph-20` (657 links), `papalex-20` (2 links)
+- 53 pages: no Amazon link in the article
 - 40 pages: first Amazon link is in the bottom half
 - 24 pages: only Amazon search links, no product links
 - 12 pages: links to a product listed as wrong or gone in sites.yaml
@@ -44,7 +43,6 @@
 - 24 pages: no Amazon link in the article
 - 12 pages: first Amazon link is in the bottom half
 - 2 pages: first Amazon link is 30-50% down
-- 1 pages: Amazon links but no "As an Amazon Associate" disclosure
 - No OneLink script found (non-US visitors land on amazon.com)
 
 ### GearUpToGrow (gearuptogrow.com)
@@ -59,7 +57,6 @@
 - Tracking IDs in use: `papalex-amfs-20` (3 links)
 - 118 pages: no Amazon link in the article
 - 2 pages: no meta description
-- 1 pages: Amazon links but no "As an Amazon Associate" disclosure
 - 1 pages: first Amazon link is 30-50% down
 - No OneLink script found (non-US visitors land on amazon.com)
 
@@ -87,7 +84,8 @@
 - 1 pages: first Amazon link is in the bottom half
 - 1 pages: Amazon link with no tracking tag (earns nothing)
 - 1 pages: Amazon link without rel=sponsored/nofollow
-- 1 pages: Amazon links but no "As an Amazon Associate" disclosure
+- 1 pages: Amazon links but no affiliate disclosure statement anywhere on the page
+- The exact statement "As an Amazon Associate I earn from qualifying purchases" was not found on any page. Amazon requires it somewhere on the site
 - No OneLink script found (non-US visitors land on amazon.com)
 
 ### Efficient GPT Prompts (efficientgptprompts.com)
@@ -95,13 +93,19 @@
 - 468 pages: no Amazon link in the article
 - 18 pages: first Amazon link is in the bottom half
 - 14 pages: only Amazon search links, no product links
-- 9 pages: Amazon links but no "As an Amazon Associate" disclosure
 - 5 pages: no meta description
+- 1 pages: Amazon links but no affiliate disclosure statement anywhere on the page
 - No OneLink script found (non-US visitors land on amazon.com)
 
 ## Changes since 2026-11-25
 
-No change in the tracked checks.
+| Site | Check | Before | Now | Change |
+|---|---|---|---|---|
+| gearuptofit.com | Amazon links but no affiliate disclosure statement anywhere on the page | 165 | 0 | -165 |
+| plantastichaven.com | no Amazon link in the article | 54 | 53 | -1 |
+| micegoneguide.com | Amazon links but no affiliate disclosure statement anywhere on the page | 1 | 0 | -1 |
+| affiliatemarketingforsuccess.com | Amazon links but no affiliate disclosure statement anywhere on the page | 1 | 0 | -1 |
+| efficientgptprompts.com | Amazon links but no affiliate disclosure statement anywhere on the page | 9 | 1 | -8 |
 
 Not compared (new checks the earlier report did not run): under 300 words of article text, shares half or more of its text with another page on the site.
 
@@ -117,28 +121,28 @@ Not compared (new checks the earlier report did not run): under 300 words of art
 | 6 | https://plantastichaven.com/house-plants-in-fish-tank/ | 1 | 198 | 10.5 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.95 |
 | 7 | https://plantastichaven.com/spider-plant-vs-dracaena/ | 2 | 190 | 8.6 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.75 |
 | 8 | https://www.outdoormisting.com/popular-outdoor-cooling-brands/ | 0 | 552 | 18.0 | none | no Amazon link in the article | 4.42 |
-| 9 | https://plantastichaven.com/string-of-pearls-plant-care/ | 0 | 512 | 10.7 | none | no meta description; no Amazon link in the article; Google shows it but few people click (title/description) | 4.1 |
-| 10 | https://plantastichaven.com/how-to-start-a-philodendron/ | 0 | 940 | 8.3 | 24% | Google shows it but few people click (title/description) | 2.82 |
-| 11 | https://plantastichaven.com/yellow-house-plants/ | 3 | 292 | 18.0 | 64% | first Amazon link is in the bottom half; only Amazon search links, no product links | 2.1 |
-| 12 | https://plantastichaven.com/blue-house-plants/ | 1 | 259 | 17.0 | none | no Amazon link in the article | 2.07 |
-| 13 | https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/ | 0 | 192 | 50.1 | none | no Amazon link in the article | 1.54 |
-| 14 | https://micegoneguide.com/foods-that-attract-mice/ | 0 | 175 | 23.3 | none | no Amazon link in the article | 1.4 |
-| 15 | https://plantastichaven.com/houseplants-for-low-light/ | 0 | 229 | 59.5 | 62% | first Amazon link is in the bottom half; only Amazon search links, no product links | 1.28 |
-| 16 | https://plantastichaven.com/snake-plant-leaves-curling-causes-and-fixes/ | 0 | 142 | 44.3 | none | no Amazon link in the article | 1.14 |
-| 17 | https://plantastichaven.com/houseplants-with-colorful-foliage/ | 0 | 139 | 38.5 | none | no Amazon link in the article | 1.11 |
-| 18 | https://www.outdoormisting.com/future-trends-outdoor-cooling-solutions/ | 1 | 91 | 36.3 | none | no Amazon link in the article | 1.0 |
-| 19 | https://gearuptogrow.com/productivity/best-habit-tracker-apps/ | 0 | 124 | 43.6 | none | no Amazon link in the article | 0.99 |
-| 20 | https://gearuptogrow.com/productivity/context-switching/ | 0 | 157 | 64.9 | 81% | first Amazon link is in the bottom half | 0.88 |
-| 21 | https://plantastichaven.com/house-plants-with-purple-leaves/ | 0 | 153 | 46.6 | 85% | first Amazon link is in the bottom half | 0.86 |
-| 22 | https://plantastichaven.com/are-spider-plants-toxic-to-cats/ | 0 | 153 | 60.2 | 73% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.86 |
-| 23 | https://gearuptogrow.com/learning/active-recall/ | 1 | 152 | 44.3 | 68% | first Amazon link is in the bottom half | 0.85 |
-| 24 | https://plantastichaven.com/what-does-philodendron-look-like/ | 0 | 94 | 21.1 | none | no Amazon link in the article | 0.75 |
-| 25 | https://micegoneguide.com/how-to-remove-mice-droppings-safely/ | 0 | 129 | 59.8 | 77% | first Amazon link is in the bottom half | 0.72 |
-| 26 | https://plantastichaven.com/succulent-soil-mix/ | 1 | 67 | 27.6 | 80% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.7 |
-| 27 | https://plantastichaven.com/houseplants-for-air-conditioning/ | 1 | 105 | 32.5 | 60% | first Amazon link is in the bottom half | 0.7 |
-| 28 | https://www.outdoormisting.com/how-evaporative-coolers-work/ | 0 | 88 | 62.7 | none | no Amazon link in the article | 0.7 |
-| 29 | https://plantastichaven.com/indoor-plant-care/ | 0 | 124 | 54.0 | 61% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.69 |
-| 30 | https://plantastichaven.com/airplane-plant-vs-spider-plant/ | 0 | 68 | 19.6 | none | no Amazon link in the article | 0.54 |
+| 9 | https://plantastichaven.com/how-to-start-a-philodendron/ | 0 | 940 | 8.3 | 24% | Google shows it but few people click (title/description) | 2.82 |
+| 10 | https://plantastichaven.com/yellow-house-plants/ | 3 | 292 | 18.0 | 64% | first Amazon link is in the bottom half; only Amazon search links, no product links | 2.1 |
+| 11 | https://plantastichaven.com/blue-house-plants/ | 1 | 259 | 17.0 | none | no Amazon link in the article | 2.07 |
+| 12 | https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/ | 0 | 192 | 50.1 | none | no Amazon link in the article | 1.54 |
+| 13 | https://micegoneguide.com/foods-that-attract-mice/ | 0 | 175 | 23.3 | none | no Amazon link in the article | 1.4 |
+| 14 | https://plantastichaven.com/houseplants-for-low-light/ | 0 | 229 | 59.5 | 62% | first Amazon link is in the bottom half; only Amazon search links, no product links | 1.28 |
+| 15 | https://plantastichaven.com/snake-plant-leaves-curling-causes-and-fixes/ | 0 | 142 | 44.3 | none | no Amazon link in the article | 1.14 |
+| 16 | https://plantastichaven.com/houseplants-with-colorful-foliage/ | 0 | 139 | 38.5 | none | no Amazon link in the article | 1.11 |
+| 17 | https://www.outdoormisting.com/future-trends-outdoor-cooling-solutions/ | 1 | 91 | 36.3 | none | no Amazon link in the article | 1.0 |
+| 18 | https://gearuptogrow.com/productivity/best-habit-tracker-apps/ | 0 | 124 | 43.6 | none | no Amazon link in the article | 0.99 |
+| 19 | https://gearuptogrow.com/productivity/context-switching/ | 0 | 157 | 64.9 | 81% | first Amazon link is in the bottom half | 0.88 |
+| 20 | https://plantastichaven.com/house-plants-with-purple-leaves/ | 0 | 153 | 46.6 | 85% | first Amazon link is in the bottom half | 0.86 |
+| 21 | https://plantastichaven.com/are-spider-plants-toxic-to-cats/ | 0 | 153 | 60.2 | 73% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.86 |
+| 22 | https://gearuptogrow.com/learning/active-recall/ | 1 | 152 | 44.3 | 68% | first Amazon link is in the bottom half | 0.85 |
+| 23 | https://plantastichaven.com/what-does-philodendron-look-like/ | 0 | 94 | 21.1 | none | no Amazon link in the article | 0.75 |
+| 24 | https://micegoneguide.com/how-to-remove-mice-droppings-safely/ | 0 | 129 | 59.8 | 77% | first Amazon link is in the bottom half | 0.72 |
+| 25 | https://plantastichaven.com/succulent-soil-mix/ | 1 | 67 | 27.6 | 80% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.7 |
+| 26 | https://plantastichaven.com/houseplants-for-air-conditioning/ | 1 | 105 | 32.5 | 60% | first Amazon link is in the bottom half | 0.7 |
+| 27 | https://www.outdoormisting.com/how-evaporative-coolers-work/ | 0 | 88 | 62.7 | none | no Amazon link in the article | 0.7 |
+| 28 | https://plantastichaven.com/indoor-plant-care/ | 0 | 124 | 54.0 | 61% | first Amazon link is in the bottom half; only Amazon search links, no product links | 0.69 |
+| 29 | https://plantastichaven.com/airplane-plant-vs-spider-plant/ | 0 | 68 | 19.6 | none | no Amazon link in the article | 0.54 |
+| 30 | https://plantastichaven.com/philodendron-birkin/ | 0 | 63 | 47.7 | none | no Amazon link in the article | 0.5 |
 
 ## Title and description rewrites: shown on page 1 but rarely clicked
 

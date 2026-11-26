@@ -15,7 +15,14 @@ blocked_asins:
 
 # Fixes `ace fix --apply` may make on its own. Remove a name to switch that fix off.
 # See ace/fixer.py for exactly what each one does.
-auto_fix: [tags, rel, disclosure, blocked, box]
+# `tags` and `disclosure` are off: on these sites tracking IDs and disclosures are added when the
+# page is rendered (the "Hermes Portfolio Amazon Product Box OS" and "PGCC Amazon disclosure"
+# code snippets), so editing the post body does not change the live page. Verified 2026-11-26.
+# `blocked` is off until the product in blocked_asins is confirmed wrong by a second check.
+auto_fix: [rel, box]
+
+# Auto-generated boxes only go on pages with at least this many Google clicks in the data window.
+box_min_clicks: 1
 
 defaults:
   user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"

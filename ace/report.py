@@ -24,7 +24,7 @@ ISSUE_TEXT = {
     "other_site_tag": "uses a tracking ID that is not this site's (clicks cannot be attributed to it)",
     "short_link": "amzn.to short link (tag cannot be checked)",
     "missing_rel_sponsored": "Amazon link without rel=sponsored/nofollow",
-    "no_disclosure": "Amazon links but no \"As an Amazon Associate\" disclosure",
+    "no_disclosure": "Amazon links but no affiliate disclosure statement anywhere on the page",
     "search_links_only": "only Amazon search links, no product links",
     "cloaked_links": "redirect-style links (/go/, /recommends/)",
     "blocked_product": "links to a product listed as wrong or gone in sites.yaml",
@@ -127,6 +127,8 @@ def _site_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list
                 block.append(f"- {n} sitemap URLs returned {code.removeprefix('http_')}")
         if dupes:
             block.append(f"- {dupes} URLs are listed in more than one sitemap")
+        if with_links and not any(r.page.disclosure for r in ok):
+            block.append("- The exact statement \"As an Amazon Associate I earn from qualifying purchases\" was not found on any page. Amazon requires it somewhere on the site")
         if ok and not any(r.page.onelink for r in ok) and with_links:
             block.append("- No OneLink script found (non-US visitors land on amazon.com)")
         if len(block) > 1:

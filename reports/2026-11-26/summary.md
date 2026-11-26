@@ -23,7 +23,7 @@
 - 14 pages: first Amazon link is 30-50% down
 - 5 pages: no meta description
 - 5 pages: amzn.to short link (tag cannot be checked)
-- 4 pages: produces Amazon clicks but is set to noindex, so search engines will drop it
+- 1 pages: produces Amazon clicks but is set to noindex, so search engines will drop it
 - 1 URLs are listed in more than one sitemap
 - No OneLink script found (non-US visitors land on amazon.com)
 
@@ -121,11 +121,11 @@ Not compared (new checks the earlier report did not run): under 300 words of art
 | https://gearuptofit.com/shoe-finder/ | 5 | yes | yes | 0 | none | no Amazon link in the article |
 | https://gearuptofit.com/review/best-running-shoes-for-supination-high-arches/ | 4 | yes | yes | 14 | 7% | none |
 | https://gearuptofit.com/health/supplements/best-supplements-for-increasing-muscle-mass-after-60/ | 4 | yes | yes | 6 | 46% | first Amazon link is 30-50% down |
-| https://gearuptofit.com/review/best-treadmills-for-home/ | 4 | no | no | 12 | 18% | noindex; produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://gearuptofit.com/review/best-treadmills-for-home/ | 4 | yes | no | 12 | 18% | none |
 | https://gearuptofit.com/shoe-finder/shoes/topo-ultrafly-6/ | 4 | no | no | 1 | 21% | noindex; uses a tracking ID that is not this site's (clicks cannot be attributed to it); produces Amazon clicks but is set to noindex, so search engines will drop it |
 | https://gearuptofit.com/review/best-running-shoes-for-shin-splints/ | 3 | yes | yes | 14 | 6% | none |
 | https://gearuptofit.com/review/best-walking-pads-for-weight-loss/ | 3 | yes | yes | 18 | 9% | only Amazon search links, no product links |
-| https://gearuptofit.com/review/best-compression-boots/ | 3 | no | no | 24 | 3% | noindex; produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://gearuptofit.com/review/best-compression-boots/ | 3 | yes | no | 24 | 3% | none |
 | https://gearuptofit.com/review/best-running-shoes/ | 2 | yes | yes | 5 | 26% | none |
 | https://gearuptofit.com/review/li-ning-feidian-6-elite/ | 2 | yes | yes | 3 | 16% | none |
 | https://gearuptofit.com/shoe-finder/results/overpronation-10k-road-wide | 2 | yes | no | 0 | none | canonical points to another URL; no Amazon link in the article |
@@ -139,7 +139,7 @@ Not compared (new checks the earlier report did not run): under 300 words of art
 | https://gearuptofit.com/watch-match/compare/garmin-forerunner-970-vs-garmin-instinct-3 | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it) |
 | https://gearuptofit.com/watch-match/compare/garmin-forerunner-165-vs-garmin-forerunner-70 | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it) |
 | https://gearuptofit.com/shoe-finder/results/unsure-10k-road-neutral | 1 | yes | no | 0 | none | canonical points to another URL; no Amazon link in the article |
-| https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/ | 1 | no | no | 20 | 26% | noindex; produces Amazon clicks but is set to noindex, so search engines will drop it |
+| https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/ | 1 | yes | no | 20 | 26% | none |
 | https://micegoneguide.com/signs-of-mice-infestation/ | 1 | yes | yes | 3 | 52% | first Amazon link is in the bottom half |
 | https://micegoneguide.com/mouse-proofing/ | 1 | yes | yes | 3 | 45% | first Amazon link is 30-50% down |
 | https://frenchyfab.com/supplements-for-french-bulldogs-what-you-need-to-know/ | 1 | yes | yes | 3 | 28% | none |
@@ -202,7 +202,7 @@ Google tends to stop indexing sites where many pages are thin or near-copies of 
 | GearUpToFit | `sitemap-pages.xml` | 28 | 10 | 0 |  | 0 | 0 | 0 |
 | GearUpToFit | `sitemap-lovable.xml` | 3 | 0 | 1 | 4 | 1 | 0 | 0 |
 | GearUpToFit | `watch-match/sitemap.xml` | 272 | 0 | 259 | 177 | 0 | 0 | 0 |
-| GearUpToFit | `(not in a sitemap; seen in analytics)` | 7 | 0 | 3 | 4 | 3 | 7 | 0 |
+| GearUpToFit | `(not in a sitemap; seen in analytics)` | 7 | 0 | 3 | 4 | 3 | 4 | 0 |
 | Plantastic Haven | `post-sitemap.xml` | 133 | 0 | 2 | 2 | 0 | 0 | 43 |
 | Plantastic Haven | `page-sitemap.xml` | 27 | 5 | 0 |  | 0 | 0 | 3 |
 | Mice Gone Guide | `sitemap-home.xml` | 1 | 0 | 0 |  | 0 | 0 | 0 |

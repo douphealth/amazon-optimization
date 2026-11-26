@@ -1,13 +1,15 @@
 // Cloudflare Worker `portfolio-indexnow-key`: serves the IndexNow key file for every site routed to it.
 //
+// Deployed to the account on 2026-11-26 (with the real keys in KEYS).
+//
 // Why this version exists: IndexNow requires https://<host>/<key>.txt to contain exactly <key>.
 // The deployed version (checked 2026-11-26) returns one hard-coded key for every route, while most
 // sites route a file named after a second key to it. On those sites the file name and its content
 // disagree, so search engines reject every submission.
 //
-// This version answers with the key named in the URL, for the keys listed in KEYS. Put both keys the
-// portfolio uses in KEYS before deploying (they are the 32-character names in the Worker's routes
-// and in the currently deployed script). Do not commit real keys to a public repository.
+// This version answers with the key named in the URL, for the keys listed in KEYS. Put every key the
+// portfolio uses in KEYS before deploying (they are the 32-character names in the Worker's routes).
+// Do not commit real keys to a public repository.
 //
 // Deploy: ES module, main module `worker.js`. Routes stay as they are. To cover a site that has no
 // route yet (affiliatemarketingforsuccess.com, www.outdoormisting.com), add `<host>/<key>.txt`.

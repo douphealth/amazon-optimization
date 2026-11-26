@@ -41,7 +41,7 @@ Console data, and writes one report. It never changes a website: every fix is a 
 
 | Priority | Finding | Fix |
 |---|---|---|
-| 1 | **GearUpToFit gets no Google traffic but is still the main source of Amazon clicks.** Google Analytics shows 638 organic-search visits in 14 days (from engines other than Google) and 63 of the portfolio's 66 recorded Amazon clicks. Google itself has crawled the site and indexed 1 page of 702. Three review pages that produce Amazon clicks are set to noindex by the prune list in the child theme's `functions.php`, extended on 2026-11-19 | See `docs/gearuptofit-indexation.md`. Release those three posts with the prune scripts; do not noindex `watch-match`; fix the IndexNow key file so pages can be submitted to the engines that send the visits (`docs/indexnow.md`) |
+| 1 | **GearUpToFit gets no Google traffic but is still the main source of Amazon clicks.** Google Analytics shows 638 organic-search visits in 14 days (from engines other than Google) and 63 of the portfolio's 66 recorded Amazon clicks. Google itself has crawled the site and indexed 1 page of 702. Three review pages that produce Amazon clicks had been set to noindex by the prune list in the child theme's `functions.php` | Fixed 2026-11-26: the three posts were released and are indexable, in the sitemap and submitted. See `docs/gearuptofit-indexation.md`. Do not noindex `watch-match` |
 | 2 | **Every WordPress site except Plantastic Haven rewrites Amazon links when the page is rendered.** Code snippets named "Hermes Portfolio Amazon Product Box OS v1" force a tracking ID on every Amazon link and "PGCC Amazon disclosure" adds a disclosure. Editing a post body there does not change the tracking ID on the live page (verified on one Mystical Digits post) | Change tracking IDs in those snippets, not in posts. On GearUpToFit, Mice Gone Guide and Efficient GPT Prompts the snippet is set to the bare `papalex-20` |
 | 3 | **582 live links use the bare `papalex-20` ID**: 512 on GearUpToFit `watch-match` pages and 57 on Efficient GPT Prompts. Their clicks can't be told apart in Associates reports | `watch-match` is a separate app; Efficient GPT Prompts needs its own tracking ID created in Associates Central first |
 | 4 | **Outdoor Misting has one untagged Amazon link** (`/comparing-outdoor-cooling-technologies/`, product B0BFGL8FBZ) and no affiliate statement on that page. The site is not WordPress, so the fixer cannot reach it | Add a tracking ID and a disclosure in the site's own code |
@@ -85,6 +85,7 @@ Changes made to live sites so far (`reports/2026-11-26/fix-log.csv`):
 | 2026-11-26 | plantastichaven.com/dripping-water-in-philodendron-plants/ | FAQ block moved out of the table of contents, where an earlier edit had put it inside a link | Live |
 | 2026-11-26 | plantastichaven.com/string-of-pearls-plant-care/ | Title changed to match the search it shows for | Live (title and heading) |
 | 2026-11-26 | plantastichaven.com/how-to-start-a-philodendron/ | Heading changed to match the search it shows for | Heading live; the search title needs pasting into Yoast |
+| 2026-11-26 | gearuptofit.com: three review pages (treadmills, compression boots, shoes for heavy runners) | Released from the theme's prune list | Live: indexable, in the sitemap, submitted |
 | 2026-11-26 | mysticaldigits.com/challenge-numbers-overcome/ | Tracking ID in the post body changed to `papalex-md-20` | No effect: a render-time layer still outputs `papalex-20` |
 
 ## Run it
@@ -132,7 +133,7 @@ changes nothing. `docs/experiments.md` records each live change with its baselin
 | Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 32 unit tests pass |
 | Fixer: product boxes | Applied to 4 live Plantastic Haven posts and confirmed on the rendered pages |
 | Fixer: blocked-product links | Applied to 12 live Plantastic Haven posts and confirmed on the rendered pages |
-| Search-engine submission (`ace submit`) | 1,074 pages sent for 3 sites on 2026-11-26 and accepted; a repeat run sent nothing. Six sites are blocked by a wrong or missing key file |
+| Search-engine submission (`ace submit`) | 2,386 pages sent for all 9 sites on 2026-11-26 and accepted; a repeat run sends only changed pages |
 | Fixer: tracking IDs | Saved once on a live post; the save worked but a render-time layer overrode it |
 | Fixer: rel and disclosure edits | Unit-tested and dry-run against live content. Not applied to a live site |
 | Change tracking between reports | Unit-tested, and run live once (no changes between the two days) |

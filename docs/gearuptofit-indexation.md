@@ -60,10 +60,26 @@ three earning review pages. The list is maintained by scripts in a local project
 (`backups/2026-10-12/owner/release_pages.py`), so it should be changed with those scripts, not by
 hand-editing the theme file, or the two will drift apart.
 
-**Fix:** release post IDs **92024** (best treadmills for home), **91836** (best running shoes for
-heavy runners) and **90633** (best compression boots) with `release_pages.py`. Before any further
-prune phase, check Google Analytics as well as Bing and Search Console: a page can show zero search
-impressions and still be one visitors reach and buy from.
+**Fixed on 2026-11-26.** Post IDs 92024 (best treadmills for home), 91836 (best running shoes for
+heavy runners) and 90633 (best compression boots) were removed from the list in the theme editor,
+with a dated line added to the block's change log. The list now holds 845 IDs. The previous file is
+saved as a backup. Add the three IDs to the release records in the project folder so the prune
+scripts do not put them back.
+
+Result, checked on the live site: all three pages serve `index, follow` with a canonical tag to
+desktop and mobile, `sitemap-posts.xml` lists them (501 URLs), and they were submitted through
+IndexNow. Pages still on the list (for example Brooks Ghost 17) are unchanged.
+
+Making a robots change visible takes three cache steps, in this order:
+
+1. Delete the pages from the Seraphinite Accelerator cache (Manage > Operate > Specified URLs > Delete cache).
+2. Purge the same URLs from Cloudflare.
+3. Purge `sitemap-posts.xml` and the two origin post sitemaps from Cloudflare.
+
+Before any further prune phase, check Google Analytics as well as Bing and Search Console: a page can
+show zero search impressions and still be one visitors reach and buy from. One shoe-finder page
+(`/shoe-finder/shoes/topo-ultrafly-6/`) still earns Amazon clicks while noindexed; it belongs to the
+shoe-finder app, not WordPress.
 
 Left over and safe to remove: the two code snippets named "PGCC gearuptofit prune noindex
 2026-09-18" (#556 and #557). They are marked active but have no effect; 63 posts on their list are
@@ -92,9 +108,8 @@ from this investigation can be emptied from the snippet trash.
 
 ## Plan
 
-1. **Release the three earning posts from the theme's prune list** with `release_pages.py`.
-2. **Fix the IndexNow key file** so pages can be submitted to Bing and the other non-Google engines
-   (see `docs/indexnow.md`). They are where this site's search visitors come from.
+1. Done 2026-11-26: the three earning posts were released from the theme's prune list.
+2. Done 2026-11-26: the IndexNow key file was fixed and 804 pages were submitted (see `docs/indexnow.md`).
 3. **Find out which search engines send the 638 visits.** The Analytics pull for this is scheduled.
 4. **Feed Analytics into every weekly run** (`data/ga4/<domain>/`), so the engine ranks and protects
    pages by real visitors, and add an Analytics check to the prune scripts.

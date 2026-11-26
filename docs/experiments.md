@@ -48,3 +48,20 @@ unchanged. Watch the page's position (4.8) in the next Search Console pull.
   would be the way to earn that query.
 - URLs did not change. **Review on:** 2026-12-17. **Success:** click-through rate above 2% at a
   similar position. **Roll back if:** the page's average position falls by more than 5 places.
+
+## 2026-11-26: three earning pages released from the GearUpToFit prune list
+
+| Page | Amazon clicks, Nov 12-25 | Before | After |
+|---|---|---|---|
+| /review/best-treadmills-for-home/ | 4 | noindex, not in sitemap | index, in sitemap, submitted |
+| /review/best-compression-boots/ | 3 | noindex, not in sitemap | index, in sitemap, submitted |
+| /review/best-running-shoes-for-heavy-runners/ | 1 | noindex, not in sitemap | index, in sitemap, submitted |
+
+**Review on:** 2026-12-17, with the Analytics landing-page data. **Success:** the pages keep or grow
+their visits and Amazon clicks. Nothing to roll back unless the prune scripts re-add the IDs.
+
+## 2026-11-26: first IndexNow submission for all nine sites
+
+2,386 indexable pages submitted. **Watch:** organic-search visits from engines other than Google in
+Analytics over the next four weeks, per site. Baseline (Nov 12-25): GearUpToFit 638, Mice Gone Guide
+245, FrenchyFab 99, Affiliate Marketing for Success 69, GearUpToGrow 12, Mystical Digits 8.

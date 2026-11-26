@@ -24,7 +24,7 @@ Rollback: delete this <div>.
 -->
 """
 
-BOX_DIV = """<div style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+BOX_DIV = """<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
 <p style="margin:0 0 8px;font-weight:700">{heading}</p>
 <ul style="margin:0 0 10px 18px;padding:0">
 {items}

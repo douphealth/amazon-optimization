@@ -268,15 +268,17 @@ def test_transforms_are_precise_and_idempotent():
     assert t.replace_blocked(out4, {"B084KRDD5F": "indoor potting mix"}, "www.amazon.com", "x")[1] == 0
 
     out5, n = t.add_disclosure(RAW, "Example & Co")
-    assert n == 1 and out5.startswith("<!-- ace:disclosure -->") and "Example &amp; Co earns" in out5
+    assert n == 1 and out5.startswith('<p class="ace-disclosure"') and "Example &amp; Co earns" in out5 and "<!--" not in out5
     assert out5.endswith(RAW) and t.add_disclosure(out5, "Example") == (out5, 0)
 
-    out6, n = t.insert_box(RAW, "<div>BOX</div>")
-    assert n == 1 and out6.index("Intro paragraph.</p>") < out6.index("ace:quick-picks") < out6.index("<h2>Soil")
-    assert t.insert_box(out6, "<div>BOX</div>") == (out6, 0)
-    assert t.insert_box("no paragraphs or headings", "<div>BOX</div>")[1] == 0
-    blocks, _ = t.insert_box("<!-- wp:paragraph --><p>Hi</p><!-- /wp:paragraph --><h2>x</h2>", "<div>BOX</div>")
-    assert "<!-- wp:html -->\n<!-- ace:quick-picks -->" in blocks
+    box = '<div class="ace-quick-picks">BOX</div>'
+    out6, n = t.insert_box(RAW, box)
+    assert n == 1 and out6.index("Intro paragraph.</p>") < out6.index("ace-quick-picks") < out6.index("<h2>Soil")
+    assert t.insert_box(out6, box) == (out6, 0)
+    assert t.insert_box("no paragraphs or headings", box)[1] == 0
+    assert t.insert_box(RAW, "<div>unmarked</div>")[1] == 0  # refuses a box it could not find again
+    blocks, _ = t.insert_box("<!-- wp:paragraph --><p>Hi</p><!-- /wp:paragraph --><h2>x</h2>", box)
+    assert '<!-- wp:html -->\n<div class="ace-quick-picks">' in blocks
 
 
 class FakeWP:
@@ -333,7 +335,7 @@ def test_fixer_apply_saves_backs_up_and_verifies(tmp_path):
     assert a.status == "fixed" and a.remaining == [] and FakeWP.saves == [("posts", 7)]
     assert (tmp_path / "b" / "example.com" / "7-2026-11-26.html").read_text() == raw
     saved = FakeWP.store[url]
-    assert saved.startswith("<!-- ace:disclosure -->") and "B000000002?tag=papalex-ex-20" in saved
+    assert saved.startswith('<p class="ace-disclosure"') and "B000000002?tag=papalex-ex-20" in saved
     assert "someoneelse-20" in saved and saved.count("s?k=indoor+potting+mix") == 2
     # Second run on the same audit: nothing left to change, nothing saved.
     again = fixer.run(cfg, rows, tmp_path / "2026-11-26", **kwargs)[0]

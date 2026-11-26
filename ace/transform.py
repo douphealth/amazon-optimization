@@ -19,8 +19,9 @@ TAG_PARAM = re.compile(r"((?:[?&]|&amp;)tag=)[^&#\s\"']*", re.I)
 FIRST_H2 = re.compile(r"<h2\b", re.I)
 FIRST_P_END = re.compile(r"</p\s*>", re.I)
 
-BOX_START, BOX_END = "<!-- ace:quick-picks -->", "<!-- /ace:quick-picks -->"
-DISCLOSURE_START, DISCLOSURE_END = "<!-- ace:disclosure -->", "<!-- /ace:disclosure -->"
+# Insertions are marked with a class name, not an HTML comment: WordPress wraps stand-alone
+# comments in empty paragraphs. The class makes each insertion findable and removable.
+BOX_CLASS, DISCLOSURE_CLASS = "ace-quick-picks", "ace-disclosure"
 
 
 def set_tag(href: str, tag: str) -> str:
@@ -127,9 +128,8 @@ def add_disclosure(html: str, site_name: str) -> tuple[str, int]:
     if DISCLOSURE.search(html):
         return html, 0
     line = (
-        f"{DISCLOSURE_START}\n"
-        f'<p style="font-size:14px;color:#555;margin:0 0 16px"><em>As an Amazon Associate, '
-        f"{htmllib.escape(site_name)} earns from qualifying purchases.</em></p>\n{DISCLOSURE_END}"
+        f'<p class="{DISCLOSURE_CLASS}" style="font-size:14px;color:#555;margin:0 0 16px"><em>As an Amazon '
+        f"Associate, {htmllib.escape(site_name)} earns from qualifying purchases.</em></p>"
     )
     return f"{_wrap(html, line)}\n\n{html}", 1
 
@@ -137,7 +137,7 @@ def add_disclosure(html: str, site_name: str) -> tuple[str, int]:
 def insert_box(html: str, box: str) -> tuple[str, int]:
     """Insert a product box after the opening paragraph (or before the first H2).
     Skipped when the post has neither, or already has a box."""
-    if BOX_START in html:
+    if BOX_CLASS in html or BOX_CLASS not in box:
         return html, 0
     h2 = FIRST_H2.search(html)
     limit = h2.start() if h2 else len(html)
@@ -148,5 +148,5 @@ def insert_box(html: str, box: str) -> tuple[str, int]:
         at = h2.start()
     else:
         return html, 0
-    fragment = _wrap(html, f"{BOX_START}\n{box.strip()}\n{BOX_END}")
+    fragment = _wrap(html, box.strip())
     return f"{html[:at].rstrip()}\n\n{fragment}\n\n{html[at:].lstrip()}", 1

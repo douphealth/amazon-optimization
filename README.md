@@ -80,7 +80,7 @@ Console data first if the `GSC_SERVICE_ACCOUNT_JSON` repository secret exists.
 
 | Part | Status |
 |---|---|
-| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 14 unit tests pass |
+| Crawl, link audit, scoring, near-duplicate detection, reports, fix drafts | Run live on all 9 sites on 2026-11-25 and 2026-11-26; 15 unit tests pass |
 | Change tracking between reports | Unit-tested, and run live once (no changes between the two days) |
 | Search Console CSV import | Tested with real data and with the Search Console export format |
 | Search Console API pull (`gsc-pull`) | Unit-tested against a fake API only. Not yet run with a real service account |

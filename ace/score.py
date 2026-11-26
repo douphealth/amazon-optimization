@@ -100,6 +100,8 @@ def page_issues(page: Page, site: Site, cfg: Config) -> tuple[list[str], float]:
         issues.append("search_links_only")
     if page.cloaked_links:
         issues.append("cloaked_links")
+    if any(l.asin in cfg.blocked_asins for l in page.links):
+        issues.append("blocked_product")
     return issues, gap
 
 

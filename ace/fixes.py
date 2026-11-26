@@ -41,11 +41,11 @@ def short_name(name: str, limit: int = 70) -> str:
     return name
 
 
-def draft(row: Row) -> str | None:
-    """Return box HTML, or None if the page has fewer than two nameable products."""
+def draft(row: Row, blocked: frozenset[str] | set[str] = frozenset()) -> str | None:
+    """Return box HTML, or None if the page has fewer than two nameable, non-blocked products."""
     seen, items = set(), []
     for link in row.page.content_links:
-        if link.kind != "product" or link.asin in seen or not link.tag:
+        if link.kind != "product" or link.asin in seen or link.asin in blocked or not link.tag:
             continue
         name = short_name(link.name)
         if not name:
@@ -69,13 +69,13 @@ def draft(row: Row) -> str | None:
     )
 
 
-def write_fixes(rows: list[Row], out_dir: Path, top: int = 25) -> list[Path]:
+def write_fixes(rows: list[Row], out_dir: Path, top: int = 25, blocked: set[str] | None = None) -> list[Path]:
     """Write drafts for the highest-scoring pages that have late links. Returns the files written."""
     written = []
     candidates = [r for r in rows if {"first_link_late", "first_link_very_late"} & set(r.issues)]
     candidates.sort(key=lambda r: (-r.score, -(r.page.first_link_depth or 0)))
     for row in candidates[:top]:
-        box = draft(row)
+        box = draft(row, blocked or set())
         if not box:
             continue
         slug = urlsplit(row.page.url).path.strip("/").replace("/", "__") or "home"

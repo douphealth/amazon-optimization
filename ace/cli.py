@@ -34,7 +34,7 @@ def cmd_rank(cfg, args) -> None:
     rows = score.build_rows(cfg, pages_by_site, gsc_by_site, tag_stats)
     report.write_csvs(args.out, rows)
     report.write_summary(args.out, cfg, rows, sitemaps, gsc_meta, tag_stats, previous=changes.previous_report(args.out))
-    written = fixes.write_fixes(rows, args.out / "fixes", top=args.fixes)
+    written = fixes.write_fixes(rows, args.out / "fixes", top=args.fixes, blocked=cfg.blocked_asins)
     print(f"summary: {args.out}/summary.md | {len(written)} fix drafts in {args.out}/fixes/")
 
 

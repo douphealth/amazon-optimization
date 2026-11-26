@@ -87,6 +87,15 @@ def test_fix_draft_reuses_page_products():
     assert ">Molly&#x27;s Potting Mix<" in box and ">GooingTop grow light<" in box
     assert "B000000002" not in box  # untagged product is never promoted
     assert "Example earns from qualifying purchases" in box
+    assert "B085CDPSMR" not in (fixes.draft(row, blocked={"B085CDPSMR"}) or "")
+
+
+def test_blocked_product_is_flagged():
+    page = parse("https://example.com/best-grow-lights/", HTML)
+    page.status = 200
+    cfg = Config("papalex", "www.amazon.com", [SITE], blocked_asins={"B085CDPSMR"})
+    assert "blocked_product" in score.page_issues(page, SITE, cfg)[0]
+    assert "blocked_product" not in score.page_issues(page, SITE, CFG)[0]
 
 
 def test_load_gsc_accepts_ui_export_and_drops_fragments(tmp_path):

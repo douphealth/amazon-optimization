@@ -26,6 +26,7 @@ class Config:
     account_tag_prefix: str
     marketplace: str
     sites: list[Site]
+    blocked_asins: set[str] = field(default_factory=set)
 
     def site(self, domain: str) -> Site:
         for s in self.sites:
@@ -46,6 +47,7 @@ def load(path: str | Path = "sites.yaml") -> Config:
         account_tag_prefix=raw.get("account_tag_prefix", ""),
         marketplace=raw.get("marketplace", "www.amazon.com"),
         sites=sites,
+        blocked_asins=set(raw.get("blocked_asins") or []),
     )
 
 

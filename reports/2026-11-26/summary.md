@@ -32,6 +32,7 @@
 - 54 pages: no Amazon link in the article
 - 40 pages: first Amazon link is in the bottom half
 - 24 pages: only Amazon search links, no product links
+- 12 pages: links to a product listed as wrong or gone in sites.yaml
 - 11 pages: first Amazon link is 30-50% down
 - 7 pages: Google shows it but few people click (title/description)
 - 4 pages: no meta description
@@ -110,7 +111,7 @@ Not compared (new checks the earlier report did not run): under 300 words of art
 |---|---|---|---|---|---|---|---|
 | 1 | https://plantastichaven.com/how-cold-can-philodendron-tolerate/ | 10 | 518 | 4.0 | 79% | first Amazon link is in the bottom half; Google shows it but few people click (title/description) | 29.01 |
 | 2 | https://plantastichaven.com/dripping-water-in-philodendron-plants/ | 8 | 391 | 4.8 | 57% | first Amazon link is in the bottom half; Google shows it but few people click (title/description) | 19.16 |
-| 3 | https://plantastichaven.com/plants-that-look-like-spider-plants/ | 20 | 915 | 10.8 | 73% | first Amazon link is in the bottom half | 14.0 |
+| 3 | https://plantastichaven.com/plants-that-look-like-spider-plants/ | 20 | 915 | 10.8 | 73% | first Amazon link is in the bottom half; links to a product listed as wrong or gone in sites.yaml | 14.0 |
 | 4 | https://gearuptogrow.com/productivity/time-blocking-guide/ | 0 | 432 | 7.8 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 12.96 |
 | 5 | https://www.outdoormisting.com/outdoor-cooling-solutions-humid-climates/ | 7 | 161 | 12.7 | none | no Amazon link in the article | 7.0 |
 | 6 | https://plantastichaven.com/house-plants-in-fish-tank/ | 1 | 198 | 10.5 | none | no Amazon link in the article; Google shows it but few people click (title/description) | 4.95 |

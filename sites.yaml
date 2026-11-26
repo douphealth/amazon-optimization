@@ -6,6 +6,10 @@
 account_tag_prefix: papalex
 marketplace: www.amazon.com
 
+# Products known to be wrong or gone. Pages linking to them are flagged and fix drafts skip them.
+blocked_asins:
+  - B084KRDD5F   # anchored as potting mix, resolves to Miracle-Gro plant food (checked 2026-11-25)
+
 defaults:
   user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
   max_urls: 1500

@@ -27,6 +27,7 @@ ISSUE_TEXT = {
     "no_disclosure": "Amazon links but no \"As an Amazon Associate\" disclosure",
     "search_links_only": "only Amazon search links, no product links",
     "cloaked_links": "redirect-style links (/go/, /recommends/)",
+    "blocked_product": "links to a product listed as wrong or gone in sites.yaml",
     "low_serp_ctr": "Google shows it but few people click (title/description)",
     "no_meta_description": "no meta description",
     "noindex": "noindex",

@@ -50,7 +50,7 @@ def cmd_submit(cfg, args) -> None:
 
 
 def cmd_site(cfg, args) -> None:
-    out = site.build(args.site_out, mirrors=[Path(m) for m in args.mirror or []])
+    out = site.build(args.site_out, cfg=cfg, mirrors=[Path(m) for m in args.mirror or []])
     print(f"dashboard written to {out}/index.html")
 
 
@@ -71,6 +71,7 @@ def cmd_rank(cfg, args) -> None:
 
 
 def cmd_run(cfg, args) -> None:
+    data.ensure_folders([s.domain for s in cfg.sites])
     cmd_audit(cfg, args)
     cmd_rank(cfg, args)
 

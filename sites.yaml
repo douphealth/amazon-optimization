@@ -3,6 +3,9 @@
 #       accept any tag that starts with account_tag_prefix.
 # gsc_property: the Search Console property ID (used by `ace gsc-pull`).
 
+# GitHub repository this engine lives in. The dashboard's buttons link to it.
+repository: douphealth/amazon-optimization
+
 account_tag_prefix: papalex
 marketplace: www.amazon.com
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Commission Engine</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23257de0'/%3E%3Cpath d='M8 21l5-6 4 3 7-9' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+<script>try{var t=localStorage.getItem("ace-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#view">Skip to content</a>
+<div class="shell">
+  <aside class="side" aria-label="Sections">
+    <a class="brand" href="#/overview">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--data-1)"/><path d="M8 21l5-6 4 3 7-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>Commission Engine</b><small id="brand-date">Loading…</small></span>
+    </a>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <button id="theme" type="button" class="ghost" aria-label="Switch between light and dark theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-.9-.1-1.4A7 7 0 0 1 12 3z" fill="currentColor"/></svg><span>Theme</span>
+      </button>
+    </div>
+  </aside>
+  <main id="view" tabindex="-1"><p class="loading">Loading the latest report…</p></main>
+</div>
+<div id="tip" role="tooltip" hidden></div>
+<noscript><p style="padding:24px;font:16px system-ui">This dashboard needs JavaScript. The raw report is at <a href="downloads/summary.md">downloads/summary.md</a>.</p></noscript>
+<script src="app.js"></script>
+</body>
+</html>

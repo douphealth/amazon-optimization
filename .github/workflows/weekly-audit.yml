@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "17 5 * * 1"   # Mondays 05:17 UTC
   workflow_dispatch:
+    inputs:
+      apply_fixes:
+        description: "Apply the fixes switched on in sites.yaml"
+        type: boolean
+        default: true
+      submit:
+        description: "Submit new and changed pages to search engines"
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -31,6 +40,7 @@ jobs:
       # Makes only the fixes listed under auto_fix in sites.yaml, and only on sites whose
       # WP_AUTH_<DOMAIN> secret exists. With no secrets this step does nothing.
       - name: Apply safe fixes
+        if: github.event_name != 'workflow_dispatch' || inputs.apply_fixes
         env:
           WP_AUTH_PLANTASTICHAVEN_COM: ${{ secrets.WP_AUTH_PLANTASTICHAVEN_COM }}
           WP_AUTH_GEARUPTOFIT_COM: ${{ secrets.WP_AUTH_GEARUPTOFIT_COM }}
@@ -45,6 +55,7 @@ jobs:
       # Tells Bing and the other IndexNow engines about pages that are new or changed since the
       # last run. Skipped until the INDEXNOW_KEY secret exists.
       - name: Submit new and changed pages to search engines
+        if: github.event_name != 'workflow_dispatch' || inputs.submit
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
@@ -54,6 +65,6 @@ jobs:
         run: |
           git config user.name "commission-audit"
           git config user.email "actions@users.noreply.github.com"
-          git add reports data/gsc data/indexnow
+          git add reports data
           git diff --cached --quiet || git commit -m "Weekly commission audit $(date -u +%F)"
           git push

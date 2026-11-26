@@ -549,26 +549,63 @@ def test_markdown_renderer_covers_report_syntax():
     from ace import site
     out = site.markdown("# Title\n\nA **bold** `code` line with https://example.com/a/ in it.\n\n- one\n- two\n  continued\n\n| Page | Clicks |\n|---|---|\n| https://example.com/x/ | 3 |\n| b | 4 |\n\n1. first\n2. second <b>\n", max_rows=1)
     assert '<h1 id="title">Title</h1>' in out and "<strong>bold</strong>" in out and "<code>code</code>" in out
-    assert '<a href="https://example.com/a/">https://example.com/a/</a>' in out
+    assert '<a href="https://example.com/a/" target="_blank" rel="noopener">https://example.com/a/</a>' in out
     assert "<ul><li>one</li><li>two continued</li></ul>" in out and "<ol><li>first</li><li>second &lt;b&gt;</li></ol>" in out
     assert "<th>Page</th>" in out and out.count("<tr>") == 2 and "Showing 1 of 2 rows." in out
 
 
 def test_site_build(tmp_path, monkeypatch):
+    import json
     from ace import site
-    rep = tmp_path / "reports" / "2026-11-26"; rep.mkdir(parents=True)
-    (tmp_path / "reports" / "2026-11-25").mkdir()
-    (rep / "summary.md").write_text("# Audit\n\n## Portfolio\n\n| Site | Pages |\n|---|---|\n| Example | 2 |\n\n### Example\n- detail\n\n## Work queue: pages losing the most Amazon clicks\n\n| # | Page |\n|---|---|\n| 1 | https://example.com/a/ |\n")
-    (rep / "pages.csv").write_text("site,url,amazon_links,ga_amazon_clicks\nexample.com,https://example.com/a/,3,2\nexample.com,https://example.com/b/,1,\n")
-    (rep / "fix-log.csv").write_text("site,url,post_id,fixes,status,changes,still_failing_on_live_page\nexample.com,https://example.com/a/,7,box,fixed,box_added=1,\n")
+    old, rep = tmp_path / "reports" / "2026-11-25", tmp_path / "reports" / "2026-11-26"
+    old.mkdir(parents=True); rep.mkdir()
+    head = "site,url,status,amazon_links,first_link_depth,tags,ga_amazon_clicks,gsc_impressions,score,issues\n"
+    (old / "pages.csv").write_text(head + "example.com,https://example.com/a/,200,1,0.1,me-20,,,0,\n")
+    (rep / "pages.csv").write_text(
+        head + "example.com,https://example.com/a/,200,3,0.1,me-20,2,40,1.5,untagged_link\n"
+        "example.com,https://example.com/b/,200,1,0.8,other-20,,,0,first_link_very_late other_site_tag\n"
+        "example.com,https://example.com/c/,200,0,,,,,0,no_amazon_links\n")
+    (rep / "summary.md").write_text("# Audit\n\n| Site | Pages |\n|---|---|\n| Example | 3 |\n")
+    (rep / "fix-log.csv").write_text("site,url,post_id,fixes,status,changes,still_failing_on_live_page\nexample.com,https://example.com/a/,7,box,fixed,box_added=1,\n"
+                                     "example.com,https://example.com/b/,8,box,skipped,,\n")
     (rep / "indexnow-log.csv").write_text("site,host,status,urls_new_or_changed,urls_unchanged,detail\nexample.com,example.com,submitted,2,0,HTTP 200 accepted\n")
     docs = tmp_path / "docs"; docs.mkdir(); (docs / "experiments.md").write_text("# Experiments\n\nText.\n")
-    state = tmp_path / "state"; state.mkdir(); (state / "example.com.json").write_text('{"submitted": {"a": "1", "b": "2"}}')
-    out = site.build(tmp_path / "dist", reports=tmp_path / "reports", docs=docs, state=state, mirrors=[tmp_path / "public"])
-    index = (out / "index.html").read_text()
-    assert "Report of 2026-11-26" in index and "<b>2</b><span>pages crawled</span>" in index and "<b>4</b><span>Amazon links found</span>" in index
-    assert "pages submitted to search engines" in index and 'name="robots" content="noindex, nofollow"' in index
-    assert "<h3" not in index  # per-site detail stays in the full report
-    assert "Example" in (out / "report.html").read_text() and "box added: 1" in (out / "changes.html").read_text()
-    assert (out / "notes" / "experiments.html").exists() and 'href="../index.html"' in (out / "notes" / "experiments.html").read_text()
-    assert (out / "_headers").read_text().startswith("/*") and (tmp_path / "public" / "index.html").exists() and (out / "data" / "pages.csv").exists()
+    state = tmp_path / "state"; state.mkdir(); (state / "example.com.json").write_text('{"submitted": {"a": "1", "b": "2"}, "last_submission": "2026-11-26"}')
+    ga = tmp_path / "ga4" / "example.com"; ga.mkdir(parents=True); (ga / "amazon_clicks.csv").write_text("page,amazon_clicks\n/a/,2\n")
+    cfg = Config(account_tag_prefix="me", marketplace="www.amazon.com", repository="owner/repo", auto_fix=["box"],
+                 sites=[Site(domain="example.com", name="Example", tags=["me-20"], gsc_property="sc-domain:example.com")])
+    out = site.build(tmp_path / "dist", cfg=cfg, reports=tmp_path / "reports", docs=docs, state=state, gsc=tmp_path / "gsc",
+                     ga4=tmp_path / "ga4", mirrors=[tmp_path / "public"])
+    for name in ("index.html", "app.css", "app.js", "data.json", "_headers", "robots.txt", "downloads/pages.csv"):
+        assert (out / name).exists() and (tmp_path / "public" / name).exists(), name
+    assert 'name="robots" content="noindex, nofollow"' in (out / "index.html").read_text()
+    data = json.loads((out / "data.json").read_text())
+    assert data["generated"] == "2026-11-26" and data["previous"] == "2026-11-25" and data["repository"] == "owner/repo"
+    s = data["sites"][0]
+    assert (s["pages"], s["with_links"], s["links"], s["early"], s["late"], s["ga_clicks"], s["submitted"]) == (3, 2, 4, 1, 1, 2, 2)
+    assert s["has_ga"] and not s["has_gsc"] and s["prev"]["links"] == 1 and s["tags_seen"] == {"me-20": 1, "other-20": 1}
+    page = dict(zip(data["cols"], data["pages"][0]))
+    assert page["url"] == "https://example.com/a/" and page["site"] == 0 and page["aclicks"] == 2 and page["score"] == 1.5
+    assert data["issues"]["untagged_link"]["severity"] == "critical" and data["issues"]["untagged_link"]["action"]
+    assert data["attention"][0]["issue"] == "untagged_link" and any("Search Console" in a["title"] for a in data["attention"])
+    assert [f["url"] for f in data["fixes"]] == ["https://example.com/a/"]  # skipped rows are not activity
+    assert data["submissions"][0]["total"] == 2 and {n["slug"] for n in data["notes"]} == {"full-report", "experiments"}
+
+
+def test_dashboard_script_uses_only_fields_the_build_writes():
+    """The page reads data.json by field name. A renamed field would fail silently in the browser."""
+    import re
+    from ace import site
+    js = (site.ASSETS / "app.js").read_text()
+    used = set(re.findall(r"\bp\.(\w+)\b", js))
+    derived = {"s", "codes", "path", "sev", "money", "visits", "url", "status"}
+    assert used - derived <= set(site.COLS), used - derived - set(site.COLS)
+
+
+def test_ensure_folders(tmp_path):
+    from ace import data
+    data.ensure_folders(["example.com"], root=tmp_path)
+    (tmp_path / "gsc" / "example.com" / "pages.csv").write_text("x")
+    data.ensure_folders(["example.com"], root=tmp_path)
+    assert (tmp_path / "ga4" / "example.com" / ".gitkeep").exists() and (tmp_path / "associates" / ".gitkeep").exists()
+    assert data.load_ga4("example.com", root=tmp_path / "ga4") == {}

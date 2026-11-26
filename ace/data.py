@@ -129,3 +129,13 @@ def load_associates(root: str | Path = "data/associates") -> dict[str, TagStats]
             if c_earn is not None and len(row) > c_earn:
                 s.earnings += _num(row[c_earn])
     return stats
+
+
+def ensure_folders(domains: list[str], root: str | Path = "data") -> None:
+    """Make sure each site has its data folders, so the dashboard's upload links have a target.
+    Git does not keep empty folders, hence the placeholder file."""
+    root = Path(root)
+    for folder in [root / "associates", *(root / kind / d for kind in ("gsc", "ga4") for d in domains)]:
+        folder.mkdir(parents=True, exist_ok=True)
+        if not any(folder.iterdir()):
+            (folder / ".gitkeep").touch()

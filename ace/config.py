@@ -32,6 +32,7 @@ class Config:
     blocked_asins: dict[str, str | None] = field(default_factory=dict)
     auto_fix: list[str] = field(default_factory=list)
     box_min_clicks: int = 1
+    repository: str = ""   # owner/name on GitHub, for the dashboard's action links
 
     def site(self, domain: str) -> Site:
         for s in self.sites:
@@ -55,6 +56,7 @@ def load(path: str | Path = "sites.yaml") -> Config:
         blocked_asins=_blocked(raw.get("blocked_asins")),
         auto_fix=list(raw.get("auto_fix") or []),
         box_min_clicks=int(raw.get("box_min_clicks", 1)),
+        repository=str(raw.get("repository") or ""),
     )
 
 

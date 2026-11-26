@@ -3,6 +3,6 @@
   "private": true,
   "description": "Builds the static dashboard from the latest report. The engine itself is Python; see README.md.",
   "scripts": {
-    "build": "python3 -m ace site --site-out dist --mirror build public out _site . || python -m ace site --site-out dist --mirror build public out _site ."
+    "build": "(python3 -m pip install -q -r requirements.txt || pip install -q -r requirements.txt || true) && python3 -m ace site --site-out dist --mirror build public out _site . || python -m ace site --site-out dist --mirror build public out _site ."
   }
 }

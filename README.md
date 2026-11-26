@@ -20,13 +20,28 @@ Console data, and writes one report. It never changes a website: every fix is a 
 
 ## Dashboard
 
-`python -m ace site` turns the latest report into a small static website (overview, full report,
-changes made, notes). `package.json` exists only so a static host such as Cloudflare Pages can build
-it: the build command is `npm run build`, and the site is written to `dist/` (copies go to `build/`,
-`public/`, `out/`, `_site/` and the project root, so the host's output-folder setting does not
-matter). The build reads files in the repository only; it never crawls. Every push, including the
-weekly audit's, republishes it. The pages ask search engines not to index them, but the address is
-public unless the host restricts access.
+`python -m ace site` turns the latest report into a static dashboard: one page of HTML, one
+stylesheet, one script and `data.json`. No framework and nothing loaded from other servers.
+
+| View | What it shows |
+|---|---|
+| Overview | Totals with the change since the previous report, the short list of things that need a decision, Amazon clicks and pages to fix by site, one card per site |
+| Site | Where the first Amazon link sits, every finding with its page count, tracking IDs in use, search engine submissions, the pages to work on first, changes the engine made |
+| Pages | Every audited page: search, filter by site or finding, sort by any column, open a row for its findings and what to do about each |
+| Work queue | Pages where measured demand meets a gap in Amazon links, highest priority first |
+| Activity | Page changes (live, or saved but not visible) and submissions to search engines |
+| Notes | The full report and the files in `docs/` |
+| Controls | Links into this repository on GitHub: run the engine, see past runs, edit `sites.yaml`, add a product box, upload data, manage secrets |
+
+The dashboard is read-only. It cannot hold logins, so every action on the Controls view opens the
+real control in GitHub; `repository` in `sites.yaml` tells it where that is.
+
+`package.json` exists only so a static host such as Cloudflare Pages can build it: the build command
+is `npm run build`, and the site is written to `dist/` (copies go to `build/`, `public/`, `out/`,
+`_site/` and the project root, so the host's output-folder setting does not matter). The build reads
+files in the repository only; it never crawls. Every push, including the weekly audit's, republishes
+it. The pages ask search engines not to index them, but the address is public unless the host
+restricts access (on Cloudflare: Zero Trust > Access > add an application for the Pages address).
 
 ## What it checks on every page
 

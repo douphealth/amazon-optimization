@@ -85,7 +85,8 @@ Console data first if the `GSC_SERVICE_ACCOUNT_JSON` repository secret exists.
 | Search Console CSV import | Tested with real data and with the Search Console export format |
 | Search Console API pull (`gsc-pull`) | Unit-tested against a fake API only. Not yet run with a real service account |
 | Associates CSV import | Unit-tested with a sample layout. Not yet run on a real Associates export |
-| GitHub Actions workflows | Files are valid YAML. Not yet run on GitHub. If Cloudflare challenges GitHub's servers, pages will show as failed in the report |
+| GitHub Actions: tests | Passed on GitHub on 2026-11-26 |
+| GitHub Actions: weekly audit | Not yet run on GitHub. If Cloudflare challenges GitHub's servers, the report will say the crawl was blocked |
 
 Not included: checking whether linked products are still in stock. Amazon answers automated
 requests with a robot check, so a reliable check needs Amazon's own product API.

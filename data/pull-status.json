@@ -1,9 +1,9 @@
 {
  "pulled": "2026-11-27",
  "sources": {
-  "gsc": "ok",
-  "bing": "ok",
-  "ga4": "ok",
-  "inspect": "ok"
+  "gsc": "skipped: no credentials",
+  "bing": "skipped: no credentials",
+  "ga4": "skipped: no credentials",
+  "inspect": "skipped: no credentials"
  }
 }

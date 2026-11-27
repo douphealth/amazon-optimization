@@ -939,3 +939,73 @@ def test_ga4_tag_checks_do_not_raise_false_alarms(tmp_path):
     meta = ga4.pull([Site(domain="example.com", name="E", ga4_properties=["5"])], root=tmp_path, session=NoAdmin(),
                     today=date(2026, 11, 27), log=lambda *_: None, get=page)["example.com"]
     assert meta["unreadable_tags"] == [] and any("could not check" in n for n in meta["notes"])
+
+
+
+def test_setup_access_creates_once_then_reuses():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("setup_access", Path(__file__).parent.parent / "infra" / "setup_access.py")
+    sa = importlib.util.module_from_spec(spec); spec.loader.exec_module(sa)
+    state = {"org": None, "idps": [], "apps": [], "policies": {}, "vars": None, "calls": []}
+
+    class Resp:
+        def __init__(self, result, ok=True):
+            self.status_code = 200 if ok else 403
+            self.body = {"success": ok, "result": result, "errors": [] if ok else [{"code": 10000, "message": "Authentication error"}]}
+        def json(self):
+            return self.body
+
+    class Session:
+        def request(self, method, url, headers=None, timeout=None, json=None, params=None):
+            path = url.split("/accounts/acc")[1]
+            state["calls"].append((method, path))
+            if path == "/access/organizations":
+                if method == "POST":
+                    state["org"] = {"auth_domain": json["auth_domain"]}
+                return Resp(state["org"], ok=state["org"] is not None or method == "POST")
+            if path == "/access/identity_providers":
+                if method == "POST":
+                    state["idps"].append({"id": "otp1", **json})
+                return Resp(state["idps"] if method == "GET" else state["idps"][-1])
+            if path == "/access/apps":
+                if method == "POST":
+                    state["apps"].append({"id": "app1", "aud": "AUD1", **json})
+                return Resp(state["apps"] if method == "GET" else state["apps"][-1])
+            if path.startswith("/access/apps/app1/policies"):
+                pol = state["policies"]
+                if method == "GET":
+                    return Resp(list(pol.values()))
+                pol["p1"] = {"id": "p1", **json}
+                return Resp(pol["p1"])
+            if path == "/access/apps/app1":
+                state["apps"][0].update(json)
+                return Resp(state["apps"][0])
+            if path == "/pages/projects/proj":
+                state["vars"] = json["deployment_configs"]
+                return Resp({})
+            if path == "/pages/projects/proj/deployments":
+                return Resp([{"id": "d1"}])
+            if path.endswith("/retry"):
+                return Resp({"id": "d2"})
+            if path == "/pages/projects/proj/deployments/d2":
+                return Resp({"latest_stage": {"name": "deploy", "status": "success"}})
+            raise AssertionError(path)
+
+    access = sa.Client("t", "acc", session=Session())
+    quiet = lambda *_: None
+    import pytest
+    with pytest.raises(sa.CloudflareError):  # no team yet and none given
+        sa.ensure_organization(access, None, log=quiet)
+    team = sa.ensure_organization(access, "myteam", log=quiet)
+    otp = sa.ensure_otp(access, log=quiet)
+    app = sa.ensure_app(access, "proj.pages.dev", otp, log=quiet)
+    sa.ensure_policy(access, app["id"], ["owner@example.com"], log=quiet)
+    assert team == "myteam.cloudflareaccess.com" and otp == "otp1"
+    assert [d["uri"] for d in app["destinations"]] == ["proj.pages.dev", "*.proj.pages.dev"] and app["session_duration"] == "720h"
+    assert app["allowed_idps"] == ["otp1"] and app["auto_redirect_to_identity"] is True
+    assert state["policies"]["p1"]["include"] == [{"email": {"email": "owner@example.com"}}]
+    assert sa.switch_dashboard(sa.Client("t", "acc", session=Session()), "proj", team, app["aud"], log=quiet) == "success"
+    assert state["vars"]["production"]["env_vars"]["ACCESS_AUD"]["value"] == "AUD1"
+    before = len(state["idps"]), len(state["apps"]), len(state["policies"])
+    sa.ensure_otp(access, log=quiet); sa.ensure_app(access, "proj.pages.dev", otp, log=quiet); sa.ensure_policy(access, "app1", ["owner@example.com"], log=quiet)
+    assert (len(state["idps"]), len(state["apps"]), len(state["policies"])) == before  # a second run creates nothing new

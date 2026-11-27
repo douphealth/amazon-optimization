@@ -55,12 +55,29 @@ purge the LiteSpeed and Seraphinite caches so cached pages pick it up. The engin
 safely itself: no WordPress API exposes the header-scripts setting, and switching on the inactive
 snippet plugins could re-run old stored code.
 
-## 4. Dashboard sign-in
+## 4. Dashboard sign-in: switch to email codes
 
-The dashboard at amazon-optimization.pages.dev asks for a password (any user name). The password is
-the `DASHBOARD_PASSWORD` secret in the Cloudflare Pages project (account papalexios001, project
-amazon-optimization, Settings > Variables and Secrets); it was handed over privately and is not in
-this repository. To change it, edit that secret and redeploy.
+Today the dashboard asks for a password (any user name; the password is the `DASHBOARD_PASSWORD`
+secret in the Cloudflare Pages project and was handed over privately). Everything for sign-in by
+email code is built and tested; it needs one Cloudflare token that this session was not allowed to
+create itself:
+
+1. Cloudflare (the account that holds the `amazon-optimization` Pages project) > My Profile > API
+   Tokens > Create Token > Create Custom Token.
+2. Permissions: *Account · Access: Apps and Policies · Edit* and *Account · Access: Organizations,
+   Identity Providers, and Groups · Edit*. Account Resources: that account. An expiry of one day is
+   enough.
+3. If Cloudflare has never shown this account the Zero Trust section, open Zero Trust once and pick
+   a team name and the Free plan (free for up to 50 users).
+4. Hand the token over (upload it to the session), or run it yourself:
+   `CF_ACCESS_TOKEN=... CF_PAGES_TOKEN=... python infra/setup_access.py you@example.com`
+
+The script switches on the email code, protects the dashboard and every per-deployment address
+(`*.amazon-optimization.pages.dev`, which also closes off the deployments made before the password),
+allows only the addresses given, and switches the dashboard's own check to verify Cloudflare's
+signed sign-in token, so the password stops working. You then stay signed in for 30 days per
+browser. To allow another address later, add it under Zero Trust > Access > Applications >
+Commission Engine dashboard > Policies.
 
 ## 5. Make the repository private
 

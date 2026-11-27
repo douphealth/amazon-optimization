@@ -1,5 +1,15 @@
 {
  "property": "546666742",
+ "tags": {
+  "checked": true,
+  "ga": [
+   "G-1JL0RGYKZ4"
+  ],
+  "gtm": []
+ },
+ "unreadable_tags": [
+  "G-1JL0RGYKZ4"
+ ],
  "start": "2026-10-29",
  "end": "2026-11-25",
  "pulled": "2026-11-27",
@@ -8,6 +18,7 @@
  "engaged_sessions": 0,
  "amazon_clicks": 0,
  "notes": [
+  "the site's tag G-1JL0RGYKZ4 belongs to a property this service account cannot read",
   "property 546666742 recorded no visits for efficientgptprompts.com"
  ],
  "note": "Google Analytics Data API. Totals are GA4's own; rows are estimates and may not add up to them. Sessions by landing page are organic search only."

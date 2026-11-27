@@ -338,6 +338,15 @@ def _daily(path: Path, key: str = "clicks") -> dict[str, float]:
     return {r["date"]: _num(r.get(key)) for r in _csv(path)}
 
 
+def service_account_email() -> str:
+    """The Google service account's email, if a key is available, so warnings can say whom to add."""
+    try:
+        from . import gcp
+        return (gcp.service_account_info() or {}).get("client_email", "")
+    except Exception:
+        return ""
+
+
 def search_trend(domain: str, gsc: Path, bing: Path, days: int = 90) -> dict:
     """Daily clicks and impressions from Google and Bing for the last `days` days either has data.
     A day an engine has not reported yet is None, not zero."""
@@ -363,24 +372,34 @@ def window_total(daily: list[dict], start: str | None, end: str | None, key: str
     return int(sum(_num(r.get(key)) for r in daily if start <= r["date"] <= end))
 
 
-def ga_health(meta: dict | None, search_clicks: int | None) -> dict | None:
-    """A warning when Analytics cannot be trusted for this site: no access, no visits recorded, or far
-    fewer organic visits than search engines report sending."""
+def ga_health(meta: dict | None, search_clicks: int | None, sa_email: str = "") -> dict | None:
+    """A warning when Analytics cannot be trusted for this site, naming the cause when it is known:
+    no tag on the site, a tag that sends data to a property the service account cannot read, no
+    visits recorded, or far fewer organic visits than the search engines report sending."""
     if meta is None:
         return None
-    denied = [n for n in meta.get("notes", []) if "no access" in n]
+    who = f" ({sa_email})" if sa_email else ""
+    tags = meta.get("tags") or {}
+    unreadable = meta.get("unreadable_tags") or []
+    # A script-loaded or optimised tag can hide its ID from the HTML, so "no tag" also needs near-zero visits.
+    if tags.get("checked") and not tags.get("ga") and not tags.get("gtm") and (meta.get("sessions") or 0) < 100:
+        return {"title": "No Analytics tag on the site",
+                "detail": f"The homepage loads no Google Analytics or Tag Manager tag, so visits and Amazon clicks go unrecorded. "
+                          f"Add the tag for property {meta.get('property') or 'of this site'} in the site's header scripts."}
+    if not meta.get("sessions") and unreadable:
+        return {"title": "Analytics reads the wrong property",
+                "detail": f"The site's tag sends data to {', '.join(unreadable)}, a property the engine cannot read. "
+                          f"In Google Analytics, open the property with that measurement ID and add the service account{who} as a Viewer "
+                          "under Admin > Property access management. The next run finds it automatically."}
     if not meta.get("sessions"):
         notes = "; ".join(meta.get("notes", [])) or f"property {meta.get('property')} recorded no sessions"
         return {"title": "Analytics records no visits",
-                "detail": notes[:1].upper() + notes[1:] +
-                          ". Check that the site's Google tag is installed and firing, and that the service account can read the right property."}
+                "detail": notes[:1].upper() + notes[1:] + ". Check that the site's Google tag is installed and firing."}
     organic = meta.get("organic_sessions") or 0
     if search_clicks and search_clicks >= 30 and organic < 0.3 * search_clicks:
         return {"title": "Analytics misses most search visits",
                 "detail": f"Google and Bing report {search_clicks} clicks in 28 days; Analytics recorded {organic} organic sessions. "
                           "The tag is probably missing on some pages or blocked by the consent banner, so page rankings on this site rely on search data."}
-    if denied:
-        return {"title": "Analytics access incomplete", "detail": "; ".join(denied) + "."}
     return None
 
 
@@ -534,7 +553,8 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
             "new_pages": len({r["url"] for r in by_site[d]} - {r["url"] for r in prev_by_site[d]}) if d in prev_by_site else None,
             "gone_pages": len({r["url"] for r in prev_by_site[d]} - {r["url"] for r in by_site[d]}) if d in prev_by_site else None,
         })
-        s["ga_health"] = ga_health(s["ga"], (s["google_clicks_28"] or 0) + (s["bing_clicks_28"] or 0) if s["has_gsc"] or s["has_bing"] else None)
+        s["ga_health"] = ga_health(s["ga"], (s["google_clicks_28"] or 0) + (s["bing_clicks_28"] or 0) if s["has_gsc"] or s["has_bing"] else None,
+                                   service_account_email())
         sites.append(s)
 
     index = {d: i for i, d in enumerate(domains)}

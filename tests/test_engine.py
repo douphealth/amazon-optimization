@@ -262,7 +262,8 @@ def test_ga4_pull_uses_first_property_with_visits(tmp_path):
                           "rowCount": len(rows)})
 
     site = Site(domain="example.com", name="Example", ga4_properties=["111", "222", "333"])
-    out = ga4.pull([site], root=tmp_path, session=Session(), today=date(2026, 11, 27), log=lambda *_: None)
+    page = lambda url, **kw: type("P", (), {"text": "<script src='https://www.googletagmanager.com/gtag/js?id=G-NOTMINE1'></script>"})()
+    out = ga4.pull([site], root=tmp_path, session=Session(), today=date(2026, 11, 27), log=lambda *_: None, get=page)
     meta = out["example.com"]
     assert meta["property"] == "333" and meta["sessions"] == 50 and meta["organic_sessions"] == 9 and meta["amazon_clicks"] == 7
     assert (meta["start"], meta["end"]) == ("2026-10-29", "2026-11-25")  # ends two days back: GA4 is still processing yesterday
@@ -271,6 +272,32 @@ def test_ga4_pull_uses_first_property_with_visits(tmp_path):
     assert visits["example.com/a"]["sessions"] == 7 and visits["example.com/a"]["amazon_clicks"] == 7
     daily = (tmp_path / "example.com" / "daily.csv").read_text().splitlines()
     assert daily[1] == "2026-11-20,13,3,3"
+    assert meta["unreadable_tags"] == ["G-NOTMINE1"] and any("G-NOTMINE1" in n for n in meta["notes"])
+
+
+def test_ga4_follows_the_live_tag_and_health_names_the_cause(tmp_path):
+    from ace import ga4, site as dash
+
+    class Session:
+        def get(self, url, params=None, timeout=None):
+            if url.endswith("accountSummaries"):
+                return _Resp({"accountSummaries": [{"propertySummaries": [{"property": "properties/777"}, {"property": "properties/333"}]}]})
+            pid = url.split("/properties/")[1].split("/")[0]
+            return _Resp({"dataStreams": [{"webStreamData": {"measurementId": "G-LIVE7777" if pid == "777" else "G-OLD33333"}}]})
+        def post(self, url, json, timeout):
+            n = len(json.get("dimensions", []))
+            rows = [["12", "4"]] if "777" in url and not n else []
+            return _Resp({"rows": [{"dimensionValues": [{"value": v} for v in r[:n]], "metricValues": [{"value": v} for v in r[n:]]} for r in rows],
+                          "rowCount": len(rows)})
+
+    page = lambda url, **kw: type("P", (), {"text": "gtag('config', 'G-LIVE7777');"})()
+    site = Site(domain="example.com", name="Example", ga4_properties=["333"])  # sites.yaml names the old property
+    meta = ga4.pull([site], root=tmp_path, session=Session(), today=date(2026, 11, 27), log=lambda *_: None, get=page)["example.com"]
+    assert meta["property"] == "777" and meta["sessions"] == 12 and meta["unreadable_tags"] == []
+    assert dash.ga_health({"sessions": 0, "tags": {"checked": True, "ga": [], "gtm": []}}, 50)["title"] == "No Analytics tag on the site"
+    assert dash.ga_health({"sessions": 3509, "organic_sessions": 170, "tags": {"checked": True, "ga": [], "gtm": []}}, 50) is None  # tag hidden from HTML but working
+    wrong = dash.ga_health({"sessions": 0, "tags": {"checked": True, "ga": ["G-X1234567"], "gtm": []}, "unreadable_tags": ["G-X1234567"]}, 50, "sa@x.iam")
+    assert wrong["title"] == "Analytics reads the wrong property" and "G-X1234567" in wrong["detail"] and "sa@x.iam" in wrong["detail"]
 
 
 def _page(url, text, title="T", status=200):

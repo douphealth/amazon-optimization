@@ -1,5 +1,11 @@
 {
  "property": "378647208",
+ "tags": {
+  "checked": true,
+  "ga": [],
+  "gtm": []
+ },
+ "unreadable_tags": [],
  "start": "2026-10-29",
  "end": "2026-11-25",
  "pulled": "2026-11-27",
@@ -7,6 +13,8 @@
  "organic_sessions": 0,
  "engaged_sessions": 4,
  "amazon_clicks": 0,
- "notes": [],
+ "notes": [
+  "no Google Analytics tag found on the homepage"
+ ],
  "note": "Google Analytics Data API. Totals are GA4's own; rows are estimates and may not add up to them. Sessions by landing page are organic search only."
 }

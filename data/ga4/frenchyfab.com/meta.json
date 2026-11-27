@@ -1,5 +1,15 @@
 {
  "property": "407291494",
+ "tags": {
+  "checked": true,
+  "ga": [
+   "G-K8XBLM8WGT"
+  ],
+  "gtm": []
+ },
+ "unreadable_tags": [
+  "G-K8XBLM8WGT"
+ ],
  "start": "2026-10-29",
  "end": "2026-11-25",
  "pulled": "2026-11-27",
@@ -8,6 +18,7 @@
  "engaged_sessions": 0,
  "amazon_clicks": 0,
  "notes": [
+  "the site's tag G-K8XBLM8WGT belongs to a property this service account cannot read",
   "no access to property 409497113 (add the service account as a Viewer)",
   "property 407291494 recorded no visits for frenchyfab.com"
  ],

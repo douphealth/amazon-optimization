@@ -29,6 +29,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Crawl and audit every site
+        id: audit
         run: python -m ace audit
 
       # Search Console (pages, queries, daily trend, Google's index verdict per page), Bing Webmaster
@@ -42,6 +43,7 @@ jobs:
         run: python -m ace pull
 
       - name: Score pages and write the report
+        id: rank
         run: python -m ace rank
 
       # Makes only the fixes listed under auto_fix in sites.yaml, and only on sites whose
@@ -71,12 +73,14 @@ jobs:
           if [ -n "$INDEXNOW_KEY" ]; then python -m ace submit --apply; else echo "No INDEXNOW_KEY secret: skipping"; fi
 
       - name: Commit the report
+        if: ${{ !cancelled() }}
         run: |
           # What this run did, for the dashboard (it cannot ask GitHub itself once the repository is private).
           cat > data/last-run.json <<JSON
           {"run_number": ${{ github.run_number }}, "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
            "event": "${{ github.event_name }}", "finished": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-           "pull": "${{ steps.pull.outcome }}", "fix": "${{ steps.fix.outcome }}", "submit": "${{ steps.submit.outcome }}"}
+           "audit": "${{ steps.audit.outcome }}", "pull": "${{ steps.pull.outcome }}", "rank": "${{ steps.rank.outcome }}",
+           "fix": "${{ steps.fix.outcome }}", "submit": "${{ steps.submit.outcome }}"}
           JSON
           git config user.name "commission-audit"
           git config user.email "actions@users.noreply.github.com"

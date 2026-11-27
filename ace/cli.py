@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -127,23 +128,47 @@ def cmd_pull(cfg, args) -> None:
     URL inspection), Bing Webmaster and Google Analytics. Sources without credentials are skipped."""
     sites = _sites(cfg, args.site)
     wanted = set((args.sources or "gsc,bing,ga4,inspect").split(","))
+    requested = set(wanted)
     if wanted & {"gsc", "inspect", "ga4"} and not gcp.available():
         print("No Google service account (GSC_SERVICE_ACCOUNT_JSON): skipping Search Console and Analytics")
         wanted -= {"gsc", "inspect", "ga4"}
     if "bing" in wanted and not bing.available():
         print("No BING_API_KEY: skipping Bing")
         wanted.discard("bing")
-    steps = [("gsc", "Search Console", lambda: gsc.pull(sites, days=args.days)),
-             ("bing", "Bing", lambda: bing.pull(sites)),
-             ("ga4", "Analytics", lambda: ga4.pull(sites, days=args.days)),
-             ("inspect", "URL inspection", lambda: gsc.inspect(_inspection_targets(cfg, args)))]
+    problems: dict[str, list[str]] = {}
+
+    def logger(key):
+        def log(message):
+            print(message)
+            if " failed" in message or "could not" in message:
+                problems.setdefault(key, []).append(message)
+        return log
+
+    steps = [("gsc", "Search Console", lambda log: gsc.pull(sites, days=args.days, log=log)),
+             ("bing", "Bing", lambda log: bing.pull(sites, log=log)),
+             ("ga4", "Analytics", lambda log: ga4.pull(sites, days=args.days, log=log)),
+             ("inspect", "URL inspection", lambda log: gsc.inspect(_inspection_targets(cfg, args), log=log))]
+    path = Path("data") / "pull-status.json"
+    try:  # sources not requested this time keep their last status
+        status = json.loads(path.read_text()).get("sources", {}) if path.exists() else {}
+    except ValueError:
+        status = {}
     for key, name, run in steps:
+        if key not in requested:
+            continue
         if key not in wanted:
+            status[key] = "skipped: no credentials"
             continue
         try:
-            run()
+            run(logger(key))
         except Exception as exc:  # one source failing must not cost the others, or the report
             print(f"{name} pull failed: {exc}")
+            problems.setdefault(key, []).append(f"{name} pull failed: {exc}")
+        status[key] = "ok" if key not in problems else f"problems: {'; '.join(problems[key])[:400]}"
+    Path("data").mkdir(exist_ok=True)
+    path.write_text(json.dumps({"pulled": date.today().isoformat(), "sources": status}, indent=1))
+    if problems:  # the workflow carries on (continue-on-error) but the run records the failure
+        raise SystemExit(f"pull finished with problems in: {', '.join(problems)}")
 
 
 def main(argv=None) -> None:

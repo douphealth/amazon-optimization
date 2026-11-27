@@ -241,6 +241,8 @@ def test_ga4_pull_uses_first_property_with_visits(tmp_path):
     from ace import ga4
 
     class Session:
+        def get(self, url, params=None, timeout=None):  # the account can read no property with the site's live tag
+            return _Resp({"accountSummaries": []})
         def post(self, url, json, timeout):
             if "111" in url:
                 return _Resp({"error": "denied"}, status=403)
@@ -715,6 +717,7 @@ def test_markdown_renderer_covers_report_syntax():
 def test_site_build(tmp_path, monkeypatch):
     import json
     from ace import site
+    monkeypatch.setattr(site, "repository_public", lambda slug: None)  # no network in tests
     old, rep = tmp_path / "reports" / "2026-11-25", tmp_path / "reports" / "2026-11-26"
     old.mkdir(parents=True); rep.mkdir()
     head = "site,url,status,amazon_links,first_link_depth,tags,ga_amazon_clicks,gsc_impressions,score,issues\n"
@@ -913,3 +916,26 @@ def test_inspect_survives_network_errors_and_keeps_going():
         done = gsc.inspect(sites, root=tmp, session_factory=Session, today=date(2026, 11, 27), log=lambda *_: None)
         assert done == {"a.com": 1, "b.com": 1}  # the flaky URL was retried, then skipped; the next site still ran
         assert calls.count("https://a.com/flaky/") == 3
+
+
+
+def test_ga4_tag_checks_do_not_raise_false_alarms(tmp_path):
+    from ace import ga4
+
+    class Blocked:
+        status_code, text = 403, "<html><title>Just a moment...</title><script src='/cdn-cgi/challenge-platform/x.js'></script></html>"
+    assert ga4.live_tags("example.com", get=lambda *a, **k: Blocked())["checked"] is False  # a challenge page proves nothing
+    class SiteKit:
+        status_code, text = 200, "<script src='https://www.googletagmanager.com/gtag/js?id=GT-ABC1234'></script>"
+    tags = ga4.live_tags("example.com", get=lambda *a, **k: SiteKit())
+    assert tags["checked"] and tags["other"] and not tags["ga"]
+
+    class NoAdmin:  # the Admin API refuses: no tag may be called "unreadable"
+        def get(self, url, params=None, timeout=None):
+            return _Resp({"error": "API not enabled"}, status=403)
+        def post(self, url, json, timeout):
+            return _Resp({"rows": [], "rowCount": 0})
+    page = lambda url, **kw: type("P", (), {"status_code": 200, "text": "gtag('config','G-ABCDEF12')"})()
+    meta = ga4.pull([Site(domain="example.com", name="E", ga4_properties=["5"])], root=tmp_path, session=NoAdmin(),
+                    today=date(2026, 11, 27), log=lambda *_: None, get=page)["example.com"]
+    assert meta["unreadable_tags"] == [] and any("could not check" in n for n in meta["notes"])

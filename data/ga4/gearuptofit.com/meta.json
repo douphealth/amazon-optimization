@@ -5,9 +5,11 @@
   "ga": [],
   "gtm": [
    "GTM-PFNB895"
-  ]
+  ],
+  "other": false
  },
  "unreadable_tags": [],
+ "service_account": "gsc-api-access@seo-optimizer-456317.iam.gserviceaccount.com",
  "start": "2026-10-29",
  "end": "2026-11-25",
  "pulled": "2026-11-27",

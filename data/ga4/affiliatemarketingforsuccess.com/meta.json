@@ -3,9 +3,11 @@
  "tags": {
   "checked": true,
   "ga": [],
-  "gtm": []
+  "gtm": [],
+  "other": false
  },
  "unreadable_tags": [],
+ "service_account": "gsc-api-access@seo-optimizer-456317.iam.gserviceaccount.com",
  "start": "2026-10-29",
  "end": "2026-11-25",
  "pulled": "2026-11-27",
@@ -14,7 +16,7 @@
  "engaged_sessions": 229,
  "amazon_clicks": 0,
  "notes": [
-  "no Google Analytics tag found on the homepage"
+  "no Google Analytics tag in the homepage HTML (a script-loaded tag would not show)"
  ],
  "note": "Google Analytics Data API. Totals are GA4's own; rows are estimates and may not add up to them. Sessions by landing page are organic search only."
 }

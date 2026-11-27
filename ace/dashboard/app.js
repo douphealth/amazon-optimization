@@ -203,10 +203,11 @@ function trend(code, sites = D.sites) {
 /* ---------- engine status (live from GitHub; the repository must be public) ---------- */
 function loadRuns() {
   if (!D.repository) return;
+  if (D.repository_public === false) { RUNS = "private"; paintRuns(); return; }  // the browser could never read it
   fetch(`https://api.github.com/repos/${D.repository}/actions/workflows/weekly-audit.yml/runs?per_page=6`, { headers: { Accept: "application/vnd.github+json" } })
-    .then(r => (r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status))))
+    .then(r => (r.ok ? r.json() : Promise.reject(new Error(r.status === 404 ? "private" : "unavailable"))))
     .then(j => { RUNS = j.workflow_runs || []; })
-    .catch(() => { RUNS = "unavailable"; })
+    .catch(e => { RUNS = e.message === "private" ? "private" : "unavailable"; })
     .finally(() => { paintRuns(); nav(parse()); });
 }
 function runState(r) {
@@ -226,7 +227,7 @@ const when = d => d.toLocaleString(undefined, { weekday: "short", day: "numeric"
 function recordedRun() {
   const r = D.last_run;
   if (!r) return null;
-  const failed = ["pull", "fix", "submit"].filter(k => r[k] === "failure");
+  const failed = ["audit", "pull", "rank", "fix", "submit"].filter(k => r[k] === "failure" || r[k] === "cancelled");
   return { run_number: r.run_number, html_url: r.url, created_at: r.finished, event: r.event, status: "completed",
            conclusion: failed.length ? "partial" : "success", recorded: true, failed };
 }
@@ -237,13 +238,13 @@ function paintRuns() {
   $$("[data-run-latest]").forEach(el => {
     el.innerHTML = RUNS === null ? `<span class="muted">Checking GitHub…</span>`
       : latest ? `${status(st[0], st[1])}<a href="${esc(latest.html_url)}" target="_blank" rel="noopener">${ago(latest.created_at)}</a>`
-      : `<span class="muted">${RUNS === "unavailable" ? "Not available from GitHub right now" : "No run yet"}</span>`;
-    if (latest && latest.recorded) el.insertAdjacentHTML("beforeend", `<span class="muted small">as recorded by the run</span>`);
+      : `<span class="muted">${RUNS === "unavailable" ? "GitHub is not answering right now" : RUNS === "private" ? "No run recorded yet" : "No run yet"}</span>`;
+    if (RUNS !== null && latest && latest.recorded) el.insertAdjacentHTML("beforeend", `<span class="muted small">as recorded by the run</span>`);
   });
   $$("[data-run-list]").forEach(el => {
     const rec = recordedRun();
     el.innerHTML = RUNS === null ? `<p class="muted">Checking GitHub…</p>`
-      : !Array.isArray(RUNS) ? `<p class="muted">${rec ? `Last recorded run: <a href="${esc(rec.html_url)}" target="_blank" rel="noopener">#${esc(rec.run_number)}</a>, ${ago(rec.created_at)} (${esc(runState(rec)[1])}). ` : ""}The full run list is on GitHub (this page cannot read it while the repository is private). ${ext(gh("/actions"), "Open run history", "")}</p>`
+      : !Array.isArray(RUNS) ? `<p class="muted">${rec ? `Last recorded run: <a href="${esc(rec.html_url)}" target="_blank" rel="noopener">#${esc(rec.run_number)}</a>, ${ago(rec.created_at)} (${esc(runState(rec)[1])}). ` : ""}${RUNS === "private" ? "The full run list is on GitHub; this page cannot read it while the repository is private." : "GitHub is not answering right now (often its hourly limit for anonymous requests); the full run list is on GitHub."} ${ext(gh("/actions"), "Open run history", "")}</p>`
       : !RUNS.length ? `<p class="muted">The engine has not run on GitHub yet.</p>`
       : `<div class="scroll"><table><thead><tr><th>Run</th><th>Started</th><th>Trigger</th><th>Result</th></tr></thead><tbody>${RUNS.map(r => {
           const s = runState(r);
@@ -793,6 +794,13 @@ function notes(route) {
 }
 
 /* ---------- Controls ---------- */
+function pullStatus() {
+  const ps = D.pull_status;
+  if (!ps) return "";
+  const names = { gsc: "Search Console", inspect: "URL Inspection", bing: "Bing", ga4: "Analytics" };
+  return `<p class="kv" style="margin-bottom:12px"><span>Last pull <b>${day(ps.pulled)}</b></span>${Object.entries(ps.sources || {}).map(([k, v]) =>
+    `<span ${tipAttr(esc(v))}>${status(v === "ok" ? "good" : v.startsWith("skipped") ? "info" : "warning", `${names[k] || k}: ${v === "ok" ? "ok" : v.startsWith("skipped") ? "skipped" : "problems"}`)}</span>`).join("")}</p>`;
+}
 function sourcesTable() {
   const cell = (ok, text) => (ok ? `<td>${text}</td>` : `<td class="muted">${text}</td>`);
   return `<div class="scroll"><table><thead><tr><th>Site</th><th>Search Console</th><th>Bing</th><th>Analytics</th><th>Google index check</th></tr></thead><tbody>${D.sites.map(s => {
@@ -834,7 +842,7 @@ function controls() {
             <li><b>BING_API_KEY</b> the Bing Webmaster Tools API key. Pulls Bing clicks, impressions, queries and crawl errors.</li>
           </ul>`)}
       </div>
-      ${card("Data sources", sourcesTable(), "What each site's numbers are based on")}
+      ${card("Data sources", pullStatus() + sourcesTable(), "What each site's numbers are based on")}
       ${card("Downloads from this report", `<p style="display:flex;flex-wrap:wrap;gap:8px">${[["pages.csv", "All pages"], ["links.csv", "All Amazon links"], ["fix-log.csv", "Changes made"], ["indexnow-log.csv", "Submissions"], ["summary.md", "Full report"]].map(([f, l]) => `<a class="btn" href="downloads/${f}" download>${icon("down")}${l}</a>`).join("")}</p>`)}
       ${card("Run it on your own computer", `<div class="stack" style="gap:8px">${cmd("python -m ace run")}${cmd("python -m ace fix")}${cmd("python -m ace fix --apply")}${cmd("python -m ace submit --apply")}${cmd("python -m ace site --site-out dist")}</div>
         <p class="small muted" style="margin-top:12px"><code>fix</code> and <code>submit</code> only show what they would do until <code>--apply</code> is added.</p>`)}

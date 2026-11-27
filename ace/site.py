@@ -205,6 +205,23 @@ def report_dirs(root: Path) -> list[Path]:
     return sorted(d for d in root.iterdir() if d.is_dir() and (d / "pages.csv").exists()) if root.exists() else []
 
 
+def repository_public(slug: str) -> bool | None:
+    """Whether GitHub shows the repository to anyone (True), hides it (False), or could not say (None).
+    The dashboard skips its live run lookup for a private repository: the browser could never read it."""
+    if not slug:
+        return None
+    try:
+        import requests
+        resp = requests.get(f"https://api.github.com/repos/{slug}", headers={"Accept": "application/vnd.github+json"}, timeout=8)
+    except Exception:
+        return None
+    if resp.status_code == 404:
+        return False
+    if resp.ok:
+        return not resp.json().get("private", False)
+    return None
+
+
 def repository_slug(cfg=None) -> str:
     """owner/name of the GitHub repository, for the dashboard's action links."""
     if cfg is not None and getattr(cfg, "repository", ""):
@@ -378,11 +395,12 @@ def ga_health(meta: dict | None, search_clicks: int | None, sa_email: str = "") 
     visits recorded, or far fewer organic visits than the search engines report sending."""
     if meta is None:
         return None
+    sa_email = sa_email or meta.get("service_account", "")
     who = f" ({sa_email})" if sa_email else ""
     tags = meta.get("tags") or {}
     unreadable = meta.get("unreadable_tags") or []
     # A script-loaded or optimised tag can hide its ID from the HTML, so "no tag" also needs near-zero visits.
-    if tags.get("checked") and not tags.get("ga") and not tags.get("gtm") and (meta.get("sessions") or 0) < 100:
+    if tags.get("checked") and not tags.get("ga") and not tags.get("gtm") and not tags.get("other") and (meta.get("sessions") or 0) < 100:
         return {"title": "No Analytics tag on the site",
                 "detail": f"The homepage loads no Google Analytics or Tag Manager tag, so visits and Amazon clicks go unrecorded. "
                           f"Add the tag for property {meta.get('property') or 'of this site'} in the site's header scripts."}
@@ -583,9 +601,11 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
     return {
         "generated": report.name, "previous": previous.name if previous else None,
         "repository": repository_slug(cfg),
+        "repository_public": repository_public(repository_slug(cfg)),
         "auto_fix": auto_fix, "box_min_clicks": getattr(cfg, "box_min_clicks", 1),
         "schedule": schedule(), "history": total_history, "trend": portfolio_trend, "coverage_advice": COVERAGE_ADVICE,
         "last_run": json.loads(Path("data/last-run.json").read_text()) if Path("data/last-run.json").exists() else None,
+        "pull_status": json.loads(Path("data/pull-status.json").read_text()) if Path("data/pull-status.json").exists() else None,
         "drafts": _box_files(report / "fixes", known, by_site), "boxes": _box_files(Path("boxes"), known, by_site),
         "sites": sites, "cols": COLS, "pages": [_page_row(r, index) for r in rows],
         "issues": {

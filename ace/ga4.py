@@ -39,12 +39,16 @@ AMAZON_LINK = r"(^|\.)(amazon\.[a-z.]+|amzn\.(to|eu|asia))$"
 ADMIN = "https://analyticsadmin.googleapis.com/v1beta"
 TAG = re.compile(r"\b(G-[A-Z0-9]{6,12})\b")
 GTM = re.compile(r"\b(GTM-[A-Z0-9]{4,10})\b")
+GOOGLE_TAG = re.compile(r"\b(GT-[A-Z0-9]{5,12})\b|googletagmanager\.com/gtag/js")  # a Google tag of some kind is present
+CHALLENGE = re.compile(r"cdn-cgi/challenge-platform|Just a moment\.\.\.|cf-chl-|Attention Required!|wordfence", re.I)
 BROWSER = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 
 
-def readable_streams(session) -> dict[str, str]:
-    """{measurement ID: property ID} for every web stream the service account can read."""
-    out, token = {}, None
+def readable_streams(session) -> tuple[dict[str, str], bool]:
+    """({measurement ID: property ID} for every web stream the service account can read, complete).
+    `complete` is False when some property's streams could not be listed; a tag missing from the map
+    then proves nothing."""
+    out, token, complete = {}, None, True
     while True:
         resp = session.get(f"{ADMIN}/accountSummaries", params={"pageSize": 200, **({"pageToken": token} if token else {})}, timeout=60)
         resp.raise_for_status()
@@ -52,23 +56,31 @@ def readable_streams(session) -> dict[str, str]:
         for account in j.get("accountSummaries", []):
             for prop in account.get("propertySummaries", []):
                 pid = prop["property"].split("/")[-1]
-                streams = session.get(f"{ADMIN}/properties/{pid}/dataStreams", timeout=60)
-                for s in streams.json().get("dataStreams", []) if streams.ok else []:
+                streams = session.get(f"{ADMIN}/properties/{pid}/dataStreams", params={"pageSize": 200}, timeout=60)
+                if not streams.ok:
+                    complete = False
+                    continue
+                for s in streams.json().get("dataStreams", []):
                     mid = s.get("webStreamData", {}).get("measurementId")
                     if mid:
                         out[mid] = pid
         token = j.get("nextPageToken")
         if not token:
-            return out
+            return out, complete
 
 
 def live_tags(domain: str, get=requests.get) -> dict:
     """The Analytics tag IDs and Tag Manager containers on the site's homepage."""
     try:
-        html = get(f"https://{domain}/", headers={"User-Agent": BROWSER}, timeout=40).text
+        resp = get(f"https://{domain}/", headers={"User-Agent": BROWSER}, timeout=40)
+        html = resp.text
     except requests.RequestException:
-        return {"checked": False, "ga": [], "gtm": []}
-    return {"checked": True, "ga": sorted(set(TAG.findall(html))), "gtm": sorted(set(GTM.findall(html)))}
+        return {"checked": False, "ga": [], "gtm": [], "other": False}
+    # Only a normal page proves anything: a firewall challenge or an error page has no tags either.
+    if getattr(resp, "status_code", 200) != 200 or CHALLENGE.search(html[:20000]):
+        return {"checked": False, "ga": [], "gtm": [], "other": False}
+    return {"checked": True, "ga": sorted(set(TAG.findall(html))), "gtm": sorted(set(GTM.findall(html))),
+            "other": bool(GOOGLE_TAG.search(html))}
 
 
 def _report(session, pid: str, body: dict) -> list[list[str]]:
@@ -166,10 +178,11 @@ def pull(sites, days: int = 28, root: str | Path = "data/ga4", session=None, tod
     session = session or gcp.session(SCOPE)
     today = today or date.today()
     try:
-        streams = readable_streams(session)
+        streams, complete = readable_streams(session)
     except Exception as exc:
         log(f"Analytics: could not list readable properties ({exc}); using sites.yaml only")
-        streams = {}
+        streams, complete = {}, False
+    account = (gcp.service_account_info() or {}).get("client_email", "")
     end = today - timedelta(days=2)  # GA4 is still processing yesterday; its numbers would move after the pull
     start = end - timedelta(days=days - 1)
     out = {}
@@ -177,13 +190,17 @@ def pull(sites, days: int = 28, root: str | Path = "data/ga4", session=None, tod
         configured = [str(p) for p in (getattr(site, "ga4_properties", None) or [])]
         tags = live_tags(site.domain, get=get)
         tagged = [streams[m] for m in tags["ga"] if m in streams]
-        unreadable = [m for m in tags["ga"] if m not in streams]
+        # Only claim "unreadable" when the list of readable properties is known to be complete.
+        unreadable = [m for m in tags["ga"] if m not in streams] if complete else []
         props = list(dict.fromkeys(tagged + configured))
-        if not props:
+        folder = Path(root) / site.domain
+        if not props and not unreadable:
             continue
         chosen, notes, data = None, [], None
-        if tags["checked"] and not tags["ga"] and not tags["gtm"]:
-            notes.append("no Google Analytics tag ID in the homepage HTML (a script-loaded tag would not show)")
+        if tags["checked"] and not tags["ga"] and not tags["gtm"] and not tags.get("other"):
+            notes.append("no Google Analytics tag in the homepage HTML (a script-loaded tag would not show)")
+        if not complete and tags["ga"] and not tagged:
+            notes.append("could not check which property the site's tag belongs to")
         for m in unreadable:
             notes.append(f"the site's tag {m} belongs to a property this service account cannot read")
         for pid in props:
@@ -201,12 +218,12 @@ def pull(sites, days: int = 28, root: str | Path = "data/ga4", session=None, tod
             notes.append(f"property {pid} recorded no visits for {site.domain}")
             data = data or result
             chosen = chosen or pid
-        folder = Path(root) / site.domain
         if data is None:
             log(f"[{site.domain}] Analytics: nothing readable ({'; '.join(notes)})")
             (folder / "meta.json").parent.mkdir(parents=True, exist_ok=True)
-            (folder / "meta.json").write_text(json.dumps({"property": None, "tags": tags, "unreadable_tags": unreadable, "start": start.isoformat(),
-                                                          "end": end.isoformat(), "pulled": today.isoformat(), "notes": notes, "sessions": 0}, indent=1))
+            (folder / "meta.json").write_text(json.dumps({"property": None, "tags": tags, "unreadable_tags": unreadable, "service_account": account,
+                                                          "start": start.isoformat(), "end": end.isoformat(), "pulled": today.isoformat(),
+                                                          "notes": notes, "sessions": 0}, indent=1))
             out[site.domain] = {"property": None, "sessions": 0, "notes": notes, "tags": tags}
             continue
         _write(folder / "sessions.csv", ["page", "sessions", "engaged_sessions"], data["sessions"])
@@ -214,7 +231,7 @@ def pull(sites, days: int = 28, root: str | Path = "data/ga4", session=None, tod
         _write(folder / "sources.csv", ["source", "medium", "channel", "sessions", "engaged_sessions"], data["sources"])
         _write(folder / "daily.csv", ["date", "sessions", "engaged_sessions", "organic_sessions"], data["daily"])
         total, organic = data["totals"]["sessions"], data["totals"]["organic_sessions"]
-        meta = {"property": chosen, "tags": tags, "unreadable_tags": unreadable,
+        meta = {"property": chosen, "tags": tags, "unreadable_tags": unreadable, "service_account": account,
                 "start": start.isoformat(), "end": end.isoformat(), "pulled": today.isoformat(),
                 "sessions": total, "organic_sessions": organic, "engaged_sessions": data["totals"]["engaged_sessions"],
                 "amazon_clicks": sum(r["amazon_clicks"] for r in data["amazon_clicks"]), "notes": notes,

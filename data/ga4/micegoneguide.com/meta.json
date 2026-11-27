@@ -1,0 +1,12 @@
+{
+ "property": "546636374",
+ "start": "2026-10-29",
+ "end": "2026-11-25",
+ "pulled": "2026-11-27",
+ "sessions": 1382,
+ "organic_sessions": 659,
+ "engaged_sessions": 412,
+ "amazon_clicks": 0,
+ "notes": [],
+ "note": "Google Analytics Data API. Totals are GA4's own; rows are estimates and may not add up to them. Sessions by landing page are organic search only."
+}

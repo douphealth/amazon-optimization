@@ -2,11 +2,13 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-from . import changes, config, crawl, data, fixer, fixes, gsc, indexnow, report, score, site
+from . import bing, changes, config, crawl, data, fixer, fixes, ga4, gcp, gsc, indexnow, report, score, site
+from .config import norm_url
 
 
 def _sites(cfg, only):
@@ -29,11 +31,31 @@ def cmd_audit(cfg, args) -> None:
     print(f"audit saved to {args.out}/audit.json")
 
 
+def _load_inputs(cfg):
+    """Everything scoring reads besides the crawl: Search Console, Bing, Analytics, Google's index
+    verdicts, Bing crawl errors and Associates reports."""
+    gsc_by_site, gsc_meta = {}, {}
+    for s in cfg.sites:
+        rows, meta = data.load_gsc(s.domain)
+        if rows or meta:  # an empty export still means "Google showed nothing"
+            gsc_by_site[s.domain], gsc_meta[s.domain] = rows, meta
+    return {
+        "gsc_by_site": gsc_by_site, "gsc_meta": gsc_meta, "tag_stats": data.load_associates(),
+        "ga": {s.domain: data.load_ga4(s.domain) for s in cfg.sites},
+        "bing": {s.domain: data.load_bing(s.domain)[0] for s in cfg.sites},
+        "index": {s.domain: gsc.load_index(s.domain) for s in cfg.sites},
+        "bing_errors": {s.domain: bing.load_crawl_errors(s.domain) for s in cfg.sites},
+    }
+
+
+def _score(cfg, pages_by_site, inputs):
+    return score.build_rows(cfg, pages_by_site, inputs["gsc_by_site"], inputs["tag_stats"], inputs["ga"],
+                            bing_by_site=inputs["bing"], index_by_site=inputs["index"], bing_errors_by_site=inputs["bing_errors"])
+
+
 def _scored(cfg, args):
-    pages_by_site, sitemaps = report.load_audit(args.out)
-    gsc_by_site = {s.domain: data.load_gsc(s.domain)[0] for s in cfg.sites}
-    ga = {s.domain: data.load_ga4(s.domain) for s in cfg.sites}
-    return score.build_rows(cfg, pages_by_site, gsc_by_site, data.load_associates(), ga)
+    pages_by_site, _ = report.load_audit(args.out)
+    return _score(cfg, pages_by_site, _load_inputs(cfg))
 
 
 def cmd_fix(cfg, args) -> None:
@@ -56,14 +78,9 @@ def cmd_site(cfg, args) -> None:
 
 def cmd_rank(cfg, args) -> None:
     pages_by_site, sitemaps = report.load_audit(args.out)
-    gsc_by_site, gsc_meta = {}, {}
-    for site in cfg.sites:
-        rows, meta = data.load_gsc(site.domain)
-        if rows or meta:  # an empty export still means "Google showed nothing"
-            gsc_by_site[site.domain], gsc_meta[site.domain] = rows, meta
-    tag_stats = data.load_associates()
-    ga = {s.domain: data.load_ga4(s.domain) for s in cfg.sites}
-    rows = score.build_rows(cfg, pages_by_site, gsc_by_site, tag_stats, ga)
+    inputs = _load_inputs(cfg)
+    gsc_meta, tag_stats = inputs["gsc_meta"], inputs["tag_stats"]
+    rows = _score(cfg, pages_by_site, inputs)
     report.write_csvs(args.out, rows)
     report.write_summary(args.out, cfg, rows, sitemaps, gsc_meta, tag_stats, previous=changes.previous_report(args.out))
     written = fixes.write_fixes(rows, args.out / "fixes", top=args.fixes, blocked=cfg.blocked_asins)
@@ -80,6 +97,55 @@ def cmd_gsc_pull(cfg, args) -> None:
     gsc.pull(_sites(cfg, args.site), days=args.days)
 
 
+def _inspection_targets(cfg, args) -> list:
+    """URLs to inspect per site, most valuable first: pages with search or analytics demand, then
+    pages with Amazon links, then the rest. Taken from the audit in --out (or the latest one),
+    else straight from the sitemaps."""
+    audits = sorted(Path("reports").glob("*/audit.json"))
+    source = args.out / "audit.json" if (args.out / "audit.json").exists() else (audits[-1] if audits else None)
+    pages_by_site = report.load_audit(source.parent)[0] if source else {}
+    targets = []
+    for s in _sites(cfg, args.site):
+        pages = pages_by_site.get(s.domain)
+        if pages is None:
+            urls = list(crawl.discover(s))
+            linked = set()
+        else:
+            ok = [p for p in pages if p.status == 200 and not p.noindex]
+            urls = [p.url for p in ok]
+            linked = {p.url for p in ok if p.content_links}
+        demand = {**bing.load_pages(s.domain), **data.load_gsc(s.domain)[0], **data.load_ga4(s.domain)}
+        def weight(url):
+            d = demand.get(norm_url(url))
+            return (0 if d else 1, 0 if url in linked else 1)
+        targets.append((s, sorted(urls, key=weight)))
+    return targets
+
+
+def cmd_pull(cfg, args) -> None:
+    """Pull every data source this run has credentials for: Search Console (pages, queries, daily,
+    URL inspection), Bing Webmaster and Google Analytics. Sources without credentials are skipped."""
+    sites = _sites(cfg, args.site)
+    wanted = set((args.sources or "gsc,bing,ga4,inspect").split(","))
+    if wanted & {"gsc", "inspect", "ga4"} and not gcp.available():
+        print("No Google service account (GSC_SERVICE_ACCOUNT_JSON): skipping Search Console and Analytics")
+        wanted -= {"gsc", "inspect", "ga4"}
+    if "bing" in wanted and not bing.available():
+        print("No BING_API_KEY: skipping Bing")
+        wanted.discard("bing")
+    steps = [("gsc", "Search Console", lambda: gsc.pull(sites, days=args.days)),
+             ("bing", "Bing", lambda: bing.pull(sites)),
+             ("ga4", "Analytics", lambda: ga4.pull(sites, days=args.days)),
+             ("inspect", "URL inspection", lambda: gsc.inspect(_inspection_targets(cfg, args)))]
+    for key, name, run in steps:
+        if key not in wanted:
+            continue
+        try:
+            run()
+        except Exception as exc:  # one source failing must not cost the others, or the report
+            print(f"{name} pull failed: {exc}")
+
+
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(prog="ace", description=__doc__)
     parser.add_argument("--config", default="sites.yaml")
@@ -88,7 +154,8 @@ def main(argv=None) -> None:
         ("audit", cmd_audit, "crawl every site and save the raw audit"),
         ("rank", cmd_rank, "score a saved audit and write summary, CSVs and fix drafts"),
         ("run", cmd_run, "audit + rank"),
-        ("gsc-pull", cmd_gsc_pull, "download Search Console page data (needs a service account)"),
+        ("pull", cmd_pull, "download Search Console, URL inspection, Bing and Analytics data (whatever has credentials)"),
+        ("gsc-pull", cmd_gsc_pull, "download Search Console data only (needs a service account)"),
         ("fix", cmd_fix, "apply the safe fixes to WordPress (dry run unless --apply)"),
         ("submit", cmd_submit, "send new and changed pages to search engines via IndexNow (dry run unless --apply)"),
         ("site", cmd_site, "build the static dashboard from the latest report"),
@@ -104,7 +171,10 @@ def main(argv=None) -> None:
         p.add_argument("--site-out", type=Path, default=Path("dist"), help="site: folder to write the dashboard to")
         p.add_argument("--mirror", nargs="*", help="site: extra folders to receive a copy of the dashboard")
         p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
+        p.add_argument("--sources", help="pull: comma-separated subset of gsc,bing,ga4,inspect (default: all)")
     args = parser.parse_args(argv)
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(line_buffering=True)  # progress shows up live in CI logs
     args.fn(config.load(args.config), args)
 
 

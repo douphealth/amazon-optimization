@@ -1,2 +1,0 @@
-Organic Search sessions by landing page, Google Analytics, 2026-11-13 to 2026-11-26, pulled 2026-11-27 via Supermetrics.
-Partial: the free allowance returned only the 100 landing pages with the most sessions across all sites.

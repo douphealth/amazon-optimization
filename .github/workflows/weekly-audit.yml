@@ -20,7 +20,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,14 +28,20 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
 
-      - name: Pull Search Console data (skipped until the secret exists)
+      - name: Crawl and audit every site
+        run: python -m ace audit
+
+      # Search Console (pages, queries, daily trend, Google's index verdict per page), Bing Webmaster
+      # and Google Analytics, straight from their APIs. Each source is skipped while its secret is missing.
+      - name: Pull Search Console, Bing and Analytics data
+        continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
-        run: |
-          if [ -n "$GSC_SERVICE_ACCOUNT_JSON" ]; then python -m ace gsc-pull --days 28; else echo "No GSC secret: using the CSVs already in data/gsc"; fi
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+        run: python -m ace pull
 
-      - name: Crawl, score and draft fixes
-        run: python -m ace run
+      - name: Score pages and write the report
+        run: python -m ace rank
 
       # Makes only the fixes listed under auto_fix in sites.yaml, and only on sites whose
       # WP_AUTH_<DOMAIN> secret exists. With no secrets this step does nothing.

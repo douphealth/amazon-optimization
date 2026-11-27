@@ -5,6 +5,15 @@ __pycache__/
 *.key.json
 service-account*.json
 .env
+# credentials: never commit
+*credentials*
+*Credentials*
+*API-Token*
+*-sa.json
+*.key
+bing.key
+indexnow.key*
+*.pem
 reports/*/audit.json
 backups/
 # dashboard build output
@@ -18,6 +27,7 @@ backups/
 /app.js
 /data.json
 /links.json
+/queries.json
 /downloads/
 /_headers
 /robots.txt

@@ -5,7 +5,8 @@
 The build only reads files already in the repository (reports/, docs/, data/). It never crawls or
 contacts a website, so it is fast and cannot fail on network errors. Standard library only.
 
-Output: index.html, app.css, app.js (copied from ace/dashboard/), data.json and links.json (built here).
+Output: index.html, app.css, app.js (copied from ace/dashboard/), data.json, links.json and
+queries.json (built here). links.json and queries.json are loaded only when a page is opened.
 """
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ from statistics import median
 from urllib.parse import urlsplit
 
 from .fixer import CLEARS
+from .config import norm_url
 from .report import INDEXATION, ISSUE_TEXT
 
 ASSETS = Path(__file__).parent / "dashboard"
@@ -32,6 +34,8 @@ SEVERITY = {
     "other_site_tag": "warning", "first_link_late": "warning", "search_links_only": "warning",
     "short_link": "warning", "missing_rel_sponsored": "warning", "cloaked_links": "warning",
     "low_serp_ctr": "warning", "no_meta_description": "warning",
+    "demand_page_not_in_google": "serious", "low_bing_ctr": "warning", "not_in_google": "warning",
+    "google_canonical_mismatch": "warning", "bing_crawl_error": "warning", "google_verdict_outdated": "warning",
 }
 ACTION = {
     "untagged_link": "Add the site's tracking ID to the link. Until then a sale through it earns nothing.",
@@ -55,6 +59,29 @@ ACTION = {
     "thin_content": "Expand the page or leave it out of the sitemap.",
     "near_duplicate": "Differentiate the page or consolidate it with its near-copies.",
     "duplicate_title": "Give the page its own title.",
+    "demand_page_not_in_google": "People already reach this page from Bing or elsewhere; Google has not indexed it. Strengthen it, link to it from indexed pages, then request indexing in Search Console.",
+    "not_in_google": "Google has not indexed this page. See the reason in the page panel; improve or consolidate the page, or link to it from pages Google has indexed.",
+    "google_canonical_mismatch": "Google treats another URL as the main version of this page. Make the canonical, internal links and sitemap agree on one URL.",
+    "google_verdict_outdated": "The page is indexable now. Ask Google to look again: Search Console > URL Inspection > Request indexing.",
+    "bing_crawl_error": "Bing could not fetch this page. Open it, fix the error, then resubmit it in Bing Webmaster Tools.",
+    "low_bing_ctr": "Rewrite the title and description so Bing searchers choose it.",
+}
+# What Google's URL Inspection states mean and what to do. Keys are Search Console's own wording.
+COVERAGE_ADVICE = {
+    "Submitted and indexed": "In Google's index.",
+    "Indexed, not submitted in sitemap": "In Google's index, but missing from the sitemap Search Console reads. Add it.",
+    "Crawled - currently not indexed": "Google read the page and chose not to index it. That is a quality or duplication signal: make the page clearly better than similar pages, or merge it into one.",
+    "Discovered - currently not indexed": "Google knows the address but has not read the page yet. Usually a sign it does not value the site enough to crawl more: link to the page from indexed pages and cut low-value URLs.",
+    "URL is unknown to Google": "Google has never seen this address. Check it is in a sitemap submitted in Search Console and linked from indexed pages.",
+    "Duplicate, Google chose different canonical than user": "Google treats another URL as the main version. Make the canonical, internal links and sitemap agree.",
+    "Duplicate without user-selected canonical": "Google sees this as a copy of another page and the page names no canonical. Add one, or make the page distinct.",
+    "Alternate page with proper canonical tag": "Excluded on purpose: the page points to another canonical URL.",
+    "Excluded by ‘noindex’ tag": "The page tells Google not to index it.",
+    "Page with redirect": "The address redirects. Keep only the final URL in sitemaps and links.",
+    "Soft 404": "Google thinks the page is empty or an error page. Add real content or return a 404/410.",
+    "Not found (404)": "The page returns 404. Restore it or redirect it to the closest page.",
+    "Blocked by robots.txt": "robots.txt stops Google from reading the page.",
+    "Server error (5xx)": "The server returned an error when Google tried to read the page.",
 }
 SHORT = {
     "untagged_link": "No tracking ID", "foreign_tag": "Another account's ID", "earning_page_noindexed": "Earning but noindexed",
@@ -62,8 +89,11 @@ SHORT = {
     "first_link_late": "First link 30-50% down", "other_site_tag": "Other site's ID", "search_links_only": "Search links only",
     "short_link": "amzn.to short link", "missing_rel_sponsored": "No rel=sponsored", "cloaked_links": "Cloaked links",
     "low_serp_ctr": "Low click-through", "no_meta_description": "No meta description",
+    "demand_page_not_in_google": "Demand, not in Google", "not_in_google": "Not in Google",
+    "google_canonical_mismatch": "Google picked another URL", "bing_crawl_error": "Bing crawl error", "google_verdict_outdated": "Google verdict out of date", "low_bing_ctr": "Low Bing click-through",
 }
-MONEY = {
+MONEY = {"demand_page_not_in_google",
+    
     "untagged_link", "foreign_tag", "other_site_tag", "short_link", "missing_rel_sponsored", "no_disclosure",
     "search_links_only", "cloaked_links", "blocked_product", "earning_page_noindexed", "first_link_very_late",
     "first_link_late", "no_amazon_links",
@@ -206,6 +236,12 @@ def site_stats(rows: list[dict]) -> dict:
         "gsc_clicks": int(sum(_num(r.get("gsc_clicks")) for r in rows)),
         "gsc_impressions": int(sum(_num(r.get("gsc_impressions")) for r in rows)),
         "gsc_pages": sum(1 for r in rows if r.get("gsc_impressions") not in (None, "")),
+        "bing_clicks": int(sum(_num(r.get("bing_clicks")) for r in rows)),
+        "bing_impressions": int(sum(_num(r.get("bing_impressions")) for r in rows)),
+        "bing_pages": sum(1 for r in rows if r.get("bing_impressions") not in (None, "")),
+        "google_inspected": sum(1 for r in ok if r.get("google_verdict") not in (None, "", "ERROR")),
+        "google_indexed": sum(1 for r in ok if r.get("google_verdict") == "PASS"),
+        "coverage": dict(Counter(r["google_index"] for r in ok if r.get("google_index") and r.get("google_verdict") != "ERROR")),
         "issues": dict(issues),
     }
 
@@ -213,6 +249,7 @@ def site_stats(rows: list[dict]) -> dict:
 COLS = [
     "site", "url", "status", "words", "commercial", "links", "product", "search", "depth", "tags",
     "gclicks", "gimpr", "gpos", "sessions", "aclicks", "score", "dup", "issues",
+    "bclicks", "bimpr", "bpos", "gverdict", "gidx", "gcrawl",
 ]
 
 
@@ -229,7 +266,17 @@ def _page_row(r: dict, site_index: dict[str, int]) -> list:
         n("amazon_links") or 0, n("product_links") or 0, n("search_links") or 0, n("first_link_depth", 3), r.get("tags") or "",
         n("gsc_clicks"), n("gsc_impressions"), n("gsc_position", 1), n("ga_sessions"), n("ga_amazon_clicks"),
         n("score", 2) or 0, n("near_duplicate_group"), r.get("issues") or "",
+        n("bing_clicks"), n("bing_impressions"), n("bing_position", 1), r.get("google_verdict") or "", r.get("google_index") or "",
+        r.get("google_last_crawl") or "",
     ]
+
+
+def _pages(n: int) -> str:
+    return f"{n} page" if n == 1 else f"{n} pages"
+
+
+def _have(n: int) -> str:
+    return "has" if n == 1 else "have"
 
 
 def attention(sites: list[dict], pages: list[dict]) -> list[dict]:
@@ -244,21 +291,35 @@ def attention(sites: list[dict], pages: list[dict]) -> list[dict]:
         n = total["earning_page_noindexed"]
         add("critical", f"{n} page{'s' if n != 1 else ''} earning Amazon clicks {'are' if n != 1 else 'is'} hidden from search engines",
             "Visitors buy through these pages, but a noindex tag tells search engines to drop them.", "earning_page_noindexed")
+    if total["demand_page_not_in_google"]:
+        n = total["demand_page_not_in_google"]
+        add("serious", f"{_pages(n)} with search demand {'are' if n != 1 else 'is'} not in Google's index",
+            "They get visits, Amazon clicks or at least 20 Bing impressions in four weeks, yet Google has not indexed them (URL Inspection).",
+            "demand_page_not_in_google")
+    weak = [s for s in sites if s.get("google_inspected", 0) >= 20 and s["google_indexed"] < 0.5 * s["google_inspected"]]
+    if weak:
+        add("serious", f"Google has indexed under half the pages on {len(weak)} site{'s' if len(weak) != 1 else ''}",
+            "; ".join(f"{s['name']} {s['google_indexed']} of {s['google_inspected']}" for s in sorted(weak, key=lambda s: s['google_indexed'] / s['google_inspected']))
+            + ". Pages outside the index cannot earn from Google.", "not_in_google")
+    for s in sites:
+        health = s.get("ga_health")
+        if health:
+            add("warning", f"{s['name']}: {health['title']}", health["detail"])
     if total["untagged_link"]:
         n = total["untagged_link"]
         add("critical", f"{n} page{'s' if n != 1 else ''} with an Amazon link that has no tracking ID",
             "A sale through an untagged link earns nothing.", "untagged_link")
     if total["foreign_tag"]:
-        add("critical", f"{total['foreign_tag']} pages link to Amazon with another account's tracking ID",
+        add("critical", f"{_pages(total['foreign_tag'])} {'links' if total['foreign_tag'] == 1 else 'link'} to Amazon with another account's tracking ID",
             "Commission from these links goes to someone else.", "foreign_tag")
     if total["blocked_product"]:
-        add("serious", f"{total['blocked_product']} pages link to a product marked as wrong or gone",
+        add("serious", f"{_pages(total['blocked_product'])} link to a product marked as wrong or gone",
             "The link lands on something other than what the page promises.", "blocked_product")
     if total["no_disclosure"]:
-        add("serious", f"{total['no_disclosure']} pages have Amazon links and no affiliate disclosure",
+        add("serious", f"{_pages(total['no_disclosure'])} {_have(total['no_disclosure'])} Amazon links and no affiliate disclosure",
             "An affiliate statement is required wherever affiliate links appear.", "no_disclosure")
     if total["other_site_tag"]:
-        add("warning", f"{total['other_site_tag']} pages use a tracking ID that is not their site's",
+        add("warning", f"{_pages(total['other_site_tag'])} {'uses' if total['other_site_tag'] == 1 else 'use'} a tracking ID that is not {'its' if total['other_site_tag'] == 1 else 'their'} site's",
             "Their clicks cannot be told apart in Amazon Associates reports.", "other_site_tag")
     blind = [s["name"] for s in sites if not s["has_gsc"]]
     if blind:
@@ -268,9 +329,84 @@ def attention(sites: list[dict], pages: list[dict]) -> list[dict]:
     if unsent:
         add("warning", f"{len(unsent)} site{'s' if len(unsent) != 1 else ''} not yet submitted to search engines", ", ".join(unsent) + ".")
     if total["first_link_very_late"]:
-        add("warning", f"{total['first_link_very_late']} pages have their first Amazon link in the bottom half",
+        add("warning", f"{_pages(total['first_link_very_late'])} {_have(total['first_link_very_late'])} {'its' if total['first_link_very_late'] == 1 else 'their'} first Amazon link in the bottom half",
             "Most readers leave before reaching it. The fixer adds a box on pages that have visitors.", "first_link_very_late")
     return items
+
+
+def _daily(path: Path, key: str = "clicks") -> dict[str, float]:
+    return {r["date"]: _num(r.get(key)) for r in _csv(path)}
+
+
+def search_trend(domain: str, gsc: Path, bing: Path, days: int = 90) -> dict:
+    """Daily clicks and impressions from Google and Bing for the last `days` days either has data.
+    A day an engine has not reported yet is None, not zero."""
+    g, b = _csv(gsc / domain / "daily.csv"), _csv(bing / domain / "daily.csv")
+    gd = {r["date"]: r for r in g}
+    bd = {r["date"]: r for r in b}
+    last = max([*gd, *bd], default=None)
+    if not last:
+        return {}
+    from datetime import date, timedelta
+    end = date.fromisoformat(last)
+    dates = [(end - timedelta(days=i)).isoformat() for i in range(days - 1, -1, -1)]
+    g_end, b_end = max(gd, default=""), max(bd, default="")
+    col = lambda src, d, k, end_: (int(_num(src[d][k])) if d in src else (0 if src and d <= end_ else None))
+    return {"dates": dates,
+            "google": [col(gd, d, "clicks", g_end) for d in dates], "bing": [col(bd, d, "clicks", b_end) for d in dates],
+            "google_impr": [col(gd, d, "impressions", g_end) for d in dates], "bing_impr": [col(bd, d, "impressions", b_end) for d in dates]}
+
+
+def window_total(daily: list[dict], start: str | None, end: str | None, key: str) -> int | None:
+    if not start or not end:
+        return None
+    return int(sum(_num(r.get(key)) for r in daily if start <= r["date"] <= end))
+
+
+def ga_health(meta: dict | None, search_clicks: int | None) -> dict | None:
+    """A warning when Analytics cannot be trusted for this site: no access, no visits recorded, or far
+    fewer organic visits than search engines report sending."""
+    if meta is None:
+        return None
+    denied = [n for n in meta.get("notes", []) if "no access" in n]
+    if not meta.get("sessions"):
+        notes = "; ".join(meta.get("notes", [])) or f"property {meta.get('property')} recorded no sessions"
+        return {"title": "Analytics records no visits",
+                "detail": notes[:1].upper() + notes[1:] +
+                          ". Check that the site's Google tag is installed and firing, and that the service account can read the right property."}
+    organic = meta.get("organic_sessions") or 0
+    if search_clicks and search_clicks >= 30 and organic < 0.3 * search_clicks:
+        return {"title": "Analytics misses most search visits",
+                "detail": f"Google and Bing report {search_clicks} clicks in 28 days; Analytics recorded {organic} organic sessions. "
+                          "The tag is probably missing on some pages or blocked by the consent banner, so page rankings on this site rely on search data."}
+    if denied:
+        return {"title": "Analytics access incomplete", "detail": "; ".join(denied) + "."}
+    return None
+
+
+def queries_by_page(domains: list[str], urls: list[str], gsc: Path, bing: Path) -> dict[str, dict]:
+    """{page url: {"g": [[query, clicks, impressions, position], ...], "b": [...]}} for the page panel."""
+    keyed = {norm_url(u): u for u in urls}
+    merged: dict[tuple, list] = {}
+    for d in domains:
+        for engine, path in (("g", gsc / d / "queries.csv"), ("b", bing / d / "page_queries.csv")):
+            for r in _csv(path):
+                url = keyed.get(norm_url(r.get("page", "")))
+                if not url:
+                    continue
+                # Search Console lists #section jump links as separate pages: merge them into the page.
+                m = merged.setdefault((url, engine, r["query"]), [0, 0, 0.0])
+                clicks, impr, pos = _num(r["clicks"]), _num(r["impressions"]), _num(r.get("position"))
+                m[0] += clicks
+                m[1] += impr
+                m[2] += pos * impr
+    out: dict[str, dict] = {}
+    for (url, engine, query), (clicks, impr, weighted) in merged.items():
+        out.setdefault(url, {}).setdefault(engine, []).append([query, int(clicks), int(impr), round(weighted / impr, 1) if impr else None])
+    for engines in out.values():
+        for engine, rows in engines.items():
+            engines[engine] = sorted(rows, key=lambda r: (-r[1], -r[2]))[:10]
+    return out
 
 
 def schedule(workflow: Path = Path(".github/workflows/weekly-audit.yml")) -> str:
@@ -294,6 +430,32 @@ def _box_files(root: Path, urls: set[str], by_site: dict[str, list[dict]]) -> di
     return found
 
 
+def _sources(domain: str, gsc: Path, ga4: Path, bing: Path) -> dict:
+    """What the dashboard knows about a site's search and analytics data, and how fresh it is."""
+    gmeta = json.loads((gsc / domain / "meta.json").read_text()) if (gsc / domain / "meta.json").exists() else None
+    bmeta = json.loads((bing / domain / "meta.json").read_text()) if (bing / domain / "meta.json").exists() else None
+    ameta = json.loads((ga4 / domain / "meta.json").read_text()) if (ga4 / domain / "meta.json").exists() else None
+    gdaily, bdaily = _csv(gsc / domain / "daily.csv"), _csv(bing / domain / "daily.csv")
+    inspected = [r.get("inspected", "") for r in _csv(gsc / domain / "index.csv")]
+    crawl = _csv(bing / domain / "crawl.csv")
+    issues = _csv(bing / domain / "crawl_issues.csv")
+    return {
+        "has_bing": bmeta is not None and bool(bmeta.get("start")),
+        "bing_window": bmeta,
+        "google_clicks_28": window_total(gdaily, (gmeta or {}).get("start"), (gmeta or {}).get("end"), "clicks") if gdaily else None,
+        "google_impr_28": window_total(gdaily, (gmeta or {}).get("start"), (gmeta or {}).get("end"), "impressions") if gdaily else None,
+        "bing_clicks_28": window_total(bdaily, (bmeta or {}).get("start"), (bmeta or {}).get("end"), "clicks") if bdaily else None,
+        "bing_impr_28": window_total(bdaily, (bmeta or {}).get("start"), (bmeta or {}).get("end"), "impressions") if bdaily else None,
+        "bing_crawl": crawl[-1] if crawl else None,
+        "bing_crawl_errors": sum(1 for r in issues if set(r.get("issues", "").split()) & {"4xx", "5xx", "timeout", "dns_error", "blocked_by_robots"}),
+        "ga": ameta,
+        "ga_sources": _csv(ga4 / domain / "sources.csv")[:10],
+        "inspected_at": max(inspected) if inspected else None,
+        "sitemaps": _csv(gsc / domain / "sitemaps.csv"),
+        "trend": search_trend(domain, gsc, bing),
+    }
+
+
 def links_by_page(report: Path) -> dict[str, list[list]]:
     """{page url: [[href, kind, tracking id, product id, name], ...]} for the page detail panel."""
     out: dict[str, list[list]] = {}
@@ -304,8 +466,20 @@ def links_by_page(report: Path) -> dict[str, list[list]]:
     return out
 
 
+def all_fixes(dirs: list[Path]) -> list[dict]:
+    """Every page change the engine made, from every report, newest report first; one row per page
+    (its most recent change)."""
+    seen, out = set(), []
+    for folder in reversed(dirs):
+        for r in _csv(folder / "fix-log.csv"):
+            if r.get("status") in ("fixed", "saved_but_live_page_unchanged") and r["url"] not in seen:
+                seen.add(r["url"])
+                out.append({**r, "report": folder.name})
+    return out
+
+
 def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("docs"), state: Path = Path("data/indexnow"),
-               gsc: Path = Path("data/gsc"), ga4: Path = Path("data/ga4")) -> dict:
+               gsc: Path = Path("data/gsc"), ga4: Path = Path("data/ga4"), bing: Path = Path("data/bing")) -> dict:
     dirs = report_dirs(reports)
     if not dirs:
         raise SystemExit(f"No report with a pages.csv found under {reports}/")
@@ -352,6 +526,7 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
             "tags_seen": dict(tags), "has_gsc": meta is not None, "gsc_window": meta,
             "gsc_property": conf[d].gsc_property if d in conf else "",
             "has_ga": any((ga4 / d / f).exists() for f in ("amazon_clicks.csv", "sessions.csv")),
+            **_sources(d, gsc, ga4, bing),
             "submitted": len(sent.get("submitted", {})), "last_submission": sent.get("last_submission"),
             "submission_status": (log.get(d) or {}).get("detail", ""),
             "prev": site_stats(prev_by_site[d]) if d in prev_by_site else None,
@@ -359,9 +534,22 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
             "new_pages": len({r["url"] for r in by_site[d]} - {r["url"] for r in prev_by_site[d]}) if d in prev_by_site else None,
             "gone_pages": len({r["url"] for r in prev_by_site[d]} - {r["url"] for r in by_site[d]}) if d in prev_by_site else None,
         })
+        s["ga_health"] = ga_health(s["ga"], (s["google_clicks_28"] or 0) + (s["bing_clicks_28"] or 0) if s["has_gsc"] or s["has_bing"] else None)
         sites.append(s)
 
     index = {d: i for i, d in enumerate(domains)}
+    trends = [s["trend"] for s in sites if s.get("trend")]
+    portfolio_trend = {}
+    if trends:
+        all_dates = sorted({d for tr in trends for d in tr["dates"]})[-90:]
+        def total(key):
+            vals = []
+            for d in all_dates:
+                parts = [tr[key][tr["dates"].index(d)] for tr in trends if d in tr["dates"]]
+                known = [v for v in parts if v is not None]
+                vals.append(sum(known) if known else None)
+            return vals
+        portfolio_trend = {"dates": all_dates, "google": total("google"), "bing": total("bing")}
     notes = []
     if (report / "summary.md").exists():
         notes.append({"slug": "full-report", "title": f"Full audit report, {report.name}", "html": markdown((report / "summary.md").read_text())})
@@ -376,26 +564,27 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
         "generated": report.name, "previous": previous.name if previous else None,
         "repository": repository_slug(cfg),
         "auto_fix": auto_fix, "box_min_clicks": getattr(cfg, "box_min_clicks", 1),
-        "schedule": schedule(), "history": total_history,
+        "schedule": schedule(), "history": total_history, "trend": portfolio_trend, "coverage_advice": COVERAGE_ADVICE,
         "drafts": _box_files(report / "fixes", known, by_site), "boxes": _box_files(Path("boxes"), known, by_site),
         "sites": sites, "cols": COLS, "pages": [_page_row(r, index) for r in rows],
         "issues": {
             c: {
-                "label": ISSUE_TEXT.get(c, c.replace("_", " ")), "short": SHORT.get(c, ""), "severity": SEVERITY.get(c, "info"), "action": ACTION.get(c, ""),
+                "label": ISSUE_TEXT.get(c) or (f"sitemap URL returns HTTP {c[5:]}" if c.startswith("http_") else c.replace("_", " ")), "short": SHORT.get(c, ""), "severity": SEVERITY.get(c, "info"), "action": ACTION.get(c, ""),
                 "group": "money" if c in MONEY else ("indexing" if c in INDEXATION else "search"),
                 "to_fix": c in TO_FIX, "fix": FIX_FOR.get(c, ""), "fix_on": FIX_FOR.get(c) in auto_fix,
             } for c in codes
         },
         "attention": attention(sites, rows),
-        "fixes": [r for r in _csv(report / "fix-log.csv") if r.get("status") in ("fixed", "saved_but_live_page_unchanged")],
+        "fixes": all_fixes(dirs),
         "submissions": [{**r, "total": sites[index[r["site"]]]["submitted"]} for r in _csv(report / "indexnow-log.csv") if r["site"] in index],
         "notes": notes,
     }
 
 
 def build(out: Path, cfg=None, reports: Path = Path("reports"), docs: Path = Path("docs"), state: Path = Path("data/indexnow"),
-          gsc: Path = Path("data/gsc"), ga4: Path = Path("data/ga4"), mirrors: list[Path] | None = None) -> Path:
-    data = build_data(cfg, reports, docs, state, gsc, ga4)
+          gsc: Path = Path("data/gsc"), ga4: Path = Path("data/ga4"), bing: Path = Path("data/bing"),
+          mirrors: list[Path] | None = None) -> Path:
+    data = build_data(cfg, reports, docs, state, gsc, ga4, bing)
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
@@ -405,6 +594,9 @@ def build(out: Path, cfg=None, reports: Path = Path("reports"), docs: Path = Pat
     (out / "data.json").write_text(json.dumps(data, separators=(",", ":")))
     report = report_dirs(reports)[-1]
     (out / "links.json").write_text(json.dumps(links_by_page(report), separators=(",", ":")))
+    domains = [s["domain"] for s in data["sites"]]
+    urls = [row[1] for row in data["pages"]]
+    (out / "queries.json").write_text(json.dumps(queries_by_page(domains, urls, gsc, bing), separators=(",", ":")))
     (out / "downloads").mkdir()
     for name in ("pages.csv", "links.csv", "fix-log.csv", "indexnow-log.csv", "summary.md"):
         if (report / name).exists():

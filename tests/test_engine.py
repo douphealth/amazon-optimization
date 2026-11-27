@@ -1,5 +1,5 @@
 import json
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from ace import data, fixes, gsc, score
@@ -121,25 +121,156 @@ def test_load_associates_finds_header_and_sums(tmp_path):
     assert stats["papalex-ph-20"].epc == 0.015 and stats["papalex-gutf-20"].items == 4
 
 
-def test_gsc_pull_writes_csv(tmp_path):
-    class Resp:
-        def raise_for_status(self): pass
-        def json(self): return {"rows": [{"keys": ["https://example.com/a/"], "clicks": 3, "impressions": 90, "position": 6.5}]}
+class _Resp:
+    def __init__(self, body, status=200):
+        self.body, self.status_code, self.ok, self.text = body, status, status < 400, json.dumps(body)
+    def raise_for_status(self):
+        if not self.ok:
+            raise RuntimeError(self.status_code)
+    def json(self):
+        return self.body
 
+
+def test_gsc_pull_writes_pages_queries_daily_and_resolves_property(tmp_path):
     class Session:
         calls = []
+        def get(self, url, timeout):
+            return _Resp({"siteEntry": [{"siteUrl": "https://example.com/", "permissionLevel": "siteFullUser"}]})
         def post(self, url, json, timeout):
             self.calls.append((url, json))
-            return Resp()
+            dims = json["dimensions"]
+            if dims == ["page"]:
+                return _Resp({"rows": [{"keys": ["https://example.com/a/"], "clicks": 3, "impressions": 90, "position": 6.5}]})
+            if dims == ["page", "query"]:
+                rows = [{"keys": ["https://example.com/a/", f"q{i}"], "clicks": i % 3, "impressions": 10 + i, "position": 5} for i in range(15)]
+                return _Resp({"rows": rows})
+            return _Resp({"rows": [{"keys": ["2026-11-20"], "clicks": 1, "impressions": 9, "position": 7}]})
+
+    session, logs = Session(), []
+    site = Site(domain="example.com", name="Example", gsc_property="sc-domain:example.com")  # not visible: falls back
+    used = gsc.pull([site], days=28, root=tmp_path, session=session, today=date(2026, 11, 25), log=logs.append)
+    assert used == {"example.com": "https://example.com/"} and any("cannot see" in l for l in logs)
+    url, body = session.calls[0]
+    assert "https%3A%2F%2Fexample.com%2F" in url and body["startDate"] == "2026-10-26" and body["endDate"] == "2026-11-22"
+    rows, meta = data.load_gsc("example.com", tmp_path)
+    assert rows["example.com/a"].clicks == 3 and meta["end"] == "2026-11-22" and meta["property"] == "https://example.com/"
+    queries = (tmp_path / "example.com" / "queries.csv").read_text().splitlines()
+    assert len(queries) == 1 + gsc.QUERIES_PER_PAGE and queries[1].startswith("https://example.com/a/,q14,2")  # most clicks first
+    assert (tmp_path / "example.com" / "daily.csv").read_text().splitlines()[1].startswith("2026-11-20,1,9")
+
+
+def test_gsc_inspect_records_verdicts_and_skips_fresh_pages(tmp_path):
+    class Session:
+        posts = []
+        def get(self, url, timeout):
+            return _Resp({"siteEntry": [{"siteUrl": "sc-domain:example.com", "permissionLevel": "siteFullUser"}]})
+        def post(self, url, json, timeout):
+            self.posts.append(json["inspectionUrl"])
+            ok = json["inspectionUrl"].endswith("/a/")
+            return _Resp({"inspectionResult": {"indexStatusResult": {
+                "verdict": "PASS" if ok else "NEUTRAL",
+                "coverageState": "Submitted and indexed" if ok else "Crawled - currently not indexed",
+                "googleCanonical": json["inspectionUrl"], "lastCrawlTime": "2026-11-20T10:00:00Z"}}})
 
     session = Session()
     site = Site(domain="example.com", name="Example", gsc_property="sc-domain:example.com")
-    gsc.pull([site], days=28, root=tmp_path, session=session, today=date(2026, 11, 25), log=lambda *_: None)
-    url, body = session.calls[0]
-    assert "sc-domain%3Aexample.com" in url
-    assert body["startDate"] == "2026-10-26" and body["endDate"] == "2026-11-22"
-    rows, meta = data.load_gsc("example.com", tmp_path)
-    assert rows["example.com/a"].clicks == 3 and meta["end"] == "2026-11-22"
+    urls = ["https://example.com/a/", "https://example.com/b/"]
+    done = gsc.inspect([(site, urls)], root=tmp_path, session_factory=lambda: session, today=date(2026, 11, 25), log=lambda *_: None)
+    assert done == {"example.com": 2}
+    index = gsc.load_index("example.com", tmp_path)
+    assert index["example.com/a"]["verdict"] == "PASS" and index["example.com/b"]["coverage"] == "Crawled - currently not indexed"
+    assert index["example.com/a"]["last_crawl"] == "2026-11-20"
+    session.posts.clear()
+    gsc.inspect([(site, urls)], root=tmp_path, session_factory=lambda: session, today=date(2026, 11, 28), log=lambda *_: None)
+    assert session.posts == []  # both inspected within the refresh window
+    gsc.inspect([(site, urls)], root=tmp_path, session_factory=lambda: session, today=date(2026, 12, 3), log=lambda *_: None)
+    assert sorted(session.posts) == urls
+
+
+def test_bing_pull_aggregates_last_weeks_and_survives_throttling(tmp_path):
+    from ace import bing
+    ms = lambda d: f"/Date({int(datetime(d.year, d.month, d.day, tzinfo=timezone.utc).timestamp() * 1000)})/"
+    weeks = [date(2026, 10, 16) + timedelta(days=7 * i) for i in range(6)]  # week-ending Fridays, last 2026-11-20
+
+    def page(d, url, clicks, impr, pos):
+        return {"Date": ms(d), "Query": url, "Clicks": clicks, "Impressions": impr, "AvgImpressionPosition": pos, "AvgClickPosition": -1}
+
+    answers = {
+        "GetUserSites": [{"Url": "https://example.com/", "IsVerified": True}, {"Url": "https://other.com/", "IsVerified": True}],
+        # A different click count every day, so a window shifted by even one day gives another total.
+        "GetRankAndTrafficStats": [{"Date": ms(date(2026, 10, 14) + timedelta(days=i)), "Clicks": i, "Impressions": 20} for i in range(43)],
+        "GetPageStats": [page(w, "https://www.example.com/a/", 5, 100, 4) for w in weeks] + [page(weeks[-1], "https://example.com/b/", 1, 50, 10)],
+        "GetQueryStats": [page(w, "widget", 3, 40, 6) for w in weeks],
+        "GetCrawlStats": [{"Date": ms(date(2026, 11, 26)), "CrawledPages": 9, "InIndex": 70, "Code4xx": 1}],
+        "GetCrawlIssues": [{"Url": "https://example.com/gone/", "HttpCode": 404, "Issues": 4, "InLinks": 2},
+                           {"Url": "http://example.com/", "HttpCode": 301, "Issues": 1, "InLinks": 0}],
+    }
+    calls = []
+
+    class Session:
+        def get(self, url, params, timeout):
+            method = url.rsplit("/", 1)[-1]
+            calls.append(method)
+            if method == "GetPageQueryStats":
+                if params["page"].endswith("/b/"):
+                    return _Resp({"ErrorCode": 4, "Message": "ERROR!!! ThrottleUser"}, status=400)
+                return _Resp({"d": [page(weeks[-1], "widget review", 2, 30, 3), page(weeks[0], "too old", 9, 99, 1)]})
+            return _Resp({"d": answers[method]})
+
+    client = bing.Client(key="k", session=Session(), pause=0, sleep=lambda s: None)
+    logs = []
+    out = bing.pull([Site(domain="example.com", name="Example")], root=tmp_path, client=client, today=date(2026, 11, 27), log=logs.append)
+    meta = out["example.com"]
+    # The four newest buckets are dated 10-30 .. 11-20; a bucket dated D covers D-7 .. D-1.
+    assert (meta["start"], meta["end"], meta["weeks"]) == ("2026-10-23", "2026-11-19", 4)
+    first = (date(2026, 10, 23) - date(2026, 10, 14)).days
+    assert meta["site_clicks_in_window"] == sum(range(first, first + 28)) and meta["page_clicks_in_window"] == 21
+    pages, _ = data.load_bing("example.com", tmp_path)
+    assert pages["example.com/a"].clicks == 20 and pages["example.com/a"].impressions == 400 and pages["example.com/a"].position == 4
+    assert pages["example.com/b"].position == 10
+    pq = (tmp_path / "example.com" / "page_queries.csv").read_text()
+    assert "widget review,2,30,3" in pq and "too old" not in pq
+    assert any("throttled" in l for l in logs)  # one page throttled: kept what it had, no crash
+    errors = bing.load_crawl_errors("example.com", tmp_path)
+    assert list(errors) == ["example.com/gone"] and errors["example.com/gone"]["issues"] == "4xx"  # the 301 is not an error
+    assert bing.decode_issues(4 | 16) == ["4xx", "blocked_by_robots"]
+    assert bing.resolve_site(Site(domain="www.other.com", name="O"), ["https://other.com/"]) == "https://other.com/"
+
+
+def test_ga4_pull_uses_first_property_with_visits(tmp_path):
+    from ace import ga4
+
+    class Session:
+        def post(self, url, json, timeout):
+            if "111" in url:
+                return _Resp({"error": "denied"}, status=403)
+            dims = [d["name"] for d in json.get("dimensions", [])]
+            if "222" in url:
+                return _Resp({"rows": [], "rowCount": 0})
+            if not dims:  # totals: GA4's own, which need not equal the sum of rows
+                rows = [["9", "6"]] if "Organic Search" in __import__("json").dumps(json.get("dimensionFilter")) else [["50", "9"]]
+            elif dims == ["landingPage"]:
+                rows = [["/a", "5", "3"], ["/a/", "2", "1"], ["(not set)", "4", "0"]]
+            elif dims == ["pagePath"]:
+                rows = [["/a/", "7"]]
+            elif dims == ["sessionSource", "sessionMedium", "sessionDefaultChannelGroup"]:
+                rows = [["bing", "organic", "Organic Search", "9", "6"], ["(direct)", "(none)", "Direct", "40", "2"]]
+            else:
+                rows = [["20261120", "Organic Search", "3", "2"], ["20261120", "Direct", "10", "1"]]
+            n = len(dims)
+            return _Resp({"rows": [{"dimensionValues": [{"value": v} for v in r[:n]], "metricValues": [{"value": v} for v in r[n:]]} for r in rows],
+                          "rowCount": len(rows)})
+
+    site = Site(domain="example.com", name="Example", ga4_properties=["111", "222", "333"])
+    out = ga4.pull([site], root=tmp_path, session=Session(), today=date(2026, 11, 27), log=lambda *_: None)
+    meta = out["example.com"]
+    assert meta["property"] == "333" and meta["sessions"] == 50 and meta["organic_sessions"] == 9 and meta["amazon_clicks"] == 7
+    assert (meta["start"], meta["end"]) == ("2026-10-29", "2026-11-25")  # ends two days back: GA4 is still processing yesterday
+    assert any("no access to property 111" in n for n in meta["notes"]) and any("222 recorded no visits" in n for n in meta["notes"])
+    visits = data.load_ga4("example.com", tmp_path)
+    assert visits["example.com/a"]["sessions"] == 7 and visits["example.com/a"]["amazon_clicks"] == 7
+    daily = (tmp_path / "example.com" / "daily.csv").read_text().splitlines()
+    assert daily[1] == "2026-11-20,13,3,3"
 
 
 def _page(url, text, title="T", status=200):
@@ -610,7 +741,7 @@ def test_dashboard_script_uses_only_fields_the_build_writes():
     from ace import site
     js = (site.ASSETS / "app.js").read_text()
     used = set(re.findall(r"\bp\.(\w+)\b", js))
-    derived = {"s", "codes", "path", "sev", "fix", "visits", "url", "status"}
+    derived = {"s", "codes", "path", "sev", "fix", "visits", "url", "status", "search", "indexed"}
     assert used - derived <= set(site.COLS), used - derived - set(site.COLS)
 
 
@@ -683,3 +814,75 @@ def test_box_names_products_from_card_headings_and_adds_searches():
     assert "Quick links from this guide" in fixes.box(score.Row(site=Site(domain="example.com", name="Example"), page=only_search, gsc=None))
     policy = parse("https://example.com/cookie-policy/", "<html><body>" + filler + '<p><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=1">Amazon privacy</a></p></body></html>')
     assert policy.content_links == [] and policy.first_link_depth is None
+
+
+def test_scoring_combines_google_and_bing_and_reads_index_status():
+    from ace.data import GscRow
+    site = Site(domain="example.com", name="Example")
+    cfg = Config(account_tag_prefix="me", marketplace="www.amazon.com", sites=[site])
+    body = "<p>" + " ".join(["word"] * 400) + "</p>"
+    pages = {"example.com": [
+        parse("https://example.com/a/", f"<html><head><title>A</title></head><body>{body}</body></html>"),
+        parse("https://example.com/b/", f"<html><head><title>B</title></head><body>{body}</body></html>"),
+        parse("https://example.com/c/", f"<html><head><title>C</title><link rel='canonical' href='https://example.com/c/'></head><body>{body}</body></html>"),
+    ]}
+    for p in pages["example.com"]:
+        p.status = 200
+    rows = {r.page.url: r for r in score.build_rows(
+        cfg, pages, {"example.com": {"example.com/a": GscRow(2, 200, 3)}}, {}, {},
+        bing_by_site={"example.com": {"example.com/a": GscRow(5, 1000, 2), "example.com/b": GscRow(0, 40, 9)}},
+        index_by_site={"example.com": {
+            "example.com/a": {"verdict": "NEUTRAL", "coverage": "Crawled - currently not indexed"},
+            "example.com/b": {"verdict": "NEUTRAL", "coverage": "URL is unknown to Google"},
+            "example.com/c": {"verdict": "PASS", "coverage": "Submitted and indexed", "google_canonical": "https://example.com/other/"}}},
+        bing_errors_by_site={"example.com": {"example.com/b": {"issues": "4xx"}}})}
+    a, b, c = rows["https://example.com/a/"], rows["https://example.com/b/"], rows["https://example.com/c/"]
+    assert a.search_clicks == 7 and a.visits == 7
+    assert a.reachable_clicks == max(2, 200 * score.expected_ctr(3)) + max(5, 1000 * score.expected_ctr(2))
+    assert "low_bing_ctr" in a.issues and "low_serp_ctr" in a.issues
+    assert "demand_page_not_in_google" in a.issues and "not_in_google" not in a.issues
+    assert "demand_page_not_in_google" in b.issues and "bing_crawl_error" in b.issues  # Bing impressions count as demand
+    assert c.issues.count("google_canonical_mismatch") == 1 and "not_in_google" not in c.issues
+    quiet = score.build_rows(cfg, {"example.com": [pages["example.com"][2]]}, {}, {}, {},
+                             index_by_site={"example.com": {"example.com/c": {"verdict": "NEUTRAL", "coverage": "Discovered - currently not indexed"}}})
+    assert "not_in_google" in quiet[0].issues
+    stale = score.build_rows(cfg, {"example.com": [pages["example.com"][2]]}, {}, {}, {},
+                             index_by_site={"example.com": {"example.com/c": {"verdict": "NEUTRAL", "coverage": "Excluded by \u2018noindex\u2019 tag"}}})
+    assert stale[0].issues.count("google_verdict_outdated") == 1 and "not_in_google" not in stale[0].issues
+
+
+
+def test_loaders_merge_url_variants_and_dashboard_merges_query_fragments(tmp_path):
+    from ace import site
+    gsc_dir = tmp_path / "gsc" / "example.com"; gsc_dir.mkdir(parents=True)
+    (gsc_dir / "pages.csv").write_text("page,clicks,impressions,position\n"
+                                       "https://example.com/a,0,191,50\nhttps://example.com/a/,2,9,10\nhttps://www.example.com/a/?utm_source=x,1,0,0\n")
+    rows, _ = data.load_gsc("example.com", tmp_path / "gsc")
+    a = rows["example.com/a"]
+    assert (a.clicks, a.impressions) == (3, 200) and a.position == round((50 * 191 + 10 * 9) / 200, 2)
+    (gsc_dir / "queries.csv").write_text("page,query,clicks,impressions,position\n"
+                                         "https://example.com/a/#s1,pots,1,8,8\nhttps://example.com/a/#s2,pots,0,2,3\nhttps://example.com/a/,other,0,1,1\n")
+    q = site.queries_by_page(["example.com"], ["https://example.com/a/"], tmp_path / "gsc", tmp_path / "bing")
+    assert q["https://example.com/a/"]["g"] == [["pots", 1, 10, 7.0], ["other", 0, 1, 1.0]]
+
+
+def test_inspect_survives_network_errors_and_keeps_going():
+    import requests
+    calls = []
+
+    class Session:
+        def get(self, url, timeout):
+            return _Resp({"siteEntry": [{"siteUrl": "sc-domain:a.com", "permissionLevel": "siteFullUser"},
+                                        {"siteUrl": "sc-domain:b.com", "permissionLevel": "siteFullUser"}]})
+        def post(self, url, json, timeout):
+            calls.append(json["inspectionUrl"])
+            if json["inspectionUrl"].endswith("/flaky/"):
+                raise requests.ReadTimeout("timed out")
+            return _Resp({"inspectionResult": {"indexStatusResult": {"verdict": "PASS", "coverageState": "Submitted and indexed"}}})
+
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        sites = [(Site(domain="a.com", name="A"), ["https://a.com/flaky/", "https://a.com/ok/"]), (Site(domain="b.com", name="B"), ["https://b.com/x/"])]
+        done = gsc.inspect(sites, root=tmp, session_factory=Session, today=date(2026, 11, 27), log=lambda *_: None)
+        assert done == {"a.com": 1, "b.com": 1}  # the flaky URL was retried, then skipped; the next site still ran
+        assert calls.count("https://a.com/flaky/") == 3

@@ -1,0 +1,14 @@
+{
+ "property": "546666742",
+ "start": "2026-10-29",
+ "end": "2026-11-25",
+ "pulled": "2026-11-27",
+ "sessions": 0,
+ "organic_sessions": 0,
+ "engaged_sessions": 0,
+ "amazon_clicks": 0,
+ "notes": [
+  "property 546666742 recorded no visits for efficientgptprompts.com"
+ ],
+ "note": "Google Analytics Data API. Totals are GA4's own; rows are estimates and may not add up to them. Sessions by landing page are organic search only."
+}

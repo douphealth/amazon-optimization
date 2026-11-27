@@ -1,0 +1,13 @@
+{
+ "site_url": "https://gearuptofit.com/",
+ "pulled": "2026-11-27",
+ "weeks": 4,
+ "start": "2026-10-23",
+ "end": "2026-11-19",
+ "daily_start": "2025-07-27",
+ "daily_end": "2026-11-25",
+ "site_clicks_in_window": 593,
+ "page_clicks_in_window": 420,
+ "page_share_of_clicks": 0.71,
+ "note": "Bing Webmaster API. Pages and queries are weekly and omit low-volume rows; daily totals are complete."
+}

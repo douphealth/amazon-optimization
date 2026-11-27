@@ -1,4 +1,5 @@
-"""Read the two first-party data sources: Search Console page data and Amazon Associates reports.
+"""Read the first-party data sources: Search Console, Bing Webmaster, Google Analytics and Amazon
+Associates reports. `ace pull` writes the first three; any of them may also be dropped in by hand.
 
 Both readers accept the files as exported by the vendor UI, so no API access is required:
   data/gsc/<domain>/pages.csv         Search Console > Performance > Export > Pages.csv
@@ -62,7 +63,34 @@ def load_gsc(domain: str, root: str | Path = "data/gsc") -> tuple[dict[str, GscR
     for row in rows[1:]:
         if len(row) <= max(c_page, c_clicks, c_impr, c_pos) or "#" in row[c_page]:
             continue
-        out[norm_url(row[c_page])] = GscRow(_num(row[c_clicks]), _num(row[c_impr]), _num(row[c_pos]))
+        _add(out, norm_url(row[c_page]), _num(row[c_clicks]), _num(row[c_impr]), _num(row[c_pos]))
+    return out, meta
+
+
+def _add(out: dict[str, GscRow], key: str, clicks: float, impressions: float, position: float) -> None:
+    """Merge a row into `out`. Rows whose URLs differ only by www, a trailing slash or a query string
+    belong to the same page: clicks and impressions add up, position is impression-weighted."""
+    if key not in out:
+        out[key] = GscRow(clicks, impressions, position)
+        return
+    old = out[key]
+    weight = old.impressions + impressions
+    pos = (old.position * old.impressions + position * impressions) / weight if weight else (old.position or position)
+    out[key] = GscRow(old.clicks + clicks, weight, round(pos, 2))
+
+
+def load_bing(domain: str, root: str | Path = "data/bing") -> tuple[dict[str, GscRow], dict]:
+    """({normalised url: GscRow}, meta) from data/bing/<domain>/ (written by `ace pull`)."""
+    folder = Path(root) / domain
+    meta = json.loads((folder / "meta.json").read_text()) if (folder / "meta.json").exists() else {}
+    path = folder / "pages.csv"
+    if not path.exists():
+        return {}, meta
+    out: dict[str, GscRow] = {}
+    for row in csv.DictReader(io.StringIO(path.read_text(encoding="utf-8-sig"))):
+        page = (row.get("page") or "").strip()
+        if page and "#" not in page:
+            _add(out, norm_url(page), _num(row.get("clicks", "")), _num(row.get("impressions", "")), _num(row.get("position", "")))
     return out, meta
 
 

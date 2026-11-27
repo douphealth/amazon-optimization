@@ -9,7 +9,7 @@ from pathlib import Path
 from statistics import median
 from urllib.parse import urlsplit
 
-from . import __version__, changes
+from . import __version__, changes, data
 from .config import Config
 from .crawl import ANALYTICS_ONLY
 from .data import TagStats
@@ -31,6 +31,12 @@ ISSUE_TEXT = {
     "blocked_product": "links to a product listed as wrong or gone in sites.yaml",
     "earning_page_noindexed": "produces Amazon clicks but is set to noindex, so search engines will drop it",
     "low_serp_ctr": "Google shows it but few people click (title/description)",
+    "low_bing_ctr": "Bing shows it but few people click (title/description)",
+    "demand_page_not_in_google": "has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index",
+    "not_in_google": "not in Google's index (URL Inspection)",
+    "google_verdict_outdated": "Google's verdict is out of date: the page was noindex, missing or redirecting when Google last crawled it",
+    "google_canonical_mismatch": "Google indexed a different URL as the canonical for this page",
+    "bing_crawl_error": "Bing could not crawl it (error, timeout or blocked)",
     "no_meta_description": "no meta description",
     "noindex": "noindex",
     "canonical_elsewhere": "canonical points to another URL",
@@ -40,7 +46,8 @@ ISSUE_TEXT = {
     "duplicate_title": "same title as another page on the site",
 }
 # Indexation checks get their own section, so the work queue only names money problems.
-INDEXATION = {"redirects", "thin_content", "near_duplicate", "duplicate_title", "noindex", "canonical_elsewhere"}
+INDEXATION = {"redirects", "thin_content", "near_duplicate", "duplicate_title", "noindex", "canonical_elsewhere",
+              "not_in_google", "google_canonical_mismatch", "bing_crawl_error", "google_verdict_outdated"}
 
 
 def save_audit(out: Path, pages_by_site: dict[str, list[Page]], sitemaps: dict[str, dict[str, list[str]]]) -> None:
@@ -73,6 +80,7 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
             "site", "url", "status", "words", "commercial_intent", "amazon_links", "product_links",
             "search_links", "short_links", "first_link_depth", "tags", "disclosure", "gsc_clicks",
             "gsc_impressions", "gsc_position", "ga_sessions", "ga_amazon_clicks", "score", "near_duplicate_group", "issues",
+            "bing_clicks", "bing_impressions", "bing_position", "google_verdict", "google_index", "google_last_crawl",
         ])
         for r in rows:
             p, links = r.page, r.page.content_links
@@ -83,6 +91,8 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
                 " ".join(sorted({l.tag for l in p.links if l.tag})), int(p.disclosure),
                 r.gsc.clicks if r.gsc else "", r.gsc.impressions if r.gsc else "",
                 round(r.gsc.position, 1) if r.gsc else "", r.sessions or "", r.amazon_clicks or "", r.score, r.cluster_size or "", " ".join(r.issues),
+                r.bing.clicks if r.bing else "", r.bing.impressions if r.bing else "", round(r.bing.position, 1) if r.bing and r.bing.position else "",
+                (r.index or {}).get("verdict", ""), (r.index or {}).get("coverage", ""), (r.index or {}).get("last_crawl", ""),
             ])
     with (out / "links.csv").open("w", newline="") as f:
         w = csv.writer(f)
@@ -94,14 +104,14 @@ def write_csvs(out: Path, rows: list[Row]) -> None:
 
 def _site_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list[str]]], gsc_meta: dict[str, dict]) -> list[str]:
     lines = [
-        "| Site | Pages crawled | Loaded OK | Pages with Amazon links | Amazon links | Typical first-link depth | Pages Google showed | Google clicks |",
-        "|---|---|---|---|---|---|---|---|",
+        "| Site | Pages crawled | Loaded OK | Pages with Amazon links | Amazon links | Typical first-link depth | Pages Google showed | Google clicks | Bing clicks (pages) | In Google's index |",
+        "|---|---|---|---|---|---|---|---|---|---|",
     ]
     details = []
     for site in cfg.sites:
         rs = [r for r in rows if r.site.domain == site.domain]
         if not rs:
-            lines.append(f"| {site.name} | 0 (no sitemap found) | | | | | | |")
+            lines.append(f"| {site.name} | 0 (no sitemap found) | | | | | | | | |")
             continue
         ok = [r for r in rs if r.page.status == 200]
         with_links = [r for r in ok if r.page.content_links]
@@ -112,7 +122,9 @@ def _site_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list
             f"| {site.name} | {len(rs)} | {len(ok)} | {len(with_links)} | "
             f"{sum(len(r.page.links) for r in ok)} | {_pct(median(depths)) if depths else 'n/a'} | "
             f"{len(gsc_rows) if has_gsc else 'no data'} | "
-            f"{int(sum(r.gsc.clicks for r in gsc_rows)) if has_gsc else 'no data'} |"
+            f"{int(sum(r.gsc.clicks for r in gsc_rows)) if has_gsc else 'no data'} | "
+            f"{int(sum(r.bing.clicks for r in rs if r.bing)) if any(r.bing for r in rs) else 'no data'} | "
+            f"{_index_share(ok)} |"
         )
         counts = Counter(i for r in rs for i in r.issues)
         tags = Counter(l.tag or "(none)" for r in ok for l in r.page.links if l.kind != "short")
@@ -136,6 +148,28 @@ def _site_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list
         if len(block) > 1:
             details.extend(block + [""])
     return lines + [""] + details
+
+
+def _index_share(rows: list[Row]) -> str:
+    inspected = [r for r in rows if r.index and r.index.get("verdict") not in ("", "ERROR")]
+    if not inspected:
+        return "not inspected"
+    return f"{sum(r.index['verdict'] == 'PASS' for r in inspected)} of {len(inspected)} inspected"
+
+
+def _coverage_block(cfg: Config, rows: list[Row]) -> list[str]:
+    """Google's verdict per page (URL Inspection), counted by state, per site."""
+    states = Counter(r.index["coverage"] for r in rows if r.index and r.index.get("coverage"))
+    if not states:
+        return []
+    names = [s for s, _ in states.most_common()]
+    lines = ["## Google index status (URL Inspection)", "",
+             "| Site | " + " | ".join(names) + " |", "|---|" + "---|" * len(names)]
+    for site in cfg.sites:
+        c = Counter(r.index["coverage"] for r in rows if r.site.domain == site.domain and r.index and r.index.get("coverage"))
+        if c:
+            lines.append(f"| {site.name} | " + " | ".join(str(c.get(n, "")) for n in names) + " |")
+    return lines + [""]
 
 
 def _indexation_block(cfg: Config, rows: list[Row], sitemaps: dict[str, dict[str, list[str]]], gsc_meta: dict[str, dict]) -> list[str]:
@@ -220,12 +254,16 @@ def write_summary(
             lines.append(f"| {r.page.url} | {int(r.gsc.impressions)} | {r.gsc.position:.1f} | {int(r.gsc.clicks)} | {r.page.title} |")
         lines.append("")
 
+    lines += _coverage_block(cfg, rows)
     lines += _indexation_block(cfg, rows, sitemaps, gsc_meta)
     lines += ["## Data used", ""]
     for site in cfg.sites:
         meta = gsc_meta.get(site.domain)
         if meta:
-            lines.append(f"- {site.domain}: Search Console {meta.get('start', '?')} to {meta.get('end', '?')} ({meta.get('note', 'full export')})")
+            lines.append(f"- {site.domain}: Search Console {meta.get('start', '?')} to {meta.get('end', '?')} ({meta.get('property') or meta.get('note', 'full export')})")
+        bmeta = data.load_bing(site.domain)[1]
+        if bmeta.get("start"):
+            lines.append(f"- {site.domain}: Bing {bmeta['start']} to {bmeta['end']} ({bmeta.get('site_url', '')})")
     lines += [
         "- Sites not listed above have no Search Console file, so their pages are audited but not ranked.",
         "- Scores are a heuristic (see `ace/score.py`): expected click-through rates by position are an assumption.",

@@ -1,1 +1,7 @@
-{"start": "2026-11-11", "end": "2026-11-24", "note": "partial: only pages with more than 60 impressions, pulled via Supermetrics on 2026-11-25"}
+{
+ "property": "sc-domain:gearuptogrow.com",
+ "start": "2026-10-28",
+ "end": "2026-11-24",
+ "pulled": "2026-11-27",
+ "note": "Search Console API, every page with impressions"
+}

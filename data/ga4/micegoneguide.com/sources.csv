@@ -1,0 +1,20 @@
+source,medium,channel,sessions,engaged_sessions
+(direct),(none),Direct,679,45
+duckduckgo,organic,Organic Search,256,128
+bing,organic,Organic Search,184,118
+yahoo,organic,Organic Search,122,70
+ecosia.org,organic,Organic Search,59,21
+uk.search.yahoo.com,referral,Organic Search,17,11
+ca.search.yahoo.com,referral,Organic Search,16,10
+aocr.org,referral,Referral,12,0
+m.facebook.com,referral,Organic Social,12,0
+facebook.com,referral,Organic Social,5,4
+(not set),(not set),Unassigned,4,0
+api.microsoft.ai,referral,Referral,4,0
+google,organic,Organic Search,2,0
+link.edgepilot.com,referral,Referral,2,0
+perplexity,(not set),Unassigned,2,1
+us.search.yahoo.com,referral,Organic Search,2,2
+au.search.yahoo.com,referral,Organic Search,1,1
+gipkd.com,referral,Referral,1,0
+search.brave.com,referral,Referral,1,1

@@ -1,7 +1,9 @@
 # Portfolio config. One entry per site that carries (or should carry) Amazon links.
 # tags: the Associates tracking IDs this site is expected to use. Leave empty to
 #       accept any tag that starts with account_tag_prefix.
-# gsc_property: the Search Console property ID (used by `ace gsc-pull`).
+# gsc_property: the Search Console property (`ace pull` falls back to the domain or URL-prefix property it can see).
+# ga4_properties: Google Analytics 4 property IDs; the first that records visits for the site is used.
+# bing_site: the Bing Webmaster site URL, only needed when it differs from https://<domain>/.
 
 # GitHub repository this engine lives in. The dashboard's buttons link to it.
 repository: douphealth/amazon-optimization
@@ -41,38 +43,45 @@ defaults:
 sites:
   - domain: gearuptofit.com
     name: GearUpToFit
-    gsc_property: "sc-domain:gearuptofit.com"
+    gsc_property: "https://gearuptofit.com/"   # a URL-prefix property: the account has no domain property for this site
+    ga4_properties: [250003756, 375653719]
     tags: [papalex-gutf-20]
     skip_fix: "^/watch-match/"   # a separate app, not WordPress
 
   - domain: plantastichaven.com
     name: Plantastic Haven
     gsc_property: "sc-domain:plantastichaven.com"
+    ga4_properties: [378647208]
     tags: [papalex-ph-20]
 
   - domain: micegoneguide.com
     name: Mice Gone Guide
     gsc_property: "sc-domain:micegoneguide.com"
+    ga4_properties: [546636374]
     tags: [papalex-mgg-20]
 
   - domain: gearuptogrow.com
     name: GearUpToGrow
     gsc_property: "sc-domain:gearuptogrow.com"
+    ga4_properties: [300847192]
     tags: [papalex-gutg-20]
 
   - domain: affiliatemarketingforsuccess.com
     name: Affiliate Marketing for Success
     gsc_property: "sc-domain:affiliatemarketingforsuccess.com"
+    ga4_properties: [260509481]
     tags: [papalex-amfs-20]
 
   - domain: frenchyfab.com
     name: FrenchyFab
     gsc_property: "sc-domain:frenchyfab.com"
+    ga4_properties: [409497113, 407291494]
     tags: [papalex-ff-20]
 
   - domain: mysticaldigits.com
     name: Mystical Digits
     gsc_property: "sc-domain:mysticaldigits.com"
+    ga4_properties: [387055444]
     tags: [papalex-md-20]
 
   - domain: outdoormisting.com
@@ -84,4 +93,5 @@ sites:
   - domain: efficientgptprompts.com
     name: Efficient GPT Prompts
     gsc_property: "sc-domain:efficientgptprompts.com"
+    ga4_properties: [546666742]
     tags: []

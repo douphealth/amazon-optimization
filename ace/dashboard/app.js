@@ -15,7 +15,7 @@ const signed = n => (n > 0 ? "+" : n < 0 ? "−" : "") + num(Math.abs(n));
 const plural = (n, one, many) => `${num(n)} ${n === 1 ? one : many || one + "s"}`;
 const day = (iso, short) => {
   const m = /^(\d{4})-(\d\d)-(\d\d)/.exec(iso || "");
-  return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])).toLocaleDateString("en-GB", { day: "numeric", month: "short", ...(short ? {} : { year: "numeric" }), timeZone: "UTC" }) : (iso || "–");
+  return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])).toLocaleDateString("en-GB", { day: "numeric", month: "short", ...(short ? {} : { year: "numeric" }), timeZone: "UTC" }) : esc(iso || "–");
 };
 const ago = iso => {
   const s = Math.max(0, (Date.now() - new Date(iso)) / 1000);
@@ -76,7 +76,8 @@ const FIX_LABEL = {
 };
 const GROUPS = [["money", "Costs clicks or commission"], ["indexing", "Indexing"], ["search", "Search appearance"]];
 
-let D, P, QUEUE, FIXED, BY, LINKS, RUNS = null;
+let D, P, QUEUE, FIXED, BY, LINKS, QUERIES, RUNS = null;
+const CHARTS = {};
 let DONE = store.get("ace-queue-done", {});
 
 /* ---------- data ---------- */
@@ -91,7 +92,9 @@ function prepare(data) {
     try { const u = new URL(p.url); p.path = u.pathname + u.search; } catch { p.path = p.url; }
     p.sev = Math.min(4, ...p.codes.map(c => RANK[issue(c).severity] ?? 3));
     p.fix = p.codes.some(c => issue(c).to_fix);
-    p.visits = Math.max(p.sessions || 0, p.gclicks || 0);
+    p.search = (p.gclicks || 0) + (p.bclicks || 0);
+    p.visits = Math.max(p.sessions || 0, p.search);
+    p.indexed = p.gverdict === "PASS";
     return p;
   });
   BY = new Map(P.map(p => [p.url, p]));
@@ -141,6 +144,7 @@ function render() {
   const fn = VIEWS[route.name] || overview;
   view.innerHTML = fn(route) || "";
   if (fn.after) fn.after(route);
+  drawCharts();
   if (render.last !== key) { window.scrollTo(0, 0); view.classList.remove("fade"); void view.offsetWidth; view.classList.add("fade"); render.last = key; }
   document.title = ($("h1", view)?.textContent || "Overview") + " · Commission Engine";
   paintRuns();
@@ -153,12 +157,12 @@ const card = (title, body, sub = "", right = "") =>
   `<section class="card"><div class="hd"><h2>${esc(title)}</h2>${sub ? `<span class="muted">${sub}</span>` : ""}${right ? `<span class="right">${right}</span>` : ""}</div><div class="bd">${body}</div></section>`;
 
 /* A sparkline needs at least three reports to say anything; before that the tile shows the change. */
-function spark(points, label) {
+function spark(points, label, unit = "reports") {
   if (!points || points.length < 3) return "";
   const v = points.map(pt => pt.v), lo = Math.min(...v), hi = Math.max(...v), W = 92, H = 30, span = hi - lo || 1;
   const xy = v.map((y, i) => [3 + i * (W - 6) / (v.length - 1), H - 4 - (y - lo) / span * (H - 8)]);
   const first = points[0], last = points[points.length - 1];
-  return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)} over ${points.length} reports" ${tipAttr(`<b>${esc(label)}</b><br>${day(first.d, 1)}: ${num(first.v)}<br>${day(last.d, 1)}: ${num(last.v)}`)}>
+  return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)} over ${points.length} ${unit}" ${tipAttr(`<b>${esc(label)}</b><br>${day(first.d, 1)}: ${num(first.v)}<br>${day(last.d, 1)}: ${num(last.v)}`)}>
     <polyline points="${xy.map(pt => pt.map(n => n.toFixed(1)).join(",")).join(" ")}"/><circle cx="${xy[xy.length - 1][0].toFixed(1)}" cy="${xy[xy.length - 1][1].toFixed(1)}" r="3.5"/></svg>`;
 }
 const series = (history, key) => (history || []).map(h => ({ d: h.date, v: h[key] }));
@@ -237,7 +241,107 @@ function paintRuns() {
   });
 }
 
+/* ---------- search clicks per day: Google and Bing ---------- */
+const ENGINES = [["google", "Google", "var(--data-1)"], ["bing", "Bing", "var(--data-2)"]];
+const COVERAGE_SHORT = {
+  "Submitted and indexed": "Indexed", "Indexed, not submitted in sitemap": "Indexed, not in sitemap",
+  "Crawled - currently not indexed": "Crawled, not indexed", "Discovered - currently not indexed": "Discovered, not indexed",
+  "URL is unknown to Google": "Unknown to Google", "Duplicate, Google chose different canonical than user": "Google chose other canonical",
+  "Duplicate without user-selected canonical": "Duplicate, no canonical", "Alternate page with proper canonical tag": "Alternate (canonical)",
+};
+const coverageShort = c => COVERAGE_SHORT[c] || c || "Not inspected";
+const indexChip = p => (!p.gidx ? `<span class="muted small">Not inspected</span>` : p.gverdict === "ERROR" ? status("info", "Check failed")
+  : status(p.indexed ? "good" : p.codes.includes("demand_page_not_in_google") ? "serious" : "warning", coverageShort(p.gidx)));
+/* Weekly sums ending on the last day every engine with data has reported, so the newest week
+   compares like with like. A week with a missing day is left out rather than undercounted. */
+function weekly(tr, key) {
+  const lastOf = k => tr[k].reduce((last, v, i) => (v == null ? last : i), -1);
+  const engines = ENGINES.map(([k]) => k).filter(k => lastOf(k) >= 0);
+  const stop = Math.min(...engines.map(lastOf)) + 1;
+  const out = [];
+  for (let end = stop; end >= 7; end -= 7) {
+    const vals = tr[key].slice(end - 7, end);
+    if (vals.every(v => v != null)) out.unshift({ d: tr.dates[end - 1], v: vals.reduce((a, b) => a + b, 0) });
+  }
+  return out;
+}
+function trendCard(id, tr, title, sub) {
+  if (!tr || !tr.dates || !tr.dates.length) return "";
+  CHARTS[id] = tr;
+  const has = ENGINES.filter(([k]) => tr[k].some(v => v != null));
+  const weeks = weekly(tr, "google").map((w, i) => ({ d: w.d, g: w.v, b: weekly(tr, "bing")[i]?.v }));
+  const legend = `<div class="legend">${has.map(([, name, color]) => `<span><i style="background:${color}"></i>${name}</span>`).join("")}</div>`;
+  const tableHtml = `<details class="numbers"><summary>Show the numbers</summary><div class="scroll" style="margin-top:10px"><table><thead><tr><th>Week ending</th>${has.map(([, n]) => `<th class="n">${n} clicks</th>`).join("")}</tr></thead><tbody>${
+    weekly(tr, has[0][0]).map((w, i) => `<tr><td>${day(w.d)}</td>${has.map(([k]) => `<td class="n">${num(weekly(tr, k)[i]?.v)}</td>`).join("")}</tr>`).reverse().join("")}</tbody></table></div></details>`;
+  return card(title, `<div class="chart" data-chart="${esc(id)}" tabindex="0" role="img" aria-label="${esc(title)}: daily clicks from ${has.map(e => e[1]).join(" and ")} over ${tr.dates.length} days"></div>${tableHtml}`, sub, legend);
+}
+function niceMax(v) {
+  const raw = Math.max(1, v / 4), p = Math.pow(10, Math.floor(Math.log10(raw))), n = raw / p;
+  const step = Math.max(1, (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p);
+  return step * 4;
+}
+function drawCharts() {
+  $$(".chart[data-chart]", view).forEach(el => {
+    const tr = CHARTS[el.dataset.chart];
+    if (!tr) return;
+    const W = Math.max(280, el.clientWidth), H = 230, L = 40, R = 64, T = 14, B = 26, iw = W - L - R, ih = H - T - B;
+    const has = ENGINES.filter(([k]) => tr[k].some(v => v != null));
+    const max = niceMax(Math.max(1, ...has.flatMap(([k]) => tr[k].filter(v => v != null))));
+    const n = tr.dates.length, x = i => L + (n < 2 ? 0 : i * iw / (n - 1)), y = v => T + ih - v / max * ih;
+    const grid = [0, 0.25, 0.5, 0.75, 1].map(f => `<line x1="${L}" x2="${L + iw}" y1="${y(max * f).toFixed(1)}" y2="${y(max * f).toFixed(1)}" class="g${f ? "" : " base"}"/><text x="${L - 8}" y="${(y(max * f) + 4).toFixed(1)}" text-anchor="end">${num(max * f)}</text>`).join("");
+    const ticks = tr.dates.map((d, i) => d.endsWith("-01") ? `<text x="${x(i).toFixed(1)}" y="${H - 6}" text-anchor="middle">${new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })}</text><line x1="${x(i).toFixed(1)}" x2="${x(i).toFixed(1)}" y1="${T + ih}" y2="${T + ih + 4}" class="g"/>` : "").join("");
+    const path = k => {
+      let d = "", pen = false;
+      tr[k].forEach((v, i) => { if (v == null) { pen = false; return; } d += `${pen ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`; pen = true; });
+      return d;
+    };
+    const ends = has.map(([k, name, color]) => {
+      const i = tr[k].map((v, j) => (v == null ? -1 : j)).filter(j => j >= 0).pop();
+      return { k, name, color, i, v: tr[k][i], ty: y(tr[k][i]) };
+    }).sort((a, b) => a.ty - b.ty);
+    for (let j = 1; j < ends.length; j++) if (ends[j].ty - ends[j - 1].ty < 15) ends[j].ty = ends[j - 1].ty + 15;
+    el.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${grid}${ticks}
+      ${has.map(([k, , color]) => `<path d="${path(k)}" stroke="${color}" class="ln"/>`).join("")}
+      ${ends.map(e => `<circle cx="${x(e.i).toFixed(1)}" cy="${y(e.v).toFixed(1)}" r="3.5" fill="${e.color}" class="end"/><text x="${(x(e.i) + 8).toFixed(1)}" y="${(e.ty + 4).toFixed(1)}" class="lbl">${e.name} ${num(e.v)}</text>`).join("")}
+      <line class="xh" x1="0" x2="0" y1="${T}" y2="${T + ih}" visibility="hidden"/>
+      ${has.map(([k, , color]) => `<circle class="hov" data-k="${k}" r="4.5" fill="${color}" visibility="hidden"/>`).join("")}
+      <rect x="${L}" y="${T}" width="${iw}" height="${ih}" fill="transparent" class="hit"/></svg>`;
+    const svg = $("svg", el), xh = $(".xh", svg);
+    const show = i => {
+      i = Math.max(0, Math.min(n - 1, i)); el.dataset.at = i;
+      xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
+      $$(".hov", svg).forEach(c => { const v = tr[c.dataset.k][i]; c.setAttribute("visibility", v == null ? "hidden" : "visible"); if (v != null) { c.setAttribute("cx", x(i)); c.setAttribute("cy", y(v)); } });
+      tip.innerHTML = `<b>${day(tr.dates[i])}</b>` + has.map(([k, name]) => `<br>${name}: ${tr[k][i] == null ? "not reported yet" : plural(tr[k][i], "click")}`).join("");
+      tip.hidden = false;
+      const r = el.getBoundingClientRect(), tw = tip.getBoundingClientRect().width;
+      tip.style.left = Math.min(innerWidth - tw - 8, Math.max(8, r.left + x(i) + 12)) + "px";
+      tip.style.top = Math.max(8, r.top + T) + "px";
+    };
+    const hide = () => { xh.setAttribute("visibility", "hidden"); $$(".hov", svg).forEach(c => c.setAttribute("visibility", "hidden")); tip.hidden = true; };
+    const hit = $(".hit", svg);
+    hit.addEventListener("mousemove", e => { const r = svg.getBoundingClientRect(); show(Math.round((e.clientX - r.left - L) / iw * (n - 1))); });
+    hit.addEventListener("mouseleave", hide);
+    const at = () => (el.dataset.at == null ? n - 1 : +el.dataset.at);
+    el.onkeydown = e => { if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); show(at() + (e.key === "ArrowRight" ? 1 : -1)); } };
+    el.onfocus = () => show(at());
+    el.onblur = hide;
+  });
+}
+let resizeT;
+addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(drawCharts, 150); });
+
 /* ---------- Overview ---------- */
+const g28 = s => s.google_clicks_28 ?? null, b28 = s => s.bing_clicks_28 ?? null;
+function searchLine() {
+  const S = D.sites, g = sum(S, g28), b = sum(S, b28);
+  if (!S.some(s => s.has_gsc || s.has_bing)) return "";
+  const lead = b > g ? `Bing sent <b>${num(b)}</b> clicks and Google <b>${num(g)}</b>` : `Google sent <b>${num(g)}</b> clicks and Bing <b>${num(b)}</b>`;
+  return `<li>${icon("dot")}<span>${lead} in the last 4 weeks across all sites.</span></li>`;
+}
+function indexLine() {
+  const S = D.sites, ins = sum(S, s => s.google_inspected), idx = sum(S, s => s.google_indexed);
+  return ins ? `<li>${icon("dot")}<span>Google has indexed <b>${num(idx)} of ${num(ins)}</b> pages it was asked about. <a href="#/pages?gidx=not">See the rest</a></span></li>` : "";
+}
 function briefing() {
   const S = D.sites, withGa = S.filter(s => s.has_ga), clicks = sum(withGa, s => s.ga_clicks);
   const top = [...withGa].sort((a, b) => b.ga_clicks - a.ga_clicks)[0];
@@ -250,6 +354,8 @@ function briefing() {
   const li = html => `<li>${icon("dot")}<span>${html}</span></li>`;
   const points = [
     crit ? li(`<b>${plural(crit, "critical finding")}</b> ${crit === 1 ? "needs" : "need"} a decision. <a href="#/findings">Review findings</a>`) : li(`<b>No critical findings</b> in this report.`),
+    searchLine(),
+    indexLine(),
     linked ? li(`<b>${pct(late / linked)}</b> of pages with Amazon links (${num(late)} of ${num(linked)}) show the first link late in the article.`) : "",
     first ? li(`Top of the work queue: <a href="#" data-open="${esc(first.url)}">${esc(first.path)}</a> on ${esc(first.s.name)}.`) : li(`<b>The work queue is clear.</b>`),
     D.history.length > 1 ? li(`Since ${day(D.previous, 1)}: <b>${signed(D.history.at(-1).links - D.history.at(-2).links)}</b> Amazon links, <b>${signed(D.history.at(-1).pages - D.history.at(-2).pages)}</b> pages audited.`) : "",
@@ -276,6 +382,24 @@ function sinceLast() {
       `<tr class="row" data-href="#/pages?issue=${c}" tabindex="0"><td>${status(issue(c).severity)}<span class="sub" style="color:var(--ink)" ${tipAttr(esc(issue(c).label))}>${esc(issue(c).short || issue(c).label)}</span></td><td class="n">${num(t.was)}</td><td class="n">${num(t.now)}</td><td class="n"><b>${signed(t.now - t.was)}</b></td></tr>`).join("")}</tbody></table></div>
       <p class="small muted" style="margin-top:10px">A count also moves when a check is refined, not only when pages change.${moved.length > rows.length ? ` ${plural(moved.length - rows.length, "note-level count")} also changed: <a href="#/findings">all findings</a>.` : ""}</p>` : `<p class="muted">No count changed for findings that cost clicks or commission. <a href="#/findings">All findings</a></p>`);
 }
+function searchTile(label, S, key, clicks, impr) {
+  const have = S.filter(s => clicks(s) != null);
+  if (!have.length) return tile(label, "–", "No data yet");
+  const tr = S.length > 1 ? D.trend : S[0].trend;
+  const pts = tr && tr.dates ? weekly(tr, key).slice(-12).map(w => ({ d: w.d, v: w.v })) : [];
+  const meta = key === "google" ? have[0].gsc_window : have[0].bing_window;
+  return tile(`${label} · 4 weeks`, num(sum(have, clicks)), `${num(sum(have, impr))} impressions${meta?.start ? ` · ${day(meta.start, 1)} to ${day(meta.end, 1)}` : ""}`, spark(pts, `${label} per week`, "weeks"));
+}
+function indexTile(S) {
+  const ins = sum(S, s => s.google_inspected), idx = sum(S, s => s.google_indexed);
+  if (!ins) return tile("In Google's index", "–", "Not inspected yet");
+  return tile("In Google's index", `${num(idx)}<span class="of"> of ${num(ins)}</span>`, `${pct(idx / ins)} of pages inspected`);
+}
+function indexHealth(s) {
+  if (!s.google_inspected) return "";
+  const share = s.google_indexed / s.google_inspected;
+  return status(share < 0.25 ? "critical" : share < 0.75 ? "warning" : "good", `Google: ${num(s.google_indexed)} of ${num(s.google_inspected)} indexed`);
+}
 function overview() {
   const S = D.sites, withGa = S.filter(s => s.has_ga), noGa = S.filter(s => !s.has_ga);
   const attn = D.attention.length
@@ -284,28 +408,29 @@ function overview() {
   const earners = P.filter(p => p.aclicks > 0).sort((a, b) => b.aclicks - a.aclicks).slice(0, 8);
   const earning = earners.length
     ? bars(earners.map(p => ({ name: p.path, value: p.aclicks, open: p.url, tip: p.s.name })), "recorded Amazon clicks") +
-      (noGa.length ? `<p class="small muted" style="margin-top:14px">No analytics export yet for ${esc(noGa.map(s => s.name).join(", "))}.</p>` : "")
-    : `<p class="muted">No analytics export has been added yet. Add one under <code>data/ga4/</code> (see <a href="#/controls">Controls</a>).</p>`;
+      (noGa.length ? `<p class="small muted" style="margin-top:14px">No Analytics data for ${esc(noGa.map(s => s.name).join(", "))}.</p>` : "")
+    : `<p class="muted">No Analytics data yet. The weekly run pulls it once the service account can read the Analytics properties (see <a href="#/controls">Controls</a>).</p>`;
   const fix = bars(S.map(s => ({ name: s.name, value: s.to_fix, href: `#/site/${s.domain}`, tip: `of ${num(s.pages)} pages audited` })).sort((a, b) => b.value - a.value), "pages with a finding that costs clicks or commission");
   const cards = S.map(s => `<a class="card site" href="#/site/${esc(s.domain)}">
       <div class="top"><h3>${esc(s.name)}</h3><span class="dom">${esc(s.domain)}</span></div>
-      <dl><div><dt>Pages</dt><dd>${num(s.pages)}</dd></div><div><dt>With links</dt><dd>${num(s.with_links)}</dd></div><div><dt>Amazon clicks</dt><dd>${s.has_ga ? num(s.ga_clicks) : "–"}</dd></div></dl>
+      <dl><div><dt>Google clicks</dt><dd>${num(g28(s))}</dd></div><div><dt>Bing clicks</dt><dd>${num(b28(s))}</dd></div><div><dt>Amazon clicks</dt><dd>${s.has_ga ? num(s.ga_clicks) : "–"}</dd></div></dl>
       ${split(s)}
       <p class="small muted" style="margin-top:8px">${num(s.early)} near top · ${num(s.late)} late · ${num(s.ok - s.with_links)} none</p>
-      <div class="chips">${siteHealth(s)}${s.submitted ? status("good", `${num(s.submitted)} submitted`) : status("warning", "Not submitted")}${s.has_gsc ? "" : status("info", "No Search Console data")}</div>
+      <div class="chips">${siteHealth(s)}${indexHealth(s)}${s.ga_health ? status("warning", s.ga_health.title) : ""}${s.has_gsc ? "" : status("info", "No Search Console data")}</div>
     </a>`).join("");
   return head("Overview", `${plural(S.length, "site")} · ${plural(P.length, "page")} audited${D.previous ? ` · compared with ${day(D.previous)}` : ""}`,
       `<a class="btn" href="downloads/pages.csv" download>${icon("down")}Download CSV</a>`) +
     `<div class="stack">
       ${briefing()}
       <div class="tiles n6">
-        ${trendTile("Pages audited", D.history, "pages")}
-        ${trendTile("Pages with Amazon links", D.history, "with_links")}
-        ${trendTile("Amazon links", D.history, "links")}
-        ${tile("Recorded Amazon clicks", withGa.length ? num(sum(withGa, s => s.ga_clicks)) : "–", withGa.length ? `From analytics exports for ${plural(withGa.length, "site")}` : "No analytics export yet")}
+        ${searchTile("Google clicks", S, "google", g28, s => s.google_impr_28)}
+        ${searchTile("Bing clicks", S, "bing", b28, s => s.bing_impr_28)}
+        ${tile("Amazon clicks", withGa.length ? num(sum(withGa, s => s.ga_clicks)) : "–", withGa.length ? `Recorded by Analytics on ${plural(withGa.filter(s => s.ga_clicks).length, "site")}` : "No Analytics data yet")}
+        ${indexTile(S)}
         ${trendTile("Pages to fix", D.history, "to_fix")}
-        ${tile("Submitted to search engines", num(sum(S, s => s.submitted)), `Across ${plural(S.filter(s => s.submitted).length, "site")}`)}
+        ${trendTile("Pages with Amazon links", D.history, "with_links")}
       </div>
+      ${trendCard("all", D.trend, "Search clicks per day", "All sites · Google and Bing")}
       <div class="grid cols-wide">
         ${card("Needs attention", attn, "Worst first")}
         ${card("Since the last report", sinceLast(), D.previous ? `${day(D.previous, 1)} to ${day(D.generated, 1)}` : "")}
@@ -334,23 +459,39 @@ function site(route) {
     `<p class="small muted" style="margin-top:14px">${s.expected_tags.length ? `Expected: ${s.expected_tags.map(t => `<code>${esc(t)}</code>`).join(" ")}` : "No tracking ID is configured for this site in <code>sites.yaml</code>."}</p>`;
   const top = own.filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 8);
   const topBody = top.length ? table(top, QUEUE_COLS.filter(c => c.key !== "site" && c.key !== "done"), {}) : `<p class="muted">No page on this site has measured demand and a gap to close. Add Search Console or analytics data to rank its pages.</p>`;
-  const search = `<div class="kv">
-      <span><b>${num(s.submitted)}</b> pages submitted</span><span>Last submission <b>${day(s.last_submission)}</b></span>
-      ${s.submission_status ? `<span>Result <b>${esc(s.submission_status)}</b></span>` : ""}<span>${plural(s.noindex, "page")} set to noindex</span>
-    </div>
-    <p class="small muted" style="margin-top:12px">${s.has_gsc ? `Search Console data: ${esc(s.gsc_window?.start || "")} to ${esc(s.gsc_window?.end || "")}${s.gsc_window?.note ? ` (${esc(s.gsc_window.note)})` : ""}. ${num(s.gsc_clicks)} clicks, ${num(s.gsc_impressions)} impressions on ${plural(s.gsc_pages, "page")}.` : "No Search Console data for this site yet, so its pages cannot be ranked by Google demand."}</p>`;
+  const gw = s.gsc_window, bw = s.bing_window;
+  const search = `<ul class="steps" style="padding-left:18px">
+      <li><b>Google</b> ${s.has_gsc ? `${plural(g28(s) ?? 0, "click")}, ${plural(s.google_impr_28 ?? 0, "impression")}, ${day(gw?.start, 1)} to ${day(gw?.end)}. ${plural(s.gsc_pages, "page")} had impressions. Property <code>${esc(gw?.property || s.gsc_property)}</code>.` : "No Search Console data for this site yet."}${sitemapLine(s)}</li>
+      <li><b>Bing</b> ${s.has_bing ? `${plural(b28(s) ?? 0, "click")}, ${plural(s.bing_impr_28 ?? 0, "impression")}, ${day(bw.start, 1)} to ${day(bw.end)}. Bing names the page for ${bw.page_share_of_clicks == null ? "–" : pct(Math.min(1, bw.page_share_of_clicks))} of those clicks; ${plural(s.bing_pages, "page")} listed.${s.bing_crawl_errors ? ` ${plural(s.bing_crawl_errors, "URL")} with crawl errors.` : ""}` : "No Bing Webmaster data for this site yet."}</li>
+      <li><b>IndexNow</b> ${num(s.submitted)} pages submitted, last on ${day(s.last_submission)}${s.submission_status ? ` (${esc(s.submission_status)})` : ""}.</li>
+    </ul>`;
+  const cov = Object.entries(s.coverage || {}).sort((a, b) => b[1] - a[1]);
+  const indexBody = cov.length
+    ? bars(cov.map(([c, n]) => ({ name: coverageShort(c), value: n, href: `#/pages?site=${encodeURIComponent(s.domain)}&gidx=${encodeURIComponent(c)}`, tip: D.coverage_advice[c] || c })), "pages") +
+      `<p class="small muted" style="margin-top:14px">Google's own verdict for ${plural(s.google_inspected, "page")} (URL Inspection), checked ${day(s.inspected_at)}. Select a state for its pages; hover for what it means.</p>`
+    : `<p class="muted">No page on this site has been inspected yet. The next run checks every page with Google's URL Inspection.</p>`;
+  const ga = s.ga;
+  const gaBody = !ga ? `<p class="muted">No Analytics property is configured for this site (<code>ga4_properties</code> in sites.yaml).</p>` :
+    (s.ga_health ? `<p style="margin-bottom:12px">${status("warning", s.ga_health.title)} <span class="muted small">${esc(s.ga_health.detail)}</span></p>` : "") +
+    `<div class="kv" style="margin-bottom:12px"><span>Property <b>${esc(ga.property || "none")}</b></span><span><b>${num(ga.sessions)}</b> sessions</span><span><b>${num(ga.organic_sessions)}</b> organic</span><span><b>${num(ga.amazon_clicks)}</b> Amazon clicks</span><span>${day(ga.start, 1)} to ${day(ga.end)}</span></div>` +
+    (s.ga_sources.length ? `<div class="scroll"><table><thead><tr><th>Source / medium</th><th class="n">Sessions</th><th class="n">Engaged</th></tr></thead><tbody>${s.ga_sources.slice(0, 8).map(r => `<tr><td>${esc(r.source)} / ${esc(r.medium)}</td><td class="n">${num(+r.sessions)}</td><td class="n">${pct(+r.sessions ? +r.engaged_sessions / +r.sessions : null)}</td></tr>`).join("")}</tbody></table></div>` : "");
   const fixes = D.fixes.filter(f => f.site === s.domain);
   const moved = s.new_pages == null ? "" : ` · ${num(s.new_pages)} new since ${day(D.previous, 1)}`;
   return head(s.name, `${esc(s.domain)} · ${plural(s.pages, "page")} audited${moved}${s.wordpress ? "" : " · not WordPress, so the engine cannot edit it"}`,
       ext("https://" + s.domain + "/", "Open site") + `<a class="btn" href="#/pages?site=${esc(s.domain)}">All pages</a>`, `<a href="#/overview">Overview</a> / Sites`) +
     `<div class="stack">
       <div class="tiles n6">
+        ${searchTile("Google clicks", [s], "google", g28, x => x.google_impr_28)}
+        ${searchTile("Bing clicks", [s], "bing", b28, x => x.bing_impr_28)}
+        ${indexTile([s])}
+        ${tile("Amazon clicks", s.has_ga ? num(s.ga_clicks) : "–", s.has_ga ? "Recorded by Analytics" : "No Analytics data")}
         ${trendTile("Pages with Amazon links", s.history, "with_links", s.history.length < 2 ? `${pct(s.with_links / Math.max(1, s.ok))} of pages` : "")}
-        ${trendTile("Amazon links", s.history, "links")}
-        ${tile("First link position", s.median_depth == null ? "–" : pct(s.median_depth), "Median distance down the page")}
-        ${tile("Recorded Amazon clicks", s.has_ga ? num(s.ga_clicks) : "–", s.has_ga ? "From the analytics export" : "No analytics export yet")}
-        ${tile("Google clicks", s.has_gsc ? num(s.gsc_clicks) : "–", s.has_gsc ? `${num(s.gsc_impressions)} impressions` : "No Search Console data")}
         ${trendTile("Pages to fix", s.history, "to_fix")}
+      </div>
+      ${trendCard("site:" + s.domain, s.trend, "Search clicks per day", `${esc(s.domain)} · Google and Bing`)}
+      <div class="grid cols-2">
+        ${card("Google index status", indexBody, "URL Inspection")}
+        ${card("Analytics", gaBody, "Google Analytics 4")}
       </div>
       ${card("Where the first Amazon link sits", split(s) + `<p class="small muted" style="margin:10px 0 12px">${num(s.early)} near top · ${num(s.late)} late · ${num(s.ok - s.with_links)} without Amazon links</p>` + LEGEND)}
       <div class="grid cols-2">
@@ -362,6 +503,13 @@ function site(route) {
     </div>`;
 }
 
+function sitemapLine(s) {
+  const sm = (s.sitemaps || []).filter(m => !/\/feed\/?$/.test(m.path));
+  if (!sm.length) return s.has_gsc ? ` ${status("warning", "No sitemap submitted to Google")}` : "";
+  const bad = sm.filter(m => +m.errors), newest = sm.map(m => m.last_downloaded).filter(Boolean).sort().pop();
+  return `<br><span class="small muted">Sitemaps Google holds: ${sm.map(m => `<code>${esc(m.path.replace(/^https?:\/\/[^/]+/, ""))}</code> (${num(+m.web_urls)} URLs)`).join(", ")}; last read ${day(newest)}${bad.length ? `; ${plural(bad.length, "sitemap")} with errors` : ", no errors"}.</span>`;
+}
+
 /* ---------- tables ---------- */
 const pageCell = p => `<span class="path">${esc(p.path)}</span>`;
 const withSite = p => `<span class="path">${esc(p.path)}</span><span class="sub">${esc(p.s.name)}</span>`;
@@ -369,18 +517,20 @@ const worstChip = p => (p.codes.length ? status(SEVS[p.sev], p.codes.length === 
 const PAGE_COLS = [
   { key: "url", label: "Page", cls: "page", cell: withSite, sort: p => p.url },
   { key: "sev", label: "Findings", cls: "fit", cell: worstChip, sort: p => p.sev * 100 - p.codes.length },
+  { key: "gidx", label: "Google index", cls: "fit", cell: indexChip, sort: p => (p.gidx ? (p.indexed ? 2 : 0) : 1) },
   { key: "links", label: "Links", n: 1, cell: p => num(p.links), sort: p => p.links },
   { key: "depth", label: "First link", n: 1, cell: p => pct(p.depth), sort: p => p.depth ?? 9 },
   { key: "aclicks", label: "Amazon clicks", n: 1, cell: p => num(p.aclicks), sort: p => p.aclicks ?? -1 },
   { key: "sessions", label: "Sessions", n: 1, cell: p => num(p.sessions), sort: p => p.sessions ?? -1 },
   { key: "gclicks", label: "Google clicks", n: 1, cell: p => num(p.gclicks), sort: p => p.gclicks ?? -1 },
-  { key: "gimpr", label: "Impressions", n: 1, cell: p => num(p.gimpr), sort: p => p.gimpr ?? -1 },
+  { key: "bclicks", label: "Bing clicks", n: 1, cell: p => num(p.bclicks), sort: p => p.bclicks ?? -1 },
   { key: "score", label: "Priority", n: 1, cell: p => (p.score ? p.score.toFixed(1) : "–"), sort: p => p.score },
 ];
 const nextStep = p => {
   const done = FIXED.get(p.url);
   if (done) return done.status === "fixed" ? status("good", "Fixed by the engine") : status("warning", "Saved, not visible on the live page");
   const gap = ["no_amazon_links", "first_link_very_late", "first_link_late"].find(c => p.codes.includes(c));
+  if (!gap && p.codes.includes("demand_page_not_in_google")) return esc(issue("demand_page_not_in_google").action);
   if (!gap) return `<span class="muted">First Amazon link is already near the top. Nothing to change.</span>`;
   const ready = D.boxes[p.url] ? "A hand-written box is ready for this page." : D.drafts[p.url] ? "The engine has drafted a box for this page." : "";
   return esc(issue(gap).action) + (ready ? `<span class="sub">${ready}</span>` : "");
@@ -389,7 +539,7 @@ const QUEUE_COLS = [
   { key: "done", label: "Done", cls: "chk", cell: p => (FIXED.get(p.url)?.status === "fixed" ? `<input type="checkbox" checked disabled aria-label="Fixed by the engine">` : `<input type="checkbox" data-done="${esc(p.url)}"${DONE[p.url] ? " checked" : ""} aria-label="Mark ${esc(p.path)} as done">`) },
   { key: "url", label: "Page", cls: "page", cell: pageCell },
   { key: "site", label: "Site", cls: "fit", cell: p => esc(p.s.name) },
-  { key: "gimpr", label: "Impressions", n: 1, cell: p => num(p.gimpr) },
+  { key: "search", label: "Search clicks", n: 1, cell: p => num(p.search || null) },
   { key: "aclicks", label: "Amazon clicks", n: 1, cell: p => num(p.aclicks) },
   { key: "score", label: "Priority", n: 1, cell: p => p.score.toFixed(1) },
   { key: "do", label: "What to do", cls: "do", cell: nextStep },
@@ -406,6 +556,14 @@ function table(rows, cols, opt) {
 }
 
 /* ---------- page detail panel ---------- */
+function indexDetail(p) {
+  if (!p.gidx) return `<p class="muted small">Not inspected yet. The next run asks Google about every indexable page.</p>`;
+  if (p.gverdict === "ERROR") return `<p class="muted small">Google's inspection failed for this page (${esc(p.gidx)}). It is retried on the next run.</p>`;
+  const advice = p.codes.includes("google_verdict_outdated")
+    ? `Out of date: that was the page when Google last crawled it${p.gcrawl ? ` (${day(p.gcrawl)})` : ""}. It loads and is indexable now, so request indexing in Search Console.`
+    : D.coverage_advice[p.gidx] || "";
+  return `<p>${indexChip(p)} <span class="muted small">${esc(p.gidx)}${p.gcrawl ? ` · last crawled ${day(p.gcrawl)}` : " · no crawl recorded"}</span></p>${advice ? `<p class="muted small" style="margin-top:6px">${esc(advice)}</p>` : ""}`;
+}
 let lastFocus = null;
 function openPage(url) {
   const p = BY.get(url);
@@ -429,14 +587,27 @@ function openPage(url) {
       <div class="row">${ext(p.url, "Open page", "btn primary")}${inspect}<button class="btn" type="button" data-copy="${esc(p.url)}">${icon("copy")}Copy URL</button></div></div>
     <div class="dr-body">
       ${done ? `<p>${status(done.status === "fixed" ? "good" : "warning", done.status === "fixed" ? "The engine changed this page" : "The engine saved a change that does not show on the live page")} <span class="muted">${esc(done.changes.replace(/_/g, " ").replace(/=/g, ": "))}</span></p>` : ""}
-      <dl class="stats">${stat("Amazon clicks", num(p.aclicks))}${stat("Sessions", num(p.sessions))}${stat("Google clicks", num(p.gclicks))}${stat("Impressions", num(p.gimpr))}${stat("Google position", p.gpos ?? "–")}
-        ${stat("Amazon links", num(p.links))}${stat("First link at", pct(p.depth))}${stat("Words", num(p.words))}${stat("Priority", p.score ? p.score.toFixed(1) : "–")}${stat("HTTP status", p.status)}</dl>
+      <dl class="stats">${stat("Amazon clicks", num(p.aclicks))}${stat("Organic sessions", num(p.sessions))}${stat("Priority", p.score ? p.score.toFixed(1) : "–")}
+        ${stat("Google clicks", num(p.gclicks))}${stat("Google impressions", num(p.gimpr))}${stat("Google position", p.gpos ?? "–")}
+        ${stat("Bing clicks", num(p.bclicks))}${stat("Bing impressions", num(p.bimpr))}${stat("Bing position", p.bpos ?? "–")}
+        ${stat("Amazon links", num(p.links))}${stat("First link at", pct(p.depth))}${stat("Words", num(p.words))}</dl>
+      <section><h3>Google index</h3>${indexDetail(p)}</section>
       <section><h3>Findings</h3>${findings}</section>
+      <section><h3>Search queries</h3><div id="dr-queries"><p class="muted small">Loading…</p></div></section>
       ${box ? `<section><h3>Product box</h3>${box}</section>` : ""}
       <section><h3>Amazon links on this page</h3><div id="dr-links"><p class="muted small">${p.links ? "Loading…" : "This page has no Amazon links in its article."}</p></div></section>
     </div>`;
   scrim.hidden = drawer.hidden = false;
   $("[data-close]", drawer).focus();
+  (QUERIES ||= fetch("queries.json").then(r => (r.ok ? r.json() : {})).catch(() => ({}))).then(all => {
+    const box = $("#dr-queries");
+    if (!box || !drawer.innerHTML.includes(esc(p.url))) return;
+    const q = all[p.url] || {};
+    const list = (rows, name) => !rows || !rows.length ? `<p class="muted small">${name}: no queries reported for this page.</p>` :
+      `<div class="scroll" style="margin-bottom:10px"><table class="q"><thead><tr><th>${name} query</th><th class="n">Clicks</th><th class="n">Impr.</th><th class="n">Pos.</th></tr></thead><tbody>${
+        rows.map(([query, c, i, pos]) => `<tr><td>${esc(query)}</td><td class="n">${num(c)}</td><td class="n">${num(i)}</td><td class="n">${pos ?? "–"}</td></tr>`).join("")}</tbody></table></div>`;
+    box.innerHTML = list(q.g, "Google") + list(q.b, "Bing") + `<p class="small muted">Top queries over the last 4 weeks. Both engines withhold rare queries.</p>`;
+  });
   if (p.links) (LINKS ||= fetch("links.json").then(r => (r.ok ? r.json() : {})).catch(() => ({}))).then(all => {
     const box = $("#dr-links");
     if (!box || !drawer.innerHTML.includes(esc(p.url))) return;
@@ -468,6 +639,7 @@ function pages(route) {
         <input type="search" name="q" placeholder="Search URLs" aria-label="Search URLs" value="${esc(q.q || "")}">
         <select name="site" aria-label="Site"><option value="">All sites</option>${opts(D.sites, q.site || "", s => [s.domain, s.name])}</select>
         <select name="issue" aria-label="Finding"><option value="">Any finding</option>${opts(codes, q.issue || "", c => [c, issue(c).label])}</select>
+        <select name="gidx" aria-label="Google index"><option value="">Any index status</option><option value="not"${q.gidx === "not" ? " selected" : ""}>Not in Google's index</option><option value="yes"${q.gidx === "yes" ? " selected" : ""}>In Google's index</option>${opts([...new Set(P.map(p => p.gidx).filter(Boolean))].sort(), q.gidx || "", c => [c, coverageShort(c)])}</select>
         <label class="tog"><input type="checkbox" name="links"${q.links ? " checked" : ""}> Has Amazon links</label>
         <label class="tog"><input type="checkbox" name="visits"${q.visits ? " checked" : ""}> Has measured visitors</label>
       </form>
@@ -475,12 +647,13 @@ function pages(route) {
     </div></section>`;
 }
 pages.after = route => {
-  const state = { q: "", site: "", issue: "", links: "", visits: "", sort: "score", dir: "desc", p: "1", ...route.q };
+  const state = { q: "", site: "", issue: "", gidx: "", links: "", visits: "", sort: "score", dir: "desc", p: "1", ...route.q };
+  const idxMatch = p => !state.gidx || (state.gidx === "not" ? p.gidx && p.gverdict !== "ERROR" && !p.indexed : state.gidx === "yes" ? p.indexed : p.gidx === state.gidx);
   const form = $("#filters"), box = $("#results");
   let rows = [];
   const draw = () => {
     const needle = state.q.trim().toLowerCase(), si = state.site ? D.sites.findIndex(s => s.domain === state.site) : -1;
-    const scope = P.filter(p => (si < 0 || p.site === si) && (!state.links || p.links > 0) && (!state.visits || p.visits > 0 || p.aclicks > 0 || p.gimpr > 0) && (!needle || p.url.toLowerCase().includes(needle)));
+    const scope = P.filter(p => (si < 0 || p.site === si) && (!state.links || p.links > 0) && (!state.visits || p.visits > 0 || p.aclicks > 0) && idxMatch(p) && (!needle || p.url.toLowerCase().includes(needle)));
     rows = scope.filter(p => !state.issue || p.codes.includes(state.issue));
     const col = PAGE_COLS.find(c => c.key === state.sort) || PAGE_COLS[PAGE_COLS.length - 1], sign = state.dir === "asc" ? 1 : -1;
     rows.sort((a, b) => { const x = col.sort(a), y = col.sort(b); return (x < y ? -1 : x > y ? 1 : 0) * sign || b.score - a.score; });
@@ -500,7 +673,7 @@ pages.after = route => {
   };
   form.addEventListener("input", () => {
     const f = new FormData(form);
-    Object.assign(state, { q: f.get("q") || "", site: f.get("site") || "", issue: f.get("issue") || "", links: f.get("links") ? "1" : "", visits: f.get("visits") ? "1" : "", p: "1" });
+    Object.assign(state, { q: f.get("q") || "", site: f.get("site") || "", issue: f.get("issue") || "", gidx: f.get("gidx") || "", links: f.get("links") ? "1" : "", visits: f.get("visits") ? "1" : "", p: "1" });
     draw();
   });
   box.addEventListener("click", e => {
@@ -515,8 +688,9 @@ pages.after = route => {
 };
 function exportCsv(rows) {
   const q = v => (/[",\n]/.test(String(v ?? "")) ? `"${String(v).replace(/"/g, '""')}"` : v ?? "");
-  const lines = [["site", "url", "findings", "amazon_links", "first_link_depth", "tracking_ids", "amazon_clicks", "sessions", "google_clicks", "impressions", "google_position", "priority"]]
-    .concat(rows.map(p => [p.s.domain, p.url, p.codes.join(" "), p.links, p.depth, p.tags, p.aclicks, p.sessions, p.gclicks, p.gimpr, p.gpos, p.score]));
+  const lines = [["site", "url", "findings", "google_index", "google_last_crawl", "amazon_links", "first_link_depth", "tracking_ids", "amazon_clicks", "organic_sessions",
+                  "google_clicks", "google_impressions", "google_position", "bing_clicks", "bing_impressions", "bing_position", "priority"]]
+    .concat(rows.map(p => [p.s.domain, p.url, p.codes.join(" "), p.gidx, p.gcrawl, p.links, p.depth, p.tags, p.aclicks, p.sessions, p.gclicks, p.gimpr, p.gpos, p.bclicks, p.bimpr, p.bpos, p.score]));
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([lines.map(l => l.map(q).join(",")).join("\n") + "\n"], { type: "text/csv" }));
   a.download = `pages-${D.generated}-filtered.csv`;
@@ -574,7 +748,7 @@ function fixTable(rows, showSite = true) {
     let path = f.url; try { path = new URL(f.url).pathname; } catch {}
     const name = D.sites.find(s => s.domain === f.site)?.name || f.site;
     return `<tr class="row" data-open="${esc(f.url)}" tabindex="0"><td><span class="path">${esc(path)}</span>${showSite ? `<span class="sub">${esc(name)}</span>` : ""}</td>
-      <td>${esc((f.changes || f.fixes || "").replace(/_/g, " ").replace(/=/g, ": ").replace(/;/g, ", "))}</td>
+      <td>${esc((f.changes || f.fixes || "").replace(/_/g, " ").replace(/=/g, ": ").replace(/;/g, ", "))}${f.report ? `<span class="sub">${day(f.report)}</span>` : ""}</td>
       <td>${f.status === "fixed" ? status("good", "Live") : status("warning", "Saved, not visible on the live page")}${f.still_failing_on_live_page ? `<span class="sub">Still found: ${esc(f.still_failing_on_live_page.split(" ").map(c => issue(c).label).join(", "))}</span>` : ""}</td></tr>`;
   }).join("")}</tbody></table></div>`;
 }
@@ -584,7 +758,7 @@ function activity() {
     return `<tr><td><a href="#/site/${esc(r.site)}">${esc(s?.name || r.site)}</a></td><td class="n">${num(+r.urls_new_or_changed || 0)}</td><td class="n">${num(+r.urls_unchanged || 0)}</td><td class="n">${num(r.total)}</td><td>${status(okay ? "good" : "warning", r.detail || r.status.replace(/_/g, " "))}</td></tr>`;
   }).join("")}</tbody></table></div>` : `<p class="muted">No submission was recorded in this report.</p>`;
   const live = D.fixes.filter(f => f.status === "fixed").length;
-  return head("Activity", `What the engine ran, changed and sent. Page changes and submissions are from the report of ${day(D.generated)}.`) +
+  return head("Activity", `What the engine ran, changed and sent. Page changes cover every report; submissions are from the report of ${day(D.generated)}.`) +
     `<div class="stack">
       <div class="tiles">
         ${tile("Page changes live", num(live))}
@@ -608,6 +782,17 @@ function notes(route) {
 }
 
 /* ---------- Controls ---------- */
+function sourcesTable() {
+  const cell = (ok, text) => (ok ? `<td>${text}</td>` : `<td class="muted">${text}</td>`);
+  return `<div class="scroll"><table><thead><tr><th>Site</th><th>Search Console</th><th>Bing</th><th>Analytics</th><th>Google index check</th></tr></thead><tbody>${D.sites.map(s => {
+    const gw = s.gsc_window, bw = s.bing_window, ga = s.ga;
+    return `<tr><td><a href="#/site/${esc(s.domain)}">${esc(s.name)}</a></td>
+      ${cell(s.has_gsc, s.has_gsc ? `${day(gw.start, 1)} to ${day(gw.end, 1)}<span class="sub">${esc(gw.property || "")}</span>` : "No data")}
+      ${cell(s.has_bing, s.has_bing ? `${day(bw.start, 1)} to ${day(bw.end, 1)}<span class="sub">pulled ${day(bw.pulled, 1)}</span>` : "No data")}
+      ${cell(ga && ga.sessions, ga ? `${ga.property ? `Property ${esc(ga.property)}` : "No readable property"}<span class="sub">${ga.sessions ? `${day(ga.start, 1)} to ${day(ga.end, 1)}` : esc((ga.notes || [])[0] || "no visits recorded")}</span>` : "Not configured")}
+      ${cell(s.google_inspected, s.google_inspected ? `${num(s.google_inspected)} pages<span class="sub">latest ${day(s.inspected_at, 1)}</span>` : "Not yet")}</tr>`;
+  }).join("")}</tbody></table></div>`;
+}
 function controls() {
   const repo = D.repository;
   if (!repo) return head("Controls", "The repository address is not known, so the action links cannot be built. Add <code>repository: owner/name</code> to <code>sites.yaml</code>.");
@@ -624,8 +809,7 @@ function controls() {
         ${action("Run the engine now", "Crawls every site, scores pages, applies the switched-on fixes and submits changed pages. On the page that opens, choose <b>Run workflow</b>. Untick fixes or submissions for a report-only run.", ext(gh("/actions/workflows/weekly-audit.yml"), "Open the workflow", "btn primary"))}
         ${action("Change sites and rules", "Sites, tracking IDs, blocked products and which fixes the engine may apply on its own all live in one file.", ext(gh("/edit/main/sites.yaml"), "Edit sites.yaml"))}
         ${action("Write a product box for a page", "A hand-written box always wins over a generated one. Each page's detail panel has a link with the right file name already filled in.", pick("box-site", gh("/new/main?filename=boxes/"), "New box", "/page-slug.html"))}
-        ${action("Add Search Console data", "Upload a Pages export as <code>pages.csv</code>. Pages can then be ranked by real Google demand.", pick("gsc-site", gh("/upload/main/data/gsc/"), "Upload"))}
-        ${action("Add analytics data", "Upload <code>amazon_clicks.csv</code> and <code>sessions.csv</code> so the engine knows which pages send people to Amazon.", pick("ga-site", gh("/upload/main/data/ga4/"), "Upload"))}
+        ${action("Give the engine access to a new site", "Add the service account's email as a Full user in Search Console and as a Viewer in Analytics, verify the site in Bing Webmaster Tools, then add the site to sites.yaml. The next run pulls everything.", ext(gh("/edit/main/sites.yaml"), "Edit sites.yaml"))}
         ${action("Add Amazon Associates reports", "Upload the tracking ID summary so earnings can be set beside clicks.", ext(gh("/upload/main/data/associates"), "Upload"))}
         ${action("Logins the engine uses", "Stored as encrypted GitHub secrets, never in the repository. This dashboard cannot see which ones exist.", ext(gh("/settings/secrets/actions"), "Open secrets"))}
         ${action("Past reports", "Every report the engine has written, one folder per run, with the full audit and its fix drafts.", ext(gh("/tree/main/reports"), "Browse reports"))}
@@ -635,9 +819,11 @@ function controls() {
         ${card("Secrets it looks for", `<ul class="steps">
             <li><b>WP_AUTH_&lt;DOMAIN&gt;</b> one per WordPress site, as <code>username:application password</code>. Without it the site is audited but never edited.</li>
             <li><b>INDEXNOW_KEY</b> lets the weekly run submit new and changed pages to search engines.</li>
-            <li><b>GSC_SERVICE_ACCOUNT_JSON</b> lets the weekly run pull Search Console data itself.</li>
+            <li><b>GSC_SERVICE_ACCOUNT_JSON</b> the Google service account key. Pulls Search Console (every page and query, the daily trend and Google's index verdict per page) and Google Analytics.</li>
+            <li><b>BING_API_KEY</b> the Bing Webmaster Tools API key. Pulls Bing clicks, impressions, queries and crawl errors.</li>
           </ul>`)}
       </div>
+      ${card("Data sources", sourcesTable(), "What each site's numbers are based on")}
       ${card("Downloads from this report", `<p style="display:flex;flex-wrap:wrap;gap:8px">${[["pages.csv", "All pages"], ["links.csv", "All Amazon links"], ["fix-log.csv", "Changes made"], ["indexnow-log.csv", "Submissions"], ["summary.md", "Full report"]].map(([f, l]) => `<a class="btn" href="downloads/${f}" download>${icon("down")}${l}</a>`).join("")}</p>`)}
       ${card("Run it on your own computer", `<div class="stack" style="gap:8px">${cmd("python -m ace run")}${cmd("python -m ace fix")}${cmd("python -m ace fix --apply")}${cmd("python -m ace submit --apply")}${cmd("python -m ace site --site-out dist")}</div>
         <p class="small muted" style="margin-top:12px"><code>fix</code> and <code>submit</code> only show what they would do until <code>--apply</code> is added.</p>`)}
@@ -738,7 +924,11 @@ function showTip(el, x, y) {
   tip.style.left = Math.max(8, Math.min(x + 12, innerWidth - r.width - 8)) + "px";
   tip.style.top = (y + 16 + r.height > innerHeight ? y - r.height - 10 : y + 16) + "px";
 }
-document.addEventListener("mousemove", e => { const el = e.target.closest?.("[data-tip]"); el ? showTip(el, e.clientX, e.clientY) : (tip.hidden = true); });
+document.addEventListener("mousemove", e => {
+  if (e.target.closest?.(".chart")) return;  // the chart runs its own tooltip
+  const el = e.target.closest?.("[data-tip]");
+  el ? showTip(el, e.clientX, e.clientY) : (tip.hidden = true);
+});
 document.addEventListener("focusin", e => { const el = e.target.closest?.("[data-tip]"); if (el) { const r = el.getBoundingClientRect(); showTip(el, r.left, r.bottom - 8); } });
 document.addEventListener("focusout", () => (tip.hidden = true));
 document.addEventListener("scroll", () => (tip.hidden = true), { passive: true, capture: true });

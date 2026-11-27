@@ -1,0 +1,50 @@
+source,medium,channel,sessions,engaged_sessions
+(direct),(none),Direct,13734,772
+bing,organic,Organic Search,837,579
+duckduckgo,organic,Organic Search,292,174
+wp-content-optimizer,internal-link,Unassigned,287,7
+yahoo,organic,Organic Search,120,87
+(not set),(not set),Unassigned,57,6
+ecosia.org,organic,Organic Search,35,21
+facebook.com,referral,Organic Social,35,14
+chatgpt.com,ai-assistant,AI Assistant,34,15
+tiktok.com,referral,Organic Social,28,13
+m.facebook.com,referral,Organic Social,26,2
+lm.facebook.com,referral,Organic Social,16,4
+uk.search.yahoo.com,referral,Organic Search,15,10
+aocr.org,referral,Referral,12,0
+google,organic,Organic Search,9,5
+qwant.com,organic,Organic Search,9,3
+au.search.yahoo.com,referral,Organic Search,7,5
+l.facebook.com,referral,Organic Social,7,2
+ph.search.yahoo.com,referral,Organic Search,7,3
+ca.search.yahoo.com,referral,Organic Search,6,6
+images.search.yahoo.com,referral,Organic Search,6,5
+cn.bing.com,referral,Organic Search,5,1
+claude.ai,ai-assistant,AI Assistant,4,2
+noai.duckduckgo.com,referral,Organic Search,4,3
+yandexsmartcamera,organic,Organic Search,4,3
+8f68ee96.food-scan-6fo.pages.dev,referral,Referral,3,1
+duck.ai,referral,Referral,3,1
+perplexity,(not set),Unassigned,3,3
+yandex.ru,referral,Organic Search,3,1
+feedhive,social,Organic Social,2,0
+instagram.com,referral,Organic Social,2,1
+missinglettr-mastodon,social_link,Unassigned,2,0
+quora.com,referral,Organic Social,2,1
+baidu,organic,Organic Search,1,0
+ca.images.search.yahoo.com,referral,Organic Search,1,1
+cl.images.search.yahoo.com,referral,Organic Search,1,1
+cloud-auth.fr.apps.paloaltonetworks.com,referral,Referral,1,1
+de.search.yahoo.com,referral,Organic Search,1,0
+fr.search.yahoo.com,referral,Organic Search,1,1
+gipkd.com,referral,Referral,1,0
+gpts123.ai/,(not set),Unassigned,1,0
+id.images.search.yahoo.com,referral,Organic Search,1,1
+ig,social,Organic Social,1,1
+in.search.yahoo.com,referral,Organic Search,1,1
+perplexity.ai,ai-assistant,AI Assistant,1,1
+petalsearch.com,referral,Referral,1,1
+react_error_boundary,(not set),Unassigned,1,1
+search.brave.com,referral,Referral,1,0
+us.search.yahoo.com,referral,Organic Search,1,1

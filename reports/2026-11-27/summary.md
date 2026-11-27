@@ -4,10 +4,10 @@
 
 | Site | Pages crawled | Loaded OK | Pages with Amazon links | Amazon links | Typical first-link depth | Pages Google showed | Google clicks | Bing clicks (pages) | In Google's index |
 |---|---|---|---|---|---|---|---|---|---|
-| GearUpToFit | 811 | 810 | 489 | 2128 | 6% | 1 | 2 | 418 | 1 of 807 inspected |
+| GearUpToFit | 837 | 836 | 508 | 2183 | 5% | 1 | 2 | 420 | 1 of 804 inspected |
 | Plantastic Haven | 160 | 160 | 107 | 772 | 6% | 132 | 188 | 18 | 152 of 160 inspected |
-| Mice Gone Guide | 46 | 46 | 22 | 123 | 3% | 30 | 0 | 298 | 27 of 46 inspected |
-| GearUpToGrow | 109 | 109 | 29 | 182 | 4% | 37 | 5 | 1 | 38 of 109 inspected |
+| Mice Gone Guide | 48 | 48 | 24 | 131 | 3% | 30 | 0 | 298 | 27 of 46 inspected |
+| GearUpToGrow | 111 | 109 | 29 | 182 | 4% | 37 | 5 | 1 | 38 of 109 inspected |
 | Affiliate Marketing for Success | 120 | 120 | 0 | 3 | n/a | 1 | 4 | 33 | 1 of 120 inspected |
 | FrenchyFab | 161 | 161 | 30 | 191 | 4% | 32 | 0 | 88 | 32 of 161 inspected |
 | Mystical Digits | 474 | 474 | 34 | 122 | 5% | 31 | 0 | 7 | 47 of 474 inspected |
@@ -15,17 +15,17 @@
 | Efficient GPT Prompts | 492 | 492 | 24 | 88 | 5% | 44 | 7 | 36 | 66 of 491 inspected |
 
 ### GearUpToFit (gearuptofit.com)
-- Tracking IDs in use: `papalex-gutf-20` (1585 links), `papalex-20` (527 links)
-- 321 pages: no Amazon link in the article
-- 269 pages: uses a tracking ID that is not this site's (clicks cannot be attributed to it)
+- Tracking IDs in use: `papalex-gutf-20` (1617 links), `papalex-20` (550 links)
+- 328 pages: no Amazon link in the article
+- 281 pages: uses a tracking ID that is not this site's (clicks cannot be attributed to it)
 - 218 pages: has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index
 - 20 pages: Bing shows it but few people click (title/description)
-- 16 pages: only Amazon search links, no product links
-- 13 pages: first Amazon link is in the bottom half
-- 11 pages: first Amazon link is 30-50% down
+- 17 pages: only Amazon search links, no product links
+- 15 pages: first Amazon link is in the bottom half
+- 12 pages: first Amazon link is 30-50% down
 - 5 pages: amzn.to short link (tag cannot be checked)
 - 5 pages: no meta description
-- 1 pages: produces Amazon clicks but is set to noindex, so search engines will drop it
+- 2 pages: produces Amazon clicks but is set to noindex, so search engines will drop it
 - 1 sitemap URLs returned 404
 - 1 URLs are listed in more than one sitemap
 - No OneLink script found (non-US visitors land on amazon.com)
@@ -42,7 +42,7 @@
 - No OneLink script found (non-US visitors land on amazon.com)
 
 ### Mice Gone Guide (micegoneguide.com)
-- Tracking IDs in use: `papalex-mgg-20` (123 links)
+- Tracking IDs in use: `papalex-mgg-20` (131 links)
 - 24 pages: no Amazon link in the article
 - 17 pages: has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index
 - 14 pages: Bing shows it but few people click (title/description)
@@ -55,6 +55,7 @@
 - 5 pages: first Amazon link is in the bottom half
 - 4 pages: only Amazon search links, no product links
 - 4 pages: has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index
+- 2 sitemap URLs returned 404
 - 1 pages: Google shows it but few people click (title/description)
 - No OneLink script found (non-US visitors land on amazon.com)
 
@@ -109,7 +110,12 @@
 
 | Site | Check | Before | Now | Change |
 |---|---|---|---|---|
-| gearuptofit.com | first Amazon link is in the bottom half | 16 | 13 | -3 |
+| gearuptofit.com | no Amazon link in the article | 321 | 328 | +7 |
+| gearuptofit.com | first Amazon link is in the bottom half | 16 | 15 | -1 |
+| gearuptofit.com | uses a tracking ID that is not this site's (clicks cannot be attributed to it) | 269 | 281 | +12 |
+| gearuptofit.com | only Amazon search links, no product links | 16 | 17 | +1 |
+| gearuptofit.com | shares half or more of its text with another page on the site | 271 | 280 | +9 |
+| micegoneguide.com | shares half or more of its text with another page on the site | 0 | 2 | +2 |
 | affiliatemarketingforsuccess.com | shares half or more of its text with another page on the site | 10 | 12 | +2 |
 
 ## Pages that produce Amazon clicks (Google Analytics, all traffic sources)
@@ -150,6 +156,7 @@
 | https://gearuptofit.com/watch-match/compare/garmin-forerunner-970-vs-garmin-instinct-3 | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it); has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index |
 | https://gearuptofit.com/watch-match/compare/garmin-forerunner-165-vs-garmin-forerunner-70 | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it); has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index |
 | https://gearuptofit.com/watch-match/compare/apple-watch-ultra-4-vs-garmin-fenix-9-pro | 1 | yes | yes | 2 | 4% | uses a tracking ID that is not this site's (clicks cannot be attributed to it); has search demand (visits, Amazon clicks or 20+ Bing impressions) but is not in Google's index |
+| https://gearuptofit.com/shoe-finder/shoes/brooks-cascadia-20/ | 1 | no | no | 1 | 22% | noindex; uses a tracking ID that is not this site's (clicks cannot be attributed to it); produces Amazon clicks but is set to noindex, so search engines will drop it |
 
 ## Work queue: pages losing the most Amazon clicks
 
@@ -210,7 +217,7 @@
 
 | Site | URL is unknown to Google | Crawled - currently not indexed | Discovered - currently not indexed | Submitted and indexed | Excluded by ‘noindex’ tag | Not found (404) |
 |---|---|---|---|---|---|---|
-| GearUpToFit | 655 | 151 |  | 1 |  |  |
+| GearUpToFit | 652 | 151 |  | 1 |  |  |
 | Plantastic Haven |  | 8 |  | 152 |  |  |
 | Mice Gone Guide | 2 | 15 | 2 | 27 |  |  |
 | GearUpToGrow | 14 | 18 | 38 | 38 | 1 |  |
@@ -226,16 +233,17 @@ Google tends to stop indexing sites where many pages are thin or near-copies of 
 
 | Site | Sitemap | Pages | Thin | Near-duplicates | Largest duplicate group | Duplicate titles | Redirect / noindex / other canonical | Pages Google showed |
 |---|---|---|---|---|---|---|---|---|
-| GearUpToFit | `sitemap-posts.xml` | 501 | 2 | 8 | 4 | 0 | 0 | 0 |
+| GearUpToFit | `sitemap-posts.xml` | 501 | 2 | 8 | 5 | 0 | 0 | 0 |
 | GearUpToFit | `sitemap-pages.xml` | 28 | 10 | 0 |  | 0 | 0 | 0 |
-| GearUpToFit | `sitemap-lovable.xml` | 3 | 0 | 1 | 4 | 1 | 0 | 1 |
-| GearUpToFit | `watch-match/sitemap.xml` | 272 | 0 | 259 | 177 | 0 | 0 | 0 |
-| GearUpToFit | `(not in a sitemap; seen in analytics)` | 6 | 0 | 3 | 4 | 3 | 6 | 0 |
+| GearUpToFit | `sitemap-lovable.xml` | 3 | 0 | 0 |  | 1 | 0 | 1 |
+| GearUpToFit | `watch-match/sitemap.xml` | 272 | 0 | 259 | 187 | 0 | 0 | 0 |
+| GearUpToFit | `(not in a sitemap; seen in analytics)` | 32 | 0 | 13 | 187 | 2 | 30 | 0 |
 | Plantastic Haven | `post-sitemap.xml` | 133 | 0 | 2 | 2 | 0 | 0 | 112 |
 | Plantastic Haven | `page-sitemap.xml` | 27 | 5 | 0 |  | 0 | 0 | 20 |
 | Mice Gone Guide | `sitemap-home.xml` | 1 | 0 | 0 |  | 0 | 0 | 1 |
-| Mice Gone Guide | `sitemap-posts.xml` | 29 | 0 | 0 |  | 0 | 0 | 16 |
+| Mice Gone Guide | `sitemap-posts.xml` | 29 | 0 | 1 | 2 | 1 | 0 | 16 |
 | Mice Gone Guide | `sitemap-pages.xml` | 16 | 6 | 0 |  | 0 | 0 | 13 |
+| Mice Gone Guide | `(not in a sitemap; seen in analytics)` | 2 | 0 | 1 | 2 | 1 | 3 | 0 |
 | GearUpToGrow | `post-sitemap.xml` | 85 | 0 | 4 | 4 | 0 | 0 | 16 |
 | GearUpToGrow | `page-sitemap.xml` | 24 | 5 | 0 |  | 0 | 0 | 21 |
 | Affiliate Marketing for Success | `post-sitemap.xml` | 102 | 0 | 12 | 8 | 0 | 0 | 0 |

@@ -585,6 +585,7 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
         "repository": repository_slug(cfg),
         "auto_fix": auto_fix, "box_min_clicks": getattr(cfg, "box_min_clicks", 1),
         "schedule": schedule(), "history": total_history, "trend": portfolio_trend, "coverage_advice": COVERAGE_ADVICE,
+        "last_run": json.loads(Path("data/last-run.json").read_text()) if Path("data/last-run.json").exists() else None,
         "drafts": _box_files(report / "fixes", known, by_site), "boxes": _box_files(Path("boxes"), known, by_site),
         "sites": sites, "cols": COLS, "pages": [_page_row(r, index) for r in rows],
         "issues": {

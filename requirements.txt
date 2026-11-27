@@ -1,3 +1,4 @@
-requests>=2.31
-PyYAML>=6.0
-google-auth>=2.30
+# Pinned to the versions the engine was tested with; they run with the repository's secrets.
+requests==2.34.2
+PyYAML==6.0.3
+google-auth==2.63.1

@@ -211,6 +211,7 @@ function loadRuns() {
 }
 function runState(r) {
   if (r.status !== "completed") return ["info", r.status === "queued" ? "Queued" : "Running now"];
+  if (r.conclusion === "partial") return ["warning", `Finished; ${r.failed.join(", ")} failed`];
   return { success: ["good", "Succeeded"], failure: ["critical", "Failed"], cancelled: ["warning", "Cancelled"], timed_out: ["critical", "Timed out"] }[r.conclusion] || ["warning", r.conclusion || "Finished"];
 }
 function nextRun() {
@@ -221,18 +222,28 @@ function nextRun() {
   return d;
 }
 const when = d => d.toLocaleString(undefined, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+/* The run the repository recorded itself (data/last-run.json), shaped like a GitHub run. */
+function recordedRun() {
+  const r = D.last_run;
+  if (!r) return null;
+  const failed = ["pull", "fix", "submit"].filter(k => r[k] === "failure");
+  return { run_number: r.run_number, html_url: r.url, created_at: r.finished, event: r.event, status: "completed",
+           conclusion: failed.length ? "partial" : "success", recorded: true, failed };
+}
 function paintRuns() {
-  const latest = Array.isArray(RUNS) ? RUNS[0] : null;
+  const latest = Array.isArray(RUNS) && RUNS.length ? RUNS[0] : recordedRun();
   const st = latest ? runState(latest) : null;
   $("#run-pill").innerHTML = latest ? `<a class="pill" href="${esc(latest.html_url)}" target="_blank" rel="noopener">${status(st[0], "Last run " + st[1].toLowerCase())}<span class="muted">${ago(latest.created_at)}</span></a>` : "";
   $$("[data-run-latest]").forEach(el => {
     el.innerHTML = RUNS === null ? `<span class="muted">Checking GitHub…</span>`
       : latest ? `${status(st[0], st[1])}<a href="${esc(latest.html_url)}" target="_blank" rel="noopener">${ago(latest.created_at)}</a>`
       : `<span class="muted">${RUNS === "unavailable" ? "Not available from GitHub right now" : "No run yet"}</span>`;
+    if (latest && latest.recorded) el.insertAdjacentHTML("beforeend", `<span class="muted small">as recorded by the run</span>`);
   });
   $$("[data-run-list]").forEach(el => {
+    const rec = recordedRun();
     el.innerHTML = RUNS === null ? `<p class="muted">Checking GitHub…</p>`
-      : !Array.isArray(RUNS) ? `<p class="muted">GitHub did not return the run list (the repository may be private, or the hourly limit for anonymous requests was reached). ${ext(gh("/actions"), "Open run history", "")}</p>`
+      : !Array.isArray(RUNS) ? `<p class="muted">${rec ? `Last recorded run: <a href="${esc(rec.html_url)}" target="_blank" rel="noopener">#${esc(rec.run_number)}</a>, ${ago(rec.created_at)} (${esc(runState(rec)[1])}). ` : ""}The full run list is on GitHub (this page cannot read it while the repository is private). ${ext(gh("/actions"), "Open run history", "")}</p>`
       : !RUNS.length ? `<p class="muted">The engine has not run on GitHub yet.</p>`
       : `<div class="scroll"><table><thead><tr><th>Run</th><th>Started</th><th>Trigger</th><th>Result</th></tr></thead><tbody>${RUNS.map(r => {
           const s = runState(r);

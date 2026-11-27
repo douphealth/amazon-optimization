@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
@@ -34,6 +34,7 @@ jobs:
       # Search Console (pages, queries, daily trend, Google's index verdict per page), Bing Webmaster
       # and Google Analytics, straight from their APIs. Each source is skipped while its secret is missing.
       - name: Pull Search Console, Bing and Analytics data
+        id: pull
         continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
@@ -46,6 +47,7 @@ jobs:
       # Makes only the fixes listed under auto_fix in sites.yaml, and only on sites whose
       # WP_AUTH_<DOMAIN> secret exists. With no secrets this step does nothing.
       - name: Apply safe fixes
+        id: fix
         if: github.event_name != 'workflow_dispatch' || inputs.apply_fixes
         env:
           WP_AUTH_PLANTASTICHAVEN_COM: ${{ secrets.WP_AUTH_PLANTASTICHAVEN_COM }}
@@ -61,6 +63,7 @@ jobs:
       # Tells Bing and the other IndexNow engines about pages that are new or changed since the
       # last run. Skipped until the INDEXNOW_KEY secret exists.
       - name: Submit new and changed pages to search engines
+        id: submit
         if: github.event_name != 'workflow_dispatch' || inputs.submit
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
@@ -69,6 +72,12 @@ jobs:
 
       - name: Commit the report
         run: |
+          # What this run did, for the dashboard (it cannot ask GitHub itself once the repository is private).
+          cat > data/last-run.json <<JSON
+          {"run_number": ${{ github.run_number }}, "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+           "event": "${{ github.event_name }}", "finished": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+           "pull": "${{ steps.pull.outcome }}", "fix": "${{ steps.fix.outcome }}", "submit": "${{ steps.submit.outcome }}"}
+          JSON
           git config user.name "commission-audit"
           git config user.email "actions@users.noreply.github.com"
           git add reports data

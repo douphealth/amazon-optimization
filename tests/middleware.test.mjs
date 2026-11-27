@@ -82,6 +82,13 @@ for (const [name, url, to] of [
   assert.equal(r.headers.get("WWW-Authenticate"), null, name + ": no password box");
   assert.equal(reached, before, name + ": reached the dashboard");
 }
+{
+  const r = await run(req({ ...basic("x:password-remembered-by-the-browser"), "Sec-Fetch-Mode": "navigate" }), gw);
+  assert.equal(r.status, 302, "browser holding an old password");
+  assert.equal(r.headers.get("Location"), "https://gate.example.workers.dev/data.json");
+  const g = await run(req(basic("gateway:right-password")), gw);
+  assert.equal(g.status, 200, "gateway unaffected");
+}
 for (const [name, request, status] of [
   ["gateway: wrong password", req(basic("gateway:old-password")), 401],
   ["gateway: write method", new Request("https://dashboard.example.pages.dev/data.json", { method: "POST" }), 405],

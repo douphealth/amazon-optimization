@@ -40,9 +40,11 @@ export async function onRequest({ request, env, next }) {
     if (await passwordOk(request, env.DASHBOARD_PASSWORD)) return pass();
     const gateway = gatewayOrigin(env.GATEWAY_URL);
     if (!gateway) return challenge();
-    // A wrong password (the gateway's, once the secret changes) gets a refusal without a password
-    // box; a visit with no password is sent to the email-code page, at the same path.
-    if (request.headers.has("Authorization")) return plain(401, "Sign in through the email code page.");
+    // A browser (even one still holding an old password) is sent to the email-code page, at the same
+    // path. A wrong password from anything else, such as the gateway once the secret changes, gets a
+    // refusal without a password box: the gateway never sends Sec-Fetch-Mode, so it cannot loop.
+    const browser = request.headers.get("Sec-Fetch-Mode") === "navigate";
+    if (request.headers.has("Authorization") && !browser) return plain(401, "Sign in through the email code page.");
     if (request.method !== "GET" && request.method !== "HEAD") return plain(405, "This dashboard is read-only.");
     const url = new URL(request.url);
     return new Response(null, { status: 302, headers: { Location: gateway + url.pathname + url.search, "Cache-Control": "no-store" } });

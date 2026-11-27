@@ -65,6 +65,35 @@ await expect("not base64", req({ Authorization: "Basic %%%" }), password, 401);
 await expect("bearer instead of basic", req({ Authorization: "Bearer right-password" }), password, 401);
 await expect("colon in the password itself", req(basic("u:a:b")), { DASHBOARD_PASSWORD: "a:b" }, 200);
 
+// With the email-code gateway configured, people never get a password box: no password sends them to
+// the email-code page at the same path; the gateway's password still reads the dashboard.
+const gw = { ...password, GATEWAY_URL: "https://gate.example.workers.dev/ignored/path?x=1" };
+await expect("gateway: its password reads the dashboard", req(basic("gateway:right-password")), gw, 200);
+for (const [name, url, to] of [
+  ["visit without a password", "https://dashboard.example.pages.dev/data.json?v=2", "https://gate.example.workers.dev/data.json?v=2"],
+  ["visit to the home page", "https://dashboard.example.pages.dev/", "https://gate.example.workers.dev/"],
+  ["path that looks like another host", "https://dashboard.example.pages.dev//evil.example/x", "https://gate.example.workers.dev//evil.example/x"],
+]) {
+  const before = reached;
+  const r = await run(new Request(url), gw);
+  assert.equal(r.status, 302, name);
+  assert.equal(r.headers.get("Location"), to, name);
+  assert.equal(new URL(r.headers.get("Location")).host, "gate.example.workers.dev", name + ": stays on the gateway");
+  assert.equal(r.headers.get("WWW-Authenticate"), null, name + ": no password box");
+  assert.equal(reached, before, name + ": reached the dashboard");
+}
+for (const [name, request, status] of [
+  ["gateway: wrong password", req(basic("gateway:old-password")), 401],
+  ["gateway: write method", new Request("https://dashboard.example.pages.dev/data.json", { method: "POST" }), 405],
+]) {
+  const r = await expect(name, request, gw, status);
+  assert.equal(r.headers.get("WWW-Authenticate"), null, name + ": no password box");
+}
+for (const bad of ["http://gate.example.workers.dev", "javascript:alert(1)", "not a url", "https://user:pw@gate.example.workers.dev"]) {
+  const r = await expect("unsafe GATEWAY_URL " + bad, req(), { ...password, GATEWAY_URL: bad }, 401);
+  assert.match(r.headers.get("WWW-Authenticate"), /^Basic/, "unsafe GATEWAY_URL falls back to the password box, never a redirect");
+}
+
 // Email-code mode: the signed Access token is required, and the password stops working.
 const both = { ...access, ...password };
 await expect("valid token (header)", req(jwt(await sign(good))), both, 200);

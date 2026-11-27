@@ -54,7 +54,7 @@ it. The pages ask search engines not to index them.
 | Address | Sign-in |
 |---|---|
 | `https://commission-engine.<workers subdomain>.workers.dev` | Email code: enter an allowed address, Cloudflare emails a 6-digit code, you stay signed in for 30 days |
-| https://amazon-optimization.pages.dev | The dashboard itself: asks for the `DASHBOARD_PASSWORD` secret (any user name) |
+| https://amazon-optimization.pages.dev | Sends you to the email-code address (no password box). Only the email-code address reads the dashboard here, with the `DASHBOARD_PASSWORD` secret |
 
 The email-code address is a Cloudflare Worker (`infra/gateway/worker.js`) behind Cloudflare Access.
 It checks Access's signed sign-in token itself as well, then fetches the dashboard with the
@@ -64,6 +64,10 @@ Workers edit on the account, and `DASHBOARD_PASSWORD`). If the password secret o
 changes, run it again with the new one. Allowed addresses: Zero Trust > Access > Applications >
 Commission Engine dashboard > Policies. The exact address is printed by the deploy script and shown
 under Workers & Pages > commission-engine.
+
+The Pages project's `GATEWAY_URL` variable (the email-code address) is what makes the pages.dev
+address forward there instead of asking for a password. Remove it and that address asks for the
+password again.
 
 ## What it checks on every page
 

@@ -64,8 +64,8 @@ Cloudflare account that holds your Zero Trust team, reuses its One-time PIN logi
 address your existing Access policy already allows. To allow another address: Zero Trust > Access >
 Applications > Commission Engine dashboard > Policies > Owner email addresses.
 
-The Pages project (https://amazon-optimization.pages.dev) stays the dashboard's origin and asks for
-the password. The Pages project lives on a different Cloudflare account from the Zero Trust team,
+The Pages project (https://amazon-optimization.pages.dev) stays the dashboard's origin. Opening it
+sends you to the email-code page; it never shows a password box (its `GATEWAY_URL` variable). The Pages project lives on a different Cloudflare account from the Zero Trust team,
 and Cloudflare would not link the repository to a second account, so the email-code address is a
 Worker in front of it (`infra/gateway/worker.js`, deployed by `infra/deploy_gateway.py`).
 

@@ -7,6 +7,9 @@
 //   Set up by infra/setup_access.py.
 //
 //   Password: only DASHBOARD_PASSWORD is set (a Pages secret). HTTP Basic auth, any user name.
+//   With GATEWAY_URL also set (the email-code front door, infra/gateway/worker.js), people are never
+//   shown a password box: a visit without a password is sent to the email-code sign-in instead, and
+//   only the gateway, which holds the password, reads the dashboard here.
 //
 // With neither, the dashboard stays locked rather than open. Nothing secret is in this file.
 // Never call passThroughOnException() here: an error must end in a refusal, not in the dashboard.
@@ -34,7 +37,15 @@ export async function onRequest({ request, env, next }) {
     return identity ? pass() : plain(403, "Sign in through the email code page (Cloudflare Access) to see the dashboard.");
   }
   if (env.DASHBOARD_PASSWORD) {
-    return (await passwordOk(request, env.DASHBOARD_PASSWORD)) ? pass() : challenge();
+    if (await passwordOk(request, env.DASHBOARD_PASSWORD)) return pass();
+    const gateway = gatewayOrigin(env.GATEWAY_URL);
+    if (!gateway) return challenge();
+    // A wrong password (the gateway's, once the secret changes) gets a refusal without a password
+    // box; a visit with no password is sent to the email-code page, at the same path.
+    if (request.headers.has("Authorization")) return plain(401, "Sign in through the email code page.");
+    if (request.method !== "GET" && request.method !== "HEAD") return plain(405, "This dashboard is read-only.");
+    const url = new URL(request.url);
+    return new Response(null, { status: 302, headers: { Location: gateway + url.pathname + url.search, "Cache-Control": "no-store" } });
   }
   return plain(503, "This dashboard is locked: no sign-in is configured for it.");
 }
@@ -43,6 +54,18 @@ function plain(status, text, extra = {}) {
   return new Response(text, { status, headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store", ...extra } });
 }
 const challenge = () => plain(401, "Sign in to see the dashboard.", { "WWW-Authenticate": REALM });
+
+// The email-code address, as an https origin only, so the redirect can never point anywhere else
+// (the path is appended to the origin as text: a path like //other.example stays on this origin).
+function gatewayOrigin(value) {
+  if (!value) return "";
+  try {
+    const u = new URL(value);
+    return u.protocol === "https:" && !u.username && !u.password ? u.origin : "";
+  } catch {
+    return "";
+  }
+}
 
 // ---------- email code: verify the Cloudflare Access token ----------
 

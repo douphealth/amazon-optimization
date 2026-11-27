@@ -1,6 +1,7 @@
 # Owner actions: what only the owner can do
 
-Everything else is automated. These four steps need the owner's own logins.
+Everything else is automated. These five steps need the owner's own logins; this session's GitHub
+access is not allowed to change repository settings or Actions secrets.
 
 ## 1. Add the repository secrets (5 minutes, once)
 
@@ -60,3 +61,12 @@ The dashboard at amazon-optimization.pages.dev asks for a password (any user nam
 the `DASHBOARD_PASSWORD` secret in the Cloudflare Pages project (account papalexios001, project
 amazon-optimization, Settings > Variables and Secrets); it was handed over privately and is not in
 this repository. To change it, edit that secret and redeploy.
+
+## 5. Make the repository private
+
+The repository holds Search Console queries, Analytics numbers and every page's index status. While
+it is public, anyone can read them. GitHub > douphealth/amazon-optimization > Settings > General >
+Danger Zone > Change repository visibility > Private. Nothing else needs to change: the weekly run
+and the Cloudflare Pages deployment keep working, and the dashboard then shows the last run from the
+record each run commits (`data/last-run.json`) instead of asking GitHub live. To undo, change it
+back to Public in the same place.

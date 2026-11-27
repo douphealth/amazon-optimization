@@ -64,20 +64,23 @@ create itself:
 
 1. Cloudflare (the account that holds the `amazon-optimization` Pages project) > My Profile > API
    Tokens > Create Token > Create Custom Token.
-2. Permissions: *Account · Access: Apps and Policies · Edit* and *Account · Access: Organizations,
-   Identity Providers, and Groups · Edit*. Account Resources: that account. An expiry of one day is
-   enough.
+2. Permissions: *Account · Access: Apps and Policies · Edit*, *Account · Access: Organizations,
+   Identity Providers, and Groups · Edit* and *Account · Cloudflare Pages · Edit*. Account
+   Resources: that account. An expiry of one day is enough.
 3. If Cloudflare has never shown this account the Zero Trust section, open Zero Trust once and pick
    a team name and the Free plan (free for up to 50 users).
 4. Hand the token over (upload it to the session), or run it yourself:
-   `CF_ACCESS_TOKEN=... CF_PAGES_TOKEN=... python infra/setup_access.py you@example.com`
+   `read -rs CF_ACCESS_TOKEN && export CF_ACCESS_TOKEN && python infra/setup_access.py you@example.com`
 
 The script switches on the email code, protects the dashboard and every per-deployment address
 (`*.amazon-optimization.pages.dev`, which also closes off the deployments made before the password),
 allows only the addresses given, and switches the dashboard's own check to verify Cloudflare's
 signed sign-in token, so the password stops working. You then stay signed in for 30 days per
-browser. To allow another address later, add it under Zero Trust > Access > Applications >
-Commission Engine dashboard > Policies.
+browser. The script only switches the dashboard over after Cloudflare is seen answering it with
+the sign-in page, so there is never a gap and you cannot be locked out. To allow another address
+later, add it under Zero Trust > Access > Applications > Commission Engine dashboard > Policies (a
+re-run of the script replaces the list). To go back to the password:
+`python infra/setup_access.py --rollback`.
 
 ## 5. Make the repository private
 

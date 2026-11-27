@@ -9,20 +9,28 @@
 //   Password: only DASHBOARD_PASSWORD is set (a Pages secret). HTTP Basic auth, any user name.
 //
 // With neither, the dashboard stays locked rather than open. Nothing secret is in this file.
+// Never call passThroughOnException() here: an error must end in a refusal, not in the dashboard.
 
 const REALM = 'Basic realm="Commission Engine", charset="UTF-8"';
 const CERT_TTL_MS = 60 * 60 * 1000;
-let certCache = { url: "", at: 0, keys: [] };
+const FORCED_REFRESH_MS = 60 * 1000;  // an unknown key id may refetch the keys at most once a minute
+const CERT_TIMEOUT_MS = 5000;
+const NO_STORE = ["CDN-Cache-Control", "Cloudflare-CDN-Cache-Control", "Surrogate-Control", "Expires"];
+let certCache = { url: "", at: 0, keys: [], forcedAt: 0 };
 
 export async function onRequest({ request, env, next }) {
   const pass = async () => {
     const response = await next();
     const out = new Response(response.body, response);
     out.headers.set("Cache-Control", "private, no-store");
+    for (const h of NO_STORE) out.headers.delete(h);
     return out;
   };
-  if (env.ACCESS_TEAM_DOMAIN && env.ACCESS_AUD) {
-    const identity = await accessIdentity(request, env);
+  if (env.ACCESS_TEAM_DOMAIN || env.ACCESS_AUD) {
+    // Half a configuration must not quietly fall back to the password.
+    if (!env.ACCESS_TEAM_DOMAIN || !env.ACCESS_AUD) return plain(503, "Sign-in is misconfigured: ACCESS_TEAM_DOMAIN and ACCESS_AUD must both be set.");
+    let identity = null;
+    try { identity = await accessIdentity(request, env); } catch { identity = null; }
     return identity ? pass() : plain(403, "Sign in through the email code page (Cloudflare Access) to see the dashboard.");
   }
   if (env.DASHBOARD_PASSWORD) {
@@ -58,14 +66,28 @@ function b64urlBytes(s) {
 }
 const b64urlJson = s => JSON.parse(new TextDecoder().decode(b64urlBytes(s)));
 
+const validKey = k => k && typeof k === "object" && typeof k.kid === "string" && k.kty === "RSA" && typeof k.n === "string" && typeof k.e === "string";
+
+// The team's public keys, cached for an hour. Failures return what is cached for this team (or
+// nothing); a bad answer never replaces good keys.
 async function certs(origin, fetchImpl, force = false) {
   const url = `${origin}/cdn-cgi/access/certs`;
-  if (!force && certCache.url === url && Date.now() - certCache.at < CERT_TTL_MS && certCache.keys.length) return certCache.keys;
-  const res = await fetchImpl(url);
-  if (!res.ok) return [];
-  const body = await res.json();
-  certCache = { url, at: Date.now(), keys: body.keys || [] };
-  return certCache.keys;
+  const cached = certCache.url === url ? certCache.keys : [];
+  const fresh = certCache.url === url && Date.now() - certCache.at < CERT_TTL_MS && cached.length;
+  if (fresh && !force) return cached;
+  if (force && certCache.url === url && Date.now() - certCache.forcedAt < FORCED_REFRESH_MS) return cached;
+  if (force && certCache.url === url) certCache.forcedAt = Date.now();
+  try {
+    const res = await fetchImpl(url, { signal: AbortSignal.timeout(CERT_TIMEOUT_MS) });
+    if (!res.ok) return cached;
+    const body = await res.json();
+    const keys = Array.isArray(body && body.keys) ? body.keys.filter(validKey) : [];
+    if (!keys.length) return cached;
+    certCache = { url, at: Date.now(), keys, forcedAt: certCache.url === url ? certCache.forcedAt : 0 };
+    return keys;
+  } catch {
+    return cached;
+  }
 }
 
 // Returns the verified claims, or null. Exported for tests.
@@ -75,12 +97,14 @@ export async function accessIdentity(request, env, fetchImpl = fetch, now = Date
   if (parts.length !== 3) return null;
   let header, claims;
   try { header = b64urlJson(parts[0]); claims = b64urlJson(parts[1]); } catch { return null; }
-  if (header.alg !== "RS256" || !header.kid) return null;
+  const isObject = x => x !== null && typeof x === "object" && !Array.isArray(x);
+  if (!isObject(header) || !isObject(claims)) return null;
+  if (header.alg !== "RS256" || typeof header.kid !== "string" || !header.kid) return null;
   const origin = teamOrigin(env.ACCESS_TEAM_DOMAIN);
   const audiences = Array.isArray(claims.aud) ? claims.aud : [claims.aud];
   const seconds = Math.floor(now / 1000);
   if (claims.iss !== origin || !audiences.includes(env.ACCESS_AUD)) return null;
-  if (typeof claims.exp !== "number" || claims.exp < seconds) return null;
+  if (typeof claims.exp !== "number" || claims.exp <= seconds) return null;
   if (typeof claims.nbf === "number" && claims.nbf > seconds + 60) return null;
   let jwk = (await certs(origin, fetchImpl)).find(k => k.kid === header.kid);
   if (!jwk) jwk = (await certs(origin, fetchImpl, true)).find(k => k.kid === header.kid);  // keys rotate

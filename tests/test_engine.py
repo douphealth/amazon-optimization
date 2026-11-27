@@ -977,6 +977,8 @@ def test_setup_access_creates_once_then_reuses():
                     return Resp(list(pol.values()))
                 pol["p1"] = {"id": "p1", **json}
                 return Resp(pol["p1"])
+            if path == "/pages/projects/proj" and method == "GET":
+                return Resp({"name": "proj"})
             if path == "/access/apps/app1":
                 state["apps"][0].update(json)
                 return Resp(state["apps"][0])
@@ -988,7 +990,7 @@ def test_setup_access_creates_once_then_reuses():
             if path.endswith("/retry"):
                 return Resp({"id": "d2"})
             if path == "/pages/projects/proj/deployments/d2":
-                return Resp({"latest_stage": {"name": "deploy", "status": "success"}})
+                return Resp({"latest_stage": {"name": "deploy", "status": "success"}, "url": "https://d2.proj.pages.dev"})
             raise AssertionError(path)
 
     access = sa.Client("t", "acc", session=Session())
@@ -1004,8 +1006,15 @@ def test_setup_access_creates_once_then_reuses():
     assert [d["uri"] for d in app["destinations"]] == ["proj.pages.dev", "*.proj.pages.dev"] and app["session_duration"] == "720h"
     assert app["allowed_idps"] == ["otp1"] and app["auto_redirect_to_identity"] is True
     assert state["policies"]["p1"]["include"] == [{"email": {"email": "owner@example.com"}}]
-    assert sa.switch_dashboard(sa.Client("t", "acc", session=Session()), "proj", team, app["aud"], log=quiet) == "success"
-    assert state["vars"]["production"]["env_vars"]["ACCESS_AUD"]["value"] == "AUD1"
+    redirect = lambda url, **kw: type("R", (), {"status_code": 302, "headers": {"Location": f"https://{team}/cdn-cgi/access/login/proj.pages.dev?x=1"}})()
+    assert sa.access_enforced("proj.pages.dev", team, get=redirect, wait=0, log=quiet)
+    not_yet = lambda url, **kw: type("R", (), {"status_code": 401, "headers": {}})()
+    assert not sa.access_enforced("proj.pages.dev", team, get=not_yet, wait=0, log=quiet)
+    assert sa.switch_dashboard(sa.Client("t", "acc", session=Session()), "proj", team, app["aud"], log=quiet).startswith("success")
+    assert state["vars"]["production"]["env_vars"]["ACCESS_AUD"]["value"] == "AUD1" and state["vars"]["production"]["fail_open"] is False
+    assert sa.rollback(sa.Client("t", "acc", session=Session()), "proj", log=quiet).startswith("success")
+    assert state["vars"]["production"]["env_vars"] == {"ACCESS_TEAM_DOMAIN": None, "ACCESS_AUD": None}
+    assert not sa.covers({"domain": "proj.pages.dev"}, "proj.pages.dev")  # an app without the wildcard must stop the switch
     before = len(state["idps"]), len(state["apps"]), len(state["policies"])
     sa.ensure_otp(access, log=quiet); sa.ensure_app(access, "proj.pages.dev", otp, log=quiet); sa.ensure_policy(access, "app1", ["owner@example.com"], log=quiet)
     assert (len(state["idps"]), len(state["apps"]), len(state["policies"])) == before  # a second run creates nothing new

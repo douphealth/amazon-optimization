@@ -1,6 +1,6 @@
 # Owner actions: what only the owner can do
 
-Everything else is automated. These five steps need the owner's own logins; this session's GitHub
+Everything else is automated. These steps need the owner's own logins; this session's GitHub
 access is not allowed to change repository settings or Actions secrets.
 
 ## 1. Add the repository secrets (5 minutes, once)
@@ -55,32 +55,32 @@ purge the LiteSpeed and Seraphinite caches so cached pages pick it up. The engin
 safely itself: no WordPress API exposes the header-scripts setting, and switching on the inactive
 snippet plugins could re-run old stored code.
 
-## 4. Dashboard sign-in: switch to email codes
+## 4. Dashboard sign-in: done, two optional clean-ups
 
-Today the dashboard asks for a password (any user name; the password is the `DASHBOARD_PASSWORD`
-secret in the Cloudflare Pages project and was handed over privately). Everything for sign-in by
-email code is built and tested; it needs one Cloudflare token that this session was not allowed to
-create itself:
+Email-code sign-in is live at the `commission-engine` Worker's workers.dev address (Cloudflare >
+Workers & Pages > commission-engine; the deploy script prints it): enter your email,
+Cloudflare emails a 6-digit code, and the browser stays signed in for 30 days. It runs on the
+Cloudflare account that holds your Zero Trust team, reuses its One-time PIN login, and allows the
+address your existing Access policy already allows. To allow another address: Zero Trust > Access >
+Applications > Commission Engine dashboard > Policies > Owner email addresses.
 
-1. Cloudflare (the account that holds the `amazon-optimization` Pages project) > My Profile > API
-   Tokens > Create Token > Create Custom Token.
-2. Permissions: *Account · Access: Apps and Policies · Edit*, *Account · Access: Organizations,
-   Identity Providers, and Groups · Edit* and *Account · Cloudflare Pages · Edit*. Account
-   Resources: that account. An expiry of one day is enough.
-3. If Cloudflare has never shown this account the Zero Trust section, open Zero Trust once and pick
-   a team name and the Free plan (free for up to 50 users).
-4. Hand the token over (upload it to the session), or run it yourself:
-   `read -rs CF_ACCESS_TOKEN && export CF_ACCESS_TOKEN && python infra/setup_access.py you@example.com`
+The Pages project (https://amazon-optimization.pages.dev) stays the dashboard's origin and asks for
+the password. The Pages project lives on a different Cloudflare account from the Zero Trust team,
+and Cloudflare would not link the repository to a second account, so the email-code address is a
+Worker in front of it (`infra/gateway/worker.js`, deployed by `infra/deploy_gateway.py`).
 
-The script switches on the email code, protects the dashboard and every per-deployment address
-(`*.amazon-optimization.pages.dev`, which also closes off the deployments made before the password),
-allows only the addresses given, and switches the dashboard's own check to verify Cloudflare's
-signed sign-in token, so the password stops working. You then stay signed in for 30 days per
-browser. The script only switches the dashboard over after Cloudflare is seen answering it with
-the sign-in page, so there is never a gap and you cannot be locked out. To allow another address
-later, add it under Zero Trust > Access > Applications > Commission Engine dashboard > Policies (a
-re-run of the script replaces the list). To go back to the password:
-`python infra/setup_access.py --rollback`.
+Optional, only you can do these (this session was not allowed to delete them):
+
+1. The eight deployments made before the password was added are still reachable at their own
+   addresses (`<id>.amazon-optimization.pages.dev`). Cloudflare (the account with the Pages project)
+   > Workers & Pages > amazon-optimization > Deployments > for each deployment older than the
+   password commit: ... > Delete deployment.
+2. If you change the `DASHBOARD_PASSWORD` secret on the Pages project, run
+   `python infra/deploy_gateway.py --owner-emails` again with the new password, or the email-code
+   address answers "update the DASHBOARD_PASSWORD secret".
+
+`infra/setup_access.py` (protecting the Pages address directly with Access) stays for the day the
+Pages project and the Zero Trust team are on the same account.
 
 ## 5. Make the repository private
 

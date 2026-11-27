@@ -47,8 +47,23 @@ makes, to GitHub's public API, and it only works while the repository is public.
 is `npm run build`, and the site is written to `dist/` (copies go to `build/`, `public/`, `out/`,
 `_site/` and the project root, so the host's output-folder setting does not matter). The build reads
 files in the repository only; it never crawls. Every push, including the weekly audit's, republishes
-it. The pages ask search engines not to index them, but the address is public unless the host
-restricts access (on Cloudflare: Zero Trust > Access > add an application for the Pages address).
+it. The pages ask search engines not to index them.
+
+### Signing in
+
+| Address | Sign-in |
+|---|---|
+| `https://commission-engine.<workers subdomain>.workers.dev` | Email code: enter an allowed address, Cloudflare emails a 6-digit code, you stay signed in for 30 days |
+| https://amazon-optimization.pages.dev | The dashboard itself: asks for the `DASHBOARD_PASSWORD` secret (any user name) |
+
+The email-code address is a Cloudflare Worker (`infra/gateway/worker.js`) behind Cloudflare Access.
+It checks Access's signed sign-in token itself as well, then fetches the dashboard with the
+password, so the password never reaches the browser. It only serves GET and HEAD. Deploy or update
+it with `python infra/deploy_gateway.py --owner-emails` (needs `CF_API_TOKEN` with Access and
+Workers edit on the account, and `DASHBOARD_PASSWORD`). If the password secret on the Pages project
+changes, run it again with the new one. Allowed addresses: Zero Trust > Access > Applications >
+Commission Engine dashboard > Policies. The exact address is printed by the deploy script and shown
+under Workers & Pages > commission-engine.
 
 ## What it checks on every page
 

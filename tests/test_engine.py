@@ -1018,3 +1018,18 @@ def test_setup_access_creates_once_then_reuses():
     before = len(state["idps"]), len(state["apps"]), len(state["policies"])
     sa.ensure_otp(access, log=quiet); sa.ensure_app(access, "proj.pages.dev", otp, log=quiet); sa.ensure_policy(access, "app1", ["owner@example.com"], log=quiet)
     assert (len(state["idps"]), len(state["apps"]), len(state["policies"])) == before  # a second run creates nothing new
+
+
+def test_email_code_gateway_refuses_without_a_valid_sign_in():
+    """infra/gateway/worker.test.mjs: signed-in requests reach the dashboard, every forged or missing sign-in does not."""
+    import shutil
+    import subprocess
+
+    import pytest
+
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("Node.js is not installed")
+    test = Path(__file__).resolve().parent.parent / "infra" / "gateway" / "worker.test.mjs"
+    result = subprocess.run([node, str(test)], capture_output=True, text=True, timeout=120)
+    assert result.returncode == 0, result.stdout + result.stderr

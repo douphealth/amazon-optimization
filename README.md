@@ -109,7 +109,7 @@ page and `webmarketingbooks.com` now shows an unrelated business.
 `python -m ace fix` plans edits from the latest audit and shows what it would change.
 `python -m ace fix --apply` saves them through the WordPress REST API.
 
-- It edits only the post body, keeps a copy in `backups/` (not committed), relies on WordPress
+- It edits only the post body, keeps a copy in `backups/<site>/<post id>-<date>.html` (committed, by the weekly run too), relies on WordPress
   revisions for rollback, and re-audits the live page after every save.
 - `auto_fix` in `sites.yaml` lists the fixes it may make. Today that is `rel`, `blocked` and `box`.
   `tags` and `disclosure` are off: by decision on 2026-11-26 the render-time snippets above own

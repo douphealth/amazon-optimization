@@ -1,0 +1,1115 @@
+<style>
+.spcx{background-color:#ffffff!important;color:#1e2b23!important;line-height:1.78;font-size:17.5px;max-width:100%;border-radius:22px;padding:clamp(20px,4.5vw,46px);box-shadow:0 12px 44px rgba(0,0,0,.30);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif}
+.spcx>p:first-of-type{font-size:19px;line-height:1.8;color:#24352a}
+.spcx>p:first-of-type::first-letter{font-size:52px;font-weight:900;color:#0d5c2e;float:left;line-height:.9;padding:4px 10px 0 0;font-family:var(--phsh-disp,inherit)}
+.spcx h2{position:relative;padding-left:18px}
+.spcx p,.spcx li,.spcx td{color:#1e2b23}
+.spcx h2{color:#143b22!important}
+.spcx h3{color:#173b22!important}
+.spcx .spcx-figure figcaption{color:#5a6b5e!important}
+.spcx h2::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:6px;border-radius:3px;background:linear-gradient(180deg,#2f9e5f,#143b22)}
+.spcx .spcx-figure img{transition:transform .35s ease}
+.spcx .spcx-figure img:hover{transform:scale(1.015)}
+.spcx .spcx-answer{position:relative;overflow:hidden}
+.spcx .spcx-answer::after{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#2f9e5f,#a9e5bd,#2f9e5f)}
+.spcx .spcx-verdict{position:relative;overflow:hidden}
+.spcx .spcx-verdict::after{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#2f9e5f,#a9e5bd)}
+.spcx .spcx-prod .spcx-pbest{display:inline-block;background:#eaf7ed;border-radius:6px;padding:2px 10px;margin-bottom:8px}
+.spcx details.spcx-faq{transition:box-shadow .2s ease}
+.spcx details.spcx-faq[open]{box-shadow:0 6px 20px rgba(20,59,34,.10)}
+.spcx .spcx-stat{transition:transform .2s ease}
+.spcx .spcx-stat:hover{transform:translateY(-3px)}
+.spcx h2{margin:38px 0 14px;color:#143b22;font-size:clamp(25px,7vw,33px);line-height:1.16;letter-spacing:-.025em;font-weight:850;font-family:var(--phsh-disp,inherit)}
+.spcx h3{margin:26px 0 10px;color:#173b22;font-size:clamp(19px,4.5vw,23px);line-height:1.3;font-weight:800;letter-spacing:-.01em}
+.spcx p{margin:0 0 16px}
+.spcx ul,.spcx ol{margin:0 0 16px;padding-left:24px}
+.spcx li{margin-bottom:8px}
+.spcx a{color:#0d5c2e;text-decoration:underline;text-underline-offset:2px}
+.spcx a:hover{color:#083d1f}
+.spcx img{border-radius:14px}
+.spcx .spcx-answer{background:linear-gradient(135deg,#eaf7ed 0%,#f4fbf3 100%);border:2px solid #bfe0c4;border-radius:16px;padding:22px 24px;margin:22px 0;box-shadow:0 4px 18px rgba(20,59,34,.08)}
+.spcx .spcx-answer .spcx-kicker{display:inline-block;background:#143b22;color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:12px}
+.spcx .spcx-answer p{font-size:18px;margin:0;color:#12281a}
+.spcx .spcx-answer p strong{color:#0d5c2e}
+.spcx .spcx-verdict{display:grid;grid-template-columns:84px 1fr;gap:18px;background:#143b22;color:#eaf7ed;border-radius:18px;padding:24px;margin:24px 0;align-items:center;box-shadow:0 8px 28px rgba(20,59,34,.22)}
+.spcx .spcx-verdict .spcx-check{width:84px;height:84px;border-radius:50%;background:#2f9e5f;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:900;color:#fff;flex:none}
+.spcx .spcx-verdict h3{color:#fff;margin:0 0 6px;font-size:21px}
+.spcx .spcx-verdict p{margin:0 0 6px;font-size:15.5px;color:#d7ecdc}
+.spcx .spcx-verdict p:last-child{margin:0}
+.spcx .spcx-verdict a{color:#a9e5bd}
+.spcx .spcx-takeaways{background:#f7fbf5;border:1px solid #d6e8d5;border-radius:16px;padding:22px 24px;margin:24px 0}
+.spcx .spcx-takeaways h3{margin-top:0;color:#143b22}
+.spcx .spcx-takeaways ul{list-style:none;padding:0;margin:0}
+.spcx .spcx-takeaways li{position:relative;padding-left:30px;margin-bottom:10px}
+.spcx .spcx-takeaways li::before{content:"✓";position:absolute;left:0;top:1px;color:#0d5c2e;font-weight:900}
+.spcx .spcx-figure{margin:24px 0}
+.spcx .spcx-figure img{width:100%;height:auto;display:block;box-shadow:0 6px 24px rgba(20,59,34,.12)}
+.spcx .spcx-figure figcaption{font-size:13.5px;color:#5a6b5e;margin-top:8px;text-align:center}
+.spcx .spcx-tablewrap{overflow-x:auto;margin:22px 0;border-radius:14px;border:1px solid #d6e8d5;box-shadow:0 4px 16px rgba(20,59,34,.06)}
+.spcx table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px;background:#fff}
+.spcx th{background:#143b22;color:#fff;text-align:left;padding:13px 14px;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.spcx td{padding:12px 14px;border-top:1px solid #e3efe4;vertical-align:top}
+.spcx tr:nth-child(even) td{background:#f7fbf5}
+.spcx .spcx-pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.spcx .spcx-safe{background:#d9f2e0;color:#0d5c2e}
+.spcx .spcx-danger{background:#fde2e2;color:#a12020}
+.spcx .spcx-warn{background:#fdf0d7;color:#8a5a00}
+.spcx .spcx-myth{background:#fff;border:1px solid #d6e8d5;border-left:6px solid #c96a1e;border-radius:12px;padding:18px 20px;margin:16px 0}
+.spcx .spcx-myth .spcx-myth-tag{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#c96a1e}
+.spcx .spcx-myth p{margin:6px 0 0}
+.spcx .spcx-myth p strong{color:#143b22}
+.spcx .spcx-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.spcx .spcx-stat{background:linear-gradient(160deg,#143b22,#1e5233);border-radius:16px;padding:22px 18px;text-align:center;color:#fff}
+.spcx .spcx-stat .spcx-num{font-size:clamp(28px,6vw,42px);font-weight:900;letter-spacing:-.02em;color:#a9e5bd;line-height:1.1}
+.spcx .spcx-stat .spcx-lbl{font-size:13.5px;color:#d7ecdc;margin-top:8px;line-height:1.45}
+.spcx .spcx-quiz{background:#f4f9f2;border:2px solid #bfe0c4;border-radius:18px;padding:26px;margin:24px 0}
+.spcx .spcx-quiz h3{margin-top:0;color:#143b22}
+.spcx .spcx-quiz .spcx-q{margin-bottom:20px}
+.spcx .spcx-quiz .spcx-qt{font-weight:800;color:#173b22;margin-bottom:10px}
+.spcx .spcx-quiz .spcx-opts{display:flex;flex-wrap:wrap;gap:10px}
+.spcx .spcx-quiz button.spcx-opt{background:#fff;border:2px solid #cfe3d0;border-radius:999px;padding:10px 18px;font-size:15px;font-weight:700;color:#173b22;cursor:pointer;transition:all .18s ease;font-family:inherit}
+.spcx .spcx-quiz button.spcx-opt:hover{border-color:#0d5c2e;transform:translateY(-1px)}
+.spcx .spcx-quiz button.spcx-opt.spcx-sel{background:#143b22;color:#fff;border-color:#143b22}
+.spcx .spcx-quiz .spcx-result{display:none;border-radius:14px;padding:18px 20px;margin-top:6px;font-size:16px}
+.spcx .spcx-quiz .spcx-result.spcx-r-low{background:#d9f2e0;border:1px solid #9ed9ae;color:#0c3f22}
+.spcx .spcx-quiz .spcx-result.spcx-r-mid{background:#fdf0d7;border:1px solid #ecd28a;color:#6b4700}
+.spcx .spcx-quiz .spcx-result.spcx-r-high{background:#fde2e2;border:1px solid #f3a8a8;color:#7c1a1a}
+.spcx .spcx-quiz .spcx-result strong{display:block;margin-bottom:6px;font-size:18px}
+.spcx .spcx-quiz .spcx-disclaimer{font-size:13px;color:#6b7d6f;margin-top:12px}
+.spcx .spcx-vetcard{background:#fff8f0;border:2px solid #f0c88a;border-radius:16px;padding:22px 24px;margin:22px 0}
+.spcx .spcx-vetcard h3{margin-top:0;color:#8a5a00}
+.spcx .spcx-vetcard .spcx-tel{display:inline-block;background:#143b22;color:#fff!important;font-weight:800;padding:10px 18px;border-radius:999px;text-decoration:none;margin:6px 8px 6px 0;font-size:15px}
+.spcx .spcx-checklist{background:#f7fbf5;border:1px solid #d6e8d5;border-radius:16px;padding:22px 24px;margin:22px 0}
+.spcx .spcx-checklist h3{margin-top:0;color:#143b22}
+.spcx .spcx-checklist .spcx-progress{font-weight:800;color:#0d5c2e;margin-bottom:12px}
+.spcx .spcx-checklist label{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:10px;cursor:pointer;font-size:15.5px;color:#1e2b23}
+.spcx .spcx-checklist label strong{color:#143b22}
+.spcx .spcx-checklist label span{color:#1e2b23}
+.spcx .spcx-checklist label:hover{background:#eaf7ed}
+.spcx .spcx-checklist input[type=checkbox]{width:20px;height:20px;margin-top:3px;accent-color:#0d5c2e;flex:none}
+.spcx .spcx-checklist label.spcx-done{color:#5a6b5e;text-decoration:line-through}
+.spcx .spcx-products{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.spcx .spcx-prod{background:#fff;border:1px solid #d6e8d5;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.spcx .spcx-prod:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,59,34,.12)}
+.spcx .spcx-prod img{width:100%;height:210px;object-fit:cover;border-radius:0}
+.spcx .spcx-prod .spcx-pbody{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.spcx .spcx-prod h4{margin:0 0 6px;color:#143b22;font-size:17px;line-height:1.35}
+.spcx .spcx-prod .spcx-pbest{font-size:13px;font-weight:800;color:#0d5c2e;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.spcx .spcx-prod p{font-size:14.5px;color:#43544a;margin:0 0 14px;flex:1}
+.spcx .spcx-prod .spcx-btn{display:inline-block;background:#ff9900;color:#131921!important;font-weight:800;text-align:center;padding:11px 16px;border-radius:10px;text-decoration:none;font-size:15px}
+.spcx .spcx-prod .spcx-btn:hover{background:#e88b00}
+.spcx .spcx-disclosure{font-size:13px;color:#6b7d6f;background:#f4f6f4;border-radius:10px;padding:12px 16px;margin:18px 0}
+.spcx .spcx-video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;margin:22px 0;box-shadow:0 8px 28px rgba(20,59,34,.14)}
+.spcx .spcx-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.spcx .spcx-sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.spcx .spcx-source{background:#f7fbf5;border:1px solid #d6e8d5;border-radius:12px;padding:14px 16px;font-size:14px}
+.spcx .spcx-source strong{display:block;color:#143b22;margin-bottom:4px;font-size:14.5px}
+.spcx details.spcx-faq{background:#fff;border:1px solid #d6e8d5;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.spcx details.spcx-faq summary{cursor:pointer;padding:15px 18px;font-weight:800;color:#143b22;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.spcx details.spcx-faq summary::-webkit-details-marker{display:none}
+.spcx details.spcx-faq summary::after{content:"+";font-size:22px;color:#0d5c2e;font-weight:900;flex:none}
+.spcx details.spcx-faq[open] summary::after{content:"–"}
+.spcx details.spcx-faq .spcx-faq-a{padding:0 18px 18px;font-size:15.5px;color:#2c3a31}
+.spcx .spcx-related{background:#eaf7ed;border-radius:16px;padding:22px 24px;margin:26px 0}
+.spcx .spcx-related h3{margin-top:0;color:#143b22}
+.spcx .spcx-related ul{margin:0;padding-left:20px}
+@media(max-width:640px){.spcx .spcx-verdict{grid-template-columns:1fr;text-align:center}.spcx .spcx-verdict .spcx-check{margin:0 auto}.spcx .spcx-stats{grid-template-columns:1fr}}
+
+.spcx .spcx-triage{background:#fff;border:2px solid #bfe0c4;border-radius:18px;padding:26px;margin:24px 0;box-shadow:0 6px 22px rgba(20,59,34,.08)}
+.spcx .spcx-triage h3{margin-top:0;color:#143b22}
+.spcx .spcx-triage-sub{font-size:15.5px;color:#43544a}
+.spcx .spcx-tri-step{margin:18px 0;padding:18px;background:#f7fbf5;border-radius:14px;border:1px solid #d6e8d5}
+.spcx .spcx-tri-q{font-size:16.5px;color:#173b22;margin:0 0 12px}
+.spcx .spcx-tri-opts{display:flex;flex-wrap:wrap;gap:10px}
+.spcx .spcx-triage button.spcx-tri-btn{background:#fff;border:2px solid #cfe3d0;border-radius:999px;padding:10px 18px;font-size:15px;font-weight:700;color:#173b22;cursor:pointer;transition:all .18s ease;font-family:inherit}
+.spcx .spcx-triage button.spcx-tri-btn:hover{border-color:#0d5c2e;transform:translateY(-1px)}
+.spcx .spcx-triage button.spcx-tri-btn.spcx-tri-sel{background:#143b22;color:#fff;border-color:#143b22}
+.spcx .spcx-tri-idhelp{margin-top:14px;padding:14px;background:#fff8f0;border:1px solid #f0c88a;border-radius:12px}
+.spcx .spcx-tri-idhelp p{font-size:14.5px;color:#5a3d00;margin:0 0 10px}
+.spcx .spcx-tri-result{border-radius:14px;padding:20px 22px;margin-top:16px;font-size:16px}
+.spcx .spcx-tri-result.spcx-tri-green{background:#d9f2e0;border:1px solid #9ed9ae;color:#0c3f22}
+.spcx .spcx-tri-result.spcx-tri-yellow{background:#fdf0d7;border:1px solid #ecd28a;color:#6b4700}
+.spcx .spcx-tri-result.spcx-tri-red{background:#fde2e2;border:1px solid #f3a8a8;color:#7c1a1a}
+.spcx .spcx-tri-result strong{display:block;margin-bottom:8px;font-size:19px}
+.spcx .spcx-tri-result ul{margin:10px 0 0;padding-left:20px}
+.spcx .spcx-tri-result li{margin-bottom:6px}
+.spcx .spcx-tri-result a{font-weight:800}
+.spcx .spcx-tri-disc{font-size:13px;color:#6b7d6f;margin-top:14px}
+.spcx .spcx-tri-reset{background:#f4f6f4!important;border-color:#d6e8d5!important}
+
+
+.spcx .spcx-comparator{background:#fff;border:2px solid #bfe0c4;border-radius:18px;padding:26px;margin:24px 0}
+.spcx .spcx-comparator h3{margin-top:0;color:#143b22}
+.spcx .spcx-comp-sub{font-size:15.5px;color:#43544a}
+.spcx .spcx-comp-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px}
+.spcx .spcx-comparator button.spcx-comp-tab{background:#f4f9f2;border:2px solid #cfe3d0;border-radius:999px;padding:10px 20px;font-size:15px;font-weight:800;color:#173b22;cursor:pointer;transition:all .18s ease;font-family:inherit}
+.spcx .spcx-comparator button.spcx-comp-tab:hover{border-color:#0d5c2e}
+.spcx .spcx-comparator button.spcx-comp-tab.spcx-comp-active{background:#143b22;color:#fff;border-color:#143b22}
+.spcx .spcx-comp-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+.spcx .spcx-comp-card{background:#f7fbf5;border:1px solid #d6e8d5;border-radius:14px;padding:20px}
+.spcx .spcx-comp-card.spcx-comp-safe-card{background:#eaf7ed;border-color:#9ed9ae}
+.spcx .spcx-comp-card.spcx-comp-deadly-card{background:#fef2f2;border-color:#f3a8a8}
+.spcx .spcx-comp-emoji{font-size:38px;margin-bottom:8px}
+.spcx .spcx-comp-card h4{margin:0 0 4px;color:#143b22;font-size:17px}
+.spcx .spcx-comp-card p{font-size:14px;color:#43544a;margin:0 0 10px}
+.spcx .spcx-comp-card ul{margin:0;padding-left:20px;font-size:14.5px}
+.spcx .spcx-comp-card li{margin-bottom:6px;color:#2c3a31}
+.spcx .spcx-comp-vs{display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#fff;background:#143b22;border-radius:50%;width:52px;height:52px;align-self:center;flex:none}
+.spcx .spcx-comp-danger-note{background:#fff;border-left:4px solid #c96a1e;border-radius:8px;padding:10px 12px;font-size:14px;margin-top:12px;color:#5a3d00}
+.spcx .spcx-comp-tip{background:#eaf7ed;border-radius:12px;padding:14px 16px;font-size:14.5px;margin-top:16px;color:#173b22}
+@media(max-width:640px){.spcx .spcx-comp-grid{grid-template-columns:1fr}.spcx .spcx-comp-vs{margin:0 auto}}
+
+
+.spcx .spcx-matcher{background:linear-gradient(135deg,#eaf7ed 0%,#f4fbf3 100%);border:2px solid #bfe0c4;border-radius:18px;padding:26px;margin:24px 0}
+.spcx .spcx-matcher h3{margin-top:0;color:#143b22}
+.spcx .spcx-match-sub{font-size:15.5px;color:#43544a}
+.spcx .spcx-match-profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.spcx .spcx-matcher button.spcx-match-btn{background:#fff;border:2px solid #cfe3d0;border-radius:16px;padding:18px 14px;cursor:pointer;text-align:center;transition:all .18s ease;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:6px}
+.spcx .spcx-matcher button.spcx-match-btn:hover{border-color:#0d5c2e;transform:translateY(-2px);box-shadow:0 6px 18px rgba(20,59,34,.10)}
+.spcx .spcx-matcher button.spcx-match-btn.spcx-match-active{background:#143b22;border-color:#143b22}
+.spcx .spcx-matcher button.spcx-match-btn.spcx-match-active .spcx-match-name,
+.spcx .spcx-matcher button.spcx-match-btn.spcx-match-active .spcx-match-desc{color:#fff}
+.spcx .spcx-match-emoji{font-size:36px}
+.spcx .spcx-match-name{font-weight:800;font-size:16px;color:#143b22}
+.spcx .spcx-match-desc{font-size:13.5px;color:#5a6b5e;line-height:1.45}
+.spcx .spcx-match-result{background:#fff;border-radius:14px;padding:22px;margin-top:6px;border:1px solid #d6e8d5}
+.spcx .spcx-match-result h4{margin:0 0 10px;color:#143b22;font-size:18px}
+.spcx .spcx-match-result ol{margin:0 0 12px;padding-left:22px}
+.spcx .spcx-match-result li{margin-bottom:10px;font-size:15.5px;color:#2c3a31}
+.spcx .spcx-match-result li strong{color:#0d5c2e}
+.spcx .spcx-match-note{background:#fff8f0;border-left:4px solid #f0c88a;border-radius:8px;padding:10px 14px;font-size:14px;color:#5a3d00;margin-top:10px}
+@media(max-width:640px){.spcx .spcx-match-profiles{grid-template-columns:1fr}}
+
+
+.spcx .spcx-stats-enhanced{grid-template-columns:repeat(2,1fr)}
+.spcx .spcx-stat-icon{font-size:32px;margin-bottom:6px}
+.spcx .spcx-stat-why{font-size:13px;color:#a9e5bd;margin-top:10px;line-height:1.5;border-top:1px solid rgba(169,229,189,.25);padding-top:10px}
+@media(max-width:640px){.spcx .spcx-stats-enhanced{grid-template-columns:1fr}}
+
+</style>
+<div class="spcx">
+
+<p>If you share your home with a cat, you have probably caught them mid-crime: nose buried in your spider plant, a leaf dangling from their mouth like a green mustache. It is one of the most common sights in cat-owning plant households — and it raises the obvious question: <strong>are spider plants toxic to cats?</strong></p>
+
+<div class="spcx-answer">
+<span class="spcx-kicker">The short answer</span>
+<p><strong>No — spider plants (<em>Chlorophytum comosum</em>) are not toxic to cats.</strong> The ASPCA officially lists the spider plant as <strong>non-toxic to cats and dogs</strong>. Your cat may still vomit if they eat a lot of it, but that is mechanical irritation from the fibrous leaves, not poisoning. The real danger is <em>mistaking</em> a toxic lookalike — like dracaena — for a spider plant.</p>
+</div>
+
+<div class="spcx-verdict">
+<div class="spcx-check">✓</div>
+<div>
+<h3>ASPCA verdict: NON-TOXIC to cats</h3>
+<p><strong>ASPCA official listing:</strong> <em>Chlorophytum comosum</em> — "Non-Toxic to Dogs, Non-Toxic to Cats." Family: Asparagaceae. Also sold as Ribbon Plant, Anthericum, or Spider Ivy.</p>
+<p>Source: <a href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/spider-plant" target="_blank" rel="noopener">ASPCA Toxic and Non-Toxic Plants database</a> · Also listed among PetMD's plants safe for cats.</p>
+</div>
+</div>
+
+<div class="spcx-takeaways">
+<h3>Key takeaways</h3>
+<ul>
+<li><strong>Spider plants are officially non-toxic to cats and dogs</strong> according to the ASPCA — this is not a gray area.</li>
+<li><strong>Why the obsession?</strong> Dangling leaves trigger your cat's play instinct, and the crisp texture mimics the grass cats naturally chew for hairball relief.</li>
+<li><strong>The "it gets cats high" story is internet folklore.</strong> No peer-reviewed study supports it; veterinarians explicitly say the evidence isn't there.</li>
+<li><strong>Big meals can still cause vomiting or diarrhea</strong> — from fiber overload and possible pesticide residue, not from plant toxins.</li>
+<li><strong>The genuine risk is misidentification:</strong> dracaena (also called "ribbon plant"), pothos, lilies, and sago palm look similar enough to confuse — and they <em>are</em> toxic.</li>
+<li><strong>Best protection:</strong> hang the plant out of reach and give your cat their own cat grass to chew instead.</li>
+</ul>
+</div>
+
+<h2>Why cats are obsessed with spider plants</h2>
+
+<p>Spider plants might as well have been designed in a feline focus group. The long, arching leaves dangle and sway with every draft, triggering the same stalk-and-pounce instinct your cat uses on toys — and on your ankles at 3 a.m. The baby plantlets ("spiderettes") hanging from the mother plant are the perfect size for batting. And the leaves have a satisfying crispness when chewed that many cats find irresistible.</p>
+
+<p>There is also a plausible biological reason. Cats in the wild chew grass, and veterinarians note that plant fiber can act as a laxative or emetic, which may help cats pass hairballs. A spider plant's strappy leaves are, to a cat, basically indoor grass with better PR.</p>
+
+<div class="spcx-figure">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/cat-with-spider-plant-windowsill.jpg" alt="Tabby cat sitting on a windowsill next to a potted spider plant with dangling plantlets" loading="lazy" />
+<figcaption>Cats treat spider plants like interactive toys — the dangling leaves and baby plantlets are irresistible. (Photo for illustration.)</figcaption>
+</div>
+
+<h3>The "spider plants get cats high" claim, honestly examined</h3>
+
+<p>You will find dozens of websites claiming spider plants contain compounds that give cats a mild, catnip-like euphoria. Here is the truth: <strong>there is no peer-reviewed evidence for this at all.</strong> Dr. Wendy Wilkins, DVM, PhD, writing for Cat-Bytes, states plainly that "there isn't solid scientific evidence to support these claims," and cat behavior writer Julia Wilson notes there are no references to actual studies — her own informal test on four cats didn't back it up either. The "terpenoid" theory traces back to a TikTok video, not veterinary literature.</p>
+
+<p>What <em>is</em> real science: a 2021 study in <em>Science Advances</em> showed cats damage catnip and silver vine leaves to release mosquito-repelling compounds and then rub them into their fur. Fascinating — but it studied catnip and silver vine only, and says nothing about spider plants. So file the spider-plant high under <strong>internet folklore</strong>: harmless to believe, dishonest to present as fact.</p>
+
+<h2>What happens if your cat eats too much spider plant</h2>
+
+<p>Because the plant itself is non-toxic, a nibble here and there is a non-event. Problems start with volume. Eating a large quantity of any fibrous plant material can cause:</p>
+
+<ul>
+<li><strong>Vomiting</strong> — the most common outcome, usually within a few hours</li>
+<li><strong>Diarrhea</strong> — from the sheer amount of indigestible fiber</li>
+<li><strong>Drooling or reduced appetite</strong> — mild oral irritation from the rough leaf edges</li>
+</ul>
+
+<p>These symptoms are typically mild and resolve on their own. But there are two hidden risks that have nothing to do with the plant's own chemistry:</p>
+
+<ul>
+<li><strong>Pesticide and fertilizer residue.</strong> Commercially grown spider plants are often treated with chemicals, and additives like bone meal in potting soil can be harmful to cats. If your cat is a dedicated chewer, buy organic plants or rinse a new plant thoroughly and repot it in plain, pet-safe potting mix.</li>
+<li><strong>Large amounts of any plant material</strong> can, in rare cases, contribute to a gastrointestinal blockage — this is true of "safe" plants generally, per PetMD.</li>
+</ul>
+
+<div class="spcx-figure">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/cat-among-spider-plant-leaves.jpg" alt="Cat peeking through spider plant leaves after chewing on them" loading="lazy" />
+<figcaption>Exhibit A: the usual crime scene. A nibble or two is harmless — it's the all-you-can-eat leaf buffet that causes trouble.</figcaption>
+</div>
+
+<div class="spcx-vetcard">
+<h3>🚨 When to call the vet</h3>
+<p>Call your vet or a poison hotline if vomiting or diarrhea <strong>persists or worsens</strong>, if your cat becomes lethargic or stops eating, or — critically — if you are <strong>not 100% sure the plant was a spider plant</strong>. A misidentified dracaena or lily is a genuine emergency.</p>
+<p><a class="spcx-tel" href="tel:+18884264435">ASPCA Poison Control: (888) 426-4435</a> <a class="spcx-tel" href="tel:+18557647661">Pet Poison Helpline: (855) 764-7661</a></p>
+<p style="font-size:13.5px;color:#6b7d6f;margin:8px 0 0">Both hotlines charge a consultation fee. When in doubt, calling is always the right move — a fee is cheaper than a crisis.</p>
+</div>
+
+
+<div class="spcx-triage" id="spcxTriage">
+<h3>🚨 Emergency triage: my cat just ate the plant — what now?</h3>
+<p class="spcx-triage-sub">A step-by-step checker for the scary moment. Answer honestly — when in doubt, the checker will always point you toward the vet. <strong>This is a guide, not a diagnosis.</strong></p>
+<div class="spcx-tri-step" data-tri-step="0">
+<p class="spcx-tri-q"><strong>Step 1 of 4:</strong> Are you <em>certain</em> the plant was a spider plant?</p>
+<div class="spcx-tri-opts">
+<button type="button" class="spcx-tri-btn" data-tri="plant" data-val="0">Yes — definitely a spider plant</button>
+<button type="button" class="spcx-tri-btn" data-tri="plant" data-val="1">Not 100% sure</button>
+<button type="button" class="spcx-tri-btn" data-tri="plant" data-val="2">No — it was a different plant</button>
+</div>
+<div class="spcx-tri-idhelp" id="spcxTriIdHelp" style="display:none">
+<p><strong>Quick ID check:</strong> a true spider plant has soft, arching, grass-like leaves (often with a white or cream center stripe), <em>no woody trunk</em>, and dangling baby plantlets on long stems. If yours has a woody trunk or stiff upright leaves, it is likely a dracaena — treat as toxic.</p>
+<div class="spcx-tri-opts">
+<button type="button" class="spcx-tri-btn" data-tri="plant" data-val="0">OK — it matches, it's a spider plant</button>
+<button type="button" class="spcx-tri-btn" data-tri="plant" data-val="1">Still not sure</button>
+</div>
+</div>
+</div>
+<div class="spcx-tri-step" data-tri-step="1" style="display:none">
+<p class="spcx-tri-q"><strong>Step 2 of 4:</strong> How much of the plant did your cat eat?</p>
+<div class="spcx-tri-opts">
+<button type="button" class="spcx-tri-btn" data-tri="amount" data-val="0">Just a nibble or two</button>
+<button type="button" class="spcx-tri-btn" data-tri="amount" data-val="1">Several leaves</button>
+<button type="button" class="spcx-tri-btn" data-tri="amount" data-val="2">Half the plant or more</button>
+</div>
+</div>
+<div class="spcx-tri-step" data-tri-step="2" style="display:none">
+<p class="spcx-tri-q"><strong>Step 3 of 4:</strong> Any symptoms so far?</p>
+<div class="spcx-tri-opts">
+<button type="button" class="spcx-tri-btn" data-tri="symptoms" data-val="0">None — acting totally normal</button>
+<button type="button" class="spcx-tri-btn" data-tri="symptoms" data-val="1">Drooling or vomited once</button>
+<button type="button" class="spcx-tri-btn" data-tri="symptoms" data-val="2">Repeated vomiting, diarrhea, lethargy, or not eating</button>
+</div>
+</div>
+<div class="spcx-tri-step" data-tri-step="3" style="display:none">
+<p class="spcx-tri-q"><strong>Step 4 of 4:</strong> How long ago did it happen?</p>
+<div class="spcx-tri-opts">
+<button type="button" class="spcx-tri-btn" data-tri="time" data-val="0">Just now (under 30 minutes)</button>
+<button type="button" class="spcx-tri-btn" data-tri="time" data-val="1">30 minutes to 4 hours ago</button>
+<button type="button" class="spcx-tri-btn" data-tri="time" data-val="2">More than 4 hours ago</button>
+</div>
+</div>
+<div class="spcx-tri-result" id="spcxTriResult" role="status" style="display:none"></div>
+<div class="spcx-tri-actions" style="margin-top:14px">
+<button type="button" class="spcx-tri-btn spcx-tri-reset" id="spcxTriReset" style="display:none">↺ Start over</button>
+</div>
+<p class="spcx-tri-disc">If your cat is having trouble breathing, collapses, or you suspect a truly toxic plant (lily, sago palm), skip the checker — call your vet or an emergency animal hospital immediately.</p>
+</div>
+
+
+<h2>Interactive: should you worry about your cat?</h2>
+
+<p>Answer three quick questions for a straight recommendation based on your situation:</p>
+
+<div class="spcx-quiz" id="spcxQuiz">
+<h3>🐱 The "My Cat Ate My Spider Plant" Checker</h3>
+<div class="spcx-q" data-q="0">
+<p class="spcx-qt">1. How much of the plant did your cat eat?</p>
+<div class="spcx-opts">
+<button type="button" class="spcx-opt" data-v="0">Just a nibble or two</button>
+<button type="button" class="spcx-opt" data-v="1">Several leaves</button>
+<button type="button" class="spcx-opt" data-v="2">Half the plant or more</button>
+</div>
+</div>
+<div class="spcx-q" data-q="1">
+<p class="spcx-qt">2. Any symptoms so far?</p>
+<div class="spcx-opts">
+<button type="button" class="spcx-opt" data-v="0">None — acting totally normal</button>
+<button type="button" class="spcx-opt" data-v="1">Drooling or vomited once</button>
+<button type="button" class="spcx-opt" data-v="2">Repeated vomiting, diarrhea, or lethargy</button>
+</div>
+</div>
+<div class="spcx-q" data-q="2">
+<p class="spcx-qt">3. Are you certain it was a spider plant?</p>
+<div class="spcx-opts">
+<button type="button" class="spcx-opt" data-v="0">Yes, definitely a spider plant</button>
+<button type="button" class="spcx-opt" data-v="1">Pretty sure, but not 100%</button>
+<button type="button" class="spcx-opt" data-v="2">There are other plants nearby too</button>
+</div>
+</div>
+<div class="spcx-result" id="spcxQuizResult" role="status"></div>
+<p class="spcx-disclaimer">This checker is a guide, not veterinary advice. If you are worried at any point, call your vet — you never need a quiz's permission.</p>
+</div>
+<script>
+(function(){
+var quiz=document.getElementById('spcxQuiz');
+if(!quiz){return;}
+var scores=[null,null,null];
+var result=document.getElementById('spcxQuizResult');
+var opts=quiz.querySelectorAll('.spcx-opt');
+function render(){
+  if(scores.indexOf(null)>-1){result.style.display='none';return;}
+  var total=scores[0]+scores[1]+scores[2];
+  result.style.display='block';
+  result.className='spcx-result';
+  var title=document.createElement('strong');
+  var body=document.createElement('span');
+  if(total<=1){
+    result.classList.add('spcx-r-low');
+    title.textContent='Relax — almost certainly fine.';
+    body.textContent='A small nibble of a confirmed spider plant with no symptoms is a non-event. Keep an eye on your cat for a few hours, offer fresh water, and consider moving the plant out of swatting range so this does not become a habit.';
+  }else if(total<=3){
+    result.classList.add('spcx-r-mid');
+    title.textContent='Monitor closely for 12–24 hours.';
+    body.textContent='Mild vomiting or diarrhea after a bigger snack usually passes on its own. Withhold the plant (move it somewhere inaccessible), make sure your cat stays hydrated, and call your vet if symptoms persist, worsen, or your cat stops eating.';
+  }else{
+    result.classList.add('spcx-r-high');
+    title.textContent='Call your vet now.';
+    body.textContent='Repeated vomiting, lethargy, uncertainty about which plant was eaten, or other plants in reach — do not wait this out. Call your vet, the ASPCA Poison Control line (888-426-4435), or Pet Poison Helpline (855-764-7661). Bring a photo of the plant if you can.';
+  }
+  result.textContent='';
+  result.appendChild(title);
+  result.appendChild(body);
+}
+for(var i=0;i<opts.length;i++){
+  (function(btn){
+    btn.addEventListener('click',function(){
+      var q=btn.closest('.spcx-q');
+      var qi=parseInt(q.getAttribute('data-q'),10);
+      var siblings=q.querySelectorAll('.spcx-opt');
+      for(var j=0;j<siblings.length;j++){siblings[j].classList.remove('spcx-sel');}
+      btn.classList.add('spcx-sel');
+      scores[qi]=parseInt(btn.getAttribute('data-v'),10);
+      render();
+    });
+  })(opts[i]);
+}
+})();
+</script>
+
+<h2>The real danger: toxic lookalikes</h2>
+
+<p>Here is the twist most articles bury: <strong>the spider plant itself is the safe one — the danger is its evil twins.</strong> Several genuinely toxic houseplants share its strappy leaves or its nicknames, and mix-ups happen constantly. The ASPCA itself lists <strong>"Ribbon Plant" as a common name for both the spider plant (<em>Chlorophytum comosum</em>) AND for dracaena species</strong> — the name collision is documented at the source. If you bought a plant labeled "ribbon plant," verify the botanical name before assuming it's safe.</p>
+
+<div class="spcx-tablewrap">
+<table>
+<thead><tr><th>Plant</th><th>Why it's confused</th><th>Toxicity to cats</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Spider plant</strong><br /><em>Chlorophytum comosum</em></td><td>— (the safe original)</td><td><span class="spcx-pill spcx-safe">NON-TOXIC ✓</span></td><td>Mild stomach upset only if gorged on</td></tr>
+<tr><td><strong>Dracaena</strong><br /><em>Dracaena spp.</em> (dragon tree, incl. marginata)</td><td>Strappy leaves; also called "ribbon plant"</td><td><span class="spcx-pill spcx-danger">TOXIC ✗</span></td><td>Saponins: vomiting (sometimes bloody), depression, drooling, dilated pupils</td></tr>
+<tr><td><strong>Pothos</strong><br /><em>Epipremnum aureum</em></td><td>Common trailing houseplant</td><td><span class="spcx-pill spcx-danger">TOXIC ✗</span></td><td>Calcium oxalates: intense oral pain, drooling, vomiting</td></tr>
+<tr><td><strong>Peace lily</strong><br /><em>Spathiphyllum</em></td><td>Ubiquitous indoor plant</td><td><span class="spcx-pill spcx-danger">TOXIC ✗</span></td><td>Calcium oxalate crystals: mouth swelling, drooling, difficulty swallowing</td></tr>
+<tr><td><strong>Lilies</strong><br /><em>Lilium / Hemerocallis</em> (Easter, tiger, daylily)</td><td>"Spider lily" name overlap</td><td><span class="spcx-pill spcx-danger">DEADLY ✗</span></td><td>Acute kidney failure — even pollen can be fatal to cats</td></tr>
+<tr><td><strong>Sago palm</strong><br /><em>Cycas revoluta</em></td><td>Sold alongside houseplants</td><td><span class="spcx-pill spcx-danger">DEADLY ✗</span></td><td>Liver failure; one of the most dangerous common houseplants for pets</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>The one-second ID check:</strong> a true spider plant has soft, arching, grass-like leaves (usually with a white or cream center stripe) and produces dangling baby plantlets on long stems. Dracaena has stiffer, woodier stems and a trunk-like base — if your "spider plant" has a woody trunk, it isn't one. When in doubt, photograph it and check the <a href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants" target="_blank" rel="noopener">ASPCA plant database</a> before your cat taste-tests it.</p>
+
+
+<div class="spcx-comparator" id="spcxComparator">
+<h3>🔍 Interactive: spot the imposter</h3>
+<p class="spcx-comp-sub">Tap a plant to compare it side-by-side with a true spider plant. Learn the visual tells that separate the safe original from its toxic twins.</p>
+<div class="spcx-comp-tabs" role="tablist">
+<button type="button" class="spcx-comp-tab spcx-comp-active" data-comp="dracaena" role="tab">Dracaena</button>
+<button type="button" class="spcx-comp-tab" data-comp="pothos" role="tab">Pothos</button>
+<button type="button" class="spcx-comp-tab" data-comp="peacelily" role="tab">Peace Lily</button>
+<button type="button" class="spcx-comp-tab" data-comp="lily" role="tab">True Lilies</button>
+</div>
+<div class="spcx-comp-panels">
+<div class="spcx-comp-panel" data-panel="dracaena">
+<div class="spcx-comp-grid">
+<div class="spcx-comp-card spcx-comp-safe-card">
+<div class="spcx-comp-emoji">🕷️🌱</div>
+<h4>Spider Plant <span class="spcx-pill spcx-safe">NON-TOXIC ✓</span></h4>
+<p><em>Chlorophytum comosum</em></p>
+<ul>
+<li>Soft, arching, grass-like leaves that bend easily</li>
+<li>White or cream stripe usually down the <strong>center</strong> of each leaf</li>
+<li><strong>No woody trunk</strong> — leaves sprout from a central crown at soil level</li>
+<li>Dangling baby plantlets on long, thin stems</li>
+</ul>
+</div>
+<div class="spcx-comp-vs">VS</div>
+<div class="spcx-comp-card">
+<div class="spcx-comp-emoji">🐉🌿</div>
+<h4>Dracaena <span class="spcx-pill spcx-danger">TOXIC ✗</span></h4>
+<p><em>Dracaena spp.</em> (dragon tree, marginata)</p>
+<ul>
+<li>Stiffer, more upright leaves — less arching, more rigid</li>
+<li>Stripes run along the <strong>edges</strong>, not the center</li>
+<li><strong>Woody trunk or cane-like stem</strong> — the #1 giveaway</li>
+<li>No baby plantlets dangling on stems</li>
+</ul>
+<p class="spcx-comp-danger-note"><strong>If eaten:</strong> saponins cause vomiting (sometimes bloody), depression, drooling, dilated pupils. Call your vet.</p>
+</div>
+</div>
+<p class="spcx-comp-tip"><strong>💡 The 3-second test:</strong> feel the base. Soft crown at soil level = spider plant. Woody trunk = dracaena. Also sold under the confusing name "ribbon plant" — always check the botanical name on the tag.</p>
+</div>
+<div class="spcx-comp-panel" data-panel="pothos" style="display:none">
+<div class="spcx-comp-grid">
+<div class="spcx-comp-card spcx-comp-safe-card">
+<div class="spcx-comp-emoji">🕷️🌱</div>
+<h4>Spider Plant <span class="spcx-pill spcx-safe">NON-TOXIC ✓</span></h4>
+<p><em>Chlorophytum comosum</em></p>
+<ul>
+<li>Long, narrow, grass-like leaves in a fountain shape</li>
+<li>Baby plantlets dangle from long arching stems</li>
+<li>Leaves grow from a central crown — no vine</li>
+</ul>
+</div>
+<div class="spcx-comp-vs">VS</div>
+<div class="spcx-comp-card">
+<div class="spcx-comp-emoji">💛🌿</div>
+<h4>Pothos <span class="spcx-pill spcx-danger">TOXIC ✗</span></h4>
+<p><em>Epipremnum aureum</em> (devil's ivy)</p>
+<ul>
+<li><strong>Heart-shaped leaves</strong> — broader and waxy, not grass-like</li>
+<li>Grows as a <strong>trailing vine</strong> with visible nodes, not a fountain</li>
+<li>No baby plantlets — propagates from stem cuttings</li>
+<li>Often variegated yellow/white, but leaf shape is the tell</li>
+</ul>
+<p class="spcx-comp-danger-note"><strong>If eaten:</strong> insoluble calcium oxalates cause intense oral pain, drooling, vomiting, difficulty swallowing. Call your vet.</p>
+</div>
+</div>
+<p class="spcx-comp-tip"><strong>💡 The 3-second test:</strong> heart-shaped waxy leaves on a vine = pothos. Grass-like fountain with babies = spider plant. Different leaf shape entirely once you know what to look for.</p>
+</div>
+<div class="spcx-comp-panel" data-panel="peacelily" style="display:none">
+<div class="spcx-comp-grid">
+<div class="spcx-comp-card spcx-comp-safe-card">
+<div class="spcx-comp-emoji">🕷️🌱</div>
+<h4>Spider Plant <span class="spcx-pill spcx-safe">NON-TOXIC ✓</span></h4>
+<p><em>Chlorophytum comosum</em></p>
+<ul>
+<li>Narrow, arching, grass-like foliage</li>
+<li>Produces dangling plantlets ("spiders")</li>
+<li>Small white star-shaped flowers (rarely noticed)</li>
+</ul>
+</div>
+<div class="spcx-comp-vs">VS</div>
+<div class="spcx-comp-card">
+<div class="spcx-comp-emoji">🕊️🌸</div>
+<h4>Peace Lily <span class="spcx-pill spcx-danger">TOXIC ✗</span></h4>
+<p><em>Spathiphyllum</em></p>
+<ul>
+<li><strong>Broad, dark-green oval leaves</strong> — much wider than spider plant</li>
+<li>Distinctive <strong>white hooded flowers</strong> (spathes) — spider plants never look like this</li>
+<li>Upright clumping habit, no arching fountain</li>
+<li>No baby plantlets</li>
+</ul>
+<p class="spcx-comp-danger-note"><strong>If eaten:</strong> calcium oxalate crystals cause mouth swelling, drooling, difficulty swallowing. Call your vet.</p>
+</div>
+</div>
+<p class="spcx-comp-tip"><strong>💡 The 3-second test:</strong> white hood-like flowers or broad oval leaves = peace lily. These two look quite different side by side — confusion usually comes from nursery mislabeling, not appearance.</p>
+</div>
+<div class="spcx-comp-panel" data-panel="lily" style="display:none">
+<div class="spcx-comp-grid">
+<div class="spcx-comp-card spcx-comp-safe-card">
+<div class="spcx-comp-emoji">🕷️🌱</div>
+<h4>Spider Plant <span class="spcx-pill spcx-safe">NON-TOXIC ✓</span></h4>
+<p><em>Chlorophytum comosum</em></p>
+<ul>
+<li>Grass-like arching foliage, plantlets on stems</li>
+<li>Sometimes called "spider lily" as a nickname — <strong>it is not a lily</strong></li>
+</ul>
+</div>
+<div class="spcx-comp-vs">VS</div>
+<div class="spcx-comp-card spcx-comp-deadly-card">
+<div class="spcx-comp-emoji">⚠️🌺</div>
+<h4>True Lilies <span class="spcx-pill spcx-danger">DEADLY ✗</span></h4>
+<p><em>Lilium / Hemerocallis</em> (Easter, tiger, daylily)</p>
+<ul>
+<li>Large, showy trumpet or star-shaped <strong>flowers</strong> — the main feature</li>
+<li>Leaves grow along an upright stem, not a fountain</li>
+<li><strong>Even pollen is fatal to cats</strong> — acute kidney failure</li>
+<li>"Spider lily" name overlap causes dangerous confusion</li>
+</ul>
+<p class="spcx-comp-danger-note"><strong>This is an emergency:</strong> any lily ingestion (including pollen groomed off fur) needs an emergency vet visit within hours. Do not wait for symptoms.</p>
+</div>
+</div>
+<p class="spcx-comp-tip"><strong>💡 The critical rule:</strong> if it has big showy lily flowers, it is not a spider plant no matter what the nickname says. When in doubt, check the <a href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants" target="_blank" rel="noopener">ASPCA plant database</a>.</p>
+</div>
+</div>
+</div>
+
+
+<h2>5 myths about spider plants and cats — debunked</h2>
+
+<div class="spcx-myth">
+<span class="spcx-myth-tag">Myth #1</span>
+<p><strong>"Spider plants are poisonous to cats."</strong><br />False. The ASPCA's official listing is unambiguous: non-toxic to cats and dogs. This myth survives because of the lookalike problem above — people blame the spider plant for what a dracaena or pothos did.</p>
+</div>
+
+<div class="spcx-myth">
+<span class="spcx-myth-tag">Myth #2</span>
+<p><strong>"Spider plants get cats high."</strong><br />Unproven internet folklore. No peer-reviewed study supports a euphoric effect, and veterinarians explicitly say the evidence isn't there. Cats act goofy around spider plants because they're fun to attack, not because they're pharmacological.</p>
+</div>
+
+<div class="spcx-myth">
+<span class="spcx-myth-tag">Myth #3</span>
+<p><strong>"Non-toxic means my cat can eat as much as it wants."</strong><br />False. "Safe for cats" is not the same as "safe to eat." PetMD notes that any large quantity of plant material can cause vomiting, diarrhea, or even a GI blockage. Non-toxic is a chemistry verdict, not a dietary recommendation.</p>
+</div>
+
+<div class="spcx-myth">
+<span class="spcx-myth-tag">Myth #4</span>
+<p><strong>"All strappy-leaf hanging plants are safe."</strong><br />Dangerously false. Dracaena, spider lily, and daylilies can all be confused with spider plants by appearance or name — and all are toxic to cats. Always verify the botanical name, <em>Chlorophytum comosum</em>.</p>
+</div>
+
+<div class="spcx-myth">
+<span class="spcx-myth-tag">Myth #5</span>
+<p><strong>"My cat vomited after chewing it, so it must be poisonous."</strong><br />Usually not. Vomiting after a leaf binge is typically mechanical irritation from fibrous leaves eaten too fast — the feline equivalent of eating too much salad too quickly. True poisoning looks different: persistent vomiting, lethargy, tremors, or collapse.</p>
+</div>
+
+<h2>Spider plants &amp; cats: by the numbers</h2>
+
+<div class="spcx-stats spcx-stats-enhanced">
+<div class="spcx-stat">
+<div class="spcx-stat-icon">☎️</div>
+<div class="spcx-num" data-count="451000" data-suffix="+">0</div>
+<div class="spcx-lbl">poison-related calls handled by the ASPCA Animal Poison Control Center in 2024</div>
+<div class="spcx-stat-why">Why it matters: with that call volume, the ASPCA's "non-toxic" verdict on spider plants carries real weight — it's not a guess.</div>
+</div>
+<div class="spcx-stat">
+<div class="spcx-stat-icon">🐱</div>
+<div class="spcx-num" data-count="53" data-suffix="M">0</div>
+<div class="spcx-lbl">US households owned a cat in 2025 — 39% of all households (APPA Cat Report)</div>
+<div class="spcx-stat-why">Why it matters: tens of millions of cats live with houseplants. Choosing verified non-toxic ones is the simplest safety upgrade.</div>
+</div>
+<div class="spcx-stat">
+<div class="spcx-stat-icon">🧪</div>
+<div class="spcx-num" data-count="0" data-suffix="">0</div>
+<div class="spcx-lbl">toxic compounds identified in spider plants by the ASPCA</div>
+<div class="spcx-stat-why">Why it matters: "non-toxic" isn't marketing — it means no saponins, no oxalates, no kidney toxins. The worst case is mild fiber-related vomiting.</div>
+</div>
+<div class="spcx-stat">
+<div class="spcx-stat-icon">🔬</div>
+<div class="spcx-num" data-count="1989" data-suffix="">0</div>
+<div class="spcx-lbl">the year NASA's Clean Air Study listed the spider plant among formaldehyde-removing plants</div>
+<div class="spcx-stat-why">Why it matters: famous study, but sealed-chamber results. Buy yours for the cat-safe greenery, not as an air purifier (see the honest note below).</div>
+</div>
+</div>
+<script>
+(function(){
+var nums=document.querySelectorAll('.spcx-num[data-count]');
+if(!nums.length||!('IntersectionObserver' in window)){return;}
+function fmt(n){return n>=1000?n.toLocaleString('en-US'):String(n);}
+var io=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(!e.isIntersecting){return;}
+var el=e.target;io.unobserve(el);
+var target=parseInt(el.getAttribute('data-count'),10);
+var suffix=el.getAttribute('data-suffix')||'';
+var start=null,dur=1400;
+function step(ts){
+if(!start){start=ts;}
+var p=Math.min((ts-start)/dur,1);
+var eased=1-Math.pow(1-p,3);
+el.textContent=fmt(Math.round(target*eased))+suffix;
+if(p<1){requestAnimationFrame(step);}
+}
+requestAnimationFrame(step);
+});
+},{threshold:0.4});
+nums.forEach(function(n){io.observe(n);});
+})();
+</script>
+
+<p style="font-size:14px;color:#5a6b5e">A note on the NASA study, because honesty matters: those famous results came from sealed test chambers. A 2019 modeling study found you'd need an impractical number of plants per square meter to match what simply opening a window does. Spider plants are wonderful — but buy yours for the cat-safe greenery, not as an air-purification system.</p>
+
+<h2>How to keep your cat from destroying your spider plant</h2>
+
+<p>Your spider plant won't poison your cat — but your cat <em>will</em> absolutely shred your spider plant given the chance. Here are the deterrents that actually work, roughly in order of effectiveness:</p>
+
+<div class="spcx-checklist" id="spcxChecklist">
+<h3>✅ The cat-proofing checklist</h3>
+<p class="spcx-progress" id="spcxProgress">0 of 8 defenses in place</p>
+<label><input type="checkbox" /> <span><strong>Hang it high.</strong> The single best defense — a hanging planter puts the plant physically out of reach. (See our planter picks below.)</span></label>
+<label><input type="checkbox" /> <span><strong>Grow cat grass.</strong> Give your cat their own wheatgrass or oat grass to chew. A cat with an approved salad bar ignores your spider plant far more often.</span></label>
+<label><input type="checkbox" /> <span><strong>Bitter apple spray.</strong> A light spritz of pet-safe bitter apple spray on the leaves makes chewing deeply unrewarding. Reapply after watering.</span></label>
+<label><input type="checkbox" /> <span><strong>Citrus peel barrier.</strong> Cats dislike citrus — scatter fresh orange or lemon peels on the soil surface.</span></label>
+<label><input type="checkbox" /> <span><strong>Cover the soil.</strong> Large pebbles, pinecones, or a layer of aluminum foil over the soil stops digging and makes the pot less interesting.</span></label>
+<label><input type="checkbox" /> <span><strong>Sticky tape on the rim.</strong> A strip of double-sided tape around the pot's edge — cats hate the texture on their paws.</span></label>
+<label><input type="checkbox" /> <span><strong>Mesh over the soil.</strong> A circle of window screening laid over the soil surface blocks digging while letting water through.</span></label>
+<label><input type="checkbox" /> <span><strong>Redirect, don't punish.</strong> When you catch mid-chew, redirect to a toy or the cat grass. Punishment just teaches your cat to shred the plant when you're not looking.</span></label>
+</div>
+<script>
+(function(){
+var box=document.getElementById('spcxChecklist');
+if(!box){return;}
+var progress=document.getElementById('spcxProgress');
+var inputs=box.querySelectorAll('input[type=checkbox]');
+function update(){
+var done=0;
+for(var i=0;i<inputs.length;i++){
+var label=inputs[i].closest('label');
+if(inputs[i].checked){done++;label.classList.add('spcx-done');}
+else{label.classList.remove('spcx-done');}
+}
+progress.textContent=done+' of '+inputs.length+' defenses in place'+(done===inputs.length?' — fortress achieved. 🏰':'');
+}
+for(var i=0;i<inputs.length;i++){inputs[i].addEventListener('change',update);}
+update();
+})();
+</script>
+
+<p><strong>One caution:</strong> you'll see cayenne pepper suggested as a deterrent. The ASPCA mentions it only for <em>outdoor</em> plants — indoors it can irritate your cat's eyes and nose and cause real pain if ingested. Skip it inside the house.</p>
+
+
+<div class="spcx-matcher" id="spcxMatcher">
+<h3>🐱 Match the defense to your cat's personality</h3>
+<p class="spcx-match-sub">Not all cats attack plants the same way. Pick the profile that fits your cat and get a prioritized battle plan — no generic advice, just what works for <em>your</em> menace.</p>
+<div class="spcx-match-profiles">
+<button type="button" class="spcx-match-btn" data-profile="chewer">
+<span class="spcx-match-emoji">😼</span>
+<span class="spcx-match-name">The Chewer</span>
+<span class="spcx-match-desc">Nips every leaf in sight. Plants look like they've been through a paper shredder.</span>
+</button>
+<button type="button" class="spcx-match-btn" data-profile="climber">
+<span class="spcx-match-emoji">🧗</span>
+<span class="spcx-match-name">The Climber</span>
+<span class="spcx-match-desc">Treats shelves like Everest. No surface is safe, no height is enough.</span>
+</button>
+<button type="button" class="spcx-match-btn" data-profile="digger">
+<span class="spcx-match-emoji">🕳️</span>
+<span class="spcx-match-name">The Digger</span>
+<span class="spcx-match-desc">Ignores the leaves, excavates the soil. Pots look like construction sites.</span>
+</button>
+</div>
+<div class="spcx-match-result" id="spcxMatchResult" style="display:none" role="status"></div>
+</div>
+
+
+<h2>Spider plant care basics for cat households</h2>
+
+<p>A healthy spider plant survives cat attention far better than a stressed one. The care is famously easy:</p>
+
+<ul>
+<li><strong>Light:</strong> bright, indirect light is ideal; it tolerates lower light but direct sun scorches the leaf tips.</li>
+<li><strong>Water:</strong> water when the top 1–2 inches of soil are dry. Spider plants are sensitive to fluoride and chlorine in tap water — brown leaf tips are the classic symptom. Distilled or rainwater fixes it.</li>
+<li><strong>Soil &amp; fertilizer:</strong> standard well-draining potting mix. In a cat household, skip chemical-heavy fertilizers and bone-meal additives — plain organic mix is the safest choice for a plant your cat will inevitably taste-test.</li>
+<li><strong>Propagation bonus:</strong> those dangling babies root in water in days. Free plants for every room — and cheap replacements for the one your cat eventually defeats.</li>
+</ul>
+
+<p>For repotting and variety selection, see our guides to <a href="https://plantastichaven.com/choosing-the-perfect-pot-for-your-spider-plant/">choosing the perfect pot for your spider plant</a> and <a href="https://plantastichaven.com/plants-that-look-like-spider-plants/">plants that look like spider plants</a> (useful for the ID check above).</p>
+
+<h2>Cat-proof planters worth buying</h2>
+
+<p>The most effective cat deterrent is also the simplest: <strong>get the plant off the cat's level.</strong> Hanging planters, wall-mounted shelves, and elevated planter boxes turn your spider plant from a chew toy into unreachable decor. These are real, well-reviewed Amazon options suited to spider plants — all with drainage-friendly designs:</p>
+
+<div class="spcx-products">
+<div class="spcx-prod">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/mkono-macrame-plant-hanger.jpg" alt="Mkono macrame plant hanger in ivory holding a potted plant" loading="lazy" />
+<div class="spcx-pbody">
+<div class="spcx-pbest">Best overall hanger</div>
+<h4>Mkono Macrame Plant Hanger (35", Ivory)</h4>
+<p>The classic solution: sturdy cotton cord, wooden beads, no-fuss 35-inch drop that clears even ambitious jumpers. Fits standard 4–6" pots — ideal for a mature spider plant.</p>
+<a class="spcx-btn" href="https://www.amazon.com/s?k=mkono+macrame+plant+hanger+35+inch+ivory&tag=papalex-ph-20" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a>
+</div>
+</div>
+<div class="spcx-prod">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/bouqlife-macrame-hangers-with-pots.jpg" alt="Bouqlife set of three macrame plant hangers with pots and trays" loading="lazy" />
+<div class="spcx-pbody">
+<div class="spcx-pbest">Best value set</div>
+<h4>Bouqlife Macrame Hangers with Pots (Set of 3)</h4>
+<p>Three hangers in graduated lengths (34"/26"/20") with pots, trays, and hooks included. Hang a spider plant in each room — or propagate the babies straight into the spares.</p>
+<a class="spcx-btn" href="https://www.amazon.com/s?k=bouqlife+macrame+plant+hanger+with+pots+set+of+3&tag=papalex-ph-20" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a>
+</div>
+</div>
+<div class="spcx-prod">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/timeyard-macrame-plant-shelf.jpg" alt="TIMEYARD macrame hanging plant shelf with wooden platform" loading="lazy" />
+<div class="spcx-pbody">
+<div class="spcx-pbest">Best wall option</div>
+<h4>TIMEYARD Macrame Plant Shelf Hanger</h4>
+<p>A hanging wooden shelf rather than a pot cradle — more stable for top-heavy spider plants, and the flat platform keeps the pot from swinging when batted at from below.</p>
+<a class="spcx-btn" href="https://www.amazon.com/s?k=timeyard+macrame+plant+shelf+hanger&tag=papalex-ph-20" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a>
+</div>
+</div>
+<div class="spcx-prod">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/self-watering-hanging-planters.jpg" alt="Set of three self-watering hanging planters with chains" loading="lazy" />
+<div class="spcx-pbody">
+<div class="spcx-pbest">Easiest care</div>
+<h4>Self-Watering Hanging Planters (3-Pack)</h4>
+<p>Built-in water reservoirs mean fewer watering trips up the step stool, and the enclosed design keeps soil (and fertilizer) away from curious paws. Great for chronic over-waterers too.</p>
+<a class="spcx-btn" href="https://www.amazon.com/s?k=self+watering+hanging+planter+3+pack&tag=papalex-ph-20" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a>
+</div>
+</div>
+<div class="spcx-prod">
+<img src="https://plantastichaven.com/wp-content/uploads/2026/10/cedar-planter-box.jpg" alt="Natural cedar wooden planter box" loading="lazy" />
+<div class="spcx-pbody">
+<div class="spcx-pbest">Best planter box</div>
+<h4>Natural Cedar Planter Box</h4>
+<p>For the windowsill or high shelf: a deep cedar box holds a spider plant (or a row of its babies) with room for a pebble mulch layer on top — the two-in-one cat deterrent.</p>
+<a class="spcx-btn" href="https://www.amazon.com/s?k=cedar+planter+box+indoor&tag=papalex-ph-20" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a>
+</div>
+</div>
+</div>
+
+<div class="spcx-disclosure">As an Amazon Associate, PlantasticHaven earns from qualifying purchases — at no extra cost to you. It keeps the grow lights on.</div>
+
+<div class="spcx-tablewrap">
+<table>
+<thead><tr><th>Planter</th><th>Best for</th><th>Why cat owners love it</th></tr></thead>
+<tbody>
+<tr><td><strong>Mkono Macrame Hanger</strong></td><td>Single statement plant</td><td>35" drop clears furniture-jumping range; classic look</td></tr>
+<tr><td><strong>Bouqlife 3-Pack with Pots</strong></td><td>Multiple rooms / propagation</td><td>Everything included; graduated lengths for visual interest</td></tr>
+<tr><td><strong>TIMEYARD Shelf Hanger</strong></td><td>Top-heavy mature plants</td><td>Stable flat platform; no swinging pot</td></tr>
+<tr><td><strong>Self-Watering 3-Pack</strong></td><td>Forgetful waterers</td><td>Reservoir design; soil stays enclosed away from paws</td></tr>
+<tr><td><strong>Cedar Planter Box</strong></td><td>Windowsills &amp; high shelves</td><td>Deep box fits pebble mulch layer — deterrent built in</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Watch: cat-safe houseplants, explained by a pet expert</h2>
+
+<p>Kristen Levine (30 years in the pet industry) walks through the houseplants that are genuinely safe for cats — spider plant included — plus the deadly ones to remove from your home and what poisoning symptoms look like:</p>
+
+<div class="spcx-video">
+<iframe src="https://www.youtube.com/embed/zPixiDSH2Lc" title="10 Cat Safe House Plants That Won't Kill Your Kitty — Kristen Levine Pet Living" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<p style="font-size:14px;color:#5a6b5e">Video: "10 Cat Safe House Plants That Won't Kill Your Kitty" by <a href="https://www.youtube.com/watch?v=zPixiDSH2Lc" target="_blank" rel="noopener">Kristen Levine Pet Living</a> on YouTube.</p>
+
+<h2>Sources &amp; further reading</h2>
+
+<p>Every factual claim in this guide traces to one of these sources — no folklore presented as science:</p>
+
+<div class="spcx-sources">
+<div class="spcx-source"><strong>ASPCA — Spider Plant listing</strong><br />Official "Non-Toxic to Dogs, Non-Toxic to Cats" verdict.<br /><a href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/spider-plant" target="_blank" rel="noopener">aspca.org →</a></div>
+<div class="spcx-source"><strong>ASPCA — Toxic &amp; Non-Toxic Plant Database</strong><br />Search any plant's botanical name before your cat does.<br /><a href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants" target="_blank" rel="noopener">aspca.org →</a></div>
+<div class="spcx-source"><strong>PetMD — Plants Safe for Cats</strong><br />Vet-reviewed safe-plant list incl. spider plant; emergency hotline numbers.<br /><a href="https://www.petmd.com/cat/general-health/plants-safe-for-cats" target="_blank" rel="noopener">petmd.com →</a></div>
+<div class="spcx-source"><strong>Cat-Bytes — Dr. Wendy Wilkins, DVM, PhD</strong><br />Veterinarian-authored deep dive: why cats chew, symptoms, the "high" myth.<br /><a href="https://cat-bytes.com/are-spider-plants-toxic-to-cats/" target="_blank" rel="noopener">cat-bytes.com →</a></div>
+<div class="spcx-source"><strong>Cat-World — Spider Plant &amp; Cats</strong><br />20-year cat writer's fact-check, incl. the missing evidence for euphoria claims.<br /><a href="https://cat-world.com/is-spider-plant-toxic-to-cats/" target="_blank" rel="noopener">cat-world.com →</a></div>
+<div class="spcx-source"><strong>APPA 2026 Cat Report</strong><br />53M US cat households in 2025; the Gen Z cat boom.<br /><a href="https://americanpetproducts.org/news/gen-z-and-cat-dads-are-leading-cat-ownerships-cultural-boom" target="_blank" rel="noopener">americanpetproducts.org →</a></div>
+<div class="spcx-source"><strong>Popular Science — NASA Clean Air Study</strong><br />What the 1989 study actually found (and its limits).<br /><a href="https://www.popsci.com/environment/houseplants-air-quality-purify/" target="_blank" rel="noopener">popsci.com →</a></div>
+<div class="spcx-source"><strong>Science Advances (2021) — Cats &amp; Catnip</strong><br />The real peer-reviewed science on why cats damage aromatic plants.<br /><a href="https://www.sci.news/biology/cats-plant-damaging-behavior-10905.html" target="_blank" rel="noopener">sci.news summary →</a></div>
+</div>
+
+<h2>Frequently asked questions</h2>
+
+<details class="spcx-faq" open>
+<summary>Are spider plants toxic to cats?</summary>
+<div class="spcx-faq-a">No. The ASPCA officially lists <em>Chlorophytum comosum</em> (spider plant) as non-toxic to cats and dogs. Eating large amounts may cause mild vomiting or diarrhea from fiber overload, but there is no toxic compound involved.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>Are spider plants toxic to dogs?</summary>
+<div class="spcx-faq-a">No — the ASPCA's listing covers dogs too: "Non-Toxic to Dogs, Non-Toxic to Cats." The same caveats apply: a dog that eats half the plant may still vomit from the sheer volume of fiber.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>Why does my cat keep eating my spider plant?</summary>
+<div class="spcx-faq-a">Three reasons: the dangling leaves trigger your cat's hunting instinct, the crisp texture is satisfying to chew, and the grass-like leaves mimic the wild grasses cats eat to help pass hairballs. Growing dedicated cat grass usually reduces the behavior.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>Do spider plants get cats high?</summary>
+<div class="spcx-faq-a">There is no scientific evidence for this. The claim circulates widely online but traces to social media rather than veterinary research, and veterinarians explicitly say the evidence isn't there. Cats act playful around spider plants because they're fun, not because they're psychoactive.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>My cat ate spider plant leaves and vomited. Should I worry?</summary>
+<div class="spcx-faq-a">A single vomiting episode after a leaf binge is usually just mechanical irritation and resolves on its own. Monitor your cat for a few hours. Call your vet if vomiting repeats, diarrhea persists, your cat becomes lethargic or stops eating — or if you're not certain the plant was actually a spider plant.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>Are spider plant babies (spiderettes) safe for cats?</summary>
+<div class="spcx-faq-a">Yes. The baby plantlets are the same plant — <em>Chlorophytum comosum</em> — and equally non-toxic. They are, however, the part cats find most irresistible, so they're usually the first casualty.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>What plants look like spider plants but are toxic to cats?</summary>
+<div class="spcx-faq-a">Dracaena (also sold as "ribbon plant" — a documented name collision), pothos, peace lily, lilies, and sago palm. Dracaena is the most common mix-up: it has stiffer leaves and a woody trunk, while true spider plants have soft arching leaves and no trunk. Always check the botanical name.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>How do I keep my cat away from my spider plant?</summary>
+<div class="spcx-faq-a">Hang the plant out of reach (the most effective method), grow cat grass as an approved alternative, try bitter apple spray on the leaves, cover the soil with pebbles or foil, and use citrus peels or double-sided tape as deterrents. Avoid cayenne pepper indoors — it can irritate your cat's eyes and nose.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>Is spider plant soil dangerous for cats?</summary>
+<div class="spcx-faq-a">The plant is safe, but potting soil can carry risks: chemical fertilizers, pesticides, and additives like bone meal can harm cats. Use plain organic potting mix for plants your cat chews, and rinse new nursery plants before bringing them home.</div>
+</details>
+
+<details class="spcx-faq">
+<summary>Are spider plants safe for kittens?</summary>
+<div class="spcx-faq-a">Yes, spider plants are non-toxic to kittens as well as adult cats. Kittens are even more enthusiastic chewers, though, so hang the plant well out of reach and provide kitten-safe chew alternatives like cat grass.</div>
+</details>
+
+<div class="spcx-related">
+<h3>Keep reading</h3>
+<ul>
+<li><a href="https://plantastichaven.com/choosing-the-perfect-pot-for-your-spider-plant/">Choosing the Perfect Pot for Your Spider Plant</a></li>
+<li><a href="https://plantastichaven.com/plants-that-look-like-spider-plants/">Plants That Look Like Spider Plants (ID Guide)</a></li>
+<li><a href="https://plantastichaven.com/spider-plant-vs-dracaena/">Spider Plant vs Dracaena: Don't Mix Them Up</a></li>
+<li><a href="https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/">Is Pothos Toxic to Cats and Dogs?</a></li>
+<li><a href="https://plantastichaven.com/snake-plant-toxic-to-cats-and-dogs/">Is Snake Plant Toxic to Cats and Dogs?</a></li>
+</ul>
+</div>
+
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Are Spider Plants Toxic to Cats? The ASPCA-Verified Answer",
+  "description": "Are spider plants toxic to cats? No — the ASPCA lists Chlorophytum comosum as non-toxic to cats and dogs. ASPCA-verified answer, overeating symptoms, toxic lookalikes, myths debunked, and cat-proof planters.",
+  "author": {"@type": "Person", "name": "Alexios Papaioannou", "url": "https://plantastichaven.com/about/"},
+  "publisher": {"@type": "Organization", "name": "PlantasticHaven", "url": "https://plantastichaven.com/"},
+  "datePublished": "2026-10-07",
+  "dateModified": "2026-10-07",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://plantastichaven.com/are-spider-plants-toxic-to-cats/"},
+  "image": "https://plantastichaven.com/wp-content/uploads/2026/10/spider-plant-hanging-basket-hero.webp"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Are spider plants toxic to cats?", "acceptedAnswer": {"@type": "Answer", "text": "No. The ASPCA officially lists Chlorophytum comosum (spider plant) as non-toxic to cats and dogs. Eating large amounts may cause mild vomiting or diarrhea from fiber overload, but there is no toxic compound involved."}},
+    {"@type": "Question", "name": "Are spider plants toxic to dogs?", "acceptedAnswer": {"@type": "Answer", "text": "No — the ASPCA's listing covers dogs too: Non-Toxic to Dogs, Non-Toxic to Cats. A dog that eats a large amount may still vomit from the volume of fiber."}},
+    {"@type": "Question", "name": "Why does my cat keep eating my spider plant?", "acceptedAnswer": {"@type": "Answer", "text": "The dangling leaves trigger your cat's hunting instinct, the crisp texture is satisfying to chew, and the grass-like leaves mimic wild grasses cats eat to help pass hairballs. Growing cat grass usually reduces the behavior."}},
+    {"@type": "Question", "name": "Do spider plants get cats high?", "acceptedAnswer": {"@type": "Answer", "text": "There is no scientific evidence for this. The claim circulates online but traces to social media rather than veterinary research, and veterinarians explicitly say the evidence isn't there."}},
+    {"@type": "Question", "name": "My cat ate spider plant leaves and vomited. Should I worry?", "acceptedAnswer": {"@type": "Answer", "text": "A single vomiting episode after a leaf binge is usually just mechanical irritation and resolves on its own. Call your vet if vomiting repeats, diarrhea persists, your cat becomes lethargic or stops eating — or if you're not certain the plant was a spider plant."}},
+    {"@type": "Question", "name": "Are spider plant babies (spiderettes) safe for cats?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The baby plantlets are the same plant — Chlorophytum comosum — and equally non-toxic, though they're usually the first part cats attack."}},
+    {"@type": "Question", "name": "What plants look like spider plants but are toxic to cats?", "acceptedAnswer": {"@type": "Answer", "text": "Dracaena (also sold as ribbon plant), pothos, peace lily, lilies, and sago palm. Dracaena is the most common mix-up. Always verify the botanical name, Chlorophytum comosum."}},
+    {"@type": "Question", "name": "How do I keep my cat away from my spider plant?", "acceptedAnswer": {"@type": "Answer", "text": "Hang the plant out of reach, grow cat grass as an alternative, try bitter apple spray on leaves, cover soil with pebbles or foil, and use citrus peels as deterrents. Avoid cayenne pepper indoors."}},
+    {"@type": "Question", "name": "Is spider plant soil dangerous for cats?", "acceptedAnswer": {"@type": "Answer", "text": "The plant is safe, but potting soil can carry chemical fertilizers, pesticides, or bone meal that harm cats. Use plain organic potting mix for plants your cat chews."}},
+    {"@type": "Question", "name": "Are spider plants safe for kittens?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, spider plants are non-toxic to kittens as well as adult cats. Kittens chew enthusiastically, so hang the plant well out of reach and provide cat grass."}}
+  ]
+}
+</script>
+
+<script>
+
+(function(){
+var root=document.getElementById('spcxTriage');
+if(!root){return;}
+var answers={plant:null,amount:null,symptoms:null,time:null};
+var result=document.getElementById('spcxTriResult');
+var resetBtn=document.getElementById('spcxTriReset');
+var idHelp=document.getElementById('spcxTriIdHelp');
+var steps=root.querySelectorAll('.spcx-tri-step');
+function showStep(n){
+for(var i=0;i<steps.length;i++){steps[i].style.display=(i===n)?'block':'none';}
+}
+function clearSel(scope){
+var btns=scope.querySelectorAll('.spcx-tri-btn[data-tri]');
+for(var i=0;i<btns.length;i++){btns[i].classList.remove('spcx-tri-sel');}
+}
+function el(tag,text){
+var e=document.createElement(tag);
+if(text){e.textContent=text;}
+return e;
+}
+function telLink(num,label){
+var a=document.createElement('a');
+a.setAttribute('href','tel:'+num.replace(/[^0-9]/g,''));
+a.textContent=label||num;
+return a;
+}
+function render(){
+result.style.display='block';
+result.className='spcx-tri-result';
+result.textContent='';
+var title=el('strong');
+var body=el('div');
+var list=el('ul');
+var level='green';
+var p=answers.plant,a=answers.amount,s=answers.symptoms;
+if(p===2||s===2){level='red';}
+else if(p===1){level=(s>=1||a===2)?'red':'yellow';}
+else if(a===2&&s>=1){level='red';}
+else if(a===2||s===1){level='yellow';}
+if(level==='green'){
+result.classList.add('spcx-tri-green');
+title.textContent='Monitor at home — this is very likely fine.';
+var li1=el('li','A small nibble of a confirmed spider plant with no symptoms is a non-event. The ASPCA lists the spider plant as non-toxic to cats — there is no poison to worry about, only mild stomach upset from fiber if a lot was eaten.');
+var li2=el('li','Offer fresh water and keep an eye on your cat for a few hours. One vomit after a plant snack is common and usually passes on its own.');
+var li3=el('li','Move the plant out of reach so grazing does not become a habit (see the cat-proofing checklist below).');
+list.appendChild(li1);list.appendChild(li2);list.appendChild(li3);
+}else if(level==='yellow'){
+result.classList.add('spcx-tri-yellow');
+title.textContent='Monitor closely for 12–24 hours — vet on standby.';
+var li1=el('li','A bigger snack can mean vomiting or diarrhea from fiber overload. Withhold the plant (move it somewhere inaccessible) and make sure your cat stays hydrated.');
+var li2=el('li','Have your vet’s number ready. Call if symptoms persist beyond 12 hours, worsen, or your cat stops eating or drinking.');
+var li3=el('li','If you are at all unsure about the plant ID, treat this as red below — misidentification is the real danger.');
+list.appendChild(li1);list.appendChild(li2);list.appendChild(li3);
+}else{
+result.classList.add('spcx-tri-red');
+title.textContent='Call your vet now — do not wait this out.';
+var li1=el('li');
+li1.appendChild(el('span','Repeated vomiting, lethargy, an unknown or possibly toxic plant, or other plants within reach — call your vet immediately. You can also reach the ASPCA Poison Control line at '));
+li1.appendChild(telLink('888-426-4435','(888) 426-4435'));
+li1.appendChild(el('span',' or Pet Poison Helpline at '));
+li1.appendChild(telLink('855-764-7661','(855) 764-7661'));
+li1.appendChild(el('span','.'));
+var li2=el('li','Bring a photo of the plant (and any vomit, if you can) — it helps the vet enormously.');
+var li3=el('li','Do NOT induce vomiting unless your vet specifically tells you to.');
+list.appendChild(li1);list.appendChild(li2);list.appendChild(li3);
+}
+body.appendChild(list);
+result.appendChild(title);
+result.appendChild(body);
+resetBtn.style.display='inline-block';
+var disc=root.querySelector('.spcx-tri-disc');
+if(disc){disc.style.display='none';}
+}
+var btns=root.querySelectorAll('.spcx-tri-btn[data-tri]');
+for(var i=0;i<btns.length;i++){
+(function(btn){
+btn.addEventListener('click',function(){
+var key=btn.getAttribute('data-tri');
+var val=parseInt(btn.getAttribute('data-val'),10);
+var stepDiv=btn.closest('.spcx-tri-step');
+clearSel(stepDiv);
+btn.classList.add('spcx-tri-sel');
+answers[key]=val;
+if(key==='plant'&&val===1){
+idHelp.style.display='block';
+return;
+}
+if(key==='plant'&&val===2){
+for(var s=0;s<steps.length;s++){steps[s].style.display='none';}
+render();
+return;
+}
+idHelp.style.display='none';
+var order=['plant','amount','symptoms','time'];
+var idx=order.indexOf(key);
+if(idx<order.length-1){
+showStep(idx+1);
+}else{
+for(var s2=0;s2<steps.length;s2++){steps[s2].style.display='none';}
+render();
+}
+});
+})(btns[i]);
+}
+resetBtn.addEventListener('click',function(){
+answers={plant:null,amount:null,symptoms:null,time:null};
+result.style.display='none';
+result.textContent='';
+resetBtn.style.display='none';
+idHelp.style.display='none';
+var all=root.querySelectorAll('.spcx-tri-btn');
+for(var i=0;i<all.length;i++){all[i].classList.remove('spcx-tri-sel');}
+var disc=root.querySelector('.spcx-tri-disc');
+if(disc){disc.style.display='block';}
+showStep(0);
+});
+showStep(0);
+})();
+
+</script>
+
+<script>
+
+(function(){
+var root=document.getElementById('spcxComparator');
+if(!root){return;}
+var tabs=root.querySelectorAll('.spcx-comp-tab');
+var panels=root.querySelectorAll('.spcx-comp-panel');
+function select(name){
+for(var i=0;i<tabs.length;i++){
+tabs[i].classList.toggle('spcx-comp-active',tabs[i].getAttribute('data-comp')===name);
+}
+for(var j=0;j<panels.length;j++){
+panels[j].style.display=(panels[j].getAttribute('data-panel')===name)?'block':'none';
+}
+}
+for(var k=0;k<tabs.length;k++){
+(function(tab){
+tab.addEventListener('click',function(){select(tab.getAttribute('data-comp'));});
+})(tabs[k]);
+}
+})();
+
+</script>
+
+<script>
+
+(function(){
+var root=document.getElementById('spcxMatcher');
+if(!root){return;}
+var result=document.getElementById('spcxMatchResult');
+var btns=root.querySelectorAll('.spcx-match-btn');
+var plans={
+chewer:{
+title:'Battle plan for The Chewer 😼',
+steps:[
+['Grow the decoy first.','A pot of wheatgrass or oat grass ("cat grass") is the single highest-ROI move for chewers. Place it right next to the spider plant — most chewers switch to the approved salad bar within days.'],
+['Make the spider plant taste terrible.','Light spritz of pet-safe bitter apple spray on the leaves. Reapply after watering or every few days. Chewers learn fast when the reward disappears.'],
+['Hang it out of tongue range.','A hanging planter removes the temptation entirely. For a dedicated chewer, elevation beats every deterrent spray.'],
+['Trim the dangliest bits.','Those irresistible dangling plantlets are chew magnets. Pruning the longest trailers reduces the visual trigger while the plant bushes out.'],
+['Redirect every single time.','Catch mid-chew? Calmly move the cat to the cat grass. Consistency matters more than intensity — punishment just teaches stealth chewing.']
+],
+note:'Skip cayenne pepper indoors — it can irritate eyes and noses. Bitter apple spray is the safer deterrent.'
+},
+climber:{
+title:'Battle plan for The Climber 🧗',
+steps:[
+['Think vertical exclusion, not deterrence.','Climbers defeat sprays and pebbles by simply going around them. Your strategy is physical separation: hanging planters from ceiling hooks, wall-mounted shelves with no launch pad nearby, or a room with a closable door.'],
+['Audit the launch pads.','Cats reach shelves via chairs, counters, and bookcases. Move the plant OR move the furniture — a shelf is only "high" if there is no stepping stone within jumping range (about 5–6 feet horizontally for most cats).'],
+['Use a closed terrarium or cabinet.','For prized plants, a glass cabinet (like a repurposed display case) is the fortress option. Ventilation matters — crack it or add a small fan.'],
+['Give them a better mountain.','A tall cat tree near a window often redirects climbing energy. A climber with a satisfying summit bothers your plants less.'],
+['Sticky tape is useless here.','Texture deterrents assume the cat touches the pot rim. Climbers land from above — save your tape for the digger.']
+],
+note:'Hanging planters are the #1 recommendation site-wide for climbers — see our planter picks below.'
+},
+digger:{
+title:'Battle plan for The Digger 🕳️',
+steps:[
+['Armor the soil surface.','Large, heavy pebbles or decorative stones (too big to bat around) over the entire soil surface. This is the highest-impact single move for diggers — it removes the fun.'],
+['Add a mesh layer for persistent cases.','A circle of window screening cut to fit inside the pot rim, under the pebbles. Water passes through; paws cannot dig through. Nearly invisible once in place.'],
+['Foil as a training tool.','Loose aluminum foil over the soil for 1–2 weeks. Most cats hate the texture and sound. Once the habit breaks, replace with pebbles for a permanent, prettier solution.'],
+['Check the litter box situation.','Excessive digging in plant pots sometimes signals a litter box problem — dirty box, wrong litter type, or not enough boxes (rule: one per cat plus one). Fix the box and the plant digging often stops.'],
+['Citrus peels as a bonus layer.','Fresh orange or lemon peels on the soil add a scent deterrent. Replace every few days as they dry out.']
+],
+note:'Pinecones also work as a soil cover, but make sure they are clean and pesticide-free.'
+}
+};
+function el(tag,text){
+var e=document.createElement(tag);
+if(text){e.textContent=text;}
+return e;
+}
+function showPlan(key){
+var plan=plans[key];
+if(!plan){return;}
+result.style.display='block';
+result.textContent='';
+var h4=el('h4',plan.title);
+var ol=el('ol');
+for(var i=0;i<plan.steps.length;i++){
+var li=el('li');
+var strong=el('strong',plan.steps[i][0]+' ');
+li.appendChild(strong);
+li.appendChild(el('span',plan.steps[i][1]));
+ol.appendChild(li);
+}
+var note=el('div',plan.note);
+note.className='spcx-match-note';
+result.appendChild(h4);
+result.appendChild(ol);
+result.appendChild(note);
+for(var j=0;j<btns.length;j++){
+btns[j].classList.toggle('spcx-match-active',btns[j].getAttribute('data-profile')===key);
+}
+}
+for(var k=0;k<btns.length;k++){
+(function(btn){
+btn.addEventListener('click',function(){showPlan(btn.getAttribute('data-profile'));});
+})(btns[k]);
+}
+})();
+
+</script>

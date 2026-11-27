@@ -36,7 +36,7 @@ disagreed and the engines rejected submissions. Two sites had no key file at all
 Changes made on 2026-11-26:
 
 1. The Worker was replaced with `infra/indexnow-key-worker.js`: it answers with the key named in the
-   URL, for the portfolio's keys. The previous script is saved in the session backup.
+   URL, for the portfolio's keys. The previous script is in `backups/2026-11-26/portfolio-indexnow-key.before.js` (key values removed).
 2. One new key was added and routed on all nine sites, so a single `INDEXNOW_KEY` works everywhere.
    The two older keys keep working on the sites that already used them.
 3. Key-file routes were added where they were missing (affiliatemarketingforsuccess.com,

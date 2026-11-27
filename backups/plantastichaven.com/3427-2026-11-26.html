@@ -1,0 +1,801 @@
+<!-- HERMES-ALL-POST-SURGERY-2026-07-15 -->
+<!-- wp:html -->
+<!-- wp:html -->
+<style>
+/* Standardized CSS for Batch 2026 Blog Redesign */
+.ph-post.ph-theme-emerald {
+  --primary-color: #059669;
+  --primary-hover: #047857;
+  --secondary-bg: #ecfdf5;
+  --glow-color: rgba(5, 150, 105, 0.08);
+}
+.ph-post.ph-theme-teal {
+  --primary-color: #0d9488;
+  --primary-hover: #0f766e;
+  --secondary-bg: #f0fdfa;
+  --glow-color: rgba(13, 148, 136, 0.08);
+}
+.ph-post.ph-theme-gold {
+  --primary-color: #d97706;
+  --primary-hover: #b45309;
+  --secondary-bg: #fffbeb;
+  --glow-color: rgba(217, 119, 6, 0.08);
+}
+.ph-post.ph-theme-cyan {
+  --primary-color: #0891b2;
+  --primary-hover: #0e7490;
+  --secondary-bg: #ecfeff;
+  --glow-color: rgba(8, 145, 178, 0.08);
+}
+
+.ph-post.ph-batch-2026 {
+  background: linear-gradient(135deg, #ffffff 0%, var(--secondary-bg) 100%) !important;
+  color: #1e152a !important;
+  border-left: 8px solid var(--primary-color) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 50px var(--glow-color) !important;
+  padding: clamp(24px, 5vw, 48px) !important;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif !important;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.ph-post.ph-batch-2026 * {
+  box-sizing: border-box;
+}
+
+.ph-post.ph-batch-2026::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-color) 0%, #10b981 100%);
+  z-index: 2;
+}
+
+.ph-post.ph-batch-2026 h1,
+.ph-post.ph-batch-2026 h2,
+.ph-post.ph-batch-2026 h3 {
+  color: var(--primary-color) !important;
+  font-family: 'Outfit', 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  margin-top: 0;
+  text-shadow: none !important;
+}
+
+.ph-post.ph-batch-2026 h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.ph-post.ph-batch-2026 h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem) !important;
+  line-height: 1.2 !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.2rem !important;
+  border-bottom: 2px solid var(--secondary-bg) !important;
+  padding-bottom: 0.5rem !important;
+  position: relative;
+}
+
+.ph-post.ph-batch-2026 h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.ph-post.ph-batch-2026 h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.ph-post.ph-batch-2026 p,
+.ph-post.ph-batch-2026 li {
+  color: #5b4e70 !important;
+  font-size: clamp(1.05rem, 2.5vw, 1.15rem) !important;
+  line-height: 1.8 !important;
+}
+
+.ph-post.ph-batch-2026 a {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+.ph-post.ph-batch-2026 a:hover {
+  color: var(--primary-hover) !important;
+  border-bottom-color: var(--primary-color) !important;
+  background: var(--secondary-bg) !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+}
+
+.ph-post.ph-batch-2026 .ph-kicker {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.ph-post.ph-batch-2026 .ph-byline {
+  font-size: 0.92rem;
+  color: #8f82a6;
+  margin-bottom: 1.8rem;
+  border-bottom: 1px solid var(--secondary-bg);
+  padding-bottom: 0.8rem;
+}
+
+.ph-post.ph-batch-2026 .ph-answer {
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, #ffffff 100%) !important;
+  border: 1px solid var(--border-hover) !important;
+  border-left: 6px solid var(--primary-color) !important;
+  border-radius: 18px !important;
+  padding: 1.5rem 1.8rem !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 10px 35px var(--glow-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-answer strong {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--primary-color) !important;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.ph-post.ph-batch-2026 .ph-answer p {
+  margin: 0 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-toc {
+  background: #ffffff !important;
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 20px !important;
+  padding: 1.6rem 2rem !important;
+  margin: 2.2rem 0 !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-toc strong {
+  font-size: 1.15rem;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.ph-post.ph-batch-2026 .ph-toc ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ph-post.ph-batch-2026 .ph-toc li {
+  margin: 0.6rem 0;
+  transition: transform 0.2s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-toc li:hover {
+  transform: translateX(6px);
+}
+
+.ph-post.ph-batch-2026 .ph-toc a {
+  color: #5b4e70 !important;
+  border-bottom: none !important;
+  font-weight: 500 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-toc a:hover {
+  color: var(--primary-color) !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figure {
+  margin: 0;
+  border: 1px solid var(--secondary-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 30px var(--glow-color);
+  transition: all 0.3s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 640px) {
+  .ph-post.ph-batch-2026 .ph-image-grid img {
+    height: 190px;
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figure:hover img {
+  transform: scale(1.05);
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figcaption {
+  font-size: 0.9rem;
+  color: #5b4e70;
+  padding: 0.9rem 1.1rem;
+  background: #ffffff;
+  border-top: 1px solid var(--secondary-bg);
+  line-height: 1.55;
+}
+
+.ph-post.ph-batch-2026 .ph-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-card {
+  border: 1px solid var(--secondary-bg) !important;
+  border-radius: 22px !important;
+  background: #ffffff !important;
+  padding: 2rem !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+}
+
+.ph-post.ph-batch-2026 .ph-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--glow-color);
+  border-color: var(--primary-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-card h3 {
+  margin-top: 0 !important;
+  font-size: 1.35rem !important;
+  color: var(--primary-color) !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.ph-post.ph-batch-2026 .ph-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.ph-post.ph-batch-2026 .ph-card li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin: 0.75rem 0;
+}
+
+.ph-post.ph-batch-2026 .ph-card li::before {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.ph-post.ph-batch-2026 .ph-grid .ph-card:first-child li::before {
+  content: '✓';
+  color: var(--primary-color);
+}
+
+.ph-post.ph-batch-2026 .ph-grid .ph-card:last-child li::before {
+  content: '✕';
+  color: #8f82a6;
+}
+
+.ph-post.ph-batch-2026 .ph-callout,
+.ph-post.ph-batch-2026 .ph-warning {
+  border-radius: 18px !important;
+  padding: 1.4rem 1.8rem !important;
+  margin: 2rem 0 !important;
+  font-size: 1.08rem !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+.ph-post.ph-batch-2026 .ph-callout {
+  background: #f0fdf4 !important;
+  border-left: 6px solid #10b981 !important;
+  color: #065f46 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-callout strong {
+  color: #065f46 !important;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.ph-post.ph-batch-2026 .ph-warning {
+  background: #fef2f2 !important;
+  border-left: 6px solid #ef4444 !important;
+  color: #991b1b !important;
+}
+
+.ph-post.ph-batch-2026 .ph-warning strong {
+  color: #991b1b !important;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card {
+  padding: 1.8rem 1.4rem !important;
+  text-align: center;
+  counter-increment: check-counter;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card::before {
+  content: "0" counter(check-counter);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary-hover);
+  opacity: 0.2;
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  transition: opacity 0.3s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card:hover::before {
+  opacity: 0.8;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card p {
+  margin: 0 !important;
+  font-size: 0.98rem !important;
+  line-height: 1.65 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-table-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 18px;
+  border: 1px solid var(--secondary-bg);
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 table.ph-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  min-width: 720px;
+}
+
+.ph-post.ph-batch-2026 .ph-table th {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-align: left;
+  padding: 1.1rem 1.3rem !important;
+  font-size: 1rem;
+}
+
+.ph-post.ph-batch-2026 .ph-table td {
+  padding: 1.1rem 1.3rem !important;
+  border-bottom: 1px solid var(--secondary-bg) !important;
+  vertical-align: top;
+  font-size: 0.98rem !important;
+  color: #5b4e70;
+}
+
+.ph-post.ph-batch-2026 .ph-table tr:nth-child(even) {
+  background: var(--secondary-bg);
+}
+
+.ph-post.ph-batch-2026 .ph-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.ph-post.ph-batch-2026 .ph-steps {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step-counter;
+}
+
+.ph-post.ph-batch-2026 .ph-steps li {
+  position: relative;
+  padding: 1.2rem 1.5rem 1.2rem 3.8rem;
+  margin: 0.9rem 0;
+  border: 1px solid var(--secondary-bg);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-steps li:hover {
+  transform: translateX(5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 .ph-steps li::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute;
+  left: 1.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.ph-post.ph-batch-2026 .ph-diagram {
+  border: 1px solid var(--secondary-bg);
+  border-radius: 22px;
+  background: #ffffff;
+  padding: 1.8rem;
+  margin: 2.2rem 0;
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 .ph-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ph-post.ph-batch-2026 .ph-diagram figcaption {
+  font-size: 0.9rem;
+  color: #8f82a6;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ph-post.ph-batch-2026 .ph-product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-product-card {
+  border: 1px solid var(--secondary-bg) !important;
+  border-radius: 22px !important;
+  background: linear-gradient(180deg, #ffffff 0%, var(--secondary-bg) 100%) !important;
+  padding: 1.6rem !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-decoration: none !important;
+  color: #1e152a !important;
+  border-bottom: 1px solid var(--secondary-bg) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 40px var(--glow-color) !important;
+  border-color: var(--primary-color) !important;
+  background: #ffffff !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card h3 {
+  margin-top: 0 !important;
+  font-size: 1.2rem !important;
+  color: var(--primary-color) !important;
+  margin-bottom: 0.6rem !important;
+  line-height: 1.35 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card p {
+  font-size: 0.98rem !important;
+  color: #5b4e70 !important;
+  line-height: 1.55 !important;
+  margin-bottom: 1.3rem !important;
+  flex-grow: 1 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card .ph-cta {
+  display: block !important;
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  font-size: 0.98rem !important;
+  transition: background 0.2s ease !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card:hover .ph-cta {
+  background: var(--primary-hover) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details {
+  border: 1px solid var(--secondary-bg) !important;
+  border-radius: 16px !important;
+  padding: 1.1rem 1.3rem !important;
+  margin: 0.9rem 0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.01) !important;
+  transition: all 0.3s ease !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details[open] {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  background: var(--secondary-bg) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq summary {
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  color: var(--primary-color) !important;
+  outline: none !important;
+  list-style: none !important;
+  position: relative !important;
+  padding-left: 2rem !important;
+  font-size: 1.1rem !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq summary::before {
+  content: '▶' !important;
+  position: absolute !important;
+  left: 0.2rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) scale(0.85) !important;
+  color: var(--primary-color) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details[open] summary::before {
+  transform: translateY(-50%) rotate(90deg) scale(0.85) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details p {
+  margin: 0.9rem 0 0 0 !important;
+  padding-left: 2rem !important;
+  color: #5b4e70 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-video {
+  position: relative !important;
+  padding-bottom: 56.25% !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+  border: 1px solid var(--secondary-bg) !important;
+  background: #1e152a !important;
+  margin: 2.2rem 0 !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-video iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-affiliate {
+  background: var(--secondary-bg) !important;
+  border: 1px solid var(--border-hover) !important;
+  border-radius: 16px !important;
+  padding: 1rem 1.3rem !important;
+  font-size: 0.96rem !important;
+  margin: 1.5rem 0 !important;
+  color: #5b4e70 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-source-list {
+  font-size: 0.98rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.ph-post.ph-batch-2026 .ph-source-list li {
+  margin: 0.5rem 0 !important;
+}
+
+@media (max-width: 760px) {
+  .ph-post.ph-batch-2026 {
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+    border-left-width: 6px !important;
+  }
+  
+  .ph-post.ph-batch-2026 h1 {
+    font-size: 1.95rem !important;
+  }
+
+  .ph-post.ph-batch-2026 h2 {
+    font-size: 1.45rem !important;
+    margin-top: 2.2rem !important;
+  }
+
+  .ph-post.ph-batch-2026 h3 {
+    font-size: 1.18rem !important;
+  }
+
+  .ph-post.ph-batch-2026 .ph-table,
+  .ph-post.ph-batch-2026 .ph-table thead,
+  .ph-post.ph-batch-2026 .ph-table tbody,
+  .ph-post.ph-batch-2026 .ph-table tr,
+  .ph-post.ph-batch-2026 .ph-table th,
+  .ph-post.ph-batch-2026 .ph-table td {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table thead {
+    display: none !important;
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table tr {
+    border: 1px solid var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    margin: 0 0 16px !important;
+    overflow: hidden !important;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table td {
+    border: 0 !important;
+    border-bottom: 1px solid var(--secondary-bg) !important;
+    padding: 12px 14px !important;
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table td:last-child {
+    border-bottom: 0 !important;
+  }
+}
+</style>
+<article class="ph-post ph-batch-2026 ph-theme-emerald" id="article">
+<p class="ph-updated">By Alexios Papaioannou · Plantastic Haven · Last reviewed 2026-06-26</p>
+<div class="ph-answer"><strong>Quick answer</strong><p>Philodendron Mayoi is a tropical aroid grown for deeply lobed, palm-like green leaves. Give it bright indirect light, a chunky philodendron soil mix, water after the upper mix partly dries, and a moss pole or support as it matures. Keep it warm, avoid soggy roots, and expect larger leaves when light and climbing support improve.</p></div>
+<nav class="ph-toc"><strong>On this page</strong><ol><li><a href="#who">Who this is for</a></li><li><a href="#definition">Definition</a></li><li><a href="#decision">Philodendron Mayoi care chart</a></li><li><a href="#framework">The Mayoi maturity framework</a></li><li><a href="#care-chart">Care chart</a></li><li><a href="#steps">How to grow Philodendron Mayoi indoors</a></li><li><a href="#examples">Examples by situation</a></li><li><a href="#tools">Helpful tools</a></li><li><a href="#video">YouTube guide</a></li><li><a href="#mistakes">Common mistakes and troubleshooting</a></li><li><a href="#links">Related PlantasticHaven guides</a></li><li><a href="#faq">FAQ</a></li><li><a href="#sources">Sources and editorial note</a></li></ol></nav>
+<div class="ph-image-grid"><figure><img alt="Philodendron and tropical foliage identification image from PlantasticHaven media library" decoding="async" loading="lazy" src="https://plantastichaven.com/wp-content/uploads/2025/09/ai-img-3660.jpg?lm=68D02272"/><figcaption>Philodendron Mayoi belongs in the tropical aroid care group.</figcaption></figure>
+<figure><img alt="Rare tropical houseplants with variegated foliage from PlantasticHaven media library" decoding="async" loading="lazy" src="https://plantastichaven.com/wp-content/uploads/2025/09/ai-img-6398.jpg?lm=68CFFF5D"/><figcaption>Mayoi performs best with bright indirect light and consistent warmth.</figcaption></figure>
+<figure><img alt="Healthy philodendron-style foliage near a bright window from PlantasticHaven media library" decoding="async" loading="lazy" src="https://plantastichaven.com/wp-content/uploads/2025/10/ai-img-3421-1.jpg?lm=68DE95FB"/><figcaption>A bright window setup supports stronger philodendron growth.</figcaption></figure></div>
+<section id="who"><h2 id="who-this-is-for-not-for">Who this is for / not for</h2><div class="ph-grid"><div class="ph-card"><h3>Who this is for</h3><ul><li>You bought Philodendron Mayoi and want a complete indoor care routine.</li>
+<li>You need help with small leaves, no lobes, yellowing, drooping, or a sprawling vine.</li>
+<li>You want soil, support, propagation, and troubleshooting in one place.</li></ul></div><div class="ph-card"><h3>Who this is not for</h3><ul><li>You need outdoor tropical landscape instructions for frost-free climates.</li>
+<li>You want care for a different palm-leaf philodendron without confirming the plant ID.</li></ul></div></div></section>
+<section id="definition"><h2 id="clear-definition">Clear definition</h2><p>Philodendron Mayoi is a climbing philodendron valued for narrow, lobed leaves that can resemble small palm fronds. Indoors, it behaves like a tropical aroid: it wants warmth, bright filtered light, an airy potting mix, and something to climb so leaves can size up as the plant matures.</p>
+<figure aria-label="Simple care decision diagram for Philodendron Mayoi Care: Light, Soil, Water, and Support" class="ph-diagram" role="img">
+<svg viewbox="0 0 960 260" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f0fdf4" height="210" rx="24" stroke="#b8dec5" width="920" x="20" y="25"></rect>
+<circle cx="120" cy="130" fill="#ffffff" r="54" stroke="#10b981" stroke-width="4"></circle>
+<path d="M96 132c28-46 56-46 84 0M86 154c45-18 86-18 128 0M113 84c12 20 12 42 0 66M128 84c-10 20-10 42 0 66" fill="none" stroke="#10b981" stroke-linecap="round" stroke-width="6"></path>
+<text fill="#065f46" font-family="Arial, sans-serif" font-size="28" font-weight="700" x="210" y="83">Philodendron Mayoi Care</text>
+<text fill="#374151" font-family="Arial, sans-serif" font-size="21" x="210" y="125">1. Identify the plant or condition accurately.</text>
+<text fill="#374151" font-family="Arial, sans-serif" font-size="21" x="210" y="162">2. Match light, water, soil, and safety to that answer.</text>
+<text fill="#374151" font-family="Arial, sans-serif" font-size="21" x="210" y="199">3. Adjust one variable at a time and monitor new growth.</text>
+</svg>
+<figcaption>Original PlantasticHaven decision diagram for fast reader and AI extraction.</figcaption>
+</figure></section>
+<section id="decision"><h2 id="philodendron-mayoi-care-chart">Philodendron Mayoi care chart</h2><p>Use this as the baseline care plan, then adjust for your home light, pot material, and season.</p><div class="ph-table-wrap"><table class="ph-table"><thead><tr><th scope="col">Care factor</th><th scope="col">Best target</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><td>Light</td><td>Bright indirect light; avoid harsh midday sun</td><td>Supports lobing, compact growth, and stronger leaves.</td></tr><tr><td>Water</td><td>Water when upper 1-2 inches partly dry</td><td>Prevents both wilt and soggy root stress.</td></tr><tr><td>Soil</td><td>Chunky aroid mix with bark and perlite or pumice</td><td>Keeps roots oxygenated.</td></tr><tr><td>Temperature</td><td>Warm indoor range; protect below about 60°F</td><td>Cold stress causes droop, spotting, and root issues.</td></tr><tr><td>Humidity</td><td>Average to higher indoor humidity</td><td>Helps leaf expansion but does not replace watering.</td></tr><tr><td>Support</td><td>Moss pole, plank, or trellis</td><td>Encourages larger, more mature foliage.</td></tr><tr><td>Fertilizer</td><td>Light feeding during active growth</td><td>Supports growth only when light and roots are healthy.</td></tr><tr><td>Pet safety</td><td>Keep away from pets and children who chew plants</td><td>Philodendrons contain irritating calcium oxalate crystals.</td></tr></tbody></table></div></section>
+<section id="framework"><h2 id="the-mayoi-maturity-framework">The Mayoi maturity framework</h2><p>Philodendron Mayoi often looks underwhelming when it is treated like a trailing vine in low light. Mature-looking leaves come from the right combination of light, roots, and support.</p><div class="ph-card-grid"><div class="ph-card"><p>Light drives leaf size. Dim rooms produce smaller, simpler leaves.</p></div><div class="ph-card"><p>Roots drive stability. Dense soil causes droop, yellowing, and slow growth.</p></div><div class="ph-card"><p>Support drives maturity. Climbing stems tend to produce larger leaves than unsupported trailing stems.</p></div><div class="ph-card"><p>Warmth drives recovery. Cold and wet conditions slow root function.</p></div></div></section>
+<section id="care-chart"><h2 id="care-chart-hermes-dedup-1">Care chart</h2><div class="ph-table-wrap"><table class="ph-table"><thead><tr><th scope="col">Problem</th><th scope="col">Likely cause</th><th scope="col">Fix</th><th scope="col">When to expect change</th></tr></thead><tbody><tr><td>Small leaves</td><td>Low light or no support</td><td>Move to brighter indirect light and add a pole</td><td>New leaves improve first; old leaves stay same.</td></tr><tr><td>Yellow lower leaves</td><td>Overwatering, old leaves, or low light</td><td>Check soil, drainage, and root health</td><td>1-4 weeks after care correction.</td></tr><tr><td>Drooping after watering</td><td>Dense mix or root stress</td><td>Check root ball and use chunkier mix if needed</td><td>Several days to weeks.</td></tr><tr><td>Crispy edges</td><td>Dry swings, direct sun, or low humidity</td><td>Stabilize watering and move out of harsh sun</td><td>New growth should be cleaner.</td></tr><tr><td>Long bare stem</td><td>Low light or no pruning</td><td>Prune and propagate nodes; improve light</td><td>New shoots after node activation.</td></tr></tbody></table></div></section>
+<section id="steps"><h2 id="how-to-grow-philodendron-mayoi-indoors">How to grow Philodendron Mayoi indoors</h2><ol class="ph-steps"><li>Place the plant in bright indirect light where it can see the sky but avoids harsh midday sun.</li>
+<li>Use a pot with drainage and a chunky mix: 2 parts indoor potting mix, 1 part orchid bark, 1 part perlite or pumice.</li>
+<li>Water thoroughly, then let the upper mix partly dry before watering again. Do not keep the saucer full.</li>
+<li>Install a moss pole, plank, or trellis early so stems attach before they become long and floppy.</li>
+<li>Rotate the pot monthly so growth stays balanced and all leaves receive light.</li>
+<li>Wipe leaves gently to keep dust from blocking light.</li>
+<li>Feed lightly during active growth only after the plant is stable and producing new leaves.</li>
+<li>Propagate with stem cuttings that include at least one node; keep warm and humid while rooting.</li>
+<li>Keep it away from cold windows, AC vents, and chewing pets.</li></ol><div class="ph-callout"><strong>Practical rule:</strong> Change one variable at a time. Light, water, soil, and temperature interact, so changing everything at once makes the real cause harder to identify.</div></section>
+<section id="examples"><h2 id="examples-by-situation">Examples by situation</h2><ul><li>If your Mayoi has long stems with small leaves, the first upgrade is brighter indirect light plus a support pole.</li><li>If new leaves open pale and thin, check root health and light before adding fertilizer.</li><li>If the soil stays wet for a week, repot into a chunkier mix and use a smaller pot if the root system is modest.</li><li>If the plant was shipped cold, stabilize temperature and light before repotting or feeding.</li></ul></section>
+<section id="tools"><h2 id="helpful-tools-and-supplies">Helpful tools and supplies</h2>
+<div class="ph-affiliate"><strong>Affiliate disclosure:</strong> This article may contain Amazon affiliate links using tag papalex-ph-20. Product boxes link to relevant Amazon search results so pricing, availability, reviews, and images remain current on Amazon.</div>
+<div class="ph-product-grid"><a class="ph-product-card" href="https://www.amazon.com/dp/B0GKJ634WP?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank"><a href="https://www.amazon.com/dp/B0GKJ634WP?tag=papalex-ph-20" target="_blank" rel="sponsored nofollow noopener" style="display:block;text-decoration:none;"><img src="https://m.media-amazon.com/images/I/818GO6aQSyL._AC_SL1500_.jpg" alt="4 Pack 16&quot; Moss Pole Monstera Plant Support - Stackable up to 48&quot;" width="1488" height="1500" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#f6f2fb;border-radius:12px;margin:0 0 12px;"/></a><h3>Moss pole or plant support</h3>
+<p>Encourages Mayoi to climb and produce more mature foliage.</p>
+<span class="ph-cta">View options on Amazon</span>
+</a><a class="ph-product-card" href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank"><a href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ph-20" target="_blank" rel="sponsored nofollow noopener" style="display:block;text-decoration:none;"><img src="https://m.media-amazon.com/images/I/71s8-kW6OKL._AC_SL1500_.jpg" alt="Molly&#x27;s Orchid Potting Mix Chunky Soil-Free for Indoor Orchids 3 Dry Quarts" width="1500" height="1413" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#f6f2fb;border-radius:12px;margin:0 0 12px;"/></a><h3>Chunky aroid soil ingredients</h3>
+<p>Improves root oxygen and drainage.</p>
+<span class="ph-cta">View options on Amazon</span>
+</a><a class="ph-product-card" href="https://www.amazon.com/dp/B01EWH83FU?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank"><a href="https://www.amazon.com/dp/B01EWH83FU?tag=papalex-ph-20" target="_blank" rel="sponsored nofollow noopener" style="display:block;text-decoration:none;"><img src="https://m.media-amazon.com/images/I/61IoQS+EgTL._AC_SL1500_.jpg" alt="VIVOSUN 6.5 Inch Gardening Scissors Hand Pruner Pruning Shear with Straight Stai" width="1500" height="1350" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#f6f2fb;border-radius:12px;margin:0 0 12px;"/></a><h3>Clean pruning snips</h3>
+<p>Useful for shaping and propagating node cuttings.</p>
+<span class="ph-cta">View options on Amazon</span>
+</a></div></section>
+<section id="video">
+<h2 id="video-care-identification-guide">Video Care &amp; Identification Guide</h2>
+<p>To help you visualize key care rules, propagation steps, and identification tips, watch this detailed expert walkthrough video.</p>
+<div class="ph-video">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/grrrpKXYQIo" title="Philodendron Mayoi Care/Prop WITH UPDATES!"></iframe>
+</div>
+</section>
+<section id="mistakes"><h2 id="common-mistakes-and-troubleshooting">Common mistakes and troubleshooting</h2><div class="ph-table-wrap"><table class="ph-table"><thead><tr><th scope="col">Mistake</th><th scope="col">Why it hurts</th><th scope="col">Better fix</th></tr></thead><tbody><tr><td>Growing it in dense all-purpose soil</td><td>Roots lose oxygen and leaves yellow or droop.</td><td>Use a chunky philodendron mix.</td></tr><tr><td>Skipping support</td><td>The plant trails and produces smaller foliage.</td><td>Add a pole, plank, or trellis while stems are flexible.</td></tr><tr><td>Using direct sun to force growth</td><td>Leaves scorch or bleach.</td><td>Use bright filtered light instead.</td></tr><tr><td>Fertilizing a stressed plant</td><td>Stress worsens when roots or light are poor.</td><td>Fix environment before feeding.</td></tr></tbody></table></div></section>
+<section id="links"><h2>Related PlantasticHaven guides</h2><p>Use these sibling guides to move between identification, care, soil, temperature, and room-light decisions without guessing.</p><ul><li><a href="https://plantastichaven.com/philodendron-soil-mix/">best chunky philodendron soil mix</a></li>
+<li><a href="https://plantastichaven.com/how-cold-can-philodendron-tolerate/">how cold philodendrons can tolerate</a></li>
+<li><a href="https://plantastichaven.com/dripping-water-in-philodendron-plants/">why philodendron leaves drip water</a></li>
+<li><a href="https://plantastichaven.com/houseplants-for-low-light/">best houseplants for low light rooms</a></li>
+<li><a href="https://plantastichaven.com/yellow-house-plants/">yellow house plants for indoor color</a></li></ul></section>
+<section id="faq"><h2>FAQ</h2><div class="ph-faq"><details><summary>Is Philodendron Mayoi rare?</summary><p>It is less common than heartleaf philodendron but increasingly available through houseplant sellers. Availability changes by market, so buy from reputable growers.</p></details>
+<details><summary>Does Philodendron Mayoi need a moss pole?</summary><p>It can grow without one, but support encourages a more mature climbing habit and can help leaves size up.</p></details>
+<details><summary>Why are my Philodendron Mayoi leaves small?</summary><p>Small leaves usually come from low light, no support, weak roots, or immature growth. Improve light and climbing support first.</p></details>
+<details><summary>How often should I water Philodendron Mayoi?</summary><p>Water when the upper mix partly dries. The exact timing depends on light, pot size, soil, temperature, and season.</p></details>
+<details><summary>Is Philodendron Mayoi toxic to cats?</summary><p>Philodendrons contain calcium oxalate crystals and should be kept away from cats, dogs, and children who may chew leaves.</p></details></div></section>
+<section id="sources"><h2>Sources and editorial note</h2><p>This guide was reviewed for practical indoor houseplant care accuracy on 2026-06-26. Recommendations prioritize observable plant symptoms, drainage, light, temperature, pet safety, and university or veterinary reference sources over unsupported social-media claims.</p><ul class="ph-source-list"><li><a href="https://yardandgarden.extension.iastate.edu/how-to/growing-indoor-philodendrons" rel="noopener noreferrer" target="_blank">Iowa State University Extension, Growing Indoor Philodendrons</a></li>
+<li><a href="https://extension.sdstate.edu/philodendron" rel="noopener noreferrer" target="_blank">South Dakota State University Extension, Philodendron</a></li>
+<li><a href="https://homegarden.cahnr.uconn.edu/factsheets/potting-media-and-plant-propagation/" rel="noopener noreferrer" target="_blank">UConn Home &amp; Garden Education Center, Potting Media and Plant Propagation</a></li>
+<li><a href="https://gardeningsolutions.ifas.ufl.edu/care/planting/houseplant-care/" rel="noopener noreferrer" target="_blank">University of Florida IFAS, Houseplant Care</a></li></ul></section>
+</article>
+<!-- /wp:html -->
+<!-- /wp:html -->
+
+<div class="ph-geo-link" style="margin:26px 0;padding:16px 18px;border:1px solid #dde9e1;border-left:4px solid #2f6b45;border-radius:12px;background:#f7fcf9;font-size:16px;line-height:1.65;color:#1f2a24;"><p style="margin:0;"><strong>Light is the variable behind most philodendron problems.</strong> If new leaves are small, stems are stretching, or variegation is fading, start with <a href="https://plantastichaven.com/philodendron-light-requirements/">philodendron light requirements</a> &mdash; how far from each window direction to place your plant, plus the grow-light PPFD, distance and run-time targets that actually work indoors.</p></div>

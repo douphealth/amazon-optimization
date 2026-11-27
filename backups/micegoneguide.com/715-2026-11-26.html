@@ -1,0 +1,274 @@
+<!-- wp:html -->
+<style>
+body.single-post main#wp--skip-link--target > .wp-block-group:first-child,
+body.page main#wp--skip-link--target > .wp-block-group:first-child{display:none!important}
+.mgg-article,body.single-post .entry-content .mgg-article,body.page .entry-content .mgg-article{max-width:980px;margin:0 auto;font-size:18px;line-height:1.72;color:#17211b}
+.mgg-article h1,body.single-post .entry-content .mgg-article h1,body.single-post .entry-content .mgg-article > h1,body.page .entry-content .mgg-article h1{font-size:42px;line-height:1.12;letter-spacing:-.015em;margin:18px 0;font-weight:700}
+.mgg-article h2,body.single-post .entry-content .mgg-article h2,body.page .entry-content .mgg-article h2{font-size:30px;line-height:1.22;margin:40px 0 16px}
+.mgg-article h3,body.single-post .entry-content .mgg-article h3,body.page .entry-content .mgg-article h3{font-size:23px;margin-top:26px}
+body.single-post .entry-content .mgg-article p,body.single-post .entry-content .mgg-article ul,body.single-post .entry-content .mgg-article ol,body.page .entry-content .mgg-article p{max-width:100%}
+.mgg-kicker{display:inline-block;font-weight:700;color:#2c6b2f;text-transform:uppercase;letter-spacing:.06em;background:#e7f4ea;border:1px solid #cae6d0;border-radius:999px;padding:.42rem .78rem;font-size:.82rem;margin-bottom:1.1rem}
+.mgg-answer,body.single-post .entry-content .mgg-article .mgg-answer,body.page .entry-content .mgg-article .mgg-answer{background:#edf8ee;border-left:6px solid #2e7d32;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-warning{background:#fff5e6;border-left:6px solid #cf7a00;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-grid,body.single-post .entry-content .mgg-article .mgg-grid,body.page .entry-content .mgg-article .mgg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:24px 0}
+.mgg-card,body.single-post .entry-content .mgg-article .mgg-card,body.page .entry-content .mgg-article .mgg-card{border:1px solid #d8e2d8;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.mgg-card img,body.single-post .entry-content .mgg-article .mgg-card img,body.page .entry-content .mgg-article .mgg-card img{width:100%!important;height:190px!important;max-height:190px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-card.mgg-hero-figure,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure{display:block;width:100%;margin:24px 0;padding:12px;background:#fff;border:1px solid #d8e2d8;border-radius:16px}
+.mgg-card.mgg-hero-figure picture,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure picture,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure picture{display:block;width:100%}
+.mgg-card.mgg-hero-figure img,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure img,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure img{width:100%!important;max-width:100%!important;height:auto!important;max-height:560px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-product-card img,body.single-post .entry-content .mgg-article .mgg-product-card img{height:170px!important;max-height:170px!important;object-fit:contain!important;background:#fff}
+.mgg-button{display:inline-block;background:#2e7d32;color:#fff!important;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:10px}
+.mgg-table,body.single-post .entry-content .mgg-article table,body.page .entry-content .mgg-article table{width:100%!important;border-collapse:separate!important;border-spacing:0;margin:22px 0;border:1px solid #d9e4d9!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 4px 14px rgba(0,0,0,.04)!important}
+.mgg-table th,body.single-post .entry-content .mgg-article table th,body.page .entry-content .mgg-article table th{background:linear-gradient(135deg,#173f2b,#235f40)!important;color:#fff!important;font-weight:800!important;padding:12px 14px!important;border:none!important}
+.mgg-table td,body.single-post .entry-content .mgg-article table td,body.page .entry-content .mgg-article table td{padding:12px 14px!important;border-top:1px solid #e5ede5!important;vertical-align:top!important}
+.mgg-table tr:nth-child(even) td,body.single-post .entry-content .mgg-article table tr:nth-child(even) td,body.page .entry-content .mgg-article table tr:nth-child(even) td{background:#fbfbf8!important}
+.mgg-table tr:hover td,body.single-post .entry-content .mgg-article table tr:hover td,body.page .entry-content .mgg-article table tr:hover td{background:#f0f7f2!important}
+.mgg-toc,.mgg-toc-box,body.single-post .entry-content .mgg-article .mgg-toc,body.single-post .entry-content .mgg-article .mgg-toc-box,body.page .entry-content .mgg-article .mgg-toc,body.page .entry-content .mgg-article .mgg-toc-box{background:#f7faf7!important;border:1px solid #dfe8df!important;border-radius:16px!important;padding:20px!important;margin:26px 0!important}
+.mgg-byline,body.single-post .entry-content .mgg-article .mgg-byline,body.page .entry-content .mgg-article .mgg-byline{color:#53635a;font-size:15px;margin-bottom:18px}
+.mgg-sources{font-size:15px;background:#f8f8f6;padding:18px;border-radius:14px}
+.mgg-note{font-size:15px;color:#53635a}
+.mgg-checklist li{margin-bottom:8px}
+</style>
+
+<article data-mgg-release="2026-10-02" class="mgg-article mgg-post">
+
+<p class="mgg-kicker">Wall Void Rodent Removal</p>
+<h1 class="mgg-title">How to Get Rid of Mice in Walls Safely</h1>
+<p class="mgg-byline mgg-dek">Investigate suspected wall activity without cutting exploratory holes or placing loose poison in voids. Confirm accessible physical evidence, use suitable protected traps where rodent routes are supported, and get qualified help when identification or access is uncertain. No checklist can promise that wall opening will never be needed.</p>
+
+<div class="mgg-answer geo-direct-answer">
+  <p style="margin:0 0 8px 0;font-weight:800;color:#1e4620;text-transform:uppercase;font-size:13px;letter-spacing:.05em;">Direct Answer: Start with Accessible Evidence, Not Exploratory Holes</p>
+  <p style="margin:0 0 10px 0;"><strong>Do not cut exploratory holes based on sound alone.</strong> To <a class="wpil_keyword_link" href="https://micegoneguide.com/how-to-get-rid-of-mice/" target="_blank" rel="noopener" title="Get Rid of Mice" data-wpil-keyword-link="linked" data-wpil-monitor-id="286">eliminate mice</a>, first inspect safely accessible areas beside the suspected wall, including cabinets, pipe gaps and appliance edges. If mouse activity is confirmed, use mouse-sized snap traps along evidence-supported routes, keep them away from children and pets and check daily.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a> Wet-clean accessible waste safely.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a> Do not put loose poison in a void: rodenticides can leave dead rodents inside a structure, creating odor or sanitation problems.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a></p>
+</div>
+
+<figure class="wp-block-image size-large mgg-card mgg-hero-figure">
+  <img src="https://micegoneguide.com/wp-content/uploads/2026/08/mouse_noises_wall_cutaway.jpg" alt="Cross-section architectural cutaway of wall studs and insulation showing mouse activity runways" class="wp-image-3701" width="1200" height="669" loading="eager" />
+  <figcaption style="font-size:14px;color:#53635a;margin-top:10px;">Illustrative wall-cavity cutaway, not evidence of a nest or route in your home. Inspect accessible physical signs rather than inferring a cavity from sounds.</figcaption>
+</figure>
+
+<p style="font-size:16px;color:#334155;">
+  Hearing faint scratching behind your bedroom or kitchen drywall late at night is unsettling, but cutting random exploratory holes creates costly cosmetic damage without solving the root problem. Use the decision aid below to choose what to inspect next; it cannot pinpoint a cavity or route. To learn what the sounds themselves can and cannot tell you, see mouse noises in walls at night.
+</p>
+
+<!-- TABLE OF CONTENTS -->
+<div class="mgg-toc-box" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin:28px 0;">
+  <p style="font-weight:700;font-size:16px;margin:0 0 12px 0;color:#0f172a;">In This Wall-Removal Guide:</p>
+  <ul style="margin:0;padding-left:22px;font-size:15px;line-height:1.8;color:#334155;">
+    <li><a href="#decision-tree" style="color:#27745f;text-decoration:none;font-weight:500;">The Sound-to-Evidence Decision Tree</a></li>
+    <li><a href="#interactive-triangulator" style="color:#27745f;text-decoration:none;font-weight:500;">Wall-Noise Investigation Checklist</a></li>
+    <li><a href="#what-evidence-tells-you" style="color:#27745f;text-decoration:none;font-weight:500;">What Wall Mice Evidence Actually Tells You</a></li>
+    <li><a href="#step-by-step-plan" style="color:#27745f;text-decoration:none;font-weight:500;">Safe Wall-Mouse Action Plan (Step by Step)</a></li>
+    <li><a href="#what-evidence-tells-you" style="color:#27745f;text-decoration:none;font-weight:500;">Where Wall Activity Connects to Living Spaces</a></li>
+    <li><a href="#video-demonstration" style="color:#27745f;text-decoration:none;font-weight:500;">Video Guide: Accessible Trapping Near Suspected Wall Activity</a></li>
+    <li><a href="#void-bait-hazards" style="color:#27745f;text-decoration:none;font-weight:500;">Void-Bait and Dead-Rodent Risks: What to Know</a></li>
+    <li><a href="#monitoring-log" style="color:#27745f;text-decoration:none;font-weight:500;">Example 14-Day Observation Log (Not a Clearance Test)</a></li>
+    <li><a href="#what-not-to-do" style="color:#27745f;text-decoration:none;font-weight:500;">Critical Mistakes: What NOT to Do</a></li>
+    <li><a href="#faqs" style="color:#27745f;text-decoration:none;font-weight:500;">Frequently Asked Questions</a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1 -->
+<h2 id="decision-tree" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">The Sound-to-Evidence Decision Tree</h2>
+<p>Scratching sounds alone do not identify species or indicate whether demolition is needed. Follow this evidence sequence:</p>
+
+<div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:20px;margin:20px 0;font-family:monospace;font-size:14px;line-height:1.6;color:#1e293b;">
+  <strong>You hear scratching in drywall at night</strong><br>
+  │<br>
+  ├── <strong>Have you found droppings, gnaw marks, or food damage nearby?</strong><br>
+  │   ├── <strong>YES:</strong> Record and safely clean accessible waste; check for new evidence. New rodent signs are consistent with current activity, but do not identify species or prove a wall exit. Choose suitable traps along confirmed travel routes.<a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a><br>
+  │   └── <strong>NO:</strong> No confirmed activity from sound alone. Record timing and inspect accessible areas:<br>
+  │       ├── <strong>Nighttime (Observation only):</strong> Record where and when you hear it; seek physical evidence without assuming mice, rats or a specific cavity. If the evidence could point to rats rather than mice, see <a href="https://micegoneguide.com/rats-vs-mice-whats-the-difference/">rats vs mice: key differences in signs, size, and behavior</a>.<br>
+  │       ├── <strong>Daylight / Mid-afternoon:</strong> Timing alone does not identify the animal or prove an eaves entry; seek qualified identification if physical evidence is unclear.<br>
+  │       └── <strong>Rhythmic clicking when heat runs:</strong> Record whether the noise tracks heating operation; ask a qualified building professional to assess a possible mechanical source.
+</div>
+
+
+<!-- INTERACTIVE WIDGET -->
+<section id="interactive-triangulator" class="mgg-interactive-widget" data-mgg-release="2026-10-02" style="border:2px solid #166534;border-radius:14px;padding:22px;margin:28px 0;background:#f5faf6;color:#173328;overflow-wrap:anywhere"><h3>Wall-noise investigation checklist</h3><p>A questionnaire cannot identify a species or pinpoint a wall cavity. Start with accessible observations and protect building systems.</p><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Physical signs or only noises?</summary><p>Record the location, date and type of evidence. Sounds or odors alone cannot identify an animal or its location. Do not touch or crush suspected droppings. New deposits after documented safe cleanup can indicate continuing activity.<a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Reachable evidence without a building hazard</summary><p>Secure stored food, inspect accessible edges and openings, and choose mouse-sized snap traps for confirmed mouse activity. Place and secure traps according to their instructions, away from children and pets, and check them daily. <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a>.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a></p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Droppings or contaminated surfaces</summary><p>Do not dry-sweep or vacuum untreated droppings, urine or nesting material. Follow <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html">CDC cleanup guidance</a> for ventilation, rubber or plastic gloves, wet disinfection and the disinfectant label contact time.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a></p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Damaged wiring, ducts or inaccessible contamination</summary><p>Do not disturb wiring, open a wall, or enter contaminated ventilation systems to confirm a suspicion. Obtain qualified pest-control/building help for unsafe, heavy or inaccessible contamination. Continue keeping a dated observation record rather than predicting an end date.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p></details><p>No physical signs recorded does not confirm current rodent activity. If evidence is uncertain, inspect accessible areas and seek qualified identification before choosing animal-specific control. <strong>Limits:</strong> This checklist cannot identify a species, count mice, assess disease risk, assign an infestation score, or guarantee a clearance date.</p></section>
+<!-- IN-CONTENT IMAGE 1 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/proper-snap-trap-placement-against-wall.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/proper-snap-trap-placement-against-wall.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/proper-snap-trap-placement-against-wall.webp" height="810" width="1440" class=" sp-no-webp" alt="Snap trap set perpendicular against a drywall baseboard near a known wall travel corridor" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Illustrative snap-trap placement: for confirmed mouse activity, the baited end faces the wall in a T. Follow the instructions, protect children and pets, and check daily.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a></figcaption>
+</figure>
+
+<!-- SECTION 1b: merged from /mouse-noises-in-walls-at-night/ 2026-11-08 -->
+<h2 id="night-noises" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Mouse Noises in Walls at Night: What You Are Hearing</h2>
+<p>Scratching or scurrying in a wall at night can be a clue to mouse activity, but sound alone does not prove a mouse, tell you how many there are, or mean you should open the wall. Mice are often active when the house is quiet, so small movements are easier to hear at night. The same sounds can also come from plumbing, ductwork, building expansion or other animals.</p>
+<ul>
+<li><strong>More likely mice:</strong> small, repeating night-time noises in the same spot, together with mouse-sized droppings, food damage, fine nesting material or a gap nearby.</li>
+<li><strong>Possibly something else:</strong> loud thumping, daytime movement or roofline activity may point to a larger animal or a building issue. Check the <a href="https://micegoneguide.com/signs-of-mice-infestation/">signs of mice</a> before you act.</li>
+<li><strong>Record the pattern:</strong> room, wall section, time, duration and whether it repeats. A repeating sound paired with nearby evidence tells you more than one unexplained scratch.</li>
+<li><strong>Stay safe:</strong> do not put your face to vents or holes to listen, and do not push cameras or objects into electrical or mechanical openings.</li>
+</ul>
+
+<!-- SECTION 2 -->
+<h2 id="what-evidence-tells-you" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">What Wall Mice Evidence Actually Tells You</h2>
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;">
+    <thead>
+      <tr style="background:#27745f;color:#ffffff;">
+        <th style="padding:12px 14px;border:1px solid #27745f;">Evidence Found</th>
+        <th style="padding:12px 14px;border:1px solid #27745f;">What To Investigate Next</th>
+        <th style="padding:12px 14px;border:1px solid #27745f;">What It Does NOT Prove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Droppings along adjacent baseboard</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Document suspected waste and check for new deposits after safe cleanup; this may support current rodent activity.<a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Does not identify species, population size, a wall exit or an exterior entry hole.</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Scratching behind kitchen wall</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Inspect accessible cabinet and baseboard areas for corroborating evidence; a sound cannot pinpoint a travel corridor.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Does NOT mean you need to cut open the drywall.</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Persistent unpleasant odor near wall</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Ask for qualified assessment of the odor source; smell alone cannot identify a dead mouse or its location.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Does not establish a carcass, its species, a cavity location, disease risk or whether activity continues.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 3 -->
+<h2 id="step-by-step-plan" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Safe Wall-Mouse Action Plan (Step by Step)</h2>
+<ol style="padding-left:24px;color:#334155;line-height:1.85;">
+  <li><strong>Map all adjacent rooms:</strong> Inspect lower cabinets, pantry shelving, and appliance voids directly opposite the noisy wall section.</li>
+  <li><strong>Cut off food rewards:</strong> Store dry food in thick plastic, metal or glass containers with tight lids.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a> Reducing food access supports control; it does not guarantee trapping success.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a></li>
+  <li><strong>Deploy mechanical snap traps along baseboards:</strong> For confirmed mouse activity, follow the trap instructions and place traps perpendicular to evidence-supported wall routes, baited end toward the wall. Keep traps away from children and pets and check daily.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a> Review traps in our <a href="/best-mouse-traps-for-homes/" style="color:#27745f;font-weight:600;">best mouse traps guide</a>.</li>
+  <li><strong>Wet-clean visible droppings safely:</strong> Follow CDC ventilation and rubber/plastic glove precautions. Wet waste thoroughly with an appropriate disinfectant and let it soak for 5 minutes or the label time before wiping; do not dry-sweep or vacuum untreated waste.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a> See <a href="/how-to-remove-mice-droppings-safely/" style="color:#27745f;font-weight:600;">safe droppings cleanup</a>.</li>
+  <li><strong>Seal exterior wall penetrations:</strong> Inspect and repair suitable entry gaps as part of control while continuing to trap rodents that may remain indoors; do not use five catch-free days as a clearance test. Choose gnaw-resistant repairs appropriate to the opening, and obtain qualified help around utilities. Do not block ventilation, drainage or weep openings.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a> See <a href="/steel-wool-vs-copper-mesh-for-mice/" style="color:#27745f;font-weight:600;">steel wool vs copper mesh</a>.</li>
+</ol>
+
+<!-- IN-CONTENT IMAGE 2 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/copper-mesh-under-sink-pipe-gap-seal.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/copper-mesh-under-sink-pipe-gap-seal.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/copper-mesh-under-sink-pipe-gap-seal.webp" height="810" width="1440" class=" sp-no-webp" alt="Plumbing pipe wall penetration sealed with copper mesh to block mice entering from wall voids" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Illustrative pipe-gap repair. Match materials to the opening and building requirements; inspect inside and outside while continuing monitoring.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></figcaption>
+</figure>
+
+<!-- YOUTUBE VIDEO SECTION -->
+<h2 id="video-demonstration" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Video Guide: Accessible Trapping Near Suspected Wall Activity</h2>
+<p>This existing video accompanies the guide to <a class="wpil_keyword_link" href="https://micegoneguide.com/how-to-get-rid-of-mice/" target="_blank"  rel="noopener" title="Get Rid of Mice" data-wpil-keyword-link="linked"  data-wpil-monitor-id="295">eliminate mice</a> ; it does not verify a wall nest, promise non-destructive access or establish success in your home. Follow the safety guidance above.</p>
+
+<div class="mgg-video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:28px 0;box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+  <iframe src="https://www.youtube-nocookie.com/embed/4DF6rgG_LLg" title="How to Get Rid of Mice in Walls Without Opening Drywall" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<!-- SECTION 4 -->
+<h2 id="void-bait-hazards" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Void-Bait and Dead-Rodent Risks: What to Know</h2>
+<div style="background:#fff4e7;border-left:5px solid #d8613c;padding:16px 20px;border-radius:8px;margin:20px 0;">
+  <strong style="color:#9a3412;font-size:15px;">Warning Against Rodenticide Baits in Walls:</strong>
+  <p style="margin:4px 0 0 0;color:#7c2d12;font-size:14px;line-height:1.6;">Do not throw loose poison into wall voids. UC IPM notes that rodents poisoned inside buildings may die within the structure and create odor or sanitation problems; accessible trapping allows carcass removal. Any pesticide use must follow its label and protect children, pets and wildlife. Persistent odor or inaccessible contamination needs qualified assessment; neither odor nor a timetable establishes a safe waiting period.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p>
+</div>
+
+<!-- SECTION 5 -->
+<h2 id="monitoring-log" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Example 14-Day Observation Log (Not a Clearance Test)</h2>
+<p>These rows are illustrative, not site results or a clearance test. The example trap count is not a universal quantity. Check traps daily and log new signs after safe cleanup; a lack of catches or quiet walls alone cannot establish that every rodent is gone.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p>
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;">
+    <thead>
+      <tr style="background:#1e293b;color:#ffffff;">
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Day</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Location Checked</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Evidence Observed</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Action Executed</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">New Signs?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Day 1</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Kitchen wall behind stove</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">3 suspected droppings of unknown age; scratching sound</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Wet-cleaned; set 2 perpendicular snap traps</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">First observation; no prior check</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Day 3</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Same location</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">1 mouse captured in snap trap</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">CDC wet disinfection and double-bagged disposal; re-baited trap<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a></td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">No new droppings</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Day 7</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Under-sink cabinet</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">No sound recorded; no catches at daily checks</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Checked entry repairs; continued daily trap checks</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">No new signs recorded</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6 -->
+<h2 id="what-not-to-do" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Critical Mistakes: What NOT to Do</h2>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>❌ Do NOT cut exploratory holes into drywall</strong> based purely on sound.</li>
+  <li><strong>❌ Do NOT throw poison blocks into walls,</strong> because poisoned rodents may die in inaccessible areas.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a></li>
+  <li><strong>❌ Do NOT rely on expanding foam alone for rodent exclusion</strong>; select suitable gnaw-resistant repairs.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></li>
+  <li><strong>❌ Do NOT dry-sweep or vacuum rodent feces</strong> along baseboards.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a></li>
+</ul>
+
+<!-- SECTION 7: FAQS -->
+
+<h2>Can Mice Climb Walls? (Why Vertical Access Matters)</h2>
+<p>Yes. UC IPM describes house mice as excellent climbers able to run up rough vertical surfaces. This means an inspection should not be limited to foundation-level openings, but climbing ability does not establish the entry point in your home.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a></p>
+<p>Practical takeaway: inspect safely visible exterior gaps at low and high levels, including eaves and soffits. Use qualified help for high or unsafe access. Do not indiscriminately seal ventilation or drainage openings.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p>
+
+<section class="mgg-emergency-monetization-cta" style="border:2px solid #7c2d12;background:linear-gradient(135deg,#fff7ed,#fff);padding:22px;border-radius:18px;margin:24px 0;box-shadow:0 10px 26px rgba(124,45,18,.12);">
+  <p style="margin:0 0 8px;font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#9a3412;">Mice problem action box</p>
+  <h2 style="margin:0 0 10px;font-size:clamp(23px,4vw,32px);line-height:1.1;color:#1f2937;">Choose evidence-led DIY control or qualified professional help.</h2>
+  <p style="margin:0 0 14px;color:#374151;font-size:16px;line-height:1.65;">DIY trapping may be an option when rodent evidence is confirmed and trap locations are safely accessible. Recurring signs, uncertain identification, damaged wiring, contaminated ducts or inaccessible waste call for qualified help. Sounds alone do not establish an infestation or its size.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p>
+  <p style="font-size:13px;line-height:1.5;color:#6b7280;margin:0 0 12px;"><em>As an Amazon Associate, Mice Gone Guide earns from qualifying purchases, at no extra cost to you.</em></p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0;">
+    <a href="https://www.amazon.com/s?k=enclosed+mouse+traps+for+home" style="display:block;padding:14px;border-radius:14px;background:#111827;color:#fff;text-decoration:none;font-weight:800;text-align:center;">Shop enclosed traps</a>
+    <a href="https://www.amazon.com/s?k=copper+mesh+rodent+exclusion+sealant" style="display:block;padding:14px;border-radius:14px;background:#111827;color:#fff;text-decoration:none;font-weight:800;text-align:center;">Shop sealing materials</a>
+    <a href="https://www.amazon.com/dp/B0BR7SGFCJ?tag=papalex-20" style="display:block;padding:14px;border-radius:14px;background:#111827;color:#fff;text-decoration:none;font-weight:800;text-align:center;">Shop nitrile cleanup gloves</a>
+    <a href="https://micegoneguide.com/contact-us/" style="display:block;padding:14px;border-radius:14px;background:#f97316;color:#111827;text-decoration:none;font-weight:900;text-align:center;">Ask about professional-help next steps</a>
+  </div>
+  <p style="font-size:13px;line-height:1.5;color:#6b7280;margin:10px 0 0;"><strong>Disclosure:</strong> Some product links may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you. For heavy contamination or unsafe access, contact a qualified professional. If you feel ill after possible rodent exposure, tell a healthcare provider about that exposure.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a></p>
+</section>
+
+<h2 id="faqs" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Frequently Asked Questions</h2>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Can mice live in walls permanently?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Mice may use sheltered spaces for nesting, but sounds alone do not establish a wall nest. House mice can obtain moisture from food and do not necessarily leave daily to drink. Inspect accessible areas for evidence and use suitable traps on confirmed routes rather than assuming a particular exit.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a></p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">How do I get rid of a dead mouse in the wall?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Smell alone cannot establish a carcass or pinpoint a cavity, and there is no universal safe waiting period. Do not cut into a wall based on odor alone. Ask a qualified professional to assess persistent odor, inaccessible contamination and safe access around wiring, plumbing or structural components.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">How do I trap mice inside walls?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Start with accessible locations where mouse evidence supports placement, such as baseboards, cabinets and spaces behind appliances. Use mouse-sized snap traps according to their instructions, baited end toward the wall, away from children and pets; check daily. A sound does not prove a wall exit. Seek qualified help for inaccessible activity.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Do mouse noises in the wall at night mean a large infestation?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">No. Sound alone does not tell you how many mice there are. Combine it with accessible evidence (droppings, gnawing, food damage) and a week or two of monitoring before you judge the scale.</p>
+</div>
+
+<!-- SOURCES -->
+<div style="background:#f8fafc;border-top:2px solid #cbd5e1;padding:20px;border-radius:0 0 10px 10px;margin-top:40px;font-size:13px;color:#64748b;">
+  <p style="font-weight:700;margin:0 0 8px 0;color:#334155;">References &#038; Safety Standards:</p>
+  <ul style="margin:0;padding-left:20px;line-height:1.6;">
+    <li><a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener" style="color:#27745f;">CDC: Trap Up to Reduce Rodents</a></li>
+    <li><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener" style="color:#27745f;">CDC: Seal Up to Prevent Rodents</a></li>
+    <li><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener" style="color:#27745f;">UC IPM: Integrated Pest Management for House Mice</a></li>
+  </ul>
+
+</div>
+<div class="mgg-sources"><p><strong>Sources:</strong></p><ul><li>[1] <a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" target="_blank" rel="noopener">UC IPM: House Mouse</a></li><li>[2] <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener">CDC: How to Trap Up to Remove Rodents</a></li><li>[3] <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" target="_blank" rel="noopener">CDC: How to Clean Up After Rodents</a></li><li>[4] <a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">CDC: How to Seal Up to Prevent Rodents</a></li><li>[5] <a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" target="_blank" rel="noopener">CDC: Controlling Wild Rodent Infestations</a></li></ul></div>
+</article>
+
+<!-- /wp:html -->
+<p>Wondering how they got in? Mice climb textured walls — the <a href="https://micegoneguide.com/can-mice-climb-walls/">can mice climb walls guide</a> shows which surfaces give them purchase and how to block the routes.</p>
+<!-- wp:html -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/#webpage","url":"https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/","name":"How to Get Rid of Mice in Walls Safely | Mice Gone Guide","description":"Confirm suspected wall activity with accessible evidence, trap on active routes, clean safely, seal entry points, and escalate inaccessible problems.","isPartOf":{"@id":"https://micegoneguide.com/#website"},"inLanguage":"en-US"},{"@type":"Article","@id":"https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/#article","mainEntityOfPage":"https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/","headline":"How to Get Rid of Mice in Walls Safely | Mice Gone Guide","description":"Confirm suspected wall activity with accessible evidence, trap on active routes, clean safely, seal entry points, and escalate inaccessible problems.","author":{"@type":"Person","name":"Alexios Papaioannou","jobTitle":"founder and lead editor","url":"https://micegoneguide.com/about-alexios-papaioannou-founder-of-micegoneguide/"},"publisher":{"@type":"Organization","name":"Mice Gone Guide","url":"https://micegoneguide.com/","logo":{"@type":"ImageObject","url":"https://micegoneguide.com/wp-content/uploads/2026/06/micegoneguide-logo.webp"}},"image":"https://micegoneguide.com/wp-content/uploads/2026/08/mouse_noises_wall_cutaway.jpg","datePublished":"2024-09-05","dateModified":"2026-10-02","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/#faq","mainEntity":[{"@type":"Question","name":"Can mice live in walls permanently?","acceptedAnswer":{"@type":"Answer","text":"Mice may use sheltered spaces for nesting, but sounds alone do not establish a wall nest. House mice can obtain moisture from food and do not necessarily leave daily to drink. Inspect accessible areas for evidence and use suitable traps on confirmed routes rather than assuming a particular exit. [1] [2]"}},{"@type":"Question","name":"How do I get rid of a dead mouse in the wall?","acceptedAnswer":{"@type":"Answer","text":"Smell alone cannot establish a carcass or pinpoint a cavity, and there is no universal safe waiting period. Do not cut into a wall based on odor alone. Ask a qualified professional to assess persistent odor, inaccessible contamination and safe access around wiring, plumbing or structural components. [1] [4]"}},{"@type":"Question","name":"How do I trap mice inside walls?","acceptedAnswer":{"@type":"Answer","text":"Start with accessible locations where mouse evidence supports placement, such as baseboards, cabinets and spaces behind appliances. Use mouse-sized snap traps according to their instructions, baited end toward the wall, away from children and pets; check daily. A sound does not prove a wall exit. Seek qualified help for inaccessible activity. [2] [4]"}}]}]}</script>
+<!-- /wp:html -->

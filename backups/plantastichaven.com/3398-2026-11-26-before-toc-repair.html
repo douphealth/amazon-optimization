@@ -1,0 +1,824 @@
+<!-- HERMES-SEO-SURGERY-2026-07-15 -->
+<!-- wp:html -->
+<!-- wp:html -->
+<style>
+/* Standardized CSS for Batch 2026 Blog Redesign */
+.ph-post.ph-theme-emerald {
+  --primary-color: #059669;
+  --primary-hover: #047857;
+  --secondary-bg: #ecfdf5;
+  --glow-color: rgba(5, 150, 105, 0.08);
+}
+.ph-post.ph-theme-teal {
+  --primary-color: #0d9488;
+  --primary-hover: #0f766e;
+  --secondary-bg: #f0fdfa;
+  --glow-color: rgba(13, 148, 136, 0.08);
+}
+.ph-post.ph-theme-gold {
+  --primary-color: #d97706;
+  --primary-hover: #b45309;
+  --secondary-bg: #fffbeb;
+  --glow-color: rgba(217, 119, 6, 0.08);
+}
+.ph-post.ph-theme-cyan {
+  --primary-color: #0891b2;
+  --primary-hover: #0e7490;
+  --secondary-bg: #ecfeff;
+  --glow-color: rgba(8, 145, 178, 0.08);
+}
+
+.ph-post.ph-batch-2026 {
+  background: linear-gradient(135deg, #ffffff 0%, var(--secondary-bg) 100%) !important;
+  color: #1e152a !important;
+  border-left: 8px solid var(--primary-color) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 50px var(--glow-color) !important;
+  padding: clamp(24px, 5vw, 48px) !important;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif !important;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.ph-post.ph-batch-2026 * {
+  box-sizing: border-box;
+}
+
+.ph-post.ph-batch-2026::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-color) 0%, #10b981 100%);
+  z-index: 2;
+}
+
+.ph-post.ph-batch-2026 h1,
+.ph-post.ph-batch-2026 h2,
+.ph-post.ph-batch-2026 h3 {
+  color: var(--primary-color) !important;
+  font-family: 'Outfit', 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  margin-top: 0;
+  text-shadow: none !important;
+}
+
+.ph-post.ph-batch-2026 h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.ph-post.ph-batch-2026 h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem) !important;
+  line-height: 1.2 !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.2rem !important;
+  border-bottom: 2px solid var(--secondary-bg) !important;
+  padding-bottom: 0.5rem !important;
+  position: relative;
+}
+
+.ph-post.ph-batch-2026 h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.ph-post.ph-batch-2026 h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.ph-post.ph-batch-2026 p,
+.ph-post.ph-batch-2026 li {
+  color: #5b4e70 !important;
+  font-size: clamp(1.05rem, 2.5vw, 1.15rem) !important;
+  line-height: 1.8 !important;
+}
+
+.ph-post.ph-batch-2026 a {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+.ph-post.ph-batch-2026 a:hover {
+  color: var(--primary-hover) !important;
+  border-bottom-color: var(--primary-color) !important;
+  background: var(--secondary-bg) !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+}
+
+.ph-post.ph-batch-2026 .ph-kicker {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.ph-post.ph-batch-2026 .ph-byline {
+  font-size: 0.92rem;
+  color: #8f82a6;
+  margin-bottom: 1.8rem;
+  border-bottom: 1px solid var(--secondary-bg);
+  padding-bottom: 0.8rem;
+}
+
+.ph-post.ph-batch-2026 .ph-answer {
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, #ffffff 100%) !important;
+  border: 1px solid var(--border-hover) !important;
+  border-left: 6px solid var(--primary-color) !important;
+  border-radius: 18px !important;
+  padding: 1.5rem 1.8rem !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 10px 35px var(--glow-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-answer strong {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--primary-color) !important;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.ph-post.ph-batch-2026 .ph-answer p {
+  margin: 0 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-toc {
+  background: #ffffff !important;
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 20px !important;
+  padding: 1.6rem 2rem !important;
+  margin: 2.2rem 0 !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-toc strong {
+  font-size: 1.15rem;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.ph-post.ph-batch-2026 .ph-toc ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ph-post.ph-batch-2026 .ph-toc li {
+  margin: 0.6rem 0;
+  transition: transform 0.2s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-toc li:hover {
+  transform: translateX(6px);
+}
+
+.ph-post.ph-batch-2026 .ph-toc a {
+  color: #5b4e70 !important;
+  border-bottom: none !important;
+  font-weight: 500 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-toc a:hover {
+  color: var(--primary-color) !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figure {
+  margin: 0;
+  border: 1px solid var(--secondary-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 30px var(--glow-color);
+  transition: all 0.3s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 640px) {
+  .ph-post.ph-batch-2026 .ph-image-grid img {
+    height: 190px;
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figure:hover img {
+  transform: scale(1.05);
+}
+
+.ph-post.ph-batch-2026 .ph-image-grid figcaption {
+  font-size: 0.9rem;
+  color: #5b4e70;
+  padding: 0.9rem 1.1rem;
+  background: #ffffff;
+  border-top: 1px solid var(--secondary-bg);
+  line-height: 1.55;
+}
+
+.ph-post.ph-batch-2026 .ph-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-card {
+  border: 1px solid var(--secondary-bg) !important;
+  border-radius: 22px !important;
+  background: #ffffff !important;
+  padding: 2rem !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+}
+
+.ph-post.ph-batch-2026 .ph-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--glow-color);
+  border-color: var(--primary-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-card h3 {
+  margin-top: 0 !important;
+  font-size: 1.35rem !important;
+  color: var(--primary-color) !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.ph-post.ph-batch-2026 .ph-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.ph-post.ph-batch-2026 .ph-card li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin: 0.75rem 0;
+}
+
+.ph-post.ph-batch-2026 .ph-card li::before {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.ph-post.ph-batch-2026 .ph-grid .ph-card:first-child li::before {
+  content: '✓';
+  color: var(--primary-color);
+}
+
+.ph-post.ph-batch-2026 .ph-grid .ph-card:last-child li::before {
+  content: '✕';
+  color: #8f82a6;
+}
+
+.ph-post.ph-batch-2026 .ph-callout,
+.ph-post.ph-batch-2026 .ph-warning {
+  border-radius: 18px !important;
+  padding: 1.4rem 1.8rem !important;
+  margin: 2rem 0 !important;
+  font-size: 1.08rem !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+.ph-post.ph-batch-2026 .ph-callout {
+  background: #f0fdf4 !important;
+  border-left: 6px solid #10b981 !important;
+  color: #065f46 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-callout strong {
+  color: #065f46 !important;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.ph-post.ph-batch-2026 .ph-warning {
+  background: #fef2f2 !important;
+  border-left: 6px solid #ef4444 !important;
+  color: #991b1b !important;
+}
+
+.ph-post.ph-batch-2026 .ph-warning strong {
+  color: #991b1b !important;
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card {
+  padding: 1.8rem 1.4rem !important;
+  text-align: center;
+  counter-increment: check-counter;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card::before {
+  content: "0" counter(check-counter);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary-hover);
+  opacity: 0.2;
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  transition: opacity 0.3s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card:hover::before {
+  opacity: 0.8;
+}
+
+.ph-post.ph-batch-2026 .ph-card-grid .ph-card p {
+  margin: 0 !important;
+  font-size: 0.98rem !important;
+  line-height: 1.65 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-table-wrap {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 18px;
+  border: 1px solid var(--secondary-bg);
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 table.ph-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  min-width: 720px;
+}
+
+.ph-post.ph-batch-2026 .ph-table th {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-align: left;
+  padding: 1.1rem 1.3rem !important;
+  font-size: 1rem;
+}
+
+.ph-post.ph-batch-2026 .ph-table td {
+  padding: 1.1rem 1.3rem !important;
+  border-bottom: 1px solid var(--secondary-bg) !important;
+  vertical-align: top;
+  font-size: 0.98rem !important;
+  color: #5b4e70;
+}
+
+.ph-post.ph-batch-2026 .ph-table tr:nth-child(even) {
+  background: var(--secondary-bg);
+}
+
+.ph-post.ph-batch-2026 .ph-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.ph-post.ph-batch-2026 .ph-steps {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step-counter;
+}
+
+.ph-post.ph-batch-2026 .ph-steps li {
+  position: relative;
+  padding: 1.2rem 1.5rem 1.2rem 3.8rem;
+  margin: 0.9rem 0;
+  border: 1px solid var(--secondary-bg);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+  transition: all 0.2s ease;
+}
+
+.ph-post.ph-batch-2026 .ph-steps li:hover {
+  transform: translateX(5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 .ph-steps li::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute;
+  left: 1.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.ph-post.ph-batch-2026 .ph-diagram {
+  border: 1px solid var(--secondary-bg);
+  border-radius: 22px;
+  background: #ffffff;
+  padding: 1.8rem;
+  margin: 2.2rem 0;
+  box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.ph-post.ph-batch-2026 .ph-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ph-post.ph-batch-2026 .ph-diagram figcaption {
+  font-size: 0.9rem;
+  color: #8f82a6;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ph-post.ph-batch-2026 .ph-product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .ph-post.ph-batch-2026 .ph-product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ph-post.ph-batch-2026 .ph-product-card {
+  border: 1px solid var(--secondary-bg) !important;
+  border-radius: 22px !important;
+  background: linear-gradient(180deg, #ffffff 0%, var(--secondary-bg) 100%) !important;
+  padding: 1.6rem !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-decoration: none !important;
+  color: #1e152a !important;
+  border-bottom: 1px solid var(--secondary-bg) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 40px var(--glow-color) !important;
+  border-color: var(--primary-color) !important;
+  background: #ffffff !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card h3 {
+  margin-top: 0 !important;
+  font-size: 1.2rem !important;
+  color: var(--primary-color) !important;
+  margin-bottom: 0.6rem !important;
+  line-height: 1.35 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card p {
+  font-size: 0.98rem !important;
+  color: #5b4e70 !important;
+  line-height: 1.55 !important;
+  margin-bottom: 1.3rem !important;
+  flex-grow: 1 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card .ph-cta {
+  display: block !important;
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  font-size: 0.98rem !important;
+  transition: background 0.2s ease !important;
+}
+
+.ph-post.ph-batch-2026 .ph-product-card:hover .ph-cta {
+  background: var(--primary-hover) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details {
+  border: 1px solid var(--secondary-bg) !important;
+  border-radius: 16px !important;
+  padding: 1.1rem 1.3rem !important;
+  margin: 0.9rem 0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.01) !important;
+  transition: all 0.3s ease !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details[open] {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+  background: var(--secondary-bg) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq summary {
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  color: var(--primary-color) !important;
+  outline: none !important;
+  list-style: none !important;
+  position: relative !important;
+  padding-left: 2rem !important;
+  font-size: 1.1rem !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq summary::before {
+  content: '▶' !important;
+  position: absolute !important;
+  left: 0.2rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) scale(0.85) !important;
+  color: var(--primary-color) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details[open] summary::before {
+  transform: translateY(-50%) rotate(90deg) scale(0.85) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-faq details p {
+  margin: 0.9rem 0 0 0 !important;
+  padding-left: 2rem !important;
+  color: #5b4e70 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-video {
+  position: relative !important;
+  padding-bottom: 56.25% !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+  border: 1px solid var(--secondary-bg) !important;
+  background: #1e152a !important;
+  margin: 2.2rem 0 !important;
+  box-shadow: 0 10px 30px var(--glow-color) !important;
+}
+
+.ph-post.ph-batch-2026 .ph-video iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-affiliate {
+  background: var(--secondary-bg) !important;
+  border: 1px solid var(--border-hover) !important;
+  border-radius: 16px !important;
+  padding: 1rem 1.3rem !important;
+  font-size: 0.96rem !important;
+  margin: 1.5rem 0 !important;
+  color: #5b4e70 !important;
+}
+
+.ph-post.ph-batch-2026 .ph-source-list {
+  font-size: 0.98rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.ph-post.ph-batch-2026 .ph-source-list li {
+  margin: 0.5rem 0 !important;
+}
+
+@media (max-width: 760px) {
+  .ph-post.ph-batch-2026 {
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+    border-left-width: 6px !important;
+  }
+  
+  .ph-post.ph-batch-2026 h1 {
+    font-size: 1.95rem !important;
+  }
+
+  .ph-post.ph-batch-2026 h2 {
+    font-size: 1.45rem !important;
+    margin-top: 2.2rem !important;
+  }
+
+  .ph-post.ph-batch-2026 h3 {
+    font-size: 1.18rem !important;
+  }
+
+  .ph-post.ph-batch-2026 .ph-table,
+  .ph-post.ph-batch-2026 .ph-table thead,
+  .ph-post.ph-batch-2026 .ph-table tbody,
+  .ph-post.ph-batch-2026 .ph-table tr,
+  .ph-post.ph-batch-2026 .ph-table th,
+  .ph-post.ph-batch-2026 .ph-table td {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table thead {
+    display: none !important;
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table tr {
+    border: 1px solid var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    margin: 0 0 16px !important;
+    overflow: hidden !important;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table td {
+    border: 0 !important;
+    border-bottom: 1px solid var(--secondary-bg) !important;
+    padding: 12px 14px !important;
+  }
+  
+  .ph-post.ph-batch-2026 .ph-table td:last-child {
+    border-bottom: 0 !important;
+  }
+}
+</style>
+<article class="ph-post ph-batch-2026 ph-theme-teal" id="article">
+<aside class="hermes-answer-first" aria-label="Quick answer"><p class="ph-updated">By Alexios Papaioannou · Plantastic Haven · Last reviewed 2026-06-26</p></aside>
+<div class="ph-answer"><strong>Quick answer</strong><p>A philodendron dripping water is usually showing guttation, a normal process where droplets form at leaf edges when root pressure pushes moisture out. Occasional morning droplets are not a problem. Frequent dripping, yellow leaves, wet soil, sticky residue, or sour smell suggests overwatering, dense soil, low airflow, pests, or a pot that drains poorly.</p></div>
+
+<div class="ace-quick-picks" style="border:1px solid #d6e4d6;border-left:4px solid #2f7d32;background:#f6faf6;padding:14px 16px;margin:18px 0;border-radius:6px">
+<p style="margin:0 0 8px;font-weight:700">Guttation or overwatering? Check the soil, not the leaf</p>
+<ul style="margin:0 0 10px 18px;padding:0">
+<li><a href="https://www.amazon.com/dp/B014MJ8J2U?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank">XLUX soil moisture meter (battery-free)</a>: if the root zone still reads wet days after watering, the drips are a warning sign, not normal guttation.</li>
+<li><a href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank">Molly's chunky soil-free aroid potting mix</a>: an airy mix to repot into if the current soil stays soggy.</li>
+</ul>
+<p style="margin:0;font-size:13px;color:#555">As an Amazon Associate, Plantastic Haven earns from qualifying purchases.</p>
+</div>
+
+<nav class="ph-toc"><strong>On this page</strong><ol><li><a href="#who">Who this is for</a></li><li><a href="#definition">Definition</a></li><li><a href="#decision">Philodendron dripping water diagnosis table</a></li><li><a href="#framework">The droplet framework: clear, sticky, frequent, or stressful</a></li><li><a href="#care-chart">Care chart</a></li><li><a href="#steps">How to fix a philodendron that keeps dripping water</a></li><li><a href="#examples">Examples by situation</a></li><li><a href="#tools">Helpful tools</a></li><li><a href="#video">YouTube guide</a></li><li><a href="#mistakes">Common mistakes and troubleshooting</a></li><li><a href="#links">Related PlantasticHaven guides</a></li><li><a href="#faq">FAQ</a></li><li><a href="#sources"><h2>Frequently Asked Questions</h2>
+
+<h3>Why do philodendron leaves drip water?</h3>
+<p>Philodendron leaves drip water because of guttation: root pressure pushes excess moisture out through tiny pores at the leaf edges and tips, usually overnight or in the early morning after watering or in humid, low-airflow conditions. It is a normal process, not a disease. Occasional clear droplets need no action; frequent dripping alongside wet soil or yellowing leaves points to overwatering or a dense potting mix.</p>
+
+<h3>What does it mean when a philodendron has water droplets on the leaves?</h3>
+<p>Clear, water-like droplets on philodendron leaves are almost always guttation — the plant releasing excess water through leaf-edge pores when roots absorb more than the leaves transpire. Wipe a drop and check the timing: clear morning droplets after watering are harmless. Sticky residue instead of watery drops is different — that is pest honeydew, and it calls for an inspection for scale, aphids, or mealybugs.</p>
+
+<h3>Is guttation the same as dew or condensation?</h3>
+<p>No. Dew condenses from humid air onto leaf surfaces from the outside, while guttation is water actively pushed out from inside the plant through specialized pores (hydathodes) at the leaf margins. A quick test: dew appears evenly across the leaf and evaporates as the room warms; guttation collects at leaf tips and edges, often in larger drops, and tends to recur in the same spots on the same plant.</p>
+
+Sources and editorial note</a></li></ol></nav>
+<div class="ph-image-grid"><figure><img alt="Healthy philodendron foliage near a bright window from PlantasticHaven media library" decoding="async" loading="lazy" src="https://plantastichaven.com/wp-content/uploads/2025/10/ai-img-3421-1.jpg?lm=68DE95FB"/><figcaption>Bright indirect light helps soil dry predictably after watering.</figcaption></figure>
+<figure><img alt="Philodendron and tropical foliage from PlantasticHaven media library" decoding="async" loading="lazy" src="https://plantastichaven.com/wp-content/uploads/2025/09/ai-img-3660.jpg?lm=68D02272"/><figcaption>Clear droplets are usually guttation, but sticky residue needs pest inspection.</figcaption></figure>
+<figure><img alt="Repotting plant with tools from PlantasticHaven media library" decoding="async" loading="lazy" src="https://plantastichaven.com/wp-content/uploads/2025/07/Repotting_Spider_Plant_with_Tool-1.webp"/><figcaption>A chunky mix helps prevent persistent wet-soil dripping problems.</figcaption></figure></div>
+<section id="who"><h2 id="who-this-is-for-not-for">Who this is for / not for</h2><div class="ph-grid"><div class="ph-card"><h3>Who this is for</h3><ul><li>You see clear droplets on philodendron leaves, stems, or the floor in the morning.</li>
+<li>You need to know whether the drops are normal guttation, pest honeydew, or overwatering.</li>
+<li>You want a step-by-step fix that does not overreact and damage the plant.</li></ul></div><div class="ph-card"><h3>Who this is not for</h3><ul><li>You are diagnosing outdoor crop disease, sap bleeding from a woody plant, or water leaking from a ceiling or pot tray.</li>
+<li>You want to treat pests without first confirming whether the droplets are sticky or clear.</li></ul></div></div></section>
+<section id="definition"><h2 id="clear-definition">Clear definition</h2><p>Guttation is the release of liquid droplets from leaf edges or tips when roots take up more water than the plant is losing through transpiration. In philodendrons, it often appears overnight or early in the morning after watering, high humidity, low airflow, or slow dry-down in the pot.</p>
+<figure aria-label="Simple care decision diagram for Why Is My Philodendron Dripping Water?" class="ph-diagram" role="img">
+<svg viewbox="0 0 960 260" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f0fdf4" height="210" rx="24" stroke="#b8dec5" width="920" x="20" y="25"></rect>
+<circle cx="120" cy="130" fill="#ffffff" r="54" stroke="#10b981" stroke-width="4"></circle>
+<path d="M96 132c28-46 56-46 84 0M86 154c45-18 86-18 128 0M113 84c12 20 12 42 0 66M128 84c-10 20-10 42 0 66" fill="none" stroke="#10b981" stroke-linecap="round" stroke-width="6"></path>
+<text fill="#065f46" font-family="Arial, sans-serif" font-size="28" font-weight="700" x="210" y="83">Why Is My Philodendron Dripping Water?</text>
+<text fill="#374151" font-family="Arial, sans-serif" font-size="21" x="210" y="125">1. Identify the plant or condition accurately.</text>
+<text fill="#374151" font-family="Arial, sans-serif" font-size="21" x="210" y="162">2. Match light, water, soil, and safety to that answer.</text>
+<text fill="#374151" font-family="Arial, sans-serif" font-size="21" x="210" y="199">3. Adjust one variable at a time and monitor new growth.</text>
+</svg>
+<figcaption>Original PlantasticHaven decision diagram for fast reader and AI extraction.</figcaption>
+</figure></section>
+<section id="decision"><h2 id="philodendron-dripping-water-diagnosis-table">Philodendron dripping water diagnosis table</h2><p>Touch and timing matter. Clear water-like droplets in the morning are different from sticky pest residue.</p><div class="ph-table-wrap"><table class="ph-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Likely cause</th><th scope="col">What to do</th></tr></thead><tbody><tr><td>Clear droplets on leaf tips in the morning</td><td>Normal guttation</td><td>Wipe leaves and review watering; no emergency.</td></tr><tr><td>Drops after every watering plus wet soil</td><td>Too much water or slow soil</td><td>Let dry longer and improve drainage.</td></tr><tr><td>Sticky droplets, shiny film, or ants</td><td>Pest honeydew</td><td>Inspect for scale, aphids, mealybugs, or other pests.</td></tr><tr><td>Yellow leaves and sour soil smell</td><td>Root stress or rot risk</td><td>Check roots and consider repotting into chunkier mix.</td></tr><tr><td>Water pooling below pot</td><td>Drainage or saucer problem</td><td>Empty saucer and confirm drainage holes are open.</td></tr></tbody></table></div></section>
+<section id="framework"><h2 id="the-droplet-framework-clear-sticky-frequent-or-stressful">The droplet framework: clear, sticky, frequent, or stressful</h2><p>Do not treat every droplet as a disease. The right response depends on whether the plant otherwise looks healthy.</p><div class="ph-card-grid"><div class="ph-card"><p>Clear: watery drops often mean guttation, especially overnight.</p></div><div class="ph-card"><p>Sticky: sticky residue points toward pests and needs inspection.</p></div><div class="ph-card"><p>Frequent: daily dripping means watering, airflow, or soil may need adjustment.</p></div><div class="ph-card"><p>Stressful: yellowing, odor, mushy stems, or black roots turn the issue into a root-health problem.</p></div></div></section>
+<section id="care-chart"><h2 id="care-chart-hermes-dedup-1">Care chart</h2><div class="ph-table-wrap"><table class="ph-table"><thead><tr><th scope="col">Condition</th><th scope="col">Normal response</th><th scope="col">Change care when</th><th scope="col">Best fix</th></tr></thead><tbody><tr><td>Occasional clear droplets</td><td>Wipe and monitor</td><td>No yellowing or wet soil</td><td>Keep routine but avoid watering too soon.</td></tr><tr><td>Frequent guttation</td><td>Review water timing</td><td>Soil stays wet more than expected</td><td>Increase light, airflow, or chunkiness.</td></tr><tr><td>Sticky residue</td><td>Inspect pests</td><td>Leaves feel tacky or ants appear</td><td>Isolate and treat confirmed pest.</td></tr><tr><td>Wet dense mix</td><td>Check drainage</td><td>Pot feels heavy for days</td><td>Repot into airy philodendron mix.</td></tr><tr><td>Cold room plus wet pot</td><td>High root-stress risk</td><td>Room below 60°F or cold sill</td><td>Warm plant and reduce watering.</td></tr></tbody></table></div></section>
+<section id="steps"><h2 id="how-to-fix-a-philodendron-that-keeps-dripping-water">How to fix a philodendron that keeps dripping water</h2><ol class="ph-steps"><li>Wipe the droplets with a clean damp cloth and note whether they feel watery or sticky.</li>
+<li>Check timing. Morning droplets after a recent watering usually point to guttation.</li>
+<li>Feel the soil two inches down. If it is still wet, delay watering and increase airflow.</li>
+<li>Empty the saucer or cachepot so roots are not sitting in water.</li>
+<li>Move the plant into brighter indirect light if the room is dim and soil dries slowly.</li>
+<li>Inspect leaf undersides, petioles, and stems for pests if residue is sticky.</li>
+<li>Check the potting mix. If it is dense, sour, or compacted, repot into a chunky philodendron soil mix.</li>
+<li>Pause fertilizer until the watering rhythm is stable and new growth looks normal.</li></ol><div class="ph-callout"><strong>Practical rule:</strong> Change one variable at a time. Light, water, soil, and temperature interact, so changing everything at once makes the real cause harder to identify.</div></section>
+<section id="examples"><h2 id="examples-by-situation">Examples by situation</h2><ul><li>A heartleaf philodendron dripping from leaf tips the morning after watering is usually fine if soil begins drying within a few days.</li><li>A Philodendron Mayoi in a dense plastic pot that drips daily and yellows likely needs a chunkier mix.</li><li>Sticky drops on leaves below small brown bumps suggest scale insects, not normal guttation.</li><li>A plant near a cold window can drip and yellow because cool wet roots are absorbing slowly.</li></ul></section>
+<section id="tools"><h2 id="helpful-tools-and-supplies">Helpful tools and supplies</h2>
+<div class="ph-affiliate"><strong>Affiliate disclosure:</strong> This article may contain Amazon affiliate links using tag papalex-ph-20. Product boxes link to relevant Amazon search results so pricing, availability, reviews, and images remain current on Amazon.</div>
+<div class="ph-product-grid"><a class="ph-product-card" href="https://www.amazon.com/dp/B014MJ8J2U?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank"><a href="https://www.amazon.com/dp/B014MJ8J2U?tag=papalex-ph-20" target="_blank" rel="sponsored nofollow noopener" style="display:block;text-decoration:none;"><img src="https://m.media-amazon.com/images/I/61NLKMD+2iL._AC_SL1500_.jpg" alt="XLUX Plant Soil Moisture Meter, for Indoor and Outdoor use, Battery-Free" width="1371" height="1421" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#f6f2fb;border-radius:12px;margin:0 0 12px;"/></a><h3>Moisture meter for philodendrons</h3>
+<p>Helps confirm whether the pot is still wet before watering.</p>
+<span class="ph-cta">View options on Amazon</span>
+</a><a class="ph-product-card" href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank"><a href="https://www.amazon.com/dp/B0CZPPGMWN?tag=papalex-ph-20" target="_blank" rel="sponsored nofollow noopener" style="display:block;text-decoration:none;"><img src="https://m.media-amazon.com/images/I/71s8-kW6OKL._AC_SL1500_.jpg" alt="Molly&#x27;s Orchid Potting Mix Chunky Soil-Free for Indoor Orchids 3 Dry Quarts" width="1500" height="1413" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#f6f2fb;border-radius:12px;margin:0 0 12px;"/></a><h3>Aroid soil ingredients</h3>
+<p>Useful when dense soil causes repeated dripping and yellowing.</p>
+<span class="ph-cta">View options on Amazon</span>
+</a><a class="ph-product-card" href="https://www.amazon.com/dp/B07XLM4FWL?tag=papalex-ph-20" rel="sponsored nofollow noopener" target="_blank"><a href="https://www.amazon.com/dp/B07XLM4FWL?tag=papalex-ph-20" target="_blank" rel="sponsored nofollow noopener" style="display:block;text-decoration:none;"><img src="https://m.media-amazon.com/images/I/81Qx1trPmVL._AC_SL1500_.jpg" alt="Yellow Sticky Fruit Fly Trap 36 Pack, Dual-Sided Gnat Traps for Plants" width="1500" height="1500" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#f6f2fb;border-radius:12px;margin:0 0 12px;"/></a><h3>Sticky pest monitoring cards</h3>
+<p>Helps monitor gnats and pest pressure during diagnosis.</p>
+<span class="ph-cta">View options on Amazon</span>
+</a></div></section>
+<section id="video">
+<h2>Video Care &amp; Identification Guide</h2>
+<p>To help you visualize key care rules, propagation steps, and identification tips, watch this detailed expert walkthrough video.</p>
+<div class="ph-video">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/rtqpVnk77ic" title="Why Is My Philodendron Dripping Water? Guttation Guide"></iframe>
+</div>
+</section>
+<section id="mistakes"><h2>Common mistakes and troubleshooting</h2><div class="ph-table-wrap"><table class="ph-table"><thead><tr><th scope="col">Mistake</th><th scope="col">Why it hurts</th><th scope="col">Better fix</th></tr></thead><tbody><tr><td>Repotting immediately after one droplet</td><td>Unnecessary root disturbance can create a bigger problem.</td><td>Monitor first if the plant is healthy.</td></tr><tr><td>Ignoring sticky residue</td><td>Pest honeydew can spread to nearby plants.</td><td>Inspect and isolate when droplets are sticky.</td></tr><tr><td>Watering because leaves have droplets</td><td>The plant may already have too much water pressure.</td><td>Check soil before adding more water.</td></tr><tr><td>Leaving water in a decorative cachepot</td><td>Roots suffocate and rot risk rises.</td><td>Empty cachepots after watering.</td></tr></tbody></table></div></section>
+<section id="links"><h2>Related PlantasticHaven guides</h2>
+<li><a href="https://plantastichaven.com/how-to-stake-philodendron/">How to Stake a Philodendron: Moss Pole in 6 Steps</a></li><p>Use these sibling guides to move between identification, care, soil, temperature, and room-light decisions without guessing.</p><ul><li><a href="https://plantastichaven.com/philodendron-soil-mix/">best chunky philodendron soil mix</a></li>
+<li><a href="https://plantastichaven.com/how-cold-can-philodendron-tolerate/">how cold philodendrons can tolerate</a></li>
+<li><a href="https://plantastichaven.com/philodendron-mayoi/">Philodendron Mayoi care guide</a></li>
+<li><a href="https://plantastichaven.com/houseplants-for-low-light/">best houseplants for low light rooms</a></li>
+<li><a href="https://plantastichaven.com/yellow-house-plants/">yellow house plants for indoor color</a></li></ul></section>
+<section id="faq"><h2>FAQ</h2><div class="ph-faq"><details><summary>Why does my philodendron have water droplets on leaves?</summary><p>Water droplets on philodendron leaves are usually guttation: root pressure pushes excess moisture out through pores at the leaf edges, mostly overnight or early morning. Clear droplets that appear after watering and dry by midday are normal. Act only if droplets are sticky (possible pest honeydew), the soil stays soggy for days, or leaves yellow — those point to overwatering or pests, not guttation.</p></details></div><div class="ph-faq"><details><summary>Is philodendron guttation bad?</summary><p>Occasional guttation is normal and not bad by itself. It becomes a warning sign when it happens constantly with wet soil, yellowing, or root stress.</p></details>
+<details><summary>Why is my philodendron crying?</summary><p>People often call guttation crying. The plant is releasing water droplets through leaf edges because root pressure is high.</p></details>
+<details><summary>Are clear droplets on philodendron leaves poisonous?</summary><p>Treat all houseplant droplets as something to wipe away, especially around children and pets. Philodendrons contain calcium oxalate and should not be chewed.</p></details>
+<details><summary>How do I tell guttation from pest honeydew?</summary><p>Guttation is usually watery and appears at leaf tips or edges. Honeydew is sticky, often shiny, and may come with pests, ants, or black sooty mold.</p></details>
+<details><summary>Should I water less if my philodendron drips water?</summary><p>If dripping is frequent or soil stays wet, yes, water less often and improve light, airflow, drainage, or soil structure.</p></details></div></section>
+<section id="sources"><h2>Sources and editorial note</h2><p>This guide was reviewed for practical indoor houseplant care accuracy on 2026-06-26. Recommendations prioritize observable plant symptoms, drainage, light, temperature, pet safety, and university or veterinary reference sources over unsupported social-media claims.</p><ul class="ph-source-list"><li><a href="https://yardandgarden.extension.iastate.edu/how-to/growing-indoor-philodendrons" rel="noopener noreferrer" target="_blank">Iowa State University Extension, Growing Indoor Philodendrons</a></li>
+<li><a href="https://extension.sdstate.edu/philodendron" rel="noopener noreferrer" target="_blank">South Dakota State University Extension, Philodendron</a></li>
+<li><a href="https://homegarden.cahnr.uconn.edu/factsheets/potting-media-and-plant-propagation/" rel="noopener noreferrer" target="_blank">UConn Home &amp; Garden Education Center, Potting Media and Plant Propagation</a></li>
+<li><a href="https://gardeningsolutions.ifas.ufl.edu/care/planting/houseplant-care/" rel="noopener noreferrer" target="_blank">University of Florida IFAS, Houseplant Care</a></li></ul></section>
+</article>
+<!-- /wp:html -->
+<!-- /wp:html -->
+
+
+
+<div class="ph-geo-link" style="margin:26px 0;padding:16px 18px;border:1px solid #dde9e1;border-left:4px solid #2f6b45;border-radius:12px;background:#f7fcf9;font-size:16px;line-height:1.65;color:#1f2a24;"><p style="margin:0;"><strong>Light is the variable behind most philodendron problems.</strong> If new leaves are small, stems are stretching, or variegation is fading, start with <a href="https://plantastichaven.com/philodendron-light-requirements/">philodendron light requirements</a> &mdash; how far from each window direction to place your plant, plus the grow-light PPFD, distance and run-time targets that actually work indoors.</p></div>

@@ -62,8 +62,8 @@ hand-editing the theme file, or the two will drift apart.
 
 **Fixed on 2026-11-26.** Post IDs 92024 (best treadmills for home), 91836 (best running shoes for
 heavy runners) and 90633 (best compression boots) were removed from the list in the theme editor,
-with a dated line added to the block's change log. The list now holds 845 IDs. The previous file is
-saved as a backup. Add the three IDs to the release records in the project folder so the prune
+with a dated line added to the block's change log. The list now holds 845 IDs. The change, as a
+diff to reverse, is in `backups/2026-11-26/gearuptofit-theme-functions.diff`. Add the three IDs to the release records in the project folder so the prune
 scripts do not put them back.
 
 Result, checked on the live site: all three pages serve `index, follow` with a canonical tag to

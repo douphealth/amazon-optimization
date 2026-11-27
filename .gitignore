@@ -15,7 +15,6 @@ bing.key
 indexnow.key*
 *.pem
 reports/*/audit.json
-backups/
 # dashboard build output
 /dist/
 /build/

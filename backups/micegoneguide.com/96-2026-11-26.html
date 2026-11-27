@@ -1,0 +1,260 @@
+<!-- wp:html -->
+<style>
+body.single-post main#wp--skip-link--target > .wp-block-group:first-child,
+body.page main#wp--skip-link--target > .wp-block-group:first-child{display:none!important}
+.mgg-article,body.single-post .entry-content .mgg-article,body.page .entry-content .mgg-article{max-width:980px;margin:0 auto;font-size:18px;line-height:1.72;color:#17211b}
+.mgg-article h1,body.single-post .entry-content .mgg-article h1,body.single-post .entry-content .mgg-article > h1,body.page .entry-content .mgg-article h1{font-size:42px;line-height:1.12;letter-spacing:-.015em;margin:18px 0;font-weight:700}
+.mgg-article h2,body.single-post .entry-content .mgg-article h2,body.page .entry-content .mgg-article h2{font-size:30px;line-height:1.22;margin:40px 0 16px}
+.mgg-article h3,body.single-post .entry-content .mgg-article h3,body.page .entry-content .mgg-article h3{font-size:23px;margin-top:26px}
+body.single-post .entry-content .mgg-article p,body.single-post .entry-content .mgg-article ul,body.single-post .entry-content .mgg-article ol,body.page .entry-content .mgg-article p{max-width:100%}
+.mgg-kicker{display:inline-block;font-weight:700;color:#2c6b2f;text-transform:uppercase;letter-spacing:.06em;background:#e7f4ea;border:1px solid #cae6d0;border-radius:999px;padding:.42rem .78rem;font-size:.82rem;margin-bottom:1.1rem}
+.mgg-answer,body.single-post .entry-content .mgg-article .mgg-answer,body.page .entry-content .mgg-article .mgg-answer{background:#edf8ee;border-left:6px solid #2e7d32;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-warning{background:#fff5e6;border-left:6px solid #cf7a00;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-grid,body.single-post .entry-content .mgg-article .mgg-grid,body.page .entry-content .mgg-article .mgg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:24px 0}
+.mgg-card,body.single-post .entry-content .mgg-article .mgg-card,body.page .entry-content .mgg-article .mgg-card{border:1px solid #d8e2d8;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.mgg-card img,body.single-post .entry-content .mgg-article .mgg-card img,body.page .entry-content .mgg-article .mgg-card img{width:100%!important;height:190px!important;max-height:190px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-card.mgg-hero-figure,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure{display:block;width:100%;margin:24px 0;padding:12px;background:#fff;border:1px solid #d8e2d8;border-radius:16px}
+.mgg-card.mgg-hero-figure picture,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure picture,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure picture{display:block;width:100%}
+.mgg-card.mgg-hero-figure img,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure img,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure img{width:100%!important;max-width:100%!important;height:auto!important;max-height:560px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-product-card img,body.single-post .entry-content .mgg-article .mgg-product-card img{height:170px!important;max-height:170px!important;object-fit:contain!important;background:#fff}
+.mgg-button{display:inline-block;background:#2e7d32;color:#fff!important;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:10px}
+.mgg-table,body.single-post .entry-content .mgg-article table,body.page .entry-content .mgg-article table{width:100%!important;border-collapse:separate!important;border-spacing:0;margin:22px 0;border:1px solid #d9e4d9!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 4px 14px rgba(0,0,0,.04)!important}
+.mgg-table th,body.single-post .entry-content .mgg-article table th,body.page .entry-content .mgg-article table th{background:linear-gradient(135deg,#173f2b,#235f40)!important;color:#fff!important;font-weight:800!important;padding:12px 14px!important;border:none!important}
+.mgg-table td,body.single-post .entry-content .mgg-article table td,body.page .entry-content .mgg-article table td{padding:12px 14px!important;border-top:1px solid #e5ede5!important;vertical-align:top!important}
+.mgg-table tr:nth-child(even) td,body.single-post .entry-content .mgg-article table tr:nth-child(even) td,body.page .entry-content .mgg-article table tr:nth-child(even) td{background:#fbfbf8!important}
+.mgg-table tr:hover td,body.single-post .entry-content .mgg-article table tr:hover td,body.page .entry-content .mgg-article table tr:hover td{background:#f0f7f2!important}
+.mgg-toc,.mgg-toc-box,body.single-post .entry-content .mgg-article .mgg-toc,body.single-post .entry-content .mgg-article .mgg-toc-box,body.page .entry-content .mgg-article .mgg-toc,body.page .entry-content .mgg-article .mgg-toc-box{background:#f7faf7!important;border:1px solid #dfe8df!important;border-radius:16px!important;padding:20px!important;margin:26px 0!important}
+.mgg-byline,body.single-post .entry-content .mgg-article .mgg-byline,body.page .entry-content .mgg-article .mgg-byline{color:#53635a;font-size:15px;margin-bottom:18px}
+.mgg-sources{font-size:15px;background:#f8f8f6;padding:18px;border-radius:14px}
+.mgg-note{font-size:15px;color:#53635a}
+.mgg-checklist li{margin-bottom:8px}
+</style>
+
+<article data-mgg-release="2026-10-02" class="mgg-article mgg-post">
+
+<p class="mgg-kicker">Early Rodent Detection</p>
+<h1 class="mgg-title">Signs of Mice Infestation: Physical Evidence &amp; Next-Step Checklist</h1>
+<p class="mgg-byline mgg-dek">Learn how to document suspected rodent signs: droppings, gnawing, damaged packaging, nesting debris, tracks and noises. Appearance or sound alone cannot confirm species, contamination risk or when evidence was left.</p>
+
+<div class="mgg-answer geo-direct-answer">
+  <p style="margin:0 0 8px 0;font-weight:800;color:#1e4620;text-transform:uppercase;font-size:13px;letter-spacing:.05em;">Direct Answer: The Primary Warning Signs of Mice</p>
+  <p style="margin:0 0 10px 0;"><strong>Suspected droppings, gnawed packaging, nesting material, rub marks and tracks justify inspection, but no single sign conclusively identifies mice.</strong> Document where signs occur, without touching or crushing waste. Check for new physical evidence after safe cleanup rather than assigning a severity score or inferring a population.<a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p>
+</div>
+
+<figure class="wp-block-image size-large mgg-card mgg-hero-figure">
+  <img src="https://micegoneguide.com/wp-content/uploads/2026/08/mouse_signs_inspection.jpg" alt="Inspector shining flashlight along pantry baseboard examining mouse droppings, grease rub marks, and gnaw marks" class="wp-image-3705" width="1200" height="669" loading="eager" />
+  <figcaption style="font-size:14px;color:#53635a;margin-top:10px;">Inspection locations: safely accessible floor-wall junctions, food storage areas and sheltered spaces. Photograph suspected signs without touching waste.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></figcaption>
+</figure>
+
+<p style="font-size:16px;color:#334155;">Use the evidence-to-action table below to choose a proportionate next step. Separate what you observed from what still needs confirmation; a noise, odor or old mark is not a diagnosis.</p>
+
+<!-- TABLE OF CONTENTS -->
+<div class="mgg-toc-box" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin:28px 0;">
+  <p style="font-weight:700;font-size:16px;margin:0 0 12px 0;color:#0f172a;">In This Evidence Guide:</p>
+  <ul style="margin:0;padding-left:22px;font-size:15px;line-height:1.8;color:#334155;">
+    <li><a href="#evidence-triage-table" style="color:#27745f;text-decoration:none;font-weight:500;">Evidence-to-Action Triage Table</a></li>
+    <li><a href="#interactive-scanner" style="color:#27745f;text-decoration:none;font-weight:500;">Rodent Evidence Checklist</a></li>
+    <li><a href="#species-distinction" style="color:#27745f;text-decoration:none;font-weight:500;">Comparing Animal Signs: Identification Limits</a></li>
+    <li><a href="https://micegoneguide.com/mouse-droppings/#fresh-vs-old" style="color:#27745f;text-decoration:none;font-weight:500;">New vs. Previously Recorded Evidence: What to Check</a></li>
+    <li><a href="https://micegoneguide.com/mouse-droppings/#comparison-table" style="color:#27745f;text-decoration:none;font-weight:500;">Dropping Comparison: Limits of Appearance</a></li>
+    <li><a href="#video-demonstration" style="color:#27745f;text-decoration:none;font-weight:500;">Video Guide: 7 Early Warning Signs of Mice</a></li>
+    <li><a href="#room-checklist" style="color:#27745f;text-decoration:none;font-weight:500;">Room-by-Room Inspection Checklist</a></li>
+    <li><a href="#observation-log" style="color:#27745f;text-decoration:none;font-weight:500;">14-Day Monitoring Observation Log</a></li>
+    <li><a href="#faqs" style="color:#27745f;text-decoration:none;font-weight:500;">Frequently Asked Questions</a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1 -->
+<h2 id="evidence-triage-table" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Evidence-to-Action Triage Table</h2>
+<p>Connect observations to the relevant guide without treating a clue as a diagnosis. If safe, photograph and record the location without touching waste, then follow wet-cleanup precautions. Do not delay necessary cleanup just to preserve evidence. When the evidence confirms mice, follow a <a href="https://micegoneguide.com/safely-remove-mice/#humane-7-day-plan" style="color:#27745f;font-weight:600;">poison-free removal plan</a> rather than reaching for loose poison.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p>
+
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;">
+    <thead>
+      <tr style="background:#27745f;color:#ffffff;">
+        <th style="padding:12px 14px;border:1px solid #27745f;">Sign Observed</th>
+        <th style="padding:12px 14px;border:1px solid #27745f;">What To Investigate</th>
+        <th style="padding:12px 14px;border:1px solid #27745f;">Immediate Correct Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Small dark pellet-like waste</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Suspected rodent waste; current activity and species are not established by appearance alone.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Compare observations with our <a href="/mouse-droppings/" style="color:#27745f;font-weight:600;">droppings guide</a>, then <a href="/how-to-remove-mice-droppings-safely/" style="color:#27745f;font-weight:600;">wet-clean safely</a>.</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Scratching sounds in wall at night</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Possible nocturnal rodent movement (clue to inspect for physical droppings/gnaw marks, not confirmation by itself).</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Record sound timing and inspect accessible areas for physical evidence; sounds alone do not justify mouse-specific trapping. See <a href="/how-to-get-rid-of-mice-in-walls/" style="color:#27745f;font-weight:600;">mice in walls guide</a>.</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Chewed cereal boxes / pet food</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Food-packaging damage warrants inspection; record whether new damage appears.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Discard visibly contaminated food and secure unaffected food in tight-lidded containers. Choose suitable traps only where rodent evidence supports placement.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Greasy smudge marks on baseboard</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">A possible rub mark; neither species nor current traffic is established by a mark alone.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Inspect for corroborating physical evidence and choose safe, protected trap positions when mouse activity is confirmed.</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Overhead scampering in ceiling</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">A sound requiring investigation; it does not identify an animal or entry point.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Inspect safely visible gaps from ground level; use qualified help for roof, attic or other unsafe access. See <a href="/how-to-get-rid-of-mice-in-attic-under-insulation/" style="color:#27745f;font-weight:600;">attic insulation guide</a>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- INTERACTIVE SCANNER -->
+<section id="interactive-scanner" class="mgg-interactive-widget" data-mgg-release="2026-10-02" style="border:2px solid #166534;border-radius:14px;padding:22px;margin:28px 0;background:#f5faf6;color:#173328;overflow-wrap:anywhere"><h3>Rodent evidence checklist</h3><p>Choose the description that fits your observations; no points or infestation classifications are generated.</p><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Physical signs or only noises?</summary><p>Record the location, date and type of evidence. Sounds or odors alone cannot identify an animal or its location. Do not touch or crush suspected droppings. New deposits after documented safe cleanup can indicate continuing activity.<a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Reachable evidence without a building hazard</summary><p>Secure stored food, inspect accessible edges and openings, and choose mouse-sized snap traps for confirmed mouse activity. Place and secure traps according to their instructions, away from children and pets, and check them daily. <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a>.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a></p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Droppings or contaminated surfaces</summary><p>Do not dry-sweep or vacuum untreated droppings, urine or nesting material. Follow <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html">CDC cleanup guidance</a> for ventilation, rubber or plastic gloves, wet disinfection and the disinfectant label contact time.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a></p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Damaged wiring, ducts or inaccessible contamination</summary><p>Do not disturb wiring, open a wall, or enter contaminated ventilation systems to confirm a suspicion. Obtain qualified pest-control/building help for unsafe, heavy or inaccessible contamination. Continue keeping a dated observation record rather than predicting an end date.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p></details><p>No physical signs recorded does not confirm current rodent activity. If evidence is uncertain, inspect accessible areas and seek qualified identification before choosing animal-specific control. <strong>Limits:</strong> This checklist cannot identify a species, count mice, assess disease risk, assign an infestation score, or guarantee a clearance date. For the health risks behind that caution, see <a href="https://micegoneguide.com/diseases-from-mice/">diseases from mice: health risks, symptoms, and prevention</a>.</p></section>
+<!-- IN-CONTENT IMAGE 1 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/mouse-droppings-identification-scale.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/mouse-droppings-identification-scale.webp" height="810" width="1440" class=" sp-no-webp" alt="Visual identification guide comparing fresh vs old mouse droppings by size and texture" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Illustrative dropping comparison, not an identification or freshness test. Size, color and texture alone cannot establish species, age, population size or disease risk. Population size can also grow quickly — see <a href="https://micegoneguide.com/the-mouse-life-cycle-from-birth-to-maturity/">how fast mice reproduce</a>, from litters and gestation to infestation growth. Do not handle or crush waste; record new deposits after safe cleanup.<a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" class="mgg-evidence-citation">[3]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></figcaption>
+</figure>
+
+<!-- SECTION 2 -->
+<h2 id="species-distinction" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Comparing Animal Signs: Identification Limits</h2>
+<p>This comparison is an inspection prompt, not a species key. Timing, noise and waste appearance can overlap. If identification remains uncertain, seek qualified help before choosing animal-specific traps or exclusion work.</p>
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;">
+    <thead>
+      <tr style="background:#1e293b;color:#ffffff;">
+        <th style="padding:12px 14px;border:1px solid #1e293b;">Animal</th>
+        <th style="padding:12px 14px;border:1px solid #1e293b;">Dropping Characteristics</th>
+        <th style="padding:12px 14px;border:1px solid #1e293b;">Noise / Activity Pattern</th>
+        <th style="padding:12px 14px;border:1px solid #1e293b;">Secondary Markers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>House Mouse</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Small pellet-like waste is a clue to investigate, not a species identification.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Timing and sound are not sufficient identification; seek physical evidence.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Gnawed food boxes, rub marks along walls</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Norway / Roof Rat</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Do not identify rats from waste appearance alone; seek qualified identification.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Sound descriptions do not identify rats; seek corroborating physical evidence.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Possible burrows or larger damage warrant inspection; an opening does not prove the species.</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Tree Squirrel</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Waste appearance alone is insufficient for identification.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Record timing; it is not sufficient to identify squirrels.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Record exterior damage or stored material without assuming its source.</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Bat Colony</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Possible droppings need qualified identification. Do not crush or handle waste to test it.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Record sounds or visible flight from a safe distance; seek qualified identification.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Waste beneath an opening warrants qualified identification; do not assume bats or disturb a roost.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- IN-CONTENT IMAGE 2 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/pest-proof-airtight-pantry-food-storage.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/pest-proof-airtight-pantry-food-storage.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/pest-proof-airtight-pantry-food-storage.webp" height="810" width="1440" class=" sp-no-webp" alt="Glass and heavy plastic food storage containers protecting pantry items from rodent gnawing" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Food security: store unaffected food in thick plastic, metal or glass containers with tight lids.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></figcaption>
+</figure>
+
+<!-- YOUTUBE VIDEO SECTION -->
+<h2 id="video-demonstration" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Video Guide: 7 Early Warning Signs of Mice</h2>
+<p>This existing video illustrates signs to investigate; it cannot identify the animal or assess the conditions in your home. Record observations and corroborating evidence rather than treating a video comparison as a diagnosis.</p>
+
+<div class="mgg-video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:28px 0;box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+  <iframe src="https://www.youtube-nocookie.com/embed/Sg8XVkY_oYw" title="How to Tell If You Have Mice: Early Warning Signs" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<!-- SECTION 3 -->
+<h2 id="room-checklist" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Room-by-Room Inspection Checklist</h2>
+<p>Use a flashlight to inspect only safely accessible areas. Do not move connected appliances, disturb utilities, climb onto a roof or enter unsafe attics/crawlspaces to investigate a clue. CDC lists cabinets, appliances, pipe openings and building gaps as inspection locations.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" class="mgg-evidence-citation">[4]</a></p>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>Kitchen &#038; Pantry:</strong> Behind refrigerator, under dishwasher toe-kick, lower cabinet rear corners, under-sink plumbing pipe penetrations.</li>
+  <li><strong>Garage:</strong> Along foundation mudsills, corners of garage overhead doors, around grass seed and pet food bags.</li>
+  <li><strong>Laundry Room:</strong> Dryer exhaust vent pipe junction and washing machine drain hose openings.</li>
+  <li><strong>Basement &#038; Crawlspace:</strong> Rim joists, sill plates, and main electrical conduit entries.</li>
+  <li><strong>Attic:</strong> Soffit transitions, top plates, and hatch frame perimeter.</li>
+</ul>
+
+<!-- SECTION 4 -->
+<h2 id="observation-log" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Example 14-Day Observation Log (Not a Clearance Test)</h2>
+<p>The rows below are illustrative, not site results or a clearance test. Trap counts describe this example only, not a quantity for every home. Check traps daily, not only on the listed dates; log new signs after cleanup and reassess persistent activity.<a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" class="mgg-evidence-citation">[2]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p>
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;">
+    <thead>
+      <tr style="background:#1e293b;color:#ffffff;">
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Date</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Location Inspected</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Evidence Observed</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">Corrective Action Taken</th>
+        <th style="padding:10px 12px;border:1px solid #1e293b;">New Evidence Since Last Check?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Day 1</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Kitchen lower pantry</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">5 suspected droppings of unknown age; damaged rice bag</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Wet-cleaned; food into glass; 2 snap traps set</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">First observation; no prior check</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Day 3</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Pantry</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">1 mouse caught in trap</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">CDC wet disposal; re-baited with peanut butter</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">No new droppings</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Day 14</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Pantry &#038; Kitchen</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">No new droppings observed; no catches recorded</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;">Repairs inspected; continue monitoring for new evidence.</td>
+        <td style="padding:10px 12px;border:1px solid #dfe6ee;"><strong>No new signs recorded; continue monitoring and checking repairs</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5: FAQS -->
+<h2 id="faqs" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Frequently Asked Questions</h2>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">What is the first sign of mice in a house?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Droppings, gnaw marks or damaged food packaging may be noticed before an animal is seen. There is no universal first sign, and appearance alone does not establish species or current activity. New droppings after safe cleanup are evidence of continuing rodent presence.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" class="mgg-evidence-citation">[1]</a><a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" class="mgg-evidence-citation">[5]</a></p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Can I have mice but no droppings?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Mice can remain out of view, but scratching without visible droppings does not establish that mice are present. Inspect safely accessible areas for physical evidence and use the <a href="https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/">mice-in-walls investigation guide</a> before considering any invasive work.</p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Do scratching noises always mean mice?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">No. Timing and sound descriptions cannot reliably distinguish mice, rats, other animals or building noises. Look for accessible physical evidence and obtain qualified identification when the source remains uncertain. For a side-by-side comparison of rat and mouse signs, size, and behavior, see <a href="https://micegoneguide.com/rats-vs-mice-whats-the-difference/">rats vs mice: key differences in signs, size, and behavior</a>.</p>
+</div>
+
+<!-- SOURCES -->
+<div style="background:#f8fafc;border-top:2px solid #cbd5e1;padding:20px;border-radius:0 0 10px 10px;margin-top:40px;font-size:13px;color:#64748b;">
+  <p style="font-weight:700;margin:0 0 8px 0;color:#334155;">References &#038; Scientific Standards:</p>
+  <ul style="margin:0;padding-left:20px;line-height:1.6;">
+    <li><a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" target="_blank" rel="noopener" style="color:#27745f;">CDC: Detecting and Cleaning Up After Rodents</a></li>
+    <li><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener" style="color:#27745f;">UC IPM: Identifying Mouse Signs &#038; Damage</a></li>
+    <li><a href="https://www.epa.gov/rodenticides" target="_blank" rel="noopener" style="color:#27745f;">EPA: Identifying and Controlling Rodents</a></li>
+  </ul>
+
+</div>
+<div class="mgg-sources"><p><strong>Sources:</strong></p><ul><li>[1] <a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" target="_blank" rel="noopener">UC IPM: House Mouse</a></li><li>[2] <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener">CDC: How to Trap Up to Remove Rodents</a></li><li>[3] <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" target="_blank" rel="noopener">CDC: How to Clean Up After Rodents</a></li><li>[4] <a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">CDC: How to Seal Up to Prevent Rodents</a></li><li>[5] <a href="https://www.cdc.gov/healthy-pets/rodent-control/index.html" target="_blank" rel="noopener">CDC: Controlling Wild Rodent Infestations</a></li></ul></div>
+</article>
+
+<!-- /wp:html -->
+<!-- wp:html -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://micegoneguide.com/signs-of-mice-infestation/#webpage","url":"https://micegoneguide.com/signs-of-mice-infestation/","name":"Signs of Mice Infestation: Physical Evidence & Next-Step Checklist | Mice Gone Guide","description":"Document suspected rodent signs, inspect accessible areas, confirm physical evidence and choose proportionate next steps. Sounds alone cannot identify species or pinpoint a wall cavity.","isPartOf":{"@id":"https://micegoneguide.com/#website"},"inLanguage":"en-US"},{"@type":"Article","@id":"https://micegoneguide.com/signs-of-mice-infestation/#article","mainEntityOfPage":"https://micegoneguide.com/signs-of-mice-infestation/","headline":"Signs of Mice Infestation: Physical Evidence & Next-Step Checklist | Mice Gone Guide","description":"Document suspected rodent signs, inspect accessible areas, confirm physical evidence and choose proportionate next steps. Sounds alone cannot identify species or pinpoint a wall cavity.","author":{"@type":"Person","name":"Alexios Papaioannou","jobTitle":"founder and lead editor","url":"https://micegoneguide.com/about-alexios-papaioannou-founder-of-micegoneguide/"},"publisher":{"@type":"Organization","name":"Mice Gone Guide","url":"https://micegoneguide.com/"},"dateModified":"2026-10-02","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://micegoneguide.com/signs-of-mice-infestation/#faq","mainEntity":[{"@type":"Question","name":"What is the first sign of mice in a house?","acceptedAnswer":{"@type":"Answer","text":"Droppings, gnaw marks or damaged food packaging may be noticed before an animal is seen. There is no universal first sign, and appearance alone does not establish species or current activity. New droppings after safe cleanup are evidence of continuing rodent presence. [1] [5]"}},{"@type":"Question","name":"Can I have mice but no droppings?","acceptedAnswer":{"@type":"Answer","text":"Mice can remain out of view, but scratching without visible droppings does not establish that mice are present. Inspect safely accessible areas for physical evidence and use the mice-in-walls investigation guide before considering any invasive work."}},{"@type":"Question","name":"Do scratching noises always mean mice?","acceptedAnswer":{"@type":"Answer","text":"No. Timing and sound descriptions cannot reliably distinguish mice, rats, other animals or building noises. Look for accessible physical evidence and obtain qualified identification when the source remains uncertain."}}]}]}</script>
+<!-- /wp:html -->

@@ -1,0 +1,486 @@
+<style>
+.ffh{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#2e2620;line-height:1.75;font-size:17px;max-width:100%;}
+.ffh h2{font-size:30px;line-height:1.3;color:#3a2a1e;margin:52px 0 18px;letter-spacing:-.5px;}
+.ffh h3{font-size:21px;color:#4a3428;margin:30px 0 12px;}
+.ffh p{margin:0 0 18px;}
+.ffh a{color:#b35a1b;}
+.ffh .kicker{display:inline-block;background:#4a3428;color:#fdf8f1;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:14px;}
+.ffh .lede{font-size:20px;color:#5a4a3c;line-height:1.7;}
+.ffh .quick-answer{background:linear-gradient(135deg,#fffdf8 0%,#fdf3e7 100%);border:2px solid #d9a441;border-radius:18px;padding:28px 30px;margin:28px 0;box-shadow:0 6px 24px rgba(217,164,65,.15);}
+.ffh .quick-answer .qa-label{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#b35a1b;margin-bottom:10px;}
+.ffh .quick-answer p{font-size:18px;margin:0;color:#3a2a1e;}
+.ffh .takeaways{background:#2e2620;color:#f7efe4;border-radius:18px;padding:28px 30px;margin:28px 0;}
+.ffh .takeaways .tk-label{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#d9a441;margin-bottom:12px;}
+.ffh .takeaways ul{margin:0;padding:0;list-style:none;}
+.ffh .takeaways li{margin:0 0 12px;padding-left:30px;position:relative;font-size:16px;}
+.ffh .takeaways li:before{content:"\2713";position:absolute;left:0;top:1px;color:#9fd6a4;font-weight:800;font-size:18px;}
+.ffh .takeaways li:last-child{margin-bottom:0;}
+.ffh .toc{background:#fdf8f1;border:1px solid #e8d9c3;border-radius:16px;padding:24px 28px;margin:28px 0;}
+.ffh .toc .toc-label{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8a6f52;margin-bottom:12px;}
+.ffh .toc ol{margin:0;padding-left:22px;columns:2;column-gap:32px;}
+.ffh .toc li{margin-bottom:8px;font-size:15.5px;}
+.ffh .toc a{color:#4a3428;text-decoration:none;border-bottom:1px dotted #b35a1b;}
+.ffh .toc a:hover{color:#b35a1b;}
+.ffh .verdict{background:#fff;border:3px solid #b3402a;border-radius:20px;padding:34px;margin:32px 0;text-align:center;box-shadow:0 10px 30px rgba(179,64,42,.12);}
+.ffh .verdict .v-stamp{display:inline-block;background:#b3402a;color:#fff;font-size:15px;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:10px 26px;border-radius:999px;margin-bottom:16px;}
+.ffh .verdict p{font-size:18px;max-width:640px;margin:0 auto 14px;}
+.ffh .meters{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.ffh .meter{background:#fdf8f1;border:1px solid #e8d9c3;border-radius:14px;padding:14px 18px;min-width:150px;}
+.ffh .meter .m-label{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a6f52;margin-bottom:8px;}
+.ffh .meter .m-dots{font-size:20px;letter-spacing:3px;}
+.ffh .meter .m-dots .on{color:#c2571b;}
+.ffh .meter .m-dots .off{color:#e0d2bd;}
+.ffh .meter .m-cap{font-size:13px;color:#8a6f52;margin-top:6px;}
+.ffh .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0;}
+.ffh .reason{background:#fff;border:1px solid #ead9c2;border-top:5px solid #c2571b;border-radius:14px;padding:22px 24px;box-shadow:0 4px 14px rgba(74,52,40,.06);}
+.ffh .reason .r-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#c2571b;color:#fff;font-weight:800;font-size:17px;border-radius:50%;margin-bottom:12px;}
+.ffh .reason h3{margin:0 0 8px;font-size:18px;}
+.ffh .reason p{font-size:15.5px;margin:0;color:#5a4a3c;}
+.ffh .reason.full{grid-column:1/-1;}
+.ffh .allergen-bars{background:#fdf8f1;border:1px solid #e8d9c3;border-radius:16px;padding:26px 28px;margin:30px 0;}
+.ffh .allergen-bars .ab-label{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8a6f52;margin-bottom:16px;}
+.ffh .abar{margin-bottom:16px;}
+.ffh .abar .abar-top{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-bottom:6px;}
+.ffh .abar .abar-track{background:#e8dcc8;border-radius:999px;height:16px;overflow:hidden;}
+.ffh .abar .abar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#d9a441,#c2571b);}
+.ffh .abar .abar-note{font-size:13.5px;color:#8a6f52;margin-top:4px;}
+.ffh figure.ffh-img{margin:30px 0;}
+.ffh figure.ffh-img img{width:100%;height:auto;border-radius:16px;box-shadow:0 8px 28px rgba(46,38,32,.14);display:block;}
+.ffh figure.ffh-img figcaption{font-size:13.5px;color:#8a6f52;text-align:center;margin-top:10px;font-style:italic;}
+.ffh .callout{border-radius:14px;padding:20px 24px;margin:26px 0;font-size:16px;}
+.ffh .callout.tip{background:#eef7f0;border-left:6px solid #3e7c4f;}
+.ffh .callout.warn{background:#fdf3e7;border-left:6px solid #d9a441;}
+.ffh .callout .co-label{font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;display:block;}
+.ffh .callout.tip .co-label{color:#3e7c4f;}
+.ffh .callout.warn .co-label{color:#b35a1b;}
+.ffh .callout p{margin:0;}
+</style>
+<div class="ffh">
+
+<span class="kicker">Breed Health &amp; Allergies</span>
+<div class="lede">You love everything about French Bulldogs — the bat ears, the snorts, the Velcro-dog devotion. But your nose runs, your eyes itch, and now you're typing the question every sneezy Frenchie fan eventually asks: <em>are French Bulldogs hypoallergenic?</em> This is the honest, vet-source-checked answer — plus the exact routine that lets many mild allergy sufferers live happily with a Frenchie anyway.</div>
+
+<div class="quick-answer" id="quick-answer">
+<div class="qa-label">The short answer</div>
+<p><strong>No — French Bulldogs are not hypoallergenic.</strong> They are moderate, year-round shedders that produce the same allergy-triggering proteins (dander, saliva, urine — chiefly <em>Can f 1</em>) as every other dog breed. The American Kennel Club states that no dog breed is 100% hypoallergenic. That said, many people with <em>mild</em> dog allergies live comfortably with a Frenchie by combining HEPA air filtration, a strict grooming routine, and a dog-free bedroom. Take the quiz below to see where you land.</p>
+</div>
+
+<div class="takeaways">
+<div class="tk-label">Key takeaways</div>
+<ul>
+<li>French Bulldogs are <strong>not hypoallergenic</strong> — no dog breed truly is, per the AKC.</li>
+<li>Dog allergies come from <strong>dander, saliva, and urine proteins</strong> (mainly Can f 1) — not from hair length.</li>
+<li>Frenchies shed <strong>moderately all year</strong>, drool moderately, and their skin folds concentrate allergens.</li>
+<li>Mild allergy sufferers can often cope with <strong>HEPA filtration + weekly grooming + bedroom boundaries</strong>.</li>
+<li>Severe allergy or asthma sufferers should <strong>spend extended time with a Frenchie first</strong> — and talk to an allergist before committing.</li>
+</ul>
+</div>
+
+<div class="toc">
+<div class="toc-label">On this page</div>
+<ol>
+<li><a href="#verdict">The verdict, in plain English</a></li>
+<li><a href="#meaning">What "hypoallergenic" actually means</a></li>
+<li><a href="#triggers">5 reasons Frenchies trigger allergies</a></li>
+<li><a href="#shedding">French Bulldog shedding: the honest picture</a></li>
+<li><a href="#breeds">How Frenchies compare to "low-allergen" breeds</a></li>
+<li><a href="#quiz">Quiz: can <em>you</em> live with a Frenchie?</a></li>
+<li><a href="#reduce">7 proven ways to cut allergens at home</a></li>
+<li><a href="#routine">Your weekly anti-allergy routine (checklist)</a></li>
+<li><a href="#products">Best products for Frenchie allergy sufferers</a></li>
+<li><a href="#myths">Myths vs. facts</a></li>
+<li><a href="#doctor">When to see an allergist</a></li>
+<li><a href="#video">Watch: the video explainer</a></li>
+<li><a href="#faq">Frequently asked questions</a></li>
+</ol>
+</div>
+
+<h2 id="verdict">The verdict, in plain English</h2>
+<div class="verdict">
+<span class="v-stamp">Not hypoallergenic</span>
+<p>French Bulldogs produce dander, saliva, and urine proteins like every other dog. Their short coat fools people — but short hair has never meant low allergen.</p>
+<div class="meters">
+<div class="meter"><div class="m-label">Shedding</div><div class="m-dots"><span class="on">●●●</span><span class="off">●●</span></div><div class="m-cap">Moderate, year-round</div></div>
+<div class="meter"><div class="m-label">Dander output</div><div class="m-dots"><span class="on">●●●</span><span class="off">●●</span></div><div class="m-cap">Average for the size</div></div>
+<div class="meter"><div class="m-label">Drool / saliva</div><div class="m-dots"><span class="on">●●●●</span><span class="off">●</span></div><div class="m-cap">Moderate–heavy slobber</div></div>
+<div class="meter"><div class="m-label">Allergy-friendly</div><div class="m-dots"><span class="on">●●</span><span class="off">●●●</span></div><div class="m-cap">Poor for severe cases</div></div>
+</div>
+</div>
+<p>If you were hoping for a loophole — "maybe <em>my</em> Frenchie will be the hypoallergenic one" — we get it. But building a 10-to-12-year commitment on a loophole is how dogs end up rehomed. Let's look at what the science actually says, and then at what genuinely works.</p>
+
+<h2 id="meaning">What "hypoallergenic" actually means</h2>
+<p>The word gets thrown around by breeders and pet blogs, but in medicine it has a narrow meaning: <strong>"less likely to provoke an allergic reaction" — never "allergy-free."</strong> And when researchers went looking for proof that any dog breed qualifies, they came up empty.</p>
+<p>Here's what you're actually reacting to. Dog allergies are triggered by <strong>proteins</strong>, not by hair itself:</p>
+<div class="allergen-bars">
+<div class="ab-label">Where dog allergens come from</div>
+<div class="abar"><div class="abar-top"><span>Dander (dead skin flakes)</span><span>Primary source</span></div><div class="abar-track"><div class="abar-fill" style="width:88%"></div></div><div class="abar-note">Carries Can f 1, the major dog allergen behind an estimated 50–75% of dog-allergy sensitivities.</div></div>
+<div class="abar"><div class="abar-top"><span>Saliva (licking, drool)</span><span>Major source</span></div><div class="abar-track"><div class="abar-fill" style="width:70%"></div></div><div class="abar-note">Can f 1 is produced in the dog's mouth and spread onto the coat every time they lick themselves — and onto you.</div></div>
+<div class="abar"><div class="abar-top"><span>Urine (trace amounts)</span><span>Minor source</span></div><div class="abar-track"><div class="abar-fill" style="width:28%"></div></div><div class="abar-note">A factor mainly during house-training and for unneutered males marking indoors.</div></div>
+</div>
+<p>Hair is just the <strong>delivery vehicle</strong> — it carries dander around your home and drops it on every surface. That's why coat length and shedding volume matter far less than marketing suggests. A dog that barely sheds still produces dander, still licks itself, and still drools.</p>
+<p>The landmark reality check: a 2012 study in the <em>Journal of Allergy and Clinical Immunology</em> (Vredegoor et al.) measured the Can f 1 allergen in the hair, coats, and homes of breeds marketed as hypoallergenic — Poodles, Labradoodles, Spanish Water Dogs, Airedales — against Labradors and a control group. The "hypoallergenic" breeds had <strong>higher</strong> allergen levels in hair and coat samples, and there was <strong>no difference</strong> in airborne allergen between homes. The authors' conclusion is right there in the paper's title: there is a lack of evidence to describe <em>any</em> dog breed as hypoallergenic.</p>
+<div class="callout warn"><span class="co-label">Worth knowing</span><p>The American Kennel Club is explicit on this: <strong>no dog breed is 100% hypoallergenic</strong>. Every dog produces allergens, regardless of coat type. When a breeder advertises "hypoallergenic French Bulldogs," that's a sales term — not a medical one.</p></div>
+
+<h2 id="triggers">5 reasons Frenchies trigger allergies</h2>
+<p>French Bulldogs aren't the <em>worst</em> breed for allergy sufferers — a heavy-shedding Husky in full coat-blow is worse. But several very Frenchie-specific traits stack the deck against sensitive owners:</p>
+<div class="reason-grid">
+<div class="reason"><span class="r-num">1</span><h3>They shed moderately — all year, no breaks</h3><p>Forget the "low-shedding short coat" myth. Frenchies shed lightly but <strong>constantly</strong>, 365 days a year, with heavier bumps in spring and fall. Every shed hair carries dander with it.</p></div>
+<div class="reason"><span class="r-num">2</span><h3>Their single coat drops everything straight down</h3><p>Frenchies lack a dense undercoat to trap loose hair and dead skin. Stiff hairs and dander fall directly onto floors, furniture, and your clothes instead of staying in the coat until brushing.</p></div>
+<div class="reason"><span class="r-num">3</span><h3>Skin folds concentrate allergens</h3><p>Those adorable wrinkles are warm, moist traps for skin oils, tears, and dried saliva — a concentrated reservoir of Can f 1 right on the dog's face, exactly where they nuzzle you.</p></div>
+<div class="reason"><span class="r-num">4</span><h3>They're champion droolers and lickers</h3><p>Saliva is a major allergen source, and Frenchies deliver it generously: slobber on toys, licks on your face, and constant self-grooming that paints saliva proteins across their whole coat.</p></div>
+<div class="reason full"><span class="r-num">5</span><h3>The breed is prone to skin problems — which multiplies dander</h3><p>French Bulldogs are notably prone to atopic dermatitis and food-related <a href="https://frenchyfab.com/understanding-skin-allergies-in-french-bulldogs/">skin allergies</a>. An itchy Frenchie scratches, licks, and flakes far more than a dog with healthy skin — meaning <strong>more dander in your air</strong>. Keeping your Frenchie's skin healthy (see our <a href="https://frenchyfab.com/grooming-your-french-bulldog-complete-guide/">complete grooming guide</a>) isn't just cosmetic; it's an allergy-control strategy.</p></div>
+</div>
+<h2 id="shedding">French Bulldog shedding: the honest picture</h2>
+<p>Let's kill the most persistent myth first: <strong>short coat does not mean low shedding.</strong> French Bulldogs are single-coated, and that single coat runs on a continuous growth-and-shed cycle. You'll find short, stiff hairs on dark clothing, woven into couch fabric, and floating in sunbeams — every month of the year.</p>
+<figure class="ffh-img">
+<img src="https://frenchyfab.com/wp-content/uploads/2026/10/french-bulldog-grooming-brush-allergies.jpg" alt="Owner brushing a brindle French Bulldog to reduce shedding and dander" loading="lazy" width="1200" height="800">
+<figcaption>Two to three brushing sessions a week is the single highest-leverage habit for keeping Frenchie dander down.</figcaption>
+</figure>
+<p>What to realistically expect:</p>
+<p><strong>Daily:</strong> a light dusting of short hairs wherever your Frenchie lounges. <strong>Spring and fall:</strong> a noticeable uptick as daylight shifts nudge the coat cycle — brush daily for a few weeks. <strong>After baths or stress:</strong> temporary heavier shedding is normal. <strong>Red flags:</strong> bald patches, constant scratching, or greasy/flaky skin aren't "shedding" — they're vet-visit territory, and as noted above, unhealthy skin means dramatically more dander.</p>
+<div class="callout tip"><span class="co-label">Good news</span><p>Because the coat is short and single, Frenchie shedding is <strong>highly manageable</strong> — a 5-minute brush-out captures most of what would otherwise end up airborne. Compare that to a double-coated breed, where you're fighting a losing battle against undercoat tumbleweeds.</p></div>
+
+<h2 id="breeds">How Frenchies compare to "low-allergen" breeds</h2>
+<p>No breed is truly hypoallergenic — but some are meaningfully <em>easier</em> to live with. Here's how the French Bulldog stacks up against the breeds allergy sufferers usually consider:</p>
+<div style="overflow-x:auto;margin:26px 0;">
+<table style="width:100%;border-collapse:collapse;font-size:15px;min-width:720px;">
+<thead><tr style="background:#4a3428;color:#fdf8f1;">
+<th style="padding:12px 14px;text-align:left;border-radius:10px 0 0 0;">Breed</th>
+<th style="padding:12px 14px;text-align:left;">Shedding</th>
+<th style="padding:12px 14px;text-align:left;">Coat type</th>
+<th style="padding:12px 14px;text-align:left;">Drool</th>
+<th style="padding:12px 14px;text-align:left;">Grooming demand</th>
+<th style="padding:12px 14px;text-align:left;border-radius:0 10px 0 0;">Allergy-friendliness*</th>
+</tr></thead>
+<tbody>
+<tr style="background:#fdf3e7;"><td style="padding:12px 14px;font-weight:700;">French Bulldog</td><td style="padding:12px 14px;">Moderate, year-round</td><td style="padding:12px 14px;">Short, single</td><td style="padding:12px 14px;">Moderate–heavy</td><td style="padding:12px 14px;">Low–moderate</td><td style="padding:12px 14px;"><strong>★★☆☆☆</strong></td></tr>
+<tr><td style="padding:12px 14px;font-weight:700;">Poodle (Miniature)</td><td style="padding:12px 14px;">Minimal</td><td style="padding:12px 14px;">Curly, dense</td><td style="padding:12px 14px;">Low</td><td style="padding:12px 14px;">High (clipping every 6–8 wks)</td><td style="padding:12px 14px;"><strong>★★★★☆</strong></td></tr>
+<tr style="background:#faf7f2;"><td style="padding:12px 14px;font-weight:700;">Bichon Frise</td><td style="padding:12px 14px;">Minimal</td><td style="padding:12px 14px;">Curly, double</td><td style="padding:12px 14px;">Low</td><td style="padding:12px 14px;">High (daily brushing)</td><td style="padding:12px 14px;"><strong>★★★★☆</strong></td></tr>
+<tr><td style="padding:12px 14px;font-weight:700;">Maltese</td><td style="padding:12px 14px;">Minimal</td><td style="padding:12px 14px;">Long, silky, single</td><td style="padding:12px 14px;">Low</td><td style="padding:12px 14px;">High (daily brushing)</td><td style="padding:12px 14px;"><strong>★★★★☆</strong></td></tr>
+<tr style="background:#faf7f2;"><td style="padding:12px 14px;font-weight:700;">Portuguese Water Dog</td><td style="padding:12px 14px;">Minimal</td><td style="padding:12px 14px;">Curly/wavy</td><td style="padding:12px 14px;">Low–moderate</td><td style="padding:12px 14px;">High</td><td style="padding:12px 14px;"><strong>★★★★☆</strong></td></tr>
+<tr><td style="padding:12px 14px;font-weight:700;">Shih Tzu</td><td style="padding:12px 14px;">Low</td><td style="padding:12px 14px;">Long, double</td><td style="padding:12px 14px;">Low</td><td style="padding:12px 14px;">High (daily brushing)</td><td style="padding:12px 14px;"><strong>★★★☆☆</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:14px;color:#8a6f52;">*Allergy-friendliness reflects how much allergen a typical owner encounters day-to-day — <strong>not</strong> a medical guarantee. Remember the 2012 research: even "hypoallergenic" breeds showed no less airborne allergen in homes.</p>
+<p>The trade-off is real: the low-shedding breeds demand far more grooming (and grooming bills). The Frenchie's advantage is that its allergen load is <strong>controllable with a simple routine</strong> rather than a groomer appointment — which brings us to the most useful part of this guide.</p>
+
+<h2 id="quiz">Quiz: can <em>you</em> live with a Frenchie?</h2>
+<p>Allergies are personal — two people can react completely differently to the same dog. Answer these six questions honestly for a realistic read on your situation:</p>
+<style>
+.ffh-quiz{background:#fff;border:2px solid #e8d9c3;border-radius:20px;padding:32px;margin:28px 0;box-shadow:0 8px 30px rgba(74,52,40,.08);}
+.ffh-quiz .qq-progress{height:10px;background:#f0e6d4;border-radius:999px;overflow:hidden;margin-bottom:22px;}
+.ffh-quiz .qq-bar{height:100%;width:0;background:linear-gradient(90deg,#d9a441,#c2571b);border-radius:999px;transition:width .4s ease;}
+.ffh-quiz .qq-count{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8a6f52;margin-bottom:10px;}
+.ffh-quiz .qq-q{font-size:20px;font-weight:700;color:#3a2a1e;margin-bottom:18px;line-height:1.45;}
+.ffh-quiz .qq-opts{display:flex;flex-direction:column;gap:10px;}
+.ffh-quiz .qq-opt{background:#fdf8f1;border:2px solid #e8d9c3;border-radius:12px;padding:14px 18px;font-size:16px;color:#3a2a1e;cursor:pointer;text-align:left;transition:all .18s ease;font-family:inherit;}
+.ffh-quiz .qq-opt:hover{border-color:#c2571b;background:#fdf3e7;transform:translateX(4px);}
+.ffh-quiz .qq-result{text-align:center;padding:10px 0;}
+.ffh-quiz .qq-tier{display:inline-block;font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:9px 24px;border-radius:999px;margin-bottom:16px;color:#fff;}
+.ffh-quiz .qq-result h3{font-size:24px;margin:0 0 12px;}
+.ffh-quiz .qq-result p{font-size:16.5px;color:#5a4a3c;max-width:560px;margin:0 auto 18px;}
+.ffh-quiz .qq-restart{background:#4a3428;color:#fdf8f1;border:none;border-radius:999px;padding:12px 30px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+.ffh-quiz .qq-restart:hover{background:#3a2a1e;}
+</style>
+<div class="ffh-quiz" id="ffhQuiz">
+<div class="qq-progress"><div class="qq-bar" id="qqBar"></div></div>
+<div id="qqBody"></div>
+</div>
+<script>
+(function(){
+var quiz=document.getElementById('ffhQuiz');
+var body=document.getElementById('qqBody');
+var bar=document.getElementById('qqBar');
+var questions=[
+{q:"How would you describe your dog allergy?",opts:[["Severe — asthma attacks, hives, or swelling",0],["Moderate — sneezing fits, itchy/watery eyes",1],["Mild — only noticeable around heavy shedders",2],["Not sure — never formally tested",1]]},
+{q:"Has an allergist confirmed a dog allergy (skin-prick or IgE blood test)?",opts:[["Yes, confirmed dog allergy",0],["No, but I clearly react to dogs",1],["No, I've never reacted to a dog",2]]},
+{q:"Could you keep the bedroom 100% dog-free, always?",opts:[["No — the dog sleeps with me, non-negotiable",0],["Maybe — I could try",1],["Yes — easy, bedroom stays a dog-free zone",2]]},
+{q:"How much grooming and cleaning per week are you genuinely up for?",opts:[["Minimal — I won't stick to a routine",0],["About 30 minutes",1],["An hour or more — I'll do the full routine",2]]},
+{q:"Do you run a True HEPA air purifier where the dog spends time?",opts:[["No",0],["Not yet, but I'd buy one",1],["Yes, already running",2]]},
+{q:"Have you spent a full day around a French Bulldog specifically?",opts:[["Yes — and I reacted",0],["Yes — no reaction at all",2],["Not yet",1]]}
+];
+var idx=0,total=0;
+function render(){
+body.innerHTML='';
+var pct=Math.round((idx/questions.length)*100);
+bar.style.width=pct+'%';
+if(idx>=questions.length){showResult();return;}
+var q=questions[idx];
+var count=document.createElement('div');count.className='qq-count';count.textContent='Question '+(idx+1)+' of '+questions.length;body.appendChild(count);
+var qq=document.createElement('div');qq.className='qq-q';qq.textContent=q.q;body.appendChild(qq);
+var wrap=document.createElement('div');wrap.className='qq-opts';
+for(var i=0;q.opts.length>i;i++){
+(function(text,score){
+var b=document.createElement('button');b.type='button';b.className='qq-opt';b.textContent=text;
+b.onclick=function(){total+=score;idx++;render();};
+wrap.appendChild(b);
+})(q.opts[i][0],q.opts[i][1]);
+}
+body.appendChild(wrap);
+}
+function showResult(){
+bar.style.width='100%';
+var tier,color,title,desc;
+if(4>=total){tier='Higher risk';color='#b3402a';title='A Frenchie will likely make you miserable';
+desc='With your allergy profile, a French Bulldog\'s year-round shedding, drool, and dander will probably trigger regular symptoms. That doesn\'t mean never — but it does mean: get formally tested, trial-foster a Frenchie for at least two weeks, and don\'t commit until an allergist signs off. Your health has to come first.';}
+else if(8>=total){tier='Borderline — manageable with discipline';color='#c2571b';title='Possible, but only with the full routine';
+desc='You sit in the workable middle. A Frenchie could fit your life IF you commit to every step of the anti-allergy routine below — HEPA filtration, 2–3x weekly brushing, weekly bedding washes, and a strict dog-free bedroom. Skip the routine and symptoms will creep back. Trial an extended visit with a Frenchie before deciding.';}
+else{tier='Good fit';color='#3e7c4f';title='A Frenchie can work for you';
+desc='Your sensitivity looks mild and your setup is allergy-smart. Follow the weekly routine below and most people in your position live happily with a French Bulldog. Still spend a full day with the breed first — individual dogs vary, and it\'s the cheapest insurance you\'ll ever buy.';}
+var res=document.createElement('div');res.className='qq-result';
+var t=document.createElement('span');t.className='qq-tier';t.style.background=color;t.textContent=tier;res.appendChild(t);
+var h=document.createElement('h3');h.textContent=title;res.appendChild(h);
+var p=document.createElement('p');p.textContent=desc;res.appendChild(p);
+var r=document.createElement('button');r.type='button';r.className='qq-restart';r.textContent='Retake the quiz';
+r.onclick=function(){idx=0;total=0;render();};res.appendChild(r);
+body.appendChild(res);
+}
+render();
+})();
+</script>
+<div class="callout warn"><span class="co-label">A quick note</span><p>This quiz is a common-sense guide, not a medical diagnosis. Only an allergist — ideally with a skin-prick or specific-IgE test for dog dander — can tell you how you'll react long-term.</p></div>
+<h2 id="reduce">7 proven ways to cut allergens at home</h2>
+<p>You can't change your Frenchie's biology — but you can dramatically change your <em>exposure</em>. These seven steps are the ones allergists and veterinary dermatologists actually recommend, ranked by impact:</p>
+<figure class="ffh-img">
+<img src="https://frenchyfab.com/wp-content/uploads/2026/10/dog-allergy-care-products-flatlay.jpg" alt="Dog allergy care essentials: HEPA air purifier, lint roller, grooming brush, hypoallergenic shampoo and anti-allergen spray" loading="lazy" width="1200" height="800">
+<figcaption>Your anti-allergy toolkit: most of these cost less than a single vet visit for a skin flare-up.</figcaption>
+</figure>
+<h3>1. Run a True HEPA air purifier 24/7</h3>
+<p>The highest-impact single purchase. Dander particles are tiny (2.5–10 microns) and stay airborne for hours — a True HEPA filter captures 99.97% of them. Place one in the room where your Frenchie spends the most time, and ideally a second in the bedroom hallway. Run it continuously, not just when symptoms flare.</p>
+<h3>2. Brush 2–3 times a week (outside if you can)</h3>
+<p>Five minutes with a slicker brush or rubber grooming mitt removes the loose hair and dander <em>before</em> it becomes airborne. Brushing outdoors keeps the whole cloud out of your house. This is the cheapest intervention on the list and the most skipped — don't skip it.</p>
+<h3>3. Bathe every 4–6 weeks — with the right shampoo</h3>
+<p>Bathing washes allergens off the coat, but over-bathing strips natural oils, dries the skin, and <em>increases</em> flaking (the opposite of what you want). Stick to every 4–6 weeks with a gentle hypoallergenic or oatmeal-based shampoo, unless your vet advises otherwise.</p>
+<h3>4. Wash bedding weekly in hot water</h3>
+<p>Your Frenchie's bed is the densest allergen reservoir in your home. Wash it weekly at 60°C / 140°F, which kills dust mites too. Wash your own bedding weekly as well — dander hitches a ride on your clothes.</p>
+<h3>5. Vacuum with a HEPA-sealed vacuum (twice weekly)</h3>
+<p>A standard vacuum can blast fine dander straight through its exhaust back into the air. Use a vacuum with a sealed HEPA system, and vacuum upholstery and curtains — not just floors. Hard floors beat carpet for allergy homes, every time.</p>
+<h3>6. Make the bedroom a dog-free sanctuary</h3>
+<p>You spend a third of your life in bed. Keeping that room dander-free gives your immune system 8 hours of recovery every night, which noticeably reduces daytime symptoms for many mild sufferers. Washable throw covers on the couch help for the rooms you share.</p>
+<h3>7. Wipe the coat and folds between baths</h3>
+<p>A weekly wipe-down with a dander-reducing solution (like Allerpet) plus daily fold cleaning removes the saliva/dander film that builds up on the coat — especially around the face folds where allergens concentrate. Our <a href="https://frenchyfab.com/grooming-your-french-bulldog-complete-guide/">grooming guide</a> covers the fold routine step by step.</p>
+<div class="callout tip"><span class="co-label">What about diet?</span><p>Skin health starts from the inside. Dogs with <a href="https://frenchyfab.com/french-bulldog-food-sensitivities-definitive-guide/">food sensitivities</a> develop itchy, flaky skin that sheds far more dander. If your Frenchie is constantly itchy, read our guides on <a href="https://frenchyfab.com/best-dog-food-for-french-bulldogs-with-sensitive-stomach/">dog food for sensitive stomachs</a> and <a href="https://frenchyfab.com/complete-guide-french-bulldog-nutrition/">French Bulldog diet myths</a> — fixing the diet often fixes the dander.</p></div>
+
+<h2 id="routine">Your weekly anti-allergy routine</h2>
+<p>Print this, stick it on the fridge, and check things off. Consistency beats intensity — a moderate routine you actually follow outperforms a perfect one you abandon in week three.</p>
+<style>
+.ffh-check{background:#fff;border:2px solid #e8d9c3;border-radius:20px;padding:32px;margin:28px 0;}
+.ffh-check .ck-progress{height:12px;background:#f0e6d4;border-radius:999px;overflow:hidden;margin-bottom:8px;}
+.ffh-check .ck-bar{height:100%;width:0;background:linear-gradient(90deg,#7fb069,#3e7c4f);border-radius:999px;transition:width .35s ease;}
+.ffh-check .ck-pct{font-size:14px;font-weight:800;color:#3e7c4f;margin-bottom:18px;letter-spacing:1px;}
+.ffh-check .ck-item{display:flex;gap:14px;align-items:flex-start;background:#fdf8f1;border:1px solid #e8d9c3;border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:all .18s ease;}
+.ffh-check .ck-item:hover{border-color:#3e7c4f;}
+.ffh-check .ck-item.done{background:#eef7f0;border-color:#7fb069;}
+.ffh-check .ck-item.done .ck-text{color:#6b7f6e;text-decoration:line-through;}
+.ffh-check .ck-box{flex:0 0 26px;height:26px;border:2.5px solid #b9a888;border-radius:8px;margin-top:2px;position:relative;background:#fff;}
+.ffh-check .ck-item.done .ck-box{background:#3e7c4f;border-color:#3e7c4f;}
+.ffh-check .ck-item.done .ck-box:after{content:"\2713";position:absolute;left:5px;top:-1px;color:#fff;font-weight:800;font-size:17px;}
+.ffh-check .ck-text{font-size:16px;color:#3a2a1e;}
+.ffh-check .ck-text strong{display:block;font-size:15px;}
+.ffh-check .ck-text span{font-size:14px;color:#8a6f52;}
+</style>
+<div class="ffh-check" id="ffhCheck">
+<div class="ck-progress"><div class="ck-bar" id="ckBar"></div></div>
+<div class="ck-pct" id="ckPct">0% complete — let's go!</div>
+<div id="ckList"></div>
+</div>
+<script>
+(function(){
+var items=[
+["Brush-out (5 min)","Slicker brush or rubber mitt, 2–3x this week — outdoors if possible.","2-3x / week"],
+["Wipe face folds","Damp cloth or vet-approved wipe, every single day.","Daily"],
+["Dander wipe-down","Allerpet or similar dander-reducing wipe over the coat.","Weekly"],
+["Wash dog bedding","Hot wash at 60°C / 140°F, tumble dry.","Weekly"],
+["Wash your bedding","Your sheets collect dander from clothes and cuddles.","Weekly"],
+["HEPA vacuum","Floors, couch, and curtains — sealed-HEPA vacuum only.","2x / week"],
+["Purifier check","HEPA purifier running 24/7 in the main dog room.","Ongoing"],
+["Bedroom boundary","Dog-free bedroom enforced — no exceptions tonight.","Nightly"]
+];
+var list=document.getElementById('ckList');
+var bar=document.getElementById('ckBar');
+var pct=document.getElementById('ckPct');
+var done=0;
+function update(){
+var p=Math.round((done/items.length)*100);
+bar.style.width=p+'%';
+if(p===100){pct.textContent='100% complete — your sinuses thank you!';}
+else{pct.textContent=p+'% complete — keep going!';}
+}
+for(var i=0;items.length>i;i++){
+(function(title,desc){
+var el=document.createElement('div');el.className='ck-item';
+var box=document.createElement('div');box.className='ck-box';el.appendChild(box);
+var tx=document.createElement('div');tx.className='ck-text';
+var st=document.createElement('strong');st.textContent=title;tx.appendChild(st);
+var sp=document.createElement('span');sp.textContent=desc;tx.appendChild(sp);
+el.appendChild(tx);
+el.onclick=function(){
+if(el.className.indexOf('done')>-1){el.className='ck-item';done--;}
+else{el.className='ck-item done';done++;}
+update();
+};
+list.appendChild(el);
+})(items[i][0],items[i][1]+' ('+items[i][2]+')');
+}
+update();
+})();
+</script>
+
+<h2 id="products">Best products for Frenchie allergy sufferers</h2>
+<p>Every product below targets a specific allergen pathway — air, coat, fabric, or skin. Together they form the routine above. Prices are typical ranges at the time of writing and move with sales.</p>
+<div style="overflow-x:auto;margin:26px 0;">
+<table style="width:100%;border-collapse:collapse;font-size:15px;min-width:680px;">
+<thead><tr style="background:#4a3428;color:#fdf8f1;">
+<th style="padding:12px 14px;text-align:left;border-radius:10px 0 0 0;">Product</th>
+<th style="padding:12px 14px;text-align:left;">Targets</th>
+<th style="padding:12px 14px;text-align:left;">Typical price</th>
+<th style="padding:12px 14px;text-align:left;border-radius:0 10px 0 0;">Best for</th>
+</tr></thead>
+<tbody>
+<tr style="background:#fdf3e7;"><td style="padding:12px 14px;font-weight:700;">LEVOIT Core 300-P</td><td style="padding:12px 14px;">Airborne dander</td><td style="padding:12px 14px;">$100–$150</td><td style="padding:12px 14px;">Bedrooms &amp; living rooms</td></tr>
+<tr><td style="padding:12px 14px;font-weight:700;">Allerpet Dander Remover</td><td style="padding:12px 14px;">Dander on the coat</td><td style="padding:12px 14px;">$15–$20</td><td style="padding:12px 14px;">Weekly wipe-downs</td></tr>
+<tr style="background:#faf7f2;"><td style="padding:12px 14px;font-weight:700;">Hertzko Slicker Brush</td><td style="padding:12px 14px;">Loose fur + dander</td><td style="padding:12px 14px;">$15–$20</td><td style="padding:12px 14px;">2–3x weekly brushing</td></tr>
+<tr><td style="padding:12px 14px;font-weight:700;">ChomChom Roller</td><td style="padding:12px 14px;">Fur on fabrics</td><td style="padding:12px 14px;">$25–$30</td><td style="padding:12px 14px;">Couches, car seats, clothes</td></tr>
+<tr style="background:#faf7f2;"><td style="padding:12px 14px;font-weight:700;">Allersearch ADMS Spray</td><td style="padding:12px 14px;">Allergens in fabrics</td><td style="padding:12px 14px;">$20–$30</td><td style="padding:12px 14px;">Carpets, curtains, upholstery</td></tr>
+<tr><td style="padding:12px 14px;font-weight:700;">Earthbath Shampoo</td><td style="padding:12px 14px;">Coat allergens, gently</td><td style="padding:12px 14px;">$15–$20</td><td style="padding:12px 14px;">4–6 week baths</td></tr>
+</tbody>
+</table>
+</div>
+<style>
+.ffh-prod{display:flex;gap:22px;background:#fff;border:1px solid #e8d9c3;border-radius:18px;padding:24px;margin:0 0 20px;box-shadow:0 4px 16px rgba(74,52,40,.06);align-items:center;flex-wrap:wrap;}
+.ffh-prod .pd-img{flex:0 0 150px;}
+.ffh-prod .pd-img img{width:150px;height:150px;object-fit:contain;border-radius:12px;background:#fdf8f1;border:1px solid #f0e6d4;display:block;}
+.ffh-prod .pd-body{flex:1;min-width:240px;}
+.ffh-prod .pd-body h3{margin:0 0 6px;font-size:19px;}
+.ffh-prod .pd-tag{display:inline-block;background:#eef7f0;color:#3e7c4f;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:10px;}
+.ffh-prod .pd-body p{font-size:15.5px;color:#5a4a3c;margin:0 0 12px;}
+.ffh-prod .pd-price{font-size:14px;color:#8a6f52;margin-bottom:12px;}
+.ffh-prod .pd-btn{display:inline-block;background:#ff9900;color:#1a1a1a;font-weight:800;font-size:15px;padding:12px 26px;border-radius:999px;text-decoration:none;transition:all .18s ease;}
+.ffh-prod .pd-btn:hover{background:#e88b00;transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,153,0,.35);}
+.ffh .affil-note{font-size:13px;color:#8a6f52;font-style:italic;margin:18px 0 30px;}
+</style>
+<div class="ffh-prod">
+<div class="pd-img"><img src="https://frenchyfab.com/wp-content/uploads/2026/10/levoit-core-300-air-purifier.jpg" alt="LEVOIT Core 300 True HEPA air purifier" loading="lazy" width="150" height="150"></div>
+<div class="pd-body"><span class="pd-tag">Highest impact</span><h3>LEVOIT Core 300-P True HEPA Air Purifier</h3><p>The H13 True HEPA filter captures 99.97% of airborne dander, pollen, and dust. Quiet enough for a bedroom, powerful enough for an open-plan living room — this is the one purchase allergists recommend most often.</p><div class="pd-price">Typical price: $100–$150</div><a class="pd-btn" href="https://www.amazon.com/s?k=LEVOIT+Core+300+True+HEPA+air+purifier&tag=papalex-ff-20" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a></div>
+</div>
+<div class="ffh-prod">
+<div class="pd-img"><img src="https://frenchyfab.com/wp-content/uploads/2026/10/allerpet-dog-dander-remover.jpg" alt="Allerpet Dog Dander Remover bottle" loading="lazy" width="150" height="150"></div>
+<div class="pd-body"><span class="pd-tag">Coat treatment</span><h3>Allerpet Dog Dander Remover</h3><p>A wipe-on solution that binds and neutralizes dander directly on your Frenchie's coat between baths. Takes two minutes, and owners with mild allergies often notice the difference within days.</p><div class="pd-price">Typical price: $15–$20</div><a class="pd-btn" href="https://www.amazon.com/s?k=Allerpet+dog+dander+remover&tag=papalex-ff-20" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a></div>
+</div>
+<div class="ffh-prod">
+<div class="pd-img"><img src="https://frenchyfab.com/wp-content/uploads/2026/10/hertzko-self-cleaning-slicker-brush.jpg" alt="Hertzko self-cleaning slicker brush for dogs" loading="lazy" width="150" height="150"></div>
+<div class="pd-body"><span class="pd-tag">Grooming essential</span><h3>Hertzko Self-Cleaning Slicker Brush</h3><p>Fine bristles grab loose undercoat hair and dander from short coats without scratching skin; one click retracts the bristles for easy cleaning. The workhorse of the 2–3x weekly brush-out.</p><div class="pd-price">Typical price: $15–$20</div><a class="pd-btn" href="https://www.amazon.com/s?k=Hertzko+self+cleaning+slicker+brush&tag=papalex-ff-20" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a></div>
+</div>
+<div class="ffh-prod">
+<div class="pd-img"><img src="https://frenchyfab.com/wp-content/uploads/2026/10/chomchom-pet-hair-remover-roller.jpg" alt="ChomChom pet hair remover roller" loading="lazy" width="150" height="150"></div>
+<div class="pd-body"><span class="pd-tag">Furniture saver</span><h3>ChomChom Pet Hair Remover Roller</h3><p>No batteries, no sticky sheets to replace — roll it back and forth over couches and car seats and it traps Frenchie hair in its chamber. Oddly satisfying, genuinely effective.</p><div class="pd-price">Typical price: $25–$30</div><a class="pd-btn" href="https://www.amazon.com/s?k=ChomChom+pet+hair+remover+roller&tag=papalex-ff-20" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a></div>
+</div>
+<div class="ffh-prod">
+<div class="pd-img"><img src="https://frenchyfab.com/wp-content/uploads/2026/10/allersearch-adms-anti-allergen-spray.jpg" alt="Allersearch ADMS anti-allergen spray" loading="lazy" width="150" height="150"></div>
+<div class="pd-body"><span class="pd-tag">Fabric treatment</span><h3>Allersearch ADMS Anti-Allergen Spray</h3><p>Spray on carpets, curtains, and upholstery to denature pet allergens on contact. Ideal for the rooms your Frenchie shares with you — especially if ripping out the carpet isn't an option.</p><div class="pd-price">Typical price: $20–$30</div><a class="pd-btn" href="https://www.amazon.com/s?k=Allersearch+ADMS+anti+allergen+spray&tag=papalex-ff-20" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a></div>
+</div>
+<div class="ffh-prod">
+<div class="pd-img"><img src="https://frenchyfab.com/wp-content/uploads/2026/10/earthbath-hypoallergenic-dog-shampoo.jpg" alt="Earthbath hypoallergenic dog shampoo" loading="lazy" width="150" height="150"></div>
+<div class="pd-body"><span class="pd-tag">Gentle bathing</span><h3>Earthbath Hypoallergenic Dog Shampoo</h3><p>Fragrance-free and soap-free, so it cleans allergens off the coat without stripping the skin oils that keep flaking (and dander) down. Perfect for the every-4–6-weeks bath schedule.</p><div class="pd-price">Typical price: $15–$20</div><a class="pd-btn" href="https://www.amazon.com/s?k=Earthbath+hypoallergenic+dog+shampoo&tag=papalex-ff-20" target="_blank" rel="nofollow sponsored noopener">Check Price on Amazon</a></div>
+</div>
+<div class="affil-note">As an Amazon Associate, FrenchyFab earns from qualifying purchases — it keeps our guides free and never changes our recommendations.</div>
+<h2 id="myths">Myths vs. facts</h2>
+<div style="overflow-x:auto;margin:26px 0;">
+<table style="width:100%;border-collapse:collapse;font-size:15.5px;min-width:640px;">
+<thead><tr style="background:#4a3428;color:#fdf8f1;">
+<th style="padding:12px 16px;text-align:left;border-radius:10px 0 0 0;width:50%;">❌ Myth</th>
+<th style="padding:12px 16px;text-align:left;border-radius:0 10px 0 0;width:50%;">✅ Fact</th>
+</tr></thead>
+<tbody>
+<tr style="background:#fdf3e7;"><td style="padding:14px 16px;">"Short hair means hypoallergenic."</td><td style="padding:14px 16px;">Allergens live in <strong>dander, saliva, and urine</strong> — not in hair length. Short-haired Frenchies shed dander like everyone else.</td></tr>
+<tr><td style="padding:14px 16px;">""Hypoallergenic" means allergy-free."</td><td style="padding:14px 16px;">It means <em>less likely</em> to trigger a reaction — never zero. The AKC states no breed is 100% hypoallergenic.</td></tr>
+<tr style="background:#faf7f2;"><td style="padding:14px 16px;">"Low-shedding breeds are safe for allergy sufferers."</td><td style="padding:14px 16px;">The 2012 Vredegoor study found "hypoallergenic" breeds had <strong>more</strong> allergen in coat samples and no less airborne allergen at home.</td></tr>
+<tr><td style="padding:14px 16px;">"An air purifier alone will fix my pet allergies."</td><td style="padding:14px 16px;">Purifiers handle <em>airborne</em> dander brilliantly — but settled allergens in bedding, couches, and carpets need cleaning plus grooming.</td></tr>
+<tr style="background:#faf7f2;"><td style="padding:14px 16px;">"Frenchie mixes like the French Boodle are hypoallergenic."</td><td style="padding:14px 16px;">Coat inheritance in mixes is unpredictable — a French Bulldog × Poodle mix can shed exactly like a Frenchie. Never a guarantee.</td></tr>
+<tr><td style="padding:14px 16px;">"If I'm fine with the puppy, I'll be fine forever."</td><td style="padding:14px 16px;">Allergies can develop or intensify over months of continuous exposure. Trial periods help, but they're not a lifetime warranty.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="doctor">When to see an allergist (not just Dr. Google)</h2>
+<p>This guide helps you <em>manage</em> exposure — it can't diagnose you. Book an allergist appointment if you experience any of the following around dogs:</p>
+<p>• Sneezing fits, runny nose, or itchy/watery eyes that antihistamines barely touch<br>
+• Skin reactions — hives, rashes, or eczema flare-ups after contact<br>
+• Wheezing, chest tightness, or shortness of breath (especially with asthma)<br>
+• Symptoms that linger for hours after the dog leaves the room</p>
+<p>An allergist can run a <strong>skin-prick test or specific-IgE blood test</strong> for dog dander (Can f 1), grade your sensitivity, and discuss options from immunotherapy (allergy shots or sublingual tablets) to targeted medication plans. <em>FrenchyFab content is for education, not medical advice — your allergist's guidance wins every argument with a blog post.</em></p>
+
+<h2 id="video">Watch: the video explainer</h2>
+<p>Prefer watching to reading? This video walks through exactly what "hypoallergenic" means for dogs and why French Bulldogs don't qualify:</p>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;margin:24px 0;box-shadow:0 8px 28px rgba(46,38,32,.14);">
+<iframe src="https://www.youtube.com/embed/F-HQTPFB_wU" title="Are French Bulldogs Hypoallergenic — video explainer" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<h2 id="faq">Frequently asked questions</h2>
+<style>
+.ffh-faq{margin:26px 0;}
+.ffh-faq .fq{border:1px solid #e8d9c3;border-radius:14px;margin-bottom:12px;overflow:hidden;background:#fff;}
+.ffh-faq .fq-btn{width:100%;background:#fdf8f1;border:none;padding:18px 22px;font-size:16.5px;font-weight:700;color:#3a2a1e;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:inherit;}
+.ffh-faq .fq-btn:hover{background:#fdf3e7;}
+.ffh-faq .fq-icon{flex:0 0 30px;height:30px;border-radius:50%;background:#c2571b;color:#fff;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;transition:transform .25s ease;}
+.ffh-faq .fq.open .fq-icon{transform:rotate(45deg);}
+.ffh-faq .fq-panel{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.ffh-faq .fq-panel p{padding:0 22px 20px;margin:0;font-size:16px;color:#5a4a3c;}
+</style>
+<div class="ffh-faq" id="ffhFaq">
+<div class="fq"><button type="button" class="fq-btn">Are French Bulldogs hypoallergenic?<span class="fq-icon">+</span></button><div class="fq-panel"><p>No. French Bulldogs are not hypoallergenic — they shed moderately year-round and produce the same dander, saliva, and urine allergens (chiefly the Can f 1 protein) as every other breed. The AKC confirms that no dog breed is 100% hypoallergenic.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Do French Bulldogs shed a lot?<span class="fq-icon">+</span></button><div class="fq-panel"><p>They're moderate, year-round shedders — not the heaviest shedders, but far from low-shedding. Expect a constant light dusting of short hairs, with heavier shedding in spring and fall. Regular brushing captures most of it before it spreads.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Can someone with dog allergies own a French Bulldog?<span class="fq-icon">+</span></button><div class="fq-panel"><p>People with mild dog allergies often manage fine with HEPA air filtration, 2–3x weekly brushing, weekly bedding washes, and a dog-free bedroom. Those with severe allergies or asthma should get tested by an allergist and trial extended time with a Frenchie before committing.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">What exactly am I allergic to — the hair?<span class="fq-icon">+</span></button><div class="fq-panel"><p>Almost certainly not the hair itself. Dog allergies are triggered by proteins in dander (dead skin flakes), saliva, and urine — mainly Can f 1, which accounts for an estimated 50–75% of dog-allergy sensitivities. Hair just carries these proteins around your home.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Is there any truly hypoallergenic dog breed?<span class="fq-icon">+</span></button><div class="fq-panel"><p>No. A 2012 study in the Journal of Allergy and Clinical Immunology measured allergens in breeds marketed as hypoallergenic (Poodles, Labradoodles, Spanish Water Dogs, Airedales) and found no evidence any breed qualifies — some even had higher allergen levels in coat samples. Low-shedding breeds only reduce loose hair, not allergens.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Do French Bulldog mixes (like the French Boodle) count as hypoallergenic?<span class="fq-icon">+</span></button><div class="fq-panel"><p>No — and be wary of breeders who claim otherwise. Coat type in crossbreeds is unpredictable; a French Bulldog × Poodle mix can inherit the Frenchie's shedding coat. Judge the individual dog, not the label.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">How can I reduce French Bulldog allergens in my home?<span class="fq-icon">+</span></button><div class="fq-panel"><p>The highest-impact steps: run a True HEPA purifier 24/7, brush your Frenchie 2–3x weekly, bathe every 4–6 weeks with hypoallergenic shampoo, wash all bedding weekly in hot water, vacuum twice weekly with a sealed-HEPA vacuum, and keep the bedroom dog-free.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Should I get allergy tested before getting a Frenchie?<span class="fq-icon">+</span></button><div class="fq-panel"><p>Yes — it's the smartest money you'll spend. Ask an allergist for a skin-prick or specific-IgE test for dog dander, and spend at least a full day (ideally several visits) with a French Bulldog to gauge your real-world reaction before committing to 10–12 years together.</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Can you develop an allergy to a dog you already own?<span class="fq-icon">+</span></button><div class="fq-panel"><p>Yes. Sensitivities can develop or intensify after months of continuous exposure, even if you were fine at first. If new symptoms appear, see an allergist promptly rather than assuming it's "just a cold."</p></div></div>
+<div class="fq"><button type="button" class="fq-btn">Does bathing my Frenchie more often reduce allergens?<span class="fq-icon">+</span></button><div class="fq-panel"><p>Up to a point. Bathing washes allergens off the coat, but bathing too often dries the skin and increases flaking — which raises dander output. Every 4–6 weeks with a gentle hypoallergenic shampoo is the sweet spot for most Frenchies.</p></div></div>
+</div>
+<script>
+(function(){
+var faqs=document.getElementById('ffhFaq').getElementsByClassName('fq');
+for(var i=0;faqs.length>i;i++){
+(function(fq){
+var btn=fq.getElementsByClassName('fq-btn')[0];
+var panel=fq.getElementsByClassName('fq-panel')[0];
+btn.onclick=function(){
+var isOpen=fq.className.indexOf('open')>-1;
+var all=document.getElementById('ffhFaq').getElementsByClassName('fq');
+for(var j=0;all.length>j;j++){all[j].className='fq';all[j].getElementsByClassName('fq-panel')[0].style.maxHeight=null;}
+if(!isOpen){fq.className='fq open';panel.style.maxHeight=panel.scrollHeight+'px';}
+};
+})(faqs[i]);
+}
+})();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Are French Bulldogs hypoallergenic?","acceptedAnswer":{"@type":"Answer","text":"No. French Bulldogs are not hypoallergenic — they shed moderately year-round and produce the same dander, saliva, and urine allergens (chiefly the Can f 1 protein) as every other breed. The AKC confirms that no dog breed is 100% hypoallergenic."}},
+{"@type":"Question","name":"Do French Bulldogs shed a lot?","acceptedAnswer":{"@type":"Answer","text":"They are moderate, year-round shedders. Expect a constant light dusting of short hairs, with heavier shedding in spring and fall. Regular brushing captures most of it before it spreads."}},
+{"@type":"Question","name":"Can someone with dog allergies own a French Bulldog?","acceptedAnswer":{"@type":"Answer","text":"People with mild dog allergies often manage fine with HEPA air filtration, 2-3x weekly brushing, weekly bedding washes, and a dog-free bedroom. Those with severe allergies or asthma should get tested by an allergist and trial extended time with a Frenchie before committing."}},
+{"@type":"Question","name":"What exactly am I allergic to — the hair?","acceptedAnswer":{"@type":"Answer","text":"Dog allergies are triggered by proteins in dander (dead skin flakes), saliva, and urine — mainly Can f 1, which accounts for an estimated 50-75% of dog-allergy sensitivities. Hair just carries these proteins around your home."}},
+{"@type":"Question","name":"Is there any truly hypoallergenic dog breed?","acceptedAnswer":{"@type":"Answer","text":"No. A 2012 study in the Journal of Allergy and Clinical Immunology measured allergens in breeds marketed as hypoallergenic and found no evidence any breed qualifies. Low-shedding breeds only reduce loose hair, not allergens."}},
+{"@type":"Question","name":"Do French Bulldog mixes count as hypoallergenic?","acceptedAnswer":{"@type":"Answer","text":"No. Coat type in crossbreeds is unpredictable; a French Bulldog x Poodle mix can inherit the Frenchie's shedding coat. Judge the individual dog, not the label."}},
+{"@type":"Question","name":"How can I reduce French Bulldog allergens in my home?","acceptedAnswer":{"@type":"Answer","text":"Run a True HEPA purifier 24/7, brush your Frenchie 2-3x weekly, bathe every 4-6 weeks with hypoallergenic shampoo, wash all bedding weekly in hot water, vacuum twice weekly with a sealed-HEPA vacuum, and keep the bedroom dog-free."}},
+{"@type":"Question","name":"Should I get allergy tested before getting a Frenchie?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ask an allergist for a skin-prick or specific-IgE test for dog dander, and spend at least a full day with a French Bulldog to gauge your real-world reaction before committing."}},
+{"@type":"Question","name":"Can you develop an allergy to a dog you already own?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sensitivities can develop or intensify after months of continuous exposure. If new symptoms appear, see an allergist promptly."}},
+{"@type":"Question","name":"Does bathing my Frenchie more often reduce allergens?","acceptedAnswer":{"@type":"Answer","text":"Up to a point. Bathing washes allergens off the coat, but over-bathing dries the skin and increases flaking. Every 4-6 weeks with a gentle hypoallergenic shampoo is the sweet spot."}}
+]}
+</script>
+
+<h2 id="sources">Sources &amp; further reading</h2>
+<p>We don't ask you to take our word for it. The key claims in this guide come from:</p>
+<p>• <strong>American Kennel Club</strong> — official position: no dog breed is 100% hypoallergenic; every dog produces allergens regardless of coat type.<br>
+• <strong>Asthma and Allergy Foundation of America (AAFA)</strong> — pet allergens are proteins found in dander, saliva, and urine.<br>
+• <strong>Vredegoor et al. (2012)</strong>, <em>Journal of Allergy and Clinical Immunology</em> — "Lack of evidence to describe any dog breed as hypoallergenic": measured Can f 1 in hair, coat, and homes of so-called hypoallergenic breeds vs. controls.<br>
+• <a href="https://nativepet.com/blogs/health/are-french-bulldogs-hypoallergenic" target="_blank" rel="noopener">Native Pet — Are French Bulldogs Hypoallergenic?</a><br>
+• <a href="https://showdogswest.com/are-french-bulldogs-hypoallergenic/" target="_blank" rel="noopener">ShowDogsWest — Are French Bulldogs Hypoallergenic?</a> (covers Can f 1–Can f 7 and skin-fold allergen concentration)<br>
+• <a href="https://petdt.com/is-a-french-bulldog-hypoallergenic/" target="_blank" rel="noopener">PetDT — Is a French Bulldog Hypoallergenic?</a></p>
+<div class="callout tip"><span class="co-label">Keep exploring FrenchyFab</span><p>New to the breed? Start with our <a href="https://frenchyfab.com/grooming-your-french-bulldog-complete-guide/">complete French Bulldog grooming guide</a>, then read up on <a href="https://frenchyfab.com/complete-guide-french-bulldog-nutrition/">diet myths that affect skin and coat health</a> — because a healthy coat means less dander for everyone.</p></div>
+<p><em>Last reviewed: October 2026. FrenchyFab's guides are researched against veterinary and allergy-medicine sources — but they don't replace your vet or your allergist.</em></p>
+
+</div>

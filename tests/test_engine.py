@@ -2,6 +2,8 @@ import json
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+import pytest
+
 from ace import data, fixes, gsc, score
 from ace.config import Config, Site, norm_url
 from ace.page import classify, parse
@@ -1020,16 +1022,18 @@ def test_setup_access_creates_once_then_reuses():
     assert (len(state["idps"]), len(state["apps"]), len(state["policies"])) == before  # a second run creates nothing new
 
 
-def test_email_code_gateway_refuses_without_a_valid_sign_in():
-    """infra/gateway/worker.test.mjs: signed-in requests reach the dashboard, every forged or missing sign-in does not."""
+@pytest.mark.parametrize("script", ["tests/middleware.test.mjs", "infra/gateway/worker.test.mjs"])
+def test_sign_in_checks(script):
+    """The dashboard's own sign-in (functions/_middleware.js) and the email-code gateway
+    (infra/gateway/worker.js): signed-in requests pass, every missing or forged sign-in is refused."""
+    import os
     import shutil
     import subprocess
-
-    import pytest
 
     node = shutil.which("node")
     if not node:
         pytest.skip("Node.js is not installed")
-    test = Path(__file__).resolve().parent.parent / "infra" / "gateway" / "worker.test.mjs"
-    result = subprocess.run([node, str(test)], capture_output=True, text=True, timeout=120)
+    root = Path(__file__).resolve().parent.parent
+    result = subprocess.run([node, str(root / script)], capture_output=True, text=True, timeout=180,
+                            env={**os.environ, "NODE_NO_WARNINGS": "1"})
     assert result.returncode == 0, result.stdout + result.stderr

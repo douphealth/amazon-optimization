@@ -538,23 +538,24 @@ const PAGE_COLS = [
   { key: "bclicks", label: "Bing clicks", n: 1, cell: p => num(p.bclicks), sort: p => p.bclicks ?? -1 },
   { key: "score", label: "Priority", n: 1, cell: p => (p.score ? p.score.toFixed(1) : "–"), sort: p => p.score },
 ];
-const LIVE_BOXES = D.product_boxes || {}, BOX_PLAN = D.box_plan || {};
+// Read lazily: D is filled in only after data.json has loaded.
+const liveBoxes = () => (D && D.product_boxes) || {}, boxPlan = () => (D && D.box_plan) || {};
 function boxTile() {
-  const live = Object.keys(LIVE_BOXES).length, planned = Object.keys(BOX_PLAN).length;
+  const live = Object.keys(liveBoxes()).length, planned = Object.keys(boxPlan()).length;
   if (!live && !planned) return tile("Product boxes", "–", "No product plan yet");
-  const fromSearch = Object.values(LIVE_BOXES).filter(b => (b.sources || []).includes("search")).length;
+  const fromSearch = Object.values(liveBoxes()).filter(b => (b.sources || []).includes("search")).length;
   return tile("Product boxes live", `${num(live)}<span class="of"> of ${num(Math.max(planned, live))}</span>`,
     `${num(fromSearch)} with products found by the engine · checked daily`);
 }
 const boxLine = p => {
-  const b = LIVE_BOXES[p.url];
+  const b = liveBoxes()[p.url];
   if (b) return status("good", "Product box live") + `<span class="sub">${(b.asins || []).map((a, i) => `<a href="https://www.amazon.com/dp/${esc(a)}" target="_blank" rel="noopener">${esc(a)}</a>${b.sources?.[i] === "search" ? " (found)" : ""}`).join(" · ")} · placed ${esc(day(b.run))}</span>`;
-  if (BOX_PLAN[p.url] !== undefined) return status("info", "Product box planned") + `<span class="sub">Placed automatically on the next run${BOX_PLAN[p.url] ? `: picks for ${esc(BOX_PLAN[p.url])}` : ""}</span>`;
+  if (boxPlan()[p.url] !== undefined) return status("info", "Product box planned") + `<span class="sub">Placed automatically on the next run${boxPlan()[p.url] ? `: picks for ${esc(boxPlan()[p.url])}` : ""}</span>`;
   return "";
 };
 const nextStep = p => {
   const live = boxLine(p);
-  if (live && LIVE_BOXES[p.url]) return live;
+  if (live && liveBoxes()[p.url]) return live;
   const done = FIXED.get(p.url);
   if (done) return done.status === "fixed" ? status("good", "Fixed by the engine") : status("warning", "Saved, not visible on the live page");
   const gap = ["no_amazon_links", "first_link_very_late", "first_link_late"].find(c => p.codes.includes(c));

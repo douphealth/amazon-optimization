@@ -1037,3 +1037,31 @@ def test_sign_in_checks(script):
     result = subprocess.run([node, str(root / script)], capture_output=True, text=True, timeout=180,
                             env={**os.environ, "NODE_NO_WARNINGS": "1"})
     assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_the_built_dashboard_loads_without_script_errors(tmp_path):
+    """Builds the dashboard from the repository's latest report and opens every view in Chromium."""
+    import functools
+    import http.server
+    import os
+    import shutil
+    import subprocess
+    import threading
+
+    node = shutil.which("node")
+    root = Path(__file__).resolve().parent.parent
+    npm_root = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip() if shutil.which("npm") else ""
+    if not node or not (Path(npm_root) / "playwright").exists():
+        pytest.skip("Node.js with Playwright is not installed")
+    out = tmp_path / "dist"
+    built = subprocess.run(["python", "-m", "ace", "site", "--site-out", str(out)], cwd=root, capture_output=True, text=True, timeout=300)
+    assert built.returncode == 0, built.stderr
+    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(out))
+    server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    try:
+        result = subprocess.run([node, str(root / "tests" / "dashboard_smoke.cjs"), f"http://127.0.0.1:{server.server_port}"],
+                                capture_output=True, text=True, timeout=180, env={**os.environ, "NODE_PATH": npm_root})
+    finally:
+        server.shutdown()
+    assert result.returncode == 0, result.stdout + result.stderr

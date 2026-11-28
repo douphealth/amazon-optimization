@@ -118,9 +118,9 @@ page and `webmarketingbooks.com` now shows an unrelated business.
 - `auto_fix` in `sites.yaml` lists the fixes it may make. Today that is `rel`, `blocked` and `box`.
   `tags` and `disclosure` are off: by decision on 2026-11-26 the render-time snippets above own
   tracking IDs and disclosures, and this engine owns boxes, link attributes and blocked products.
-- A generated box is used only on pages with Google clicks and only where a safe spot exists.
-  A hand-written box in `boxes/<domain>/<url-slug>.html` overrides it and can name its own spot
-  with a first line such as `<!-- place-after: </nav> -->`.
+- Product boxes are described below. A hand-written box in `boxes/<domain>/<url-slug>.html`
+  overrides the generated one and can name its own spot with a first line such as
+  `<!-- place-after: </nav> -->`; the engine never replaces or removes a hand-written box.
 - Logins are WordPress Application Passwords in environment variables named `WP_AUTH_<DOMAIN>`
   (for example `WP_AUTH_PLANTASTICHAVEN_COM="user:xxxx xxxx xxxx xxxx xxxx xxxx"`). Never commit them.
 
@@ -138,6 +138,46 @@ Changes made to live sites so far (`reports/2026-11-26/fix-log.csv`):
 | 2026-11-26 | plantastichaven.com/how-to-start-a-philodendron/ | Heading changed to match the search it shows for | Heading live; the search title needs pasting into Yoast |
 | 2026-11-26 | gearuptofit.com: three review pages (treadmills, compression boots, shoes for heavy runners) | Released from the theme's prune list | Live: indexable, in the sitemap, submitted |
 | 2026-11-26 | mysticaldigits.com/challenge-numbers-overcome/ | Tracking ID in the post body changed to `papalex-md-20` | No effect: a render-time layer still outputs `papalex-20` |
+
+## Product boxes: real Amazon products, placed and kept current
+
+With the Creators API secrets set, the engine chooses real products for each page and places a box
+near the top of the article, then checks it every day.
+
+**Which pages.** `data/products/plan.json` holds a reviewed decision for every live page (2,393 on
+2026-11-28; 1,434 get a box): whether a reader of that page would plausibly buy something tied to
+its subject, and if so up to three product types, each a search phrase, the words a correct
+product's title must contain, words that rule a product out, and a one-line factual role. It was
+written by 12 planners and checked line by line by 12 independent critics (no box on legal, hub,
+software-only or tenuous pages; no medical claims; no superlatives). Pages published later plan
+themselves when their title plainly names a product ("Best ...", "Top 10 ...", "... Review");
+pages that already link Amazon products late in the article get a box of their own products.
+
+**Which products.** `ace/products.py`, through `ace/amazon.py` (Creators API; PA-API 5 was shut off
+on 2026-05-15): the page's main product type first (a review's product leads its box; a "best X"
+page keeps its own X products), then one product per further type, then the page's other linked
+products. The page's own products are confirmed live (still sold, image loads). A searched product
+counts only if its title has every required word and no excluded one, it is in stock, its image
+loads and it is not in `blocked_asins`; among those, Amazon's relevance order decides, nudged by
+sales rank and the buy box. No confirmed product, no box.
+
+**The box.** Image, short clean name, the role line, a "Check price on Amazon" button and the
+Associates disclosure above the first link. Inline styles only (Classic Editor), no prices (never
+stale), links exactly as Amazon returns them for the site's tracking ID (`default_tag` for sites
+without one), `rel="sponsored nofollow noopener"`. Names are plain text because some themes turn
+every text link to Amazon into a button; on those sites the button takes the theme's own style.
+
+**Kept current.** `data/products/boxes.json` lists every live box (ASINs and fingerprints only: no
+Amazon content in the repo). `.github/workflows/daily-boxes.yml` runs `ace refresh-boxes` every
+day: a box whose product went out of stock, lost or changed its image, changed its name or got
+blocked is rebuilt by the same rules, or removed if nothing qualifies. A box an editor deleted is
+never put back. During an Amazon outage posts are left exactly as they are, and after three failed
+calls the run stops calling Amazon. `ace fix --rebuild-boxes` re-renders every live box (for a
+design change).
+
+Secrets: `AMAZON_CREATORS_CREDENTIAL_ID` and `AMAZON_CREATORS_CREDENTIAL_SECRET` (Associates
+Central > Tools > Creators API; credential version 3.1 for amazon.com). Amazon allows the API
+only to accounts with 10 qualifying sales in the last 30 days; new credentials get 1 call a second.
 
 ## Run it
 

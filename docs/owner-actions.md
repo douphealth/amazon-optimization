@@ -17,6 +17,7 @@ repository secret:
 | `BING_API_KEY` | Bing Webmaster clicks, impressions, queries and crawl errors |
 | `INDEXNOW_KEY` | Submitting new and changed pages to Bing and the other IndexNow engines |
 | `WP_AUTH_<SITE>` (one per WordPress site) | The fixes switched on in `sites.yaml`, every Monday |
+| `AMAZON_CREATORS_CREDENTIAL_ID`, `AMAZON_CREATORS_CREDENTIAL_SECRET` | Real-product boxes: placed every Monday, checked and kept current every day |
 
 The exact values were prepared in a private file in the working session, with a one-command upload
 (`gh secret set -f ... -R douphealth/amazon-optimization`). This session's GitHub access cannot

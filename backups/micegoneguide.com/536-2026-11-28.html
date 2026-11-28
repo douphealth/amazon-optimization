@@ -1,0 +1,85 @@
+<!-- wp:html -->
+<style>
+body.single-post main#wp--skip-link--target > .wp-block-group:first-child,
+body.page main#wp--skip-link--target > .wp-block-group:first-child{display:none!important}
+.mgg-article,body.single-post .entry-content .mgg-article,body.page .entry-content .mgg-article{max-width:980px;margin:0 auto;font-size:18px;line-height:1.72;color:#17211b}
+.mgg-article h1,body.single-post .entry-content .mgg-article h1,body.single-post .entry-content .mgg-article > h1,body.page .entry-content .mgg-article h1{font-size:42px;line-height:1.12;letter-spacing:-.015em;margin:18px 0;font-weight:700}
+.mgg-article h2,body.single-post .entry-content .mgg-article h2,body.page .entry-content .mgg-article h2{font-size:30px;line-height:1.22;margin:40px 0 16px}
+.mgg-article h3,body.single-post .entry-content .mgg-article h3,body.page .entry-content .mgg-article h3{font-size:23px;margin-top:26px}
+body.single-post .entry-content .mgg-article p,body.single-post .entry-content .mgg-article ul,body.single-post .entry-content .mgg-article ol,body.page .entry-content .mgg-article p{max-width:100%}
+.mgg-kicker{display:inline-block;font-weight:700;color:#2c6b2f;text-transform:uppercase;letter-spacing:.06em;background:#e7f4ea;border:1px solid #cae6d0;border-radius:999px;padding:.42rem .78rem;font-size:.82rem;margin-bottom:1.1rem}
+.mgg-answer,body.single-post .entry-content .mgg-article .mgg-answer,body.page .entry-content .mgg-article .mgg-answer{background:#edf8ee;border-left:6px solid #2e7d32;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-warning{background:#fff5e6;border-left:6px solid #cf7a00;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-grid,body.single-post .entry-content .mgg-article .mgg-grid,body.page .entry-content .mgg-article .mgg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:24px 0}
+.mgg-card,body.single-post .entry-content .mgg-article .mgg-card,body.page .entry-content .mgg-article .mgg-card{border:1px solid #d8e2d8;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.mgg-card img,body.single-post .entry-content .mgg-article .mgg-card img,body.page .entry-content .mgg-article .mgg-card img{width:100%!important;height:190px!important;max-height:190px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-card.mgg-hero-figure,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure{display:block;width:100%;margin:24px 0;padding:12px;background:#fff;border:1px solid #d8e2d8;border-radius:16px}
+.mgg-card.mgg-hero-figure picture,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure picture,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure picture{display:block;width:100%}
+.mgg-card.mgg-hero-figure img,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure img,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure img{width:100%!important;max-width:100%!important;height:auto!important;max-height:560px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-product-card img,body.single-post .entry-content .mgg-article .mgg-product-card img{height:170px!important;max-height:170px!important;object-fit:contain!important;background:#fff}
+.mgg-button{display:inline-block;background:#2e7d32;color:#fff!important;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:10px}
+.mgg-table,body.single-post .entry-content .mgg-article table,body.page .entry-content .mgg-article table{width:100%!important;border-collapse:separate!important;border-spacing:0;margin:22px 0;border:1px solid #d9e4d9!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 4px 14px rgba(0,0,0,.04)!important}
+.mgg-table th,body.single-post .entry-content .mgg-article table th,body.page .entry-content .mgg-article table th{background:linear-gradient(135deg,#173f2b,#235f40)!important;color:#fff!important;font-weight:800!important;padding:12px 14px!important;border:none!important}
+.mgg-table td,body.single-post .entry-content .mgg-article table td,body.page .entry-content .mgg-article table td{padding:12px 14px!important;border-top:1px solid #e5ede5!important;vertical-align:top!important}
+.mgg-table tr:nth-child(even) td,body.single-post .entry-content .mgg-article table tr:nth-child(even) td,body.page .entry-content .mgg-article table tr:nth-child(even) td{background:#fbfbf8!important}
+.mgg-table tr:hover td,body.single-post .entry-content .mgg-article table tr:hover td,body.page .entry-content .mgg-article table tr:hover td{background:#f0f7f2!important}
+.mgg-toc,.mgg-toc-box,body.single-post .entry-content .mgg-article .mgg-toc,body.single-post .entry-content .mgg-article .mgg-toc-box,body.page .entry-content .mgg-article .mgg-toc,body.page .entry-content .mgg-article .mgg-toc-box{background:#f7faf7!important;border:1px solid #dfe8df!important;border-radius:16px!important;padding:20px!important;margin:26px 0!important}
+.mgg-byline,body.single-post .entry-content .mgg-article .mgg-byline,body.page .entry-content .mgg-article .mgg-byline{color:#53635a;font-size:15px;margin-bottom:18px}
+.mgg-sources{font-size:15px;background:#f8f8f6;padding:18px;border-radius:14px}
+.mgg-note{font-size:15px;color:#53635a}
+.mgg-checklist li{margin-bottom:8px}
+</style>
+<!-- /wp:html -->
+
+<article data-mgg-release="2026-10-02" class="mgg-article mgg-post">
+
+<p class="mgg-kicker">Species Identification Guide</p>
+<h1 class="mgg-title">Rats vs Mice: How to Tell the Difference</h1>
+<p class="mgg-byline mgg-dek">Reviewed October 2, 2026. Compare head, foot, ear, tail and dropping characteristics to assess adult mice and young rats cautiously before selecting control methods.</p>
+
+<div class="mgg-answer geo-direct-answer">
+  <p style="margin:0 0 8px 0;font-weight:800;color:#1e4620;text-transform:uppercase;font-size:13px;letter-spacing:.05em;">Quick Answer: How to Tell the Difference</p>
+  <p style="margin:0 0 10px 0;"><strong>Adult rats are generally larger and more heavily built than house mice, but a young rat can be mistaken for a mouse.</strong> Compare the animal's head, feet, ears and tail together. Droppings and the location of activity provide clues, not a certain species identification. Noise volume cannot reliably tell you whether you have rats or mice.</p>
+  <p style="margin:0;">When the animal remains uncertain, photograph it from a safe distance and request identification before choosing a trap. Do not handle an animal or crush droppings to make a comparison.</p>
+</div>
+
+<figure class="wp-block-image size-large mgg-card mgg-hero-figure">
+  <img src="https://micegoneguide.com/wp-content/uploads/2023/12/Rats-vs-Mice-Whats-the-Difference-2-1024x585.jpg" alt="Rat and mouse comparison accompanying the identification guide" width="1024" height="585" loading="eager" />
+  <figcaption style="font-size:14px;color:#53635a;margin-top:10px;">Compare several features together: head and foot proportions can help when size overlaps. A reference image does not replace inspection.</figcaption>
+</figure>
+
+<p style="font-size:16px;color:#334155;margin:20px 0;">This guide compares house mice with Norway rats and roof rats commonly associated with buildings. It does not cover every local rodent or replace an inspection. The comparison draws on <a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener">UC IPM's house mouse guide</a> and <a href="https://ipm.ucanr.edu/home-and-landscape/rats/" target="_blank" rel="noopener">UC IPM's rat guide</a>.</p>
+
+<nav class="mgg-toc mgg-toc-box" aria-label="In this comparison guide">
+  <p style="font-weight:700;font-size:16px;margin:0 0 12px 0;color:#0f172a;">In This Comparison Guide:</p>
+  <ul style="margin:0;padding-left:22px;font-size:15px;line-height:1.8;color:#334155;">
+    <li><a href="#compare-more-than-size" style="color:#27745f;text-decoration:none;font-weight:500;">Rat or Mouse? Compare More Than Size</a></li>
+    <li><a href="#what-evidence-cannot-establish" style="color:#27745f;text-decoration:none;font-weight:500;">What Droppings, Sounds and Sightings Cannot Establish</a></li>
+    <li><a href="#does-identification-change-steps" style="color:#27745f;text-decoration:none;font-weight:500;">Does Identification Change the Next Step?</a></li>
+    <li><a href="#prepare-identification-record" style="color:#27745f;text-decoration:none;font-weight:500;">Prepare a Useful Identification Record</a></li>
+    <li><a href="#when-to-get-help" style="color:#27745f;text-decoration:none;font-weight:500;">When to Get Qualified Help</a></li>
+  </ul>
+</nav>
+<h2 id="compare-more-than-size">Rat or mouse? Compare more than size</h2>
+<div class="scroll" role="region" aria-label="Rat and mouse comparison" tabindex="0"><table><caption>Useful observations and their limits, based on UC IPM [1][2]</caption><thead><tr><th scope="col">Feature</th><th scope="col">House mouse</th><th scope="col">Rat</th></tr></thead><tbody><tr><th scope="row">Overall build</th><td>Small, relatively delicate build.</td><td>Adults are larger; young rats can overlap in apparent size with mice.</td></tr><tr><th scope="row">Head and feet</th><td>An adult mouse has relatively small feet and head.</td><td>A young rat often has a proportionally larger head and feet than an adult mouse.</td></tr><tr><th scope="row">Ears and tail</th><td>Relatively large ears and a slender, almost hairless tail. These traits do not identify a house mouse on their own.</td><td>Roof rat: tail longer than the head and body combined, pointed muzzle and relatively large ears. Norway rat: stockier build, blunter muzzle and a tail shorter than the head and body combined. Compare visible proportions; do not handle an animal or pull its tail. [2]</td></tr><tr><th scope="row">Location</th><td>Can occupy cabinets, storage areas and structural voids.</td><td>Roof rats often use elevated spaces; Norway rats often use ground-level shelter and burrows. These are tendencies, not proof.</td></tr><tr><th scope="row">Waste and damage</th><td>Droppings are usually smaller than adult rat droppings.</td><td>Dropping size varies with animal size; damaged material alone does not identify the species.</td></tr></tbody></table></div>
+<p>Young rats can overlap with adult mice in apparent size and have proportionally larger heads and feet. These are comparison clues, not a measurement-based diagnosis. Other local rodents, including deer mice and woodrats, may look different from this house-mouse comparison. [1][2]</p>
+<p><strong>Example:</strong> a small rodent seen briefly beside a bin is not automatically a mouse. Record what was visible rather than estimating its weight. A clear side-view photograph may be more useful to an identifier than a description such as "very loud scratching."</p>
+
+<h2 id="what-evidence-cannot-establish">What droppings, sounds and sightings cannot establish</h2>
+<p>A dropping comparison is a starting point, not a species test. Photograph suspected waste without moving it and note its location. Do not test softness, crumble pellets or handle them to inspect their contents. Our <a href="https://micegoneguide.com/mouse-droppings/">droppings and lookalikes guide</a> explains the limits of visual comparisons.</p>
+<p>Scratching may justify checking an accessible nearby area, but it does not locate a nest precisely. A daytime sighting does not provide a population count. For an observation checklist, use <a href="https://micegoneguide.com/signs-of-mice-infestation/">signs of mouse activity</a>; for inaccessible noises, see <a href="https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/">what to do about suspected rodents in walls</a>.</p>
+<h2 id="does-identification-change-steps">Does identification change the next step?</h2>
+<p><strong>It matters most when selecting equipment.</strong> Mouse and rat snap traps are different sizes. CDC recommends the appropriate snap trap, daily checks and placement inaccessible to children and pets, and advises against glue and live traps. Read the <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a> before acting. [3] Our <a href="https://micegoneguide.com/best-mouse-traps-for-homes/">mouse-trap comparison</a> is for mouse equipment, not a reason to use a mouse trap on an unidentified rat-sized animal.</p>
+<p><strong>Safe cleanup should not wait for a perfect label.</strong> Treat suspected rodent waste cautiously. Do not dry-sweep or vacuum untreated waste. Follow the <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html">CDC cleanup instructions</a> and our <a href="https://micegoneguide.com/how-to-remove-mice-droppings-safely/">surface-by-surface cleanup guide</a>. Appearance cannot establish infection or personal disease risk. The cleanup precautions apply to suspected rodent waste regardless of a visual species guess. [4]</p>
+<p><strong>Prevention still needs a building inspection.</strong> Both food access and entry points matter. Match repairs to the opening and the building assembly rather than stuffing every hole indiscriminately. Our <a href="https://micegoneguide.com/mouse-proofing/">mouse-proofing guide</a> covers exclusion; obtain qualified advice for vents, utilities and inaccessible spaces.</p>
+<h2 id="prepare-identification-record">Prepare a useful identification record</h2>
+<p>Keep a short record with the date, room, observed animal features, photographs and any newly observed damage. Separate "seen" from "suspected." After waste has been safely removed, record whether additional material appears rather than trying to date old pellets by color.</p>
+<p>For example: "October 2, pantry: small rodent seen for a few seconds; tail not visible; photograph of damaged packaging attached" is more useful than "three mice nesting in the wall." Neither an online quiz nor a single observation supports the second conclusion.</p>
+<h2 id="when-to-get-help">When to get qualified help</h2>
+<p>Arrange identification when the species remains uncertain, animals cannot be accessed safely, or new evidence continues despite appropriate control and repair. Seek professional help for heavy contamination or contamination in ventilation systems. Report suspected damaged wiring to a qualified electrician without disturbing it. In a shared building, give the manager your dated observations so adjoining spaces can be considered.</p>
+<details><summary>Can a baby rat look like a mouse?</summary><p>Yes. Compare head and foot proportions as well as the overall body and tail; do not rely on size alone. A qualified identifier may need a clearer photograph or an inspection.</p></details>
+<details><summary>Do mice only eat seeds while rats eat anything?</summary><p>No. Both can use varied foods around buildings. What was eaten is not a reliable way to identify the animal. Secure accessible food instead of choosing control based on that stereotype.</p></details>
+<details><summary>Can this comparison tell me which animal is more dangerous?</summary><p>No. Species guesses, waste photographs and noises cannot assess an individual's disease risk. Avoid contact and use appropriate cleanup precautions. Contact a healthcare professional about a bite, concerning illness or exposure rather than using this page for a diagnosis.</p></details>
+<p><strong>Next:</strong> once mouse activity is supported by the evidence, use the <a href="https://micegoneguide.com/how-to-get-rid-of-mice/">complete mouse-control process</a>. Uncertain identification is a reason to investigate, not to buy more traps.</p>
+<section class="mgg-sources"><h2>Sources</h2><ul><li>[1] <a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" target="_blank" rel="noopener">House Mouse</a></li><li>[2] <a href="https://ipm.ucanr.edu/home-and-landscape/rats" target="_blank" rel="noopener">Rats</a></li><li>[3] <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener">CDC trapping</a></li><li>[4] <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" target="_blank" rel="noopener">CDC cleanup</a></li></ul></section>
+</article>

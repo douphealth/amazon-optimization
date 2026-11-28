@@ -1,0 +1,291 @@
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   GUTG Design System v3 — Enterprise-Grade Blog Styling
+   Mobile-first · Dark gradient tables · Modern typography
+   ═══════════════════════════════════════════════════════════════ */
+
+.gutg-article{max-width:860px;margin:auto;line-height:1.78;font-size:18px;color:#1e293b;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.gutg-article h2{margin-top:2.4em;margin-bottom:0.6em;font-size:1.55em;color:#0f172a;letter-spacing:-0.01em;font-weight:700}
+.gutg-article h3{margin-top:1.6em;margin-bottom:0.4em;font-size:1.2em;color:#1e293b;font-weight:600}
+.gutg-article p{margin-bottom:1.1em}
+.gutg-article ul,.gutg-article ol{margin-bottom:1.2em;padding-left:1.4em}
+.gutg-article li{margin-bottom:0.45em;line-height:1.65}
+.gutg-article a{color:#0f766e;text-decoration:underline;text-decoration-color:rgba(15,118,110,0.3);text-underline-offset:2px;transition:color 0.15s ease,text-decoration-color 0.15s ease}
+.gutg-article a:hover{color:#10b981;text-decoration-color:#10b981}
+.gutg-article strong{color:#0f172a}
+.gutg-article figure{margin:28px 0}
+.gutg-article figure img{width:100%;height:auto;display:block;border-radius:16px}
+.gutg-article figcaption{font-size:14px;line-height:1.5;padding:10px 4px;color:#64748b;font-style:italic}
+.gutg-summary{border:1px solid #e2e8f0;border-radius:16px;padding:20px 24px;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%);margin:24px 0;box-shadow:0 1px 3px rgba(15,23,42,0.04)}
+.gutg-key-takeaways{background:linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%);border:1px solid #bfdbfe;border-radius:16px;padding:20px 24px;margin:24px 0}
+.gutg-key-takeaways ul{margin:0;padding-left:20px}
+.gutg-key-takeaways li{margin-bottom:8px;line-height:1.6}
+.gutg-toc{border-left:4px solid #10b981;background:linear-gradient(135deg,#f0fdf4 0%,#f8fafc 100%);padding:20px 24px;margin:28px 0;border-radius:0 12px 12px 0}
+.gutg-toc ol{margin:0;padding-left:20px}
+.gutg-toc li{margin-bottom:6px}
+.gutg-toc a{color:#334155;text-decoration:none;font-weight:500}
+.gutg-toc a:hover{color:#10b981;text-decoration:underline}
+
+/* ═══ TABLES ═══ */
+.wp-block-table{margin:28px 0;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(15,23,42,0.07)}
+.wp-block-table table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden}
+.wp-block-table thead th{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#f8fafc;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:0.05em;padding:14px 18px;border:none;text-align:left}
+.wp-block-table tbody td{padding:14px 18px;border-bottom:1px solid #f1f5f9;font-size:15.5px;line-height:1.55;color:#334155;vertical-align:top}
+.wp-block-table tbody tr{transition:background-color 0.18s ease}
+.wp-block-table tbody tr:hover{background-color:#f0fdf4}
+.wp-block-table tbody tr:last-child td{border-bottom:none}
+.wp-block-table tbody tr:nth-child(even){background-color:#fafbfc}
+.wp-block-table tbody tr:nth-child(even):hover{background-color:#f0fdf4}
+.wp-block-table tbody td:first-child{font-weight:600;color:#0f172a}
+
+/* Template blocks */
+.gutg-template-block{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);color:#e2e8f0;border-radius:16px;padding:24px 28px;margin:28px 0;font-family:'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace;font-size:14.5px;line-height:1.75;overflow-x:auto;box-shadow:0 8px 32px rgba(15,23,42,0.14);border:1px solid #334155;white-space:pre-wrap;word-wrap:break-word}
+
+/* Visual grid */
+.gutg-visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+.gutg-visual-grid figure{margin:0;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 12px rgba(15,23,42,0.04);transition:transform 0.2s ease,box-shadow 0.2s ease}
+.gutg-visual-grid figure:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,23,42,0.08)}
+.gutg-visual-grid img{width:100%;height:auto;display:block}
+.gutg-visual-grid figcaption{font-size:14px;line-height:1.5;padding:12px 16px;color:#64748b}
+
+/* Scenario cards */
+.gutg-scenario{border-left:4px solid #10b981;padding:16px 20px;margin:20px 0;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 100%);border-radius:0 12px 12px 0}
+.gutg-scenario p{margin:0}
+
+/* FAQ */
+.gutg-faq h3{color:#0f172a;margin-top:1.8em;padding-bottom:8px;border-bottom:2px solid #f1f5f9}
+.gutg-faq h3+p{color:#475569;line-height:1.7}
+
+/* Breadcrumbs */
+.gutg-breadcrumbs{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px;color:#64748b;margin:0 0 28px 0;padding:0}
+.gutg-breadcrumbs ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.gutg-breadcrumbs li{display:flex;align-items:center;gap:8px}
+.gutg-breadcrumbs a{color:#475569;text-decoration:none;transition:color 0.15s ease}
+.gutg-breadcrumbs a:hover{color:#10b981;text-decoration:underline}
+.gutg-breadcrumbs .separator{color:#cbd5e1;user-select:none}
+.gutg-breadcrumbs .current{color:#0f172a;font-weight:500}
+
+/* ═══ MOBILE ═══ */
+@media(max-width:760px){
+  .gutg-visual-grid{grid-template-columns:1fr}
+  .gutg-article{font-size:16.5px;line-height:1.72}
+  .gutg-article h2{font-size:1.35em}
+  .wp-block-table{margin:20px -12px;border-radius:12px;box-shadow:0 2px 12px rgba(15,23,42,0.05)}
+  .wp-block-table table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .wp-block-table thead th{padding:12px 14px;font-size:12.5px;white-space:nowrap}
+  .wp-block-table tbody td{padding:12px 14px;font-size:14.5px;min-width:120px}
+  .gutg-template-block{padding:18px 20px;font-size:13.5px;margin:20px -4px;border-radius:12px}
+  .gutg-summary,.gutg-key-takeaways{padding:16px 18px}
+  .gutg-toc{padding:16px 18px}
+  .gutg-scenario{padding:14px 16px}
+}
+@media(max-width:480px){
+  .wp-block-table tbody td{min-width:100px;font-size:14px}
+  .wp-block-table thead th{font-size:11.5px;letter-spacing:0.04em;padding:10px 12px}
+  .wp-block-table tbody td{padding:10px 12px}
+}
+</style>
+<article class="gutg-article">
+<nav aria-label="Breadcrumbs" class="gutg-breadcrumbs">
+<ol>
+<li><a href="https://gearuptogrow.com/">Home</a></li>
+<li><span class="separator">/</span></li>
+<li><a href="https://gearuptogrow.com/productivity/">Productivity</a></li>
+<li><span class="separator">/</span></li>
+<li><span aria-current="page" class="current">Pomodoro Technique vs Deep Work: When Each Works Best</span></li>
+</ol>
+</nav>
+<p><strong>Quick answer:</strong> Pomodoro is a timed work-and-break routine; deep work is distraction-free concentration on a demanding task. They are not mutually exclusive: a 25-minute Pomodoro can contain deep work. Choose the timer when it helps you start and take breaks; use a longer protected block when frequent stopping makes a complex task harder to resume. Session length alone does not determine depth or quality.</p>
+<div class="gutg-summary">
+<p><strong>Best for:</strong> students, knowledge workers, creators, coders, and anyone trying to choose between short timed sprints and longer focus sessions for studying, writing, coding, admin, and creative work.</p>
+<p><strong>Use this when:</strong> you want to decide which focus method fits your work, learn when to use each, discover how to combine them, and find realistic examples by task type.</p>
+</div>
+<div class="gutg-key-takeaways">
+<p><strong>Key Takeaways</strong></p>
+<ul>
+<li>Pomodoro structures work and breaks; deep work describes the kind of concentration. Either can help a demanding task, and neither guarantees better output.</li>
+<li>Use Pomodoro when avoidance is high, energy is low, or the task is well-defined and repetitive.</li>
+<li>Use deep work when the task requires sustained context: writing, coding, strategy, research, or creative flow.</li>
+<li>Combine both methods in the same day: Pomodoro for admin batches, deep work for your main project.</li>
+<li>Pair this guide with the <a href="https://gearuptogrow.com/productivity/free-time-blocking-template/">free time blocking template</a> to schedule both focus methods into your week.</li>
+</ul>
+</div>
+<div class="gutg-summary">
+<p><strong>Editorial review:</strong> This guide was written by Alexios Papaioannou, editor of Gear Up to Grow, and reviewed internally for accuracy and clarity. It is educational content, not medical, legal, or financial advice. Productivity advice is not a substitute for professional support — if you suspect a health condition such as ADHD, anxiety, or depression is interfering with your focus, please talk to a qualified professional.</p>
+<p><strong>Related:</strong> For the full framework, step-by-step system, and tools, see the <a href="https://gearuptogrow.com/productivity/deep-work/">Deep Work: Practical Focus System guide</a>. For realistic weekly plans by role, see <a href="https://gearuptogrow.com/productivity/deep-work-schedule-examples/">Deep Work Schedule Examples</a>.</p>
+</div>
+<nav aria-label="Table of contents" class="gutg-toc">
+<p><strong>In this guide:</strong></p>
+<ol>
+<li><a href="#what-is-pomodoro">What Is the Pomodoro Technique?</a></li>
+<li><a href="#what-is-deep-work">What Is Deep Work?</a></li>
+<li><a href="#comparison-table">Side-by-Side Comparison</a></li>
+<li><a href="#when-pomodoro">When to Use Pomodoro</a></li>
+<li><a href="#when-deep-work">When to Use Deep Work</a></li>
+<li><a href="#combine">How to Combine Pomodoro and Deep Work</a></li>
+<li><a href="#decision-matrix">Decision Matrix</a></li>
+<li><a href="#mistakes">Common Mistakes with Each Method</a></li>
+<li><a href="#examples">Examples by Work Type</a></li>
+<li><a href="#7-day-plan">7-Day Implementation Plan</a></li>
+<li><a href="#scenario-bank">Scenario Bank</a></li>
+<li><a href="#faq">Frequently Asked Questions</a></li>
+<li><a href="#sources">Sources and Further Reading</a></li>
+</ol>
+</nav>
+<section id="visual-examples">
+<h2>Visual examples</h2>
+<div class="gutg-visual-grid">
+<figure>
+<img alt="Time blocking framework showing deep work blocks, weekly calendar layout, and planning steps for structured productivity" decoding="async" loading="lazy" src="https://gearuptogrow.com/wp-content/uploads/2026/04/time-blocking-framework-for-deep-work-and-weekly-planning-1024x683.webp"/>
+<figcaption>Deep work blocks thrive inside a structured weekly plan. Use the framework to protect your most demanding thinking.</figcaption>
+</figure>
+<figure>
+<img alt="Infographic showing a 7 day focus reset plan with steps to reduce distractions and rebuild attention" decoding="async" loading="lazy" src="https://gearuptogrow.com/wp-content/uploads/2026/04/7-day-focus-reset-protocol-to-improve-attention-1024x683.webp"/>
+<figcaption>Both Pomodoro and deep work perform better when distraction is reduced before the session begins.</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-is-pomodoro">
+<h2>What is the Pomodoro Technique?</h2>
+<p>The Pomodoro Technique is a <a href="https://gearuptogrow.com/productivity/time-management/">time management</a> method developed by Francesco Cirillo in the late 1980s. It uses a simple cycle: work for 25 minutes, take a five-minute break, and repeat. After four completed cycles, take a longer break of 15 to 30 minutes. The technique is named after the tomato-shaped kitchen timer Cirillo used as a university student.</p>
+<p>The primary value of Pomodoro is not the timer itself. It is the psychological contract. By committing to only 25 minutes, large or dreaded tasks become startable. The method works especially well when procrastination, not complexity, is the main obstacle. It also creates a natural rhythm that prevents burnout during repetitive or administrative work. The <a href="https://gearuptogrow.com/productivity/context-switching/">context switching costs</a> of multitasking are real, and Pomodoro's single-task structure helps avoid them.</p>
+</section>
+<section id="what-is-deep-work">
+<h2>What is deep work?</h2>
+<p>Deep work is a concept defined by Cal Newport as professional activities performed in a state of distraction-free concentration that push your cognitive abilities to their limit. These efforts create new value, improve skill, and are hard to replicate. Deep work is the opposite of shallow work — the logistical, non-cognitively-demanding tasks that are often performed while distracted.</p>
+<p>Deep work sessions typically last 60 to 120 minutes and require both environmental control and mental discipline. The session needs a defined output, a clear distraction rule, and a recovery period afterward. For practical scheduling examples, see the <a href="https://gearuptogrow.com/productivity/deep-work-schedule-examples/">deep work schedule examples</a> guide. Deep work is the engine behind original writing, complex code, strategic planning, research synthesis, and high-stakes creative work.</p>
+</section>
+<section id="comparison-table">
+<h2>Side-by-side comparison</h2>
+<div class="wp-block-table"><table><thead><tr><th scope="col">Feature</th><th scope="col">Pomodoro Technique</th><th scope="col">Deep Work</th></tr></thead><tbody>
+<tr><td>Block length</td><td>25 minutes (standard)</td><td>60–120+ minutes</td></tr>
+<tr><td>Break pattern</td><td>5 min after each block, 15–30 min after 4 blocks</td><td>Flexible, after the session ends</td></tr>
+<tr><td>Best for</td><td>Overcoming procrastination, admin, review, repetitive tasks</td><td>Writing, coding, strategy, research, complex problem solving</td></tr>
+<tr><td>Distraction rule</td><td>Timer creates urgency to stay on task</td><td>Environment designed to eliminate all interruptions</td></tr>
+<tr><td>Starting friction</td><td>Very low — only 25 minutes</td><td>Higher — requires setup and commitment</td></tr>
+<tr><td>Depth potential</td><td>Moderate — breaks can interrupt flow</td><td>Very high — sustained context builds depth</td></tr>
+<tr><td>Energy cost</td><td>Lower per session</td><td>Higher per session</td></tr>
+<tr><td>Skill level</td><td>Beginner-friendly</td><td>Requires practice to sustain</td></tr>
+</tbody></table></div>
+</section>
+<section id="when-pomodoro">
+<h2>When to use Pomodoro</h2>
+<ul>
+<li><strong>When resistance to starting is high.</strong> The 25-minute commitment makes dreaded tasks feel manageable.</li>
+<li><strong>For admin, email batches, grading, and review tasks.</strong> These tasks do not need deep context but benefit from a timer that prevents expansion.</li>
+<li><strong>When the task is repetitive or well-defined.</strong> Clear tasks with clear steps do not need long focus ramps.</li>
+<li><strong>When energy is low but work must happen.</strong> Short sprints with breaks prevent burnout on low-energy days.</li>
+<li><strong>When you are new to structured productivity.</strong> Pomodoro is the easiest entry point for building focus habits.</li>
+<li><strong>For studying with flashcards or short <a href="https://gearuptogrow.com/learning/active-recall/">active recall</a> sessions.</strong> The 25-minute window matches retrieval practice cycles well.</li>
+</ul>
+</section>
+<section id="when-deep-work">
+<h2>When to use deep work</h2>
+<ul>
+<li><strong>When the task requires sustained context.</strong> Writing, coding, strategy, and research need time for the mind to load the problem before real progress appears.</li>
+<li><strong>When the output is complex and benefits from unbroken thinking.</strong> A 25-minute window is often too short for the ideas to develop fully.</li>
+<li><strong>When you need to produce original work.</strong> Novelty requires extended exploration, not rapid cycles.</li>
+<li><strong>When quality matters more than volume.</strong> Deep work produces fewer but better outputs.</li>
+<li><strong>For exam preparation, thesis writing, and research synthesis.</strong> These tasks require <a href="https://gearuptogrow.com/learning/spaced-repetition/">spaced repetition</a> between deep sessions and benefit from longer practice windows.</li>
+<li><strong>For creative projects that need flow state.</strong> Breaks interrupt the creative momentum that takes 15 to 20 minutes to build.</li>
+</ul>
+</section>
+<section id="combine">
+<h2>How to combine Pomodoro and deep work</h2>
+<p><strong>Standard method versus adaptation:</strong> the official <a href="https://www.pomodorotechnique.com/" rel="noopener" target="_blank">Pomodoro Technique</a> includes planning, interruption management, and effort estimation—not just a timer. If you extend a sprint or skip its scheduled break to finish a thought, call that a flexible timed-work adaptation, not the standard Pomodoro cycle. Do not treat skipping recovery as the goal.</p>
+<p>The two methods are not rivals. A timer can structure a session that also meets the definition of deep work. The most practical approach uses both in the same day or the same week. Use Pomodoro to start difficult tasks and reduce avoidance, then drop the timer when flow arrives and let the session extend into a deep work block. Use Pomodoro for admin batches and deep work for creative or strategic blocks.</p>
+<p>The hybrid approach works especially well for people who procrastinate on large projects. Start with one Pomodoro. If focus arrives, remove the timer and work until the natural stopping point. If focus does not arrive, complete the 25 minutes and take a break. Either way, the work moved forward. Use the <a href="https://gearuptogrow.com/productivity/time-blocking-guide/">time blocking guide</a> to schedule both methods into your weekly calendar.</p>
+</section>
+<section id="decision-matrix">
+<h2>Decision matrix: which method to use</h2>
+<div class="wp-block-table"><table><thead><tr><th scope="col">Situation</th><th scope="col">Recommended method</th><th scope="col">Why</th></tr></thead><tbody>
+<tr><td>High procrastination, any task</td><td>Pomodoro</td><td>Low commitment reduces avoidance.</td></tr>
+<tr><td>Complex writing or coding</td><td>Deep work</td><td>Context needs time to build.</td></tr>
+<tr><td>Email and admin batch</td><td>Pomodoro</td><td>Timer prevents expansion.</td></tr>
+<tr><td>Exam studying with recall</td><td>Pomodoro or hybrid</td><td>Short cycles match retrieval practice.</td></tr>
+<tr><td>Strategy memo or research</td><td>Deep work</td><td>Depth produces better decisions.</td></tr>
+<tr><td>Starting a dreaded task</td><td>Pomodoro first, then extend</td><td>Momentum removes the initial block.</td></tr>
+<tr><td>Creative flow state</td><td>Deep work</td><td>Breaks interrupt creative momentum.</td></tr>
+</tbody></table></div>
+</section>
+<section id="mistakes">
+<h2>Common mistakes with each method</h2>
+<h3>Pomodoro mistakes</h3>
+<ul>
+<li><strong>Taking the 25-minute rule too rigidly.</strong> When flow has arrived, breaking it to obey a timer wastes the best part of the session.</li>
+<li><strong>Using breaks for social media.</strong> A five-minute scroll resets attention and makes the next Pomodoro harder to start.</li>
+<li><strong>Using Pomodoro for tasks that genuinely need depth.</strong> Some work needs 90 minutes of unbroken context. Forcing it into 25-minute chunks fragments the thinking.</li>
+<li><strong>Counting Pomodoros as a productivity metric.</strong> The number of sessions completed is not the same as the quality of output produced.</li>
+</ul>
+<h3>Deep work mistakes</h3>
+<ul>
+<li><strong>Scheduling unrealistic blocks that get cancelled.</strong> A 3-hour deep work block that never survives the real calendar is less useful than a reliable 60-minute block.</li>
+<li><strong>Keeping notifications on during the block.</strong> One notification can break the context that took 20 minutes to build.</li>
+<li><strong>Not defining the output before starting.</strong> Without a visible finish line, the block often drifts into browsing or half-work.</li>
+<li><strong>Expecting deep work to work immediately without practice.</strong> Sustaining focus for 90+ minutes is a skill that improves with repetition.</li>
+</ul>
+<figure class="wp-block-image size-large"><img alt="Overloaded professional at a desk representing cognitive overload, stress, and depleted attention" decoding="async" loading="lazy" src="https://gearuptogrow.com/wp-content/uploads/2025/07/Photorealistic-image-of-burnout-signs-with-clear-expressions.webp"><figcaption>Both methods fail when the schedule is fragile. Protect the block before the week starts using your <a href="https://gearuptogrow.com/productivity/weekly-review-checklist/">weekly review checklist</a>.</figcaption></img></figure>
+</section>
+<section id="examples">
+<h2>Examples by work type</h2>
+<h3>For students</h3>
+<p>Use Pomodoro for flashcard review and short recall sessions. Use deep work for essay writing, problem sets, and exam simulation. The hybrid approach works well: start with a Pomodoro to overcome resistance, then extend into a deep work block when focus arrives. Students who understand <a href="https://gearuptogrow.com/learning/active-recall/">active recall</a> can use the Pomodoro cycle to match retrieval intervals.</p>
+<h3>For writers</h3>
+<p>Use deep work for drafting and editing. Use Pomodoro for research gathering, formatting, and publishing tasks. Protect the creative block from all input. Drafting needs long context; formatting needs structure but not depth.</p>
+<h3>For coders</h3>
+<p>Use deep work for architecture decisions, complex features, and debugging. Use Pomodoro for code review, documentation, and routine maintenance tasks. The <a href="https://gearuptogrow.com/productivity/time-blocking-guide/">time blocking framework</a> helps separate deep coding sessions from communication windows.</p>
+<h3>For admin and managers</h3>
+<p>Use Pomodoro for email batches, approvals, and routine decisions. Use deep work for strategy sessions, planning, and important memos. A manager's schedule should include predictable communication windows so the team can plan around protected blocks. For deeper guidance on structuring a manager's schedule, see the <a href="https://gearuptogrow.com/productivity/time-blocking-guide/">time blocking vs time boxing vs task batching</a> comparison.</p>
+<div class="gutg-template-block">Example: Combining both methods in one day
+
+08:30–08:55  Pomodoro — process email inbox
+09:00–10:30  Deep work — draft strategy memo
+10:30–10:45  Break and transition
+10:45–11:10  Pomodoro — review team updates
+11:10–11:35  Pomodoro — approve pull requests
+13:00–14:30  Deep work — code complex feature
+14:30–14:55  Pomodoro — admin batch
+15:00–15:15  Shutdown — capture loose ends + tomorrow's first action</div>
+</section>
+<section id="7-day-plan">
+<h2>7-day implementation plan</h2>
+<p>Day one: use one Pomodoro for the task you have been avoiding. Day two: try a 60-minute deep work block for your most important project. Day three: combine both — start with Pomodoro, extend if flow arrives. Day four: use Pomodoro for all admin tasks. Day five: protect one deep work block and measure the output. Day six: review which method reduced friction more. Day seven: build a default weekly schedule that uses both methods. Visit the <a href="https://gearuptogrow.com/focus/">focus hub</a> for complementary focus strategies.</p>
+<h2>How to use this guide next</h2>
+<p>Pick the method that matches your biggest current problem. If avoidance is the issue, start with Pomodoro. If quality and depth are the issue, schedule deep work. After one week, adjust based on what produced real output, not what felt productive. Explore the <a href="https://gearuptogrow.com/productivity/">productivity hub</a> for additional systems that complement both methods.</p>
+</section>
+<section id="scenario-bank">
+<h2>Scenario bank: how to adapt this guide</h2>
+<div class="gutg-scenario"><p><strong>If you are overloaded,</strong> start with Pomodoro for everything until momentum returns. One completed 25-minute block is better than zero deep work blocks attempted and abandoned.</p></div>
+<div class="gutg-scenario"><p><strong>If you are a student,</strong> use Pomodoro for flashcards and active recall. Use deep work for essays, problem sets, and exam preparation that need sustained thinking.</p></div>
+<div class="gutg-scenario"><p><strong>If you work remotely,</strong> use deep work before Slack opens and Pomodoro for message batches. Define communication windows so your team knows when to expect responses.</p></div>
+<div class="gutg-scenario"><p><strong>If you are a creator,</strong> protect deep work for creation and use Pomodoro for promotion and admin. Drafting and editing need flow; publishing and outreach need structure.</p></div>
+<div class="gutg-scenario"><p><strong>If you are a manager,</strong> use deep work for decision memos and Pomodoro for approvals. Leave buffer for human issues that cannot be predicted.</p></div>
+<div class="gutg-scenario"><p><strong>If you keep procrastinating,</strong> use one Pomodoro. Just one. Then decide what comes next. The smallest possible start is more valuable than a perfect plan you never begin.</p></div>
+</section>
+<section class="gutg-faq" id="faq">
+<h2>Frequently asked questions</h2>
+<h3>Is Pomodoro better than deep work?</h3>
+<p>Neither is universally better. Pomodoro reduces starting friction for any task. Deep work produces higher-quality output for complex tasks. Use Pomodoro when avoidance is the problem. Use deep work when depth is the requirement.</p>
+<h3>Can I use both methods in the same day?</h3>
+<p>Yes. Many productive people use Pomodoro for morning admin, then deep work for their main project, then Pomodoro again for afternoon follow-up. The two methods complement each other.</p>
+<h3>How long should a deep work session be?</h3>
+<p>Start with 45 to 60 minutes. Increase toward 90 to 120 minutes only when the task demands sustained context and your schedule protects the block.</p>
+<h3>What if Pomodoro breaks interrupt my flow?</h3>
+<p>Try a longer planned focus block next time, or finish the current thought before taking a break. Extending a sprint is a flexible timed-work adaptation, not the standard Pomodoro cycle; keep a recovery break in the plan.</p>
+<h3>Which method is better for studying?</h3>
+<p>Pomodoro is better for active recall and review. Deep work is better for essay writing, problem solving, and exam simulation that needs sustained thinking. The hybrid approach — starting with Pomodoro and extending when focus arrives — often works best.</p>
+</section>
+<section id="bottom-line">
+<h2>Bottom line</h2>
+<p>Pomodoro structures effort into timed cycles. Deep work describes focused work on a demanding task. A short sprint can be deep work, and a long block can still be distracted. Use Pomodoro when resistance is high or tasks are shallow. Use deep work when the work demands sustained attention and quality. Combine them when a session needs both momentum and depth. The best system is the one that matches your task, your energy, and your calendar — not the one that sounds most impressive.</p>
+</section>
+<section id="sources">
+<h2>Sources and further reading</h2>
+<ul>
+<li><a href="https://doi.org/10.1016/S1364-6613(03)00028-7">Monsell, S. (2003). Task switching. Trends in Cognitive Sciences, 7(3), 134–140.</a></li>
+<li><a href="https://doi.org/10.1016/j.obhdp.2008.04.002">Leroy, S. (2009). Why is it so hard to do my work? The challenge of attention residue when switching between work tasks. Organizational Behavior and Human Decision Processes, 109(2), 168–181.</a></li>
+<li><a href="https://doi.org/10.1016/j.cognition.2010.12.004">Ariga, A., &amp; Lleras, A. (2011). Brief and rare mental “breaks” keep you focused: Deactivation and reactivation of task goals preempt vigilance decrements. Cognition, 118(3), 439–443.</a></li>
+<li><a href="https://www.apa.org/topics/research/multitasking" rel="nofollow noopener" target="_blank">American Psychological Association: Multitasking and switching costs</a></li>
+</ul>
+</section>
+</article>

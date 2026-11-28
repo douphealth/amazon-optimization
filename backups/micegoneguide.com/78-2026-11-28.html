@@ -1,0 +1,219 @@
+<!-- wp:html -->
+<style>
+body.single-post main#wp--skip-link--target > .wp-block-group:first-child,
+body.page main#wp--skip-link--target > .wp-block-group:first-child{display:none!important}
+.mgg-article,body.single-post .entry-content .mgg-article,body.page .entry-content .mgg-article{max-width:980px;margin:0 auto;font-size:18px;line-height:1.72;color:#17211b}
+.mgg-article h1,body.single-post .entry-content .mgg-article h1,body.single-post .entry-content .mgg-article > h1,body.page .entry-content .mgg-article h1{font-size:42px;line-height:1.12;letter-spacing:-.015em;margin:18px 0;font-weight:700}
+.mgg-article h2,body.single-post .entry-content .mgg-article h2,body.page .entry-content .mgg-article h2{font-size:30px;line-height:1.22;margin:40px 0 16px}
+.mgg-article h3,body.single-post .entry-content .mgg-article h3,body.page .entry-content .mgg-article h3{font-size:23px;margin-top:26px}
+body.single-post .entry-content .mgg-article p,body.single-post .entry-content .mgg-article ul,body.single-post .entry-content .mgg-article ol,body.page .entry-content .mgg-article p{max-width:100%}
+.mgg-kicker{display:inline-block;font-weight:700;color:#2c6b2f;text-transform:uppercase;letter-spacing:.06em;background:#e7f4ea;border:1px solid #cae6d0;border-radius:999px;padding:.42rem .78rem;font-size:.82rem;margin-bottom:1.1rem}
+.mgg-answer,body.single-post .entry-content .mgg-article .mgg-answer,body.page .entry-content .mgg-article .mgg-answer{background:#edf8ee;border-left:6px solid #2e7d32;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-warning{background:#fff5e6;border-left:6px solid #cf7a00;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-grid,body.single-post .entry-content .mgg-article .mgg-grid,body.page .entry-content .mgg-article .mgg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:24px 0}
+.mgg-card,body.single-post .entry-content .mgg-article .mgg-card,body.page .entry-content .mgg-article .mgg-card{border:1px solid #d8e2d8;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.mgg-card img,body.single-post .entry-content .mgg-article .mgg-card img,body.page .entry-content .mgg-article .mgg-card img{width:100%!important;height:190px!important;max-height:190px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-card.mgg-hero-figure,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure{display:block;width:100%;margin:24px 0;padding:12px;background:#fff;border:1px solid #d8e2d8;border-radius:16px}
+.mgg-card.mgg-hero-figure picture,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure picture,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure picture{display:block;width:100%}
+.mgg-card.mgg-hero-figure img,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure img,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure img{width:100%!important;max-width:100%!important;height:auto!important;max-height:560px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-product-card img,body.single-post .entry-content .mgg-article .mgg-product-card img{height:170px!important;max-height:170px!important;object-fit:contain!important;background:#fff}
+.mgg-button{display:inline-block;background:#2e7d32;color:#fff!important;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:10px}
+.mgg-table,body.single-post .entry-content .mgg-article table,body.page .entry-content .mgg-article table{width:100%!important;border-collapse:separate!important;border-spacing:0;margin:22px 0;border:1px solid #d9e4d9!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 4px 14px rgba(0,0,0,.04)!important}
+.mgg-table th,body.single-post .entry-content .mgg-article table th,body.page .entry-content .mgg-article table th{background:linear-gradient(135deg,#173f2b,#235f40)!important;color:#fff!important;font-weight:800!important;padding:12px 14px!important;border:none!important}
+.mgg-table td,body.single-post .entry-content .mgg-article table td,body.page .entry-content .mgg-article table td{padding:12px 14px!important;border-top:1px solid #e5ede5!important;vertical-align:top!important}
+.mgg-table tr:nth-child(even) td,body.single-post .entry-content .mgg-article table tr:nth-child(even) td,body.page .entry-content .mgg-article table tr:nth-child(even) td{background:#fbfbf8!important}
+.mgg-table tr:hover td,body.single-post .entry-content .mgg-article table tr:hover td,body.page .entry-content .mgg-article table tr:hover td{background:#f0f7f2!important}
+.mgg-toc,.mgg-toc-box,body.single-post .entry-content .mgg-article .mgg-toc,body.single-post .entry-content .mgg-article .mgg-toc-box,body.page .entry-content .mgg-article .mgg-toc,body.page .entry-content .mgg-article .mgg-toc-box{background:#f7faf7!important;border:1px solid #dfe8df!important;border-radius:16px!important;padding:20px!important;margin:26px 0!important}
+.mgg-byline,body.single-post .entry-content .mgg-article .mgg-byline,body.page .entry-content .mgg-article .mgg-byline{color:#53635a;font-size:15px;margin-bottom:18px}
+.mgg-sources{font-size:15px;background:#f8f8f6;padding:18px;border-radius:14px}
+.mgg-note{font-size:15px;color:#53635a}
+.mgg-checklist li{margin-bottom:8px}
+</style>
+
+<article data-mgg-release="2026-10-02" class="mgg-article mgg-post">
+
+<p class="mgg-kicker">Ethical Wildlife &amp; Rodent Control</p>
+<h1 class="mgg-title">Humane Mouse Traps: Catch-and-Release Guide &amp; Welfare Rules</h1>
+<p class="mgg-byline mgg-dek">Ethical guide to catch-and-release mouse traps. Understand animal welfare obligations, legal release restrictions, checking schedules, and why the CDC recommends snap traps over live traps.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p>
+
+<div class="mgg-answer geo-direct-answer">
+  <p style="margin:0 0 8px 0;font-weight:800;color:#1e4620;text-transform:uppercase;font-size:13px;letter-spacing:.05em;">Direct Answer: The Truth About Live-Catch Traps</p>
+  <p style="margin:0 0 10px 0;"><strong>Live-capture is not automatically the safer or more humane household choice.</strong> CDC advises against live traps and glue traps because frightened rodents can urinate, increasing exposure risk. Relocation has significant welfare, legal and ecological limits, and does not replace exclusion or food sanitation. Review the welfare requirements and local legal restrictions below, and consult the <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener">CDC trapping guidance</a>.</p>
+</div><section id="commercial-decision-table"><h2 id="suitability-table" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">When Live-Catch Trapping Is &#038; Is NOT Suitable</h2>
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;">
+    <thead>
+      <tr style="background:#27745f;color:#ffffff;">
+        <th style="padding:12px 14px;border:1px solid #27745f;">Decision Factor</th>
+        <th style="padding:12px 14px;border:1px solid #27745f;">Live-Catch May Be Feasible</th>
+        <th style="padding:12px 14px;border:1px solid #27745f;">Live-Catch Is Inappropriate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Evidence and identification</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">A professional has identified the animal and assessed the available control options.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Noise, a sighting or dropping counts do not reliably establish species or population.</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Checking Schedule</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Checking requirements are confirmed with the product instructions and qualified advice.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">You cannot provide the required monitoring or safe handling; do not set a live trap.</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;"><strong>Release Destination</strong></td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">A local authority has confirmed whether relocation is permitted and appropriate.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">No confirmed lawful and appropriate disposition; a distance alone is not sufficient.</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Exposure and access</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Prevent contact with rodents and waste; no household category makes handling risk-free.</td>
+        <td style="padding:12px 14px;border:1px solid #dfe6ee;">Obtain qualified advice when safe separation, cleanup or monitoring cannot be achieved.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</section>
+<h2 id="commercial-evidence">Evidence behind the advice</h2>
+<p class="mgg-note"><strong>How we assess options:</strong> This is an evidence-based editorial assessment, not hands-on testing. CDC supplies public-health recommendations; UC IPM supplies extension guidance; manufacturer pages support specifications only. Household fit is editorial judgment, not a measured ranking or a guarantee of capture speed, welfare, or safety.</p><p>CDC recommends traditional, appropriately sized snap traps, keeping traps and bait away from children and pets, and daily checks. It advises against live and glue traps because frightened rodents may urinate and increase illness risk.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p><p>UC IPM supports placing traps near confirmed activity and combining trapping with sanitation and exclusion. It says the best bait is often the food house mice are already eating and advises a small amount on the trigger plate.<a class="mgg-citation" href="#commercial-source-2">[2]</a></p>
+<h2 id="commercial-use-cases">Use cases: preference versus practical suitability</h2>
+<p><strong>No-kill preference:</strong> prioritize food control and entry exclusion, and discuss any active infestation with a qualified local professional. <strong>Unable to monitor or arrange lawful disposition:</strong> do not set a live trap. <strong>A mouse is already captured:</strong> prevent access by people and pets and obtain prompt qualified handling and disposition advice rather than following a generic release-distance rule. For the complete sequence from capture to cleanup, see <a href="https://micegoneguide.com/safely-remove-mice/">how to remove mice safely</a>. These are decision examples, not reports of field experience.</p><p>UC IPM describes multi-capture live traps but calls for frequent removal and humane euthanasia, not automatic catch-and-release. It states that relocation off the capture property in California requires a special permit and describes risks from predators, aggression and exposure after release. That is California-specific guidance, not a statement of law everywhere.<a class="mgg-citation" href="#commercial-source-2">[2]</a></p>
+<h2 id="commercial-limitations">Limitations before choosing a product</h2>
+<p>No trap is automatically child-proof or pet-proof, and an enclosure is not permission to allow access. We have no comparative kill-time, sensitivity, or capture-rate measurements for the products linked here. Neither a checking interval, a release distance nor an estimated mouse count establishes welfare, legality or successful control. If safe placement, monitoring or handling is not achievable, obtain qualified help.</p>
+<h2 id="commercial-implementation">Implementation: seek advice before capture</h2>
+
+
+<figure class="wp-block-image size-large mgg-card mgg-hero-figure">
+  <img src="https://micegoneguide.com/wp-content/uploads/2023/11/humane-mouse-traps.jpg" alt="Humane catch and release live mouse traps side by side on wooden floor" class="wp-image-79" width="1200" height="669" loading="eager" />
+  <figcaption style="font-size:14px;color:#53635a;margin-top:10px;">Live-capture products do not establish humane outcomes. A generic check interval cannot guarantee welfare; confirm monitoring and lawful disposition with qualified local advice before capture.<a class="mgg-citation" href="#commercial-source-2">[2]</a></figcaption>
+</figure>
+
+<!-- EDITORIAL TRANSPARENCY NOTE -->
+<div style="background:#faf7f1;border:1px solid #eadbc7;border-radius:8px;padding:14px 18px;margin:20px 0;font-size:13px;color:#6b5a45;line-height:1.6;">
+  <strong>Editorial Policy:</strong> Mice Gone Guide provides objective, science-based guidance. Where Amazon product links appear (tracking ID <code>papalex-20</code>), we evaluate category engineering rather than sponsored claims. We do not recommend glue boards under any circumstance.
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="mgg-toc-box" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin:28px 0;">
+  <p style="font-weight:700;font-size:16px;margin:0 0 12px 0;color:#0f172a;">In This Live-Catch Guide:</p>
+  <ul style="margin:0;padding-left:22px;font-size:15px;line-height:1.8;color:#334155;">
+    <li><a href="#suitability-table" style="color:#27745f;text-decoration:none;font-weight:500;">When Live-Catch Trapping Is &#038; Is NOT Suitable</a></li>
+    <li><a href="#interactive-ethical-calc" style="color:#27745f;text-decoration:none;font-weight:500;">Interactive Live-Capture Decision Checklist</a></li>
+    <li><a href="#cdc-position" style="color:#27745f;text-decoration:none;font-weight:500;">CDC&#8217;s Position on Live Traps &#038; Glue Boards</a></li>
+    <li><a href="#welfare-requirements" style="color:#27745f;text-decoration:none;font-weight:500;">Animal Welfare: Checking Schedules, Dehydration &#038; Stress</a></li>
+    <li><a href="#legal-ecological-limits" style="color:#27745f;text-decoration:none;font-weight:500;">Local Legal and Ecological Rules for Release</a></li>
+    <li><a href="#video-demonstration" style="color:#27745f;text-decoration:none;font-weight:500;">Video Guide: Setting Live Catch Traps Properly</a></li>
+    <li><a href="#reentry-risk" style="color:#27745f;text-decoration:none;font-weight:500;">Re-Entry Risk: Why Trapping Without Exclusion Fails</a></li>
+    <li><a href="#setup-guide" style="color:#27745f;text-decoration:none;font-weight:500;">Setup Guide for Live-Catch Traps</a></li>
+    <li><a href="#snap-trap-alternative" style="color:#27745f;text-decoration:none;font-weight:500;">When Snap Traps Are the More Humane Choice</a></li>
+    <li><a href="#faqs" style="color:#27745f;text-decoration:none;font-weight:500;">Frequently Asked Questions</a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1 -->
+<!-- INTERACTIVE WIDGET -->
+<section id="interactive-ethical-calc" class="mgg-interactive-widget" data-mgg-release="2026-10-02" style="border:2px solid #166534;border-radius:14px;padding:22px;margin:28px 0;background:#f5faf6;color:#173328;overflow-wrap:anywhere"><h3>Live-capture decision checklist</h3><p>Do not use a numerical score to judge animal welfare or household safety.</p><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">What does public-health guidance recommend?</summary><p>CDC recommends snap traps for household <a class="wpil_keyword_link" href="https://micegoneguide.com/mouse-traps-baits/" target="_blank"  rel="noopener" title="Mouse Traps and Baits Hub: Selection, Placement, and Risk-Aware Use" data-wpil-keyword-link="linked"  data-wpil-monitor-id="296">rodent control</a> and advises against live and glue traps. Product marketing does not override these precautions. <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a>.</p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Does a checking schedule make capture humane?</summary><p>No schedule by itself guarantees welfare or prevents bites or contamination. Do not set a live trap when you cannot meet the product instructions and appropriate local professional guidance. Gloves are not bite-proof.</p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">Is there a universal release distance?</summary><p>No. A distance cannot establish that relocation is lawful, suitable for the animal or safe for other properties. Obtain advice from the relevant local wildlife or pest-control authority before capture; do not assume a park or wooded area is a lawful release site.</p></details><details style="margin:12px 0;padding:12px;border:1px solid #bdcebf;border-radius:8px"><summary style="cursor:pointer;font-weight:700">What practical alternative should I consider?</summary><p>Combine protected, correctly sized snap traps with food storage, safe cleanup and suitable exclusion. Review <a href="https://micegoneguide.com/best-mouse-traps-for-homes/">trap selection and placement limits</a> without expecting a guaranteed outcome.</p></details><p><strong>Limits:</strong> This checklist cannot identify a species, count mice, assess disease risk, assign an infestation score, or guarantee a clearance date.</p></section>
+<!-- IN-CONTENT IMAGE 1 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/renter-friendly-enclosed-mouse-traps.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/renter-friendly-enclosed-mouse-traps.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/renter-friendly-enclosed-mouse-traps.webp" height="810" width="1440" class=" sp-no-webp" alt="Enclosed protective trap box designed to avoid contact and protect pets and children" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Enclosures can reduce access to a snap-trap mechanism, but are not automatically child- or pet-proof. Follow the product instructions and place traps out of reach.</figcaption>
+</figure>
+
+<!-- SECTION 2 -->
+<h2 id="cdc-position" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">CDC&#8217;s Position on Live Traps &#038; Glue Boards</h2>
+<p>
+  <a class="wpil_keyword_link" href="https://micegoneguide.com/diseases-from-mice/" target="_blank"  rel="noopener" title="Rodent Diseases and Public Health Risks: What Homeowners Should Watch For" data-wpil-keyword-link="linked"  data-wpil-monitor-id="290">Public health</a> guidance from the Centers for Disease Control and Prevention is unambiguous:
+</p>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>CDC advises against live traps:</strong> Frightened rodents can urinate, increasing the chance of exposure when people handle traps or waste. The recommendation is not based on a quiz score. <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a>.<a class="mgg-citation" href="#commercial-source-1">[1]</a></li>
+  <li><strong>CDC also advises against glue traps:</strong> Consider correctly sized snap traps, protected placement, daily checks and manufacturer instructions instead. <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a>.<a class="mgg-citation" href="#commercial-source-1">[1]</a></li>
+</ul>
+
+<!-- SECTION 3 -->
+<h2 id="welfare-requirements" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Animal Welfare: Checking Schedules, Dehydration &#038; Stress</h2>
+<p>Confinement and relocation can harm an animal, and handling can expose people to bites or contaminated material. There is no universal checking schedule that makes live capture safe or humane. Discuss an appropriate method with a qualified professional before setting a trap.<a class="mgg-citation" href="#commercial-source-2">[2]</a></p>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>Do not rely on a generic schedule:</strong> Follow the product instructions and qualified local guidance; never set a live trap you cannot monitor as required.</li>
+  <li><strong>Do not set a trap you cannot monitor:</strong> If an empty trap must be taken out of service, follow its deactivation instructions; do not trigger it by hand or disturb a captured animal.</li>
+  <li><strong>Avoid direct handling:</strong> Gloves do not reliably prevent bites. Use appropriate protection for cleanup and obtain qualified advice for a captured animal.</li>
+</ul>
+
+<!-- IN-CONTENT IMAGE 2 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/best-bait-for-mouse-traps-guide.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/best-bait-for-mouse-traps-guide.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/best-bait-for-mouse-traps-guide.webp" height="810" width="1440" class=" sp-no-webp" alt="Pea-sized peanut butter attractant placed at the far end of a live-catch trap chamber" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Live-trap bait position and mechanism are model-specific; do not apply snap-trap bait instructions to every live-capture device. CDC recommends against live traps for household control.<a class="mgg-citation" href="#commercial-source-1">[1]</a></figcaption>
+</figure>
+
+<!-- YOUTUBE VIDEO SECTION -->
+<h2 id="video-demonstration" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Video Guide: Setting Live Catch Traps Properly</h2>
+<p>The following video illustrates a live-capture product. It does not establish that handling or release is safe, humane or lawful, and it does not replace the CDC recommendation against live traps.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p>
+
+<div class="mgg-video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:28px 0;box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+  <iframe src="https://www.youtube-nocookie.com/embed/9SKKnx8pE4g" title="How to Set Live Catch Humane Mouse Traps &#038; Proper Handling" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<!-- SECTION 4 -->
+<h2 id="legal-ecological-limits" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Local Legal and Ecological Rules for Release</h2>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>Check the local rules before capture:</strong> Confirm whether transport and release are permitted and appropriate for the animal and destination; do not assume permission to release on public or private land.</li>
+  <li><strong>Relocation is not a survival guarantee:</strong> Weather, shelter, predators and species suitability matter. Do not present outdoor release as an automatically humane solution.<a class="mgg-citation" href="#commercial-source-2">[2]</a></li>
+  <li><strong>Other properties and wildlife:</strong> Do not transfer a rodent problem to another property or assume that release into public land is permitted.</li>
+</ul>
+
+<!-- SECTION 5 -->
+<h2 id="reentry-risk" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Re-Entry Risk: Why Trapping Without Exclusion Fails</h2>
+<p>Trapping alone does not repair access to food or the building. Coordinate control with suitable structural exclusion and continued monitoring. Use the <a href="https://micegoneguide.com/steel-wool-vs-copper-mesh-for-mice/">exclusion-material guide</a> without treating a fill material as a permanent guarantee.<a class="mgg-citation" href="#commercial-source-2">[2]</a></p>
+
+<!-- SECTION 6 -->
+<h2 id="setup-guide" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Setup Guide for Live-Catch Traps</h2>
+<ol style="padding-left:24px;color:#334155;line-height:1.85;">
+  <li><strong>Resolve suitability first:</strong> CDC recommends snap traps rather than live traps. Obtain qualified identification, handling and lawful disposition advice before considering capture. For a poison-free plan built on the same principles, see <a href="https://micegoneguide.com/safely-remove-mice/#humane-7-day-plan">how to get rid of mice naturally without poison</a>.<a class="mgg-citation" href="#commercial-source-1">[1]</a></li>
+  <li><strong>Do not generalize a mechanism:</strong> Bait position, ventilation and checking requirements depend on the exact model. A shopping description is not a welfare protocol.</li>
+  <li><strong>Avoid direct contact:</strong> Gloves do not make handling a live rodent bite-proof. Obtain qualified handling advice and follow CDC precautions for contaminated equipment.</li>
+  <li><strong>Follow cleanup instructions:</strong> For an empty contaminated trap, follow the manufacturer and CDC cleaning/disinfection instructions. Do not apply disinfectant to a trapped animal.<a class="mgg-citation" href="#commercial-source-4">[4]</a></li>
+</ol>
+
+<!-- SECTION 7 -->
+<h2 id="snap-trap-alternative" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">When Snap Traps Are the More Humane Choice</h2>
+<p>CDC recommends snap traps rather than live or glue traps for household rodent control. Correct trap size, placement, functioning and daily inspection matter; this page does not claim a measured kill time or guarantee a humane outcome for any product. Compare options in <a href="https://micegoneguide.com/best-mouse-traps-for-homes/">our mouse-trap selection guide</a>.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p>
+
+<!-- SECTION 8: FAQS -->
+<p>Related: pair this with our <a href="https://micegoneguide.com/diy-mouse-traps/">DIY mouse traps</a> guide for the full system.</p>
+
+<h2 id="commercial-products">Product verification: no live-trap shopping endorsement</h2>
+<p>No named live-capture product or affiliate purchase link is present in this authenticated source. We have not verified a live-trap model, measured welfare outcomes, or performed field trials. The retained images and demonstration video are not testing evidence. For household selection, use the linked snap-trap guide while retaining the CDC precautions above.</p><span id="commercial-faq"></span><h2 id="faqs" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Frequently Asked Questions</h2>
+<h3>Are humane mouse traps effective for a real infestation?</h3>
+<p>Live-capture performance and animal welfare cannot be guaranteed from an estimated mouse count or checking interval. CDC advises against live traps for household rodent control. Combine appropriate trapping with safe cleanup, food storage and structural exclusion; get qualified help when identification or handling is uncertain.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p>
+
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Do humane mouse traps really work?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Live traps can capture mice, but capture does not establish safe handling, lawful relocation or lasting control. CDC recommends snap traps instead of live or glue traps. Food storage, suitable exclusion and monitoring remain necessary.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Why doesn&#8217;t the CDC recommend live traps?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">CDC explains that frightened rodents may urinate, increasing the chance of exposure when handled. Waste appearance or a questionnaire cannot determine whether infection is present. Avoid direct handling and follow public-health cleanup guidance.<a class="mgg-citation" href="#commercial-source-1">[1]</a></p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">How far away should I release a mouse?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">There is no universal safe, lawful or humane release distance. Local rules, species and the proposed destination matter. Consult the relevant local wildlife authority or a qualified pest professional before capture or relocation.<a class="mgg-citation" href="#commercial-source-2">[2]</a></p>
+</div>
+
+
+<h2 id="commercial-sources">Primary sources used for this assessment</h2>
+<ol><li id="commercial-source-1"><a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" rel="noopener">[1] CDC: How to Trap Up to Remove Rodents</a></li><li id="commercial-source-2"><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse" rel="noopener">[2] UC IPM: House Mouse Pest Notes</a></li><li id="commercial-source-4"><a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" rel="noopener">[4] CDC: How to Clean Up After Rodents</a></li></ol><p class="mgg-note">Manufacturer specifications are not independent performance or welfare validation. Existing reference links below are retained for continuity; the numbered sources above support this revision.</p><!-- SOURCES -->
+<div style="background:#f8fafc;border-top:2px solid #cbd5e1;padding:20px;border-radius:0 0 10px 10px;margin-top:40px;font-size:13px;color:#64748b;">
+  <p style="font-weight:700;margin:0 0 8px 0;color:#334155;">References &#038; Ethical Standards:</p>
+  <ul style="margin:0;padding-left:20px;line-height:1.6;">
+    <li><a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener" style="color:#27745f;">CDC: Trap Up to Reduce Rodents (Trapping Guidelines)</a></li>
+    <li><a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" target="_blank" rel="noopener" style="color:#27745f;">CDC: Cleaning Up After Rodents Safely</a></li>
+  </ul>
+
+</div>
+</article>
+
+<!-- /wp:html -->

@@ -1,0 +1,92 @@
+<!-- wp:html -->
+<style>
+body.single-post main#wp--skip-link--target > .wp-block-group:first-child,
+body.page main#wp--skip-link--target > .wp-block-group:first-child{display:none!important}
+.mgg-article,body.single-post .entry-content .mgg-article,body.page .entry-content .mgg-article{max-width:980px;margin:0 auto;font-size:18px;line-height:1.72;color:#17211b}
+.mgg-article h1,body.single-post .entry-content .mgg-article h1,body.single-post .entry-content .mgg-article > h1,body.page .entry-content .mgg-article h1{font-size:42px;line-height:1.12;letter-spacing:-.015em;margin:18px 0;font-weight:700}
+.mgg-article h2,body.single-post .entry-content .mgg-article h2,body.page .entry-content .mgg-article h2{font-size:30px;line-height:1.22;margin:40px 0 16px}
+.mgg-article h3,body.single-post .entry-content .mgg-article h3,body.page .entry-content .mgg-article h3{font-size:23px;margin-top:26px}
+body.single-post .entry-content .mgg-article p,body.single-post .entry-content .mgg-article ul,body.single-post .entry-content .mgg-article ol,body.page .entry-content .mgg-article p{max-width:100%}
+.mgg-kicker{display:inline-block;font-weight:700;color:#2c6b2f;text-transform:uppercase;letter-spacing:.06em;background:#e7f4ea;border:1px solid #cae6d0;border-radius:999px;padding:.42rem .78rem;font-size:.82rem;margin-bottom:1.1rem}
+.mgg-answer,body.single-post .entry-content .mgg-article .mgg-answer,body.page .entry-content .mgg-article .mgg-answer{background:#edf8ee;border-left:6px solid #2e7d32;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-warning{background:#fff5e6;border-left:6px solid #cf7a00;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-grid,body.single-post .entry-content .mgg-article .mgg-grid,body.page .entry-content .mgg-article .mgg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:24px 0}
+.mgg-card,body.single-post .entry-content .mgg-article .mgg-card,body.page .entry-content .mgg-article .mgg-card{border:1px solid #d8e2d8;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.mgg-card img,body.single-post .entry-content .mgg-article .mgg-card img,body.page .entry-content .mgg-article .mgg-card img{width:100%!important;height:190px!important;max-height:190px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-card.mgg-hero-figure,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure{display:block;width:100%;margin:24px 0;padding:12px;background:#fff;border:1px solid #d8e2d8;border-radius:16px}
+.mgg-card.mgg-hero-figure picture,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure picture,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure picture{display:block;width:100%}
+.mgg-card.mgg-hero-figure img,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure img,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure img{width:100%!important;max-width:100%!important;height:auto!important;max-height:560px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-product-card img,body.single-post .entry-content .mgg-article .mgg-product-card img{height:170px!important;max-height:170px!important;object-fit:contain!important;background:#fff}
+.mgg-button{display:inline-block;background:#2e7d32;color:#fff!important;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:10px}
+.mgg-table,body.single-post .entry-content .mgg-article table,body.page .entry-content .mgg-article table{width:100%!important;border-collapse:separate!important;border-spacing:0;margin:22px 0;border:1px solid #d9e4d9!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 4px 14px rgba(0,0,0,.04)!important}
+.mgg-table th,body.single-post .entry-content .mgg-article table th,body.page .entry-content .mgg-article table th{background:linear-gradient(135deg,#173f2b,#235f40)!important;color:#fff!important;font-weight:800!important;padding:12px 14px!important;border:none!important}
+.mgg-table td,body.single-post .entry-content .mgg-article table td,body.page .entry-content .mgg-article table td{padding:12px 14px!important;border-top:1px solid #e5ede5!important;vertical-align:top!important}
+.mgg-table tr:nth-child(even) td,body.single-post .entry-content .mgg-article table tr:nth-child(even) td,body.page .entry-content .mgg-article table tr:nth-child(even) td{background:#fbfbf8!important}
+.mgg-table tr:hover td,body.single-post .entry-content .mgg-article table tr:hover td,body.page .entry-content .mgg-article table tr:hover td{background:#f0f7f2!important}
+.mgg-toc,.mgg-toc-box,body.single-post .entry-content .mgg-article .mgg-toc,body.single-post .entry-content .mgg-article .mgg-toc-box,body.page .entry-content .mgg-article .mgg-toc,body.page .entry-content .mgg-article .mgg-toc-box{background:#f7faf7!important;border:1px solid #dfe8df!important;border-radius:16px!important;padding:20px!important;margin:26px 0!important}
+.mgg-byline,body.single-post .entry-content .mgg-article .mgg-byline,body.page .entry-content .mgg-article .mgg-byline{color:#53635a;font-size:15px;margin-bottom:18px}
+.mgg-sources{font-size:15px;background:#f8f8f6;padding:18px;border-radius:14px}
+.mgg-note{font-size:15px;color:#53635a}
+.mgg-checklist li{margin-bottom:8px}
+</style>
+<!-- /wp:html -->
+
+<article data-mgg-release="2026-10-02" class="mgg-article mgg-post">
+
+<p class="mgg-kicker">Rodent Control Hub</p>
+
+<!-- wp:html -->
+<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+<p style="margin:0 0 8px;font-weight:700">Quick links from this guide</p>
+<ul style="list-style:none;margin:0 0 10px;padding:0">
+<li style="margin:6px 0"><a href="https://www.amazon.com/s?k=enclosed+mouse+traps+for+home&amp;tag=papalex-mgg-20" rel="sponsored nofollow noopener" target="_blank">Enclosed mouse traps for home</a> <span style="font-size:13px;color:#555">(Amazon search)</span></li>
+<li style="margin:6px 0"><a href="https://www.amazon.com/s?k=copper+mesh+rodent+exclusion+sealant&amp;tag=papalex-mgg-20" rel="sponsored nofollow noopener" target="_blank">Copper mesh rodent exclusion sealant</a> <span style="font-size:13px;color:#555">(Amazon search)</span></li>
+</ul>
+<p style="margin:0;font-size:13px;color:#555">As an Amazon Associate, Mice Gone Guide earns from qualifying purchases.</p>
+</div>
+<!-- /wp:html -->
+
+<h1 class="mgg-title">Mouse Removal: Find Your Next Step</h1>
+<p class="mgg-byline mgg-dek">Reviewed October 2, 2026. A structured decision hub for home mouse control: identify your current situation, access targeted guidance, and print a room-by-room action log.</p>
+
+<div class="mgg-answer geo-direct-answer">
+  <p style="margin:0 0 8px 0;font-weight:800;color:#1e4620;text-transform:uppercase;font-size:13px;letter-spacing:.05em;">Direct Answer: Choosing Your Next Step</p>
+  <p style="margin:0 0 10px 0;"><strong>Start with the evidence you actually found, then choose the appropriate guide below.</strong> This page helps you organize inspection, trapping, cleanup and exclusion; it does not estimate how many mice are present or promise a completion date.</p>
+  <p style="margin:0;">For the full sequence rather than a navigation checklist, go directly to <a href="https://micegoneguide.com/how-to-get-rid-of-mice/">how to get rid of mice</a>.</p>
+</div>
+
+<nav class="mgg-toc mgg-toc-box" aria-label="In this resource hub">
+  <p style="font-weight:700;font-size:16px;margin:0 0 12px 0;color:#0f172a;">In This Resource Hub:</p>
+  <ul style="margin:0;padding-left:22px;font-size:15px;line-height:1.8;color:#334155;">
+    <li><a href="#choose-next-step" style="color:#27745f;text-decoration:none;font-weight:500;">Choose the Next Step for Your Situation</a></li>
+    <li><a href="#room-by-room-record" style="color:#27745f;text-decoration:none;font-weight:500;">A Room-by-Room Record You Can Print</a></li>
+    <li><a href="#safety-instructions" style="color:#27745f;text-decoration:none;font-weight:500;">Safety Instructions That Apply Across the Guides</a></li>
+    <li><a href="#when-to-involve-professional" style="color:#27745f;text-decoration:none;font-weight:500;">When to Involve a Professional</a></li>
+    <li><a href="#organize-planner" style="color:#27745f;text-decoration:none;font-weight:500;">Organize the Observations into a Plan</a></li>
+  </ul>
+</nav>
+<h2 id="choose-next-step">Choose the next step for your situation</h2>
+<div class="mgg-grid">
+<section class="mgg-card"><h3>I found signs but have not identified the animal</h3><p>Record the location and photograph accessible evidence without handling waste. Separate observations from assumptions.</p><p><a href="https://micegoneguide.com/signs-of-mice-infestation/">Review signs and their limitations</a><br><a href="https://micegoneguide.com/rats-vs-mice-whats-the-difference/">Compare rats and mice without relying on size alone</a></p></section>
+<section class="mgg-card"><h3>I found suspected droppings</h3><p>Keep people and pets away from the waste. Identification and cleanup are different tasks: do not touch or crush pellets to identify them.</p><p><a href="https://micegoneguide.com/mouse-droppings/">Compare droppings and lookalikes</a><br><a href="https://micegoneguide.com/how-to-remove-mice-droppings-safely/">Follow the safe cleanup guide</a></p></section>
+<section class="mgg-card"><h3>I need to choose or position traps</h3><p>Use the correct trap size, manufacturer instructions and protected locations. Floor area alone does not determine a trap count.</p><p><a href="https://micegoneguide.com/best-mouse-traps-for-homes/">Compare mouse-trap designs</a><br><a href="https://micegoneguide.com/where-to-place-mouse-traps/">Review trap placement</a><br><a href="https://micegoneguide.com/best-bait-for-mouse-traps/">Choose trap bait without confusing it with rodenticide</a></p></section>
+<section class="mgg-card"><h3>I hear activity inside a wall</h3><p>Noises alone cannot identify the species, nest location or population. Avoid opening a wall or disturbing utilities on the basis of a quiz.</p><a href="https://micegoneguide.com/how-to-get-rid-of-mice-in-walls/">Inspect suspected wall activity safely</a></section>
+<section class="mgg-card"><h3>I found a possible entry gap</h3><p>Assess the surface, moisture, fastenings and building function before selecting a repair. Preserve ventilation and drainage.</p><p><a href="https://micegoneguide.com/mouse-proofing/">Plan structural exclusion</a><br><a href="https://micegoneguide.com/steel-wool-vs-copper-mesh-for-mice/">Compare exclusion materials</a></p></section>
+<section class="mgg-card"><h3>I am considering live traps or repellents</h3><p>Check the limitations before buying. A "humane" label is not proof of safe handling, and a scent does not close an entry point.</p><p><a href="https://micegoneguide.com/humane-mouse-traps/">Understand live-capture limitations</a><br><a href="https://micegoneguide.com/natural-mouse-repellents/">Review repellent evidence</a></p></section>
+</div>
+<h2 id="room-by-room-record">A room-by-room record you can print</h2>
+<p>Use one line for each affected location. Write only what you observed. "Not checked" is different from "no signs found." Print this page with your browser or copy the headings into your own notebook; this page does not send or save your notes.</p>
+<div class="scroll" role="region" aria-label="Printable inspection record" tabindex="0"><table><caption>Observation and action log</caption><thead><tr><th scope="col">Date / area</th><th scope="col">Evidence actually seen</th><th scope="col">Action / responsible person</th><th scope="col">Recheck and result</th></tr></thead><tbody><tr><td>Kitchen / pantry</td><td>Record packaging damage, waste or sightings.</td><td>Food storage, appropriate control and safe cleanup as needed.</td><td>Record new evidence after the action.</td></tr><tr><td>Utility / storage area</td><td>Record accessible gaps and signs; do not disturb wiring.</td><td>Choose a suitable repair or arrange qualified help.</td><td>Inspect repair condition and any new signs.</td></tr><tr><td>Other affected room</td><td>Distinguish a noise from physical evidence.</td><td>Assign the next inspection or control step.</td><td>Record what changed, including uncertainty.</td></tr></tbody></table></div>
+<h2 id="safety-instructions">Safety instructions that apply across the guides</h2>
+<p><strong>Cleanup:</strong> do not sweep or vacuum untreated rodent waste. Wear rubber or plastic gloves, wet the waste thoroughly with a bleach solution or an EPA-registered disinfectant and let it soak for 5 minutes or according to the disinfectant label. This is a safety reminder, not the full cleanup procedure. [4] Heavy contamination and ventilation-system contamination need additional precautions or professional help. See <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html">CDC cleanup guidance</a> for the complete procedure.</p>
+<p><strong>Trapping:</strong> CDC recommends snap traps of the appropriate size and advises against glue and live traps. Keep devices away from children and pets, follow the instructions and inspect traps daily. [3] See <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html">CDC trapping guidance</a>.</p>
+<p><strong>Exclusion:</strong> use the repair method appropriate to the opening. CDC describes small-hole filling and more substantial materials for larger openings; [5] a single foam or mesh product is not a universal building repair. See <a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html">CDC exclusion guidance</a>. Get qualified advice around electrical, gas, venting and fire-rated assemblies.</p>
+<h2 id="when-to-involve-professional">When to involve a professional</h2>
+<p>Ask for help when contamination is heavy or inaccessible, ventilation systems are affected, damaged wiring is suspected, species identification remains uncertain, or new signs persist despite your actions. Shared buildings may require coordinated inspection rather than work in just one unit.</p>
+<p>Request a written scope covering inspection, trapping, exclusion, cleanup, follow-up and any warranty conditions. Local labor, access and repair needs determine the quote; this hub does not publish an invented universal cost or clearance timetable. Compare what is included, not merely the headline price.</p>
+<div class="next"><h2 id="organize-planner">Organize the observations into a plan</h2><p>The <a href="https://elimination.micegoneguide.com/quiz">free Mouse Control Planner</a> arranges next steps around the signs and locations you report. It cannot diagnose an infestation, confirm species, estimate population, calculate disease risk or guarantee a clearance date. The source guides remain available without taking the quiz.</p></div>
+<details><summary>Does a week with no sightings prove the home is clear?</summary><p>No single observation guarantees lasting control. Keep a dated record of trap checks and newly observed signs, inspect repairs and revisit food access. No sightings is not the same as a complete inspection.</p></details>
+<details><summary>Should I start with a repellent?</summary><p>Do not substitute a scent product for evidence-based inspection, control and repair. Use the repellent guide above to understand the limitations before spending money.</p></details>
+<p><strong>Editorial scope:</strong> this is a navigation and planning resource, not a professional inspection or medical assessment. It consolidates the next-step links; the detailed procedures live on their dedicated pages.</p>
+<section class="mgg-sources"><h2>Sources</h2><ul><li>[3] <a href="https://www.cdc.gov/healthy-pets/rodent-control/trap-up.html" target="_blank" rel="noopener">CDC trapping</a></li><li>[4] <a href="https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html" target="_blank" rel="noopener">CDC cleanup</a></li><li>[5] <a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">CDC exclusion</a></li></ul></section>
+</article>

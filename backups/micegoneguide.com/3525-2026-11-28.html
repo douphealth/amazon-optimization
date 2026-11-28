@@ -1,0 +1,168 @@
+<!-- wp:html -->
+<style>
+body.single-post main#wp--skip-link--target > .wp-block-group:first-child,
+body.page main#wp--skip-link--target > .wp-block-group:first-child{display:none!important}
+.mgg-article,body.single-post .entry-content .mgg-article,body.page .entry-content .mgg-article{max-width:980px;margin:0 auto;font-size:18px;line-height:1.72;color:#17211b}
+.mgg-article h1,body.single-post .entry-content .mgg-article h1,body.single-post .entry-content .mgg-article > h1,body.page .entry-content .mgg-article h1{font-size:42px;line-height:1.12;letter-spacing:-.015em;margin:18px 0;font-weight:700}
+.mgg-article h2,body.single-post .entry-content .mgg-article h2,body.page .entry-content .mgg-article h2{font-size:30px;line-height:1.22;margin:40px 0 16px}
+.mgg-article h3,body.single-post .entry-content .mgg-article h3,body.page .entry-content .mgg-article h3{font-size:23px;margin-top:26px}
+body.single-post .entry-content .mgg-article p,body.single-post .entry-content .mgg-article ul,body.single-post .entry-content .mgg-article ol,body.page .entry-content .mgg-article p{max-width:100%}
+.mgg-kicker{display:inline-block;font-weight:700;color:#2c6b2f;text-transform:uppercase;letter-spacing:.06em;background:#e7f4ea;border:1px solid #cae6d0;border-radius:999px;padding:.42rem .78rem;font-size:.82rem;margin-bottom:1.1rem}
+.mgg-answer,body.single-post .entry-content .mgg-article .mgg-answer,body.page .entry-content .mgg-article .mgg-answer{background:#edf8ee;border-left:6px solid #2e7d32;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-warning{background:#fff5e6;border-left:6px solid #cf7a00;padding:18px 22px;border-radius:12px;margin:24px 0}
+.mgg-grid,body.single-post .entry-content .mgg-article .mgg-grid,body.page .entry-content .mgg-article .mgg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:24px 0}
+.mgg-card,body.single-post .entry-content .mgg-article .mgg-card,body.page .entry-content .mgg-article .mgg-card{border:1px solid #d8e2d8;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+.mgg-card img,body.single-post .entry-content .mgg-article .mgg-card img,body.page .entry-content .mgg-article .mgg-card img{width:100%!important;height:190px!important;max-height:190px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-card.mgg-hero-figure,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure{display:block;width:100%;margin:24px 0;padding:12px;background:#fff;border:1px solid #d8e2d8;border-radius:16px}
+.mgg-card.mgg-hero-figure picture,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure picture,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure picture{display:block;width:100%}
+.mgg-card.mgg-hero-figure img,body.single-post .entry-content .mgg-article .mgg-card.mgg-hero-figure img,body.page .entry-content .mgg-article .mgg-card.mgg-hero-figure img{width:100%!important;max-width:100%!important;height:auto!important;max-height:560px!important;object-fit:cover!important;border-radius:12px;display:block}
+.mgg-product-card img,body.single-post .entry-content .mgg-article .mgg-product-card img{height:170px!important;max-height:170px!important;object-fit:contain!important;background:#fff}
+.mgg-button{display:inline-block;background:#2e7d32;color:#fff!important;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:10px;margin-top:10px}
+.mgg-table,body.single-post .entry-content .mgg-article table,body.page .entry-content .mgg-article table{width:100%!important;border-collapse:separate!important;border-spacing:0;margin:22px 0;border:1px solid #d9e4d9!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 4px 14px rgba(0,0,0,.04)!important}
+.mgg-table th,body.single-post .entry-content .mgg-article table th,body.page .entry-content .mgg-article table th{background:linear-gradient(135deg,#173f2b,#235f40)!important;color:#fff!important;font-weight:800!important;padding:12px 14px!important;border:none!important}
+.mgg-table td,body.single-post .entry-content .mgg-article table td,body.page .entry-content .mgg-article table td{padding:12px 14px!important;border-top:1px solid #e5ede5!important;vertical-align:top!important}
+.mgg-table tr:nth-child(even) td,body.single-post .entry-content .mgg-article table tr:nth-child(even) td,body.page .entry-content .mgg-article table tr:nth-child(even) td{background:#fbfbf8!important}
+.mgg-table tr:hover td,body.single-post .entry-content .mgg-article table tr:hover td,body.page .entry-content .mgg-article table tr:hover td{background:#f0f7f2!important}
+.mgg-toc,.mgg-toc-box,body.single-post .entry-content .mgg-article .mgg-toc,body.single-post .entry-content .mgg-article .mgg-toc-box,body.page .entry-content .mgg-article .mgg-toc,body.page .entry-content .mgg-article .mgg-toc-box{background:#f7faf7!important;border:1px solid #dfe8df!important;border-radius:16px!important;padding:20px!important;margin:26px 0!important}
+.mgg-byline,body.single-post .entry-content .mgg-article .mgg-byline,body.page .entry-content .mgg-article .mgg-byline{color:#53635a;font-size:15px;margin-bottom:18px}
+.mgg-sources{font-size:15px;background:#f8f8f6;padding:18px;border-radius:14px}
+.mgg-note{font-size:15px;color:#53635a}
+.mgg-checklist li{margin-bottom:8px}
+</style>
+
+<article data-mgg-release="2026-10-02" class="mgg-article mgg-post">
+
+<p class="mgg-kicker">Rodent Exclusion Materials</p>
+<h1 class="mgg-title">Steel Wool vs Copper Mesh for Mice: Durability, Rust &amp; Best Use</h1>
+<p class="mgg-byline mgg-dek">A practical comparison of steel wool, copper mesh and rigid screening for rodent exclusion. This page does not report laboratory tests or promise a service life for a material.</p>
+
+<div class="mgg-answer geo-direct-answer">
+  <p style="margin:0 0 8px 0;font-weight:800;color:#1e4620;text-transform:uppercase;font-size:13px;letter-spacing:.05em;">Direct Answer: Copper Mesh vs Steel Wool</p>
+  <p style="margin:0 0 10px 0;"><strong>Plain steel wool is a temporary option for a small suitable opening; use a purpose-made, corrosion-resistant repair for exposed locations.</strong> Copper mesh is one possible flexible fill, not a lifetime or universal chew-proof barrier. Larger openings usually need a firmly attached rigid repair. Read the <a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener">UC IPM exclusion guidance</a> and the product instructions before selecting a material.</p>
+  <p style="margin:0 0 10px 0;">A frequent failure is choosing a filler without checking how it will be secured or how moisture and nearby materials affect it. Do not select copper, steel or a sealant on a promised lifespan. Reinspect for loose edges, corrosion, new gaps and gnawing.</p>
+  <p style="margin:0 0 10px 0;">Related: <a href="https://micegoneguide.com/how-small-a-hole-can-a-mouse-fit-through/">how small a hole a mouse can fit through</a> and <a href="https://micegoneguide.com/mouse-proofing/">the full mouse-proofing walkthrough</a>.</p>
+  <p style="margin:0;">For a small suitable hole, <a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">CDC describes steel wool secured with caulk</a>; larger holes may need metal screening, hardware cloth, sheet metal or cement. Match the assembly to the location. Do not obstruct ventilation, drainage or required clearances, and obtain qualified advice around utilities and fire-rated construction.</p>
+</div>
+
+<figure class="wp-block-image size-large mgg-card mgg-hero-figure">
+  <img src="https://micegoneguide.com/wp-content/uploads/2026/08/eco-friendly-mouse-proofing-materials.webp" alt="Comparison of pure knitted copper mesh rolls, stainless steel wool, and carbon steel wool for rodent exclusion" class="wp-image-3802" width="1200" height="669" loading="eager" />
+  <figcaption style="font-size:14px;color:#53635a;margin-top:10px;">Exclusion materials differ in corrosion resistance and fastening needs. No material is a permanent guarantee; inspect the completed repair.</figcaption>
+</figure>
+
+<!-- TABLE OF CONTENTS -->
+<div class="mgg-toc-box" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin:28px 0;">
+  <p style="font-weight:700;font-size:16px;margin:0 0 12px 0;color:#0f172a;">In This Exclusion Materials Guide:</p>
+  <ul style="margin:0;padding-left:22px;font-size:15px;line-height:1.8;color:#334155;">
+    <li><a href="#match-material-to-gap" style="color:#27745f;text-decoration:none;font-weight:500;">Match the Material to the Gap</a></li>
+    <li><a href="#interactive-exclusion-matcher" style="color:#27745f;text-decoration:none;font-weight:500;">Exclusion Material Decision Checklist</a></li>
+    <li><a href="#comparison-matrix" style="color:#27745f;text-decoration:none;font-weight:500;">Complete Comparison Matrix: Copper vs Steel vs Hardware Cloth</a></li>
+    <li><a href="#sealant-compatibility" style="color:#27745f;text-decoration:none;font-weight:500;">Sealant Compatibility &#038; Application Guide</a></li>
+    <li><a href="#match-material-to-gap" style="color:#27745f;text-decoration:none;font-weight:500;">Location-Specific Sealing Decisions</a></li>
+    <li><a href="#video-demonstration" style="color:#27745f;text-decoration:none;font-weight:500;">Video Guide: Professional Hole Sealing Techniques</a></li>
+    <li><a href="#step-by-step-installation" style="color:#27745f;text-decoration:none;font-weight:500;">How to Seal a Mouse Hole: Step-by-Step Sequence</a></li>
+    <li><a href="#faqs" style="color:#27745f;text-decoration:none;font-weight:500;">Frequently Asked Questions</a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1 -->
+<h2 id="match-material-to-gap" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Match the Material to the Gap</h2>
+<p>
+  Rodent exclusion fails when homeowners treat expanding foam or a handful of steel wool as a universal fix. Before selecting an exclusion product, evaluate these core criteria:
+</p>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>Opening and substrate:</strong> Measure the gap and assess the surrounding material. Large openings need a securely attached repair, not an arbitrary quantity of loose fill.</li>
+  <li><strong>Moisture and compatibility:</strong> Check the product's suitability for the exposure, nearby metals and substrate. Corrosion resistance does not mean a material never deteriorates.</li>
+  <li><strong>Mechanical Fastening:</strong> Vents and roofline soffits need a securely attached repair appropriate to the assembly; follow building and product requirements rather than a universal fastener specification.</li>
+  <li><strong>Preserving Building Function:</strong> Weep holes in brick veneers and attic vents must maintain airflow and water drainage while excluding rodents.</li>
+</ul>
+
+
+<!-- INTERACTIVE MATCHER -->
+<section id="interactive-exclusion-matcher" style="padding:24px;border:2px solid #27745f;border-radius:14px;margin:28px 0;">
+<h3>Exclusion material decision checklist</h3>
+<p>This checklist organizes an inspection; it does not prescribe a universal gap size, fill depth, sealant or lifespan.</p>
+<details><summary><strong>Is the opening safe to repair yourself?</strong></summary><p>Identify utilities and preserve drainage, ventilation and required building clearances. Get qualified advice before disturbing unfamiliar assemblies.</p></details>
+<details><summary><strong>Does the repair need rigid support?</strong></summary><p>A large opening or vent generally needs a firmly fastened, suitable screen or structural repair. Loose mesh is not a substitute for secure edges.</p></details>
+<details><summary><strong>Will the materials tolerate this location?</strong></summary><p>Read the manufacturer instructions for exposure, substrate, joint dimensions and compatibility. Do not assume every copper or steel product is interchangeable.</p></details>
+<details><summary><strong>How will you check the result?</strong></summary><p>Record the location and inspect for movement, deterioration and renewed activity. A repair cannot guarantee that every entry point has been found.</p></details>
+</section>
+<!-- IN-CONTENT IMAGE 1 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/copper-mesh-under-sink-pipe-gap-seal.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/copper-mesh-under-sink-pipe-gap-seal.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/copper-mesh-under-sink-pipe-gap-seal.webp" height="810" width="1440" class=" sp-no-webp" alt="Under-sink pipe gap illustration showing copper mesh and a sealant finish" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Illustrated gap repair, not a tested assembly. Confirm that the chosen mesh and sealant are compatible with the pipe, substrate and exposure before installation.</figcaption>
+</figure>
+
+<!-- SECTION 2 -->
+<h2 id="comparison-matrix" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Complete Comparison Matrix: Copper vs Steel vs Hardware Cloth</h2>
+<div style="overflow-x:auto;margin:20px 0 30px 0;">
+  <table style="width:100%;border-collapse:collapse;text-align:left;font-size:14px;border:1px solid #dfe6ee;"><caption>Material choices and failure points</caption><thead><tr><th scope="col">Material</th><th scope="col">Possible role</th><th scope="col">What to check</th><th scope="col">Limitation</th></tr></thead><tbody><tr><th scope="row">Copper exclusion mesh</th><td>Flexible fill for a suitable irregular opening</td><td>Product composition, exposure, secure attachment and nearby materials</td><td>Not universally chew-proof or maintenance-free</td></tr><tr><th scope="row">Plain steel wool</th><td>Temporary small-hole fill where appropriate and secured</td><td>Moisture and corrosion; avoid contact with electrical components</td><td>Can rust and deteriorate</td></tr><tr><th scope="row">Rigid hardware cloth or sheet metal</th><td>Larger openings and suitable screens</td><td>Secure perimeter, aperture, strength and preserved building function</td><td>Loose edges or an unsuitable assembly can fail</td></tr></tbody></table>
+</div>
+
+<p>UC IPM calls steel wool scouring pads good temporary plugs that may rust over time.<a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener">[1]</a> CDC distinguishes small holes filled with steel wool and retained with caulk from larger holes repaired with hardware cloth, metal or cement.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">[2]</a> Neither source establishes that every copper mesh or hardware-cloth product defeats chewing in every assembly.</p>
+<section id="verified-material-specs"><h3>Verified specifications to compare before buying</h3><p>These are document checks, not hands-on performance reviews. Check the exact pack and label; a similar marketplace title does not establish an identical product.</p><div style="overflow-x:auto"><table class="mgg-table"><caption>Objective product examples, not universal specifications</caption><thead><tr><th scope="col">Material example</th><th scope="col">Verified detail</th><th scope="col">Useful decision</th><th scope="col">Limit</th></tr></thead><tbody><tr><th scope="row">Xcluder fill fabric</th><td>The manufacturer describes coarse stainless steel wool interwoven with poly fibers.<a href="https://buyxcluder.com/xcluder-rodent-control-fill-fabric-3-roll-box/" target="_blank" rel="noopener">[4]</a></td><td>Compare purpose-made flexible fill for an irregular, safely accessible gap.</td><td>Not a sheet-metal patch, vent grille or structural repair. Do not infer the contents of a different DIY pack.</td></tr><tr><th scope="row">TWP galvanized welded hardware cloth</th><td>Named product: 4 mesh per inch, 23 gauge, 0.0250-inch wire, 0.2250-inch clear opening; heavy hot-dipped galvanizing.<a href="https://www.twpinc.com/wire-mesh-by-project/pest-control/squirrel/4-mesh-galv-welded-23-gauge-025-wire-dia" target="_blank" rel="noopener">[5]</a></td><td>Compare actual aperture, wire diameter and coating, rather than a generic “quarter-inch mesh” label.</td><td>These specifications are one product example, not a universal minimum gauge or proof that every vent can be screened.</td></tr><tr><th scope="row">Copper exclusion mesh</th><td>No particular copper SKU is verified here.</td><td>Obtain composition and installation instructions before choosing flexible fill.</td><td>Do not assume copper-plated, knitted and woven products are equivalent or compatible with every sealant.</td></tr></tbody></table></div></section>
+<!-- IN-CONTENT IMAGE 2 -->
+<figure style="margin:32px 0;text-align:center;">
+  <picture><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/mouse-hole-size-dime-comparison.avif "  type="image/avif"><source srcset="https://micegoneguide.com/wp-content/uploads/2026/08/mouse-hole-size-dime-comparison.webp "  type="image/webp"><img src="https://micegoneguide.com/wp-content/uploads/2026/08/mouse-hole-size-dime-comparison.webp" height="810" width="1440" class=" sp-no-webp" alt="Pencil-width and dime-sized hole comparison showing the 1/4-inch clearance a mouse needs" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.07);"  > </picture>
+  <figcaption style="font-size:13px;color:#64748b;margin-top:8px;font-style:italic;">Small openings deserve inspection: CDC notes that mice can enter an opening about 1/4 inch wide. A reference illustration is not a measurement of your building.</figcaption>
+</figure>
+
+<!-- SECTION 3 -->
+<h2 id="sealant-compatibility" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Sealant Compatibility &#038; Application Guide</h2>
+<p>A suitable exclusion repair needs secure edges and appropriate materials. Use the product instructions to select sealant and fastening methods; do not treat these categories as interchangeable:</p>
+<ul style="padding-left:22px;color:#334155;line-height:1.8;">
+  <li><strong>Silicone products:</strong> Check the specified substrate, exposure, joint dimensions and paint compatibility on the product instructions. Do not assume all silicone products suit every penetration.</li>
+  <li><strong>Polyurethane or other building sealants:</strong> Choose a formulation approved for the substrate and application. A sealant alone is not a proven rodent-resistant structural barrier.</li>
+  <li><strong>Expanding foam:</strong> Do not rely on foam alone as a gnaw-resistant barrier. Use only where the building assembly and manufacturer instructions permit it, with an appropriate durable exclusion material.</li>
+</ul>
+
+<div class="mgg-warning"><p><strong>A real sealant incompatibility:</strong> DAP Commercial Kitchen 100% Silicone's technical sheet says it is not recommended for use “on or near brass, copper or copper alloys, zinc, iron, galvanized metals or other surfaces prone to attack by weak acids.” It also specifies interior use and says it is not paintable.<a href="https://images.dap.com/DAP%20Commercial%20Kitchen%20100%25%20Silicone%20Sealant_TDS_3.3.19.pdf" target="_blank" rel="noopener">[6]</a> This is an example to avoid with copper mesh, not a recommended exclusion sealant. “Silicone” on a tube is not enough: verify the exact formulation against every material it touches.</p></div>
+<!-- YOUTUBE VIDEO SECTION -->
+<h2 id="video-demonstration" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Video Guide: Professional Hole Sealing Techniques</h2>
+<p>This demonstration shows one approach to gap repair. It is not evidence of testing by Mice Gone Guide, and its methods may not suit your building or a utility penetration.</p>
+
+<div class="mgg-video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:28px 0;box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+  <iframe src="https://www.youtube-nocookie.com/embed/-dU52P9TZf8" title="How to Seal Rodent Holes &#038; Exclusion Materials - Twin Home Experts" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<!-- SECTION 4 -->
+<h2 id="step-by-step-installation" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">How to Seal a Mouse Hole: Step-by-Step Sequence</h2>
+<ol style="padding-left:24px;color:#334155;line-height:1.85;">
+  <li><strong>Assess before preparation:</strong> Identify the opening and any utilities. Safely address rodent contamination before disturbing material. Stop when the assembly or hazards are unclear.</li>
+  <li><strong>Select and size the repair:</strong> Use a material and fastener suitable for the opening, substrate and exposure. Follow the product's handling instructions.</li>
+  <li><strong>Secure the barrier:</strong> Follow the chosen repair method rather than pushing metal blindly into a void. Preserve drainage, airflow and required clearances.</li>
+  <li><strong>Finish only where appropriate:</strong> Apply a compatible sealant at the specified joint depth and cure conditions. Not every opening should be made airtight.</li>
+  <li><strong>Reinspect:</strong> Check the repair condition and look for new activity. Fix movement or deterioration and investigate other access points; no interval proves a home is clear.</li>
+</ol>
+
+<!-- SECTION 5: FAQS -->
+<h2 id="faqs" style="font-size:24px;color:#0f172a;margin-top:40px;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">Frequently Asked Questions</h2>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Copper mesh vs steel wool for mice: which is better outdoors?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Ordinary steel wool may rust and is a temporary repair material. For exposed locations, select an exclusion product rated for the conditions and compatible with nearby materials. Copper mesh can be an option but is not a lifetime guarantee.</p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Can mice chew through copper mesh?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Purpose-made exclusion mesh can resist gnawing when properly selected and secured. Loose edges, unsuitable material or poor fastening can still fail. Do not treat a copper label as proof that an opening is permanently mouse-proof.</p>
+</div>
+
+<div style="margin:20px 0;">
+  <h3 style="font-size:18px;color:#0f172a;margin-bottom:6px;">Can mice chew through hardware cloth?</h3>
+  <p style="font-size:15px;color:#334155;line-height:1.7;">Suitable, securely fastened hardware cloth is a common exclusion material. Mesh opening, wire strength, corrosion resistance and edge attachment all matter. Follow building and product requirements rather than a universal gauge claim.</p>
+</div>
+
+<p>CDC allows caulk or spray foam to retain steel wool in a small hole; this is not an endorsement of foam alone. Our product comparisons are editorial applications of the guidance, not a CDC endorsement of copper, a particular sealant or a universal wire gauge.<a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">[2]</a><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener">[1]</a></p><section class="mgg-sources" aria-label="Evidence for material and safety decisions"><h3>Evidence behind these decisions</h3><ul><li><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener">[1]</a> UC IPM: House Mouse</li><li><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener">[2]</a> CDC: Seal Up</li><li><a href="https://buyxcluder.com/xcluder-rodent-control-fill-fabric-3-roll-box/" target="_blank" rel="noopener">[4]</a> Xcluder: fill fabric composition</li><li><a href="https://www.twpinc.com/wire-mesh-by-project/pest-control/squirrel/4-mesh-galv-welded-23-gauge-025-wire-dia" target="_blank" rel="noopener">[5]</a> TWP: galvanized welded mesh specifications</li><li><a href="https://images.dap.com/DAP%20Commercial%20Kitchen%20100%25%20Silicone%20Sealant_TDS_3.3.19.pdf" target="_blank" rel="noopener">[6]</a> DAP: silicone technical data sheet</li></ul><p>University and CDC guidance support the exclusion and cleanup principles. Manufacturer data verify only the named product specifications and limitations, not testing by this website, a lifespan, or guaranteed exclusion.</p></section>
+<!-- SOURCES -->
+<div style="background:#f8fafc;border-top:2px solid #cbd5e1;padding:20px;border-radius:0 0 10px 10px;margin-top:40px;font-size:13px;color:#64748b;">
+  <p style="font-weight:700;margin:0 0 8px 0;color:#334155;">References &#038; Exclusion Standards:</p>
+  <ul style="margin:0;padding-left:20px;line-height:1.6;">
+    <li><a href="https://www.cdc.gov/healthy-pets/rodent-control/seal-up.html" target="_blank" rel="noopener" style="color:#27745f;">CDC: Seal Up to Prevent Rodents</a></li>
+    <li><a href="https://content.ces.ncsu.edu/surveillance-and-management-of-common-structure-invading-mice" target="_blank" rel="noopener" style="color:#27745f;">NC State Extension: Structure-Invading Mice Management</a></li>
+    <li><a href="https://ipm.ucanr.edu/home-and-landscape/house-mouse/" target="_blank" rel="noopener" style="color:#27745f;">UC IPM: Physical Exclusion Standards</a></li>
+  </ul>
+
+</div>
+</article>
+
+<!-- /wp:html -->

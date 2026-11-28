@@ -3,6 +3,7 @@
   "site": "gearuptofit.com",
   "post_id": 66414,
   "run": "2026-11-28",
+  "title": "Best Hot-Weather Workout Clothes: Stay Cool & Dry (2026)",
   "asins": [
    "B0DP4CYN9Z",
    "B085DV8T75",
@@ -10,7 +11,7 @@
   ],
   "sources": [
    "page",
-   "page",
+   "search",
    "page"
   ],
   "name_fp": [
@@ -24,16 +25,53 @@
    "d25ab4eef242"
   ]
  },
+ "https://gearuptofit.com/review/adidas-adios-9/": {
+  "site": "gearuptofit.com",
+  "post_id": 82569,
+  "run": "2026-11-28",
+  "title": "adidas Adizero Adios 9 Review: Plate-Free Speed Shoe",
+  "asins": [
+   "B0D8WT38RX"
+  ],
+  "sources": [
+   "page"
+  ],
+  "name_fp": [
+   "fbe3831f1c7e"
+  ],
+  "image_fp": [
+   "b9eb9c3fb718"
+  ]
+ },
+ "https://gearuptofit.com/review/adidas-evo-sl/": {
+  "site": "gearuptofit.com",
+  "post_id": 83044,
+  "run": "2026-11-28",
+  "title": "adidas Adizero Evo SL Review: Best Plate-Free Daily Trainer?",
+  "asins": [
+   "B0FG394CM2"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "189f2a7755f6"
+  ],
+  "image_fp": [
+   "3762e013a2b2"
+  ]
+ },
  "https://gearuptofit.com/review/asics-gel-nimbus-27/": {
   "site": "gearuptofit.com",
   "post_id": 92028,
   "run": "2026-11-28",
+  "title": "ASICS Gel-Nimbus 27 Review: 2026 Max Cushion Guide",
   "asins": [
    "B0D42CWYGF",
    "B0D5FNNH7X"
   ],
   "sources": [
-   "page",
+   "search",
    "page"
   ],
   "name_fp": [
@@ -49,11 +87,12 @@
   "site": "gearuptofit.com",
   "post_id": 87217,
   "run": "2026-11-28",
+  "title": "ASICS Superblast 3 Review: The Best Plate-Free Super Trainer?",
   "asins": [
    "B0H952CNWP"
   ],
   "sources": [
-   "page"
+   "search"
   ],
   "name_fp": [
    "e6057cd5e5bb"
@@ -66,13 +105,14 @@
   "site": "gearuptofit.com",
   "post_id": 91493,
   "run": "2026-11-28",
+  "title": "Best Budget GPS Running Watch Under $200: What to Buy and What to Skip",
   "asins": [
    "B0953X73TP",
    "B08411DQ96"
   ],
   "sources": [
-   "page",
-   "page"
+   "search",
+   "search"
   ],
   "name_fp": [
    "ce9136069064",
@@ -87,6 +127,7 @@
   "site": "gearuptofit.com",
   "post_id": 90633,
   "run": "2026-11-28",
+  "title": "10 Best Compression Boots 2026: Expert Recovery Guide",
   "asins": [
    "B0D4876TX4",
    "B0DGRPRYD9",
@@ -112,13 +153,14 @@
   "site": "gearuptofit.com",
   "post_id": 91983,
   "run": "2026-11-28",
+  "title": "7 Best Running Shoes for Ball of Foot Pain (2026 Reviews)",
   "asins": [
    "B0D482NK8J",
    "B0DKVB1GHF"
   ],
   "sources": [
    "page",
-   "page"
+   "search"
   ],
   "name_fp": [
    "348c6eb1e91e",
@@ -133,13 +175,14 @@
   "site": "gearuptofit.com",
   "post_id": 91981,
   "run": "2026-11-28",
+  "title": "Best Running Shoes for Shin Splints 2026: Expert Reviews",
   "asins": [
    "B0F4LZMVSV",
    "B0186EMILU"
   ],
   "sources": [
-   "page",
-   "page"
+   "search",
+   "search"
   ],
   "name_fp": [
    "22c1c07bc588",
@@ -154,13 +197,14 @@
   "site": "gearuptofit.com",
   "post_id": 91982,
   "run": "2026-11-28",
+  "title": "7 Best Running Shoes for Supination & High Arches (2026)",
   "asins": [
    "B0F5NB8NGZ",
    "B0BM64V466"
   ],
   "sources": [
    "page",
-   "page"
+   "search"
   ],
   "name_fp": [
    "01d77e72eece",
@@ -175,6 +219,7 @@
   "site": "gearuptofit.com",
   "post_id": 92024,
   "run": "2026-11-28",
+  "title": "Best Treadmill for Home Running 2026: Top Tested Picks",
   "asins": [
    "B0GSH23JFC",
    "B08JQQHR7R",
@@ -183,7 +228,7 @@
   "sources": [
    "page",
    "page",
-   "page"
+   "search"
   ],
   "name_fp": [
    "d7fed389f7c7",
@@ -200,12 +245,13 @@
   "site": "gearuptofit.com",
   "post_id": 91839,
   "run": "2026-11-28",
+  "title": "Fastest Running Shoes 2026: Speed Guide for Regular Runners",
   "asins": [
    "B0GL9F7KD2",
    "B0F8PWGXGM"
   ],
   "sources": [
-   "page",
+   "search",
    "page"
   ],
   "name_fp": [
@@ -221,13 +267,14 @@
   "site": "gearuptofit.com",
   "post_id": 86762,
   "run": "2026-11-28",
+  "title": "New Balance Fresh Foam X More v6 Review: 2026 Comfort King",
   "asins": [
    "B0DJVD9J6M",
    "B0CLB81JKH",
    "B0D5G2Y6DD"
   ],
   "sources": [
-   "page",
+   "search",
    "page",
    "page"
   ],
@@ -242,21 +289,446 @@
    "31b214e49478"
   ]
  },
+ "https://gearuptofit.com/review/nike-pegasus-premium/": {
+  "site": "gearuptofit.com",
+  "post_id": 82565,
+  "run": "2026-11-28",
+  "title": "Nike Pegasus Premium Review: Best Max Cushion Trainer?",
+  "asins": [
+   "B0DVSGQ493"
+  ],
+  "sources": [
+   "page"
+  ],
+  "name_fp": [
+   "0bd8e67cbf8b"
+  ],
+  "image_fp": [
+   "8638d162ae79"
+  ]
+ },
+ "https://gearuptofit.com/review/puma-deviate-nitro-elite-2-review/": {
+  "site": "gearuptofit.com",
+  "post_id": 78947,
+  "run": "2026-11-28",
+  "title": "Puma Deviate Nitro Elite 2 vs 3 Review: 2026 Racing Guide",
+  "asins": [
+   "B0C658V227"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "f9234711d5be"
+  ],
+  "image_fp": [
+   "ea86b136d385"
+  ]
+ },
+ "https://gearuptofit.com/review/running-shoes/asics-mens-gel-kayano-32/": {
+  "site": "gearuptofit.com",
+  "post_id": 4693,
+  "run": "2026-11-28",
+  "title": "ASICS Gel-Kayano 32 Review: Best Stability Running Shoe 2026",
+  "asins": [
+   "B0DPLPJ6PH"
+  ],
+  "sources": [
+   "page"
+  ],
+  "name_fp": [
+   "774f401ef6be"
+  ],
+  "image_fp": [
+   "276466f81a1e"
+  ]
+ },
+ "https://gearuptofit.com/review/smartwatch/amazfit-gts-2-mini-review/": {
+  "site": "gearuptofit.com",
+  "post_id": 44965,
+  "run": "2026-11-28",
+  "title": "Amazfit GTS 2 Mini Review 2026: GTS 2 Mini vs. Active 2",
+  "asins": [
+   "B0DT3YMDMZ"
+  ],
+  "sources": [
+   "page"
+  ],
+  "name_fp": [
+   "7c6c55eb111b"
+  ],
+  "image_fp": [
+   "661c1436ba23"
+  ]
+ },
+ "https://gearuptofit.com/review/sports-watch/garmin-forerunner-55-review/": {
+  "site": "gearuptofit.com",
+  "post_id": 44914,
+  "run": "2026-11-28",
+  "title": "Garmin Forerunner 55 Review 2026: Still the Best Budget Watch?",
+  "asins": [
+   "B0953X73TP"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "ce9136069064"
+  ],
+  "image_fp": [
+   "76c15b7468cd"
+  ]
+ },
+ "https://gearuptofit.com/review/upright-go-s-posture-trainer-review/": {
+  "site": "gearuptofit.com",
+  "post_id": 79076,
+  "run": "2026-11-28",
+  "title": "Upright GO S Review: Best Posture Trainer of 2026?",
+  "asins": [
+   "B07SRW2D38"
+  ],
+  "sources": [
+   "page"
+  ],
+  "name_fp": [
+   "38c78efc3665"
+  ],
+  "image_fp": [
+   "0482ce951742"
+  ]
+ },
  "https://gearuptofit.com/running/best-running-sunglasses/": {
   "site": "gearuptofit.com",
   "post_id": 88016,
   "run": "2026-11-28",
+  "title": "Best Running Sunglasses 2026: Expert Road & Trail Picks",
   "asins": [
    "B0F28L2J8G"
   ],
   "sources": [
-   "page"
+   "search"
   ],
   "name_fp": [
    "ae9de82284d9"
   ],
   "image_fp": [
    "cca5379dbec2"
+  ]
+ },
+ "https://plantastichaven.com/african-house-plants/": {
+  "site": "plantastichaven.com",
+  "post_id": 3315,
+  "run": "2026-11-28",
+  "title": "African House Plants: Beautiful Indoor Plants Native to Africa and How to Care for Them",
+  "asins": [
+   "B0D8RC536Q",
+   "B0GK1NG9NH"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "2d9fd35a1278",
+   "bd4c4babebf7"
+  ],
+  "image_fp": [
+   "7fca861c781b",
+   "8fb8ab4443d2"
+  ]
+ },
+ "https://plantastichaven.com/best-environment-for-philodendron-care/": {
+  "site": "plantastichaven.com",
+  "post_id": 3422,
+  "run": "2026-11-28",
+  "title": "Best Environment for Philodendrons: Light, Temperature, Humidity & Soil",
+  "asins": [
+   "B0DJ3KLTQM",
+   "B01H1R0K68",
+   "B0C2C9NHZW"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "ab5fdcd186cf",
+   "6143b0001e7d",
+   "5a4cc3dee466"
+  ],
+  "image_fp": [
+   "573ddee61b32",
+   "a98d5d017b47",
+   "78120de6f49e"
+  ]
+ },
+ "https://plantastichaven.com/brick-planter-in-front-of-house/": {
+  "site": "plantastichaven.com",
+  "post_id": 3328,
+  "run": "2026-11-28",
+  "title": "DIY Brick Planter: Step-by-Step Guide for Beginners",
+  "asins": [
+   "B00002N5OT",
+   "B0F9PW3XS4"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "35444020e74b",
+   "1e845ca78591"
+  ],
+  "image_fp": [
+   "f6e6c23fbd92",
+   "e1e875677078"
+  ]
+ },
+ "https://plantastichaven.com/house-plants-in-fish-tank/": {
+  "site": "plantastichaven.com",
+  "post_id": 3340,
+  "run": "2026-11-28",
+  "title": "House Plants in Fish Tanks: What Works, What Fails & Safer Aquarium Choices",
+  "asins": [
+   "B0F9PZP735"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "f62a0cbfe3eb"
+  ],
+  "image_fp": [
+   "83f431852ddd"
+  ]
+ },
+ "https://plantastichaven.com/house-plants-with-white-flowers/": {
+  "site": "plantastichaven.com",
+  "post_id": 3338,
+  "run": "2026-11-28",
+  "title": "White-Flowering Houseplants That Can Bloom Indoors",
+  "asins": [
+   "B0DHSLHNN5",
+   "B000HACFUQ"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "203e2e36a8b7",
+   "cec755074309"
+  ],
+  "image_fp": [
+   "2838dc6bde8c",
+   "a89f9fb07c5c"
+  ]
+ },
+ "https://plantastichaven.com/houseplants-with-colorful-foliage/": {
+  "site": "plantastichaven.com",
+  "post_id": 3435,
+  "run": "2026-11-28",
+  "title": "Houseplants With Colorful Foliage: Best Indoor Plants for Red, Pink, Yellow, and Variegated Leaves",
+  "asins": [
+   "B0C36WZBWC"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "74519878cd86"
+  ],
+  "image_fp": [
+   "2876da2b28a9"
+  ]
+ },
+ "https://plantastichaven.com/japanese-house-plants/": {
+  "site": "plantastichaven.com",
+  "post_id": 3310,
+  "run": "2026-11-28",
+  "title": "Japanese House Plants: Care Tips for Complete Zen (2026 Guide)",
+  "asins": [
+   "B09G6F9TW4",
+   "B0927ZP6PN"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "4dc156d2246a",
+   "b4104f8b45cb"
+  ],
+  "image_fp": [
+   "902cb592c77d",
+   "a0899f7a5abc"
+  ]
+ },
+ "https://plantastichaven.com/maranta-vs-calathea/": {
+  "site": "plantastichaven.com",
+  "post_id": 10717,
+  "run": "2026-11-28",
+  "title": "Maranta vs Calathea: Differences, Care & Which Is Easier",
+  "asins": [
+   "B0C2C9NHZW",
+   "B01H1R0K68"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "5a4cc3dee466",
+   "6143b0001e7d"
+  ],
+  "image_fp": [
+   "78120de6f49e",
+   "a98d5d017b47"
+  ]
+ },
+ "https://plantastichaven.com/philodendron-splendid/": {
+  "site": "plantastichaven.com",
+  "post_id": 3403,
+  "run": "2026-11-28",
+  "title": "Philodendron Splendid Care: Soil, Light, Water & Growth Guide",
+  "asins": [
+   "B0GKJ634WP",
+   "B0C2C9NHZW",
+   "B0DJ3KLTQM"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "921c77c9921e",
+   "5a4cc3dee466",
+   "ab5fdcd186cf"
+  ],
+  "image_fp": [
+   "3eda0ca51da4",
+   "78120de6f49e",
+   "573ddee61b32"
+  ]
+ },
+ "https://plantastichaven.com/rare-houseplants-2025-guide/": {
+  "site": "plantastichaven.com",
+  "post_id": 6398,
+  "run": "2026-11-28",
+  "title": "Rare Houseplants Guide: What Is Worth Buying, What Is Risky & How to Care",
+  "asins": [
+   "B0C2C9NHZW",
+   "B0C36WZBWC"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "5a4cc3dee466",
+   "74519878cd86"
+  ],
+  "image_fp": [
+   "78120de6f49e",
+   "2876da2b28a9"
+  ]
+ },
+ "https://plantastichaven.com/snake-plant-leaves-curling-causes-and-fixes/": {
+  "site": "plantastichaven.com",
+  "post_id": 6919,
+  "run": "2026-11-28",
+  "title": "Snake Plant Leaf Curling: Causes, Diagnosis, and Fixes",
+  "asins": [
+   "B014MJ8J2U",
+   "B0BV2YW11X"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "b3b4dd2714d8"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "b11860f4653c"
+  ]
+ },
+ "https://plantastichaven.com/snake-plant-propagation/": {
+  "site": "plantastichaven.com",
+  "post_id": 9897,
+  "run": "2026-11-28",
+  "title": "Snake Plant Propagation: Water, Soil, Division, and Pups",
+  "asins": [
+   "B0BV2YW11X",
+   "B0CNRJW3WM",
+   "B09WZHXNQ2"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "b3b4dd2714d8",
+   "86d17abd0c3d",
+   "42a0a4a3f201"
+  ],
+  "image_fp": [
+   "b11860f4653c",
+   "4da0e97d4c6e",
+   "ebb351dd9200"
+  ]
+ },
+ "https://plantastichaven.com/snake-plant-toxic-to-cats-and-dogs/": {
+  "site": "plantastichaven.com",
+  "post_id": 9896,
+  "run": "2026-11-28",
+  "title": "Is Snake Plant Toxic to Cats and Dogs? What Pet Owners Should Know",
+  "asins": [
+   "B0CT86YXL3",
+   "B0B4Q22R1M"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "de20d182dff7",
+   "685c1b967cd8"
+  ],
+  "image_fp": [
+   "3846bfb2b192",
+   "5b2eddc9fce9"
+  ]
+ },
+ "https://plantastichaven.com/spider-cactus-plant/": {
+  "site": "plantastichaven.com",
+  "post_id": 3317,
+  "run": "2026-11-28",
+  "title": "Spider Cactus Plant Care: What It Is and How to Grow It Indoors",
+  "asins": [
+   "B0BV2YW11X",
+   "B0C9J5RKRB",
+   "B0C36WZBWC"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "b3b4dd2714d8",
+   "f4499b0d6117",
+   "74519878cd86"
+  ],
+  "image_fp": [
+   "b11860f4653c",
+   "d38e638d8959",
+   "2876da2b28a9"
   ]
  }
 }

@@ -1,0 +1,852 @@
+
+<!-- GearUpToFit Custom HTML Block: ASICS Gel-Kayano 32 Review -->
+<style>
+  .gut-kayano-review {
+    --gut-bg: #ffffff;
+    --gut-card: #f7f9fc;
+    --gut-card-2: #eef4ff;
+    --gut-text: #172033;
+    --gut-muted: #5d697c;
+    --gut-border: #dfe7f2;
+    --gut-accent: #0b63ce;
+    --gut-accent-dark: #084b9c;
+    --gut-good: #087f5b;
+    --gut-warn: #b45309;
+    --gut-bad: #b42318;
+    --gut-shadow: 0 12px 32px rgba(17, 24, 39, .08);
+    color: var(--gut-text);
+    background: var(--gut-bg);
+    font-family: inherit;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+
+  .gut-kayano-review * {
+    box-sizing: border-box;
+  }
+
+  .gut-kayano-review a {
+    color: var(--gut-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .gut-kayano-review a:hover {
+    color: var(--gut-accent-dark);
+  }
+
+  .gut-wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  .gut-hero {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 28px;
+    align-items: center;
+    padding: 32px;
+    border: 1px solid var(--gut-border);
+    border-radius: 28px;
+    background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+    box-shadow: var(--gut-shadow);
+  }
+
+  .gut-eyebrow {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #e7f0ff;
+    color: #084b9c;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+
+  .gut-kayano-review h1,
+  .gut-kayano-review h2,
+  .gut-kayano-review h3 {
+    line-height: 1.18;
+    margin: 0 0 14px;
+    color: #111827;
+  }
+
+  .gut-kayano-review h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    margin-top: 18px;
+  }
+
+  .gut-kayano-review h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin-top: 42px;
+  }
+
+  .gut-kayano-review h3 {
+    font-size: clamp(22px, 3vw, 28px);
+    margin-top: 28px;
+  }
+
+  .gut-subtitle {
+    font-size: clamp(19px, 2.3vw, 23px);
+    color: var(--gut-muted);
+    margin: 0 0 22px;
+  }
+
+  .gut-hero-img,
+  .gut-full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 22px;
+    border: 1px solid var(--gut-border);
+    background: #fff;
+  }
+
+  .gut-caption {
+    font-size: 14px;
+    color: var(--gut-muted);
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .gut-verdict {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .gut-score-card,
+  .gut-card,
+  .gut-callout,
+  .gut-toc,
+  .gut-product-card,
+  .gut-video,
+  .gut-schema-note {
+    border: 1px solid var(--gut-border);
+    border-radius: 22px;
+    background: var(--gut-card);
+    padding: 22px;
+  }
+
+  .gut-score-card strong {
+    display: block;
+    font-size: 28px;
+    color: var(--gut-accent);
+    line-height: 1;
+  }
+
+  .gut-score-card span {
+    display: block;
+    color: var(--gut-muted);
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .gut-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .gut-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none !important;
+    border: 2px solid transparent;
+  }
+
+  .gut-btn-primary {
+    color: #fff !important;
+    background: var(--gut-accent);
+  }
+
+  .gut-btn-primary:hover {
+    color: #fff !important;
+    background: var(--gut-accent-dark);
+  }
+
+  .gut-btn-secondary {
+    color: var(--gut-accent) !important;
+    background: #fff;
+    border-color: var(--gut-accent);
+  }
+
+  .gut-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 20px 0;
+  }
+
+  .gut-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 20px 0;
+  }
+
+  .gut-card {
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(17, 24, 39, .05);
+  }
+
+  .gut-card ul,
+  .gut-callout ul {
+    margin: 12px 0 0;
+    padding-left: 22px;
+  }
+
+  .gut-good {
+    border-left: 5px solid var(--gut-good);
+  }
+
+  .gut-warn {
+    border-left: 5px solid var(--gut-warn);
+  }
+
+  .gut-bad {
+    border-left: 5px solid var(--gut-bad);
+  }
+
+  .gut-toc ol {
+    margin: 10px 0 0;
+    padding-left: 24px;
+  }
+
+  .gut-spec-table,
+  .gut-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 18px;
+    margin: 20px 0;
+    font-size: 16px;
+  }
+
+  .gut-spec-table th,
+  .gut-spec-table td,
+  .gut-compare-table th,
+  .gut-compare-table td {
+    border: 1px solid var(--gut-border);
+    padding: 14px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .gut-spec-table th,
+  .gut-compare-table th {
+    background: #eef4ff;
+    color: #102a56;
+  }
+
+  .gut-product-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 22px;
+    align-items: center;
+    background: #fff;
+    box-shadow: var(--gut-shadow);
+    margin: 28px 0;
+  }
+
+  .gut-product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--gut-border);
+  }
+
+  .gut-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .gut-badge {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #edf7f2;
+    color: #087f5b;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .gut-video iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    border-radius: 18px;
+  }
+
+  .gut-faq details {
+    border: 1px solid var(--gut-border);
+    border-radius: 18px;
+    padding: 16px 18px;
+    background: #fff;
+    margin: 12px 0;
+  }
+
+  .gut-faq summary {
+    cursor: pointer;
+    font-weight: 800;
+    color: #111827;
+  }
+
+  .gut-source-list {
+    font-size: 15px;
+    color: var(--gut-muted);
+  }
+
+  @media (max-width: 860px) {
+    .gut-hero,
+    .gut-grid-2,
+    .gut-grid-3,
+    .gut-product-card {
+      grid-template-columns: 1fr;
+    }
+
+    .gut-hero {
+      padding: 22px;
+    }
+
+    .gut-verdict {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gut-product-card {
+      text-align: left;
+    }
+
+    .gut-product-card img {
+      max-width: 220px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .gut-kayano-review {
+      font-size: 17px;
+    }
+
+    .gut-wrap {
+      padding: 16px 12px;
+    }
+
+    .gut-verdict {
+      grid-template-columns: 1fr;
+    }
+
+    .gut-spec-table,
+    .gut-compare-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+</style>
+
+<article class="gut-kayano-review" itemscope itemtype="https://schema.org/Review">
+  <div class="gut-wrap">
+
+    <header class="gut-hero">
+      <div>
+        <span class="gut-eyebrow">Stability running shoe review</span>
+        <p class="gut-subtitle" itemprop="description">
+          The ASICS Gel-Kayano 32 is a premium daily trainer for runners who want guidance, comfort, and a planted ride without the harsh feel of old-school motion-control shoes.
+        </p>
+
+        <div class="gut-cta-row">
+          <a class="gut-btn gut-btn-primary" href="https://www.amazon.com/Asics-Gel-Kayano-Running-Shoes-Silver/dp/B0DPLPJ6PH?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            Check price on Amazon
+          </a>
+          <a class="gut-btn gut-btn-secondary" href="#verdict">
+            Jump to verdict
+          </a>
+        </div>
+
+        <p class="gut-caption">
+          Disclosure: GearUpToFit may earn a commission from qualifying purchases. This does not affect the recommendation or your price.
+        </p>
+      </div>
+
+      <figure>
+        <img fetchpriority="high" decoding="async" class="gut-hero-img" src="https://gearuptofit.com/wp-content/uploads/2025/07/ASICS-Gel-Kayano-32-Review.webp" alt="ASICS Gel-Kayano 32 running shoes in navy and yellow showing cushioned stability shoe design" loading="eager" width="1000" height="625">
+        <figcaption class="gut-caption">ASICS Gel-Kayano 32: a high-cushion stability trainer for road running and walking.</figcaption>
+      </figure>
+    </header>
+
+    <section class="gut-verdict" aria-label="Quick review scores">
+      <div class="gut-score-card">
+        <strong>Best for</strong>
+        <span>Overpronation, walking, easy runs, long steady mileage</span>
+      </div>
+      <div class="gut-score-card">
+        <strong>8 mm</strong>
+        <span>Heel-to-toe drop</span>
+      </div>
+      <div class="gut-score-card">
+        <strong>300 g</strong>
+        <span>Listed men’s weight from ASICS</span>
+      </div>
+      <div class="gut-score-card">
+        <strong>Road</strong>
+        <span>High-cushion daily trainer</span>
+      </div>
+    </section>
+
+    <nav class="gut-toc" aria-label="Table of contents">
+      <strong>Table of contents</strong>
+      <ol>
+        <li><a href="#quick-verdict">Quick verdict</a></li>
+        <li><a href="#who-should-buy">Who should buy it</a></li>
+        <li><a href="#specs">Specs and technology</a></li>
+        <li><a href="#ride">Ride, stability, and fit</a></li>
+        <li><a href="#comparison">Gel-Kayano 32 vs alternatives</a></li>
+        <li><a href="#video">Helpful video review</a></li>
+        <li><a href="#faq">FAQs</a></li>
+      </ol>
+    </nav>
+
+    <section id="quick-verdict">
+      <h2>Quick verdict: the Kayano 32 is for comfort-first stability, not speed</h2>
+      <p>
+        The ASICS Gel-Kayano 32 is one of the safest picks for runners who want a supportive, highly cushioned road shoe for easy runs, daily walking, recovery days, and long steady mileage. It uses ASICS’ <strong>4D GUIDANCE SYSTEM</strong> to guide the foot more naturally than older, firmer stability shoes, while the <strong>FF BLAST PLUS</strong> midsole and rearfoot PureGEL cushioning keep the ride protective.
+      </p>
+
+      <div class="gut-grid-2">
+        <div class="gut-card gut-good">
+          <h3>Buy it if you want</h3>
+          <ul>
+            <li>A stable daily trainer for overpronation or flat feet.</li>
+            <li>A cushioned shoe for walking, standing, and easy running.</li>
+            <li>A secure upper and wide-width availability.</li>
+            <li>A premium stability shoe that feels guided rather than aggressively corrected.</li>
+          </ul>
+        </div>
+
+        <div class="gut-card gut-bad">
+          <h3>Skip it if you want</h3>
+          <ul>
+            <li>A lightweight tempo shoe for speed workouts.</li>
+            <li>A low-profile, flexible, minimalist feel.</li>
+            <li>The cheapest stability shoe possible.</li>
+            <li>A racing shoe for 5K, 10K, or marathon PR attempts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
+        For more shoe-selection context, compare it with our guide to the <a href="https://gearuptofit.com/review/best-running-shoes-for-flat-feet/" target="_blank">best running shoes for overpronation and flat feet</a>, or start from the <a href="https://gearuptofit.com/category/running/" target="_blank">GearUpToFit Running Hub</a> if you are building a full running setup.
+      </p>
+    </section>
+
+    <section>
+      <div class="gut-product-card" itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product">
+        <img loading="lazy" decoding="async" src="https://m.media-amazon.com/images/I/518fRqSXtqL._AC_SY695_.jpg" alt="White ASICS Gel-Kayano 32 running shoes product image" loading="lazy" width="518" height="695">
+        <div>
+          <h2 itemprop="name">ASICS Men’s Gel-Kayano 32 Running Shoes</h2>
+          <div class="gut-badge-row">
+            <span class="gut-badge">Premium stability</span>
+            <span class="gut-badge">High cushion</span>
+            <span class="gut-badge">Road running</span>
+            <span class="gut-badge">Walking friendly</span>
+          </div>
+          <p>
+            The Kayano 32 is best used as a reliable “do-most” shoe: easy runs, long walks, treadmill sessions, gym warmups, and recovery days. It is not the shoe I would choose for fast intervals, but it is exactly the kind of shoe many runners reach for when comfort and support matter more than pace.
+          </p>
+          <a class="gut-btn gut-btn-primary" href="https://www.amazon.com/Asics-Gel-Kayano-Running-Shoes-Silver/dp/B0DPLPJ6PH?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            View ASICS Gel-Kayano 32 on Amazon
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="who-should-buy">
+      <h2>Who should buy the ASICS Gel-Kayano 32?</h2>
+      <p>
+        The Kayano 32 makes the most sense for runners who need a supportive platform but dislike the stiff, blocky feel of traditional stability shoes. It is especially relevant if your old shoes wear down heavily on the inside edge, your feet roll inward, or you prefer a shoe that feels steady under fatigue.
+      </p>
+
+      <div class="gut-grid-3">
+        <div class="gut-card">
+          <h3>Overpronators</h3>
+          <p>
+            The 4D GUIDANCE SYSTEM is designed to improve stability without relying on a harsh medial post. That makes the shoe feel supportive while still reasonably natural underfoot.
+          </p>
+        </div>
+
+        <div class="gut-card">
+          <h3>Heavier runners</h3>
+          <p>
+            The high-cushion platform gives plenty of impact protection for steady mileage. The tradeoff is that the shoe feels more protective than fast.
+          </p>
+        </div>
+
+        <div class="gut-card">
+          <h3>Walkers and all-day wear</h3>
+          <p>
+            The secure upper, cushioned heel, and supportive base make it a strong option for long walks or standing-heavy days.
+          </p>
+        </div>
+      </div>
+
+      <figure>
+        <img loading="lazy" decoding="async" class="gut-full-img" src="https://gearuptofit.com/wp-content/uploads/2024/03/Best-Running-Shoes-For-Flat-Feet-1024x682.webp" alt="Runner and flat feet comparison showing why arch support and stability shoes can help overpronation" loading="lazy" width="1024" height="682">
+        <figcaption class="gut-caption">Runners with flat feet or inward foot roll often benefit from a stable, supportive platform.</figcaption>
+      </figure>
+    </section>
+
+    <section id="specs">
+      <h2>ASICS Gel-Kayano 32 specs and key technology</h2>
+      <p>
+        The biggest story is not that ASICS reinvented the Kayano. It is that ASICS refined the formula: high cushioning, an 8 mm drop, a more guided stability feel, and a secure upper for daily training.
+      </p>
+
+      <table class="gut-spec-table">
+        <tbody>
+          <tr>
+            <th>Category</th>
+            <td>Premium stability daily trainer</td>
+          </tr>
+          <tr>
+            <th>Surface</th>
+            <td>Road</td>
+          </tr>
+          <tr>
+            <th>Cushioning</th>
+            <td>High</td>
+          </tr>
+          <tr>
+            <th>Heel-to-toe drop</th>
+            <td>8 mm</td>
+          </tr>
+          <tr>
+            <th>Listed weight</th>
+            <td>300 g / 10.58 oz, according to ASICS product data</td>
+          </tr>
+          <tr>
+            <th>Midsole</th>
+            <td>FF BLAST PLUS foam with PureGEL cushioning</td>
+          </tr>
+          <tr>
+            <th>Stability system</th>
+            <td>4D GUIDANCE SYSTEM for adaptive support</td>
+          </tr>
+          <tr>
+            <th>Best use</th>
+            <td>Easy runs, walking, long steady mileage, recovery days, all-day support</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>What the technology means in plain English</h3>
+      <p>
+        <strong>FF BLAST PLUS</strong> is the main cushioning foam. It helps the shoe feel softer and smoother than older stability trainers. <strong>PureGEL</strong> sits in the rearfoot to reduce harshness when you land on your heel. <strong>4D GUIDANCE SYSTEM</strong> is ASICS’ support structure that helps your stride feel more balanced, especially when your form starts to collapse late in a run.
+      </p>
+
+      <p>
+        This matters because stability should not feel like punishment. A good stability shoe should let you run normally while quietly helping your foot stay aligned.
+      </p>
+    </section>
+
+    <section id="ride">
+      <h2>Ride, stability, and fit: how the Gel-Kayano 32 feels</h2>
+
+      <h3>Ride feel</h3>
+      <p>
+        The Kayano 32 feels protective, smooth, and controlled. It is not a springy speed shoe. Instead, it gives you a stable platform that feels best at easy and moderate paces. If your training includes relaxed 3–8 mile runs, long walks, treadmill sessions, or recovery days, this shoe fits the job well.
+      </p>
+
+      <h3>Stability</h3>
+      <p>
+        The stability feels more modern than old-school motion-control shoes. Rather than forcing the foot into position, the Kayano 32 uses geometry and guidance to create a centered ride. That makes it more comfortable for many runners who need support but do not want a shoe that feels rigid.
+      </p>
+
+      <h3>Fit</h3>
+      <p>
+        Most runners should start with their normal running-shoe size. If you have wide feet, use the available wide options instead of sizing up too aggressively. A secure heel and a reinforced tongue wing help keep the midfoot locked down, which is useful for runners who use orthotics or need extra arch-area support.
+      </p>
+
+      <figure>
+        <img loading="lazy" decoding="async" class="gut-full-img" src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/b011aa6d-6eb1-49f4-8d2b-2c7565797faf.png" alt="Runner on track illustrating running biomechanics and injury prevention for stability shoe buyers" loading="lazy" width="300" height="300">
+        <figcaption class="gut-caption">Stable shoes can help, but form, strength, and workload management still matter.</figcaption>
+      </figure>
+
+      <div class="gut-callout gut-warn">
+        <h3>Important note about injury claims</h3>
+        <p>
+          A stability shoe can improve comfort and control for some runners, but it is not a medical treatment. Persistent knee pain, plantar fascia pain, shin pain, or IT-band symptoms should be assessed by a qualified clinician. For more context, read our <a href="https://gearuptofit.com/category/health/" target="_blank">runner health, recovery, and injury-prevention guides</a>.
+        </p>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <h2>ASICS Gel-Kayano 32 vs Kayano 31, GT-2000, and other stability shoes</h2>
+      <p>
+        The Kayano 32 is the premium ASICS stability option. That means it has more cushioning and comfort features than the GT-2000 line, but it also costs more and feels bulkier than lighter stability trainers.
+      </p>
+
+      <table class="gut-compare-table">
+        <thead>
+          <tr>
+            <th>Shoe</th>
+            <th>Best for</th>
+            <th>Main advantage</th>
+            <th>Main tradeoff</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ASICS Gel-Kayano 32</td>
+            <td>Premium support, walking, easy runs</td>
+            <td>High cushion with adaptive stability</td>
+            <td>Not ideal for speed workouts</td>
+          </tr>
+          <tr>
+            <td>ASICS GT-2000 series</td>
+            <td>Value-focused stability</td>
+            <td>Lower price and lighter feel</td>
+            <td>Less plush than Kayano</td>
+          </tr>
+          <tr>
+            <td>Brooks Glycerin GTS</td>
+            <td>Soft guided support</td>
+            <td>Comfortable GuideRails-style support</td>
+            <td>Different fit and support feel</td>
+          </tr>
+          <tr>
+            <td>Hoka Arahi</td>
+            <td>Lightweight stability feel</td>
+            <td>Lower weight and rocker feel</td>
+            <td>Less traditional supportive feel</td>
+          </tr>
+          <tr>
+            <td>ASICS Gel-Nimbus</td>
+            <td>Neutral cushioning</td>
+            <td>Plush neutral ride</td>
+            <td>Not a stability-first shoe</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        If you want a cheaper ASICS stability option, read our <a href="https://gearuptofit.com/review/running-shoes/asics-mens-gt-2000-8-running-shoes/" target="_blank">ASICS GT-2000 review</a>. If you are still comparing categories, the <a href="https://gearuptofit.com/category/running/" target="_blank">running shoe and gear hub</a> is the better starting point.
+      </p>
+    </section>
+
+    <section>
+      <h2>How to get the most from the Kayano 32</h2>
+      <div class="gut-grid-2">
+        <div class="gut-card">
+          <h3>Use it for the right runs</h3>
+          <p>
+            Save the Kayano 32 for easy runs, long slow runs, walking, and recovery mileage. Pair it with a lighter shoe if your week includes tempo runs, intervals, or race-pace workouts.
+          </p>
+        </div>
+
+        <div class="gut-card">
+          <h3>Dial in the lacing</h3>
+          <p>
+            Use a runner’s knot if your heel slips. If the forefoot feels tight, loosen the lower laces before changing sizes. Wide-footed runners should consider the wide version first.
+          </p>
+        </div>
+
+        <div class="gut-card">
+          <h3>Rotate your shoes</h3>
+          <p>
+            Rotating two pairs can help preserve midsole feel and reduce repetitive stress. It also lets the foam recover between runs.
+          </p>
+        </div>
+
+        <div class="gut-card">
+          <h3>Improve form alongside footwear</h3>
+          <p>
+            Shoes help, but they are only one part of the system. Review our <a href="https://gearuptofit.com/category/running/" target="_blank">running training resources</a> and <a href="https://gearuptofit.com/category/nutrition/" target="_blank">runner nutrition guides</a> if you are building mileage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="gut-video">
+      <h2>Helpful video: ASICS Gel-Kayano 32 after 100 miles</h2>
+      <p>
+        For an additional visual breakdown, this Doctors of Running video is useful because it discusses the shoe after extended use rather than only a first impression.
+      </p>
+      <iframe src="https://www.youtube.com/embed/n4zLZqqq9mg" title="ASICS Gel-Kayano 32 after 100 miles review" loading="lazy" allowfullscreen></iframe>
+    </section>
+
+    <section id="verdict">
+      <h2>Final verdict: should you buy the ASICS Gel-Kayano 32?</h2>
+      <p>
+        Buy the ASICS Gel-Kayano 32 if you want a premium stability shoe that prioritizes comfort, guidance, and protection over speed. It is a strong choice for overpronators, flat-footed runners, heavier runners, walkers, and anyone who wants a dependable daily trainer for easy mileage.
+      </p>
+
+      <p>
+        Skip it if you want a fast, light, race-day feel. The Kayano 32 is built to make miles feel calmer and more controlled, not to disappear on your foot during hard workouts.
+      </p>
+
+      <div class="gut-callout gut-good">
+        <h3>Bottom line</h3>
+        <p>
+          The Gel-Kayano 32 remains one of the most complete premium stability shoes because it combines high cushioning, adaptive support, secure fit, and road-ready durability in a package that works for both running and walking.
+        </p>
+        <a class="gut-btn gut-btn-primary" href="https://www.amazon.com/Asics-Gel-Kayano-Running-Shoes-Silver/dp/B0DPLPJ6PH?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+          Check latest Amazon price
+        </a>
+      </div>
+    </section>
+
+    <section id="faq" class="gut-faq">
+      <h2>ASICS Gel-Kayano 32 FAQs</h2>
+
+      <details>
+        <summary>Is the ASICS Gel-Kayano 32 good for overpronation?</summary>
+        <p>
+          Yes. The Gel-Kayano 32 is designed as a stability shoe and uses ASICS’ 4D GUIDANCE SYSTEM to help create a more supportive, balanced stride.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is the Kayano 32 good for walking?</summary>
+        <p>
+          Yes. Its high cushioning, stable platform, and secure upper make it a strong walking shoe, especially for people who want support for long days on their feet.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is the Gel-Kayano 32 better than the Gel-Kayano 31?</summary>
+        <p>
+          The Kayano 32 is more refined, with an 8 mm drop and updated cushioning geometry. The Kayano 31 can still be a good buy if you find it heavily discounted and already liked its fit.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can neutral runners wear the Kayano 32?</summary>
+        <p>
+          Some neutral runners can wear it comfortably, especially if they like a guided and stable ride. However, neutral runners who do not need support may prefer the ASICS Gel-Nimbus or another neutral daily trainer.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is the ASICS Gel-Kayano 32 good for speed workouts?</summary>
+        <p>
+          Not really. It can handle strides and moderate pace changes, but it is too protective and substantial to be the best choice for intervals, tempo runs, or racing.
+        </p>
+      </details>
+    </section>
+
+    <section>
+      <h2>Sources and editorial notes</h2>
+      <p class="gut-source-list">
+        Fact-checked against ASICS official product information, Doctors of Running, RunRepeat, and current GearUpToFit editorial standards. For transparency, see our <a href="https://gearuptofit.com/testing-standards/" target="_blank">testing standards</a>. This review avoids unsupported claims such as fake mileage testing, fabricated lab numbers, or guaranteed injury prevention.
+      </p>
+    </section>
+
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Review",
+        "@id": "https://gearuptofit.com/review/running-shoes/asics-mens-gel-kayano-32/#review",
+        "headline": "ASICS Gel-Kayano 32 Review: Stable, Cushioned, and Built for Easy Miles",
+        "description": "A practical, fact-checked review of the ASICS Gel-Kayano 32 stability running shoe for overpronation, walking, and daily training.",
+        "author": {
+          "@type": "Person",
+          "name": "Alexios Papaioannou"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "GearUpToFit",
+          "url": "https://gearuptofit.com/"
+        },
+        "itemReviewed": {
+          "@type": "Product",
+          "name": "ASICS Gel-Kayano 32",
+          "brand": {
+            "@type": "Brand",
+            "name": "ASICS"
+          },
+          "category": "Stability running shoe",
+          "image": "https://gearuptofit.com/wp-content/uploads/2025/07/ASICS-Gel-Kayano-32-Review.webp",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.amazon.com/Asics-Gel-Kayano-Running-Shoes-Silver/dp/B0DPLPJ6PH?tag=papalex-20",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "USD"
+          }
+        },
+        "reviewBody": "The ASICS Gel-Kayano 32 is a premium stability daily trainer for runners and walkers who want cushioning, support, and a guided ride. It is best for overpronation, flat feet, walking, recovery runs, and steady road mileage. It is not ideal for speed workouts or racing."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://gearuptofit.com/review/running-shoes/asics-mens-gel-kayano-32/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the ASICS Gel-Kayano 32 good for overpronation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Gel-Kayano 32 is designed as a stability shoe and uses ASICS' 4D GUIDANCE SYSTEM to help create a more supportive, balanced stride."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the Kayano 32 good for walking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Its high cushioning, stable platform, and secure upper make it a strong walking shoe, especially for people who want support for long days on their feet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the Gel-Kayano 32 better than the Gel-Kayano 31?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Kayano 32 is more refined, with an 8 mm drop and updated cushioning geometry. The Kayano 31 can still be a good buy if discounted and if the fit already works for you."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can neutral runners wear the Kayano 32?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some neutral runners can wear it comfortably, especially if they like a guided and stable ride. Neutral runners who do not need support may prefer a neutral daily trainer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the ASICS Gel-Kayano 32 good for speed workouts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not really. It can handle moderate pace changes, but it is too protective and substantial to be the best choice for intervals, tempo runs, or racing."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</article>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/review/best-running-shoes/">best running shoes for overpronation</a></li><li><a href="https://gearuptofit.com/review/asics-gel-nimbus-27/">ASICS Gel-Nimbus 27 review</a></li><li><a href="https://gearuptofit.com/review/best-daily-running-shoes/">best daily running shoes</a></li><li><a href="https://gearuptofit.com/fitness/core-exercises-for-beginners-routine-runners/">core exercises for stability</a></li><li><a href="https://gearuptofit.com/running/running-for-weight-loss/">running for weight loss guide</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"Who should buy the ASICS Gel-Kayano 32?","@type":"Question","acceptedAnswer":{"text":"The Kayano 32 makes the most sense for runners who need a supportive platform but dislike the stiff, blocky feel of traditional stability shoes. It is especially relevant if your old shoes wear down heavily on the inside edge, your feet roll inward, or you prefer a shoe that feels steady under fatigue.","@type":"Answer"}},{"name":"Final verdict: should you buy the ASICS Gel-Kayano 32?","@type":"Question","acceptedAnswer":{"text":"Buy the ASICS Gel-Kayano 32 if you want a premium stability shoe that prioritizes comfort, guidance, and protection over speed. It is a strong choice for overpronators, flat-footed runners, heavier runners, walkers, and anyone who wants a dependable daily trainer for easy mileage.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

@@ -88,7 +88,7 @@ def cmd_fix(cfg, args) -> None:
         picker.known = set()  # re-render registered boxes too (e.g. after a design change)
     actions = fixer.run(cfg, _scored(cfg, args), args.out, apply=args.apply, sites=args.site, limit=args.limit,
                         require_login=args.only_with_login, picker=picker,
-                        registry=products.REGISTRY if picker else None, max_minutes=args.max_minutes)
+                        registry=products.REGISTRY if picker else None, max_minutes=args.max_minutes, pause=args.pause)
     if picker:
         print(f"Creators API calls: {picker.client.calls}")
     print(fixer.summarize(actions))
@@ -282,6 +282,7 @@ def main(argv=None) -> None:
         p.add_argument("--site-out", type=Path, default=Path("dist"), help="site: folder to write the dashboard to")
         p.add_argument("--mirror", nargs="*", help="site: extra folders to receive a copy of the dashboard")
         p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
+        p.add_argument("--pause", type=float, default=0.5, help="fix: seconds to wait after each save (raise it for a slow site)")
         p.add_argument("--max-minutes", type=float, help="fix/refresh-boxes: stop taking new pages after this long, so the run can still commit")
         p.add_argument("--rebuild-boxes", action="store_true", help="fix: also rebuild product boxes that are already live")
         p.add_argument("--sources", help="pull: comma-separated subset of gsc,bing,ga4,inspect (default: all)")

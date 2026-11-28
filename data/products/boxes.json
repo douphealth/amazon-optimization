@@ -13,15 +13,15 @@
    "page",
    "page"
   ],
-  "names": [
-   "Amazon Basics Cooling Towels for Neck and Face",
-   "Owala FreeSip Stainless Steel Water Bottle",
-   "BOOJO Workout Shirts for Men"
+  "name_fp": [
+   "d81678dfea33",
+   "5aae14968943",
+   "2bc1c777f418"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/51Bb3tcxvtL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31X3Q0H9YyL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31PmaymE0cL._SL160_.jpg"
+  "image_fp": [
+   "5bd7305d8419",
+   "d529de5fa6b7",
+   "d25ab4eef242"
   ]
  },
  "https://gearuptofit.com/review/asics-gel-nimbus-27/": {
@@ -36,13 +36,13 @@
    "page",
    "page"
   ],
-  "names": [
-   "ASICS Men's Gel-Nimbus 27 Running Shoe",
-   "Hoka Men's Clifton 10"
+  "name_fp": [
+   "d40007035900",
+   "ae49f8c310e3"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31azfsumysL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31jOXZvQZwL._SL160_.jpg"
+  "image_fp": [
+   "ffaf81ce47fb",
+   "a1f80108bec6"
   ]
  },
  "https://gearuptofit.com/review/asics-superblast-3/": {
@@ -55,11 +55,11 @@
   "sources": [
    "page"
   ],
-  "names": [
-   "ASICS Unisex SUPERBLAST 3 Running Shoes"
+  "name_fp": [
+   "e6057cd5e5bb"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31WkxoU3yLL._SL160_.jpg"
+  "image_fp": [
+   "a2dc6be304e4"
   ]
  },
  "https://gearuptofit.com/review/best-budget-gps-running-watch-under-200/": {
@@ -74,13 +74,13 @@
    "page",
    "page"
   ],
-  "names": [
-   "Garmin Forerunner 55 GPS Running Smartwatch",
-   "Polar H9 Heart Rate Sensor"
+  "name_fp": [
+   "ce9136069064",
+   "463acba7a9f9"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31Wyl7SggHL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31XRqk2oorL._SL160_.jpg"
+  "image_fp": [
+   "76c15b7468cd",
+   "71baf39101a9"
   ]
  },
  "https://gearuptofit.com/review/best-compression-boots/": {
@@ -97,15 +97,15 @@
    "page",
    "page"
   ],
-  "names": [
-   "Hyperice Normatec Elite Wireless Compression Boots Recovery",
-   "Therabody JetBoots Prime Wireless Compression Boots",
-   "QUINEAR Air Compression Recovery Boots for Athletes"
+  "name_fp": [
+   "c7975c4bb3ee",
+   "2483ed8428b2",
+   "227c191b7147"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31xEb+J39RL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31MAxBSYXjL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/41GArrI4SdL._SL160_.jpg"
+  "image_fp": [
+   "1b0577e23e9e",
+   "6791b9503cc1",
+   "af17d2e2eaa0"
   ]
  },
  "https://gearuptofit.com/review/best-running-shoes-for-ball-of-foot-pain/": {
@@ -120,13 +120,13 @@
    "page",
    "page"
   ],
-  "names": [
-   "ALTRA Men's Torin 8 Road Running Shoe",
-   "benoo Felt Metatarsal Pads for Women"
+  "name_fp": [
+   "348c6eb1e91e",
+   "7b8bc5a25e1e"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31LKGI03SoL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/41Xxmh3oMqL._SL160_.jpg"
+  "image_fp": [
+   "dd811ec188e8",
+   "121c07ba43a5"
   ]
  },
  "https://gearuptofit.com/review/best-running-shoes-for-shin-splints/": {
@@ -141,13 +141,13 @@
    "page",
    "page"
   ],
-  "names": [
-   "New Balance Women's Fresh Foam 520 v9 Running Shoe",
-   "BLITZU Calf Compression Sleeves"
+  "name_fp": [
+   "22c1c07bc588",
+   "bf45a7734f89"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/3141k1gkCKL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/51PxR9rLkBL._SL160_.jpg"
+  "image_fp": [
+   "86b14d2768d8",
+   "ea15cbc6ad99"
   ]
  },
  "https://gearuptofit.com/review/best-running-shoes-for-supination-high-arches/": {
@@ -162,13 +162,13 @@
    "page",
    "page"
   ],
-  "names": [
-   "Brooks Women’s Glycerin 23 Neutral Running Shoe",
-   "VALSOLE Heavy Duty Support Pain Relief Orthotics"
+  "name_fp": [
+   "01d77e72eece",
+   "ad4278b4d04a"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/41scHgIJV3L._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/4130zMXW33L._SL160_.jpg"
+  "image_fp": [
+   "993e0df0fa9c",
+   "bca84cc9c493"
   ]
  },
  "https://gearuptofit.com/review/best-treadmills-for-home/": {
@@ -185,15 +185,15 @@
    "page",
    "page"
   ],
-  "names": [
-   "NordicTrack Commercial 1750 Treadmill",
-   "Horizon Fitness 7.4 AT Studio Series 3.5 HP Smart Treadmill",
-   "Marcy Fitness Equipment Mat and Floor Protector"
+  "name_fp": [
+   "d7fed389f7c7",
+   "d32a9adb4dbd",
+   "db23aafc514d"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/41zI2446vUL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/41wMaZFsNwL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/41GJwOx-aFL._SL160_.jpg"
+  "image_fp": [
+   "9266494dc5e4",
+   "e6523353fbba",
+   "c5e43db6d3e7"
   ]
  },
  "https://gearuptofit.com/review/fastest-running-shoes-for-regular-runners/": {
@@ -208,13 +208,13 @@
    "page",
    "page"
   ],
-  "names": [
-   "Nike Vaporfly 4 Men's Road Racing Shoes",
-   "ASICS Unisex METASPEED Sky Tokyo Running Shoes"
+  "name_fp": [
+   "ee927943e0d6",
+   "db4e74907374"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31g-a2s9zvL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/41HIz-JjBBL._SL160_.jpg"
+  "image_fp": [
+   "d2192dd77d22",
+   "3a0cee9c477b"
   ]
  },
  "https://gearuptofit.com/review/new-balance-fresh-foam-x-more-v6/": {
@@ -231,15 +231,15 @@
    "page",
    "page"
   ],
-  "names": [
-   "New Balance Men's Fresh Foam X More V6 Running Shoe",
-   "New Balance Men's Fresh Foam X 1080 V14 Running Shoe",
-   "Hoka Men's Bondi 9"
+  "name_fp": [
+   "ed2dece7b7b5",
+   "a88ddaa7a389",
+   "fbcebc8eba2c"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/31ovbL9SmZL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31RO7PTG2FL._SL160_.jpg",
-   "https://m.media-amazon.com/images/I/31c6X26dQnL._SL160_.jpg"
+  "image_fp": [
+   "54aa64e15de2",
+   "0c3be1d2afe1",
+   "31b214e49478"
   ]
  },
  "https://gearuptofit.com/running/best-running-sunglasses/": {
@@ -252,11 +252,11 @@
   "sources": [
    "page"
   ],
-  "names": [
-   "QALLY Polarized Sports Sunglasses for Men Women"
+  "name_fp": [
+   "ae9de82284d9"
   ],
-  "images": [
-   "https://m.media-amazon.com/images/I/41BHcHWmAbL._SL160_.jpg"
+  "image_fp": [
+   "cca5379dbec2"
   ]
  }
 }

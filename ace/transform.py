@@ -202,10 +202,18 @@ GENERATED_BOX = re.compile(
     r"(?:<!-- wp:html -->\s*)?<div class=\"" + BOX_CLASS + r"\"(?:(?!<div\b).)*?</div>\s*(?:<!-- /wp:html -->\s*)?", re.S)
 
 
-def find_box(html: str) -> str:
-    """The generated box div in a post, or ""."""
+# Boxes this engine wrote: the current product box, and the old text box (ace/fixes.py BOX_DIV).
+# Hand-written boxes (boxes/<domain>/..., a different style) are never replaced or removed.
+ENGINE_BOX = re.compile(r'^<div class="ace-quick-picks" (?:data-ace-box="|style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7)')
+
+
+def find_box(html: str, any_box: bool = False) -> str:
+    """The engine's box div in a post, or "" (any_box: also a hand-written one)."""
     m = GENERATED_BOX.search(html)
-    return re.search(r"<div.*?</div>", m.group(0), re.S).group(0) if m else ""
+    if not m:
+        return ""
+    div = re.search(r"<div.*?</div>", m.group(0), re.S).group(0)
+    return div if any_box or ENGINE_BOX.match(div) else ""
 
 
 def replace_box(html: str, box: str) -> tuple[str, int]:
@@ -216,10 +224,10 @@ def replace_box(html: str, box: str) -> tuple[str, int]:
     return html.replace(old, box.strip(), 1), 1
 
 
-def remove_box(html: str) -> tuple[str, str]:
-    """Take a generated box (one with no nested <div>) out of a post. Returns (html, the box div)."""
+def remove_box(html: str, any_box: bool = False) -> tuple[str, str]:
+    """Take the engine's box (one with no nested <div>) out of a post. Returns (html, the box div)."""
     m = GENERATED_BOX.search(html)
-    if not m:
+    if not m or not (any_box or ENGINE_BOX.match(re.search(r"<div.*?</div>", m.group(0), re.S).group(0))):
         return html, ""
     box = re.search(r"<div.*?</div>", m.group(0), re.S).group(0)
     return html[: m.start()].rstrip() + "\n\n" + html[m.end():].lstrip(), box

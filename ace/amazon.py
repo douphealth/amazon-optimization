@@ -107,6 +107,8 @@ class Creators:
         self._token, self._token_until, self._last = "", 0.0, 0.0
         self._lock = threading.Lock()
         self.calls = 0
+        self.failures = 0     # calls that failed after every retry, in a row
+        self.broken = False   # after 3 such failures every later call fails fast: Amazon is down or the quota is spent
 
     @classmethod
     def from_env(cls, **kw) -> "Creators | None":
@@ -130,6 +132,19 @@ class Creators:
         return self._token
 
     def _post(self, op: str, body: dict, attempts: int = 6) -> dict:
+        if self.broken:
+            raise AmazonError(f"{op}: skipped, the Creators API failed repeatedly in this run")
+        try:
+            result = self._post_once(op, body, attempts)
+        except AmazonError as exc:
+            if "ValidationException" not in str(exc):  # a rejected request is not an outage
+                self.failures += 1
+                self.broken = self.failures >= 3
+            raise
+        self.failures = 0
+        return result
+
+    def _post_once(self, op: str, body: dict, attempts: int) -> dict:
         refreshed = False
         for attempt in range(attempts):
             with self._lock:  # one call at a time, spaced out: excess calls in a second are throttled
@@ -158,7 +173,7 @@ class Creators:
             if r.status_code == 404:  # "No items found" is an answer, not a failure
                 return {}
             if r.status_code in (429, 500, 502, 503, 504) and attempt < attempts - 1:
-                self.sleep(float(err.get("retryAfterSeconds") or min(60, 2 ** (attempt + 1))))
+                self.sleep(min(120.0, float(err.get("retryAfterSeconds") or min(60, 2 ** (attempt + 1)))))
                 continue
             raise AmazonError(f"{op}: HTTP {r.status_code} {err.get('type', '')} {err.get('reason', '')} {err.get('message', '')}".strip())
         raise AmazonError(f"{op}: gave up after {attempts} attempts")
@@ -173,16 +188,21 @@ class Creators:
     def _cached(self, kind: str, key: str):
         path = self._cache_path(kind, key)
         if path and path.exists():
-            data = json.loads(path.read_text())
-            if self.clock() - data.get("at", 0) < ITEM_TTL:
-                return data["value"]
+            try:
+                data = json.loads(path.read_text())
+                if self.clock() - data.get("at", 0) < ITEM_TTL:
+                    return data["value"]
+            except (ValueError, KeyError, OSError):
+                path.unlink(missing_ok=True)  # a half-written file: ask Amazon again
         return None
 
     def _store(self, kind: str, key: str, value) -> None:
         path = self._cache_path(kind, key)
         if path:
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(json.dumps({"at": self.clock(), "value": value}))
+            tmp = path.with_suffix(f".{os.getpid()}.tmp")
+            tmp.write_text(json.dumps({"at": self.clock(), "value": value}))
+            tmp.replace(path)  # atomic: a reader never sees half a file
 
     # ---------- operations ----------
 

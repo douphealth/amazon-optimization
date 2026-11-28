@@ -70,10 +70,19 @@ def load_plan(path: Path = PLAN) -> dict[str, PlanEntry]:
     return out
 
 
+def has_term(title: str, term: str) -> bool:
+    """`term` appears in `title` at the start of a word: "pen" matches "pens" and "Pen-Set", not
+    "open" or "pendulum"... (a stem may run on: "boot" matches "boots")."""
+    return re.search(r"(?<![a-z0-9])" + re.escape(term.lower()), title.lower()) is not None
+
+
+def fits(title: str, pick: "Pick") -> bool:
+    return bool(pick.must) and all(has_term(title, m) for m in pick.must)
+
+
 def matches(item: Item, pick: Pick, blocked: set[str] | frozenset[str] = frozenset()) -> bool:
-    title = item.title.lower()
     return (item.available and bool(item.image) and bool(item.url) and item.asin not in blocked
-            and all(m in title for m in pick.must) and not any(a in title for a in pick.avoid))
+            and fits(item.title, pick) and not any(has_term(item.title, a) for a in pick.avoid))
 
 
 def rank_key(position: int, item: Item) -> float:
@@ -116,14 +125,12 @@ def display_name(item: Item, limit: int = 60) -> str:
     name = re.sub(r"[\s,;:&/|–-]+(with|for|and|or|of|the|to|in|a|an|by|on)?$", "", name, flags=re.I).strip()
     if len(name) < 4:
         name = title[:limit].rsplit(" ", 1)[0]
-    if item.brand and len(name.split()) <= 2 and item.brand.lower() not in name.lower():
-        name = f"{item.brand} {name}"
     return name
 
 
 def role_for(item: Item, picks: tuple[Pick, ...]) -> str:
     for pick in picks:
-        if pick.must and all(m in item.title.lower() for m in pick.must):
+        if fits(item.title, pick):
             return pick.role
     return ""
 
@@ -148,8 +155,8 @@ def own_asins(page_or_html) -> list[str]:
 
 
 # Titles that name what readers came to buy. Anything else waits for a reviewed plan entry.
-BEST = re.compile(r"^(?:the\s+)?(?:\d+\s+)?(?:best|top(?:\s+\d+)?)\s+(?P<thing>.+?)(?:\s+(?:of|in|for)\s+(?:20\d\d)\b|\s+20\d\d\b|\s*[:(|–—-]|$)", re.I)
-REVIEW = re.compile(r"^(?P<thing>.+?)\s+review\b", re.I)
+BEST = re.compile(r"^(?:the\s+)?(?:\d+\s+)?(?:best|top(?:\s+\d+)?)\s+(?P<thing>.+?)(?:\s+(?:of|in|for)\s+(?:20\d\d)\b|\s+20\d\d\b|\s*[:(|]|\s[–—-]\s|$)", re.I)
+REVIEW = re.compile(r"^(?P<thing>.+?)\s+review(?:ed)?\s*(?:[:(|]|[–—-]\s|\d{4}\b|$)", re.I)
 FILLER = re.compile(r"\b(?:20\d\d|reviewed|tested|ranked|guide|picks?|options?|choices?|deals?|budget|cheap|affordable|expert|ultimate|complete)\b", re.I)
 
 
@@ -202,7 +209,10 @@ class Picker:
         self.client, self.plan, self.blocked, self.log = client, plan if plan is not None else load_plan(), set(blocked), log
         self.image_check = image_check if image_check is not None else image_loads
         self._images: dict[str, bool] = {}
+        self.failed = False  # the last choose() hit an Amazon outage: keep the page as it is
         self.known: set[str] = set()  # pages whose box is in the registry: the daily refresh keeps those current
+        self.left_out: set[str] = set()  # pages whose registered box an editor removed: never boxed again
+        self.registered: set[str] = set()  # pages with a live registered box
 
     def image_ok(self, url: str) -> bool:
         if url not in self._images:
@@ -221,7 +231,7 @@ class Picker:
         e = self.entry(url, title)
         return bool(e and e.box)
 
-    def choose(self, url: str, asins: list[str], tag: str) -> list[Product]:
+    def choose(self, url: str, asins: list[str], tag: str, title: str = "") -> list[Product]:
         """Up to three products, the page's main product type first.
 
         1. The page's own products of the plan's first (main) type, as many as fit; if the page links
@@ -229,17 +239,23 @@ class Picker:
         2. One product for each further planned type: the page's own if it has one, else searched.
         3. Any remaining slots: the page's other products, in the order the article links them.
         Without a plan (or a plan saying no box) the box holds the page's own products only."""
-        entry = self.entry(url)
+        entry = self.entry(url, title)
         picks = entry.picks if entry and entry.box else ()
         own: list[Product] = []
+        self.failed = False
         if asins:
             wanted = [a for a in dict.fromkeys(asins) if a not in self.blocked][:10]
-            found = self.client.get_items(wanted, tag)
+            try:
+                found = self.client.get_items(wanted, tag)
+            except AmazonError as exc:
+                self.log(f"getItems {wanted}: {exc}")
+                self.failed = True
+                return []
             for asin in wanted:
                 item = found.get(asin)
                 if item and item.available and item.image and item.url and self.image_ok(item.image):
                     own.append(Product(item, display_name(item), role_for(item, picks), "page"))
-        fits = lambda p, pick: bool(pick.must) and all(m in p.item.title.lower() for m in pick.must)
+        fits_ = lambda p, pick: fits(p.item.title, pick)
         chosen: list[Product] = []
         seen: set[str] = set()
 
@@ -251,12 +267,12 @@ class Picker:
         for n, pick in enumerate(picks):
             if len(chosen) == MAX_PRODUCTS:
                 break
-            mine = [p for p in own if fits(p, pick) and p.item.asin not in seen]
+            mine = [p for p in own if fits_(p, pick) and p.item.asin not in seen]
             if mine:
                 for product in (mine if n == 0 else mine[:1]):
                     add(product)
                 continue
-            if any(fits(p, pick) for p in chosen):
+            if any(fits_(p, pick) for p in chosen):
                 continue  # this product type is already in the box
             best = self._search(pick, tag, seen | {p.item.asin for p in own})
             if best:
@@ -271,6 +287,8 @@ class Picker:
                 results = self.client.search(pick.keywords, tag, index=index)
             except AmazonError as exc:
                 self.log(f"search '{pick.keywords}' in {index}: {exc}")
+                if "ValidationException" not in str(exc):  # a bad index is an answer; anything else is an outage
+                    self.failed = True
                 continue
             passing = [(i, it) for i, it in enumerate(results[:LOOK_AT])
                        if it.asin not in seen and matches(it, pick, self.blocked) and self.image_ok(it.image)]
@@ -278,11 +296,11 @@ class Picker:
                 return min(passing, key=lambda p: rank_key(*p))[1]
         return None
 
-    def box(self, url: str, asins: list[str], tag: str, site_name: str) -> tuple[str, list[Product]]:
-        products = self.choose(url, asins, tag)
+    def box(self, url: str, asins: list[str], tag: str, site_name: str, title: str = "") -> tuple[str, list[Product]]:
+        products = self.choose(url, asins, tag, title)
         if not products:
             return "", []
-        entry = self.entry(url)
+        entry = self.entry(url, title)
         return render(products, entry.topic if entry else "", site_name), products
 
 
@@ -294,8 +312,8 @@ BOX = (
     'border-radius:12px;background:#fff;padding:16px 16px 12px;margin:22px 0;box-shadow:0 1px 3px rgba(16,24,40,.06)">\n'
     '<p style="margin:0 0 2px;font-size:12px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:#6b7280;font-weight:600">{label}</p>\n'
     '<p style="margin:0 0 6px;font-size:18px;line-height:1.3;font-weight:700;color:#111827">{heading}</p>\n'
+    '<p style="margin:0 0 4px;font-size:12px;line-height:1.5;color:#6b7280">As an Amazon Associate, {site} earns from qualifying purchases.</p>\n'
     '<ul style="list-style:none;margin:0;padding:0">\n{items}\n</ul>\n'
-    '<p style="margin:8px 0 0;font-size:12px;line-height:1.5;color:#6b7280">As an Amazon Associate, {site} earns from qualifying purchases.</p>\n'
     '</div>'
 )
 ITEM = (
@@ -356,6 +374,12 @@ def same_box(a: str, b: str) -> bool:
 
 
 # ---------- registry of live boxes ----------
+
+def fingerprint(text: str) -> str:
+    """A short hash: lets the refresh notice a changed name or image without storing Amazon's content."""
+    import hashlib
+    return hashlib.sha256(text.encode()).hexdigest()[:12] if text else ""
+
 
 def load_registry(path: Path = REGISTRY) -> dict:
     return json.loads(path.read_text()) if path.exists() else {}

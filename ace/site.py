@@ -456,7 +456,8 @@ def _product_boxes() -> dict:
     """Live product boxes (data/products/boxes.json): page URL -> product names and where each came from."""
     path = Path("data/products/boxes.json")
     reg = json.loads(path.read_text()) if path.exists() else {}
-    return {url: {"names": r.get("names", []), "sources": r.get("sources", []), "run": r.get("run", "")} for url, r in reg.items()}
+    return {url: {"asins": r.get("asins", []), "sources": r.get("sources", []), "run": r.get("run", "")}
+            for url, r in reg.items() if not r.get("removed_by_editor")}
 
 
 def _box_plan() -> dict:

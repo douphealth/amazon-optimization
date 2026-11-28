@@ -242,9 +242,16 @@ def test_box_goes_in_once_and_is_replaced_in_place():
     swapped, n = transform.replace_box(once, newer)
     assert n == 1 and swapped.count("ace-quick-picks") == 1 and "B0BBBB0001" not in swapped
     assert swapped.index("ace-quick-picks") == once.index("ace-quick-picks")
-    old_text_box = '<div class="ace-quick-picks" style="x"><p>Quick picks</p><ul><li><a href="https://www.amazon.com/dp/B0OLD00001?tag=t">Old</a></li></ul></div>'
+    old_text_box = ('<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px">'
+                    '<p>Quick picks</p><ul><li><a href="https://www.amazon.com/dp/B0OLD00001?tag=t">Old</a></li></ul></div>')
     upgraded, n = transform.replace_box(post.replace("</p>", "</p>" + old_text_box, 1), box)
     assert n == 1 and "B0OLD00001" not in upgraded and 'data-ace-box="2"' in upgraded
+    hand = ('<div class="ace-quick-picks" style="border:1px solid #d6e4d6;border-left:4px solid #2f7d32;background:#f6faf6">'
+            '<p>What string of pearls needs</p><ul><li><a href="https://www.amazon.com/s?k=cactus+mix&tag=t">Cactus mix</a></li></ul></div>')
+    with_hand = post.replace("</p>", "</p>" + hand, 1)
+    assert transform.replace_box(with_hand, box) == (with_hand, 0)  # a hand-written box is never replaced
+    assert transform.remove_box(with_hand) == (with_hand, "")       # ... or removed
+    assert transform.insert_box(with_hand, box) == (with_hand, 0)   # ... and never gets a second box beside it
 
 
 def test_fixer_plans_boxes_from_the_product_plan_and_builds_them_with_the_picker():
@@ -356,3 +363,153 @@ def test_a_rebuilt_box_does_not_count_its_own_products_as_the_articles():
     fixer.transform_post(cfg, action, post, picker(api))
     assert [p.source for p in action.products][0] == "search"
     assert not any(a[0] == "get" for a in api.asked)  # the box's own product was not treated as the article's
+
+
+# ---------- regressions from the adversarial review ----------
+
+def test_required_words_match_at_word_starts_only():
+    assert products.has_term("Fineliner Pens Set", "pen") and products.has_term("Pen-Set", "pen")
+    assert not products.has_term("Easy Open Jar", "pen") and not products.has_term("Crystal Pendant", "pen ")
+    assert products.has_term("Compression Boots", "boot") and not products.has_term("Reboot Kit", "boot")
+
+
+@pytest.mark.parametrize("title,want", [
+    ("Best Low-Profile Running Shoes for Wide Feet", "Low-Profile Running Shoes for Wide Feet"),
+    ("Best Massage Guns - Our Picks", "Massage Guns"),
+    ("Theragun Prime Review 2026", "Theragun Prime"),
+    ("How We Review Fitness Products at GearUpToFit", None),
+    ("Peer Review Process Explained", None),
+])
+def test_title_planner_handles_hyphens_and_review_wording(title, want):
+    e = products.auto_entry("https://example.com/x/", title)
+    assert (e.picks[0].keywords if e else None) == want
+
+
+class OutageAPI(FakeAPI):
+    def search(self, keywords, tag, index="All", count=10):
+        raise amazon.AmazonError("searchItems: HTTP 503 InternalServerException")
+
+
+def test_an_amazon_outage_leaves_the_post_and_its_box_alone():
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="ex", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    row = Row(site=site, page=Page(url="https://example.com/monstera-yellow-leaves/", status=200, has_box=True), gsc=None)
+    good = products.render(chosen_products(), "monstera care", "Example")
+    post = "<p>" + "w " * 40 + "</p>" + good + "<h2>x</h2>"
+    action = fixer.Action(row=row, fixes=["box"])
+    new, counts = fixer.transform_post(cfg, action, post, picker(OutageAPI()))
+    assert new == post and counts["amazon_unavailable_left_as_is"] == 1 and not action.products
+
+
+def test_a_box_whose_products_are_all_gone_is_removed():
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="ex", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    row = Row(site=site, page=Page(url="https://example.com/privacy/", status=200, has_box=True), gsc=None)  # plan: no box
+    gone = products.render([products.Product(item("B0GONE0001", "Old Thing"), "Old Thing", "", "page")], "", "Example")
+    post = "<p>" + "w " * 40 + "</p>" + gone + "<h2>x</h2>"
+    new, counts = fixer.transform_post(cfg, fixer.Action(row=row, fixes=["box"]), post, picker(FakeAPI()))
+    assert "ace-quick-picks" not in new and counts["box_removed_no_product"] == 1 and "<h2>x</h2>" in new
+
+
+def test_a_box_that_could_not_be_placed_is_not_recorded():
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="ex", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    api = FakeAPI(searches={("soil moisture meter", "GardenAndOutdoor"): [item("B0GOOD0001", "Soil Moisture Meter")]})
+    action = fixer.Action(row=Row(site=site, page=Page(url="https://example.com/monstera-yellow-leaves/", status=200), gsc=None), fixes=["box"])
+    new, counts = fixer.transform_post(cfg, action, "<h2>No intro at all</h2><p>x</p>", picker(api))
+    assert counts.get("box_added", 0) == 0 and action.products == []
+
+
+def test_registered_boxes_are_left_to_the_refresh_which_then_rebuilds_them():
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="ex", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    pk = picker(FakeAPI())
+    row = Row(site=site, page=Page(url="https://example.com/monstera-yellow-leaves/", status=200, has_box=True), gsc=None)
+    pk.known = {row.page.url}
+    assert fixer.plan(cfg, [row], picker=pk) == []           # weekly run: the refresh owns it
+    pk.known -= {row.page.url}                                 # what refresh-boxes does for a stale box
+    assert [a.fixes for a in fixer.plan(cfg, [row], picker=pk)] == [["box"]]
+
+
+def test_retry_waits_are_capped_and_corrupt_cache_files_are_ignored(tmp_path):
+    clock = Clock()
+    http = FakeHTTP([Resp(429, {"type": "ThrottleException", "retryAfterSeconds": 99999}), Resp(200, {"searchResult": {"items": [RAW]}})])
+    c = client(http, clock, tmp_path)
+    c.search("moisture meter", "t")
+    assert max(clock.slept) == 120
+    for f in (tmp_path / "search").glob("*.json"):
+        f.write_text("{half a fi")
+    http.api = [Resp(200, {"searchResult": {"items": [RAW]}})]
+    assert [i.asin for i in c.search("moisture meter", "t")] == ["B014MJ8J2U"]
+
+
+def test_the_disclosure_comes_before_the_first_product_link():
+    box = products.render(chosen_products(), "monstera care", "S")
+    assert box.index("As an Amazon Associate") < box.index("<a ")
+
+
+def test_circuit_breaker_stops_calling_amazon_after_repeated_outages():
+    clock = Clock()
+    http = FakeHTTP([Resp(503, {"type": "InternalServerException"})] * 18)
+    c = client(http, clock)
+    for _ in range(3):
+        with pytest.raises(amazon.AmazonError):
+            c.search("x", "t")
+    calls = len(http.calls)
+    with pytest.raises(amazon.AmazonError, match="failed repeatedly"):
+        c.search("y", "t")
+    assert len(http.calls) == calls and c.broken
+
+
+def test_a_box_an_editor_removed_is_never_put_back():
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="ex", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    api = FakeAPI(searches={("soil moisture meter", "GardenAndOutdoor"): [item("B0GOOD0001", "Soil Moisture Meter")]})
+    pk = picker(api)
+    url = "https://example.com/monstera-yellow-leaves/"
+    pk.registered = {url}  # it had a box; the post no longer does
+    post = "<p>" + "w " * 40 + "</p><h2>x</h2>"
+    new, counts = fixer.transform_post(cfg, fixer.Action(row=Row(site=site, page=Page(url=url, status=200), gsc=None), fixes=["box"]), post, pk)
+    assert new == post and counts["box_removed_by_editor_left_out"] == 1 and api.asked == []
+
+
+class FakeWP:
+    def __init__(self, domain, ua, fail=False):
+        self.fail, self.saved = fail, {}
+
+    def find(self, url, title=""):
+        if self.fail:
+            raise RuntimeError("HTTP 503 from WordPress")
+        return {"kind": "posts", "id": abs(hash(url)) % 10000, "link": url, "modified": "", "raw": "<p>" + "w " * 40 + "</p><h2>x</h2>"}
+
+    def save(self, kind, post_id, content):
+        self.saved[post_id] = content
+        return content
+
+
+def _rows(site, n):
+    return [Row(site=site, page=Page(url=f"https://{site.domain}/best-dog-harness-{i}/", status=200, h1="Best Dog Harness for French Bulldogs"), gsc=None) for i in range(n)]
+
+
+def test_a_failing_site_is_skipped_after_five_errors_in_a_row(tmp_path):
+    down = Site(domain="down.example", name="Down", tags=["d-20"])
+    cfg = Config(account_tag_prefix="x", marketplace="www.amazon.com", sites=[down], auto_fix=["box"], default_tag="papalex-20")
+    api = FakeAPI(searches={("Dog Harness for French Bulldogs", "All"): [item("B0HARN0001", "Dog Harness")]})
+    acts = fixer.run(cfg, _rows(down, 9), tmp_path / "r", apply=True, picker=picker(api), registry=tmp_path / "boxes.json", backups=tmp_path / "bk",
+                     wp_factory=lambda d, ua: FakeWP(d, ua, fail=True), verify=lambda u, s: Page(url=u, status=200), log=lambda *a: None)
+    assert [a.status for a in acts].count("error") == 5 and [a.status for a in acts][5:] == ["site_unavailable"] * 4
+
+
+def test_the_time_budget_stops_new_pages_but_keeps_finished_work(tmp_path, monkeypatch):
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="x", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    api = FakeAPI(searches={("Dog Harness for French Bulldogs", "All"): [item("B0HARN0001", "Dog Harness")]})
+    ticks = iter([0, 0] + [10_000] * 5)  # the deadline, the first page, then past the budget
+    monkeypatch.setattr(fixer.time, "monotonic", lambda: next(ticks))
+    monkeypatch.setattr(fixer.time, "sleep", lambda s: None)
+    reg = tmp_path / "boxes.json"
+    acts = fixer.run(cfg, _rows(site, 3), tmp_path / "r", apply=True, picker=picker(api), registry=reg, max_minutes=1, backups=tmp_path / "bk",
+                     wp_factory=FakeWP, verify=lambda u, s: Page(url=u, status=200), log=lambda *a: None)
+    assert [a.status for a in acts][1:] == ["left_for_next_run_time_budget"] * 2
+    assert list(json.loads(reg.read_text())) == [acts[0].row.page.url]  # the finished page is registered
+    assert set(json.loads(reg.read_text())[acts[0].row.page.url]) >= {"asins", "name_fp", "image_fp", "title"}

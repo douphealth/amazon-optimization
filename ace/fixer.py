@@ -104,14 +104,28 @@ def transform_post(cfg: Config, action: Action, raw: str, picker=None) -> tuple[
         elif picker is not None and not (site_tag or cfg.default_tag):
             counts["no_tracking_id"] = 1  # never place an untagged box
         elif picker is not None:
-            # The article's own products, not the ones the generated box already shows (those are re-picked).
-            box, chosen = picker.box(action.row.page.url, products.own_asins(transform.remove_box(html)[0]), site_tag or cfg.default_tag, site.name)
-            action.products = chosen
-            if box and transform.find_box(html):
+            # The article's own products, not the ones the engine's box already shows (those are re-picked).
+            url, title = action.row.page.url, action.row.page.h1 or action.row.page.title
+            current = transform.find_box(html)
+            editor_removed = url in picker.left_out or (url in picker.registered and not transform.find_box(html, any_box=True))
+            box, chosen = ("", []) if editor_removed else picker.box(
+                url, products.own_asins(transform.remove_box(html)[0]), site_tag or cfg.default_tag, site.name, title)
+            if editor_removed:
+                counts["box_removed_by_editor_left_out"] = 1  # someone took the box out: respect that
+                chosen, box = [], ""
+                picker.left_out.add(url)
+            elif picker.failed:
+                counts["amazon_unavailable_left_as_is"] = 1  # never trade a good box for one built during an outage
+            elif box and current:
                 html, counts["box_updated"] = transform.replace_box(html, box)
-            elif box:
+                action.products = chosen
+            elif box and not transform.find_box(html, any_box=True):
                 html, counts["box_added"] = transform.insert_box(html, box)
-            elif not chosen and picker.wants_box(action.row.page.url):
+                action.products = chosen if counts["box_added"] else []
+            elif not box and current:
+                html, _ = transform.remove_box(html)  # every product is gone: no box beats dead links
+                counts["box_removed_no_product"] = 1
+            elif not box and picker.wants_box(url, title):
                 counts["no_matching_product"] = 1
         else:
             box = fixes.box(action.row, cfg.blocked_asins) or ""
@@ -126,17 +140,23 @@ def run(
     limit: int | None = None, backups: Path = Path("backups"), pause: float = 0.5,
     require_login: bool = False,
     wp_factory=WordPress, verify=crawl.audit_url, log=print, picker=None, registry: Path | None = None,
+    max_minutes: float | None = None,
 ) -> list[Action]:
     actions = plan(cfg, rows, sites, picker)
     if require_login:  # unattended runs: leave sites alone unless their login is configured
         actions = [a for a in actions if auth_for(a.row.site.domain)]
     actions = actions[: limit or None]
     clients: dict[str, WordPress] = {}
-    locked: set[str] = set()
+    locked_sites: set[str] = set()
+    errors_in_a_row: Counter = Counter()
+    deadline = time.monotonic() + max_minutes * 60 if max_minutes else None
     for action in actions:
         site, url = action.row.site, action.row.page.url
-        if site.domain in locked:
-            action.status = "no_access"
+        if deadline and time.monotonic() > deadline:
+            action.status = "left_for_next_run_time_budget"  # stop cleanly so the run can still commit its work
+            continue
+        if site.domain in locked_sites:
+            action.status = "no_access" if errors_in_a_row[site.domain] < 5 else "site_unavailable"
             continue
         wp = clients.setdefault(site.domain, wp_factory(site.domain, site.user_agent))
         try:
@@ -148,7 +168,7 @@ def run(
             new, counts = transform_post(cfg, action, post["raw"], picker)
             action.detail = ", ".join(f"{k}={v}" for k, v in counts.items())
             if action.products:  # the audit trail: which products the box holds and where each came from
-                action.detail += " | " + "; ".join(f"{p.item.asin} {p.name} ({p.source})" for p in action.products)
+                action.detail += " | " + "; ".join(f"{p.item.asin} ({p.source})" for p in action.products)
             if new == post["raw"]:
                 action.status = "nothing_to_change_in_post_body"
                 if apply and action.products and registry is not None and transform.find_box(new):
@@ -169,13 +189,18 @@ def run(
                 action.status = "save_had_no_effect"
                 continue
         except NoAccess as exc:
-            locked.add(site.domain)
+            locked_sites.add(site.domain)
             action.status, action.detail = "no_access", str(exc)
             log(f"[{site.domain}] no write access: {exc}")
             continue
         except Exception as exc:  # one bad post must not stop the run
             action.status, action.detail = "error", f"{type(exc).__name__}: {exc}"[:200]
+            errors_in_a_row[site.domain] += 1
+            if errors_in_a_row[site.domain] >= 5:  # the site is down or refusing: stop hammering it
+                locked_sites.add(site.domain)
+                log(f"[{site.domain}] 5 errors in a row, skipping the rest of this site: {action.detail}")
             continue
+        errors_in_a_row[site.domain] = 0
         time.sleep(pause)
         sep = "&" if "?" in url else "?"
         live = verify(f"{url}{sep}ace_verify={int(time.time())}", site)
@@ -184,6 +209,17 @@ def run(
         action.status = "fixed" if not action.remaining else "saved_but_live_page_unchanged"
         if action.products and registry is not None:
             record_box(registry, action, out.name)
+        elif registry is not None and "box_removed_by_editor_left_out" in action.detail:
+            with locked(registry):
+                reg = products.load_registry(registry)
+                if url in reg and not reg[url].get("removed_by_editor"):
+                    reg[url]["removed_by_editor"] = out.name
+                    products.save_registry(reg, registry)
+        elif registry is not None and "box_removed_no_product" in action.detail:
+            with locked(registry):
+                reg = products.load_registry(registry)
+                if reg.pop(url, None) is not None:
+                    products.save_registry(reg, registry)
     write_log(out, actions)
     return actions
 
@@ -210,8 +246,11 @@ def _record_box(path: Path, action: Action, run: str) -> None:
     reg = products.load_registry(path)
     reg[action.row.page.url] = {
         "site": action.row.site.domain, "post_id": action.post_id, "run": run,
+        "title": action.row.page.h1 or action.row.page.title,
         "asins": [p.item.asin for p in action.products], "sources": [p.source for p in action.products],
-        "names": [p.name for p in action.products], "images": [p.item.image for p in action.products],
+        # fingerprints, not Amazon's text or image URLs: the public repo keeps no product content
+        "name_fp": [products.fingerprint(p.name) for p in action.products],
+        "image_fp": [products.fingerprint(p.item.image) for p in action.products],
     }
     products.save_registry(reg, path)
 

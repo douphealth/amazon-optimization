@@ -67,8 +67,19 @@ def _picker(cfg):
         print("Creators API credentials not set (AMAZON_CREATORS_CREDENTIAL_ID/SECRET): product boxes reuse the page's own links only")
         return None
     picker = products.Picker(client, products.load_plan(), blocked=set(cfg.blocked_asins))
-    picker.known = set(products.load_registry())
+    registry = products.load_registry()
+    picker.known = set(registry)
+    picker.left_out = {u for u, r in registry.items() if r.get("removed_by_editor")}
+    picker.registered = picker.known - picker.left_out
     return picker
+
+
+def _fail_if_mostly_errors(actions, what: str) -> None:
+    """An unattended run that failed on most pages must show as failed, not as a quiet success."""
+    tried = [a for a in actions if a.status not in ("left_for_next_run_time_budget",)]
+    errors = [a for a in tried if a.status == "error" or "amazon_unavailable" in a.detail]
+    if tried and len(errors) > len(tried) / 2:
+        raise SystemExit(f"{what}: {len(errors)} of {len(tried)} pages failed (first: {errors[0].detail[:200]})")
 
 
 def cmd_fix(cfg, args) -> None:
@@ -77,10 +88,11 @@ def cmd_fix(cfg, args) -> None:
         picker.known = set()  # re-render registered boxes too (e.g. after a design change)
     actions = fixer.run(cfg, _scored(cfg, args), args.out, apply=args.apply, sites=args.site, limit=args.limit,
                         require_login=args.only_with_login, picker=picker,
-                        registry=products.REGISTRY if picker else None)
+                        registry=products.REGISTRY if picker else None, max_minutes=args.max_minutes)
     if picker:
         print(f"Creators API calls: {picker.client.calls}")
     print(fixer.summarize(actions))
+    _fail_if_mostly_errors(actions, "fix")
     print(f"log: {args.out}/fix-log.csv" + ("" if args.apply else "  (dry run: nothing was changed; add --apply)"))
 
 
@@ -91,31 +103,52 @@ def cmd_refresh_boxes(cfg, args) -> None:
     if picker is None:
         raise SystemExit("refresh-boxes needs Creators API credentials")
     registry = products.load_registry()
-    by_tag: dict[str, list[str]] = {}
-    for url, rec in registry.items():  # ten ASINs per call across all pages, then per page from the cache
-        site = cfg.site(rec["site"])
-        by_tag.setdefault(site.tags[0] if site.tags else cfg.default_tag, []).extend(rec["asins"])
+    live_boxes = {u: r for u, r in registry.items() if not r.get("removed_by_editor")}
+    tag_of = lambda rec: (cfg.site(rec["site"]).tags or [cfg.default_tag])[0]
+    by_tag: dict[str, set[str]] = {}
+    for rec in live_boxes.values():  # ten ASINs per call across all pages, then per page from the cache
+        by_tag.setdefault(tag_of(rec), set()).update(rec["asins"])
+    unknown = 0
     for tag, asins in by_tag.items():
-        picker.client.get_items(sorted(set(asins)), tag)
+        try:
+            picker.client.get_items(sorted(asins), tag)
+        except amazon.AmazonError as exc:
+            print(f"getItems for {tag}: {exc}")
     stale = []
-    for url, rec in registry.items():
+    for url, rec in live_boxes.items():
         if args.site and rec["site"] not in args.site:
             continue
-        site = cfg.site(rec["site"])
-        tag = site.tags[0] if site.tags else cfg.default_tag
-        live = picker.client.get_items(rec["asins"], tag)
-        current = [live.get(a) for a in rec["asins"]]
-        reasons = [f"{a} gone" for a, it in zip(rec["asins"], current) if not it or not it.available or not it.image]
-        reasons += [f"{a} changed" for a, it, img in zip(rec["asins"], current, rec.get("images") or [None] * len(current))
-                    if it and img and it.image != img]
+        try:
+            live = picker.client.get_items(rec["asins"], tag_of(rec))
+        except amazon.AmazonError as exc:  # unknown is not gone: leave the box, try again tomorrow
+            unknown += 1
+            print(f"{url}: could not check ({exc})")
+            continue
+        reasons = []
+        for i, asin in enumerate(rec["asins"]):
+            it = live.get(asin)
+            if asin in picker.blocked:
+                reasons.append(f"{asin} blocked")
+            elif not it or not it.available or not it.image:
+                reasons.append(f"{asin} gone")
+            elif not picker.image_ok(it.image):
+                reasons.append(f"{asin} image broken")
+            elif (rec.get("image_fp") or [""] * 9)[i] not in ("", products.fingerprint(it.image)) or \
+                    (rec.get("name_fp") or [""] * 9)[i] not in ("", products.fingerprint(products.display_name(it))):
+                reasons.append(f"{asin} changed")
         if reasons:
             print(f"{url}: {', '.join(reasons)}")
-            stale.append(score.Row(site=site, page=Page(url=url, status=200, has_box=True), gsc=None))
-    print(f"{len(registry)} boxes checked, {len(stale)} to rebuild, {picker.client.calls} Creators API calls")
+            site = cfg.site(rec["site"])
+            stale.append(score.Row(site=site, page=Page(url=url, status=200, has_box=True, h1=rec.get("title", "")), gsc=None))
+    print(f"{len(live_boxes)} boxes checked, {len(stale)} to rebuild, {unknown} could not be checked, {picker.client.calls} Creators API calls")
     if stale:
+        picker.known -= {r.page.url for r in stale}  # these are exactly the boxes to rebuild
         actions = fixer.run(cfg, stale, args.out, apply=args.apply, require_login=args.only_with_login,
-                            picker=picker, registry=products.REGISTRY)
+                            picker=picker, registry=products.REGISTRY, max_minutes=args.max_minutes)
         print(fixer.summarize(actions))
+        _fail_if_mostly_errors(actions, "refresh-boxes")
+    if live_boxes and unknown > len(live_boxes) / 2:
+        raise SystemExit(f"refresh-boxes: {unknown} of {len(live_boxes)} boxes could not be checked")
 
 
 def cmd_submit(cfg, args) -> None:
@@ -249,6 +282,7 @@ def main(argv=None) -> None:
         p.add_argument("--site-out", type=Path, default=Path("dist"), help="site: folder to write the dashboard to")
         p.add_argument("--mirror", nargs="*", help="site: extra folders to receive a copy of the dashboard")
         p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
+        p.add_argument("--max-minutes", type=float, help="fix/refresh-boxes: stop taking new pages after this long, so the run can still commit")
         p.add_argument("--rebuild-boxes", action="store_true", help="fix: also rebuild product boxes that are already live")
         p.add_argument("--sources", help="pull: comma-separated subset of gsc,bing,ga4,inspect (default: all)")
     args = parser.parse_args(argv)

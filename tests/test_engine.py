@@ -815,9 +815,9 @@ def test_box_stays_out_of_hero_header_and_can_be_moved():
     assert n == 1 and out.index("</style>") < out.index("ace-quick-picks") < out.index("<h2>")
     assert t.insert_box(f'<style>p{{}}</p><h2>One</h2><p>{intro}</p></style>', box)[1] == 0
     misplaced = post.replace("<p>Hero line.</p>", "<p>Hero line.</p>\n\n<!-- wp:html -->\n" + box + "\n<!-- /wp:html -->\n\n")
-    cleaned, taken = t.remove_box(misplaced)
+    cleaned, taken = t.remove_box(misplaced, any_box=True)
     assert taken == box and "ace-quick-picks" not in cleaned and "wp:html" not in cleaned
-    assert t.remove_box(post) == (post, "")
+    assert t.remove_box(post, any_box=True) == (post, "")
 
 
 def test_box_names_products_from_card_headings_and_adds_searches():

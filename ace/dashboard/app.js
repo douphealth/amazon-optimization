@@ -548,7 +548,7 @@ function boxTile() {
 }
 const boxLine = p => {
   const b = LIVE_BOXES[p.url];
-  if (b) return status("good", "Product box live") + `<span class="sub">${esc((b.names || []).join(" · "))}</span>`;
+  if (b) return status("good", "Product box live") + `<span class="sub">${(b.asins || []).map((a, i) => `<a href="https://www.amazon.com/dp/${esc(a)}" target="_blank" rel="noopener">${esc(a)}</a>${b.sources?.[i] === "search" ? " (found)" : ""}`).join(" · ")} · placed ${esc(day(b.run))}</span>`;
   if (BOX_PLAN[p.url] !== undefined) return status("info", "Product box planned") + `<span class="sub">Placed automatically on the next run${BOX_PLAN[p.url] ? `: picks for ${esc(BOX_PLAN[p.url])}` : ""}</span>`;
   return "";
 };

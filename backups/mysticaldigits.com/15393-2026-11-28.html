@@ -1,0 +1,274 @@
+<!-- wp:paragraph -->
+<p class="has-large-font-size"><strong>Quick answer:</strong> Enter your full birth date below to calculate your Life Path number instantly. This calculator uses the <strong>separate-reduction method</strong>: it reduces your birth month, day, and year individually — preserving Master Numbers 11, 22, and 33 at every stage — then sums the three results and reduces the total to a single digit (1–9) or a Master Number. Scroll below the tool for the full formula, worked examples, and what your result means.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div style="background:#f8f4ef;border:2px solid #e0d8cc;border-radius:12px;padding:clamp(18px,3vw,32px);max-width:620px;margin:0 auto;font-family:Georgia,serif;">
+<p style="font-size:18px;font-weight:bold;margin-bottom:6px;text-align:center;">Life Path Number Calculator</p>
+<p style="font-size:14px;margin-bottom:20px;text-align:center;color:#555;">Separate-reduction method &middot; Master Numbers 11, 22, 33 preserved at every step</p>
+<div style="display:flex;gap:8px;margin-bottom:16px;">
+<label style="flex:1;font-size:12px;color:#555;">Day<input type="number" id="lpc_day" placeholder="Day" min="1" max="31" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:16px;margin-top:4px;" /></label>
+<label style="flex:1;font-size:12px;color:#555;">Month<input type="number" id="lpc_month" placeholder="Month" min="1" max="12" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:16px;margin-top:4px;" /></label>
+<label style="flex:1.4;font-size:12px;color:#555;">Year<input type="number" id="lpc_year" placeholder="Year" min="1900" max="2100" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:16px;margin-top:4px;" /></label>
+</div>
+<button id="lpc_btn" type="button" style="width:100%;padding:14px;background:#4a3f35;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;margin-bottom:16px;min-height:48px;">Calculate my number</button>
+<div id="lp_result" style="display:none;text-align:center;padding:20px;background:#fff;border-radius:8px;border:1px solid #e0d8cc;">
+<p style="font-size:14px;color:#555;margin-bottom:8px;">Your number is:</p>
+<p id="lp_number" style="font-size:48px;font-weight:bold;color:#4a3f35;margin:0 0 8px;"></p>
+<div id="lp_steps" style="font-size:13px;color:#555;line-height:1.7;text-align:left;background:#faf7f2;border-radius:6px;padding:12px 14px;margin:12px 0;"></div>
+<p id="lp_meaning" style="font-size:14px;color:#555;line-height:1.6;"></p>
+<p id="lp_link" style="font-size:14px;margin:8px 0 0;"></p>
+</div>
+<p id="lp_note" style="font-size:11px;color:#888;text-align:center;margin-top:12px;">This calculator reduces the month, day, and year separately and keeps 11, 22, and 33 as <a href="https://mysticaldigits.com/the-power-trio-decoding-numerology-numbers-11-22-and-33/">Master Numbers</a> instead of reducing them further. For the complete guide to every core number, see <a href="https://mysticaldigits.com/how-to-find-my-numerology-number/">How to Find Your Numerology Number</a>.</p>
+</div>
+<script>
+(function(){
+  var meanings = {
+    1: "Independence: initiative, leadership, self-reliance. Read it as a prompt to trust your own judgment — not a fixed identity label.",
+    2: "Partnership: cooperation, diplomacy, sensitivity. A prompt to notice how you build one-to-one trust and where you need boundaries.",
+    3: "Expression: creativity, communication, optimism. A prompt to share your voice and finish what you start.",
+    4: "Foundation: practicality, discipline, building. A prompt to create systems and pace yourself for the long term.",
+    5: "Freedom: adaptability, curiosity, change. A prompt to embrace useful change without escaping commitment.",
+    6: "Responsibility: care, family, service. A prompt to support others without over-functioning for them.",
+    7: "Analysis: introspection, depth, inquiry. A prompt to protect thinking time and stay connected to people.",
+    8: "Abundance: ambition, management, material lessons. A prompt to handle power and money deliberately.",
+    9: "Completion: compassion, wisdom, letting go. A prompt to release what is finished and serve something larger.",
+    11: "Master Number 11 (Intuitive Visionary): carries 11 (intuition, inspiration) together with its root 2 (partnership, sensitivity).",
+    22: "Master Number 22 (Master Builder): carries 22 (large-scale vision) together with its root 4 (structure, discipline).",
+    33: "Master Number 33 (Master Teacher): carries 33 (compassionate teaching) together with its root 6 (care, responsibility)."
+  };
+  var hubs = {
+    1:"https://mysticaldigits.com/life-path-numbers/#lp-1",2:"https://mysticaldigits.com/life-path-numbers/#lp-2",3:"https://mysticaldigits.com/life-path-numbers/#lp-3",
+    4:"https://mysticaldigits.com/life-path-number-4/",5:"https://mysticaldigits.com/life-path-numbers/#lp-5",6:"https://mysticaldigits.com/life-path-number-6-traits-compatibility-and-more/",
+    7:"https://mysticaldigits.com/life-path-number-7/",8:"https://mysticaldigits.com/life-path-number-8-mastery/",9:"https://mysticaldigits.com/life-path-numbers/#lp-9",
+    11:"https://mysticaldigits.com/the-secrets-of-life-path-number-11/",22:"https://mysticaldigits.com/unleashing-the-potential-of-life-path-number-22-4/",33:"https://mysticaldigits.com/exploring-compatibility-with-life-path-number-33/"
+  };
+  function digits(n){ return String(n).split("").map(Number); }
+  function sumDigits(n){ return digits(n).reduce(function(a,b){return a+b;},0); }
+  function reduceKeepMaster(n){
+    var trail = [n];
+    while (n > 9 && n !== 11 && n !== 22 && n !== 33){ n = sumDigits(n); trail.push(n); }
+    return {value:n, trail:trail};
+  }
+  function fmt(t){ return t.trail.join(" &rarr; "); }
+  document.getElementById("lpc_btn").addEventListener("click", function(){
+    var d = Number(document.getElementById("lpc_day").value);
+    var m = Number(document.getElementById("lpc_month").value);
+    var y = Number(document.getElementById("lpc_year").value);
+    var validD = d>=1 && d<=31, validM = m>=1 && m<=12, validY = y>=1900 && y<=2100;
+    var calendarDate = new Date(Date.UTC(y, m - 1, d));
+    var validCalendar = [calendarDate.getUTCFullYear() === y, calendarDate.getUTCMonth() === m - 1, calendarDate.getUTCDate() === d].every(function(valid){ return valid; });
+    if (!validD || !validM || !validY || !validCalendar){ document.getElementById("lp_result").style.display = "none"; alert("Please enter a real calendar birth date (day 1-31, month 1-12, year 1900-2100)."); return; }
+    var mr = reduceKeepMaster(m), dr = reduceKeepMaster(d), yr = reduceKeepMaster(y);
+    var total = mr.value + dr.value + yr.value;
+    var fin = reduceKeepMaster(total);
+    var steps = "";
+    steps += "Month " + m + ": " + fmt(mr) + ((mr.value===11||mr.value===22||mr.value===33)?" (Master Number kept)":"") + "<br>";
+    steps += "Day " + d + ": " + fmt(dr) + (dr.value!==d && (dr.value===11||dr.value===22||dr.value===33)?" (Master Number kept)":"") + "<br>";
+    steps += "Year " + y + ": " + fmt(yr) + (yr.value!==y && (yr.value===11||yr.value===22||yr.value===33)?" (Master Number kept)":"") + "<br>";
+    steps += "Sum: " + mr.value + " + " + dr.value + " + " + yr.value + " = " + total + "<br>";
+    steps += "Reduce: " + fmt(fin) + (fin.value===11||fin.value===22||fin.value===33?" &mdash; Master Number kept":"");
+    document.getElementById("lp_number").textContent = fin.value;
+    document.getElementById("lp_steps").innerHTML = steps;
+    document.getElementById("lp_meaning").textContent = meanings[fin.value] || "";
+    document.getElementById("lp_link").innerHTML = 'Read the full profile: <a href="' + (hubs[fin.value]||"https://mysticaldigits.com/life-path-numbers/") + '">Life Path ' + fin.value + ' deep-dive guide &rarr;</a>';
+    document.getElementById("lp_result").style.display = "block";
+  });
+})();
+</script>
+<!-- /wp:html -->
+
+<!-- wp:image {"id":12404,"sizeSlug":"large"} -->
+<figure class="wp-block-image size-large"><img src="https://mysticaldigits.com/wp-content/uploads/2025/09/astrological-birth-chart-wheel-2025-4.jpg" alt="Astrological birth chart wheel showing planetary positions" class="wp-image-12404"/><figcaption>Use your Life Path number as a mirror for reflection — not a fixed script for your future.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="meanings">Life Path Number Meanings at a Glance</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Find your Life Path number in the table below, then read the detailed profile on the <a href="https://mysticaldigits.com/life-path-numbers/">Life Path Numbers hub</a>. Remember: each number describes recurring themes and tendencies — not a predetermined fate. It is a mirror, not a script.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"className":"is-style-stripes"} -->
+<table class="wp-block-table is-style-stripes"><thead><tr><th>Life Path</th><th>Core Theme</th><th>Natural Strengths</th><th>Growth Areas</th><th>What It Does <em>Not</em> Mean</th></tr></thead><tbody>
+<tr><td><strong>1</strong></td><td>Independence</td><td>Leadership, initiative, originality, self-reliance</td><td>Accepting help, listening, delegating</td><td>Not a promise of success or authority</td></tr>
+<tr><td><strong>2</strong></td><td>Partnership</td><td>Diplomacy, cooperation, empathy, mediation</td><td>Setting boundaries, avoiding people-pleasing</td><td>Not a verdict on any relationship</td></tr>
+<tr><td><strong>3</strong></td><td>Expression</td><td>Creativity, communication, optimism, social charm</td><td>Follow-through, grounding ideas in reality</td><td>Not proof of artistic talent</td></tr>
+<tr><td><strong>4</strong></td><td>Foundation</td><td>Practicality, reliability, discipline, building</td><td>Flexibility, letting go of control</td><td>Not a limit on what you can attempt</td></tr>
+<tr><td><strong>5</strong></td><td>Freedom</td><td>Adaptability, curiosity, versatility, adventure</td><td>Commitment, focus, follow-through</td><td>Not an excuse to avoid commitment</td></tr>
+<tr><td><strong>6</strong></td><td>Responsibility</td><td>Nurturing, harmony, community, service</td><td>Self-care, accepting imperfection</td><td>Not an obligation to fix everyone</td></tr>
+<tr><td><strong>7</strong></td><td>Analysis</td><td>Intellect, introspection, depth, spirituality</td><td>Physical engagement, social connection</td><td>Not a diagnosis of personality</td></tr>
+<tr><td><strong>8</strong></td><td>Abundance</td><td>Ambition, authority, financial mastery, resilience</td><td>Work-life balance, spiritual depth</td><td>Not a prediction of wealth</td></tr>
+<tr><td><strong>9</strong></td><td>Completion</td><td>Compassion, wisdom, humanitarianism, letting go</td><td>Completing projects, financial boundaries</td><td>Not a tragic or "old soul" label</td></tr>
+<tr><td><strong>11</strong></td><td>Illumination</td><td>Intuition, vision, inspiration, sensitivity</td><td>Grounding visions in practical reality</td><td>Not a rank above single digits</td></tr>
+<tr><td><strong>22</strong></td><td>Master Builder</td><td>Big-picture thinking, practical manifestation</td><td>Attention to detail, pacing large projects</td><td>Not a guarantee of greatness</td></tr>
+<tr><td><strong>33</strong></td><td>Master Teacher</td><td>Spiritual service, healing, selfless teaching</td><td>Self-care, avoiding martyrdom</td><td>Not a spiritual superiority badge</td></tr>
+</tbody></table>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="how-to-calculate">How to Calculate a Life Path Number Manually</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You can check the calculator result yourself with the same transparent method this site uses everywhere, including the <a href="https://mysticaldigits.com/life-path-numbers/">Life Path hub</a> and the <a href="https://mysticaldigits.com/life-path-number-calculator/">free Life Path app</a>:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol>
+<li><strong>Reduce the month.</strong> Add the digits of your birth month. If the result is 11, keep it as a Master Number. Example: October (10) &rarr; 1 + 0 = 1. November (11) stays 11.</li>
+<li><strong>Reduce the day.</strong> Add the digits of your birth day, stopping at a single digit or at 11/22. Example: the 12th &rarr; 1 + 2 = 3. The 29th &rarr; 2 + 9 = 11 (kept as 11).</li>
+<li><strong>Reduce the year.</strong> Add all four digits of your birth year and keep reducing to a single digit or Master Number. Example: 1990 &rarr; 1 + 9 + 9 + 0 = 19 &rarr; 1 + 9 = 10 &rarr; 1 + 0 = 1.</li>
+<li><strong>Sum the three results.</strong> Add the reduced month + reduced day + reduced year.</li>
+<li><strong>Reduce the total.</strong> Reduce the sum to a single digit (1–9), but keep it as 11, 22, or 33 if the final reduction lands exactly on a Master Number.</li>
+<li><strong>Read the result as a reflection prompt.</strong> Compare it with the meanings table above, then apply your own context and judgment rather than treating it as a prediction.</li>
+</ol>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Worked example 1: standard reduction</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Birth date 12 July 1992:</strong> month 7 &rarr; 7; day 12 &rarr; 1 + 2 = 3; year 1992 &rarr; 1 + 9 + 9 + 2 = 21 &rarr; 2 + 1 = 3. Sum: 7 + 3 + 3 = 13 &rarr; 1 + 3 = <strong>4</strong>. Life Path 4.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Worked example 2: Master Number preserved mid-calculation</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Birth date 22 November 1985:</strong> month 11 (kept); day 22 (kept); year 1985 &rarr; 1 + 9 + 8 + 5 = 23 &rarr; 2 + 3 = 5. Sum: 11 + 22 + 5 = 38 &rarr; 3 + 8 = <strong>11</strong> (Master Number kept). <a class="wpil_keyword_link" href="https://mysticaldigits.com/the-secrets-of-life-path-number-11/" target="_blank"  rel="noopener" title="Life Path 11" data-wpil-keyword-link="linked"  data-wpil-monitor-id="13312">Life Path 11</a>. The same date reduced "straight through" without preserving Masters would give 2 — which is why method choice matters.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Worked example 3: Master Number appearing only at the end</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Birth date 11 November 2009:</strong> month 11 (kept); day 11 (kept); year 2009 &rarr; 2 + 0 + 0 + 9 = 11 (kept). Sum: 11 + 11 + 11 = <strong>33</strong> (Master Number kept). Life Path 33. Many quick online tools that add all digits at once (11 + 11 + 2009 = 2031 &rarr; 6) return 6 for this date — a different school of calculation, not a "bug." This site preserves the 33.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="why-different">Why Different Life Path Calculators Give Different Results</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If two calculators disagree about your number, the difference almost always comes from one of three method choices — not from your birth date:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul>
+<li><strong>Reduction order.</strong> This calculator reduces month, day, and year <em>separately</em> before summing (the separate-reduction method). Others add every digit of the date in one pass (straight-sum). Both produce the same digital root for most dates, but they disagree on Master Number cases like the examples above.</li>
+<li><strong>Master Number handling.</strong> Some tools preserve 11, 22, and 33; others reduce them to 2, 4, and 6 without telling you. A tool that returns 2 where this one returns 11 is using the second rule.</li>
+<li><strong>Which number it is computing.</strong> Life Path uses the birth date. Expression/Destiny uses the full birth name; Soul Urge uses only the vowels. If a "<a class="wpil_keyword_link" href="https://mysticaldigits.com/numerology-business-name-calculator-boost-your-success/" target="_blank"  rel="noopener" title="numerology calculator" data-wpil-keyword-link="linked"  data-wpil-monitor-id="13311">numerology calculator</a>" asks for your name, it is not computing your Life Path. See the <a href="https://mysticaldigits.com/numerology-calculators/">calculator comparison hub</a> for the full breakdown.</li>
+</ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>A trustworthy calculator states which rules it uses so you can reproduce the arithmetic by hand. That transparency standard — not a claim of hidden accuracy — is what the <a href="https://mysticaldigits.com/best-numerology-calculator/">best numerology calculator comparison</a> on this site is built on.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="related">Related Calculators and Guides</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul>
+<li><a href="https://mysticaldigits.com/life-path-numbers/">Life Path Numbers hub</a> — detailed meanings for all 12 paths (1–9, 11, 22, 33)</li>
+<li><a href="https://mysticaldigits.com/how-to-find-my-numerology-number/">How to Find Your Numerology Number</a> — the complete beginner workflow for all core numbers</li>
+<li><a href="https://mysticaldigits.com/numerology-calculators/">All Numerology Calculators</a> — which tool answers which question</li>
+<li><a href="https://mysticaldigits.com/chaldean-numerology-calculator/">Chaldean Numerology Calculator</a> — the other major name-number system</li>
+<li><a href="https://mysticaldigits.com/life-path-number-compatibility/">Life Path Number Compatibility</a> — reflective pair comparisons</li>
+<li><a href="https://mysticaldigits.com/house-numerology-calculator-guide/">House Numerology Calculator</a> — address symbolism</li>
+<li><a href="https://mysticaldigits.com/karmic-debt-number-calculator-13-14-16-19/">Karmic Debt Number Calculator (13, 14, 16, 19)</a> — checking for Karmic Debt in your chart</li>
+<li><a href="https://mysticaldigits.com/life-path-number-calculator/">Free Life Path app</a> — a guided multi-number chart with the same method</li>
+</ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="faq">Frequently Asked Questions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<summary>How does this Life Path calculator work?</summary>
+<div class="wp-block-details-content">
+<p>Enter your full birth date. The calculator reduces your birth month, day, and year separately, preserves 11, 22, and 33 as <a class="wpil_keyword_link" href="https://mysticaldigits.com/what-are-master-numbers-exploring-numerological-mastery/" target="_blank"  rel="noopener" title="Master Numbers" data-wpil-keyword-link="linked"  data-wpil-monitor-id="13448">Master Numbers</a> at every step, then sums the three results and reduces the total to a single digit or Master Number. It shows each arithmetic step so you can verify the result by hand. Example: born 12 July 1992 &rarr; 7 + 3 + 3 = 13 &rarr; 1 + 3 = 4.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<summary>Does this calculator keep Master Numbers 11, 22, and 33?</summary>
+<div class="wp-block-details-content">
+<p>Yes — at every stage. If your reduced month, day, year, or final total lands on 11, 22, or 33, the value is kept rather than reduced to 2, 4, or 6. In traditional interpretation you carry both the Master Number's theme and its single-digit root's theme simultaneously.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<summary>Why do different calculators give me different Life Path numbers?</summary>
+<div class="wp-block-details-content">
+<p>Three method choices explain nearly every mismatch: (1) separate reduction of month/day/year versus adding all digits at once, (2) whether 11, 22, and 33 are preserved or reduced, and (3) whether the tool is actually computing the Life Path (birth date) or a name-based number like Expression or Soul Urge. A date such as 11 November 2009 returns 33 under this site's rules and 6 under straight-sum tools.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<summary>Is my Life Path number permanent?</summary>
+<div class="wp-block-details-content">
+<p>Yes. Your Life Path number is calculated from your birth date, which does not change. This is separate from Personal Year numbers, which shift annually and are used for shorter-cycle reflection.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<summary>What is the difference between the Life Path number and the Destiny number?</summary>
+<div class="wp-block-details-content">
+<p>The Life Path is calculated from your birth date and describes the broad journey theme. The Destiny (or Expression) number is calculated from your full birth name and describes talents and outward expression. Both are core numbers that build a more complete profile together — see the <a href="https://mysticaldigits.com/calculate-destiny-number-by-name/">Destiny Number guide</a>.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<summary>Can I use my Life Path number for relationships?</summary>
+<div class="wp-block-details-content">
+<p>You can use it to explore relationship dynamics — where two people naturally complement each other and where friction tends to arise. It is useful for reflection and conversation, never a verdict on a relationship. Use the <a href="https://mysticaldigits.com/life-path-number-compatibility/">Life Path Compatibility guide</a> for pair-by-pair prompts.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<summary>What does the calculator do with my data?</summary>
+<div class="wp-block-details-content">
+<p>Nothing leaves your browser. The calculation runs entirely in JavaScript on this page — there is no submission, logging, or account. The <a href="https://mysticaldigits.com/privacy-policy/">privacy policy</a> explains the site-wide standard.</p>
+</div>
+</details>
+<!-- /wp:details -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="limitations">Important Limitations</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul>
+<li><strong>Not a prediction:</strong> your Life Path number does not predict your future, determine your success, or guarantee outcomes.</li>
+<li><strong>Not a substitute for professional advice:</strong> for health, financial, legal, or mental health concerns, consult qualified professionals.</li>
+<li><strong>Entertainment and reflection:</strong> numerology is a symbolic tradition — useful for self-reflection, not for making consequential decisions.</li>
+<li><strong>Not evidence-based:</strong> no empirical evidence supports the claim that Life Path numbers determine life outcomes or personality in any verifiable way. See the site's <a href="https://mysticaldigits.com/numerology-interpretation-limitations/">interpretation limitations page</a>.</li>
+</ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p><em>Reviewed by <a href="https://mysticaldigits.com/about-alexios-papaioannou/">Alexios Papaioannou</a>, founder and lead editor. The calculator's arithmetic is checked against the site's documented worked examples, including Master Number preservation cases. Last reviewed: August 2026. This calculator is for entertainment and reflection purposes only; it is not a medical, financial, legal, or psychological tool.</em></p>
+<!-- /wp:paragraph -->
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"HowTo","@id":"https://mysticaldigits.com/life-path-number-calculator/#how-to","name":"How to calculate a Life Path number manually","description":"Calculate your Life Path number using the separate-reduction method, preserving Master Numbers 11, 22, and 33 at every stage.","totalTime":"PT5M","step":[{"@type":"HowToStep","position":1,"name":"Reduce the month","text":"Add the digits of your birth month. October (10) reduces to 1; November (11) stays 11 as a Master Number."},{"@type":"HowToStep","position":2,"name":"Reduce the day","text":"Add the digits of your birth day, stopping at a single digit or at 11 or 22. The 12th reduces to 3; the 29th reduces to 11 and is kept."},{"@type":"HowToStep","position":3,"name":"Reduce the year","text":"Add all four digits of your birth year and keep reducing to a single digit or Master Number. 1990 becomes 19, then 10, then 1."},{"@type":"HowToStep","position":4,"name":"Sum the three results","text":"Add the reduced month, reduced day, and reduced year together."},{"@type":"HowToStep","position":5,"name":"Reduce the total","text":"Reduce the sum to a single digit (1-9), but keep 11, 22, or 33 if the final reduction lands exactly on a Master Number."},{"@type":"HowToStep","position":6,"name":"Read the result as a reflection prompt","text":"Compare the result with the meanings table, then apply your own context and judgment rather than treating it as a prediction."}]},{"@type":"FAQPage","@id":"https://mysticaldigits.com/life-path-number-calculator/#faq","mainEntity":[{"@type":"Question","name":"How does this Life Path calculator work?","acceptedAnswer":{"@type":"Answer","text":"Enter your full birth date. The calculator reduces your birth month, day, and year separately, preserves 11, 22, and 33 as Master Numbers at every step, then sums the three results and reduces the total to a single digit or Master Number. It shows each arithmetic step so you can verify the result by hand."}},{"@type":"Question","name":"Does this calculator keep Master Numbers 11, 22, and 33?","acceptedAnswer":{"@type":"Answer","text":"Yes, at every stage. If your reduced month, day, year, or final total lands on 11, 22, or 33, the value is kept rather than reduced to 2, 4, or 6. In traditional interpretation you carry both the Master Number's theme and its single-digit root's theme simultaneously."}},{"@type":"Question","name":"Why do different calculators give me different Life Path numbers?","acceptedAnswer":{"@type":"Answer","text":"Three method choices explain nearly every mismatch: separate reduction of month, day, and year versus adding all digits at once; whether 11, 22, and 33 are preserved or reduced; and whether the tool is actually computing the birth-date Life Path or a name-based number. A date such as 11 November 2009 returns 33 under this site's rules and 6 under straight-sum tools."}},{"@type":"Question","name":"Is my Life Path number permanent?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your Life Path number is calculated from your birth date, which does not change. This is separate from Personal Year numbers, which shift annually."}},{"@type":"Question","name":"What is the difference between the Life Path number and the Destiny number?","acceptedAnswer":{"@type":"Answer","text":"The Life Path is calculated from your birth date and describes the broad journey theme. The Destiny or Expression number is calculated from your full birth name and describes talents and outward expression. Both are core numbers that build a more complete profile together."}},{"@type":"Question","name":"Can I use my Life Path number for relationships?","acceptedAnswer":{"@type":"Answer","text":"You can use it to reflect on relationship dynamics, but it should never be treated as a verdict on a relationship. Communication, shared values, and mutual effort matter more than any number."}},{"@type":"Question","name":"What does the calculator do with my data?","acceptedAnswer":{"@type":"Answer","text":"Nothing leaves your browser. The calculation runs entirely in JavaScript on the page; there is no submission, logging, or account required."}}]}]}</script>
+<p>For number sequences seen outside birth-date numerology, see the <a href="https://mysticaldigits.com/angel-numbers/">angel numbers guide</a> for repeating patterns like 111, 222, and 3333.</p>
+<!-- MD-BLUEPRINT-CTA-20260921 -->
+<section class="md-blueprint-cta" aria-labelledby="md-blueprint-heading">
+<h2 id="md-blueprint-heading">Continue with the free numerology blueprint</h2>
+<p>After calculating your Life Path number, use the free blueprint for a broader, reflection-first view of related numerology numbers. Calculator access remains free and does not require an email.</p>
+<p><a href="/free-numerology-blueprint/">Explore the free numerology blueprint</a></p>
+</section>

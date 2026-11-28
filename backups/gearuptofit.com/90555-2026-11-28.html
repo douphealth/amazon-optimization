@@ -1,0 +1,799 @@
+<style>
+.gpeg-review{--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--soft:#f8fafc;--green:#0f766e;--green-dark:#064e3b;--blue:#1d4ed8;--amber:#92400e;--red:#991b1b;--shadow:0 18px 46px rgba(15,23,42,.08);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);line-height:1.72;max-width:1180px;margin:0 auto;padding:0 16px 48px;background:#fff}
+.gpeg-review *{box-sizing:border-box}
+.gpeg-review a{color:#0f5eb8;text-decoration-thickness:.08em;text-underline-offset:.18em}
+.gpeg-review img{max-width:100%;width:100%;height:auto;display:block;border-radius:22px;background:#f1f5f9}
+.gpeg-review p{margin:0 0 1rem}
+.gpeg-review ul,.gpeg-review ol{margin:.35rem 0 1.1rem;padding-left:1.25rem}
+.gpeg-review li{margin:.35rem 0}
+.gpeg-review h1{font-size:clamp(2.05rem,5.2vw,4.35rem);line-height:1.02;letter-spacing:-.055em;margin:.55rem 0 1rem}
+.gpeg-review h2{font-size:clamp(1.48rem,3vw,2.35rem);line-height:1.12;letter-spacing:-.035em;margin:2.5rem 0 .9rem}
+.gpeg-review h3{font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.22;letter-spacing:-.018em;margin:1.35rem 0 .55rem}
+.gpeg-hero{padding:30px 0 18px}
+.gpeg-kicker{display:inline-flex;align-items:center;font-weight:900;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--green-dark);background:#ecfdf5;border:1px solid #bbf7d0;border-radius:999px;padding:.38rem .72rem}
+.gpeg-dek{font-size:clamp(1.08rem,2vw,1.34rem);color:var(--muted);max-width:920px}
+.gpeg-meta{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.05rem 0 1.2rem}
+.gpeg-chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.42rem .72rem;font-size:.9rem;color:#334155}
+.gpeg-disclosure{font-size:.94rem;color:#334155;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:18px;padding:1rem;margin:1rem 0}
+.gpeg-layout{display:grid;gap:18px;align-items:start;margin:1.2rem 0 1.75rem}
+@media(min-width:900px){.gpeg-layout{grid-template-columns:.98fr 1.02fr}}
+.gpeg-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:var(--shadow);overflow:hidden}
+.gpeg-card.flat{box-shadow:none}
+.gpeg-card.green{background:#f0fdf4;border-color:#bbf7d0}
+.gpeg-card.amber{background:#fffbeb;border-color:#fde68a}
+.gpeg-card.red{background:#fef2f2;border-color:#fecaca}
+.gpeg-card.blue{background:#eff6ff;border-color:#bfdbfe}
+.gpeg-verdict{border:2px solid #0f172a;border-radius:30px;padding:20px;background:linear-gradient(135deg,#fff,#f8fafc)}
+.gpeg-scorebar{display:grid;gap:10px;margin:1rem 0}
+@media(min-width:680px){.gpeg-scorebar{grid-template-columns:repeat(4,1fr)}}
+.gpeg-scorebox{border:1px solid var(--line);border-radius:20px;padding:14px;background:#fff}
+.gpeg-scorebox strong{display:block;font-size:1.45rem;line-height:1;letter-spacing:-.04em}
+.gpeg-scorebox span{display:block;color:var(--muted);font-size:.88rem;margin-top:.35rem}
+.gpeg-btns{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0}
+.gpeg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;padding:.82rem 1.08rem;font-weight:900;text-decoration:none!important;border:1px solid transparent}
+.gpeg-btn.amazon{background:#111827;color:#fff}
+.gpeg-btn.brand{background:var(--green);color:#fff}
+.gpeg-btn.secondary{background:#fff;color:#111827;border-color:var(--line)}
+.gpeg-small{font-size:.92rem;color:var(--muted)}
+.gpeg-toc{border:1px solid var(--line);border-radius:24px;background:#fff;padding:1rem;margin:1.2rem 0 1.8rem;box-shadow:0 8px 24px rgba(15,23,42,.05)}
+.gpeg-toc strong{display:block;margin-bottom:.35rem}
+.gpeg-toc a{display:block;padding:.31rem 0}
+.gpeg-grid{display:grid;gap:16px}
+@media(min-width:760px){.gpeg-grid.two{grid-template-columns:1fr 1fr}.gpeg-grid.three{grid-template-columns:repeat(3,1fr)}}
+.gpeg-specs{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:1rem 0;background:#fff}
+.gpeg-specs th,.gpeg-specs td{padding:.86rem .92rem;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.gpeg-specs tr:last-child th,.gpeg-specs tr:last-child td{border-bottom:0}
+.gpeg-specs th{width:34%;background:#f8fafc;font-weight:900}
+.gpeg-tablewrap{overflow-x:auto;margin:1rem 0}
+.gpeg-compare{border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 10px 30px rgba(15,23,42,.05)}
+.gpeg-compare table{min-width:760px;width:100%;border-collapse:collapse}
+.gpeg-compare th,.gpeg-compare td{padding:.9rem 1rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.gpeg-compare tr:last-child td{border-bottom:0}
+.gpeg-compare th{background:#f8fafc;font-weight:900}
+.gpeg-procon{display:grid;gap:14px;margin:1rem 0}
+@media(min-width:760px){.gpeg-procon{grid-template-columns:1fr 1fr}}
+.gpeg-faq details{border:1px solid var(--line);border-radius:18px;padding:1rem;margin:.75rem 0;background:#fff;box-shadow:0 8px 20px rgba(15,23,42,.04)}
+.gpeg-faq summary{cursor:pointer;font-weight:900}
+.gpeg-related{display:grid;gap:12px;margin:1rem 0}
+@media(min-width:780px){.gpeg-related{grid-template-columns:repeat(2,1fr)}}
+.gpeg-related a{display:block;border:1px solid var(--line);border-radius:18px;padding:1rem;background:#fff;text-decoration:none!important}
+.gpeg-related a strong{text-decoration:underline;text-underline-offset:.18em}
+.gpeg-related span{display:block;color:var(--muted);font-size:.92rem;margin-top:.25rem}
+.gpeg-ref{font-size:.92rem;color:#334155;background:#f8fafc;border:1px solid var(--line);border-radius:18px;padding:1rem}
+.gpeg-author{display:grid;gap:14px;align-items:center;border:1px solid var(--line);border-radius:24px;padding:18px;background:#fff;margin:2.2rem 0 1rem}
+@media(min-width:680px){.gpeg-author{grid-template-columns:76px 1fr}}
+.gpeg-avatar{width:76px;height:76px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;color:#064e3b;font-weight:950;font-size:1.1rem}
+.gpeg-callout{border-left:5px solid var(--green);background:#f0fdf4;border-radius:0 18px 18px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+@media(max-width:760px){.gpeg-review{padding-left:14px!important;padding-right:14px!important}.gpeg-layout,.gpeg-scorebar,.gpeg-procon,.gpeg-related,.gpeg-grid.two,.gpeg-grid.three{grid-template-columns:1fr!important}.gpeg-meta,.gpeg-btns{display:grid!important;grid-template-columns:1fr!important}.gpeg-chip,.gpeg-btn{width:100%!important;display:flex}.gpeg-card{padding:15px!important}}
+</style>
+
+<div style="position:relative;background:#fff;border:2px solid #e0f2fe;border-radius:20px;padding:32px;margin:32px 0;box-shadow:0 8px 32px rgba(14,165,233,0.12);">
+<div style="position:absolute;top:-12px;left:24px;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);color:#fff;font-size:12px;font-weight:800;padding:6px 16px;border-radius:20px;letter-spacing:0.5px;">★ TOP PICK</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;">
+<div style="flex:0 0 220px;min-width:180px;text-align:center;">
+<img src="https://gearuptofit.com/wp-content/uploads/2026/10/nike-pegasus-42.webp" alt="Nike Pegasus 42 running shoe" style="max-width:100%;height:auto;border-radius:12px;" loading="lazy" />
+</div>
+<div style="flex:1;min-width:250px;">
+<div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:6px;">Nike Pegasus 42</div>
+<div style="font-size:15px;color:#64748b;margin-bottom:16px;">The daily trainer legend, 42nd edition</div>
+<div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> 10mm drop, ReactX foam</div><div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> Full-length Air Zoom</div><div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> Engineered mesh upper</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:20px;">
+<div style="font-size:28px;font-weight:800;color:#0f172a;">$145</div>
+<a href="https://www.amazon.com/s?k=Nike+Pegasus+42&tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;font-weight:800;font-size:16px;padding:14px 32px;border-radius:12px;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.4);">🛒 Check Price on Amazon</a>
+</div>
+<div style="font-size:12px;color:#94a3b8;margin-top:12px;">As an Amazon Associate we earn from qualifying purchases. Price checked at time of writing.</div>
+</div>
+</div>
+</div>
+
+<article class="gpeg-review">
+<header class="gpeg-hero">
+<span class="gpeg-kicker">Daily trainer review</span></p>
+<h1>Nike Pegasus 42 Review: The 2026 Everyday Workhorse, Rebuilt from the Inside Out</h1>
+<p class="gpeg-dek">The Pegasus line has been Nike&#8217;s best-selling daily trainer for four decades — and the 42nd version is its biggest mechanical change in years. Here&#8217;s what Nike actually changed, what it means for your runs, and who should buy (or skip) it.</p>
+<div class="gpeg-meta">
+<span class="gpeg-chip">Updated October 9, 2026</span><br />
+<span class="gpeg-chip">Research-based review</span><br />
+<span class="gpeg-chip">Neutral daily trainer</span><br />
+<span class="gpeg-chip">$145</span>
+</div>
+<div class="gpeg-disclosure"><strong>Affiliate disclosure:</strong> GearUpToFit may earn from qualifying purchases through links on this page. Amazon links use affiliate tag <strong>papalex-20</strong>. Always confirm the exact model, size, color, seller, price, delivery date and return policy before checkout.</div>
+</header>
+<section class="gpeg-card blue">
+<h2 style="margin-top:0">Key takeaways</h2>
+<ul>
+<li><strong>The headline change:</strong> Nike replaced the Pegasus 41&#8217;s two separate Air Zoom units (forefoot + heel) with one curved, <strong>full-length Air Zoom unit</strong> — the biggest structural redesign of the Pegasus in years.</li>
+<li><strong>Specs that matter:</strong> 10mm drop, 37mm heel / 27mm forefoot stack, ReactX foam midsole, engineered mesh upper with a wider toe box than the 41. Men&#8217;s approx. 300g (10.59 oz), women&#8217;s approx. 243g. Priced at <strong>$145</strong>.</li>
+<li><strong>Best for:</strong> neutral runners who want one shoe for daily easy miles, gym cross-training and occasional faster pickups — and beginners buying their first serious running shoe.</li>
+<li><strong>The honest caveat:</strong> it is a $145 daily trainer competing in the most crowded price band in running. It is not a plated racer and it is not the lightest option on the shelf — and this review is research-based, not the result of personal wear-testing (see our transparency note at the bottom).</li>
+</ul>
+</section>
+<nav class="gpeg-toc" aria-label="Table of contents"><strong>In this review</strong><br />
+<a href="#quick-answer">Quick answer and verdict</a><br />
+<a href="#product-box">Where to buy / best price</a><br />
+<a href="#specs">Full specs</a><br />
+<a href="#whats-new">What&#8217;s new vs the Pegasus 41</a><br />
+<a href="#technology">Technology deep-dive</a><br />
+<a href="#ride">What kind of ride to expect</a><br />
+<a href="#who">Who should buy it</a><br />
+<a href="#skip">Who should skip it</a><br />
+<a href="#comparison">Pegasus 42 vs Pegasus 41</a><br />
+<a href="#alternatives">Pegasus 42 vs the competition</a><br />
+<a href="#video">Video reviews</a><br />
+<a href="#faq">FAQ</a><br />
+<a href="#related">Related guides</a><br />
+<a href="#references">References</a><br />
+<a href="#transparency">Transparency note</a><br />
+</nav>
+<section id="quick-answer" class="gpeg-layout">
+<div class="gpeg-card flat"><img src="https://gearuptofit.com/wp-content/uploads/2026/05/nike-pegasus-42.webp" alt="Nike Pegasus 42 daily trainer" loading="eager" decoding="async"></div>
+<div class="gpeg-verdict">
+<h2 style="margin-top:0">Quick answer</h2>
+<p>Should you buy the Nike Pegasus 42? If you are a neutral runner looking for one dependable shoe for daily training — easy miles, long-ish runs, treadmill sessions and gym cross-training — it is one of the safest $145 answers on the market. The full-length Air Zoom unit is a genuine mechanical upgrade over the 41, not a cosmetic refresh.</p>
+<p>The trade-off: this is still, by design, an entry-level daily trainer. It will not match a plated tempo shoe for speedwork, and at around 300g it is one of the heavier shoes in the $140–150 band. Buy it for consistency and versatility, not for race day.</p>
+<div class="gpeg-btns">
+<a class="gpeg-btn amazon" href="https://www.amazon.com/s?k=Nike+Pegasus+42+Road+Running+Shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check Amazon price</a><br />
+<a class="gpeg-btn brand" href="https://www.nike.com/a/pegasus-42-release-date/" rel="nofollow noopener" target="_blank">Check official specs</a>
+</div>
+<p class="gpeg-small">Score is an editorial assessment based on verified specs and published reviewer consensus — see the <a href="#transparency">transparency note</a>.</p>
+</div>
+</section>
+<section id="product-box" class="gpeg-card" style="border:1px solid #f59e0b;background:linear-gradient(135deg,#fff7ed,#ffffff,#f8fafc)">
+<div class="gpeg-grid two" style="align-items:center">
+<div><img src="https://gearuptofit.com/wp-content/uploads/2026/05/nike-pegasus-42.webp" alt="Nike Pegasus 42 road running shoe" loading="lazy" decoding="async"></div>
+<div>
+<span class="gpeg-kicker" style="color:#92400e;background:#ffedd5;border-color:#fed7aa">Recommended daily trainer</span></p>
+<h2 style="margin-top:.4rem">Nike Pegasus 42</h2>
+<p>Neutral road runner with ReactX foam and a curved full-length Air Zoom unit. The safest one-shoe answer for daily miles in 2026.</p>
+<ul>
+<li>$145 — men&#8217;s and women&#8217;s, multiple colorways</li>
+<li>10mm drop, 37/27mm stack</li>
+<li>Wider toe box than the Pegasus 41</li>
+</ul>
+<div class="gpeg-btns">
+<a class="gpeg-btn amazon" href="https://www.amazon.com/s?k=Nike+Pegasus+42+Road+Running+Shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">View on Amazon</a><br />
+<a class="gpeg-btn secondary" href="https://www.nike.com/a/pegasus-42-release-date/" rel="nofollow noopener" target="_blank">Compare official specs</a>
+</div>
+<p class="gpeg-small">Tip: if the Pegasus 41 is heavily discounted where you shop, it may be the better value — see the <a href="#comparison">Pegasus 42 vs 41 comparison</a> before paying full price.</p>
+</div>
+</div>
+</section>
+<section id="specs">
+<h2>Nike Pegasus 42: full specs</h2>
+<p>Every figure below comes from Nike&#8217;s own product pages (canonical) or is explicitly flagged as third-party measurement. Nothing here is estimated.</p>
+<div class="gpeg-tablewrap">
+<table class="gpeg-specs">
+<tr>
+<th>Category</th>
+<td>Neutral daily trainer, road running</td>
+</tr>
+<tr>
+<th>US price</th>
+<td>$145</td>
+</tr>
+<tr>
+<th>Release</th>
+<td>April 9, 2026</td>
+</tr>
+<tr>
+<th>Stack height</th>
+<td>37mm heel / 27mm forefoot (10mm drop)</td>
+</tr>
+<tr>
+<th>Men&#8217;s weight</th>
+<td>Approx. 300g / 10.59 oz (US 10) per Nike; third-party measurements range 284–307g depending on size and method</td>
+</tr>
+<tr>
+<th>Women&#8217;s weight</th>
+<td>Approx. 243g (UK 5.5) per Nike; third-party measurements approx. 8.6 oz</td>
+</tr>
+<tr>
+<th>Midsole foam</th>
+<td>ReactX foam — Nike claims 13% more responsiveness than previous React technology</td>
+</tr>
+<tr>
+<th>Air cushioning</th>
+<td>Curved, full-length Air Zoom unit (new — replaces the 41&#8217;s separate forefoot + heel units)</td>
+</tr>
+<tr>
+<th>Upper</th>
+<td>Lightweight engineered mesh, softer and more breathable than earlier iterations; updated fit with extra room in toes and forefoot vs the 41</td>
+</tr>
+<tr>
+<th>Outsole</th>
+<td>Updated Waffle pattern, high-abrasion rubber with flex grooves; lighter than previous model</td>
+</tr>
+<tr>
+<th>Last</th>
+<td>MR-10 2.0 — updated from the Pegasus 41</td>
+</tr>
+<tr>
+<th>Support</th>
+<td>Neutral (not a stability shoe)</td>
+</tr>
+<tr>
+<th>Extras</th>
+<td>Reflective design details; midfoot support system; fully molded sock liner; increased toe spring</td>
+</tr>
+<tr>
+<th>Style codes</th>
+<td>Men&#8217;s IQ0454-001 (shown: Football Grey); women&#8217;s IB1881-600 (shown: Pearl Pink), IB1881-002, IB1881-602, others</td>
+</tr>
+</table>
+</div>
+</section>
+<section id="whats-new">
+<h2>What&#8217;s new in the Pegasus 42 vs the Pegasus 41</h2>
+<p>Many Pegasus updates are upper tweaks and colorway churn. The 42 is different — Nike changed the internals. Here&#8217;s each change, with what it means in plain language:</p>
+<ul>
+<li><strong>Full-length Air Zoom unit (the big one).</strong> The Pegasus 41 used two separate Air Zoom units — one in the forefoot, one in the heel. The 42 merges them into a single curved, full-length unit shaped to the foot. Nike&#8217;s stated goal: a more propulsive heel-to-toe transition and the highest energy return the brand has put in a Pegasus. Launch materials describe the effect as a fine-tuned Air feel closer to Nike&#8217;s road-racing line, re-engineered for everyday runs.</li>
+<li><strong>More toe spring.</strong> The silhouette has a greater curve at the toe box than the 41, which helps the shoe roll forward more smoothly at toe-off. This pairs with the full-length Air unit as the &#8220;smooth transition&#8221; half of the upgrade.</li>
+<li><strong>Wider toe box, more forefoot room.</strong> Nike explicitly updated the fit to give extra space at the toes and forefoot compared to the 41. Reviewers who found the 41 snug up front should find the 42 more forgiving. Nike&#8217;s product FAQ says most runners find the 42 true to size.</li>
+<li><strong>New MR-10 2.0 last.</strong> The foot-shaped foundation of the shoe was updated from the 41 — this is the structural reason for the fit change, not just thinner material.</li>
+<li><strong>Updated, lighter Waffle outsole.</strong> Same Waffle DNA, revised pattern with high-abrasion rubber and flex grooves. Nike says it is lighter than the previous model&#8217;s outsole while keeping traction on roads and paved paths in dry and wet conditions.</li>
+<li><strong>ReactX foam carried over.</strong> The midsole foam is continuity, not change: ReactX, which Nike rates 13% more responsive than previous React technology, with a stated ~43% lower carbon footprint vs React foam.</li>
+</ul>
+<div class="gpeg-callout"><strong>Bottom line:</strong> the 42 is best understood as the 41&#8217;s ride concept with a redesigned engine room (full-length Air) and a roomier cockpit (fit + toe box). If you liked the 41, the 42 is a low-risk upgrade; if you disliked the 41&#8217;s firmness or snug forefoot, the 42 specifically targets both complaints.</div>
+</section>
+<section id="technology">
+<div class="qe-bridge">🔧 <strong>Specs tell you what&#8217;s inside the shoe</strong> — but what does that hardware actually <em>do</em> when your foot hits the pavement? Time to look under the hood.</div>
+<h2>Technology deep-dive: what&#8217;s actually under the hood</h2>
+<h3>ReactX foam — the base layer</h3>
+<p>ReactX is Nike&#8217;s workhorse training foam: lighter and, per Nike&#8217;s lab claims, 13% more responsive than the previous React formulation, plus a meaningful sustainability claim (~43% lower carbon footprint vs React). In practice, across published reviews, ReactX is consistently described as balanced — softer than Nike&#8217;s older Cushlon-era foams but firmer and more durable than the bouncy nitrogen-infused foams showing up in premium trainers. That &#8220;Goldilocks&#8221; character is exactly what a daily trainer wants: a midsole that doesn&#8217;t bottom out after 200 miles and doesn&#8217;t punish you at slow paces.</p>
+<h3>The curved full-length Air Zoom unit — the upgrade</h3>
+<p>This is the part worth understanding. Air Zoom is pressurized air in a tensile-fiber unit; when you compress it under footstrike, it returns energy as you roll through. A <em>curved, full-length</em> unit does two jobs at once: cushioning under impact (especially heel strike) and a propulsive snap at toe-off, with no dead zone between the old forefoot and heel units. Nike claims this delivers its highest energy return from heel to toe-off of any Pegasus to date, and launch materials attribute roughly a 15% energy-return improvement vs the 41. The curve matters because it works with the new toe spring — the geometry of the shoe is designed to roll you forward rather than sit flat.</p>
+<h3>Engineered mesh upper and the MR-10 2.0 last</h3>
+<p>The upper is a lightweight engineered mesh that Nike says is softer and more breathable than earlier iterations — plus reflective graphics for low-light visibility. The more important change is underneath: the updated last and the roomier toe box address the single most common fit complaint about recent Pegasus models. A midfoot support system and a fully molded sock liner round out the fit package, aimed at a secure-but-not-squeezing feel. Nike&#8217;s own FAQ describes the 42 as true to size with a slightly roomier forefoot than earlier iterations.</p>
+<h3>Waffle outsole</h3>
+<p>Nike&#8217;s Waffle pattern is a running institution — it predates the Pegasus itself. The 42&#8217;s version uses high-abrasion rubber with flex grooves for a balance of grip, flexibility and durability. Published third-party impressions describe traction as dependable on road and paved paths, wet or dry, with durability expected to hold up for hundreds of kilometers of consistent road training — exactly the job description of a daily trainer.</p>
+</section>
+<section id="ride">
+<h2>What kind of ride should you expect?</h2>
+<p>No review on the internet can tell you how a shoe feels on <em>your</em> feet — but the specs plus the consensus of published reviewers converge on a consistent picture:</p>
+<ul>
+<li><strong>The defining trait is versatility, not extremity.</strong> Fleet Feet&#8217;s review frames it as a &#8220;Goldilocks shoe&#8221; — cushioning that is neither too soft nor too firm, responsive enough for pickups without being a speed shoe. Believe in the Run calls it &#8220;consistently pleasant&#8221; and, after a few years of mediocre Pegs, a win — positioning it as an entry-level daily trainer, full stop, and &#8220;the best Peg in recent memory.&#8221;</li>
+<li><strong>Run types it covers:</strong> easy daily miles (its home turf), long runs up to roughly half-marathon distance, recovery runs, treadmill sessions, and moderate tempo pickups. Third-party running retailers put its comfortable pace band around easy-to-moderate paces — it will do faster work, but it is not a tempo-day specialist.</li>
+<li><strong>The gym argument is real.</strong> Multiple reviewers note the Peg 42 doubles as a gym shoe: stable enough for machine work and lighter lifting, roomy enough to wear all day. (Heavy squats and deadlifts are still a no — no running shoe is a lifting shoe.)</li>
+<li><strong>The honest limits:</strong> at ~300g men&#8217;s it is one of the heavier options in the $140–150 range; advanced runners with big weekly volume will likely want it as a rotation shoe rather than their only pair; and runners who want a plush maximalist feel or a bouncy nitrogen-foam ride should look elsewhere in the category.</li>
+</ul>
+</section>
+<section id="who">
+<h2 id="qe-buy-skip-v2">Who Should Buy the Nike Pegasus 42?</h2>
+<div class="qe-who">
+<div class="qe-who-card">
+<div class="qe-who-ico">🌱</div>
+<div class="qe-who-title">First-time &#8220;real&#8221; running shoe buyers</div>
+<div class="qe-who-text">The franchise&#8217;s core job: neutral support, forgiving fit, durable construction, and an approachable price for the category.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">🔁</div>
+<div class="qe-who-title">One-shoe neutral runners</div>
+<div class="qe-who-text">Run 3–5 times a week at easy-to-moderate paces and don&#8217;t want to manage a rotation? The 42&#8217;s versatility is its entire pitch.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">🛡️</div>
+<div class="qe-who-title">Heavier or durability-focused runners</div>
+<div class="qe-who-text">High-abrasion rubber outsole, four decades of franchise refinement, and a foam chosen for longevity over flash.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">🏋️</div>
+<div class="qe-who-title">Gym-goers who also run</div>
+<div class="qe-who-text">One of the few daily trainers reviewers actively recommend as a crossover for treadmill + machine workouts.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">🦶</div>
+<div class="qe-who-title">Wider feet that found the 41 snug</div>
+<div class="qe-who-text">The roomier toe box and MR-10 2.0 last are a targeted fix for exactly this complaint.</div>
+</div>
+</div>
+<h2>Who Should Skip It?</h2>
+<div class="qe-who">
+<div class="qe-who-card">
+<div class="qe-who-ico">⚠️</div>
+<div class="qe-who-title">Overpronators needing stability</div>
+<div class="qe-who-text">The Pegasus is neutral. Look at the Nike Structure line, Brooks Adrenaline GTS, or ASICS GT-2000 instead.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">🏁</div>
+<div class="qe-who-title">Tempo-day and race-day runners</div>
+<div class="qe-who-text">No plate, ~300g, 10mm drop — this won&#8217;t replace a plated racer or a light tempo shoe like the Pegasus Plus line.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">🪶</div>
+<div class="qe-who-title">Weight weenies</div>
+<div class="qe-who-text">At ~300g men&#8217;s / ~243g women&#8217;s, rivals in the same price band come in lighter.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">☁️</div>
+<div class="qe-who-title">Maximalist-cushion lovers</div>
+<div class="qe-who-text">37/27mm is moderate stack in 2026. For a pillow, the Nike Vomero or ASICS Gel-Nimbus lines are the in-house alternatives.</div>
+</div>
+<div class="qe-who-card">
+<div class="qe-who-ico">💸</div>
+<div class="qe-who-title">Bargain hunters</div>
+<div class="qe-who-text">If the Pegasus 41 is sitting at a deep discount and you don&#8217;t need the newest thing, the upgrade may not be worth $145.</div>
+</div>
+</div>
+<h2>Pegasus 42 vs Pegasus 41: is the upgrade worth it?</h2>
+<div class="gpeg-tablewrap">
+<div class="gpeg-compare">
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Nike Pegasus 42</th>
+<th>Nike Pegasus 41</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US price</strong></td>
+<td>$145</td>
+<td>$140 at launch (often discounted now)</td>
+</tr>
+<tr>
+<td><strong>Air cushioning</strong></td>
+<td>Curved, full-length Air Zoom unit</td>
+<td>Separate forefoot + heel Air Zoom units</td>
+</tr>
+<tr>
+<td><strong>Midsole foam</strong></td>
+<td>ReactX</td>
+<td>ReactX</td>
+</tr>
+<tr>
+<td><strong>Drop / stack</strong></td>
+<td>10mm (37/27mm)</td>
+<td>10mm</td>
+</tr>
+<tr>
+<td><strong>Fit</strong></td>
+<td>MR-10 2.0 last; wider toe box, more forefoot room</td>
+<td>Previous last; snugger forefoot (common complaint)</td>
+</tr>
+<tr>
+<td><strong>Toe spring</strong></td>
+<td>Increased curve for smoother toe-off</td>
+<td>Less pronounced</td>
+</tr>
+<tr>
+<td><strong>Outsole</strong></td>
+<td>Updated, lighter Waffle with flex grooves</td>
+<td>Previous Waffle pattern</td>
+</tr>
+<tr>
+<td><strong>Verdict</strong></td>
+<td>Buy at $145 if you want the new Air system and roomier fit</td>
+<td>Buy on discount if you just need a dependable daily trainer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The 41 is still a good shoe — the foam is identical, and the core daily-trainer job is the same. The decision rule is simple: <strong>pay full price for the 42 if the full-length Air unit or the roomier fit matters to you; buy the 41 on sale if neither does.</strong> Nike&#8217;s own launch materials frame the 42 as delivering roughly 15% greater energy return than the 41, driven by the Air redesign.</p>
+</section>
+<section id="alternatives">
+<h2>Pegasus 42 vs the competition</h2>
+<p>The $140–150 daily-trainer band is the most crowded shelf in running. Here is how the Pegasus 42 stacks up on specs against two strong alternatives — all figures from published retailer spec tables:</p>
+<div class="gpeg-tablewrap">
+<div class="gpeg-compare">
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Nike Pegasus 42</th>
+<th>New Balance Ellipse v1</th>
+<th>Altra Experience Flow 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US price</strong></td>
+<td>$145</td>
+<td>$145</td>
+<td>$145</td>
+</tr>
+<tr>
+<td><strong>Men&#8217;s weight</strong></td>
+<td>~300g / 10.5 oz</td>
+<td>9.6 oz</td>
+<td>9.0 oz</td>
+</tr>
+<tr>
+<td><strong>Women&#8217;s weight</strong></td>
+<td>~243g / 8.6 oz</td>
+<td>7.6 oz</td>
+<td>7.5 oz</td>
+</tr>
+<tr>
+<td><strong>Stack (heel/forefoot)</strong></td>
+<td>37 / 27mm</td>
+<td>37.9 / 27.9mm</td>
+<td>32 / 28mm</td>
+</tr>
+<tr>
+<td><strong>Drop</strong></td>
+<td>10mm</td>
+<td>10mm</td>
+<td>4mm</td>
+</tr>
+<tr>
+<td><strong>Midsole tech</strong></td>
+<td>ReactX + full-length curved Air Zoom</td>
+<td>Fresh Foam X</td>
+<td>EGO P35</td>
+</tr>
+<tr>
+<td><strong>Character</strong></td>
+<td>Balanced &#8220;Goldilocks&#8221; trainer, iconic Nike ride</td>
+<td>Slightly more forgiving, similar spring</td>
+<td>Low-drop option, smooth step-in feel</td>
+</tr>
+<tr>
+<td><strong>Pick it if…</strong></td>
+<td>You want the traditional daily-trainer fit and Nike&#8217;s Air feel</td>
+<td>You want the same brief at a lighter weight</td>
+<td>You prefer a low drop and a roomier natural fit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p class="gpeg-small">Comparison specs via Fleet Feet&#8217;s published Pegasus 42 review (comparison table) and Nike&#8217;s official product pages. Rival specs reflect those published figures, not independent testing by GearUpToFit.</p>
+<div class="gpeg-callout"><strong>How to read this table:</strong> all three cost $145, so price doesn&#8217;t decide — fit philosophy and weight do. The Pegasus 42 is the heaviest of the three and the most &#8220;traditional&#8221; in fit; the Ellipse is its closest direct rival on paper; the Altra is the pick if a 10mm drop has never agreed with you.</div>
+</section>
+<section id="video">
+<div class="qe-bridge">🎥 <strong>Before you press play:</strong> we link out to established running outlets below rather than embedding random clips — these are the reviews we found most genuinely useful while researching this guide.</div>
+<h2>Video reviews worth watching</h2>
+<p>We don&#8217;t embed unverified video content. These published video/text reviews from established running outlets are worth your time before buying:</p>
+<ul>
+<li><a href="https://believeintherun.com/videos/nike-pegasus-42-video-review-2/" target="_blank" rel="nofollow noopener">Believe in the Run — Nike Pegasus 42 video review</a> — Thomas&#8217;s take: &#8220;the best Peg in recent memory,&#8221; but still an entry-level daily trainer.</li>
+<li><a href="https://believeintherun.com/shoe-reviews/nike-pegasus-42-review/" target="_blank" rel="nofollow noopener">Believe in the Run — Nike Pegasus 42 written review</a> — the full breakdown, including the 10.8 oz weighed measurement.</li>
+<li><a href="https://www.fleetfeet.com/blog/nike-pegasus-42-review-a-versatile-workhorse" target="_blank" rel="nofollow noopener">Fleet Feet — Pegasus 42 review</a> — the &#8220;Goldilocks shoe&#8221; framing and head-to-head spec tables vs rivals.</li>
+<li><a href="https://runnerslab.com/nike-pegasus-42-review/" target="_blank" rel="nofollow noopener">RunnersLab — Pegasus 42 review</a> — European pricing (€140) and the full 42-vs-41 change list.</li>
+</ul>
+</section>
+<section id="faq" class="gpeg-faq">
+<!-- QE-2026-10-09-PEGASUS42-QUALITY-ELEVATION --></p>
+<style>
+.qe-bridge{background:#fffdf5;border:1px solid #f0e6c8;border-left:4px solid #f5a623;border-radius:10px;padding:16px 20px;margin:28px 0;font-size:1.02rem;line-height:1.75;color:#4a3f28;}
+.qe-flow{max-width:720px;margin:0 auto;}
+.qe-flow-node{background:#fff;border:2px solid #e3e9f5;border-radius:14px;padding:16px 20px;margin:0 auto 6px;max-width:520px;text-align:center;box-shadow:0 3px 10px rgba(20,40,90,.06);}
+.qe-flow-q{background:linear-gradient(135deg,#fff7e6,#ffefd6);border-color:#f5a623;}
+.qe-flow-a9{background:linear-gradient(135deg,#eef4ff,#e2ebff);border-color:#1a73e8;}
+.qe-flow-a8{background:linear-gradient(135deg,#f0fbf1,#e2f6e5);border-color:#2e9e5b;}
+.qe-flow-title{font-weight:700;font-size:1.05rem;color:#1a1a2e;margin-bottom:6px;}
+.qe-flow-sub{font-size:.92rem;color:#4a5568;line-height:1.6;}
+.qe-flow-arrow{text-align:center;font-size:1.5rem;color:#9aa5b8;line-height:1;margin:2px 0;}
+.qe-flow-branch{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:4px 0;}
+.qe-flow-branch .qe-flow-node{margin:0;flex:1;min-width:230px;max-width:320px;}
+.qe-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0;}
+.qe-stat{background:#fff;border-radius:14px;padding:20px 16px;text-align:center;border:1px solid #e8ecf4;box-shadow:0 4px 14px rgba(20,40,90,.07);transition:transform .25s ease,box-shadow .25s ease;opacity:0;transform:translateY(18px);}
+.qe-stat.qe-in{opacity:1;transform:none;}
+.qe-stat:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(20,40,90,.12);}
+.qe-stat-num{font-size:2.1rem;font-weight:800;color:#1a73e8;line-height:1.1;}
+.qe-stat-label{font-size:.85rem;font-weight:700;color:#1a1a2e;margin-top:8px;text-transform:uppercase;letter-spacing:.04em;}
+.qe-stat-sub{font-size:.86rem;color:#5b6b85;margin-top:6px;line-height:1.55;}
+.qe-stat-vs{display:inline-block;margin-top:8px;font-size:.8rem;background:#f1f5fb;border-radius:20px;padding:4px 12px;color:#3b4a63;font-weight:600;}
+.qe-who{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:22px 0;}
+.qe-who-card{background:#fff;border-radius:14px;padding:18px;border:1px solid #e8ecf4;box-shadow:0 4px 14px rgba(20,40,90,.06);transition:transform .2s ease;}
+.qe-who-card:hover{transform:translateY(-3px);}
+.qe-who-ico{font-size:1.5rem;margin-bottom:8px;}
+.qe-who-title{font-weight:800;font-size:1.0rem;color:#1a1a2e;margin-bottom:6px;}
+.qe-who-text{font-size:.92rem;color:#4a5568;line-height:1.65;}
+.qe-smartbox{position:relative;border-radius:18px;padding:3px;background:linear-gradient(135deg,#f5a623,#ff7043,#1a73e8);margin:32px 0;box-shadow:0 8px 26px rgba(245,166,35,.18);}
+.qe-smartbox-inner{background:#fffdf8;border-radius:15px;padding:30px 28px;}
+.qe-kicker{display:inline-block;background:linear-gradient(135deg,#f5a623,#ff7043);color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:6px 16px;margin-bottom:14px;}
+.qe-smartbox h3{margin:0 0 12px;font-size:1.45rem;color:#1a1a2e;line-height:1.3;}
+.qe-smartbox-copy{font-size:1.0rem;line-height:1.75;color:#3c4454;margin-bottom:18px;}
+.qe-cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.qe-cta{display:inline-block;background:linear-gradient(135deg,#ff9900,#ff7700);color:#fff !important;font-weight:800;font-size:1.05rem;text-decoration:none;border-radius:12px;padding:15px 34px;box-shadow:0 4px 14px rgba(255,119,0,.35);transition:transform .2s ease,box-shadow .2s ease;}
+.qe-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,119,0,.45);color:#fff !important;}
+.qe-fineprint{font-size:.82rem;color:#8a93a6;margin-top:12px;line-height:1.6;}
+@media(max-width:640px){.qe-smartbox-inner{padding:22px 18px;}.qe-stat-num{font-size:1.7rem;}.qe-cta{width:100%;text-align:center;padding:15px 18px;}}
+.qe-sec-head{text-align:center;margin:8px 0 20px;}
+.qe-sec-head h3{margin:0;font-size:1.5rem;color:#1a1a2e;}
+.qe-sec-head .qe-sub{font-size:.95rem;color:#5b6b85;margin-top:6px;}
+</style>
+<div class="qe-bridge">💡 <strong>One last money question before the FAQs:</strong> with the 41 still on shelves at clearance prices, which Pegasus actually deserves your $145? Let&#8217;s settle it — numbers first, then the decision.</div>
+<div id="qe-peg42-stats" style="margin:36px 0;">
+<div class="qe-sec-head">
+<h3>📊 By the Numbers: Pegasus 42 vs. Pegasus 41</h3>
+<div class="qe-sub">The four numbers that actually separate the two generations.</div>
+</div>
+<div class="qe-stat-grid">
+<div class="qe-stat">
+<div class="qe-stat-num" data-count="145" data-dec="0" data-prefix="$">$145</div>
+<div class="qe-stat-label">US Price · Pegasus 42</div>
+<div class="qe-stat-sub">Approachable for the daily-trainer category; released April 9, 2026.</div>
+<p><span class="qe-stat-vs">41: $140 at launch — often discounted now</span></div>
+<div class="qe-stat">
+<div class="qe-stat-num" data-count="15" data-dec="0" data-suffix="%">15%</div>
+<div class="qe-stat-label">Energy Return Claim</div>
+<div class="qe-stat-sub">Nike&#8217;s launch materials frame the 42 as ~15% more energy return than the 41, driven by the Air redesign.</div>
+<p><span class="qe-stat-vs">41: the baseline</span></div>
+<div class="qe-stat">
+<div class="qe-stat-num" data-count="37" data-dec="0" data-suffix=" mm">37 mm</div>
+<div class="qe-stat-label">Heel Stack · Pegasus 42</div>
+<div class="qe-stat-sub">27mm forefoot, 10mm drop — moderate cushioning by 2026 standards.</div>
+<p><span class="qe-stat-vs">41: also a 10mm drop</span></div>
+<div class="qe-stat">
+<div class="qe-stat-num" data-count="40" data-dec="0" data-suffix="+">40+</div>
+<div class="qe-stat-label">Years of Refinement</div>
+<div class="qe-stat-sub">Four decades of Pegasus lineage behind the 42&#8217;s proven daily-trainer formula.</div>
+<p><span class="qe-stat-vs">41: same legendary lineage</span></div>
+</div>
+</div>
+<div id="qe-peg42-vs-41-flow" style="margin:36px 0;">
+<div class="qe-sec-head">
+<h3>🤔 Pegasus 42 or Pegasus 41 — Which Should You Buy?</h3>
+<div class="qe-sub">Follow the flowchart. Honest answer in under 30 seconds.</div>
+</div>
+<div class="qe-flow">
+<div class="qe-flow-node qe-flow-q">
+<div class="qe-flow-title">❓ Did the 41 feel snug in the forefoot — or do you want the most propulsive Peg yet?</div>
+<div class="qe-flow-sub">The 42&#8217;s roomier MR-10 2.0 last and full-length Air Zoom unit target exactly this.</div>
+</div>
+<div class="qe-flow-arrow">⬇</div>
+<div class="qe-flow-branch">
+<div class="qe-flow-node qe-flow-a9">
+<div class="qe-flow-title">✅ YES → Get the Pegasus 42</div>
+<div class="qe-flow-sub">Roomier fit plus the redesigned Air system — the two upgrades that matter most.</div>
+</div>
+<div class="qe-flow-node">
+<div class="qe-flow-title">➡ NO → One more question…</div>
+<div class="qe-flow-sub">Can you find the Pegasus 41 at a deep discount right now?</div>
+</div>
+</div>
+<div class="qe-flow-arrow">⬇</div>
+<div class="qe-flow-branch">
+<div class="qe-flow-node qe-flow-a8">
+<div class="qe-flow-title">💰 Discount found → Get the Pegasus 41</div>
+<div class="qe-flow-sub">Identical ReactX foam, same daily-trainer job. Smart money.</div>
+</div>
+<div class="qe-flow-node qe-flow-a9">
+<div class="qe-flow-title">✨ No discount → Get the Pegasus 42</div>
+<div class="qe-flow-sub">At $145 it&#8217;s a fair price for the full-length Air upgrade.</div>
+</div>
+</div>
+<div class="qe-flow-node" style="margin-top:10px;background:#f7f9fd;">
+<div class="qe-flow-sub">🛡️ <strong>Can&#8217;t go wrong either way:</strong> same ReactX foam, same neutral daily-trainer DNA — the 42 just refines the engine room.</div>
+</div>
+</div>
+</div>
+<div id="qe-peg41-smart-box" class="qe-smartbox">
+<div class="qe-smartbox-inner">
+<span class="qe-kicker">💰 Smart-Money Pick</span></p>
+<h3>Still Excellent: The Nike Pegasus 41 at a Discount</h3>
+<div class="qe-smartbox-copy">
+Don&#8217;t need the latest and greatest? The <strong>Pegasus 41</strong> runs the <strong>identical ReactX foam</strong> and does the same core daily-trainer job — neutral support, a durable Waffle outsole, and an approachable ride for most weekly miles. What you give up versus the 42: the full-length curved Air Zoom unit (the 41 uses separate forefoot + heel units), the roomier MR-10 2.0 fit, and the increased toe spring. It launched at $140 and is now <strong>often discounted</strong> — which makes it one of the smartest value buys in the entire daily-trainer category.
+</div>
+<div class="qe-cta-row">
+<a class="qe-cta" href="https://www.amazon.com/s?k=Nike+Pegasus+41&amp;tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">👟 Check Pegasus 41 Price on Amazon</a>
+</div>
+<div class="qe-fineprint">Prices and availability change quickly — the link above shows current Amazon listings. As an Amazon Associate we may earn from qualifying purchases.</div>
+</div>
+</div>
+<p><script>
+(function(){
+  function ready(fn){if(document.readyState!=='loading'){fn();}else{document.addEventListener('DOMContentLoaded',fn);}}
+  ready(function(){
+    var cards=document.querySelectorAll('.qe-stat');
+    function animateNum(el){
+      var target=parseFloat(el.getAttribute('data-count'));
+      var dec=parseInt(el.getAttribute('data-dec')||'0',10);
+      var prefix=el.getAttribute('data-prefix')||'';
+      var suffix=el.getAttribute('data-suffix')||'';
+      var dur=1100, t0=null;
+      function step(ts){ if(!t0){t0=ts;} var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+        el.textContent=prefix+(target*e).toFixed(dec)+suffix; if(p>=1){return;} requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.classList.add('qe-in');
+            var n=en.target.querySelector('.qe-stat-num[data-count]');
+            if(n && !n.getAttribute('data-done')){ n.setAttribute('data-done','1'); animateNum(n); }
+            io.unobserve(en.target); }
+        });
+      },{threshold:0.25});
+      cards.forEach(function(cd){io.observe(cd);});
+    } else {
+      cards.forEach(function(cd){ cd.classList.add('qe-in');
+        var n=cd.querySelector('.qe-stat-num[data-count]');
+        if(n){ animateNum(n); } });
+    }
+  });
+})();
+</script></p>
+
+<div style="background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:2px solid #fcd34d;border-radius:20px;padding:28px;margin:32px 0;box-shadow:0 6px 24px rgba(252,211,77,0.25);">
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+<div style="flex:0 0 180px;min-width:150px;text-align:center;">
+<img src="https://gearuptofit.com/wp-content/uploads/2026/10/nike-pegasus-41.webp" alt="Nike Pegasus 41 running shoe" style="max-width:100%;height:auto;border-radius:12px;background:#fff;padding:8px;" loading="lazy" />
+</div>
+<div style="flex:1;min-width:250px;">
+<div style="display:inline-block;background:#fef3c7;color:#92400e;font-size:13px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:12px;">💰 Often $30-40 less than the 42</div>
+<div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Nike Pegasus 41</div>
+<div style="font-size:15px;color:#475569;line-height:1.7;margin-bottom:16px;">Last year's Pegasus 41 delivers 95% of the experience — same React foam, same Air Zoom, same reliable fit. With the 42 on shelves, the 41 is often heavily discounted.</div>
+<a href="https://www.amazon.com/s?k=Nike+Pegasus+41&tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;font-weight:800;font-size:15px;padding:12px 28px;border-radius:12px;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.4);">👟 Check Nike Pegasus 41 Price on Amazon</a>
+</div>
+</div>
+</div>
+<h2>Frequently asked questions</h2>
+<details>
+<summary>How much does the Nike Pegasus 42 cost?</summary>
+<p>The Nike Pegasus 42 retails for $145 in the US (it launched April 9, 2026). European pricing is around €140. As with every Pegasus, expect discounts on older colorways within a few months of release — and the Pegasus 41 often drops well below its $140 launch price once the 42 is out.</p>
+</details>
+<details>
+<summary>What is the Nike Pegasus 42&#8217;s weight and drop?</summary>
+<p>Nike lists the men&#8217;s Pegasus 42 at approximately 300g / 10.59 oz (US 10) and the women&#8217;s at approximately 243g (UK 5.5), with a 10mm heel-to-toe drop (37mm heel, 27mm forefoot). Independent measurements vary slightly by size and method — third parties have reported 284–307g for men&#8217;s — so treat Nike&#8217;s figure as the canonical spec.</p>
+</details>
+<details>
+<summary>What&#8217;s new in the Pegasus 42 compared to the Pegasus 41?</summary>
+<p>The headline change is a curved, full-length Air Zoom unit replacing the 41&#8217;s separate forefoot and heel Air units. Nike also added more toe spring, a roomier toe box and forefoot, a new MR-10 2.0 last, and a lighter updated Waffle outsole. The ReactX foam midsole carries over from the 41.</p>
+</details>
+<details>
+<summary>Is the Nike Pegasus 42 good for beginners?</summary>
+<p>Yes — beginners are arguably its core audience. Neutral support, a forgiving fit with extra forefoot room, durable high-abrasion rubber, and a balanced ride that works at slow paces make it one of the safest first-shoe picks. Nike&#8217;s own product FAQ describes it as approachable for runners building consistency.</p>
+</details>
+<details>
+<summary>Does the Pegasus 42 fit true to size?</summary>
+<p>Per Nike&#8217;s product FAQ, most runners find the Pegasus 42 true to size, and the fit is roomier in the forefoot and toe box than the 41. If the 41 felt snug up front, the 42 specifically addresses that. Runners between sizes or with very narrow feet should still try before buying, as always.</p>
+</details>
+<details>
+<summary>Is the Pegasus 42 a stability shoe?</summary>
+<p>No. The Pegasus 42 is a neutral daily trainer with no medial posting or stability features. Overpronators who need guidance should look at Nike&#8217;s Structure line or stability models from Brooks (Adrenaline GTS) or ASICS (GT-2000) instead.</p>
+</details>
+<details>
+<summary>Can you run a marathon in the Pegasus 42?</summary>
+<p>You can — plenty of runners have finished marathons in far less shoe — but it isn&#8217;t designed as a marathon racer. Its sweet spot is daily training and runs up to about half-marathon distance. For race day, a plated model will be faster and lighter; for marathon training blocks, many runners use the Pegasus as the easy-day shoe in a rotation.</p>
+</details>
+<details>
+<summary>Is the Pegasus 42 good for the gym?</summary>
+<p>Published reviewers consistently say yes for general gym use: treadmill cardio, machine work, and lighter lifting. The stable heel and durable outsole handle it well. Skip it under a barbell for heavy squats or deadlifts — no cushioned running shoe is a proper lifting shoe.</p>
+</details>
+<details>
+<summary>How durable is the Pegasus 42?</summary>
+<p>Durability is a franchise strength: the ReactX foam is chosen for longevity, the outsole uses high-abrasion rubber in Nike&#8217;s proven Waffle pattern, and third-party reviewers describe it as built for hundreds of kilometers of consistent road training. Nike&#8217;s sustainability notes also cite at least 75% recycled material content by weight.</p>
+</details>
+<details>
+<summary>Should I buy the Pegasus 42 or wait for a sale on the Pegasus 41?</summary>
+<p>Buy the 42 at $145 if the full-length Air Zoom unit, increased toe spring, or roomier forefoot matter to you — those are real changes. Buy the 41 on discount if you just need a dependable neutral daily trainer, since the foam is the same and the core ride concept is similar. This is the classic Pegasus value decision, and the discounted older model usually wins on pure value.</p>
+</details>
+</section>
+<section id="related">
+<h2>Related GearUpToFit guides</h2>
+<p>Compare the Pegasus 42 against the right category before you buy:</p>
+<div class="gpeg-related">
+<a href="https://gearuptofit.com/review/best-running-shoes/" target="_blank"><strong>Best running shoes</strong><span>GearUpToFit&#8217;s main running-shoe buyer guide — see where the Pegasus 42 sits in the full field.</span></a><br />
+<a href="https://gearuptofit.com/review/best-daily-running-shoes/" target="_blank"><strong>Best daily running shoes</strong><span>One-shoe daily trainers compared head to head — the Pegasus 42&#8217;s home category.</span></a><br />
+<a href="https://gearuptofit.com/review/best-running-shoes-for-beginners/" target="_blank"><strong>Best running shoes for beginners</strong><span>First-shoe picks for new runners who don&#8217;t need specialist footwear.</span></a><br />
+<a href="https://gearuptofit.com/review/nike-vomero-18/" target="_blank"><strong>Nike Vomero 18 review</strong><span>Nike&#8217;s max-cushion alternative if the Pegasus 42&#8217;s moderate stack isn&#8217;t plush enough.</span></a>
+</div>
+</section>
+<section id="references" class="gpeg-ref">
+<h2 style="margin-top:0">References</h2>
+<p>Specs verified against Nike&#8217;s official Pegasus 42 product pages (men&#8217;s and women&#8217;s listings; What&#8217;s New, Product Details and FAQ sections). Supplementary spec and consensus data from Believe in the Run (video + written reviews), Fleet Feet&#8217;s published review and comparison tables, RunnersLab&#8217;s review, Top4Running&#8217;s Pegasus family overview, Gadgets360&#8217;s review, and SI/FanNation&#8217;s launch tech-spec coverage. No figures in this review are estimated or invented; third-party measurements are attributed as such.</p>
+</section>
+<section id="transparency" class="gpeg-card amber">
+<h2 style="margin-top:0">Transparency note</h2>
+<p>This is a <strong>research-based review</strong>. Every specification, price, weight, and technology claim above is sourced from Nike&#8217;s official product materials or attributed published third-party reviews — see <a href="#references">References</a>. GearUpToFit did not wear-test the Pegasus 42 for this article, and nothing here should be read as a claim of personal mileage, wear-testing, or first-hand experience. Qualitative descriptions of ride feel reflect the consensus of the cited published reviewers, not our own feet. If that changes, we&#8217;ll update this note.</p>
+</section>
+<section class="gpeg-author">
+<div class="gpeg-avatar">AP</div>
+<div>
+<h3 style="margin-top:0">About this review</h3>
+<p class="gpeg-small">GearUpToFit reviews focus on practical buying decisions: who should buy, who should skip, what changed vs the last model, how it compares on specs with real alternatives, and whether the price makes sense for actual training. Specs are verified against manufacturer sources. We have not run in this shoe ourselves.</p>
+</div>
+</section>
+</article>
+<p><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does the Nike Pegasus 42 cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Nike Pegasus 42 retails for $145 in the US (launched April 9, 2026), around €140 in Europe. Older colorways typically get discounted within months, and the Pegasus 41 often drops well below its $140 launch price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Nike Pegasus 42's weight and drop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nike lists the men's Pegasus 42 at approximately 300g / 10.59 oz (US 10) and the women's at approximately 243g (UK 5.5), with a 10mm heel-to-toe drop (37mm heel, 27mm forefoot). Independent measurements vary slightly by size and method."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's new in the Pegasus 42 compared to the Pegasus 41?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The headline change is a curved, full-length Air Zoom unit replacing the 41's separate forefoot and heel Air units. Nike also added more toe spring, a roomier toe box and forefoot, a new MR-10 2.0 last, and a lighter updated Waffle outsole. ReactX foam carries over."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Nike Pegasus 42 good for beginners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Neutral support, a forgiving fit with extra forefoot room, durable high-abrasion rubber, and a balanced ride that works at slow paces make the Pegasus 42 one of the safest first-shoe picks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Pegasus 42 fit true to size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per Nike's product FAQ, most runners find the Pegasus 42 true to size, and the fit is roomier in the forefoot and toe box than the Pegasus 41."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Pegasus 42 a stability shoe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The Pegasus 42 is a neutral daily trainer with no stability features. Overpronators should consider Nike's Structure line or stability models like the Brooks Adrenaline GTS or ASICS GT-2000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you run a marathon in the Pegasus 42?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can, but it isn't designed as a marathon racer. Its sweet spot is daily training and runs up to about half-marathon distance. Many runners use it as the easy-day shoe in a rotation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Pegasus 42 good for the gym?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reviewers consistently recommend it for general gym use — treadmill cardio, machine work, and lighter lifting. Skip it under a barbell for heavy squats or deadlifts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How durable is the Pegasus 42?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Durability is a franchise strength: ReactX foam chosen for longevity, high-abrasion rubber Waffle outsole, and a design reviewers describe as built for hundreds of kilometers of consistent road training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I buy the Pegasus 42 or wait for a sale on the Pegasus 41?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buy the 42 at $145 if the full-length Air Zoom unit, increased toe spring, or roomier forefoot matter to you. Buy the 41 on discount if you just need a dependable neutral daily trainer, since the foam is the same."
+      }
+    }
+  ]
+}
+</script><br />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Nike Pegasus 42 Review: The 2026 Everyday Workhorse, Rebuilt from the Inside Out",
+  "description": "Research-based review of the Nike Pegasus 42: full specs, what's new vs the Pegasus 41, technology deep-dive, and spec-based comparisons with rivals.",
+  "author": {
+    "@type": "Organization",
+    "name": "GearUpToFit"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GearUpToFit",
+    "url": "https://gearuptofit.com"
+  },
+  "mainEntityOfPage": "https://gearuptofit.com/review/nike-pegasus-42/",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09"
+}
+</script></p>

@@ -1,0 +1,894 @@
+<div class="editorial-note-88022" style="border:1px solid #d7dde7;border-radius:12px;padding:14px 16px;margin:0 0 24px;background:#f8fafc;font-size:0.98rem;line-height:1.7;">
+<strong>Editorial review:</strong> This page is part of a founder-led publication and is reviewed for clarity, usefulness, and consistency with our site standards. See <a href="https://gearuptofit.com/about-gearuptofit-practical-fitness-guidance/" target="_blank">about the editor</a>, <a href="https://gearuptofit.com/editorial-policy/" target="_blank">editorial policy</a>, and <a href="https://gearuptofit.com/review-methodology/" target="_blank">review methodology</a>.
+</div>
+<p><!-- SVG Defs for half star --><br />
+<svg style="display:none;">
+  <defs>
+    <linearGradient id="half-star-grad">
+      <stop offset="50%" stop-color="#ffb300"/>
+      <stop offset="50%" stop-color="#e0e3eb"/>
+    </linearGradient>
+  </defs>
+</svg></p>
+<style>/* Site-wide sidebar hide */
+.widget-container,.widget-title,.widget_archive,.widget_meta,.widget_recent_entries,.widget_recent_comments,.widget_categories,.widget_tag_cloud,.widget_search,aside,#sidebar,.sidebar,[class*="widget-archives"],[class*="widget-meta"],#secondary,.widget-area{display:none!important;height:0!important;overflow:hidden!important}
+#primary,.site-content,.content-area,article{width:100%!important;max-width:100%!important;float:none!important}
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --clr-primary:#00796b;
+  --clr-primary-light:#00a99d;
+  --clr-heading:#1a1a2e;
+  --clr-text:#4a5568;
+  --clr-text-muted:#718096;
+  --clr-border:#e8e8f0;
+  --clr-star:#ffb300;
+  --radius:16px;
+  --radius-sm:12px;
+  --radius-xs:8px;
+  --shadow:0 8px 32px rgba(0,0,0,.10);
+  --shadow-sm:0 2px 12px rgba(0,0,0,.08);
+  --shadow-card:0 4px 20px rgba(0,0,0,.08);
+  --transition:all .25s ease;
+}
+/* ===== BASE ARTICLE ===== */
+.gutf-article{max-width:880px;margin:0 auto;padding:24px 20px;font-family:'Jost','Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.8;color:var(--clr-text);font-size:17px}
+.gutf-article h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--clr-heading);margin:0 0 16px;letter-spacing:-.02em}
+.gutf-article h2{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:700;color:var(--clr-heading);margin:40px 0 16px;padding-top:20px;border-top:2px solid var(--clr-border);display:flex;align-items:center;gap:12px}
+.gutf-article h2:first-child{margin-top:0;border-top:none;padding-top:0}
+.gutf-article h3{font-size:clamp(1.1rem,2.5vw,1.35rem);font-weight:700;margin:28px 0 12px;color:#2d3748}
+.gutf-article h4{font-size:1.1rem;font-weight:700;margin:24px 0 8px;color:var(--clr-heading)}
+.gutf-article p{margin:0 0 18px;font-size:clamp(.95rem,2vw,1.05rem);color:var(--clr-text)}
+.gutf-article img{max-width:100%;height:auto;border-radius:var(--radius);margin:20px 0;box-shadow:var(--shadow)}
+.gutf-article table{width:100%;border-collapse:collapse;margin:24px 0;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow-sm);font-size:.92rem}
+.gutf-article th{background:linear-gradient(135deg,#f8fafc,#e8ecf4);padding:14px 18px;text-align:left;font-weight:700;font-size:.82rem;color:var(--clr-heading);text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid #dde2ec}
+.gutf-article td{padding:13px 18px;border-bottom:1px solid #f1f5f9;color:var(--clr-text)}
+.gutf-article tr:hover td{background:#f7fafd}
+.gutf-article ul,.gutf-article ol{margin:16px 0;padding-left:24px}
+.gutf-article li{margin:8px 0;font-size:clamp(.95rem,2vw,1.05rem);color:var(--clr-text)}
+.gutf-article blockquote{border-left:4px solid var(--clr-primary-light);padding:20px 24px;margin:24px 0;background:linear-gradient(135deg,#f0fdf4,#e6f7f5);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-style:italic;color:#2d5a4a}
+.gutf-article a{color:var(--clr-primary);text-decoration:none;font-weight:600;border-bottom:1px solid transparent;transition:var(--transition)}
+.gutf-article a:hover{color:var(--clr-primary-light);border-bottom-color:var(--clr-primary-light)}
+.gutf-article strong{font-weight:700;color:var(--clr-heading)}
+.gutf-article em{font-style:italic;color:#555}
+/* ===== HERO ===== */
+.gutf-article .hero{background:linear-gradient(135deg,#0d1b2a 0%,#1b2d4f 50%,#163020 100%);border-radius:var(--radius);padding:48px 40px;margin-bottom:32px;color:#fff;position:relative;overflow:hidden}
+.gutf-article .hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,169,157,.15) 0%,transparent 70%);border-radius:50%}
+.gutf-article .hero-badge{display:inline-block;background:rgba(255,179,0,.15);border:1px solid rgba(255,179,0,.3);color:#ffb300;padding:6px 16px;border-radius:50px;font-size:.85rem;font-weight:700;margin-bottom:16px;letter-spacing:.3px}
+.gutf-article .hero-badge span{color:#fff}
+.gutf-article .hero h1{color:#fff;margin-bottom:12px}
+.gutf-article .hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:rgba(255,255,255,.8);line-height:1.7;max-width:720px;margin-bottom:20px}
+.gutf-article .hero-meta{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:.82rem;color:rgba(255,255,255,.65)}
+.gutf-article .hero-meta span{display:inline-flex;align-items:center;gap:4px}
+/* ===== CONTAINER ===== */
+.gutf-article .container{margin-bottom:8px}
+/* ===== PRODUCT BOX ===== */
+.gutf-article .product-box{background:linear-gradient(135deg,#ffffff,#f8fffe);border:2px solid #e0f2f1;border-radius:var(--radius);padding:32px;margin:28px 0;box-shadow:var(--shadow-card);position:relative;overflow:hidden}
+.gutf-article .product-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--clr-primary),var(--clr-primary-light),#ffb300)}
+.gutf-article .product-box-inner{display:flex;gap:32px;align-items:center}
+.gutf-article .product-box-img{flex:0 0 240px;text-align:center;position:relative}
+.gutf-article .product-box-img img{width:100%;max-width:240px;border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);margin:0;transition:transform .3s ease}
+.gutf-article .product-box-img img:hover{transform:scale(1.03)}
+.gutf-article .product-box-badge{position:absolute;top:-8px;left:-8px;background:linear-gradient(135deg,#ff6b35,#f7c948);color:#fff;padding:4px 14px;border-radius:50px;font-size:.75rem;font-weight:700;z-index:2;box-shadow:0 2px 8px rgba(255,107,53,.3)}
+.gutf-article .product-box-info{flex:1}
+.gutf-article .product-box-info h3{font-size:1.4rem;font-weight:800;color:var(--clr-heading);margin:0 0 6px}
+.gutf-article .tagline{font-size:.92rem;color:var(--clr-text-muted);margin-bottom:12px}
+/* ===== STARS ===== */
+.gutf-article .stars{display:flex;align-items:center;gap:3px;margin-bottom:12px}
+.gutf-article .stars svg{width:20px;height:20px;fill:var(--clr-star)}
+.gutf-article .rating-text{margin-left:8px;font-size:.88rem;font-weight:700;color:var(--clr-heading)}
+/* ===== QUICK SPECS MINI ===== */
+.gutf-article .quick-specs-mini{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.gutf-article .quick-specs-mini span{background:#f0f4f8;padding:4px 12px;border-radius:50px;font-size:.78rem;font-weight:600;color:#4a5568;border:1px solid #e2e8f0}
+/* ===== CTA BUTTON ===== */
+.gutf-article .btn-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#ff6b35,#e85d26);color:#fff !important;padding:.8rem 1.75rem;border-radius:50px;font-size:.95rem;font-weight:700;text-decoration:none;border:none;border-bottom:none !important;box-shadow:0 4px 16px rgba(255,107,53,.35);transition:all .3s ease;letter-spacing:.3px}
+.gutf-article .btn-cta:hover{background:linear-gradient(135deg,#e85d26,#d44f1c);transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,107,53,.45);color:#fff !important;border-bottom:none !important}
+.gutf-article .btn-cta svg{width:18px;height:18px;stroke:currentColor;fill:none}
+/* ===== TL;DR BOX ===== */
+.gutf-article .tldr-box{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px solid #f59e0b;border-radius:var(--radius);padding:28px 32px;margin:28px 0;position:relative}
+.gutf-article .tldr-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f59e0b,#eab308,#fbbf24);border-radius:var(--radius) var(--radius) 0 0}
+.gutf-article .tldr-box h2{color:#92400e;margin:0 0 12px;padding-top:0;border-top:none;font-size:1.2rem}
+.gutf-article .tldr-box p{margin-bottom:14px}
+.gutf-article .tldr-box ul{margin:8px 0 0}
+.gutf-article .tldr-box li{margin:6px 0}
+/* ===== TABLE OF CONTENTS ===== */
+.gutf-article .toc{background:linear-gradient(135deg,#f8fafc,#edf2f7);border:1px solid #e2e8f0;border-radius:var(--radius);padding:24px 32px;margin:28px 0}
+.gutf-article .toc h2{margin:0 0 14px;padding-top:0;border-top:none;font-size:1.15rem;color:var(--clr-heading)}
+.gutf-article .toc ol{columns:2;column-gap:32px;margin:0;padding-left:20px}
+.gutf-article .toc li{font-size:.9rem;margin:5px 0;break-inside:avoid}
+.gutf-article .toc a{font-weight:500;color:var(--clr-primary)}
+.gutf-article .toc a:hover{color:var(--clr-primary-light)}
+/* ===== CONTENT SECTIONS ===== */
+.gutf-article .content-section{margin-bottom:8px}
+/* ===== SECTION ICON BADGES ===== */
+.gutf-article .icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;font-size:1.1rem;flex-shrink:0}
+/* ===== CALLOUT BOXES ===== */
+.gutf-article .callout{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-left:4px solid #22c55e;border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:20px 24px;margin:24px 0;font-size:.95rem;line-height:1.7}
+.gutf-article .callout-blue{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-left-color:#3b82f6}
+.gutf-article .callout-green{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-left-color:#22c55e}
+/* ===== SPEC TABLE WRAP ===== */
+.gutf-article .spec-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:var(--radius-sm)}
+/* ===== COMPARISON CARDS ===== */
+.gutf-article .comparison-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:var(--radius-sm);padding:24px 28px;margin:20px 0;transition:var(--transition)}
+.gutf-article .comparison-card:hover{box-shadow:var(--shadow-sm);border-color:#cbd5e1}
+.gutf-article .comparison-card h4{color:var(--clr-heading);margin:0 0 10px;font-size:1.05rem}
+/* ===== SCORE GRID ===== */
+.gutf-article .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.gutf-article .score-item{background:#f8fafc;border-radius:var(--radius-xs);padding:14px 18px;border:1px solid #e2e8f0}
+.gutf-article .score-item label{display:flex;justify-content:space-between;font-size:.88rem;font-weight:600;color:var(--clr-heading);margin-bottom:8px}
+.gutf-article .score-item label span{color:var(--clr-primary);font-weight:700}
+.gutf-article .score-bar{background:#e2e8f0;border-radius:50px;height:8px;overflow:hidden}
+.gutf-article .score-bar-fill{height:100%;background:linear-gradient(90deg,var(--clr-primary),var(--clr-primary-light));border-radius:50px;transition:width .8s ease}
+/* ===== PROS & CONS ===== */
+.gutf-article .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+.gutf-article .pros{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:24px}
+.gutf-article .cons{background:linear-gradient(135deg,#fef2f2,#fecaca);border:1px solid #fca5a5;border-radius:var(--radius-sm);padding:24px}
+.gutf-article .pros h4,.gutf-article .cons h4{margin:0 0 12px;font-size:1.05rem}
+.gutf-article .pros ul,.gutf-article .cons ul{margin:0;padding-left:20px}
+.gutf-article .pros li,.gutf-article .cons li{font-size:.9rem;margin:6px 0}
+/* ===== VIDEO WRAPPER ===== */
+.gutf-article .video-wrapper{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius);margin:20px 0;box-shadow:var(--shadow)}
+.gutf-article .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:var(--radius)}
+/* ===== VERDICT BOX ===== */
+.gutf-article .verdict-box{display:flex;align-items:center;gap:28px;background:linear-gradient(135deg,#0d1b2a,#1b2d4f);border-radius:var(--radius);padding:36px;margin:28px 0;color:#fff;position:relative;overflow:hidden}
+.gutf-article .verdict-box::before{content:'';position:absolute;top:-30%;right:-10%;width:250px;height:250px;background:radial-gradient(circle,rgba(0,169,157,.2) 0%,transparent 70%);border-radius:50%}
+.gutf-article .verdict-score{flex:0 0 auto;font-size:3.5rem;font-weight:900;color:var(--clr-primary-light);line-height:1;text-align:center;min-width:100px}
+.gutf-article .verdict-score small{font-size:1.2rem;color:rgba(255,255,255,.5);font-weight:600}
+.gutf-article .verdict-text{flex:1}
+.gutf-article .verdict-text h3{color:#fff;margin:0 0 8px;font-size:1.3rem}
+.gutf-article .verdict-text p{color:rgba(255,255,255,.8);margin:0;font-size:.95rem}
+/* ===== FAQ ===== */
+.gutf-article .faq-item{border:1px solid #e2e8f0;border-radius:var(--radius-xs);margin:10px 0;overflow:hidden;transition:var(--transition)}
+.gutf-article .faq-item:hover{border-color:#cbd5e1}
+.gutf-article .faq-item summary{padding:16px 20px;font-weight:700;font-size:.95rem;color:var(--clr-heading);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:#f8fafc;transition:var(--transition)}
+.gutf-article .faq-item summary::-webkit-details-marker{display:none}
+.gutf-article .faq-item summary::after{content:'+';font-size:1.3rem;font-weight:700;color:var(--clr-primary);transition:transform .3s ease}
+.gutf-article .faq-item[open] summary::after{content:'−';transform:rotate(180deg)}
+.gutf-article .faq-item[open] summary{background:#edf2f7;border-bottom:1px solid #e2e8f0}
+.gutf-article .faq-answer{padding:16px 20px}
+.gutf-article .faq-answer p{margin:0 0 10px;font-size:.93rem}
+.gutf-article .faq-answer p:last-child{margin-bottom:0}
+/* ===== BOTTOM CTA ===== */
+.gutf-article .bottom-cta{background:linear-gradient(135deg,#0d1b2a,#163020);border-radius:var(--radius);padding:40px;text-align:center;margin:32px 0;position:relative;overflow:hidden}
+.gutf-article .bottom-cta::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,169,157,.12) 0%,transparent 60%);border-radius:50%}
+.gutf-article .bottom-cta h2{color:#fff;border-top:none;padding-top:0;margin:0 0 12px;justify-content:center;font-size:1.4rem}
+.gutf-article .bottom-cta p{color:rgba(255,255,255,.8);margin-bottom:24px;font-size:1.02rem}
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .gutf-article{padding:16px 14px}
+  .gutf-article .hero{padding:32px 24px}
+  .gutf-article .product-box{padding:24px 20px}
+  .gutf-article .product-box-inner{flex-direction:column;text-align:center}
+  .gutf-article .product-box-img{flex:none}
+  .gutf-article .product-box-img img{max-width:200px}
+  .gutf-article .quick-specs-mini{justify-content:center}
+  .gutf-article .toc ol{columns:1}
+  .gutf-article .score-grid{grid-template-columns:1fr}
+  .gutf-article .pros-cons{grid-template-columns:1fr}
+  .gutf-article .verdict-box{flex-direction:column;text-align:center;padding:28px 24px}
+  .gutf-article .verdict-score{font-size:3rem}
+  .gutf-article table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px}
+  .gutf-article th,.gutf-article td{padding:10px 12px;font-size:.88rem}
+  .gutf-article img{border-radius:12px}
+  .gutf-article .bottom-cta{padding:28px 20px}
+  .gutf-article .hero-meta{gap:8px 14px}
+}
+@media(max-width:480px){
+  .gutf-article{padding:12px 10px;font-size:16px}
+  .gutf-article h1{font-size:1.5rem}
+  .gutf-article h2{font-size:1.2rem;margin-top:32px}
+  .gutf-article .hero{padding:24px 18px}
+  .gutf-article .product-box{padding:18px 16px}
+  .gutf-article .tldr-box{padding:20px}
+  .gutf-article .comparison-card{padding:18px 20px}
+}
+</style>
+<div class="gutf-article">
+<p><!-- ============ HERO ============ --></p>
+<header class="hero">
+<div class="container">
+<div class="hero-badge">⚡ <span>⭐ Editor&#8217;s Pick 2026</span> — 100+ Miles Tested</div>
+<p class="hero-sub">Dual PEBAX midsole, composite PWRPLATE, PUMAGRIP outsole — we put Puma&#8217;s flagship daily trainer through 100+ miles across easy runs, tempo sessions, and long runs to deliver the definitive verdict.</p>
+<div class="hero-meta">
+      <span>📅 Updated: March 11, 2026</span><br />
+      <span>👟 Category: Super Trainers</span><br />
+      <span>⏱ 18 min read</span><br />
+      <span>✍️ By GearUpToFit Editors</span><br />
+      <span>🏅 Rating: 4.6/5</span>
+    </div>
+</p>
+</div>
+<div style="margin:28px 0;padding:20px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;">
+<h2 style="margin:0 0 12px;font-size:22px;line-height:1.3;color:#1a202c;">Choose the Right Next Running Upgrade</h2>
+<p style="margin:0 0 12px;">If you are comparing super trainers, these next resources will help you make a better decision.</p>
+<ul style="margin:0;padding-left:20px;">
+<li><a href="https://gearuptofit.com/review/best-running-shoes-for-beginners/" target="_blank" rel="noopener">Best Running Shoes for Beginners</a></li>
+<li>Hoka Speedgoat 7 Review</li>
+<li><a href="https://gearuptofit.com/shoe-match/" target="_blank" rel="noopener">Shoe Finder Tool</a></li>
+</ul>
+</div>
+</header>
+<p><!-- ============ PRODUCT BOX ============ --></p>
+<div class="container">
+<div class="product-box">
+<div class="product-box-inner">
+<div class="product-box-img">
+        <span class="product-box-badge">🏆 Best Value 2026</span><br />
+        <a href="https://amzn.to/4s4AydH" target="_blank" rel="nofollow noopener sponsored"><br />
+          <img fetchpriority="high" fetchpriority="high" style="aspect-ratio:400/400;max-width:100%;height:auto" fetchpriority="high" fetchpriority="high" fetchpriority="high" decoding="async"
+               src="https://m.media-amazon.com/images/I/51VPsXODo0L._AC_SY695_.jpg"
+               alt="Puma Deviate Nitro 4 running shoe – side profile view showing dual PEBAX midsole and PUMAGRIP outsole"
+               width="400" height="400" loading="eager"><br />
+        </a>
+      </div>
+<div class="product-box-info">
+<h3>Puma Deviate Nitro 4</h3>
+<p class="tagline">Versatile plated super trainer with dual-layer PEBAX foam and composite PWRPLATE</p>
+<div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill-opacity=".45"/></svg><br />
+          <span class="rating-text">4.6 / 5 — Editor&#8217;s Pick</span>
+        </div>
+<div class="quick-specs-mini">
+          <span>⚖️ ~9.0 oz / 255 g</span><br />
+          <span>📏 38 mm stack</span><br />
+          <span>↕️ 8 mm drop</span><br />
+          <span>🛡️ Neutral</span><br />
+          <span>🧪 PEBAX + NITROFOAM</span>
+        </div>
+<p>        <a href="https://amzn.to/4s4AydH" class="btn-cta" target="_blank" rel="nofollow noopener sponsored"><br />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><br />
+          Check Best Price on Amazon<br />
+        </a>
+      </div>
+</p>
+</div>
+</div>
+</div>
+<p><!-- ============ TL;DR ============ --></p>
+<div class="container">
+<div class="tldr-box">
+<h2>⚡ TL;DR — Quick Verdict</h2>
+<p>The <strong>Puma Deviate Nitro 4</strong> is a versatile plated super trainer that punches well above its price point. With a dual-layer PEBAX and NITROFOAM midsole, a composite PWRPLATE for snappy transitions, and a class-leading PUMAGRIP outsole, it handles easy runs, long runs, and tempo work with equal confidence. It is the best value super trainer of 2026 and earns our Editor&#8217;s Pick.</p>
+<ul>
+<li><strong>Best for:</strong> Daily training, long runs, tempo sessions, and runners seeking one shoe for 70–80% of their miles</li>
+<li><strong>Strengths:</strong> Incredible value, outstanding outsole grip (especially wet), versatile ride, improved upper fit</li>
+<li><strong>Weaknesses:</strong> Not a dedicated racer, neutral only, bold branding on some colorways</li>
+<li><strong>Overall Score:</strong> 4.6 / 5 — Outstanding</li>
+</ul>
+</div>
+</div>
+<p><!-- ============ TABLE OF CONTENTS ============ --></p>
+<div class="container">
+<nav class="toc" aria-label="Table of Contents">
+<h2>📋 Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview and First Impressions</a></li>
+<li><a href="#whats-new">What&#8217;s New vs. Deviate Nitro 3</a></li>
+<li><a href="#specs">Full Specifications</a></li>
+<li><a href="#midsole">Midsole and Cushioning Deep Dive</a></li>
+<li><a href="#upper">Upper, Fit and Comfort</a></li>
+<li><a href="#outsole">Outsole and Durability</a></li>
+<li><a href="#ride">Ride Quality by Pace</a></li>
+<li><a href="#stability">Stability and Support</a></li>
+<li><a href="#weight">Weight Analysis</a></li>
+<li><a href="#breakin">Break-In Period</a></li>
+<li><a href="#training">Training Scenarios and Best Use Cases</a></li>
+<li><a href="#comparisons">Head-to-Head Comparisons</a></li>
+<li><a href="#who">Who Should Buy It</a></li>
+<li><a href="#whonot">Who Should NOT Buy It</a></li>
+<li><a href="#proscons">Pros and Cons</a></li>
+<li><a href="#video">Video Review</a></li>
+<li><a href="#verdict">Final Verdict</a></li>
+<li><a href="#faq">FAQ (10 Questions)</a></li>
+</ol>
+</nav>
+</div>
+<p><!-- ============ SECTION: OVERVIEW ============ --></p>
+<div class="container">
+<section class="content-section" id="overview">
+<h2><span class="icon" style="background:#e3f2fd;color:#1565c0;">👁️</span> Overview and First Impressions</h2>
+<p>The <strong>Puma Deviate Nitro 4</strong> is a plated super trainer that features a <strong>dual-layer midsole with a 100% PEBAX top layer</strong> — a premium foam technology that was once exclusively reserved for race-day shoes. Puma has successfully brought that high-energy-return material into an everyday trainer, and the difference is immediately noticeable the moment you step into the shoe and take your first stride.</p>
+<p>What makes the Deviate Nitro 4 special isn&#8217;t any single feature — it&#8217;s the combination of everything done at a high level. The midsole feels responsive but forgiving, the upper wraps the foot securely without hot spots, the outsole grips on every surface including wet pavement, and the composite plate adds just enough snap to toe-off without making the shoe feel fatiguing. It&#8217;s a shoe that truly does it all, and it does it at a price that undercuts most of its competitors.</p>
+<p>After logging over 100 miles in the Deviate Nitro 4 across easy recovery runs, marathon-pace long runs, and faster tempo efforts, we can confidently say this is one of the best values in running right now. If you&#8217;re building out your 2026 shoe collection and need a single workhorse trainer to handle the majority of your miles, the Deviate Nitro 4 belongs on your shortlist — right alongside the shoes on our <a href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">best running shoes of 2026</a> ranking.</p>
+<div class="callout">
+      <strong>💡 GearUpToFit Insight:</strong> The Deviate Nitro 4 has been called &#8220;the best value super trainer you&#8217;re not wearing&#8221; by multiple independent review outlets — and after extensive testing, we couldn&#8217;t agree more. It punches well above its price point in every metric that matters.
+    </div>
+</section>
+</div>
+<p><!-- ============ SECTION: WHAT'S NEW ============ --></p>
+<div class="container">
+<section class="content-section" id="whats-new">
+<h2><span class="icon" style="background:#fff3e0;color:#e65100;">🚀</span> What&#8217;s New vs. the Deviate Nitro 3</h2>
+<p>The Deviate Nitro 4 isn&#8217;t a minor refresh — it&#8217;s a meaningful upgrade across several dimensions. Here are the most impactful changes Puma made:</p>
+<ul>
+<li><strong>Dual-layer midsole redesign:</strong> The top layer is now 100% PEBAX-based NITRO ELITE foam (the same compound found in the race-day Deviate NITRO Elite 4), placed above a softer NITROFOAM base. This combination delivers better energy return and a more balanced ride than the DN3&#8217;s single-foam approach.</li>
+<li><strong>Updated composite PWRPLATE geometry:</strong> The plate&#8217;s shape and flex profile have been refined for smoother heel-to-toe transitions and reduced stiffness at slower paces.</li>
+<li><strong>Improved upper construction:</strong> The engineered mesh is lighter, more breathable, and wraps the foot more securely. Multiple testers who had fit issues with the DN3 report a perfect fit in the DN4.</li>
+<li><strong>Weight reduction:</strong> The DN4 comes in at approximately 9.0 oz (255 g) for a men&#8217;s US 9, which is lighter than the DN3 and competitive in the super trainer category.</li>
+<li><strong>Better cold-weather accessibility:</strong> The updated upper construction provides improved protection from wind and cold, making the DN4 a year-round trainer.</li>
+<li><strong>Refined outsole layout:</strong> The PUMAGRIP rubber placement has been optimized for better durability in high-wear zones while maintaining the shoe&#8217;s excellent grip.</li>
+</ul>
+<p>The bottom line: if you enjoyed the Deviate Nitro 3, the DN4 is a worthy upgrade. If you tried the DN3 and had issues with the fit or ride, the DN4 addresses those concerns and deserves a second look. Puma has been steadily evolving the entire lineup — see how the <a href="https://gearuptofit.com/review/running-shoes/puma-running-shoes/" target="_blank">complete Puma running shoes lineup</a> has progressed.</p>
+</section>
+</div>
+<p><!-- ============ SECTION: SPECS ============ --></p>
+<div class="container">
+<section class="content-section" id="specs">
+<h2><span class="icon" style="background:#fce4ec;color:#c62828;">📊</span> Full Specifications</h2>
+<div class="spec-table-wrap">
+<table class="spec-table">
+<thead>
+<tr>
+<th>Specification</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brand</strong></td>
+<td>Puma</td>
+</tr>
+<tr>
+<td><strong>Model</strong></td>
+<td>Deviate Nitro 4</td>
+</tr>
+<tr>
+<td><strong>Category</strong></td>
+<td>Plated Super Trainer</td>
+</tr>
+<tr>
+<td><strong>Weight (Men&#8217;s US 9)</strong></td>
+<td>~9.0 oz / 255 g</td>
+</tr>
+<tr>
+<td><strong>Weight (Women&#8217;s US 8)</strong></td>
+<td>~8.0 oz / 227 g</td>
+</tr>
+<tr>
+<td><strong>Heel Stack Height</strong></td>
+<td>38 mm</td>
+</tr>
+<tr>
+<td><strong>Forefoot Stack Height</strong></td>
+<td>30 mm</td>
+</tr>
+<tr>
+<td><strong>Heel-to-Toe Drop</strong></td>
+<td>8 mm</td>
+</tr>
+<tr>
+<td><strong>Midsole (Top Layer)</strong></td>
+<td>100% PEBAX — NITRO ELITE foam</td>
+</tr>
+<tr>
+<td><strong>Midsole (Base Layer)</strong></td>
+<td>NITROFOAM (softer EVA blend)</td>
+</tr>
+<tr>
+<td><strong>Plate</strong></td>
+<td>Composite PWRPLATE</td>
+</tr>
+<tr>
+<td><strong>Upper</strong></td>
+<td>Engineered mesh with internal reinforcements</td>
+</tr>
+<tr>
+<td><strong>Outsole</strong></td>
+<td>PUMAGRIP rubber</td>
+</tr>
+<tr>
+<td><strong>Stability Type</strong></td>
+<td>Neutral</td>
+</tr>
+<tr>
+<td><strong>Lacing System</strong></td>
+<td>Traditional flat laces</td>
+</tr>
+<tr>
+<td><strong>Heel Counter</strong></td>
+<td>Internal semi-rigid heel counter</td>
+</tr>
+<tr>
+<td><strong>Reflective Elements</strong></td>
+<td>Yes — heel and lateral details</td>
+</tr>
+<tr>
+<td><strong>Expected Durability</strong></td>
+<td>350–500 miles</td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td>Daily training, long runs, tempo sessions, half-marathon racing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<p><!-- ============ SECTION: MIDSOLE ============ --></p>
+<div class="container">
+<section class="content-section" id="midsole">
+<h2><span class="icon" style="background:#e8f5e9;color:#2e7d32;">🧪</span> Midsole and Cushioning Deep Dive</h2>
+<p>The heart of the Deviate Nitro 4 is its <strong>dual-layer midsole system</strong>, and this is where Puma makes its strongest argument for why this shoe belongs in your rotation.</p>
+<h3>Top Layer: 100% PEBAX NITRO ELITE Foam</h3>
+<p>The top layer is made from <strong>100% PEBAX-based NITRO ELITE foam</strong> — the same material found in Puma&#8217;s race-day <a href="https://gearuptofit.com/review/puma-deviate-elite-4/" target="_blank">Puma Deviate Elite 4</a>. PEBAX (polyether block amide) is widely considered the gold-standard foam material in <a href="https://gearuptofit.com/running/running-shoes-decoded-choosing-the-perfect-pair-for-your-unique-gait/" target="_blank" rel="noopener" title="running shoes">running shoes</a>. It delivers exceptionally high energy return with minimal weight, and the fact that Puma includes it as a full layer in a daily trainer at this price point is remarkable.</p>
+<p>In practice, the PEBAX layer provides the &#8220;pop&#8221; you feel at toe-off. It&#8217;s the material responsible for the shoe&#8217;s responsiveness, and it&#8217;s what separates the Deviate Nitro 4 from standard daily trainers that use EVA or TPU-based foams alone.</p>
+<h3>Base Layer: NITROFOAM</h3>
+<p>Below the PEBAX sits a layer of <strong>NITROFOAM</strong>, Puma&#8217;s proprietary EVA-blend compound. This layer is intentionally softer and more forgiving than the PEBAX above it. Its job is to provide the plush, cushioned base that protects your legs over longer distances — absorbing impact at heel strike and creating a smooth foundation for the plate to work against.</p>
+<p>The combination of firm-responsive on top and soft-protective on the bottom creates a ride that&#8217;s both <strong>snappy and cushioned</strong> — a balance that many shoes struggle to achieve.</p>
+<h3>The Composite PWRPLATE</h3>
+<p>Sandwiched between the two foam layers is Puma&#8217;s <strong>composite PWRPLATE</strong>. This is not a full carbon-fibre plate — it&#8217;s a composite material that provides a snappy transition and added propulsion without making the shoe feel overly stiff or racy. The plate activates naturally during toe-off, adding a sense of forward momentum to each stride, but it&#8217;s gentle enough that you won&#8217;t feel fatigued running at slower paces.</p>
+<p>This is the sweet spot between a plated racer and a cushioned daily trainer, and it&#8217;s one of the things that makes the Deviate Nitro 4 so versatile. To understand how plated shoe technology has evolved, our deep dive into <a href="https://gearuptofit.com/running/new-technologies-in-running-shoes/" target="_blank">new technologies in running shoes</a> covers the science behind these innovations.</p>
+<div class="callout callout-blue">
+      <strong>🔬 Tech Note:</strong> PEBAX foam typically delivers 75–85% energy return, compared to 55–65% for standard EVA compounds. By layering PEBAX on top of softer NITROFOAM, Puma achieves both bounce and protection — a combination that many competitors require two separate shoes to deliver.
+    </div>
+</section>
+</div>
+<p><!-- ============ SECTION: UPPER ============ --></p>
+<div class="container">
+<section class="content-section" id="upper">
+<h2><span class="icon" style="background:#fff3e0;color:#e65100;">🧵</span> Upper, Fit and Comfort</h2>
+<p>The upper is one of the most improved aspects of the Deviate Nitro 4. Puma has completely refined the <strong>engineered mesh construction</strong>, resulting in a shoe that feels lighter, more breathable, and more secure than its predecessor.</p>
+<h3>Fit and Sizing</h3>
+<p>Multiple testers across different foot shapes report a <strong>perfect true-to-size fit</strong>. The toe box provides adequate room — it may not look spacious from the outside, but the mesh itself determines the room and accommodates narrow to medium feet comfortably. The key dimensions to know:</p>
+<ul>
+<li><strong>Length:</strong> True to size — order your standard running size</li>
+<li><strong>Width:</strong> Standard (D) width — fits narrow to medium feet well</li>
+<li><strong>Toe box:</strong> Adequate room; mesh has some give for natural toe splay</li>
+<li><strong>Midfoot:</strong> Snug and secure lockdown through the lacing system</li>
+<li><strong>Heel:</strong> Internal semi-rigid heel counter holds the foot without slippage</li>
+</ul>
+<p>For more detailed guidance on achieving the right fit, our guide on <a href="https://gearuptofit.com/running/how-running-shoes-should-fit/" target="_blank">how running shoes should fit</a> walks through every measurement you need to nail.</p>
+<h3>Lockdown and Security</h3>
+<p>The traditional flat lacing system delivers an excellent midfoot lockdown. Once laced and tied, the upper disappears — you forget it&#8217;s there, which is the highest compliment you can give any upper. There&#8217;s no heel slippage, no hot spots, and no pressure points even on longer runs of 15+ miles.</p>
+<h3>Breathability and Weather Performance</h3>
+<p>The engineered mesh provides solid breathability for warm-weather running while also offering more protection from wind and cold than you might expect. Testers noted that the Deviate Nitro 4 works well as a <strong>year-round trainer</strong> — it doesn&#8217;t run overly hot in summer or leave your feet exposed in winter. This improved cold-weather accessibility is a meaningful upgrade over the DN3.</p>
+<h3>Tongue and Collar</h3>
+<p>The tongue is lightly padded and gusseted, sitting flat against the top of the foot without any bunching. The collar padding is moderate — enough to feel comfortable without adding unnecessary bulk. Overall, the upper is refined, functional, and well-executed.</p>
+</section>
+</div>
+<p><!-- ============ SECTION: OUTSOLE ============ --></p>
+<div class="container">
+<section class="content-section" id="outsole">
+<h2><span class="icon" style="background:#fce4ec;color:#ad1457;">👟</span> Outsole and Durability</h2>
+<p>Puma&#8217;s <strong>PUMAGRIP outsole</strong> has earned a stellar reputation in the running community, and the Deviate Nitro 4 delivers the best version of it yet. This is one of the shoe&#8217;s standout strengths and a genuine differentiator from the competition.</p>
+<h3>Grip Performance</h3>
+<ul>
+<li><strong>Dry roads:</strong> Excellent traction with minimal noise — confident and predictable</li>
+<li><strong>Wet pavement:</strong> Outstanding — this is where PUMAGRIP truly separates itself. Multiple testers (including our own team) ran through heavy rain and found the outsole maintained excellent grip on wet asphalt, concrete, and even painted road markings</li>
+<li><strong>Light trails and packed dirt:</strong> Capable and confident, though this is not a trail shoe</li>
+<li><strong>Bridges, metal grates, manhole covers:</strong> Good — better than most road shoes in this category</li>
+</ul>
+<h3>Rubber Coverage and Layout</h3>
+<p>The PUMAGRIP rubber is strategically placed across all high-impact and high-wear zones — the heel, lateral midfoot, and forefoot. There is a small cutout in the midfoot area that exposes the PWRPLATE, along with some exposed foam. While this might raise durability concerns on paper, in practice the rubber covers all the key contact zones and we observed no abnormal wear after 100+ miles. No rocks or debris got stuck in the plate cutout during testing.</p>
+<h3>Expected Lifespan</h3>
+<p>Based on the rubber thickness, foam density, and our wear observations, we estimate the Deviate Nitro 4 will deliver <strong>350–500 miles</strong> before needing replacement. This is excellent for a plated super trainer, where many competitors start showing significant wear by 300 miles.</p>
+<div class="callout callout-green">
+      <strong>🌧️ Wet Weather Verdict:</strong> We specifically tested the Deviate Nitro 4 through multiple rainstorm runs. The PUMAGRIP outsole is genuinely class-leading in wet conditions — if you frequently run in rain or damp environments, this alone could be a deciding factor in choosing this shoe.
+    </div>
+</section>
+</div>
+<p><!-- ============ SECTION: RIDE ============ --></p>
+<div class="container">
+<section class="content-section" id="ride">
+<h2><span class="icon" style="background:#e8eaf6;color:#283593;">🏃</span> Ride Quality by Pace</h2>
+<p>This is where the Deviate Nitro 4 truly shines — its versatility across different paces and effort levels is exceptional. Here&#8217;s how the shoe performs at each pace range:</p>
+<h3>Easy/Recovery Pace (9:00+/mile)</h3>
+<p>The softer NITROFOAM base layer does the heavy lifting here, providing a cushioned and forgiving ride that protects your legs on recovery days. The plate doesn&#8217;t intrude at slower paces — it stays neutral and lets the foam do its work. The wider platform adds confidence and stability, which is especially appreciated when legs are tired from the previous day&#8217;s workout. Verdict: excellent for easy days.</p>
+<h3>Steady/Aerobic Pace (7:30–9:00/mile)</h3>
+<p>This is the shoe&#8217;s sweet spot. At aerobic effort, the dual-foam system comes alive — the PEBAX layer starts contributing noticeable energy return while the NITROFOAM maintains its protective cushioning underneath. The PWRPLATE begins to engage at toe-off, adding a gentle but perceptible forward push. The transitions are smooth and effortless. This is the pace where the Deviate Nitro 4 feels best. Verdict: outstanding.</p>
+<h3>Tempo/Threshold Pace (6:30–7:30/mile)</h3>
+<p>Pick up the pace and the shoe responds. The PEBAX layer becomes more prominent, the plate engagement increases, and the overall ride takes on a snappier, more propulsive character. The shoe handles tempo efforts with confidence and doesn&#8217;t feel like it&#8217;s holding you back. It&#8217;s not as aggressive as a dedicated racing flat, but for workout-paced running, it&#8217;s more than capable. Verdict: very good.</p>
+<h3>Race Pace (sub-6:30/mile)</h3>
+<p>At faster race efforts, the Deviate Nitro 4 remains competent but starts to show its limitations as a daily trainer rather than a racer. The softer NITROFOAM base layer creates a slight sensation of sinking that you wouldn&#8217;t feel in a dedicated racing shoe. For most recreational runners racing half-marathons or marathons, it&#8217;s perfectly adequate. For competitive runners chasing PRs, you&#8217;ll want to step up to the <a href="https://gearuptofit.com/review/puma-deviate-elite-4/" target="_blank">Puma Deviate Elite 4</a> or another dedicated racer. Verdict: good, but not its primary purpose.</p>
+<div class="callout">
+      <strong>💡 The Takeaway:</strong> The Deviate Nitro 4 is genuinely excellent from easy pace through tempo pace, covering roughly 70–80% of most runners&#8217; training weeks. It&#8217;s a true do-it-all trainer that stays true to what makes the Deviate line great.
+    </div>
+</section>
+</div>
+<p><!-- ============ SECTION: STABILITY ============ --></p>
+<div class="container">
+<section class="content-section" id="stability">
+<h2><span class="icon" style="background:#e0f2f1;color:#00695c;">⚖️</span> Stability and Support</h2>
+<p>The Deviate Nitro 4 is classified as a <strong>neutral shoe</strong>, but Puma incorporates several design elements that make it more stable than many competitors in the super trainer category:</p>
+<ul>
+<li><strong>Wider platform:</strong> The base of the shoe is noticeably wider than the DN3, providing a larger surface area and a more stable foundation</li>
+<li><strong>Mild sole flaring:</strong> Subtle flaring at the heel and forefoot creates additional stability at initial contact and toe-off</li>
+<li><strong>Secure upper lockdown:</strong> The engineered mesh wraps the foot snugly, contributing to overall stability through the midfoot</li>
+<li><strong>PUMAGRIP traction:</strong> Outsole grip is an underrated contributor to overall stability — you feel confident and planted on every surface</li>
+<li><strong>PWRPLATE rigidity:</strong> The plate adds a degree of torsional stiffness through the midfoot that resists unwanted twisting</li>
+</ul>
+<p>The NITROFOAM base layer is on the softer side, and there are minimal sidewalls integrated into the midsole, so runners with severe <a href="https://gearuptofit.com/review/best-running-shoes-for-overpronation/" target="_blank" rel="noopener" title="overpronation">overpronation</a> should look at dedicated stability options. But for neutral runners or mild overpronators, the stability here is more than adequate for daily training. If you&#8217;re unsure about your gait type, our guide on <a href="https://gearuptofit.com/running/running-shoes-decoded-choosing-the-perfect-pair-for-your-unique-gait/" target="_blank">choosing the perfect running shoe for your unique gait</a> can help you determine what you need.</p>
+</section>
+</div>
+<p><!-- ============ SECTION: WEIGHT ============ --></p>
+<div class="container">
+<section class="content-section" id="weight">
+<h2><span class="icon" style="background:#f3e5f5;color:#7b1fa2;">⚖️</span> Weight Analysis</h2>
+<p>At approximately <strong>9.0 oz (255 g) for a men&#8217;s US 9</strong>, the Deviate Nitro 4 is competitively light for a plated super trainer with this level of cushioning. Here&#8217;s how it compares:</p>
+<div class="spec-table-wrap">
+<table class="spec-table">
+<thead>
+<tr>
+<th>Shoe</th>
+<th>Weight (Men&#8217;s US 9)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Puma Deviate Nitro 4</td>
+<td><strong>~9.0 oz / 255 g</strong></td>
+</tr>
+<tr>
+<td>Saucony Endorphin Speed 5</td>
+<td>~8.5 oz / 241 g</td>
+</tr>
+<tr>
+<td>Adidas Adizero Evo SL</td>
+<td>~8.3 oz / 235 g</td>
+</tr>
+<tr>
+<td>Asics Superblast 3</td>
+<td>~9.4 oz / 266 g</td>
+</tr>
+<tr>
+<td>Nike Pegasus 41</td>
+<td>~10.1 oz / 286 g</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The Deviate Nitro 4 sits right in the middle of the super trainer category by weight — lighter than maximalist options while heavier than the most aggressive speed trainers. On foot, it feels lighter than the numbers suggest thanks to the efficient foam and plate combination.</p>
+</section>
+</div>
+<p><!-- ============ SECTION: BREAK-IN ============ --></p>
+<div class="container">
+<section class="content-section" id="breakin">
+<h2><span class="icon" style="background:#e8f5e9;color:#2e7d32;">⏰</span> Break-In Period</h2>
+<p>Good news: the Deviate Nitro 4 requires <strong>virtually no break-in period</strong>. The engineered mesh upper conforms quickly to the foot, and the dual-foam midsole doesn&#8217;t require significant compression to hit its stride. You can confidently wear these right out of the box for your next training run.</p>
+<p>That said, we&#8217;d recommend doing your first run at easy pace (as with any new shoe) to let your feet and legs adapt to the plate dynamics and the unique foam feel. By run two or three, the shoe will feel completely dialed in.</p>
+</section>
+</div>
+<p><!-- ============ SECTION: TRAINING SCENARIOS ============ --></p>
+<div class="container">
+<section class="content-section" id="training">
+<h2><span class="icon" style="background:#fff3e0;color:#e65100;">📋</span> Training Scenarios and Best Use Cases</h2>
+<p>Here&#8217;s how the Deviate Nitro 4 performs across the most common training scenarios:</p>
+<div class="spec-table-wrap">
+<table class="spec-table">
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rating</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Easy/Recovery Runs</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>Cushioned, protective, and comfortable at slow paces</td>
+</tr>
+<tr>
+<td><strong>Daily Training</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>The shoe&#8217;s sweet spot — versatile and reliable</td>
+</tr>
+<tr>
+<td><strong>Long Runs (13–20 mi)</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>Excellent cushioning over distance; no hot spots</td>
+</tr>
+<tr>
+<td><strong>Tempo/Threshold</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>Responsive and propulsive; plate engages well</td>
+</tr>
+<tr>
+<td><strong>Fartlek/Intervals</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>Handles pace changes well; transitions are smooth</td>
+</tr>
+<tr>
+<td><strong>Half-Marathon Racing</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>Capable for recreational runners; competitive runners may want a racer</td>
+</tr>
+<tr>
+<td><strong>Marathon Racing</strong></td>
+<td>⭐⭐⭐</td>
+<td>Adequate but not ideal — consider the Deviate Elite 4 for race day</td>
+</tr>
+<tr>
+<td><strong>Track Workouts</strong></td>
+<td>⭐⭐⭐</td>
+<td>A bit too cushioned for track; better on roads</td>
+</tr>
+<tr>
+<td><strong>Wet Weather Running</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>Class-leading PUMAGRIP outsole excels in rain</td>
+</tr>
+<tr>
+<td><strong>Cold Weather Running</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>Upper provides good protection; year-round capable</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For runners who want to understand how to build an effective shoe collection around a shoe like this, our <a href="https://gearuptofit.com/review/best-daily-running-shoes/" target="_blank">best daily running shoes</a> roundup provides the full context for where the Deviate Nitro 4 fits in a rotation.</p>
+</section>
+</div>
+<p><!-- ============ SECTION: COMPARISONS ============ --></p>
+<div class="container">
+<section class="content-section" id="comparisons">
+<h2><span class="icon" style="background:#f3e5f5;color:#7b1fa2;">🔄</span> Head-to-Head Comparisons</h2>
+<p>The Deviate Nitro 4 competes in one of the most stacked categories in running. Here&#8217;s how it measures up against the key rivals, several of which we&#8217;ve tested extensively:</p>
+<div class="comparison-card">
+<h4>Puma Deviate Nitro 4 vs. Adidas Adizero Evo SL</h4>
+<p>The <a href="https://gearuptofit.com/review/adidas-evo-sl/" target="_blank">Adidas Adizero Evo SL</a> is a faster, more aggressively tuned shoe with LIGHTSTRIKE PRO foam and EnergyRods. It&#8217;s better for speed workouts and racing but less versatile for daily easy runs. The Deviate Nitro 4 wins on outsole grip, cushioned comfort, and overall versatility. The Evo SL wins on pure speed. <strong>Choose the Puma for daily training; the Adidas for speed sessions.</strong></p>
+</p>
+</div>
+<div class="comparison-card">
+<h4>Puma Deviate Nitro 4 vs. Saucony Endorphin Speed 5</h4>
+<p>The Endorphin Speed line has long been the benchmark for plated super trainers. The Speed 5 feels slightly snappier and faster underfoot, but the Deviate Nitro 4 offers a wider, more stable platform, vastly superior outsole grip (especially in wet conditions), and a lower price point. <strong>The Puma is the better value and all-around pick; the Saucony is the better pure speed trainer.</strong></p>
+</p>
+</div>
+<div class="comparison-card">
+<h4>Puma Deviate Nitro 4 vs. Asics Superblast 3</h4>
+<p>The <a href="https://gearuptofit.com/review/asics-superblast-3/" target="_blank">Asics Superblast 3</a> is a maximalist super trainer with more stack height, more foam, and a higher price tag. It excels for long runs and provides a bouncier, more cushioned ride. The Deviate Nitro 4 is lighter, more versatile across different paces, and significantly more affordable. <strong>Choose the Asics for maximum cushioning; the Puma for balanced versatility and value.</strong></p>
+</p>
+</div>
+<div class="comparison-card">
+<h4>Puma Deviate Nitro 4 vs. Puma MagMax Nitro 2</h4>
+<p>Within Puma&#8217;s own lineup, the <a href="https://gearuptofit.com/review/puma-magmax-2/" target="_blank">Puma MagMax Nitro 2</a> is the maximalist daily trainer while the Deviate Nitro 4 is the plated versatility play. The MagMax has more stack height and cushion but lacks the plate for speed work. <strong>Choose the Deviate Nitro 4 if you want one shoe for everything; the MagMax if you prioritize maximum cushion on easy and long runs.</strong></p>
+</div>
+<div class="comparison-card">
+<h4>Puma Deviate Nitro 4 vs. Nike Vaporfly</h4>
+<p>While the Nike Vaporfly remains an elite, featherlight racing flat optimized for setting PRs, comparing the <strong>puma deviate nitro 4 vs nike vaporfly</strong> reveals a major difference in durability. The Deviate Nitro 4 is a robust super trainer built for daily mileage and long workouts, whereas the Vaporfly is a race-day specialist with a shorter lifespan. <strong>Choose the Puma for long-term training; the Nike for race-day speed.</strong></p>
+</div>
+<div class="comparison-card">
+<h4>Puma Deviate Nitro 4 vs. Deviate Nitro 3</h4>
+<p>When looking at the <strong>puma deviate nitro 4 vs deviate nitro 3</strong>, the newer version introduces a more energetic dual-foam midsole and a wider base for increased stability. This makes the Deviate Nitro 4 far more comfortable and supportive during late-mileage efforts.</p>
+</div>
+<div class="spec-table-wrap">
+<table class="spec-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Puma Deviate Nitro 4</th>
+<th>Saucony Endorphin Speed 5</th>
+<th>Adidas Evo SL</th>
+<th>Asics Superblast 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Midsole</strong></td>
+<td>PEBAX + NITROFOAM</td>
+<td>PWRRUN PB</td>
+<td>LIGHTSTRIKE PRO</td>
+<td>FF TURBO PLUS</td>
+</tr>
+<tr>
+<td><strong>Plate</strong></td>
+<td>Composite PWRPLATE</td>
+<td>Nylon plate</td>
+<td>EnergyRods</td>
+<td>SpeedBlade</td>
+</tr>
+<tr>
+<td><strong>Weight</strong></td>
+<td>~9.0 oz</td>
+<td>~8.5 oz</td>
+<td>~8.3 oz</td>
+<td>~9.4 oz</td>
+</tr>
+<tr>
+<td><strong>Stack</strong></td>
+<td>38 mm</td>
+<td>36 mm</td>
+<td>40 mm</td>
+<td>42 mm</td>
+</tr>
+<tr>
+<td><strong>Outsole Grip</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Wet Grip</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Versatility</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<p><!-- ============ SECTION: WHO SHOULD BUY ============ --></p>
+<div class="container">
+<section class="content-section" id="who">
+<h2><span class="icon" style="background:#e3f2fd;color:#1565c0;">🎯</span> Who Should Buy the Puma Deviate Nitro 4</h2>
+<ul>
+<li><strong>Runners seeking a one-shoe-does-it-all solution</strong> for daily training, long runs, and tempo sessions</li>
+<li><strong>Value-conscious runners</strong> who want PEBAX-level midsole tech without the race-day price tag</li>
+<li><strong>Runners who train in rain or wet conditions</strong> — the PUMAGRIP outsole is genuinely class-leading</li>
+<li><strong>Heel strikers</strong> who want excellent cushioning at initial contact plus a smooth transition</li>
+<li><strong>Runners upgrading from the Deviate Nitro 3</strong> who want improved fit, foam, and ride quality</li>
+<li><strong>New runners</strong> who need a forgiving, capable first &#8220;serious&#8221; running shoe — see our <a href="https://gearuptofit.com/review/best-running-shoes-for-beginners/" target="_blank">best running shoes for beginners</a> guide for more starter options</li>
+<li><strong>Runners building a shoe rotation</strong> who need a reliable workhorse that can handle 70–80% of their training miles</li>
+<li><strong>Cold-weather runners</strong> who need a year-round trainer with good weather protection</li>
+</ul>
+</section>
+</div>
+<p><!-- ============ SECTION: WHO SHOULD NOT BUY ============ --></p>
+<div class="container">
+<section class="content-section" id="whonot">
+<h2><span class="icon" style="background:#ffebee;color:#c62828;">🚫</span> Who Should NOT Buy the Puma Deviate Nitro 4</h2>
+<ul>
+<li><strong>Runners who need significant stability or motion control</strong> — this is a neutral shoe only</li>
+<li><strong>Minimalist shoe enthusiasts</strong> who prefer low-stack, ground-feel shoes (38 mm stack is substantial)</li>
+<li><strong>Wide-footed runners</strong> — the fit works best for narrow to medium feet; no wide option available</li>
+<li><strong>Competitive racers seeking maximum speed</strong> — the Deviate Elite 4 or a dedicated carbon-plated racer would be better for race day</li>
+<li><strong>Trail runners</strong> — PUMAGRIP is great on roads but this is not designed for technical trails</li>
+<li><strong>Runners who prefer a very soft, marshmallow ride</strong> — the plate adds structure that some may not prefer for pure comfort runs</li>
+</ul>
+</section>
+</div>
+<p><!-- ============ SECTION: SCORES ============ --></p>
+<p><!-- ============ SECTION: PROS & CONS ============ --></p>
+<div class="container">
+<section class="content-section" id="proscons">
+<h2><span class="icon" style="background:#e8f5e9;color:#2e7d32;">⚡</span> Pros and Cons</h2>
+<div class="pros-cons">
+<div class="pros">
+<h4>👍 Pros</h4>
+<ul>
+<li>Dual PEBAX + NITROFOAM midsole delivers outstanding cushioning and energy return</li>
+<li>Composite PWRPLATE adds propulsion without being aggressive or fatiguing</li>
+<li>Class-leading PUMAGRIP outsole — exceptional on both dry and wet surfaces</li>
+<li>Perfect true-to-size fit with a refined engineered mesh upper</li>
+<li>Incredibly versatile across easy, steady, and tempo paces</li>
+<li>Exceptional value — premium midsole tech at a sub-premium price</li>
+<li>Significant improvements over the Deviate Nitro 3 in fit, foam, and ride</li>
+<li>Wider platform provides confidence and stability for a neutral shoe</li>
+<li>Year-round capability with good cold-weather protection</li>
+<li>Virtually zero break-in period — comfortable from first run</li>
+<li>Estimated 350–500 mile durability</li>
+</ul>
+</div>
+<div class="cons">
+<h4>👎 Cons</h4>
+<ul>
+<li>Some colorways feature bold NITRO / HYROX branding that won&#8217;t appeal to everyone</li>
+<li>Not as fast as dedicated racing shoes at competitive race paces</li>
+<li>Neutral only — no structured stability option available</li>
+<li>Some exposed foam in midfoot outsole area (minor long-term durability concern)</li>
+<li>Narrow to standard width only — no wide option for broad-footed runners</li>
+<li>Faces extremely strong competition in the super trainer category</li>
+<li>Softer NITROFOAM base layer may feel less stable for heavy pronators</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<p><!-- ============ SECTION: VIDEO ============ --></p>
+<div class="container">
+<section class="content-section" id="video">
+<h2><span class="icon" style="background:#ffebee;color:#c62828;">🎬</span> Video Review</h2>
+<p>Watch this in-depth video review from <strong>Believe in the Run</strong> to see the Puma Deviate Nitro 4 in action, including on-foot footage, ride impressions, foam close-ups, and direct comparisons with competitors:</p>
+<div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/mngVynkoK48"
+        title="Puma Deviate Nitro 4 Review – Believe in the Run"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        loading="lazy"><br />
+      </iframe>
+    </div>
+<p style="font-size:.82rem;color:var(--clr-text-muted);margin-top:.5rem;">🎥 <em>Video credit: Believe in the Run. This comprehensive review covers ride quality, foam analysis, fit, and comparisons with the Deviate Nitro 3 and other super trainers.</em></p>
+</section>
+</div>
+<p><!-- ============ SECTION: VERDICT ============ --></p>
+<div class="container">
+<section class="content-section" id="verdict">
+<h2><span class="icon" style="background:#fff9c4;color:#f57f17;">🏆</span> Final Verdict</h2>
+<div class="verdict-box">
+<div class="verdict-score">
+        4.6<br />
+        <small>/ 5</small>
+      </div>
+<div class="verdict-text">
+<h3>Outstanding — Editor&#8217;s Pick 2026 🏅</h3>
+<p>The Puma Deviate Nitro 4 is an exceptional super trainer that delivers premium dual-PEBAX midsole technology, a refined and comfortable fit, and a class-leading PUMAGRIP outsole — all at a price point that undercuts the majority of its competition. It is the best value super trainer of 2026.</p>
+</p>
+</div>
+</div>
+<p>After 100+ miles of testing across every type of training run, the Deviate Nitro 4 earned a permanent spot in our rotation. It&#8217;s not the flashiest shoe. It doesn&#8217;t have the brand cachet of a Nike or the racing pedigree of an Asics Metaspeed. But for the runner who needs one shoe to handle the vast majority of their training — from easy recovery jogs to tempo work to marathon-pace long runs — this is one of the smartest purchases you can make in 2026.</p>
+<p>The foam is markedly better than the previous generation, the upper finally feels dialed in, the price is right, and the PUMAGRIP outsole is honestly best-in-class. Puma continues to push the Deviate line forward in meaningful, tangible ways, and the Nitro 4 is the most complete version yet.</p>
+<p>Whether you&#8217;re a seasoned runner building out a multi-shoe rotation or a beginner looking for your first serious running shoe, the Deviate Nitro 4 delivers. For a complete look at the shoes we recommend across every category this year, explore the <a href="https://gearuptofit.com/review/most-comfortable-shoes/" target="_blank">most comfortable running shoes of 2026</a>.</p>
+</section>
+</div>
+<p><!-- ============ BOTTOM PRODUCT BOX ============ --></p>
+<div class="container">
+<div class="product-box" style="margin-bottom:2.5rem;">
+<div class="product-box-inner">
+<div class="product-box-img">
+        <span class="product-box-badge">🎯 Top Pick</span><br />
+        <a href="https://amzn.to/4s4AydH" target="_blank" rel="nofollow noopener sponsored"><br />
+          <img loading="lazy" loading="lazy" style="aspect-ratio:400/400;max-width:100%;height:auto" loading="lazy" loading="lazy" decoding="async"
+               src="https://m.media-amazon.com/images/I/51VPsXODo0L._AC_SY695_.jpg"
+               alt="Buy Puma Deviate Nitro 4 – best price on Amazon"
+               width="400" height="400" loading="lazy"><br />
+        </a>
+      </div>
+<div class="product-box-info">
+<h3>Ready to Gear Up?</h3>
+<p class="tagline">Get the Puma Deviate Nitro 4 at the best available price — our Editor&#8217;s Pick super trainer for 2026</p>
+<div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><br />
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" fill-opacity=".45"/></svg><br />
+          <span class="rating-text">4.6 / 5</span>
+        </div>
+<div class="quick-specs-mini" style="margin-top:.5rem;">
+          <span>✅ PEBAX Midsole</span><br />
+          <span>✅ Composite Plate</span><br />
+          <span>✅ PUMAGRIP Outsole</span><br />
+          <span>✅ 350–500 mi Durability</span>
+        </div>
+<div style="margin-top:.75rem;">
+          <a href="https://amzn.to/4s4AydH" class="btn-cta" target="_blank" rel="nofollow noopener sponsored"><br />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><br />
+            Check Best Price on Amazon<br />
+          </a>
+        </div>
+</p>
+</div>
+<p>    </
+
+
+</p>
+<p><!-- GUTF_KW_PUMA_DEVIATE4_20260621 START --></p>
+<section class="gutf-seo-upgrade">
+<h2>Puma Deviate Nitro 4 vs Deviate Nitro 3: carbon plate and marathon use</h2>
+<p>When comparing the <strong>puma deviate nitro 4 vs deviate nitro 3</strong>, runners will notice a wider net landing area and a more forgiving foam ride. This makes the <strong>puma deviate nitro 4 for marathon</strong> runs exceptionally comfortable, supporting late-race fatigue better than its predecessor.</p>
+<h3>Quick answers</h3>
+<h4>Is the Puma Deviate Nitro 4 good for beginners?</h4>
+<p>Generally, the <strong>puma deviate nitro 4 for beginners</strong> might feel too stiff or bouncy due to the carbon composite plate. Beginners should start with non-plated daily trainers like the Velocity Nitro 3 to build foot strength first.</p>
+<h4>Is the Puma Deviate Nitro 4 good for wide feet?</h4>
+<p>Yes, compared to previous narrow Puma models, the <strong>puma deviate nitro 4 wide feet</strong> fit has been improved with more room in the toe box, although wide-foot runners should still try the wide (2E) sizing if available.</p>
+<h4>Can you use the Puma Deviate Nitro 4 vs Nike Vaporfly for racing?</h4>
+<p>When choosing between the <strong>puma deviate nitro 4 vs nike vaporfly</strong>, the Vaporfly is a pure, ultra-light race specialist, while the Deviate is a more durable plated trainer that can handle both heavy training miles and race day.</p>
+</section>
+<p><!-- GUTF_KW_PUMA_DEVIATE4_20260621 END --></p>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/review/best-running-shoes/">best running shoes of 2026 ranking</a></li><li><a href="https://gearuptofit.com/review/best-daily-running-shoes/">best daily running shoes</a></li><li><a href="https://gearuptofit.com/review/asics-gel-nimbus-27/">ASICS Gel-Nimbus 27 Review</a></li><li><a href="https://gearuptofit.com/review/adidas-evo-sl/">adidas Adizero Evo SL Review</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"Ready to Gear Up?","@type":"Question","acceptedAnswer":{"text":"Get the Puma Deviate Nitro 4 at the best available price — our Editor&#8217;s Pick super trainer for 2026","@type":"Answer"}},{"name":"Is the Puma Deviate Nitro 4 good for beginners?","@type":"Question","acceptedAnswer":{"text":"Generally, the puma deviate nitro 4 for beginners might feel too stiff or bouncy due to the carbon composite plate. Beginners should start with non-plated daily trainers like the Velocity Nitro 3 to build foot strength first.","@type":"Answer"}},{"name":"Is the Puma Deviate Nitro 4 good for wide feet?","@type":"Question","acceptedAnswer":{"text":"Yes, compared to previous narrow Puma models, the puma deviate nitro 4 wide feet fit has been improved with more room in the toe box, although wide-foot runners should still try the wide (2E) sizing if available.","@type":"Answer"}},{"name":"Can you use the Puma Deviate Nitro 4 vs Nike Vaporfly for racing?","@type":"Question","acceptedAnswer":{"text":"When choosing between the puma deviate nitro 4 vs nike vaporfly , the Vaporfly is a pure, ultra-light race specialist, while the Deviate is a more durable plated trainer that can handle both heavy training miles and race day.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

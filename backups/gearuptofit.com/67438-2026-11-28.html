@@ -1,0 +1,885 @@
+
+<style>
+  .gutf-article {
+    --gutf-green: #16784a;
+    --gutf-dark: #14231b;
+    --gutf-soft: #f3faf6;
+    --gutf-border: #d8eadf;
+    --gutf-yellow: #fff8df;
+    --gutf-text: #26332c;
+    --gutf-muted: #5f6f65;
+    max-width: 980px;
+    margin: 0 auto;
+    color: var(--gutf-text);
+    font-family: inherit;
+    line-height: 1.72;
+    font-size: 18px;
+  }
+
+  .gutf-article * {
+    box-sizing: border-box;
+  }
+
+  .gutf-article h1,
+  .gutf-article h2,
+  .gutf-article h3,
+  .gutf-article h4 {
+    color: var(--gutf-dark);
+    line-height: 1.18;
+    margin: 1.8em 0 .65em;
+  }
+
+  .gutf-article h1 {
+    font-size: clamp(2rem, 5vw, 3.35rem);
+    letter-spacing: -0.04em;
+    margin-top: .4em;
+  }
+
+  .gutf-article h2 {
+    font-size: clamp(1.55rem, 3.2vw, 2.25rem);
+    border-left: 5px solid var(--gutf-green);
+    padding-left: .7rem;
+  }
+
+  .gutf-article h3 {
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  }
+
+  .gutf-article p {
+    margin: 0 0 1.1em;
+  }
+
+  .gutf-article a {
+    color: #0f6f42;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 650;
+  }
+
+  .gutf-hero {
+    background: linear-gradient(135deg, #edf8f1 0%, #ffffff 56%, #fff6d7 100%);
+    border: 1px solid var(--gutf-border);
+    border-radius: 24px;
+    padding: clamp(1.25rem, 4vw, 2.6rem);
+    margin: 1.2rem 0 2rem;
+    box-shadow: 0 16px 40px rgba(20, 35, 27, .07);
+  }
+
+  .gutf-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: #e3f5ea;
+    color: #0f5f39;
+    border: 1px solid #c6ead4;
+    border-radius: 999px;
+    padding: .35rem .75rem;
+    font-size: .88rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+
+  .gutf-subtitle {
+    font-size: clamp(1.05rem, 2vw, 1.28rem);
+    color: var(--gutf-muted);
+    max-width: 760px;
+  }
+
+  .gutf-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: 1rem;
+    font-size: .94rem;
+    color: var(--gutf-muted);
+  }
+
+  .gutf-meta span {
+    background: rgba(255,255,255,.7);
+    border: 1px solid var(--gutf-border);
+    border-radius: 999px;
+    padding: .35rem .7rem;
+  }
+
+  .gutf-card,
+  .gutf-note,
+  .gutf-warning,
+  .gutf-toc,
+  .gutf-faq,
+  .gutf-video,
+  .gutf-shopping {
+    border: 1px solid var(--gutf-border);
+    border-radius: 18px;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    margin: 1.4rem 0;
+    background: #fff;
+    box-shadow: 0 8px 26px rgba(20, 35, 27, .045);
+  }
+
+  .gutf-note {
+    background: var(--gutf-soft);
+  }
+
+  .gutf-warning {
+    background: var(--gutf-yellow);
+    border-color: #f2dda0;
+  }
+
+  .gutf-toc {
+    background: #fbfffc;
+  }
+
+  .gutf-toc ul {
+    columns: 2;
+    column-gap: 2rem;
+    padding-left: 1.15rem;
+    margin: .5rem 0 0;
+  }
+
+  .gutf-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+
+  .gutf-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+
+  .gutf-pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+    padding: 0;
+    margin: 1rem 0;
+    list-style: none;
+  }
+
+  .gutf-pill-list li {
+    background: #eef8f2;
+    border: 1px solid #d3eadb;
+    color: #164b32;
+    border-radius: 999px;
+    padding: .45rem .75rem;
+    font-weight: 700;
+    font-size: .95rem;
+  }
+
+  .gutf-meal-day {
+    border: 1px solid var(--gutf-border);
+    border-radius: 18px;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: #fff;
+  }
+
+  .gutf-meal-day h3 {
+    margin-top: 0;
+  }
+
+  .gutf-meal {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: .8rem;
+    padding: .85rem 0;
+    border-top: 1px solid #eef4ef;
+  }
+
+  .gutf-meal:first-of-type {
+    border-top: none;
+  }
+
+  .gutf-meal strong {
+    color: var(--gutf-dark);
+  }
+
+  .gutf-tag {
+    display: inline-block;
+    background: #ecf7ef;
+    border: 1px solid #cae6d4;
+    color: #145d39;
+    font-size: .8rem;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: .2rem .5rem;
+    margin-right: .35rem;
+  }
+
+  .gutf-table-wrap {
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    border: 1px solid var(--gutf-border);
+    border-radius: 16px;
+  }
+
+  .gutf-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    background: #fff;
+  }
+
+  .gutf-table th,
+  .gutf-table td {
+    text-align: left;
+    padding: .85rem;
+    border-bottom: 1px solid #edf3ef;
+    vertical-align: top;
+  }
+
+  .gutf-table th {
+    background: #edf8f1;
+    color: #163d2a;
+    font-weight: 850;
+  }
+
+  .gutf-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .gutf-figure {
+    margin: 1.6rem 0;
+  }
+
+  .gutf-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    display: block;
+    box-shadow: 0 12px 30px rgba(20, 35, 27, .08);
+  }
+
+  .gutf-figure figcaption {
+    font-size: .9rem;
+    color: var(--gutf-muted);
+    margin-top: .55rem;
+    text-align: center;
+  }
+
+  .gutf-video iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 16px;
+  }
+
+  .gutf-checklist li,
+  .gutf-article ul li,
+  .gutf-article ol li {
+    margin-bottom: .55rem;
+  }
+
+  .gutf-cta {
+    background: var(--gutf-dark);
+    color: #fff;
+    border-radius: 22px;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    margin: 2rem 0;
+  }
+
+  .gutf-cta h2,
+  .gutf-cta p,
+  .gutf-cta a {
+    color: #fff;
+  }
+
+  .gutf-faq details {
+    border-top: 1px solid #e7f0ea;
+    padding: 1rem 0;
+  }
+
+  .gutf-faq details:first-of-type {
+    border-top: none;
+  }
+
+  .gutf-faq summary {
+    cursor: pointer;
+    font-weight: 850;
+    color: var(--gutf-dark);
+  }
+
+  @media (max-width: 760px) {
+    .gutf-article {
+      font-size: 16.5px;
+    }
+
+    .gutf-toc ul,
+    .gutf-grid,
+    .gutf-grid-3 {
+      columns: 1;
+      grid-template-columns: 1fr;
+    }
+
+    .gutf-meal {
+      grid-template-columns: 1fr;
+      gap: .15rem;
+    }
+
+    .gutf-meal strong {
+      display: inline-block;
+      margin-bottom: .25rem;
+    }
+  }
+</style>
+
+<article class="gutf-article">
+
+  <header class="gutf-hero">
+    <span class="gutf-kicker">Vegetarian athlete nutrition</span>
+    <p class="gutf-subtitle">A practical, protein-aware, plant-forward weekly meal plan for runners, lifters, cyclists, CrossFit athletes, and active people who want steady energy without relying on meat.</p>
+    <div class="gutf-meta">
+      <span>Updated for 2026</span>
+      <span>7-day meal plan</span>
+      <span>High-protein vegetarian options</span>
+      <span>Beginner-friendly meal prep</span>
+    </div>
+  </header>
+
+  <figure class="gutf-figure">
+    <img src="https://gearuptofit.com/wp-content/uploads/2023/09/sample-weekly-meal-plan-for-vegetarian-athletes_961.png" alt="High-protein vegetarian athlete bowl with chickpeas, quinoa, leafy greens, avocado, and roasted vegetables for recovery nutrition" loading="eager" decoding="async">
+    <figcaption>A strong vegetarian athlete meal plan starts with protein, carbohydrates, healthy fats, and key micronutrients on the same plate.</figcaption>
+  </figure>
+
+  <section class="gutf-note">
+    <h2 style="margin-top:0;">Quick answer: what should vegetarian athletes eat in a week?</h2>
+    <p>A vegetarian athlete should build each day around <strong>protein-rich foods</strong> such as lentils, beans, tofu, tempeh, Greek yogurt, cottage cheese, eggs, edamame, seitan, quinoa, seeds, and protein-fortified foods; <strong>carbohydrate staples</strong> such as oats, potatoes, rice, pasta, fruit, and whole-grain bread; and <strong>recovery-supporting micronutrients</strong> such as iron, calcium, vitamin D, zinc, iodine, omega-3 fats, and vitamin B12.</p>
+    <p>The goal is not to eat “perfectly.” The goal is to eat enough total calories, distribute protein across the day, time carbohydrates around training, and repeat simple meals that fit your schedule.</p>
+  </section>
+
+  <nav class="gutf-toc" aria-label="Table of contents">
+    <h2 style="margin-top:0;">Table of contents</h2>
+    <ul>
+      <li><a href="#key-takeaways">Key takeaways</a></li>
+      <li><a href="#why-it-works">Why vegetarian diets can work for athletes</a></li>
+      <li><a href="#nutrient-checklist">Nutrients vegetarian athletes must plan</a></li>
+      <li><a href="#plate-method">The performance plate method</a></li>
+      <li><a href="#7-day-plan">7-day vegetarian athlete meal plan</a></li>
+      <li><a href="#meal-prep">Meal prep strategy</a></li>
+      <li><a href="#shopping-list">Shopping list</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <section id="key-takeaways">
+    <h2>Key takeaways</h2>
+    <div class="gutf-grid">
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">Protein is manageable</h3>
+        <p>You do not need meat to support training, but you do need enough total protein and enough calories. Build meals around tofu, tempeh, lentils, beans, edamame, eggs, dairy, seitan, quinoa, nuts, seeds, and protein powder when convenient.</p>
+      </div>
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">Carbs are performance fuel</h3>
+        <p>Hard training depends on carbohydrate availability. Oats, rice, potatoes, pasta, fruit, bread, beans, and quinoa help fuel workouts and replenish glycogen.</p>
+      </div>
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">Micronutrients matter</h3>
+        <p>Iron, vitamin B12, vitamin D, calcium, zinc, iodine, and omega-3 fats deserve extra attention in vegetarian diets, especially during high-volume training blocks.</p>
+      </div>
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">Meal prep wins</h3>
+        <p>The easiest plan is the one you can repeat. Batch-cook grains, legumes, roasted vegetables, sauces, and snacks so weekday meals take minutes instead of willpower.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-it-works">
+    <h2>Why a vegetarian meal plan can fuel serious athletic performance</h2>
+    <p>A well-planned vegetarian diet can support endurance, strength, body composition, and recovery because it can provide the same performance fundamentals every athlete needs: enough energy, adequate protein, carbohydrate timing, healthy fats, hydration, and micronutrients.</p>
+
+    <p>The common mistake is treating vegetarian eating as simply “removing meat.” That leaves athletes under-fueled and frustrated. A better approach is to design meals around performance jobs:</p>
+
+    <ul class="gutf-checklist">
+      <li><strong>Protein repairs and builds tissue:</strong> use lentils, beans, tofu, tempeh, dairy, eggs, edamame, seitan, soy milk, seeds, and protein powder when useful.</li>
+      <li><strong>Carbohydrates power training:</strong> use oats, rice, potatoes, pasta, fruit, bread, quinoa, tortillas, and cereal around hard sessions.</li>
+      <li><strong>Fats support hormones and satiety:</strong> use olive oil, avocado, nuts, seeds, tahini, and nut butter.</li>
+      <li><strong>Micronutrients protect consistency:</strong> plan iron, B12, calcium, vitamin D, zinc, iodine, and omega-3 sources before deficiencies affect energy.</li>
+    </ul>
+
+    <p>For deeper context, pair this guide with GearUpToFit’s <a href="https://gearuptofit.com/nutrition/nutrition-plan-for-an-athlete/" target="_blank">complete athlete nutrition plan for meal timing, macros, hydration, and performance fuel</a> and the <a href="https://gearuptofit.com/nutrition/plant-based-pre-workout-foods/" target="_blank">plant-based pre-workout foods guide</a>.</p>
+  </section>
+
+  <section id="nutrient-checklist">
+    <h2>The vegetarian athlete nutrient checklist</h2>
+    <p>Vegetarian athletes can thrive, but some nutrients require more planning because plant-based patterns change food sources and absorption. Use this section as your weekly audit.</p>
+
+    <div class="gutf-table-wrap">
+      <table class="gutf-table">
+        <thead>
+          <tr>
+            <th>Nutrient</th>
+            <th>Why athletes need it</th>
+            <th>Vegetarian food strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Protein</strong></td>
+            <td>Muscle repair, adaptation, immune function, satiety.</td>
+            <td>Include a protein anchor at every meal: tofu, tempeh, lentils, beans, edamame, eggs, Greek yogurt, cottage cheese, seitan, soy milk, pea protein, nuts, and seeds.</td>
+          </tr>
+          <tr>
+            <td><strong>Iron</strong></td>
+            <td>Oxygen transport, endurance, energy, reduced fatigue risk.</td>
+            <td>Pair lentils, beans, tofu, spinach, pumpkin seeds, and fortified grains with vitamin C foods like peppers, citrus, berries, tomatoes, or kiwi.</td>
+          </tr>
+          <tr>
+            <td><strong>Vitamin B12</strong></td>
+            <td>Nerve function, red blood cell production, energy metabolism.</td>
+            <td>Use dairy/eggs if included, plus fortified foods. Vegan or mostly plant-based athletes should discuss a reliable B12 supplement with a clinician or dietitian.</td>
+          </tr>
+          <tr>
+            <td><strong>Calcium + vitamin D</strong></td>
+            <td>Bone health, muscle function, stress fracture risk management.</td>
+            <td>Use fortified milk alternatives, dairy if included, calcium-set tofu, leafy greens, yogurt, and vitamin D-fortified foods. Consider testing vitamin D if you train indoors or live in low-sun seasons.</td>
+          </tr>
+          <tr>
+            <td><strong>Omega-3 fats</strong></td>
+            <td>Inflammation balance, brain health, recovery support.</td>
+            <td>Use chia, flax, hemp seeds, walnuts, and consider algae-based EPA/DHA if you do not eat fish.</td>
+          </tr>
+          <tr>
+            <td><strong>Zinc</strong></td>
+            <td>Immune function, tissue repair, hormone support.</td>
+            <td>Use oats, beans, lentils, pumpkin seeds, hemp seeds, nuts, dairy, and whole grains. Soaking beans and choosing fermented foods can improve digestibility.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="gutf-warning">
+      <h3 style="margin-top:0;">Performance note</h3>
+      <p>Persistent fatigue, unusually slow recovery, dizziness, repeated illness, loss of menstrual cycle, unexplained performance drops, or frequent injuries are not “normal athlete problems.” They are reasons to speak with a qualified healthcare professional and consider blood work.</p>
+    </div>
+  </section>
+
+  <figure class="gutf-figure">
+    <img src="https://gearuptofit.com/wp-content/uploads/2024/02/Plant-Based-Pre-Workout-Foods-1024x585.jpg" alt="Plant-based pre-workout foods including sweet potatoes, chickpeas, grains, berries, and vegetables arranged for athlete fueling" loading="lazy" decoding="async">
+    <figcaption>Carbohydrates from whole plant foods are a key fuel source for hard training, especially for endurance sessions and high-volume weeks.</figcaption>
+  </figure>
+
+  <section id="plate-method">
+    <h2>The simple vegetarian athlete plate method</h2>
+    <p>Instead of tracking every gram forever, start with a plate structure. Adjust portions based on training load, body size, appetite, performance, and goals.</p>
+
+    <div class="gutf-grid-3">
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">1. Protein anchor</h3>
+        <p>Choose tofu, tempeh, lentils, beans, eggs, Greek yogurt, cottage cheese, seitan, edamame, quinoa, or protein powder.</p>
+      </div>
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">2. Carb foundation</h3>
+        <p>Add oats, rice, potatoes, pasta, bread, fruit, tortillas, cereal, quinoa, or beans depending on workout timing.</p>
+      </div>
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">3. Color + fat</h3>
+        <p>Add vegetables or fruit plus olive oil, avocado, tahini, nuts, seeds, or nut butter for micronutrients and satiety.</p>
+      </div>
+    </div>
+
+    <p>For strength and muscle gain, make the protein portion bigger and keep calories high enough. For endurance, increase carbohydrate portions before and after key workouts. For fat loss, keep protein high, keep vegetables high, and reduce energy-dense extras slowly rather than cutting carbs aggressively.</p>
+
+    <p>Helpful GearUpToFit resources to support this plan: high-protein vegetables and vegetarian protein sources, <a href="https://gearuptofit.com/nutrition/the-top-8-protein-sources-for-vegetarians/" target="_blank">complete vegetarian protein sources and amino acids</a>, and <a href="https://gearuptofit.com/nutrition/are-you-getting-enough-protein/" target="_blank">how to increase protein without supplements</a>.</p>
+  </section>
+
+  <section id="7-day-plan">
+    <h2>7-day vegetarian meal plan for athletes</h2>
+    <p>This plan is a template, not a prescription. Increase portions on long-run, heavy-lifting, double-session, or high-volume training days. Reduce portions slightly on rest days only if you are not recovering well or your goal requires it.</p>
+
+    <ul class="gutf-pill-list" aria-label="Meal plan goals">
+      <li>Protein at every meal</li>
+      <li>Carbs around training</li>
+      <li>Iron + vitamin C pairings</li>
+      <li>Batch-cook friendly</li>
+      <li>Vegetarian with vegan swaps</li>
+    </ul>
+
+    <div class="gutf-meal-day">
+      <h3>Monday: steady energy start</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span><span class="gutf-tag">Protein + carbs</span> Power oats with rolled oats, soy milk or dairy milk, chia seeds, berries, walnuts, and optional plant protein powder.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span><span class="gutf-tag">Iron + vitamin C</span> Lentil power salad with cooked lentils, bell pepper, cucumber, parsley, tomatoes, lemon-tahini dressing, and whole-wheat pita.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span><span class="gutf-tag">Recovery</span> Chickpea, spinach, and tomato curry over quinoa with turmeric, ginger, garlic, and a side of citrus fruit.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Greek yogurt or soy yogurt with granola and berries. Vegan option: fortified soy yogurt plus hemp seeds.</span>
+      </div>
+    </div>
+
+    <div class="gutf-meal-day">
+      <h3>Tuesday: strength-training fuel</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span>Tofu scramble with peppers, mushrooms, spinach, nutritional yeast, avocado, and whole-grain toast.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span>Quinoa and black bean bowl with corn, salsa, lettuce, pumpkin seeds, lime, and olive oil.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span>Peanut tofu noodles with whole-wheat noodles, broccoli, carrots, baked tofu, peanut-lime sauce, and sesame seeds.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Banana with peanut butter before training, or chocolate milk/soy milk after training.</span>
+      </div>
+    </div>
+
+    <div class="gutf-meal-day">
+      <h3>Wednesday: midweek recovery</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span>Green smoothie with spinach, banana, soy milk, pea protein, ground flaxseed, and almond butter.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span>Roasted sweet potato and black bean bowl with salsa, guacamole, cabbage, and pumpkin seeds.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span>Burrito bowl with brown rice, pinto beans, fajita vegetables, corn, lettuce, cheese or vegan cheese, and pico de gallo.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Trail mix with dried fruit, walnuts, pumpkin seeds, and dark chocolate pieces.</span>
+      </div>
+    </div>
+
+    <div class="gutf-meal-day">
+      <h3>Thursday: endurance support</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span>Loaded avocado toast with hemp seeds, tomato, microgreens, and two eggs or marinated tofu slices.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span>Mediterranean chickpea salad with cucumber, tomato, bell pepper, olives, feta or tofu feta, lemon, olive oil, and whole-grain crackers.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span>Lentil bolognese over whole-wheat pasta with spinach, carrots, mushrooms, tomato sauce, and nutritional yeast.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Dates or a banana 30–60 minutes before a run; fortified milk or yogurt after.</span>
+      </div>
+    </div>
+
+    <div class="gutf-meal-day">
+      <h3>Friday: high-protein finish</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span>Chia pudding with fortified milk, berries, sliced almonds, cinnamon, and Greek yogurt or soy yogurt.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span>Hummus and veggie wrap with baked tofu, shredded carrots, cucumber, sprouts, bell pepper, and tahini sauce.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span>Sheet-pan tempeh with sweet potatoes, Brussels sprouts, broccoli, red onion, olive oil, garlic, and balsamic glaze.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Cottage cheese with pineapple, or vegan protein pudding made with silken tofu and cocoa.</span>
+      </div>
+    </div>
+
+    <div class="gutf-meal-day">
+      <h3>Saturday: long workout or active recovery</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span>Protein pancakes or waffles with fruit, maple syrup, nut butter, and Greek yogurt or soy yogurt.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span>Upgraded chickpea salad sandwich with mashed chickpeas, celery, red onion, dill, tahini or yogurt, lettuce, and whole-grain bread.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span>Portobello mushroom burgers with cheese or vegan cheese, avocado, tomato, lettuce, and baked sweet potato wedges.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Smoothie with banana, berries, protein powder, oats, and milk of choice if appetite is low after training.</span>
+      </div>
+    </div>
+
+    <div class="gutf-meal-day">
+      <h3>Sunday: reset and meal prep</h3>
+      <div class="gutf-meal">
+        <strong>Breakfast</strong>
+        <span>Vegetable omelet with potatoes, fruit, and toast. Vegan option: chickpea flour omelet with vegetables.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Lunch</strong>
+        <span>Kitchen-sink quinoa salad using leftover roasted vegetables, beans, tofu, greens, seeds, and vinaigrette.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Dinner</strong>
+        <span>Slow-cooker lentil and vegetable stew with carrots, potatoes, celery, onion, spinach, herbs, and whole-grain bread.</span>
+      </div>
+      <div class="gutf-meal">
+        <strong>Snack</strong>
+        <span>Roasted edamame, fruit, and a square of dark chocolate.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="gutf-video" aria-label="Helpful vegetarian athlete meal prep video">
+    <h2 style="margin-top:0;">Helpful video: high-protein plant-based meal prep</h2>
+    <p>This video is useful because it shows how to make high-protein plant-based meals in a realistic prep window. Use it for technique and meal-prep inspiration, then adjust portions to your training load.</p>
+    <iframe src="https://www.youtube.com/embed/J8PGVR9Rn1o" title="12 Meals in 1 Hour High Protein Plant-Based Meal Prep" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
+
+  <section id="meal-prep">
+    <h2>How to meal prep this vegetarian athlete plan</h2>
+    <p>The biggest difference between a plan that works and a plan that gets ignored is preparation. You do not need seven complicated recipes. You need building blocks.</p>
+
+    <div class="gutf-grid">
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">Cook once, use all week</h3>
+        <ul>
+          <li>2–3 cups cooked quinoa or brown rice</li>
+          <li>1 tray roasted sweet potatoes</li>
+          <li>1 tray roasted vegetables</li>
+          <li>1 pot lentils or beans</li>
+          <li>1 batch tofu or tempeh</li>
+        </ul>
+      </div>
+      <div class="gutf-card">
+        <h3 style="margin-top:0;">Prep sauces</h3>
+        <ul>
+          <li>Lemon-tahini dressing</li>
+          <li>Peanut-lime sauce</li>
+          <li>Salsa or pico de gallo</li>
+          <li>Greek yogurt herb sauce</li>
+          <li>Balsamic glaze or vinaigrette</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Use GearUpToFit’s <a href="https://gearuptofit.com/nutrition/meal-planning-for-athletes/" target="_blank">complete meal planning for athletes guide</a> if you want to build a repeatable weekly system, and the <a href="https://gearuptofit.com/fitness/track-fitness-and-nutrition-journal/" target="_blank">fitness and nutrition journal template</a> if you want to track what improves energy, digestion, and recovery.</p>
+
+    <h3>Pre-workout and post-workout timing</h3>
+    <div class="gutf-table-wrap">
+      <table class="gutf-table">
+        <thead>
+          <tr>
+            <th>Timing</th>
+            <th>Best choice</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>2–3 hours before training</strong></td>
+            <td>Balanced meal with carbs, moderate protein, lower fat if intensity is high.</td>
+            <td>Oats with yogurt; rice and tofu bowl; lentil soup with bread; potato and egg/tofu scramble.</td>
+          </tr>
+          <tr>
+            <td><strong>30–60 minutes before training</strong></td>
+            <td>Easy carbohydrates, low fiber if your stomach is sensitive.</td>
+            <td>Banana, dates, toast with jam, applesauce, sports drink, small granola bar.</td>
+          </tr>
+          <tr>
+            <td><strong>Within 1–2 hours after training</strong></td>
+            <td>Protein plus carbohydrates and fluids.</td>
+            <td>Smoothie with protein and fruit; tofu noodles; burrito bowl; Greek yogurt with granola; lentil pasta.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <figure class="gutf-figure">
+    <img src="https://gearuptofit.com/wp-content/uploads/2025/03/running-mental-training-1-1024x558.webp" alt="Female runner training on a track after fueling with a vegetarian athlete meal plan for endurance and recovery" loading="lazy" decoding="async">
+    <figcaption>Use the plan as a starting point, then adjust portions based on training performance, recovery, appetite, and digestion.</figcaption>
+  </figure>
+
+  <section id="shopping-list" class="gutf-shopping">
+    <h2 style="margin-top:0;">Vegetarian athlete shopping list</h2>
+    <p>Use this as a plug-and-play grocery list for the 7-day plan.</p>
+
+    <div class="gutf-grid-3">
+      <div>
+        <h3>Protein</h3>
+        <ul>
+          <li>Lentils</li>
+          <li>Black beans</li>
+          <li>Chickpeas</li>
+          <li>Tofu</li>
+          <li>Tempeh</li>
+          <li>Edamame</li>
+          <li>Greek yogurt or soy yogurt</li>
+          <li>Eggs or chickpea flour</li>
+          <li>Protein powder if needed</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Carbohydrates</h3>
+        <ul>
+          <li>Rolled oats</li>
+          <li>Quinoa</li>
+          <li>Brown rice</li>
+          <li>Whole-wheat pasta</li>
+          <li>Whole-grain bread</li>
+          <li>Sweet potatoes</li>
+          <li>Bananas</li>
+          <li>Berries</li>
+          <li>Dates</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Fats and micronutrients</h3>
+        <ul>
+          <li>Chia seeds</li>
+          <li>Ground flaxseed</li>
+          <li>Hemp seeds</li>
+          <li>Pumpkin seeds</li>
+          <li>Walnuts</li>
+          <li>Avocado</li>
+          <li>Olive oil</li>
+          <li>Tahini</li>
+          <li>Fortified milk alternative</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Common mistakes that hurt vegetarian athlete performance</h2>
+    <ol>
+      <li><strong>Eating too little overall.</strong> High-fiber vegetarian meals can be filling before they provide enough calories. Add rice, pasta, potatoes, olive oil, avocado, smoothies, and snacks if weight, energy, or performance drops unintentionally.</li>
+      <li><strong>Forgetting protein at breakfast.</strong> Toast and fruit are fine, but they are not enough for many athletes. Add Greek yogurt, soy milk, tofu, eggs, protein powder, hemp seeds, or cottage cheese.</li>
+      <li><strong>Going too high-fiber right before training.</strong> Beans and lentils are excellent, but some athletes need them several hours before hard sessions. Use lower-fiber carbs close to workouts if your gut is sensitive.</li>
+      <li><strong>Ignoring B12, iron, and vitamin D.</strong> These are not “minor details.” They can influence energy, consistency, and recovery.</li>
+      <li><strong>Changing everything on race day.</strong> Practice breakfast, snacks, caffeine, fluids, and supplements during training, not during competition.</li>
+    </ol>
+  </section>
+
+  <section class="gutf-note">
+    <h2 style="margin-top:0;">Best vegetarian swaps by goal</h2>
+    <div class="gutf-table-wrap">
+      <table class="gutf-table">
+        <thead>
+          <tr>
+            <th>Goal</th>
+            <th>Simple swap</th>
+            <th>Why it helps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>More protein</td>
+            <td>Use soy milk instead of almond milk; add tofu, Greek yogurt, or protein powder.</td>
+            <td>Raises protein without making meals complicated.</td>
+          </tr>
+          <tr>
+            <td>More calories</td>
+            <td>Add olive oil, avocado, nuts, granola, dried fruit, and larger grain portions.</td>
+            <td>Helps high-volume athletes avoid accidental under-fueling.</td>
+          </tr>
+          <tr>
+            <td>Better endurance fuel</td>
+            <td>Add rice, potatoes, oats, pasta, bread, fruit, or sports drink around hard sessions.</td>
+            <td>Supports glycogen availability and training quality.</td>
+          </tr>
+          <tr>
+            <td>Better iron strategy</td>
+            <td>Pair lentils, beans, tofu, and spinach with citrus, peppers, tomatoes, kiwi, or berries.</td>
+            <td>Vitamin C improves non-heme iron absorption.</td>
+          </tr>
+          <tr>
+            <td>Vegan adaptation</td>
+            <td>Replace eggs/dairy with tofu, tempeh, soy yogurt, fortified soy milk, seitan, and legumes.</td>
+            <td>Keeps protein and fortified nutrients in the plan.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="faq" class="gutf-faq">
+    <h2 style="margin-top:0;">Frequently asked questions</h2>
+
+    <details>
+      <summary>Can athletes build muscle on a vegetarian diet?</summary>
+      <p>Yes. Muscle gain depends on progressive training, enough calories, adequate protein, recovery, and consistency. Vegetarian athletes can meet protein needs with tofu, tempeh, lentils, beans, eggs, dairy, soy foods, seitan, quinoa, seeds, and protein supplements when helpful.</p>
+    </details>
+
+    <details>
+      <summary>What is the best vegetarian protein for athletes?</summary>
+      <p>There is no single best source. Soy foods such as tofu, tempeh, edamame, and soy milk are especially useful because they are protein-dense and practical. Lentils, beans, Greek yogurt, cottage cheese, eggs, seitan, quinoa, hemp seeds, and pea protein can also fit well.</p>
+    </details>
+
+    <details>
+      <summary>Do vegetarian athletes need protein powder?</summary>
+      <p>Not always. Protein powder is a convenience tool, not a requirement. It is useful when appetite is low, breakfast lacks protein, post-workout meals are delayed, or total protein is hard to reach with whole foods alone.</p>
+    </details>
+
+    <details>
+      <summary>What should a vegetarian athlete eat before a workout?</summary>
+      <p>Two to three hours before training, choose a balanced meal such as oats with yogurt, rice with tofu, or a lentil bowl. Thirty to sixty minutes before training, choose easier carbs such as a banana, dates, toast with jam, or applesauce.</p>
+    </details>
+
+    <details>
+      <summary>What should a vegetarian athlete eat after training?</summary>
+      <p>Aim for protein plus carbohydrates and fluids. Good options include a smoothie with protein and fruit, tofu noodles, a burrito bowl, Greek yogurt with granola, lentil pasta, or chickpea curry with rice.</p>
+    </details>
+
+    <details>
+      <summary>How can vegetarian athletes avoid low iron?</summary>
+      <p>Include iron-rich foods such as lentils, beans, tofu, spinach, pumpkin seeds, and fortified grains. Pair them with vitamin C foods such as citrus, berries, tomatoes, kiwi, or peppers. If fatigue or low iron symptoms appear, ask a clinician about blood testing before supplementing.</p>
+    </details>
+
+    <details>
+      <summary>Is this meal plan good for runners?</summary>
+      <p>Yes, but runners should adjust carbohydrate portions based on mileage and workout intensity. Long runs, tempo sessions, intervals, and race weeks usually require more carbohydrates than rest days.</p>
+    </details>
+
+    <details>
+      <summary>Can this plan be made vegan?</summary>
+      <p>Yes. Replace eggs and dairy with tofu, tempeh, edamame, soy yogurt, fortified soy milk, seitan, legumes, nutritional yeast, and vegan protein powder if needed. Pay extra attention to B12, vitamin D, calcium, iodine, and omega-3 sources.</p>
+    </details>
+  </section>
+
+  <section>
+    <h2>References and evidence notes</h2>
+    <ol>
+      <li><a href="https://www.jandonline.org/article/S2212-2672(25)00042-5/fulltext" rel="nofollow noopener" target="_blank">Academy of Nutrition and Dietetics: Vegetarian Dietary Patterns for Adults</a></li>
+      <li><a href="https://www.jandonline.org/article/S2212-2672(15)01802-X/fulltext" rel="nofollow noopener" target="_blank">Academy of Nutrition and Dietetics, Dietitians of Canada, and ACSM: Nutrition and Athletic Performance</a></li>
+      <li><a href="https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/" rel="nofollow noopener" target="_blank">NIH Office of Dietary Supplements: Iron Fact Sheet for Health Professionals</a></li>
+      <li><a href="https://ods.od.nih.gov/factsheets/Vitaminb12-HealthProfessional/" rel="nofollow noopener" target="_blank">NIH Office of Dietary Supplements: Vitamin B12 Fact Sheet for Health Professionals</a></li>
+      <li><a href="https://www.hsph.harvard.edu/nutritionsource/what-should-you-eat/protein/" rel="nofollow noopener" target="_blank">Harvard T.H. Chan School of Public Health: Protein</a></li>
+      <li><a href="https://fdc.nal.usda.gov/" rel="nofollow noopener" target="_blank">USDA FoodData Central</a></li>
+    </ol>
+  </section>
+
+  <section class="gutf-cta">
+    <h2 style="margin-top:0;">Bottom line</h2>
+    <p>A vegetarian athlete meal plan works when it is built intentionally: protein at every meal, enough carbohydrates to train hard, enough calories to recover, and smart planning for iron, B12, calcium, vitamin D, zinc, iodine, and omega-3 fats.</p>
+    <p>Start with this 7-day template, repeat the meals you enjoy, track energy and recovery, and adjust portions based on your real training demands.</p>
+  </section>
+
+  
+
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can athletes build muscle on a vegetarian diet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Muscle gain depends on progressive training, enough calories, adequate protein, recovery, and consistency. Vegetarian athletes can meet protein needs with tofu, tempeh, lentils, beans, eggs, dairy, soy foods, seitan, quinoa, seeds, and protein supplements when helpful."}}, {"@type": "Question", "name": "What is the best vegetarian protein for athletes?", "acceptedAnswer": {"@type": "Answer", "text": "There is no single best source. Soy foods such as tofu, tempeh, edamame, and soy milk are especially useful because they are protein-dense and practical. Lentils, beans, Greek yogurt, cottage cheese, eggs, seitan, quinoa, hemp seeds, and pea protein can also fit well."}}, {"@type": "Question", "name": "Do vegetarian athletes need protein powder?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. Protein powder is a convenience tool, not a requirement. It is useful when appetite is low, breakfast lacks protein, post-workout meals are delayed, or total protein is hard to reach with whole foods alone."}}, {"@type": "Question", "name": "What should a vegetarian athlete eat before a workout?", "acceptedAnswer": {"@type": "Answer", "text": "Two to three hours before training, choose a balanced meal such as oats with yogurt, rice with tofu, or a lentil bowl. Thirty to sixty minutes before training, choose easier carbohydrates such as a banana, dates, toast with jam, or applesauce."}}, {"@type": "Question", "name": "What should a vegetarian athlete eat after training?", "acceptedAnswer": {"@type": "Answer", "text": "Aim for protein plus carbohydrates and fluids. Good options include a smoothie with protein and fruit, tofu noodles, a burrito bowl, Greek yogurt with granola, lentil pasta, or chickpea curry with rice."}}, {"@type": "Question", "name": "Can this plan be made vegan?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Replace eggs and dairy with tofu, tempeh, edamame, soy yogurt, fortified soy milk, seitan, legumes, nutritional yeast, and vegan protein powder if needed. Pay extra attention to B12, vitamin D, calcium, iodine, and omega-3 sources."}}]}</script>
+
+</article>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/weight-loss/40-40-20-diet-meal-plans/">40-40-20 diet meal plan</a></li><li><a href="https://gearuptofit.com/nutrition/vegan-diet-for-fitness/">vegan diet for fitness</a></li><li><a href="https://gearuptofit.com/running/fueling-tips-for-every-runner/">fueling guide for runners</a></li></ul></div><!-- gs-internal-links:end -->

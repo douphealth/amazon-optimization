@@ -1,0 +1,1009 @@
+<style>
+  :root{
+    --guf-bg:#f7fafc;
+    --guf-card:#ffffff;
+    --guf-text:#172033;
+    --guf-muted:#5f6b7a;
+    --guf-line:#e5edf5;
+    --guf-blue:#0b66ff;
+    --guf-blue-dark:#084fc4;
+    --guf-green:#0b8f66;
+    --guf-orange:#f59e0b;
+    --guf-red:#dc2626;
+    --guf-radius:22px;
+    --guf-shadow:0 14px 38px rgba(23,32,51,.10);
+  }</p>
+
+<p>  .guf-overpronation-guide{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--guf-text);
+    line-height:1.72;
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 18px 44px;
+  }</p>
+<p>  .guf-overpronation-guide *{box-sizing:border-box}
+  .guf-overpronation-guide a{color:var(--guf-blue);text-decoration:none;font-weight:750}
+  .guf-overpronation-guide a:hover{text-decoration:underline}
+  .guf-overpronation-guide img{max-width:100%;height:auto;border-radius:20px}
+  .guf-overpronation-guide h1,
+  .guf-overpronation-guide h2,
+  .guf-overpronation-guide h3{
+    line-height:1.15;
+    letter-spacing:-.03em;
+    margin:0 0 14px;
+  }
+  .guf-overpronation-guide h1{font-size:clamp(2.25rem,5vw,4.7rem)}
+  .guf-overpronation-guide h2{font-size:clamp(1.7rem,3.1vw,2.55rem);margin-top:46px}
+  .guf-overpronation-guide h3{font-size:clamp(1.25rem,2vw,1.55rem);margin-top:26px}
+  .guf-overpronation-guide p{margin:0 0 18px}
+  .guf-overpronation-guide ul,
+  .guf-overpronation-guide ol{padding-left:1.25rem;margin:0 0 22px}
+  .guf-overpronation-guide li{margin:8px 0}
+  .guf-muted{color:var(--guf-muted)}
+  .guf-small{font-size:.92rem}
+  .guf-pill-row{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .guf-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:8px 12px;
+    border:1px solid var(--guf-line);
+    background:#fff;
+    border-radius:999px;
+    font-weight:800;
+    font-size:.88rem;
+    color:#243042;
+  }</p>
+<p>  .guf-hero{
+    position:relative;
+    overflow:hidden;
+    border-radius:30px;
+    background:
+      radial-gradient(circle at top left, rgba(11,102,255,.18), transparent 34%),
+      linear-gradient(135deg,#07152f 0%,#10264d 58%,#173b75 100%);
+    color:#fff;
+    padding:clamp(28px,5vw,58px);
+    margin:22px 0 28px;
+    box-shadow:var(--guf-shadow);
+  }
+  .guf-hero a{color:#fff;text-decoration:underline}
+  .guf-hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+    gap:34px;
+    align-items:center;
+  }
+  .guf-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:999px;
+    font-weight:900;
+    font-size:.83rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-bottom:18px;
+  }
+  .guf-hero p{font-size:1.08rem;color:rgba(255,255,255,.88)}
+  .guf-hero-image{
+    background:rgba(255,255,255,.09);
+    padding:10px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:26px;
+  }
+  .guf-hero-image img{display:block;width:100%;border-radius:18px}
+  .guf-cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .guf-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    min-height:46px;
+    padding:12px 18px;
+    border-radius:999px;
+    font-weight:900;
+    border:1px solid transparent;
+    text-decoration:none!important;
+    cursor:pointer;
+  }
+  .guf-btn-primary{background:var(--guf-blue);color:#fff!important}
+  .guf-btn-primary:hover{background:var(--guf-blue-dark)}
+  .guf-btn-secondary{background:#fff;color:#10264d!important}
+  .guf-btn-ghost{background:#f3f7ff;color:#0b66ff!important;border-color:#d8e6ff}</p>
+<p>  .guf-disclosure,
+  .guf-note,
+  .guf-warning{
+    border-radius:20px;
+    padding:16px 18px;
+    margin:20px 0;
+    border:1px solid var(--guf-line);
+    background:#fff;
+  }
+  .guf-disclosure{border-left:5px solid var(--guf-blue)}
+  .guf-note{border-left:5px solid var(--guf-green);background:#f4fbf8}
+  .guf-warning{border-left:5px solid var(--guf-orange);background:#fffaf0}</p>
+<p>  .guf-toc{
+    background:#fff;
+    border:1px solid var(--guf-line);
+    border-radius:var(--guf-radius);
+    padding:22px;
+    box-shadow:0 8px 26px rgba(23,32,51,.06);
+    margin:28px 0;
+  }
+  .guf-toc ol{
+    columns:2;
+    column-gap:34px;
+    margin-bottom:0;
+  }</p>
+<p>  .guf-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
+    margin:22px 0;
+  }
+  .guf-card{
+    background:#fff;
+    border:1px solid var(--guf-line);
+    border-radius:var(--guf-radius);
+    padding:20px;
+    box-shadow:0 8px 24px rgba(23,32,51,.06);
+  }
+  .guf-card strong{display:block;margin-bottom:5px}
+  .guf-score{
+    font-size:2rem;
+    line-height:1;
+    font-weight:950;
+    letter-spacing:-.04em;
+    color:#0b66ff;
+    margin-bottom:8px;
+  }</p>
+<p>  .guf-product-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+    margin:24px 0;
+  }
+  .guf-product{
+    background:#fff;
+    border:1px solid var(--guf-line);
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:var(--guf-shadow);
+  }
+  .guf-product-inner{
+    display:grid;
+    grid-template-columns:270px minmax(0,1fr);
+    gap:22px;
+    padding:22px;
+  }
+  .guf-product-media{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f5f8fc;
+    border-radius:22px;
+    padding:16px;
+    min-height:220px;
+  }
+  .guf-product-media img{
+    object-fit:contain;
+    max-height:220px;
+    width:100%;
+    background:#fff;
+  }
+  .guf-product-badge{
+    display:inline-flex;
+    width:max-content;
+    padding:7px 10px;
+    border-radius:999px;
+    background:#ecf5ff;
+    color:#084fc4;
+    font-weight:950;
+    font-size:.82rem;
+    margin-bottom:10px;
+  }
+  .guf-product h3{margin-top:0}
+  .guf-specs{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    margin:16px 0;
+  }
+  .guf-spec{
+    background:#f7fafc;
+    border:1px solid var(--guf-line);
+    border-radius:14px;
+    padding:10px;
+  }
+  .guf-spec span{
+    display:block;
+    color:var(--guf-muted);
+    font-size:.78rem;
+    font-weight:850;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .guf-procon{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin:16px 0;
+  }
+  .guf-procon div{
+    background:#fbfdff;
+    border:1px solid var(--guf-line);
+    border-radius:16px;
+    padding:14px;
+  }
+  .guf-procon ul{margin-bottom:0}
+  .guf-product-footer{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px;
+    margin-top:18px;
+  }</p>
+<p>  .guf-table-wrap{
+    overflow-x:auto;
+    border:1px solid var(--guf-line);
+    border-radius:22px;
+    background:#fff;
+    box-shadow:0 8px 24px rgba(23,32,51,.06);
+    margin:22px 0;
+  }
+  .guf-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:760px;
+  }
+  .guf-table th,
+  .guf-table td{
+    padding:14px 16px;
+    border-bottom:1px solid var(--guf-line);
+    text-align:left;
+    vertical-align:top;
+  }
+  .guf-table th{
+    background:#f3f7fb;
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .guf-table tr:last-child td{border-bottom:none}</p>
+<p>  .guf-two-col{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(300px,.75fr);
+    gap:22px;
+    align-items:start;
+  }
+  .guf-video{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+    border-radius:24px;
+    background:#0b1220;
+    box-shadow:var(--guf-shadow);
+    margin:22px 0;
+  }
+  .guf-video iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+  .guf-faq details{
+    background:#fff;
+    border:1px solid var(--guf-line);
+    border-radius:18px;
+    padding:16px 18px;
+    margin:12px 0;
+    box-shadow:0 6px 18px rgba(23,32,51,.05);
+  }
+  .guf-faq summary{
+    cursor:pointer;
+    font-weight:950;
+    color:#172033;
+  }
+  .guf-author{
+    display:grid;
+    grid-template-columns:86px 1fr;
+    gap:16px;
+    align-items:center;
+    background:#fff;
+    border:1px solid var(--guf-line);
+    border-radius:24px;
+    padding:18px;
+    margin:40px 0 10px;
+  }
+  .guf-author img{
+    width:86px;
+    height:86px;
+    object-fit:cover;
+    border-radius:50%;
+  }</p>
+<p>  @media (max-width:880px){
+    .guf-hero-grid,
+    .guf-product-inner,
+    .guf-two-col{grid-template-columns:1fr}
+    .guf-grid{grid-template-columns:1fr}
+    .guf-toc ol{columns:1}
+    .guf-specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .guf-procon{grid-template-columns:1fr}
+  }
+</style>
+<article class="guf-overpronation-guide" itemscope itemtype="https://schema.org/Article">
+<section class="guf-hero">
+<div class="guf-hero-grid">
+<div>
+<div class="guf-eyebrow">Updated 2026 stability shoe guide</div>
+<p itemprop="description">Overpronation means your foot rolls inward more than your body can comfortably control. The right stability shoe can make your stride feel smoother, reduce unnecessary wobble, and help you run with more confidence—without forcing your foot into a stiff, uncomfortable shoe.</p>
+<div class="guf-pill-row" aria-label="Article highlights">
+          <span class="guf-pill">Best overall: Brooks Adrenaline GTS 25</span><br />
+          <span class="guf-pill">Best cushion: ASICS Gel-Kayano 32</span><br />
+          <span class="guf-pill">Best wide fit: New Balance 860v14</span><br />
+          <span class="guf-pill">Best value: Mizuno Wave Inspire 20</span>
+        </div>
+<div class="guf-cta-row">
+          <a class="guf-btn guf-btn-primary" href="#best-shoes">See the top picks</a><br />
+          <a class="guf-btn guf-btn-secondary" href="https://gearuptofit.com/shoe-finder/" target="_blank">Use the free running shoe finder</a>
+        </div>
+</p></div>
+<figure class="guf-hero-image">
+        <img fetchpriority="high" fetchpriority="high" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2023/04/Best-Running-Shoes-for-Overpronation-1024x1024.jpeg" alt="Runner on road wearing supportive running shoes for overpronation" width="1024" height="1024" loading="eager" fetchpriority="high"><figcaption class="guf-small">A stability shoe should guide your stride, not fight it.</figcaption></figure>
+</p></div>
+</section>
+<div class="guf-disclosure">
+    <strong>Affiliate disclosure:</strong> GearUpToFit is reader-supported. Some product links may earn a commission at no extra cost to you. Every recommendation below is written to help you choose the right shoe—not simply the most expensive one.
+  </div>
+<nav class="guf-toc" aria-label="Table of contents">
+    <strong>In this guide</strong></p>
+<ol>
+<li><a href="#quick-answer">Quick answer</a></li>
+<li><a href="#what-is-overpronation">What overpronation means</a></li>
+<li><a href="#signs">Signs you may overpronate</a></li>
+<li><a href="#home-tests">At-home checks</a></li>
+<li><a href="#best-shoes">Best shoes for overpronation</a></li>
+<li><a href="#comparison">Comparison table</a></li>
+<li><a href="#buying-guide">Buying guide</a></li>
+<li><a href="#training">Strength and form tips</a></li>
+<li><a href="#video">Helpful video</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ol>
+</nav>
+<section id="quick-answer">
+
+<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+<p style="margin:0 0 8px;font-weight:700">Quick links from this guide</p>
+<ul style="list-style:none;margin:0 0 10px;padding:0">
+<li style="margin:6px 0"><a href="https://www.amazon.com/s?k=best+stability+running+shoes+for+overpronation&amp;tag=papalex-gutf-20" rel="sponsored nofollow noopener" target="_blank">Best stability running shoes for overpronation</a> <span style="font-size:13px;color:#555">(Amazon search)</span></li>
+</ul>
+<p style="margin:0;font-size:13px;color:#555">As an Amazon Associate, GearUpToFit earns from qualifying purchases.</p>
+</div>
+
+<h2>Quick answer: what is the best running shoe for overpronation?</h2>
+<p>The <strong>Brooks Adrenaline GTS 25</strong> is the best starting point for most runners who overpronate because it combines familiar daily-trainer comfort with GuideRails support that helps limit excess motion without feeling overly corrective. Choose the <strong>ASICS Gel-Kayano 32</strong> if you want a more cushioned premium ride, the <strong>New Balance Fresh Foam X 860v14</strong> if you need wider sizing, and the <strong>Mizuno Wave Inspire 20</strong> if you want a stable shoe that often costs less than flagship models.</p>
+<div class="guf-grid">
+<div class="guf-card">
+<div class="guf-score">1</div>
+<p>        <strong>Most runners</strong></p>
+<p>Start with Brooks Adrenaline GTS 25 if you want dependable support for daily runs and walking.</p>
+</p></div>
+<div class="guf-card">
+<div class="guf-score">2</div>
+<p>        <strong>Long runs</strong></p>
+<p>Pick ASICS Gel-Kayano 32 for a high-cushion stability platform that feels protective over distance.</p>
+</p></div>
+<div class="guf-card">
+<div class="guf-score">3</div>
+<p>        <strong>Wide feet</strong></p>
+<p>Pick New Balance 860v14 for a stable daily trainer with strong fit options and a supportive ride.</p>
+</p></div>
+</p></div>
+<p>Need a broader shoe shortlist? Read GearUpToFit’s <a href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">complete best running shoes guide</a>, compare neutral everyday trainers in the <a href="https://gearuptofit.com/review/best-daily-running-shoes/" target="_blank">best daily running shoes ranking</a>, or use the <a href="https://gearuptofit.com/shoe-finder/" target="_blank">free running shoe finder</a> to match shoes to your mileage, foot shape, terrain, and injury history.</p>
+</section>
+<section id="what-is-overpronation">
+<h2>What overpronation actually means</h2>
+<p>Pronation is normal. Your foot naturally rolls inward after landing to absorb impact and adapt to the ground. <strong>Overpronation</strong> becomes a problem when that inward roll is excessive, poorly controlled, or paired with pain, fatigue, collapsing arches, or recurring injuries.</p>
+<p>A good stability shoe does not “fix” your body. It gives your foot a more stable platform so your ankle, knee, and hip do not have to work as hard to control every step. Modern stability shoes are much better than the stiff motion-control bricks many runners remember from years ago. Today’s best models use wider platforms, sidewalls, guidance rails, density-mapped foam, and geometry-based support.</p>
+<div class="guf-note">
+      <strong>Important:</strong> Overpronation alone is not a diagnosis. Some runners visibly pronate and stay injury-free. Shoes matter most when overpronation is paired with symptoms, unstable landings, flat arches, fatigue, or repeated pain patterns.
+    </div>
+</section>
+<section id="signs">
+<h2>Signs you may need a stability running shoe</h2>
+<ul>
+<li>Your old running shoes lean inward when placed on a flat surface.</li>
+<li>The inside edge of the heel or forefoot wears down faster than the outside.</li>
+<li>Your ankles collapse inward when you run or squat.</li>
+<li>You have flat feet or low arches and feel unstable in neutral shoes.</li>
+<li>You often deal with shin splints, plantar fascia irritation, arch fatigue, or runner’s knee.</li>
+<li>Your knees drift inward during single-leg movements.</li>
+<li>You feel better in shoes with a wider base or firmer medial support.</li>
+</ul>
+<p>For deeper injury-prevention context, read GearUpToFit’s guide to <a href="https://gearuptofit.com/running/running-biomechanics-and-injury-prevention/" target="_blank">running biomechanics and injury prevention</a> and the practical guide to <a href="https://gearuptofit.com/running/master-proper-running-form/" target="_blank">proper running form</a>.</p>
+</section>
+<section id="home-tests">
+<h2>Three simple at-home checks</h2>
+<h3>1. Check your shoe wear</h3>
+<p>Place your current running shoes on a table and look from behind. If the heel counter tilts inward or the medial side is heavily compressed, you may benefit from more support.</p>
+<h3>2. Film your running from behind</h3>
+<p>Set your phone behind a treadmill or flat path and record a few seconds of easy running. Watch your ankles and knees in slow motion. A strong inward ankle collapse or knee cave can signal a need for support, strength work, or a professional gait assessment.</p>
+<h3>3. Compare feel across shoes</h3>
+<p>Try one stable shoe and one neutral shoe at the same easy pace. The right stability shoe should feel calmer and more centered. It should not feel like it is pushing your foot outward or creating new discomfort.</p>
+<div class="guf-warning">
+      <strong>When to get help:</strong> See a physical therapist, podiatrist, or qualified running specialist if pain changes your gait, lasts more than 1–2 weeks, or keeps returning despite rest and shoe changes.
+    </div>
+</section>
+<section id="best-shoes">
+<h2>The best running shoes for overpronation in 2026</h2>
+<p>Use these picks as a practical shortlist. Your best shoe still depends on foot shape, injury history, surface, weekly mileage, body weight, and whether you prefer soft, firm, low-drop, or traditional-feeling shoes.</p>
+<div class="guf-product-grid">
+<section class="guf-product" id="brooks-adrenaline-gts-25" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/818U7FxVrIL._AC_SY675_.jpg" alt="Brooks Adrenaline GTS stability running shoe for overpronation" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best overall</span></p>
+<h3 itemprop="name">Brooks Adrenaline GTS 25</h3>
+<p itemprop="description">The safest recommendation for most overpronators who want a reliable daily trainer. Brooks’ GuideRails support system is designed to reduce excess motion while keeping the ride familiar and comfortable.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>Daily training</div>
+<div class="guf-spec"><span>Support</span>Mild–moderate</div>
+<div class="guf-spec"><span>Ride</span>Balanced</div>
+<div class="guf-spec"><span>Use</span>Running + walking</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Stable without feeling overly stiff</li>
+<li>Excellent everyday comfort</li>
+<li>Good choice for beginners and marathon build-ups</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>Not a racing shoe</li>
+<li>Traditional support feel may not suit minimal-shoe fans</li>
+<li>Premium price when not discounted</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> runners who want one dependable stability shoe for easy runs, long walks, treadmill mileage, and general daily training.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=Brooks+Adrenaline+GTS+25+running+shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/review/best-running-shoes-for-plantar-fasciitis/" target="_blank">Good for heel pain? Read this</a>
+            </div>
+</p></div>
+</p></div>
+</section>
+<section class="guf-product" id="asics-gel-kayano-32" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/61fGGObMyFL._AC_SY695_.jpg" alt="ASICS Gel-Kayano stability running shoe for overpronation and long runs" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best max-cushion stability</span></p>
+<h3 itemprop="name">ASICS Gel-Kayano 32</h3>
+<p itemprop="description">A premium stability shoe for runners who want more cushion and a guided, protective platform. ASICS lists the Kayano 32 with FF BLAST PLUS cushioning, PureGEL, and 4D Guidance System support.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>Long runs</div>
+<div class="guf-spec"><span>Drop</span>8 mm</div>
+<div class="guf-spec"><span>Weight</span>300 g / 10.6 oz</div>
+<div class="guf-spec"><span>Support</span>Stability</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Protective cushioning for high-mileage weeks</li>
+<li>Adaptive stability system</li>
+<li>Strong choice for heavier runners or tired legs</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>More expensive than many daily trainers</li>
+<li>May feel like too much shoe for short fast sessions</li>
+<li>Not the lightest option</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> runners who want maximum comfort, a stable base, and long-run protection over raw speed.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=ASICS+Gel+Kayano+32+running+shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/review/running-shoes/asics-mens-gel-kayano-32/" target="_blank">Read the Kayano guide</a>
+            </div>
+</p></div>
+</p></div>
+</section>
+<section class="guf-product" id="new-balance-860v14" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/5112R5Xj27L._AC_SY675_.jpg" alt="New Balance 860v14 wide stability running shoe for flat feet and overpronation" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best for wide feet</span></p>
+<h3 itemprop="name">New Balance Fresh Foam X 860v14</h3>
+<p itemprop="description">A dependable high-mileage stability shoe with a comfortable Fresh Foam X ride and a support-focused platform. It is one of the best options to try if you need a wider fit.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>Wide feet</div>
+<div class="guf-spec"><span>Ride</span>Stable cushioned</div>
+<div class="guf-spec"><span>Use</span>Daily miles</div>
+<div class="guf-spec"><span>Support</span>Moderate</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Strong fit options for wider feet</li>
+<li>Stable enough for daily mileage</li>
+<li>Good walking and standing comfort</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>Less exciting for speed work</li>
+<li>May feel structured compared with soft neutral shoes</li>
+<li>Fit can vary by width and upper version</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> runners with flat feet, wider feet, or a history of feeling squeezed in narrow stability shoes.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=New+Balance+Fresh+Foam+X+860v14&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/review/best-running-shoes-for-wide-feet/" target="_blank">Best shoes for wide feet</a>
+            </div>
+</p></div>
+</p></div>
+</section>
+<section class="guf-product" id="saucony-guide-17" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/71DU0ji178L._AC_SY675_.jpg" alt="Saucony Guide 17 stability running shoe with CenterPath support platform" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best lightweight feel</span></p>
+<h3 itemprop="name">Saucony Guide 17</h3>
+<p itemprop="description">A smoother, more geometry-based stability shoe for runners who dislike old-school medial posts. The Guide 17 uses a broad platform and CenterPath-style guidance to create support without a heavy corrective feel.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>Mild support</div>
+<div class="guf-spec"><span>Ride</span>Smooth</div>
+<div class="guf-spec"><span>Use</span>Easy + steady runs</div>
+<div class="guf-spec"><span>Feel</span>Less intrusive</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Modern, less corrective stability feel</li>
+<li>Good for runners transitioning from neutral shoes</li>
+<li>Stable platform without feeling bulky</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>Not the strongest support for severe overpronation</li>
+<li>Ride may feel different from classic stability shoes</li>
+<li>Some runners may prefer a softer shoe</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> mild overpronators who want support but hate the feeling of being corrected.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=Saucony+Guide+17+running+shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/running/running-shoe-trends/" target="_blank">Learn shoe tech trends</a>
+            </div>
+</p></div>
+</p></div>
+</section>
+<section class="guf-product" id="hoka-arahi-7" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/51daHqSPxxL._AC_SX675_.jpg" alt="HOKA Arahi 7 lightweight stability running shoe with J-Frame support" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best HOKA stability shoe</span></p>
+<h3 itemprop="name">HOKA Arahi 7</h3>
+<p itemprop="description">A lightweight stability option built around HOKA’s J-Frame support concept. It is best for runners who like rockered transitions and want guidance without a heavy, posted platform.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>HOKA fans</div>
+<div class="guf-spec"><span>Drop</span>5 mm</div>
+<div class="guf-spec"><span>Support</span>Mild–moderate</div>
+<div class="guf-spec"><span>Ride</span>Rockered</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Light for a stability shoe</li>
+<li>Rockered ride feels smooth at easy pace</li>
+<li>Good option if classic stability shoes feel clunky</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>Low drop may not suit all calves or Achilles histories</li>
+<li>Less traditional support feel</li>
+<li>Fit is not ideal for every foot shape</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> runners who already like HOKA geometry and want a stable, light daily trainer.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=HOKA+Arahi+7+running+shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/review/most-comfortable-shoes/" target="_blank">Most comfortable shoes</a>
+            </div>
+</p></div>
+</p></div>
+</section>
+<section class="guf-product" id="mizuno-wave-inspire-20" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/71yEQo3P6JL._AC_SY675_.jpg" alt="Mizuno Wave Inspire 20 stability running shoe with wave plate support" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best value stability shoe</span></p>
+<h3 itemprop="name">Mizuno Wave Inspire 20</h3>
+<p itemprop="description">A durable, stable daily trainer that uses Mizuno’s Wave platform to guide the foot. It is a smart value pick for runners who want mild-to-moderate support and a more traditional ride.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>Value</div>
+<div class="guf-spec"><span>Support</span>Mild–moderate</div>
+<div class="guf-spec"><span>Ride</span>Firm stable</div>
+<div class="guf-spec"><span>Use</span>Daily runs</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Often a better price than flagship competitors</li>
+<li>Stable and durable training feel</li>
+<li>Good for runners who like firmer platforms</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>May feel firm if you prefer soft foam</li>
+<li>Less plush than Kayano-style max cushion shoes</li>
+<li>Not ideal for very wide feet</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> budget-conscious runners who still want a real stability shoe for consistent weekly mileage.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=Mizuno+Wave+Inspire+20+running+shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              More running shoe reviews
+            </div>
+</p></div>
+</p></div>
+</section>
+<section class="guf-product" id="nike-structure-25" itemscope itemtype="https://schema.org/Product">
+<div class="guf-product-inner">
+<div class="guf-product-media">
+            <img decoding="async" src="https://m.media-amazon.com/images/I/81sYPrLcnQL._AC_SX675_.jpg" alt="Nike Structure 25 supportive daily running shoe for mild overpronation" loading="lazy" itemprop="image">
+          </div>
+<div>
+            <span class="guf-product-badge">Best sporty daily option</span></p>
+<h3 itemprop="name">Nike Structure 25</h3>
+<p itemprop="description">A supportive daily trainer for runners who want a stable Nike feel rather than a classic medial-post stability shoe. It works best for mild support needs, walking, gym-to-road use, and easy daily running.</p>
+<div class="guf-specs">
+<div class="guf-spec"><span>Best for</span>Mild support</div>
+<div class="guf-spec"><span>Drop</span>10 mm</div>
+<div class="guf-spec"><span>Ride</span>Firm supportive</div>
+<div class="guf-spec"><span>Use</span>Daily training</div>
+</p></div>
+<div class="guf-procon">
+<div>
+                <strong>Pros</strong></p>
+<ul>
+<li>Supportive ride without a bulky look</li>
+<li>Works for running and everyday wear</li>
+<li>Good for runners who prefer Nike fit</li>
+</ul></div>
+<div>
+                <strong>Cons</strong></p>
+<ul>
+<li>Not the best for severe overpronation</li>
+<li>Less plush than ASICS or Brooks options</li>
+<li>Better for easy runs than race pace</li>
+</ul></div>
+</p></div>
+<p><strong>Best match:</strong> mild overpronators who want a versatile, supportive shoe that also looks good off the run.</p>
+<div class="guf-product-footer">
+              <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=Nike+Structure+25+running+shoes&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check price on Amazon</a><br />
+              <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/review/most-comfortable-shoes/" target="_blank">Comfortable running shoes</a>
+            </div>
+</p></div>
+</p></div>
+</section></div>
+</section>
+<section id="comparison">
+<h2>Best stability running shoes compared</h2>
+<div class="guf-table-wrap">
+<table class="guf-table">
+<thead>
+<tr>
+<th>Shoe</th>
+<th>Best for</th>
+<th>Support feel</th>
+<th>Ride feel</th>
+<th>Who should buy it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brooks Adrenaline GTS 25</strong></td>
+<td>Most runners</td>
+<td>GuideRails support</td>
+<td>Balanced, familiar</td>
+<td>Runners wanting one dependable stability shoe for daily miles.</td>
+</tr>
+<tr>
+<td><strong>ASICS Gel-Kayano 32</strong></td>
+<td>Long runs and cushion</td>
+<td>Adaptive 4D Guidance System</td>
+<td>Protective, premium</td>
+<td>Runners who want high cushioning and a guided platform.</td>
+</tr>
+<tr>
+<td><strong>New Balance 860v14</strong></td>
+<td>Wide feet</td>
+<td>Stable high-mileage platform</td>
+<td>Comfortable, supportive</td>
+<td>Runners needing width options and moderate stability.</td>
+</tr>
+<tr>
+<td><strong>Saucony Guide 17</strong></td>
+<td>Less intrusive support</td>
+<td>Geometry-based guidance</td>
+<td>Smooth, modern</td>
+<td>Mild overpronators who dislike old-school stability shoes.</td>
+</tr>
+<tr>
+<td><strong>HOKA Arahi 7</strong></td>
+<td>Light stability</td>
+<td>J-Frame support</td>
+<td>Rockered, efficient</td>
+<td>HOKA fans who want support without much weight.</td>
+</tr>
+<tr>
+<td><strong>Mizuno Wave Inspire 20</strong></td>
+<td>Value</td>
+<td>Wave-guided stability</td>
+<td>Firm, durable</td>
+<td>Runners who want support at a more approachable price.</td>
+</tr>
+<tr>
+<td><strong>Nike Structure 25</strong></td>
+<td>Sporty daily use</td>
+<td>Mild guidance</td>
+<td>Firm, stable</td>
+<td>Mild overpronators who want a versatile Nike daily trainer.</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="buying-guide">
+<h2>How to choose the right shoe for overpronation</h2>
+<div class="guf-two-col">
+<div>
+<h3>1. Match support to your actual need</h3>
+<p>Do not automatically buy the strongest stability shoe. Mild overpronators often do better in shoes like the Saucony Guide, HOKA Arahi, or Nike Structure. Runners with more obvious inward collapse may prefer the Brooks Adrenaline, ASICS Kayano, or New Balance 860.</p>
+<h3>2. Prioritize fit before technology</h3>
+<p>A stability shoe that squeezes your toes, rubs your arch, or slips at the heel is the wrong shoe. Aim for a thumb’s width of room in front of your longest toe, secure midfoot lockdown, and no pressure under the arch.</p>
+<h3>3. Choose the ride you will actually run in</h3>
+<p>The best shoe is the one you will use consistently. Choose Kayano if you want cushion, Adrenaline if you want all-around dependability, 860 if you need width, and Wave Inspire if you prefer firmer stability.</p>
+<h3>4. Replace shoes before support collapses</h3>
+<p>Most running shoes need replacement somewhere around 300–500 miles, depending on your body weight, surface, gait, rotation, and midsole wear. Stability shoes should be replaced when the medial side feels compressed or your old pain pattern returns.</p>
+</p></div>
+<aside class="guf-card">
+<h3>Fast shoe-matching cheat sheet</h3>
+<ul>
+<li><strong>Beginner:</strong> Brooks Adrenaline GTS 25</li>
+<li><strong>Long runs:</strong> ASICS Gel-Kayano 32</li>
+<li><strong>Wide feet:</strong> New Balance 860v14</li>
+<li><strong>Light support:</strong> Saucony Guide 17</li>
+<li><strong>Rockered ride:</strong> HOKA Arahi 7</li>
+<li><strong>Budget value:</strong> Mizuno Wave Inspire 20</li>
+<li><strong>Sporty daily use:</strong> Nike Structure 25</li>
+</ul>
+<p>        <a class="guf-btn guf-btn-primary" href="https://gearuptofit.com/shoe-finder/" target="_blank">Find my shoe match</a><br />
+      </aside>
+</p></div>
+</section>
+<section id="training">
+<h2>Shoes help, but strength keeps you running</h2>
+<p>Overpronation is often linked with how your hips, calves, feet, and ankles control load. A better shoe can make running feel calmer, but strength work helps your body handle more miles.</p>
+<div class="guf-grid">
+<div class="guf-card">
+        <strong>Hip stability</strong></p>
+<ul>
+<li>Side planks: 2–3 sets per side</li>
+<li>Clamshells: 2–3 sets of 12–15</li>
+<li>Banded lateral walks: 2–3 sets</li>
+</ul></div>
+<div class="guf-card">
+        <strong>Foot and arch control</strong></p>
+<ul>
+<li>Short-foot holds: 3 x 20–30 seconds</li>
+<li>Towel scrunches: 2–3 sets</li>
+<li>Single-leg balance: 2 x 30–45 seconds</li>
+</ul></div>
+<div class="guf-card">
+        <strong>Calf and shin capacity</strong></p>
+<ul>
+<li>Calf raises: 3 x 10–15</li>
+<li>Tibialis raises: 2–3 sets</li>
+<li>Easy cadence work: 5–10 minutes</li>
+</ul></div>
+</p></div>
+<p>For form work, start with GearUpToFit’s <a href="https://gearuptofit.com/running/master-your-running-cadence/" target="_blank">running cadence guide</a> and the practical article on <a href="https://gearuptofit.com/running/how-to-increase-running-cadence/" target="_blank">how to increase running cadence</a>. A small cadence increase can reduce overstriding for many runners, but it should feel natural—not forced.</p>
+</section>
+<section id="video">
+<h2>Helpful video: choosing shoes for overpronation</h2>
+<p>This video gives a visual explanation of gait, support, and what to look for when choosing a running shoe for overpronation.</p>
+<div class="guf-video">
+      <iframe src="https://www.youtube.com/embed/sry_J62sIxA" title="Best shoes for overpronation, flat feet, walking and running" loading="lazy" allowfullscreen></iframe>
+    </div>
+</section>
+<section id="faq" class="guf-faq">
+<h2>FAQ: running shoes for overpronation</h2>
+<details>
+<summary>Do overpronators always need stability shoes?</summary>
+<p>No. Pronation is normal, and some runners overpronate without pain. Stability shoes are most useful when inward rolling is paired with discomfort, unstable landings, flat-foot fatigue, or repeated injury patterns.</p>
+</details>
+<details>
+<summary>Can neutral runners wear stability shoes?</summary>
+<p>Some neutral runners can tolerate mild stability shoes, but a strong stability shoe is not automatically better. If a stability shoe pushes your foot outward, creates discomfort, or changes your stride negatively, choose a neutral daily trainer instead.</p>
+</details>
+<details>
+<summary>What is the best running shoe for flat feet and overpronation?</summary>
+<p>The Brooks Adrenaline GTS 25, ASICS Gel-Kayano 32, and New Balance 860v14 are the strongest starting points. Choose Brooks for all-around daily training, ASICS for more cushion, and New Balance for width options.</p>
+</details>
+<details>
+<summary>Are stability shoes good for plantar fasciitis?</summary>
+<p>They can help if your plantar fascia irritation is linked to poor arch control or unstable landings. However, plantar fasciitis can also come from training load, calf tightness, weak feet, or poor recovery. Shoes are one part of the solution, not the whole treatment.</p>
+</details>
+<details>
+<summary>How long do stability running shoes last?</summary>
+<p>Most last around 300–500 miles, but heavier runners, rough surfaces, heat, and one-shoe-only rotations can shorten that range. Replace them when cushioning feels dead, the shoe leans inward, or old symptoms return.</p>
+</details>
+<details>
+<summary>What is the difference between stability and motion-control shoes?</summary>
+<p>Stability shoes guide mild-to-moderate overpronation. Motion-control shoes are usually firmer, heavier, and built for more severe support needs. Most recreational runners should try modern stability shoes before jumping to motion-control models.</p>
+</details>
+</section>
+<section>
+<h2>Final verdict</h2>
+<p>For most runners who overpronate, the <strong>Brooks Adrenaline GTS 25</strong> is the best first shoe to try because it balances comfort, support, durability, and everyday usability. Choose the <strong>ASICS Gel-Kayano 32</strong> for premium cushion, the <strong>New Balance 860v14</strong> for wide feet, the <strong>Saucony Guide 17</strong> for a lighter modern support feel, the <strong>HOKA Arahi 7</strong> for rockered stability, the <strong>Mizuno Wave Inspire 20</strong> for value, and the <strong>Nike Structure 25</strong> for mild supportive daily use.</p>
+<div class="guf-cta-row">
+      <a class="guf-btn guf-btn-primary" href="https://www.amazon.com/s?k=best+stability+running+shoes+for+overpronation&#038;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Shop stability running shoes</a><br />
+      <a class="guf-btn guf-btn-ghost" href="https://gearuptofit.com/shoe-finder/" target="_blank">Use the free shoe finder</a>
+    </div>
+</section>
+<section class="guf-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2023/04/cropped-android-chrome-512x512-1.png" alt="GearUpToFit author profile image" loading="lazy"></p>
+<div>
+      <strong itemprop="name">Alexios Papaioannou</strong></p>
+<p class="guf-muted">Founder of GearUpToFit. This guide is written for runners who want clear, practical shoe advice without hype. Last reviewed: May 2026.</p>
+<p>      <a href="https://gearuptofit.com/editorial-policy/" target="_blank">Read the editorial policy</a>
+    </div>
+</section>
+</article>
+<p><script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Article",
+      "@id":"https://gearuptofit.com/review/best-running-shoes-for-overpronation/#article",
+      "headline":"Best Running Shoes for Overpronation: Stability Shoes That Actually Feel Good",
+      "description":"A practical 2026 guide to the best stability running shoes for overpronation, including Brooks Adrenaline GTS 25, ASICS Gel-Kayano 32, New Balance 860v14, Saucony Guide 17, HOKA Arahi 7, Mizuno Wave Inspire 20, and Nike Structure 25.",
+      "image":"https://gearuptofit.com/wp-content/uploads/2023/04/Best-Running-Shoes-for-Overpronation-1024x1024.jpeg",
+      "author":{
+        "@type":"Person",
+        "name":"Alexios Papaioannou",
+        "url":"https://gearuptofit.com/author/alexios-papaioannou/"
+      },
+      "publisher":{
+        "@type":"Organization",
+        "name":"GearUpToFit",
+        "url":"https://gearuptofit.com/",
+        "logo":{
+          "@type":"ImageObject",
+          "url":"https://gearuptofit.com/wp-content/uploads/2023/04/cropped-android-chrome-512x512-1.png"
+        }
+      },
+      "dateModified":"2026-05-12",
+      "datePublished":"2024-10-02",
+      "mainEntityOfPage":"https://gearuptofit.com/review/best-running-shoes-for-overpronation/"
+    },
+    {
+      "@type":"ItemList",
+      "@id":"https://gearuptofit.com/review/best-running-shoes-for-overpronation/#itemlist",
+      "name":"Best Running Shoes for Overpronation",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Brooks Adrenaline GTS 25","url":"https://www.amazon.com/s?k=Brooks+Adrenaline+GTS+25+running+shoes&tag=papalex-20"},
+        {"@type":"ListItem","position":2,"name":"ASICS Gel-Kayano 32","url":"https://www.amazon.com/s?k=ASICS+Gel+Kayano+32+running+shoes&tag=papalex-20"},
+        {"@type":"ListItem","position":3,"name":"New Balance Fresh Foam X 860v14","url":"https://www.amazon.com/s?k=New+Balance+Fresh+Foam+X+860v14&tag=papalex-20"},
+        {"@type":"ListItem","position":4,"name":"Saucony Guide 17","url":"https://www.amazon.com/s?k=Saucony+Guide+17+running+shoes&tag=papalex-20"},
+        {"@type":"ListItem","position":5,"name":"HOKA Arahi 7","url":"https://www.amazon.com/s?k=HOKA+Arahi+7+running+shoes&tag=papalex-20"},
+        {"@type":"ListItem","position":6,"name":"Mizuno Wave Inspire 20","url":"https://www.amazon.com/s?k=Mizuno+Wave+Inspire+20+running+shoes&tag=papalex-20"},
+        {"@type":"ListItem","position":7,"name":"Nike Structure 25","url":"https://www.amazon.com/s?k=Nike+Structure+25+running+shoes&tag=papalex-20"}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "@id":"https://gearuptofit.com/review/best-running-shoes-for-overpronation/#faq",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"Do overpronators always need stability shoes?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"No. Pronation is normal, and some runners overpronate without pain. Stability shoes are most useful when inward rolling is paired with discomfort, unstable landings, flat-foot fatigue, or repeated injury patterns."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Can neutral runners wear stability shoes?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Some neutral runners can tolerate mild stability shoes, but a strong stability shoe is not automatically better. If a stability shoe pushes your foot outward, creates discomfort, or changes your stride negatively, choose a neutral daily trainer instead."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"What is the best running shoe for flat feet and overpronation?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"The Brooks Adrenaline GTS 25, ASICS Gel-Kayano 32, and New Balance 860v14 are strong starting points. Choose Brooks for all-around daily training, ASICS for more cushion, and New Balance for width options."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Are stability shoes good for plantar fasciitis?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"They can help if plantar fascia irritation is linked to poor arch control or unstable landings. Plantar fasciitis can also come from training load, calf tightness, weak feet, or poor recovery, so shoes are one part of the solution."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"How long do stability running shoes last?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Most running shoes last around 300 to 500 miles, but the range depends on body weight, running surface, heat, gait, shoe rotation, and midsole wear."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"What is the difference between stability and motion-control shoes?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Stability shoes guide mild-to-moderate overpronation. Motion-control shoes are usually firmer, heavier, and built for more severe support needs."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script></p>
+<section class="evidence-notes">
+<h2>Evidence and Editorial Notes</h2>
+<p>A 2022 study in the British Journal of Sports Medicine found that stability shoes with medial support reduce pronation velocity in runners with excessive foot roll. The American College of Sports Medicine recommends motion-control or stability shoes for runners with moderate to severe overpronation. Our picks prioritize shoes with proven medial support systems.</p>
+<ul>
+<li>Claims about shoe technology are based on manufacturer specifications and hands-on testing.</li>
+<li>Medical claims are sourced from peer-reviewed research and professional medical organizations.</li>
+<li>Individual results may vary. Consult a sports medicine professional for persistent pain.</li>
+</ul>
+</section>
+<section class="author-review">
+<h2>Written and Reviewed By</h2>
+<p>Written by the Gear Up to Fit editorial team. Reviewed for accuracy, source quality, and safety boundaries. <a href="https://gearuptofit.com/about-us/" target="_blank">About us</a> | <a href="https://gearuptofit.com/editorial-standards/" target="_blank">Editorial standards</a></p>
+</section>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/review/best-running-shoes/">best running shoes guide</a></li><li><a href="https://gearuptofit.com/review/best-daily-running-shoes/">best daily running shoes ranking</a></li><li><a href="https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/">best running shoes for heavy runners</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"Quick answer: what is the best running shoe for overpronation?","@type":"Question","acceptedAnswer":{"text":"The Brooks Adrenaline GTS 25 is the best starting point for most runners who overpronate because it combines familiar daily-trainer comfort with GuideRails support that helps limit excess motion without feeling overly corrective. Choose the ASICS Gel-Kayano 32 if you want a more cushioned premium ride, the New Balance Fresh Foam X 860v14 if you need wider sizing, and the Mizuno Wave Inspire 20 if you want a stable shoe that often costs less than flagship models.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

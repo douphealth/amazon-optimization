@@ -1,0 +1,575 @@
+<style>
+.gutx .gut-gallery img{box-shadow:0 6px 18px rgba(16,28,51,.10);transition:transform .25s ease;}
+.gutx .gut-gallery img:hover{transform:scale(1.025);}
+.gutx table{font-size:.96em !important;}
+.gutx table td{padding:13px 16px !important;line-height:1.55;}
+.gutx table th{padding:14px 16px !important;}
+.gutx .gut-faq-item{transition:box-shadow .2s ease,border-color .2s ease;}
+.gutx .gut-faq-item:hover{box-shadow:0 4px 14px rgba(16,28,51,.08);}
+@media(max-width:600px){
+.gutx .gut-gallery{grid-template-columns:1fr !important;gap:12px !important;}</p>
+<p>.gutx table{font-size:.9em !important;}
+}
+</style>
+<div class="gutx">
+<!-- IMAGE MAP (upload to WP Media on publish, replace src):
+  images/enduro4-hero.webp -> Hero / featured image (also set as og:image)
+  images/enduro4-solar-battery.webp -> Battery section infographic
+  images/enduro4-upgrade-flowchart.webp -> Upgrade quiz section flowchart
+--></p>
+<div id="gut-progress" style="position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,#2563eb,#f59e0b);z-index:9999;"></div>
+<div class="gut-hero" style="position:relative;border-radius:18px;overflow:hidden;margin:0 0 8px 0;min-height:420px;display:flex;align-items:flex-end;">
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-hero.webp" alt="Trail runner at dawn wearing a rugged Garmin-style GPS watch" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="eager" /></p>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,35,.15) 0%,rgba(8,15,35,.55) 55%,rgba(8,15,35,.92) 100%);"></div>
+<div style="position:relative;padding:34px 30px 28px 30px;color:#fff !important;max-width:820px;">
+<div style="display:inline-block;background:#f59e0b;color:#101c33;font-weight:800;font-size:.78em;letter-spacing:.08em;padding:6px 14px;border-radius:999px;margin-bottom:14px;">ON SALE OCTOBER 9 &bull; $899.99</div>
+<h1 style="color:#fff !important;margin:0 0 12px 0;font-size:2em;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.45);">Garmin Enduro 4 vs Enduro 3: What&#8217;s New, What&#8217;s Not &amp; Whether You Should Upgrade</h1>
+<p style="margin:0 0 18px 0;color:#dbe7ff !important;font-size:1.05em;line-height:1.6;text-shadow:0 1px 8px rgba(0,0,0,.45);">The honest 2026 comparison — specs, battery reality check, price-drop math, and a straight answer for Enduro 3 owners.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;">
+<span style="background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.9em;color:#fff !important;"><strong style="color:#101c33 !important;">64GB</strong> storage</span><br />
+<span style="background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.9em;color:#fff !important;"><strong style="color:#fff !important;">90-day</strong> solar battery</span><br />
+<span style="background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.9em;color:#fff !important;"><strong style="color:#fff !important;">51mm</strong> titanium</span><br />
+<span style="background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.9em;color:#fff !important;"><strong style="color:#fff !important;">$899.99</strong></span>
+</div>
+</div>
+</div>
+<p style="font-size:.82em;color:#6b7280;margin:0 0 22px 0;">Illustrative image. Specs per Garmin&#8217;s announcement, cross-checked across four outlets.</p>
+<nav class="gut-toc" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border:1px solid #e5e7eb;border-radius:12px;padding:10px 16px;margin:0 0 26px 0;overflow-x:auto;white-space:nowrap;font-size:.88em;">
+<a href="#gut-specs" style="margin-right:16px;text-decoration:none;color:#1e3a8a;font-weight:600;">Specs</a><br />
+<a href="#gut-new" style="margin-right:16px;text-decoration:none;color:#1e3a8a;font-weight:600;">What&#8217;s New</a><br />
+<a href="#gut-battery" style="margin-right:16px;text-decoration:none;color:#1e3a8a;font-weight:600;">Battery</a><br />
+<a href="#gut-calculator" style="margin-right:16px;text-decoration:none;color:#1e3a8a;font-weight:600;">Value Calculator</a><br />
+<a href="#gut-quiz" style="margin-right:16px;text-decoration:none;color:#1e3a8a;font-weight:600;">Should You Upgrade?</a><br />
+<a href="#gut-buy" style="margin-right:16px;text-decoration:none;color:#1e3a8a;font-weight:600;">Where to Buy</a><br />
+<a href="#gut-faq" style="text-decoration:none;color:#1e3a8a;font-weight:600;">FAQ</a><br />
+</nav>
+<div class="gut-aeo-box" style="background:#f0f7ff;border-left:4px solid #2563eb;padding:18px 22px;border-radius:0 12px 12px 0;margin:0 0 28px 0;">
+<p style="margin:0;font-size:1.05em;line-height:1.6;"><strong>Quick answer:</strong> The Garmin Enduro 4 (on sale October 9 at $899.99) is an incremental &#8220;Enduro 3.5&#8221; — same 51mm case, MIP display, and 90-day solar battery, but with 64GB storage (doubled), 50% more RAM, and new training software including grade-adjusted pace, <a class="wpil_keyword_link" href="https://gearuptofit.com/fitness/hiit-for-endurance-athletes/" target="_blank"  rel="noopener" title="Stamina" data-wpil-keyword-link="linked"  data-wpil-monitor-id="2251">Stamina</a> Zones, and Garmin Epic. Enduro 3 owners should skip it unless they need the storage; new buyers should get the 4 while Enduro 3 prices fall.</p>
+</div>
+<div class="gut-takeaways" style="background:#101c33;color:#fff;padding:24px 26px;border-radius:14px;margin:0 0 30px 0;">
+<h2 style="color:#fff !important;margin:0 0 14px 0;font-size:1.25em;">Key Takeaways</h2>
+<ul style="margin:0;padding-left:20px;line-height:1.75;color:#e8eefc !important;">
+<li style="color:#f8faff !important;"><strong style="color:#fff !important;">On sale October 9, 2026 at $899.99</strong> — same launch price as the Enduro 3.</li>
+<li style="color:#f8faff !important;"><strong style="color:#fff !important;">Biggest upgrades:</strong> 64GB storage (was 32GB), 50% more RAM, 30% faster map panning.</li>
+<li style="color:#f8faff !important;"><strong style="color:#fff !important;">New software:</strong> grade-adjusted pace, Stamina Zones + Stamina Curve, Garmin Epic multi-day stories, rowing and ruck profiles.</li>
+<li style="color:#f8faff !important;"><strong style="color:#fff !important;">Unchanged:</strong> 51mm titanium case, 1.4&#8243; MIP display, 90-day solar battery claim, sensor array, LED flashlight.</li>
+<li style="color:#f8faff !important;"><strong style="color:#fff !important;">Verdict:</strong> new buyers → Enduro 4. Enduro 3 owners → skip, unless 32GB storage is your bottleneck.</li>
+</ul>
+</div>
+<p>Garmin just announced the <strong>Enduro 4</strong>, and if you run ultras, you felt that familiar twitch — the one that whispers <em>new watch, new PR</em>. Before you act on it, here&#8217;s the honest breakdown: the Enduro 4 goes on sale <strong>October 9 at $899.99</strong>, and it is best understood as an <strong>&#8220;Enduro 3.5&#8221;</strong> — meaningful under-the-hood improvements wrapped in an identical chassis.</p>
+<p>That&#8217;s not a dismissal. For the right buyer, those under-the-hood changes matter. But &#8220;right buyer&#8221; is doing a lot of work in that sentence, so let&#8217;s be precise about who should buy, who should wait, and who should hunt down a discounted Enduro 3 instead.</p>
+<h2 id="gut-release">Garmin Enduro 4: Release Date, Price &amp; Availability<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p>Garmin announced the Enduro 4 on <strong>October 6, 2026</strong>. It goes on sale <strong>October 9, 2026</strong> at <strong>$899.99</strong> in the US — the same launch price the Enduro 3 carried in 2024. Australia follows on October 10 at AU$1,449. UK, EU, and India pricing hadn&#8217;t been confirmed at announcement, but Garmin typically prices the Enduro line consistently across regions, so expect roughly the local equivalent of $900.</p>
+<p>The part number is 010-04799-00 (US) / 010-04799-01 (AU) — useful if you&#8217;re hunting for it at third-party retailers once stock spreads beyond Garmin&#8217;s own store. As with most Garmin launches, expect Garmin.com to have it first on October 9, with Amazon and specialty run shops following within days. We&#8217;ll update the buy box below with a verified Amazon listing the moment one appears.</p>
+<p>One launch-day note: if you&#8217;re buying in the first wave, double-check the strap size and confirm you&#8217;re getting the ComfortFit fabric strap configuration — early listings sometimes mix strap variants, and the fabric strap is one of the few tangible out-of-box differences.</p>
+<h2>Watch: Garmin&#8217;s Official Enduro 4 Film<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;margin:0 0 10px 0;background:#000;">
+<iframe src="https://www.youtube-nocookie.com/embed/K5_K302sNy0" title="A New Epic Awaits with Enduro 4 | Garmin (official video)" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<p style="font-size:.85em;color:#6b7280;margin:0 0 30px 0;">Garmin&#8217;s official Enduro 4 launch film — the best 2-minute visual overview of what&#8217;s new. For the deepest technical review, <a href="https://www.dcrainmaker.com" target="_blank" rel="noopener">DC Rainmaker&#8217;s</a> hands-on coverage is the gold standard once his full review lands.</p>
+<h2>Enduro 4 in Pictures (Official Garmin Photos)<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div class="gut-gallery" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0 0 8px 0;">
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-official-cf-xl.webp" alt="Garmin Enduro 4 official product photo — front view" style="width:100%;border-radius:12px;border:1px solid #e5e7eb;background:#fff;" loading="lazy" /><br />
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-official-rf-xl.webp" alt="Garmin Enduro 4 official product photo — right side" style="width:100%;border-radius:12px;border:1px solid #e5e7eb;background:#fff;" loading="lazy" /><br />
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-official-lf-xl.webp" alt="Garmin Enduro 4 official product photo — left side" style="width:100%;border-radius:12px;border:1px solid #e5e7eb;background:#fff;" loading="lazy" /><br />
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-official-pd-01-xl.webp" alt="Garmin Enduro 4 official product photo — detail" style="width:100%;border-radius:12px;border:1px solid #e5e7eb;background:#fff;" loading="lazy" />
+</div>
+<p style="font-size:.82em;color:#6b7280;margin:0 0 30px 0;">Official product photos: Garmin. Note the unchanged 51mm case and MIP display — the &#8220;3.5&#8221; in pictures.</p>
+<h2 id="gut-specs">Enduro 4 vs Enduro 3: The Spec Battle<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p>Forget the table for a second — here&#8217;s how the two watches compare where it actually matters, visualized:</p>
+<div class="gut-bars" style="margin:0 0 30px 0;">
+<div style="margin-bottom:16px;">
+<div style="display:flex;justify-content:space-between;font-size:.9em;margin-bottom:6px;"><span><strong>Storage</strong> (more is better)</span><span style="color:#6b7280;">64GB vs 32GB</span></div>
+<div style="background:#eef2ff;border-radius:8px;height:26px;position:relative;overflow:hidden;">
+<div class="gut-bar" data-w="100" style="position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#2563eb,#60a5fa);border-radius:8px;transition:width 1.2s ease;"></div>
+<div class="gut-bar" data-w="50" style="position:absolute;left:0;top:13px;bottom:0;width:0;background:#c7d2fe;border-radius:8px;transition:width 1.2s ease;"></div>
+</div>
+<div style="display:flex;gap:14px;font-size:.82em;margin-top:4px;"><span><span style="display:inline-block;width:10px;height:10px;background:#2563eb;border-radius:2px;margin-right:5px;"></span>Enduro 4</span><span><span style="display:inline-block;width:10px;height:10px;background:#c7d2fe;border-radius:2px;margin-right:5px;"></span>Enduro 3</span></div>
+</div>
+<div style="margin-bottom:16px;">
+<div style="display:flex;justify-content:space-between;font-size:.9em;margin-bottom:6px;"><span><strong>Map speed</strong> (RAM +50%, panning +30%)</span><span style="color:#6b7280;">Enduro 4 clearly faster</span></div>
+<div style="background:#eef2ff;border-radius:8px;height:26px;position:relative;overflow:hidden;">
+<div class="gut-bar" data-w="100" style="position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#2563eb,#60a5fa);border-radius:8px;transition:width 1.2s ease;"></div>
+<div class="gut-bar" data-w="65" style="position:absolute;left:0;top:13px;bottom:0;width:0;background:#c7d2fe;border-radius:8px;transition:width 1.2s ease;"></div>
+</div>
+</div>
+<div style="margin-bottom:16px;">
+<div style="display:flex;justify-content:space-between;font-size:.9em;margin-bottom:6px;"><span><strong>Battery life</strong> (solar claims)</span><span style="color:#6b7280;">Identical — tie</span></div>
+<div style="background:#eef2ff;border-radius:8px;height:26px;position:relative;overflow:hidden;">
+<div class="gut-bar" data-w="100" style="position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:8px;transition:width 1.2s ease;"></div>
+<div class="gut-bar" data-w="100" style="position:absolute;left:0;top:13px;bottom:0;width:0;background:#fde68a;border-radius:8px;transition:width 1.2s ease;"></div>
+</div>
+</div>
+<div style="margin-bottom:6px;">
+<div style="display:flex;justify-content:space-between;font-size:.9em;margin-bottom:6px;"><span><strong>Value right now</strong> (street price)</span><span style="color:#6b7280;">Enduro 3 ~$100 cheaper</span></div>
+<div style="background:#eef2ff;border-radius:8px;height:26px;position:relative;overflow:hidden;">
+<div class="gut-bar" data-w="72" style="position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#2563eb,#60a5fa);border-radius:8px;transition:width 1.2s ease;"></div>
+<div class="gut-bar" data-w="100" style="position:absolute;left:0;top:13px;bottom:0;width:0;background:#c7d2fe;border-radius:8px;transition:width 1.2s ease;"></div>
+</div>
+</div>
+</div>
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;margin:26px 0 14px 0;">Full Spec Comparison Table</h3>
+<div style="overflow-x:auto;margin:0 0 30px 0;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(16,28,51,.08);">
+<table style="width:100%;border-collapse:collapse;min-width:620px;font-size:.93em;">
+<thead>
+<tr>
+<th style="background:#101c33;color:#fff !important;padding:14px 16px;text-align:left;font-size:.85em;letter-spacing:.04em;">FEATURE</th>
+<th style="background:#1e3a8a;color:#fff !important;padding:14px 16px;text-align:left;">⌚ Enduro 4 <span style="background:#f59e0b;color:#101c33;font-size:.7em;padding:3px 10px;border-radius:999px;margin-left:6px;vertical-align:middle;">NEW 2026</span></th>
+<th style="background:#334155;color:#fff !important;padding:14px 16px;text-align:left;">Enduro 3</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:#eff6ff;">
+<td style="padding:11px 16px;font-weight:700;">💾 Storage</td>
+<td style="padding:11px 16px;"><strong style="color:#101c33 !important;">64GB</strong> <span style="color:#16a34a;font-weight:700;">⬆ doubled</span></td>
+<td style="padding:11px 16px;color:#64748b;">32GB</td>
+</tr>
+<tr>
+<td style="padding:11px 16px;font-weight:700;">⚡ Memory &amp; maps</td>
+<td style="padding:11px 16px;"><strong>50% more RAM</strong>, 30% faster panning <span style="color:#16a34a;font-weight:700;">⬆</span></td>
+<td style="padding:11px 16px;color:#64748b;">Previous-gen responsiveness</td>
+</tr>
+<tr style="background:#f8fafc;">
+<td style="padding:11px 16px;font-weight:700;">🔋 Smartwatch battery</td>
+<td style="padding:11px 16px;">36 days <span style="color:#6b7280;">(90 w/ solar)</span></td>
+<td style="padding:11px 16px;">36 days <span style="color:#6b7280;">(90 w/ solar)</span> <span style="color:#6b7280;">=</span></td>
+</tr>
+<tr>
+<td style="padding:11px 16px;font-weight:700;">🔋 GPS battery</td>
+<td style="padding:11px 16px;">Up to 320h w/ solar</td>
+<td style="padding:11px 16px;">Up to 320h w/ solar <span style="color:#6b7280;">=</span></td>
+</tr>
+<tr style="background:#f8fafc;">
+<td style="padding:11px 16px;font-weight:700;">📐 Case &amp; display</td>
+<td style="padding:11px 16px;">51mm titanium, 1.4&#8243; MIP 280×280, Power Sapphire</td>
+<td style="padding:11px 16px;">Identical <span style="color:#6b7280;">=</span></td>
+</tr>
+<tr>
+<td style="padding:11px 16px;font-weight:700;">🏋️ Training software</td>
+<td style="padding:11px 16px;">Grade-adjusted pace, Stamina Zones/Curve, Garmin Epic <span style="color:#16a34a;font-weight:700;">⬆ new</span></td>
+<td style="padding:11px 16px;color:#64748b;">Standard Garmin training suite</td>
+</tr>
+<tr style="background:#f8fafc;">
+<td style="padding:11px 16px;font-weight:700;">🏃 Sport profiles</td>
+<td style="padding:11px 16px;">100+, incl. <strong>rowing + ruck</strong> <span style="color:#16a34a;font-weight:700;">⬆ new</span></td>
+<td style="padding:11px 16px;color:#64748b;">100+ (no rowing/ruck)</td>
+</tr>
+<tr>
+<td style="padding:11px 16px;font-weight:700;">⌚ Strap / weight</td>
+<td style="padding:11px 16px;">ComfortFit fabric, 66g total</td>
+<td style="padding:11px 16px;color:#64748b;">Silicone, 63g</td>
+</tr>
+<tr style="background:#f8fafc;">
+<td style="padding:11px 16px;font-weight:700;">💧 Water / flashlight</td>
+<td style="padding:11px 16px;">10 ATM, white + red LED</td>
+<td style="padding:11px 16px;">Identical <span style="color:#6b7280;">=</span></td>
+</tr>
+<tr>
+<td style="padding:11px 16px;font-weight:700;">📡 Sensors</td>
+<td style="padding:11px 16px;">HR, Pulse Ox, skin temp, ECG, multi-band GNSS, SatIQ</td>
+<td style="padding:11px 16px;">Identical <span style="color:#6b7280;">=</span></td>
+</tr>
+<tr style="background:#eff6ff;">
+<td style="padding:11px 16px;font-weight:700;">💰 Price</td>
+<td style="padding:11px 16px;"><strong style="color:#101c33 !important;">$899.99</strong></td>
+<td style="padding:11px 16px;"><strong style="color:#101c33 !important;">~$799 street</strong> <span style="color:#16a34a;font-weight:700;">and falling ✓ value</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:.85em;color:#6b7280;margin:-18px 0 30px 0;">⬆ = Enduro 4 advantage &nbsp;·&nbsp; = = unchanged &nbsp;·&nbsp; Specs per Garmin&#8217;s announcement, cross-checked across four outlets.</p>
+<div class="gut-tabs" style="margin:0 0 30px 0;">
+<div role="tablist" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0;">
+<button type="button" role="tab" data-tab="t-new" class="gut-tab-btn" style="padding:12px 22px;border-radius:10px 10px 0 0;border:1px solid #e5e7eb;border-bottom:none;background:#101c33;color:#fff;font-weight:700;cursor:pointer;font-size:.95em;">What&#8217;s New</button><br />
+<button type="button" role="tab" data-tab="t-same" class="gut-tab-btn" style="padding:12px 22px;border-radius:10px 10px 0 0;border:1px solid #e5e7eb;border-bottom:none;background:#f8fafc;color:#334155;font-weight:700;cursor:pointer;font-size:.95em;">What&#8217;s Unchanged</button><br />
+<button type="button" role="tab" data-tab="t-win" class="gut-tab-btn" style="padding:12px 22px;border-radius:10px 10px 0 0;border:1px solid #e5e7eb;border-bottom:none;background:#f8fafc;color:#334155;font-weight:700;cursor:pointer;font-size:.95em;">Who Wins What</button>
+</div>
+<div id="gut-tab-t-new" class="gut-tab-panel" style="border:1px solid #e5e7eb;border-radius:0 12px 12px 12px;padding:22px 24px;">
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;margin-top:0;">The four real changes</h3>
+<ul style="line-height:1.8;margin:0;padding-left:20px;">
+<li><strong>64GB storage (was 32GB)</strong> — the headline upgrade. Load TopoActive maps for entire regions plus a music library without juggling.</li>
+<li><strong>50% more RAM, 30% faster map panning</strong> — the Enduro 4 is simply a snappier mapping device, and mapping is half the reason you buy an Enduro.</li>
+<li><strong>New training software:</strong> grade-adjusted pace, Stamina Zones + Stamina Curve, Garmin Epic multi-day stories, rowing and ruck profiles, Evening Report, Smart Alarm.</li>
+<li><strong>ComfortFit fabric strap</strong> — breathes better on 12-hour efforts; 3g heavier on paper (66g vs 63g), watch body unchanged at 57g.</li>
+</ul>
+</div>
+<div id="gut-tab-t-same" class="gut-tab-panel" style="display:none;border:1px solid #e5e7eb;border-radius:0 12px 12px 12px;padding:22px 24px;">
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;margin-top:0;">Carried over untouched</h3>
+<ul style="line-height:1.8;margin:0;padding-left:20px;">
+<li>51mm titanium case, 1.4&#8243; MIP display (280×280), Power Sapphire lens</li>
+<li>Battery claims: 36 days smartwatch (90 solar), up to 320h GPS with solar</li>
+<li>Full sensor array: HR, Pulse Ox, skin temp, ECG, multi-band GNSS, SatIQ</li>
+<li>10 ATM rating, white + red LED flashlight</li>
+<li>All Enduro 3 straps, chargers, and mounts remain compatible</li>
+</ul>
+<p style="margin:14px 0 0 0;color:#475569;">For an ultra watch, continuity is a compliment — the Enduro 3&#8217;s hardware was already the multi-day benchmark. Nothing was broken, so Garmin didn&#8217;t fix it.</p>
+</div>
+<div id="gut-tab-t-win" class="gut-tab-panel" style="display:none;border:1px solid #e5e7eb;border-radius:0 12px 12px 12px;padding:22px 24px;">
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;margin-top:0;">Head-to-head verdicts</h3>
+<ul style="line-height:1.8;margin:0;padding-left:20px;">
+<li><strong>Mapping &amp; navigation:</strong> Enduro 4 — doubled storage + faster rendering is the clearest functional win.</li>
+<li><strong>Training features:</strong> Enduro 4, with an asterisk — watch whether Garmin backports grade-adjusted pace to the 3.</li>
+<li><strong>Battery:</strong> tie — same claims, same hardware, same panel.</li>
+<li><strong>Value today:</strong> Enduro 3 — ~$100 cheaper and falling.</li>
+</ul>
+</div>
+</div>
+<p><script>
+(function(){
+var tabs=document.querySelectorAll('.gut-tab-btn');
+tabs.forEach(function(btn){
+  btn.addEventListener('click',function(){
+    tabs.forEach(function(b){b.style.background='#f8fafc';b.style.color='#334155';});
+    btn.style.background='#101c33';btn.style.color='#fff';
+    document.querySelectorAll('.gut-tab-panel').forEach(function(p){p.style.display='none';});
+    var panel=document.getElementById('gut-tab-'+btn.getAttribute('data-tab'));
+    if(panel) panel.style.display='block';
+  });
+});
+var bars=document.querySelectorAll('.gut-bar');
+function anim(){
+  bars.forEach(function(b){
+    var r=b.getBoundingClientRect();
+    if(window.innerHeight>r.top && r.bottom>0){ b.style.width=b.getAttribute('data-w')+'%'; }
+  });
+  var pr=document.getElementById('gut-progress');
+  if(pr){
+    var h=document.documentElement;
+    var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    pr.style.width=p+'%';
+  }
+}
+window.addEventListener('scroll',anim,{passive:true});
+window.addEventListener('load',anim);
+anim();
+})();
+</script></p>
+<h2 id="gut-battery">Battery Life Reality Check<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p><img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-solar-battery.webp" alt="Infographic explaining solar charging on a rugged GPS watch: 36 days smartwatch, 90 days with solar, 320 hours GPS" style="width:100%;border-radius:14px;margin:0 0 20px 0;" loading="lazy" /></p>
+<p>Let&#8217;s talk about that 320-hour GPS figure, because it&#8217;s doing marketing heavy-lifting. That number assumes <strong>strong, steady solar exposure</strong> — the kind you get on an exposed ridgeline in the desert Southwest, not under New England tree cover in October. In real mixed conditions, expect meaningfully less, exactly as with the Enduro 3.</p>
+<p>The practical takeaway: the Enduro 4&#8217;s battery story is <em>identical</em> to the Enduro 3&#8217;s. If your Enduro 3 already outlasts your longest effort, the 4 buys you nothing here. If you&#8217;re choosing between them fresh, both will outlast just about any race you&#8217;ll ever enter — the differentiator is everything else on this page, not battery.</p>
+<p>It&#8217;s also worth understanding <em>why</em> solar numbers vary so much. Garmin&#8217;s solar figures assume the watch face gets roughly 3 hours of 50,000-lux sunlight daily — full sun, face-up, unobstructed. A wrist under a jacket cuff, under tree canopy, or angled away from the sun harvests a fraction of that. Ultra runners who&#8217;ve logged 100-milers on the Enduro 3 consistently report excellent but not miraculous results: the watch finishes the race with charge to spare, but the &#8220;infinite battery&#8221; marketing deserves the same skepticism you&#8217;d give any lab-condition claim. Expect the Enduro 4 to behave exactly the same way — because the panel and power system are exactly the same.</p>
+<h2>Deep Dive: The New Training Features, Explained<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p><img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-new-features.webp" alt="Enduro 4 new software features: grade-adjusted pace, Stamina Zones, multi-day Epic stories, ruck profile" style="width:100%;border-radius:14px;margin:0 0 20px 0;" loading="lazy" /></p>
+<p>Specs tell you <em>what</em> changed; this section tells you whether you&#8217;ll feel it. Here&#8217;s what the Enduro 4&#8217;s new software actually does in training:</p>
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;">Grade-Adjusted Pace: Your Hills Stop Lying to You</h3>
+<p>Every trail runner knows the problem: you run 9:00/mile on the flat and 13:00/mile on a 12% grade, and your watch treats both as &#8220;slow.&#8221; Grade-adjusted pace (GAP) normalizes your pace for elevation change, showing the flat-equivalent effort. It&#8217;s the single most useful pacing metric for hilly ultras, and until now Garmin forced you to estimate it by feel or third-party apps. On the Enduro 4 it&#8217;s native, real-time, and on your wrist mid-climb. If you race mountainous 50Ks, this alone changes how you pace.</p>
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;">Stamina Zones &amp; Stamina Curve: A Fuel Gauge for Your Legs</h3>
+<p>The old stamina field gave you one number: estimated energy remaining. Stamina Zones break that into intensity bands, and the Stamina Curve shows your projected depletion over the coming hours at current effort. In practice, it&#8217;s a fuel gauge with a forecast — glance down at mile 60 of a 100-miler and see not just &#8220;32% remaining&#8221; but whether your current pace empties the tank at mile 85 or mile 105. For anyone who&#8217;s ever bonked at mile 90, that&#8217;s not a gimmick.</p>
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;">Garmin Epic: For the Multi-Day Crowd</h3>
+<p>Epic stitches multi-day activities into one continuous story in Garmin Connect. If you&#8217;ve never done a stage race, this means nothing to you. If you have — if you&#8217;ve ever tried to make sense of five separate activity files from a five-day event — you understand immediately. It&#8217;s niche, but the Enduro line&#8217;s core audience includes exactly the people who&#8217;ll use it.</p>
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;">Rowing &amp; Ruck Profiles: Reading the Room</h3>
+<p>Rucking&#8217;s surge in tactical and hybrid-athlete training made a dedicated ruck profile overdue — weighted carries have different HR dynamics than hikes, and tracking them as generic &#8220;cardio&#8221; was always a hack. Rowing fills a similar gap for cross-training ultra runners. Neither sells the watch alone; together they signal Garmin is paying attention to how endurance athletes actually train in 2026.</p>
+<h2 id="gut-calculator">True Cost Calculator: Enduro 4 vs Discounted Enduro 3<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p>A $900 watch you&#8217;ll wear for 4 years costs less per year than a $300 watch you replace annually. Move the sliders to see the real math:</p>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin:0 0 30px 0;">
+<div style="margin-bottom:18px;">
+<label style="font-weight:700;display:block;margin-bottom:8px;">Enduro 3 street price: <span id="gut-p3v" style="color:#2563eb;">$800</span></label><br />
+<input id="gut-p3" type="range" min="700" max="899" value="800" step="10" style="width:100%;" />
+</div>
+<div style="margin-bottom:20px;">
+<label style="font-weight:700;display:block;margin-bottom:8px;">Years you&#8217;ll keep the watch: <span id="gut-yv" style="color:#2563eb;">4</span></label><br />
+<input id="gut-y" type="range" min="2" max="6" value="4" step="1" style="width:100%;" />
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+<div style="background:#101c33;color:#fff;border-radius:12px;padding:18px;">
+<div style="font-size:.85em;color:#93c5fd;margin-bottom:4px;">Enduro 4</div>
+<div style="font-size:1.7em;font-weight:800;" id="gut-c4">$225/yr</div>
+<div style="font-size:.82em;color:#c7d2fe;">$899.99 ÷ <span class="gut-yr">4</span> years</div>
+</div>
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;">
+<div style="font-size:.85em;color:#64748b;margin-bottom:4px;">Discounted Enduro 3</div>
+<div style="font-size:1.7em;font-weight:800;" id="gut-c3">$200/yr</div>
+<div style="font-size:.82em;color:#64748b;"><span class="gut-p3">$800</span> ÷ <span class="gut-yr">4</span> years</div>
+</div>
+</div>
+<p id="gut-cnote" style="margin:14px 0 0 0;font-size:.95em;line-height:1.6;">
+</div>
+<p><script>
+(function(){
+var p3=document.getElementById('gut-p3'), y=document.getElementById('gut-y');
+if(!p3||!y) return;
+function upd(){
+  var price=parseInt(p3.value,10), yrs=parseInt(y.value,10);
+  document.getElementById('gut-p3v').textContent='$'+price;
+  document.getElementById('gut-yv').textContent=yrs;
+  var c4=(899.99/yrs).toFixed(0), c3=(price/yrs).toFixed(0);
+  document.getElementById('gut-c4').textContent='$'+c4+'/yr';
+  document.getElementById('gut-c3').textContent='$'+c3+'/yr';
+  document.querySelectorAll('.gut-yr').forEach(function(e){e.textContent=yrs;});
+  document.querySelectorAll('.gut-p3').forEach(function(e){e.textContent='$'+price;});
+  var diff=(899.99-price).toFixed(0);
+  document.getElementById('gut-cnote').innerHTML='At these settings the Enduro 3 saves you \x3cstrong\x3e$'+diff+'\x3c/strong\x3e up front — that\x27s roughly \x3cstrong\x3e'+Math.max(1,Math.round(diff/45))+'\x3c/strong\x3e race entries. The 4 only wins this math if you\x27d actually use the 64GB storage or new training features weekly.';
+}
+p3.addEventListener('input',upd); y.addEventListener('input',upd); upd();
+})();
+</script></p>
+<h2 id="gut-quiz">Should You Upgrade? (Honest Decision Tool)<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p><img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-upgrade-flowchart.webp" alt="Flowchart: should you upgrade to the Enduro 4 — decision paths for Enduro 3 owners, new buyers, and budget buyers" style="width:100%;max-width:620px;display:block;margin:0 auto 20px auto;border-radius:14px;" loading="lazy" /></p>
+<p>Or answer three quick questions for a straight recommendation:</p>
+<div id="gut-enduro-quiz" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin:0 0 30px 0;">
+<div id="gut-q1">
+<p style="font-weight:700;margin:0 0 12px 0;">1. Do you currently own an Enduro 3?</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;">
+<button type="button" data-q="1" data-a="yes" style="color:#101c33 !important;padding:10px 22px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:1em;">Yes</button><br />
+<button type="button" data-q="1" data-a="no" style="color:#101c33 !important;padding:10px 22px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:1em;">No</button>
+</div>
+</div>
+<div id="gut-q2" style="display:none;margin-top:18px;">
+<p style="font-weight:700;margin:0 0 12px 0;">2. Is 32GB storage a real bottleneck for you (huge offline map sets, big music library)?</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;">
+<button type="button" data-q="2" data-a="yes" style="color:#101c33 !important;padding:10px 22px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:1em;">Yes, constantly juggling</button><br />
+<button type="button" data-q="2" data-a="no" style="color:#101c33 !important;padding:10px 22px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:1em;">No, 32GB is fine</button>
+</div>
+</div>
+<div id="gut-q3" style="display:none;margin-top:18px;">
+<p style="font-weight:700;margin:0 0 12px 0;">3. Do grade-adjusted pace and Stamina Zones sound like features you&#8217;d use weekly?</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;">
+<button type="button" data-q="3" data-a="yes" style="color:#101c33 !important;padding:10px 22px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:1em;">Yes</button><br />
+<button type="button" data-q="3" data-a="no" style="color:#101c33 !important;padding:10px 22px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:1em;">Not really</button>
+</div>
+</div>
+<div id="gut-result" style="display:none;margin-top:20px;padding:18px;border-radius:10px;background:#101c33;color:#fff;">
+<p id="gut-result-text" style="margin:0;line-height:1.65;color:#fff !important;">
+</div>
+</div>
+<p><script>
+(function(){
+var ans={};
+var quiz=document.getElementById('gut-enduro-quiz');
+if(!quiz) return;
+quiz.addEventListener('click',function(e){
+  var b=e.target.closest('button[data-q]'); if(!b) return;
+  var q=b.getAttribute('data-q'); ans[q]=b.getAttribute('data-a');
+  Array.prototype.forEach.call(b.parentNode.querySelectorAll('button'),function(x){
+    x.style.background='#fff'; x.style.color='#000';
+  });
+  b.style.background='#2563eb'; b.style.color='#fff';
+  var n2=document.getElementById('gut-q2'), n3=document.getElementById('gut-q3');
+  if(q==='1'){ n2.style.display='block'; }
+  if(q==='2'){ n3.style.display='block'; }
+  if(q==='3'){ show(); }
+  function show(){
+    var t='';
+    if(ans['1']==='yes' && ans['2']==='no'){
+      t='\x3cstrong\x3eDon\x27t upgrade.\x3c/strong\x3e Your Enduro 3 does everything the 4 does where it counts — same battery, same case, same sensors. Wait for a bigger generational jump, or grab the 4 only if a killer sale appears.';
+    } else if(ans['1']==='yes' && ans['2']==='yes'){
+      t='\x3cstrong\x3eConsider the Enduro 4.\x3c/strong\x3e You\x27re the edge case this watch was built for: 64GB storage plus faster maps directly solves your bottleneck. Everyone else with an Enduro 3 should sit this one out.';
+    } else if(ans['1']==='no' && ans['3']==='yes'){
+      t='\x3cstrong\x3eBuy the Enduro 4.\x3c/strong\x3e You\x27ll actually use the new training software, and buying new means buying current — better resale, longer software support.';
+    } else {
+      t='\x3cstrong\x3eHunt a discounted Enduro 3.\x3c/strong\x3e Same battery, same hardware, ~$100+ cheaper and falling. Put the savings toward race entries — that\x27ll improve your finish time more than Stamina Zones will.';
+    }
+    document.getElementById('gut-result-text').innerHTML=t;
+    document.getElementById('gut-result').style.display='block';
+  }
+});
+})();
+</script></p>
+<h2>The Enduro Line: How We Got Here<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div style="display:flex;overflow-x:auto;gap:0;margin:0 0 30px 0;padding:6px 2px;">
+<div style="flex:1;min-width:150px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-right:10px;">
+<div style="font-size:.78em;color:#64748b;font-weight:700;letter-spacing:.06em;">2021</div>
+<div style="font-weight:800;margin:4px 0;">Enduro</div>
+<div style="font-size:.88em;color:#475569;">The original ultra play: huge battery, Power Glass, ultralight case.</div>
+</div>
+<div style="flex:1;min-width:150px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-right:10px;">
+<div style="font-size:.78em;color:#64748b;font-weight:700;letter-spacing:.06em;">2022</div>
+<div style="font-weight:800;margin:4px 0;">Enduro 2</div>
+<div style="font-size:.88em;color:#475569;">Touchscreen, flashlight, multi-band GNSS, TopoActive maps.</div>
+</div>
+<div style="flex:1;min-width:150px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-right:10px;">
+<div style="font-size:.78em;color:#64748b;font-weight:700;letter-spacing:.06em;">2024</div>
+<div style="font-weight:800;margin:4px 0;">Enduro 3</div>
+<div style="font-size:.88em;color:#475569;">Lighter build, better solar, refined — the benchmark. <a href="https://gearuptofit.com/running/garmin-enduro-3/" target="_blank">Our review</a>.</div>
+</div>
+<div style="flex:1;min-width:150px;background:#101c33;border:1px solid #101c33;border-radius:12px;padding:16px;">
+<div style="font-size:.78em;color:#93c5fd;font-weight:700;letter-spacing:.06em;">2026</div>
+<div style="font-weight:800;margin:4px 0;color:#fff;">Enduro 4 ★</div>
+<div style="font-size:.88em;color:#c7d2fe;">64GB, faster maps, new training software. The &#8220;3.5&#8221;.</div>
+</div>
+</div>
+<h2>Enduro 4: Pros and Cons<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:0 0 30px 0;">
+<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:14px;padding:20px 22px;">
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;margin:0 0 12px 0;color:#166534;">✓ What we like</h3>
+<ul style="margin:0;padding-left:20px;line-height:1.8;">
+<li>64GB storage finally ends map juggling</li>
+<li>50% more RAM — maps feel modern</li>
+<li>Grade-adjusted pace &amp; Stamina Zones are genuinely useful</li>
+<li>Same legendary battery life, same $899.99</li>
+<li>Every Enduro 3 accessory still fits</li>
+</ul>
+</div>
+<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:14px;padding:20px 22px;">
+<h3 style="border-left:4px solid #f59e0b;padding-left:12px;margin:0 0 12px 0;color:#991b1b;">✗ What gives pause</h3>
+<ul style="margin:0;padding-left:20px;line-height:1.8;">
+<li>No hardware leap — &#8220;Enduro 3.5,&#8221; not a new generation</li>
+<li>Same MIP display (great for battery, dated next to AMOLED)</li>
+<li>Enduro 3 owners get little for $900</li>
+<li>320h GPS claim needs ideal sun to hold</li>
+<li>Some software may come to Enduro 3 via update anyway</li>
+</ul>
+</div>
+</div>
+<h2>Which Athlete Are You? (Persona Picks)<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:0 0 30px 0;">
+<div style="border:1px solid #e5e7eb;border-radius:14px;padding:20px;background:#fff;">
+<div style="font-size:1.6em;margin-bottom:8px;">🏃</div>
+<div style="font-weight:800;margin-bottom:6px;">The 100-Mile Racer</div>
+<p style="margin:0;font-size:.92em;color:#475569;line-height:1.65;">You need battery certainty and pacing tools above all. <strong>Enduro 4</strong> — Stamina Zones and grade-adjusted pace earn their keep at mile 70.</p>
+</div>
+<div style="border:1px solid #e5e7eb;border-radius:14px;padding:20px;background:#fff;">
+<div style="font-size:1.6em;margin-bottom:8px;">🥾</div>
+<div style="font-weight:800;margin-bottom:6px;">The Thru-Hiker</div>
+<p style="margin:0;font-size:.92em;color:#475569;line-height:1.65;">Offline maps for entire trails are your bottleneck. <strong>Enduro 4</strong> — 64GB ends the storage juggling forever.</p>
+</div>
+<div style="border:1px solid #e5e7eb;border-radius:14px;padding:20px;background:#fff;">
+<div style="font-size:1.6em;margin-bottom:8px;">🎒</div>
+<div style="font-weight:800;margin-bottom:6px;">The Rucker / Tactical Athlete</div>
+<p style="margin:0;font-size:.92em;color:#475569;line-height:1.65;">New ruck profile plus bombproof build. <strong>Enduro 4</strong> if buying new; your Enduro 3 is still fine.</p>
+</div>
+<div style="border:1px solid #e5e7eb;border-radius:14px;padding:20px;background:#fff;">
+<div style="font-size:1.6em;margin-bottom:8px;">💰</div>
+<div style="font-weight:800;margin-bottom:6px;">The Value Hunter</div>
+<p style="margin:0;font-size:.92em;color:#475569;line-height:1.65;">You want 90% of the capability for the lowest price. <strong>Discounted Enduro 3</strong> — the smart money right now.</p>
+</div>
+</div>
+<h2>How the Enduro 4 Fits the 2026 Ultra Watch Landscape<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p>The Enduro 4 doesn&#8217;t reshuffle the ultra-watch hierarchy — it cements Garmin&#8217;s position at the top of it. The <a href="https://gearuptofit.com/review/garmin-fenix-8-vs-enduro-3/" target="_blank">Fenix 8 vs Enduro 3</a> debate now effectively becomes Fenix 8 vs Enduro 4 for new buyers, with the same conclusion: Fenix 8 if you want the AMOLED display and smartwatch polish, Enduro 4 if battery life is the whole point.</p>
+<p>And as we noted in our <a href="https://gearuptofit.com/review/apple-watch-ultra-4/" target="_blank">Apple Watch Ultra 4 review</a>, Garmin&#8217;s Enduro line remains the default answer for 100-milers — the Ultra 4 is the better <em>smartwatch</em>, but it can&#8217;t touch 90-day solar battery claims. The Enduro 4 extends that lead exactly where it matters.</p>
+<p>If you&#8217;re still choosing your first serious GPS watch rather than upgrading, our <a href="https://gearuptofit.com/review/best-gps-running-watches-for-marathon-beginners/" target="_blank">marathon GPS watch guide</a> covers the full field — though fair warning, most beginners don&#8217;t need an $899 ultra watch.</p>
+<h2 id="gut-buy">Where to Buy the Garmin Enduro 4<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div style="border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;margin:0 0 30px 0;background:#fff;">
+<div style="background:#2563eb;color:#ffffff;font-weight:800;font-size:.8em;letter-spacing:.06em;padding:8px 18px;">&#127942; NEW MODEL — NOW AVAILABLE ON AMAZON</div>
+<div style="display:flex;gap:20px;padding:20px;flex-wrap:wrap;align-items:center;">
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro4-official-cf-xl.webp" alt="Garmin Enduro 4 — official product photo" style="width:210px;max-width:44%;border-radius:10px;background:#fff;" loading="lazy" />
+<div style="flex:1;min-width:220px;">
+<div style="font-weight:800;font-size:1.15em;margin-bottom:6px;">Garmin Enduro 4 — Ultraperformance GPS Smartwatch</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+<span style="font-size:1.6em;font-weight:800;color:#166534;">$899.99</span>
+</div>
+<div style="font-size:.88em;color:#64748b;margin-bottom:14px;">&#11088; Amazon listing verified live October 2026 — check the live price.</div>
+<p><a href="https://www.amazon.com/dp/B0HM3VQMMG/?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:#f59e0b;color:#101c33;padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:800;">Check Price on Amazon</a></p>
+</div>
+</div>
+</div>
+<div style="border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;margin:0 0 30px 0;background:#fff;">
+<div style="background:#f59e0b;color:#101c33;font-weight:800;font-size:.8em;letter-spacing:.06em;padding:8px 18px;">💰 BEST VALUE PICK — AVAILABLE NOW</div>
+<div style="display:flex;gap:20px;padding:20px;flex-wrap:wrap;align-items:center;">
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/enduro3-official.webp" alt="Garmin Enduro 3 — official product photo" style="width:210px;max-width:44%;border-radius:10px;" loading="lazy" /></p>
+<div style="flex:1;min-width:220px;">
+<div style="font-weight:800;font-size:1.15em;margin-bottom:6px;">Garmin Enduro 3 — 51mm, Solar, Sapphire, Titanium</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+<span style="font-size:1.6em;font-weight:800;color:#166534;">$799.99</span><br />
+<span style="color:#6b7280;text-decoration:line-through;">$899.99</span><br />
+<span style="background:#dcfce7;color:#166534;font-size:.78em;font-weight:700;padding:3px 10px;border-radius:999px;">SAVE $100</span>
+</div>
+<div style="font-size:.88em;color:#64748b;margin-bottom:14px;">⭐ Same battery &amp; hardware as the Enduro 4. Price observed October 2026 — check the live price.</div>
+<p><a href="https://www.amazon.com/dp/B0DD5N9G17?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:#f59e0b;color:#101c33;padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:800;">Check Price on Amazon</a>
+</div>
+</div>
+</div>
+<h2>Garmin Enduro 4 vs Enduro 3: The 2026 Verdict<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:14px;padding:22px 24px;margin:0 0 30px 0;">
+<p style="margin:0 0 12px 0;font-size:1.1em;"><strong>Buy the Enduro 4 if:</strong> you&#8217;re buying your first Enduro, you need 64GB of map/music storage, or grade-adjusted pace and Stamina Zones fit your training.</p>
+<p style="margin:0 0 12px 0;font-size:1.1em;"><strong>Buy a discounted Enduro 3 if:</strong> you want maximum value — same battery, same hardware, ~$100+ cheaper and falling.</p>
+<p style="margin:0;font-size:1.1em;"><strong>Keep your Enduro 3 if:</strong> you already own one and 32GB isn&#8217;t a bottleneck. This is an &#8220;Enduro 3.5,&#8221; not a generational leap.</p>
+</div>
+<h2>Sources &amp; Further Reading<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<p>Every spec in this comparison comes from Garmin&#8217;s official announcement, cross-checked across multiple outlets. Go deeper:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:0 0 30px 0;">
+<a href="https://www.garmin.com/en-US/p/2003016" target="_blank" rel="noopener" style="display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#fff;"></p>
+<div style="font-weight:800;color:#1e3a8a;margin-bottom:4px;">📡 Garmin — Official Enduro 4 Page</div>
+<div style="font-size:.88em;color:#64748b;">Specs, pricing, and availability straight from the source.</div>
+<p></a><br />
+<a href="https://www.dcrainmaker.com" target="_blank" rel="noopener" style="display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#fff;"></p>
+<div style="font-weight:800;color:#1e3a8a;margin-bottom:4px;">🔬 DC Rainmaker</div>
+<div style="font-size:.88em;color:#64748b;">The gold standard for in-depth sports-tech testing — watch for his full Enduro 4 review.</div>
+<p></a><br />
+<a href="https://www.notebookcheck.net/Garmin-Enduro-4-launches-with-MiP-display-and-infinite-battery-life-thanks-to-solar.1417166.0.html" target="_blank" rel="noopener" style="display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#fff;"></p>
+<div style="font-weight:800;color:#1e3a8a;margin-bottom:4px;">📰 Notebookcheck — Launch Coverage</div>
+<div style="font-size:.88em;color:#64748b;">Detailed spec breakdown including 144h workout tracking figure.</div>
+<p></a><br />
+<a href="https://www.gsmdome.com/garmin-enduro-4-debuts-with-up-to-90-days-of-solar-assisted-battery-life" target="_blank" rel="noopener" style="display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#fff;"></p>
+<div style="font-weight:800;color:#1e3a8a;margin-bottom:4px;">📱 GSMDome — Enduro 4 Debut</div>
+<div style="font-size:.88em;color:#64748b;">Launch summary with Garmin&#8217;s official film embedded.</div>
+<p></a><br />
+<a href="https://gearuptofit.com/running/garmin-enduro-3/" style="display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#f8fafc;" target="_blank"></p>
+<div style="font-weight:800;color:#1e3a8a;margin-bottom:4px;">⌚ Our Garmin Enduro 3 Review</div>
+<div style="font-size:.88em;color:#64748b;">The full deep-dive on the watch the Enduro 4 builds on.</div>
+<p></a><br />
+<a href="https://gearuptofit.com/review/garmin-fenix-8-vs-enduro-3/" style="display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;background:#f8fafc;" target="_blank"></p>
+<div style="font-weight:800;color:#1e3a8a;margin-bottom:4px;">⚔️ Fenix 8 vs Enduro 3</div>
+<div style="font-size:.88em;color:#64748b;">Our comparison — the trade-offs carry straight over to the 4.</div>
+<p></a>
+</div>
+<h2 id="gut-faq">Frequently Asked Questions<span style="display:block;width:64px;height:4px;border-radius:999px;background:linear-gradient(90deg,#f59e0b 0%,#1e3a8a 100%);margin-top:10px;"></span></h2>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">When is the Garmin Enduro 4 release date?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">The Garmin Enduro 4 was announced on October 6, 2026 and goes on sale October 9, 2026 at $899.99 in the US (AU$1,449 in Australia from October 10).</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">How much does the Garmin Enduro 4 cost?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">$899.99 in the US — the same launch price as the Enduro 3. UK, EU, and India pricing had not been confirmed at announcement.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Is the Enduro 4 worth upgrading from the Enduro 3?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">For most Enduro 3 owners, no. The case, display, battery, and sensors are unchanged. The upgrade case rests on 64GB storage (vs 32GB), 50% more RAM with faster maps, and new training software — compelling only if storage or those specific features solve a real problem for you.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">What is the Enduro 4&#8217;s battery life?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Garmin claims 36 days in smartwatch mode (90 days with solar) and up to 320 hours of GPS tracking with solar — identical claims to the Enduro 3. Real-world results depend heavily on solar exposure; the 320-hour figure assumes strong, steady sunlight.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Does the Enduro 4 have an AMOLED display?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">No. It keeps the 1.4&#8243; memory-in-pixel (MIP) display at 280×280 resolution with Power Sapphire lens — the same as the Enduro 3. MIP remains the right choice for multi-day battery life and sunlight readability.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Will Enduro 3 prices drop now?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Almost certainly. New Garmin launches reliably push previous-gen prices down, and early reports already show the Enduro 3 around $100 under launch with further drops expected through the holiday season.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">What is Garmin Epic on the Enduro 4?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Garmin Epic stitches multi-day activities into a single continuous story in Garmin Connect — aimed at stage racers, thru-hikers, and FKT attempts rather than single-day efforts.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Is the Enduro 4 good for ultramarathons?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Yes — it&#8217;s arguably the default pick for 100-milers, inheriting the Enduro 3&#8217;s crown: multi-week battery life, full onboard mapping with now-double storage, and a rugged 51mm titanium build. See how it compares to the broader field in our <a href="https://gearuptofit.com/review/best-gps-running-watches-for-marathon-beginners/" target="_blank">GPS watch guide</a>.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Enduro 4 vs Fenix 8 — which should I buy?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Same answer as before: Fenix 8 for AMOLED display and smartwatch features, Enduro 4 for maximum battery life. Our <a href="https://gearuptofit.com/review/garmin-fenix-8-vs-enduro-3/" target="_blank">Fenix 8 vs Enduro 3 comparison</a> covers the trade-offs in depth, and they carry straight over.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Does the Enduro 4 work with my Enduro 3 straps and charger?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Yes. The case and QuickFit mount are unchanged, so all Enduro 3 straps, chargers, and accessories carry over — including the new ComfortFit fabric strap, which is swappable onto older models.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;margin-bottom:10px;">
+<summary style="font-weight:700;cursor:pointer;">Does the Garmin Enduro 4 have onboard maps?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Yes — full TopoActive maps come preloaded, and this is where the 64GB storage matters most: you can now carry dramatically larger offline map regions than the 32GB Enduro 3 allowed, with 30% faster map panning thanks to the RAM bump.</p>
+</details>
+<details style="border:1px solid #e5e7eb;border-radius:10px;margin-bottom:26px;padding:14px 18px;">
+<summary style="font-weight:700;cursor:pointer;">Should a beginner buy the Enduro 4?</summary>
+<p style="margin:10px 0 0 0;line-height:1.65;">Honestly, no — not as a first GPS watch. The Enduro 4 is a specialist tool for ultra-distance athletes, thru-hikers, and multi-day adventurers. Beginners get far more value from a mid-range watch; our <a href="https://gearuptofit.com/review/best-gps-running-watches-for-marathon-beginners/" target="_blank">marathon GPS watch guide</a> breaks down the smarter first buys.</p>
+</details>
+<p><script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"When is the Garmin Enduro 4 release date?","acceptedAnswer":{"@type":"Answer","text":"The Garmin Enduro 4 was announced on October 6, 2026 and goes on sale October 9, 2026 at $899.99 in the US (AU$1,449 in Australia from October 10)."}},
+{"@type":"Question","name":"How much does the Garmin Enduro 4 cost?","acceptedAnswer":{"@type":"Answer","text":"$899.99 in the US — the same launch price as the Enduro 3. UK, EU, and India pricing had not been confirmed at announcement."}},
+{"@type":"Question","name":"Is the Enduro 4 worth upgrading from the Enduro 3?","acceptedAnswer":{"@type":"Answer","text":"For most Enduro 3 owners, no. The case, display, battery, and sensors are unchanged. The upgrade case rests on 64GB storage (vs 32GB), 50% more RAM with faster maps, and new training software — compelling only if storage or those specific features solve a real problem."}},
+{"@type":"Question","name":"What is the Enduro 4's battery life?","acceptedAnswer":{"@type":"Answer","text":"Garmin claims 36 days in smartwatch mode (90 days with solar) and up to 320 hours of GPS tracking with solar — identical claims to the Enduro 3. Real-world results depend heavily on solar exposure."}},
+{"@type":"Question","name":"Does the Enduro 4 have an AMOLED display?","acceptedAnswer":{"@type":"Answer","text":"No. It keeps the 1.4-inch memory-in-pixel (MIP) display at 280x280 resolution with Power Sapphire lens — the same as the Enduro 3."}},
+{"@type":"Question","name":"Will Enduro 3 prices drop now?","acceptedAnswer":{"@type":"Answer","text":"Almost certainly. New Garmin launches reliably push previous-gen prices down, and early reports already show the Enduro 3 around $100 under launch with further drops expected through the holiday season."}},
+{"@type":"Question","name":"What is Garmin Epic on the Enduro 4?","acceptedAnswer":{"@type":"Answer","text":"Garmin Epic stitches multi-day activities into a single continuous story in Garmin Connect — aimed at stage racers, thru-hikers, and FKT attempts."}},
+{"@type":"Question","name":"Is the Enduro 4 good for ultramarathons?","acceptedAnswer":{"@type":"Answer","text":"Yes — it inherits the Enduro 3's position as the default pick for 100-milers: multi-week battery life, full onboard mapping with doubled storage, and a rugged 51mm titanium build."}},
+{"@type":"Question","name":"Enduro 4 vs Fenix 8 — which should I buy?","acceptedAnswer":{"@type":"Answer","text":"Fenix 8 for AMOLED display and smartwatch features, Enduro 4 for maximum battery life. The trade-offs from the Fenix 8 vs Enduro 3 comparison carry straight over."}},
+{"@type":"Question","name":"Does the Enduro 4 work with my Enduro 3 straps and charger?","acceptedAnswer":{"@type":"Answer","text":"Yes. The case and QuickFit mount are unchanged, so all Enduro 3 straps, chargers, and accessories carry over."}},
+{"@type":"Question","name":"Does the Garmin Enduro 4 have onboard maps?","acceptedAnswer":{"@type":"Answer","text":"Yes — full TopoActive maps come preloaded, and the 64GB storage allows dramatically larger offline map regions than the 32GB Enduro 3, with 30% faster map panning."}},
+{"@type":"Question","name":"Should a beginner buy the Enduro 4?","acceptedAnswer":{"@type":"Answer","text":"No — the Enduro 4 is a specialist tool for ultra-distance athletes and multi-day adventurers. Beginners get far more value from a mid-range GPS watch."}}
+]}
+</script><br />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Garmin Enduro 4 vs Enduro 3 (2026): What's New, Battery, Price & Should You Upgrade?","description":"Garmin Enduro 4 vs Enduro 3 compared: $899.99 price, Oct 9 release, 64GB storage, Stamina Zones, same 90-day battery. Should you upgrade? Honest verdict.","datePublished":"2026-10-09","dateModified":"2026-10-07","author":{"@type":"Organization","name":"Gear Up To Fit","url":"https://gearuptofit.com"},"publisher":{"@type":"Organization","name":"Gear Up To Fit","url":"https://gearuptofit.com"},"about":[{"@type":"Product","name":"Garmin Enduro 4","offers":{"@type":"Offer","price":"899.99","priceCurrency":"USD"}},{"@type":"Product","name":"Garmin Enduro 3"}]}
+</script>
+</div>

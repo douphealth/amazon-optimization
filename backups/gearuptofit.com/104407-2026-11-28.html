@@ -1,0 +1,556 @@
+
+<div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0e7490 100%);border-radius:20px;padding:40px 32px;margin:0 0 32px 0;text-align:center;">
+<div style="font-size:48px;margin-bottom:12px;">🫁</div>
+<div style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px;">VO2 Max Calculator</div>
+<div style="font-size:16px;color:#cbd5e1;max-width:600px;margin:0 auto;line-height:1.6;">Estimate your aerobic fitness with 3 science-backed methods. No lab required.</div>
+<div style="display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+<div style="background:rgba(255,255,255,.1);border-radius:12px;padding:12px 20px;">
+<div style="color:#fff;font-weight:700;font-size:14px;">3 Methods</div>
+<div style="color:#94a3b8;font-size:12px;">Cooper · Rockport · HR Ratio</div>
+</div>
+<div style="background:rgba(255,255,255,.1);border-radius:12px;padding:12px 20px;">
+<div style="color:#fff;font-weight:700;font-size:14px;">Cited Formulas</div>
+<div style="color:#94a3b8;font-size:12px;">1968–2004 Research</div>
+</div>
+<div style="background:rgba(255,255,255,.1);border-radius:12px;padding:12px 20px;">
+<div style="color:#fff;font-weight:700;font-size:14px;">Instant Results</div>
+
+<div style="background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:28px;margin:0 0 32px 0;">
+<div style="font-size:18px;font-weight:800;color:#0f172a;margin-bottom:4px;">📊 What Do VO2 Max Numbers Mean?</div>
+<div style="font-size:14px;color:#64748b;margin-bottom:20px;">Higher is better — elite endurance athletes exceed 70 ml/kg/min</div>
+<div style="display:flex;height:36px;border-radius:18px;overflow:hidden;margin-bottom:12px;">
+<div style="flex:1;background:#fecaca;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#991b1b;">Poor<br>&lt;30</div>
+<div style="flex:1;background:#fed7aa;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9a3412;">Fair<br>30–38</div>
+<div style="flex:1;background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#92400e;">Good<br>38–45</div>
+<div style="flex:1;background:#bbf7d0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#166534;">Excellent<br>45–55</div>
+<div style="flex:1;background:#86efac;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#14532d;">Superior<br>55+</div>
+</div>
+<div style="font-size:12px;color:#94a3b8;text-align:center;">Based on Cooper Institute norms · Values vary by age and sex — calculator adjusts automatically</div>
+</div>
+
+<div style="color:#94a3b8;font-size:12px;">With Fitness Category</div>
+</div>
+</div>
+</div>
+
+<style>
+/* VO2 Max Calculator - component styling */
+.vo2-wrap { max-width: 780px; margin: 0 auto; }
+.vo2-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 20px 0; }
+.vo2-tab {
+  flex: 1; min-width: 150px; padding: 14px 12px; border-radius: 12px; cursor: pointer;
+  border: 2px solid #e2e8f0; background: #ffffff; text-align: center;
+  font-weight: 700; font-size: 14px; color: #0f172a !important; transition: all .2s;
+}
+.vo2-tab small { display: block; font-weight: 400; font-size: 12px; color: #64748b !important; margin-top: 4px; }
+.vo2-tab.active { border-color: #0ea5e9; background: #f0f9ff; box-shadow: 0 4px 14px rgba(14,165,233,.18); }
+.vo2-panel { display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.05); }
+.vo2-panel.active { display: block; }
+.vo2-field { margin-bottom: 16px; }
+.vo2-field label { display: block; font-weight: 700; font-size: 14px; color: #0f172a !important; margin-bottom: 6px; }
+.vo2-field input, .vo2-field select {
+  width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 10px;
+  font-size: 16px; color: #0f172a !important; background: #fff; box-sizing: border-box;
+}
+.vo2-field input:focus, .vo2-field select:focus { outline: none; border-color: #0ea5e9; }
+.vo2-row { display: flex; gap: 12px; }
+.vo2-row .vo2-field { flex: 1; }
+.vo2-btn {
+  display: block; width: 100%; padding: 16px; border: none; border-radius: 12px; cursor: pointer;
+  background: linear-gradient(135deg,#0ea5e9,#2563eb); color: #fff !important;
+  font-size: 17px; font-weight: 800; letter-spacing: .3px; margin-top: 8px;
+}
+.vo2-btn:hover { filter: brightness(1.08); }
+.vo2-result {
+  display: none; margin-top: 20px; border-radius: 16px; padding: 32px 28px; text-align: center;
+  background: linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0e7490 100%);
+}
+.vo2-result.show { display: block; }
+.vo2-result .vo2-num { font-size: 56px; font-weight: 800; color: #fff !important; line-height: 1; }
+.vo2-result .vo2-unit { font-size: 15px; color: #cbd5e1 !important; margin-top: 6px; }
+.vo2-result .vo2-cat {
+  display: inline-block; margin-top: 14px; padding: 8px 22px; border-radius: 999px;
+  font-weight: 800; font-size: 15px; color: #fff !important; background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+}
+.vo2-result .vo2-note { font-size: 13px; color: #94a3b8 !important; margin-top: 14px; line-height: 1.6; }
+.vo2-error { display: none; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c !important; padding: 12px 16px; border-radius: 10px; font-size: 14px; margin-top: 12px; }
+.vo2-meter { height: 10px; border-radius: 99px; background: rgba(255,255,255,.12); margin: 18px 0 4px 0; overflow: hidden; }
+.vo2-meter-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#f59e0b,#22c55e,#0ea5e9); width: 0%; transition: width .8s ease; }
+.vo2-scale { display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8 !important; }
+.vo2-faq details { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.vo2-faq summary { padding: 16px 18px; cursor: pointer; font-weight: 700; color: #0f172a !important; font-size: 15px; list-style: none; }
+.vo2-faq summary::-webkit-details-marker { display: none; }
+.vo2-faq .vo2-a { padding: 0 18px 18px 18px; color: #334155 !important; font-size: 14px; line-height: 1.75; }
+@media (max-width: 640px) {
+  .vo2-panel { padding: 20px 16px; }
+  .vo2-result .vo2-num { font-size: 44px; }
+  .vo2-row { flex-direction: column; gap: 0; }
+}
+</style>
+<div class="vo2-wrap">
+<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:14px;padding:20px 22px;margin:0 0 24px 0;">
+<div style="font-weight:800;color:#0c4a6e;font-size:15px;margin-bottom:6px;">&#9201; Free estimate in under a minute</div>
+<div style="color:#334155;font-size:14px;line-height:1.7;">VO<sub>2</sub> max is the maximum rate your body can consume oxygen during exercise — the single best lab measure of aerobic fitness. Pick a method below, enter your numbers, and get an instant estimate with an age-graded fitness rating.</div>
+</div>
+<h2 style="scroll-margin-top:90px;" id="calculator">VO<sub>2</sub> Max Calculator</h2>
+<div class="vo2-tabs" role="tablist">
+<div class="vo2-tab active" data-tab="cooper" role="tab">&#127939; Cooper 12-Min Run<small>Most accurate field test</small></div>
+<div class="vo2-tab" data-tab="rockport" role="tab">&#128694; Rockport 1-Mile Walk<small>Gentle, no running</small></div>
+<div class="vo2-tab" data-tab="hr" role="tab">&#10084;&#65039; Heart-Rate Ratio<small>No exercise needed</small></div>
+</div>
+<p><!-- COOPER PANEL --></p>
+<div class="vo2-panel active" id="panel-cooper">
+<div style="color:#334155;font-size:14px;line-height:1.7;margin-bottom:18px;">Run as far as you can in <strong>12 minutes</strong> on a flat, measured course (track, treadmill, or GPS watch). Then enter your distance.</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="cooper-dist">Distance covered</label><input type="number" id="cooper-dist" min="500" max="6000" step="1" placeholder="e.g. 2400"></div>
+<div class="vo2-field"><label for="cooper-unit">Unit</label><select id="cooper-unit"><option value="m">meters</option><option value="km">kilometers</option><option value="mi">miles</option></select></div>
+</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="cooper-age">Age</label><input type="number" id="cooper-age" min="10" max="100" placeholder="e.g. 35"></div>
+<div class="vo2-field"><label for="cooper-sex">Sex</label><select id="cooper-sex"><option value="male">Male</option><option value="female">Female</option></select></div>
+</div>
+<p><button class="vo2-btn" onclick="calcCooper()">Calculate My VO<sub>2</sub> Max</button></p>
+<div class="vo2-error" id="cooper-err"></div>
+</div>
+<p><!-- ROCKPORT PANEL --></p>
+<div class="vo2-panel" id="panel-rockport">
+<div style="color:#334155;font-size:14px;line-height:1.7;margin-bottom:18px;">Walk <strong>exactly 1 mile</strong> as briskly as you can (no running). The moment you finish, take your pulse for 15 seconds and multiply by 4 — or read it from your watch.</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="rock-time">Walk time (min:sec)</label><input type="text" id="rock-time" placeholder="e.g. 14:30"></div>
+<div class="vo2-field"><label for="rock-hr">Heart rate at finish (bpm)</label><input type="number" id="rock-hr" min="60" max="220" placeholder="e.g. 138"></div>
+</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="rock-wt">Body weight</label><input type="number" id="rock-wt" min="30" max="250" step="0.5" placeholder="e.g. 75"></div>
+<div class="vo2-field"><label for="rock-wtunit">Weight unit</label><select id="rock-wtunit"><option value="kg">kg</option><option value="lb">lb</option></select></div>
+</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="rock-age">Age</label><input type="number" id="rock-age" min="10" max="100" placeholder="e.g. 35"></div>
+<div class="vo2-field"><label for="rock-sex">Sex</label><select id="rock-sex"><option value="male">Male</option><option value="female">Female</option></select></div>
+</div>
+<p><button class="vo2-btn" onclick="calcRockport()">Calculate My VO<sub>2</sub> Max</button></p>
+<div class="vo2-error" id="rock-err"></div>
+</div>
+<p><!-- HR RATIO PANEL --></p>
+<div class="vo2-panel" id="panel-hr">
+<div style="color:#334155;font-size:14px;line-height:1.7;margin-bottom:18px;">No workout required. Enter your <strong>resting heart rate</strong> (measure first thing in the morning) and your <strong>maximum heart rate</strong> — or let us estimate max from your age.</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="hr-rest">Resting HR (bpm)</label><input type="number" id="hr-rest" min="30" max="120" placeholder="e.g. 58"></div>
+<div class="vo2-field"><label for="hr-max">Max HR (bpm) — optional</label><input type="number" id="hr-max" min="120" max="230" placeholder="auto from age"></div>
+</div>
+<div class="vo2-row">
+<div class="vo2-field"><label for="hr-age">Age</label><input type="number" id="hr-age" min="10" max="100" placeholder="e.g. 35"></div>
+<div class="vo2-field"><label for="hr-sex">Sex</label><select id="hr-sex"><option value="male">Male</option><option value="female">Female</option></select></div>
+</div>
+<p><button class="vo2-btn" onclick="calcHR()">Calculate My VO<sub>2</sub> Max</button></p>
+<div class="vo2-error" id="hr-err"></div>
+</div>
+<p><!-- SHARED RESULT --></p>
+<div class="vo2-result" id="vo2-result">
+<div style="font-size:13px;letter-spacing:2px;font-weight:700;color:#94a3b8;margin-bottom:10px;">YOUR ESTIMATED VO2 MAX</div>
+<div class="vo2-num" id="vo2-num">&#8212;</div>
+<div class="vo2-unit">ml/kg/min &nbsp;&middot;&nbsp; <span id="vo2-mets">&#8212;</span> METs</div>
+<div class="vo2-meter">
+<div class="vo2-meter-fill" id="vo2-fill"></div>
+</div>
+<div class="vo2-scale">
+<div>20</div>
+<div>35</div>
+<div>50</div>
+<div>65</div>
+<div>80</div>
+</div>
+<div>
+<div class="vo2-cat" id="vo2-cat">&#8212;</div>
+</div>
+<div class="vo2-note" id="vo2-note">Estimates are for tracking trends, not lab-grade precision. See the methods section below for accuracy notes.</div>
+</div>
+<p><script>
+/* VO2 max calculator logic. Formulas cited in the Methods section below. */
+(function(){
+  "use strict";
+  var tabs = document.querySelectorAll(".vo2-tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", function(){
+      for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove("active"); }
+      this.classList.add("active");
+      var panels = document.querySelectorAll(".vo2-panel");
+      for (var k = 0; k < panels.length; k++) { panels[k].classList.remove("active"); }
+      document.getElementById("panel-" + this.getAttribute("data-tab")).classList.add("active");
+      hideResult();
+    });
+  }
+  function hideResult(){ document.getElementById("vo2-result").classList.remove("show"); }
+  function showErr(id, msg){
+    var e = document.getElementById(id);
+    e.textContent = msg; e.style.display = "block"; hideResult();
+  }
+  function clearErr(id){ document.getElementById(id).style.display = "none"; }
+
+  /* ACSM-based fitness categories (Cooper Institute norms), thresholds = minimum for band */
+  var NORMS = {
+    male:   [ [20,"56,47,42,37"], [30,"54,44,40,35"], [40,"52,42,38,33"], [50,"48,39,35,30"], [60,"43,36,31,26"] ],
+    female: [ [20,"50,40,35,30"], [30,"48,38,33,28"], [40,"45,36,31,26"], [50,"41,33,28,23"], [60,"37,30,25,20"] ]
+  };
+  var CATS = ["Superior","Excellent","Good","Fair","Poor"];
+  function category(vo2, age, sex){
+    var rows = NORMS[sex] || NORMS.male, th = rows[0][1].split(",");
+    for (var r = 0; r < rows.length; r++) { if (age >= rows[r][0]) { th = rows[r][1].split(","); } }
+    for (var c = 0; c < 4; c++) { if (vo2 >= parseFloat(th[c])) { return CATS[c]; } }
+    return CATS[4];
+  }
+  function showResult(vo2, age, sex, methodNote){
+    vo2 = Math.round(vo2 * 10) / 10;
+    document.getElementById("vo2-num").textContent = vo2.toFixed(1);
+    document.getElementById("vo2-mets").textContent = (vo2 / 3.5).toFixed(1);
+    var cat = category(vo2, age, sex);
+    document.getElementById("vo2-cat").textContent = cat + " — for your age & sex";
+    var pct = Math.min(100, Math.max(2, (vo2 - 20) / 60 * 100));
+    document.getElementById("vo2-fill").style.width = pct + "%";
+    document.getElementById("vo2-note").textContent = methodNote + " Category bands follow ACSM/Cooper Institute norms. Track this number monthly — trends matter more than any single test.";
+    var res = document.getElementById("vo2-result");
+    res.classList.add("show");
+    res.scrollIntoView({behavior:"smooth", block:"nearest"});
+  }
+  function num(id){ var v = parseFloat(document.getElementById(id).value); return isNaN(v) ? null : v; }
+  window.calcCooper = function(){
+    clearErr("cooper-err");
+    var d = num("cooper-dist"), unit = document.getElementById("cooper-unit").value;
+    var age = num("cooper-age"), sex = document.getElementById("cooper-sex").value;
+    if (d === null || d <= 0) { return showErr("cooper-err", "Please enter the distance you covered in 12 minutes."); }
+    if (age === null || age < 10 || age > 100) { return showErr("cooper-err", "Please enter your age (10-100) so we can grade your result."); }
+    var meters = d;
+    if (unit === "km") { meters = d * 1000; }
+    if (unit === "mi") { meters = d * 1609.34; }
+    /* Cooper 1968: VO2max = (distance_m - 504.9) / 44.73 */
+    var vo2 = (meters - 504.9) / 44.73;
+    if (vo2 < 5 || vo2 > 95) { return showErr("cooper-err", "That distance looks off — double-check your measurement and try again."); }
+    showResult(vo2, age, sex, "Cooper 12-minute run: maximal field test, SEE ~3 ml/kg/min. ");
+  };
+  window.calcRockport = function(){
+    clearErr("rock-err");
+    var tstr = document.getElementById("rock-time").value.trim();
+    var hr = num("rock-hr"), wt = num("rock-wt");
+    var wtunit = document.getElementById("rock-wtunit").value;
+    var age = num("rock-age"), sex = document.getElementById("rock-sex").value;
+    var m = tstr.match(/^(\d+):([0-5]?\d)$/);
+    if (!m) { return showErr("rock-err", "Enter walk time as minutes:seconds, e.g. 14:30."); }
+    var tmin = parseInt(m[1], 10) + parseInt(m[2], 10) / 60;
+    if (hr === null || hr < 60 || hr > 220) { return showErr("rock-err", "Enter your heart rate at the finish line (60-220 bpm)."); }
+    if (wt === null || wt <= 0) { return showErr("rock-err", "Enter your body weight."); }
+    if (age === null || age < 10 || age > 100) { return showErr("rock-err", "Please enter your age (10-100)."); }
+    var wlb = (wtunit === "kg") ? wt * 2.20462 : wt;
+    var s = (sex === "male") ? 1 : 0;
+    /* Kline et al. 1987 (Rockport): 132.853 - 0.0769*w - 0.3877*age + 6.315*sex - 3.2649*t - 0.1565*hr */
+    var vo2 = 132.853 - 0.0769 * wlb - 0.3877 * age + 6.315 * s - 3.2649 * tmin - 0.1565 * hr;
+    if (vo2 < 5 || vo2 > 95) { return showErr("rock-err", "Those numbers produce an implausible result — check time, heart rate and weight."); }
+    showResult(vo2, age, sex, "Rockport 1-mile walk: submaximal estimate, best for beginners. ");
+  };
+  window.calcHR = function(){
+    clearErr("hr-err");
+    var rest = num("hr-rest"), max = num("hr-max");
+    var age = num("hr-age"), sex = document.getElementById("hr-sex").value;
+    if (rest === null || rest < 30 || rest > 120) { return showErr("hr-err", "Enter a realistic resting heart rate (30-120 bpm)."); }
+    if (age === null || age < 10 || age > 100) { return showErr("hr-err", "Please enter your age (10-100)."); }
+    if (max === null) { max = 208 - 0.7 * age; } /* Tanaka et al. 2001 */
+    if (max < 100 || max > 240 || max <= rest) { return showErr("hr-err", "Max heart rate must be above resting and within 100-240 bpm."); }
+    /* Uth et al. 2004: VO2max = 15.3 * (HRmax / HRrest) */
+    var vo2 = 15.3 * (max / rest);
+    if (vo2 < 5 || vo2 > 95) { return showErr("hr-err", "Those heart rates produce an implausible result — double-check them."); }
+    showResult(vo2, age, sex, "Heart-rate ratio: quickest estimate, best for tracking trends. ");
+  };
+})();
+</script></p>
+<div class="gutf-aeo-direct" style="border:1px solid #d9e2f1;border-left:5px solid #0ea5e9;border-radius:14px;padding:16px 18px;margin:16px 0 20px;background:#f0f9ff;">
+<div style="font-weight:800;color:#07142b;font-size:1.02rem;line-height:1.65;margin:0">VO<sub>2</sub> max is the maximum oxygen your body can use per minute during intense exercise, measured in ml/kg/min &#8212; the best laboratory measure of cardiovascular fitness. Higher means faster sustainable paces; it responds to training (5&#8211;20% gains over months) and tracks with lower all-cause mortality. This calculator estimates it via 3 science-backed field methods.</div>
+</div>
+<h3>How to read your result: the VO<sub>2</sub> max scale</h3>
+<div class="gutf-vo2-intro">Got your number? Here is how to read it at a glance. Find your band below, then check the exact norms table for your age and sex further down.</div>
+<style>
+.gutf-meter{margin:16px 0 8px}
+.gutf-meterbar{display:flex;border-radius:999px;overflow:hidden;height:44px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.gutf-mseg{flex:1;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;min-width:0}
+.gutf-mseg.s1{background:#b91c1c}.gutf-mseg.s2{background:#d97706}.gutf-mseg.s3{background:#a3a310}.gutf-mseg.s4{background:#15803d}.gutf-mseg.s5{background:#0b5cff}
+.gutf-meterlabels{display:flex;font-size:.78rem;color:#5b6678;margin-top:6px}
+.gutf-meterlabels div{flex:1;text-align:center}
+.gutf-meternote{font-size:.88rem;color:#5b6678;margin:8px 0 20px;line-height:1.6}
+</style>
+<div class="gutf-meter">
+<div class="gutf-meterbar" role="img" aria-label="VO2 max rating scale from Poor to Superior">
+<div class="gutf-mseg s1">Poor</div>
+<div class="gutf-mseg s2">Fair</div>
+<div class="gutf-mseg s3">Good</div>
+<div class="gutf-mseg s4">Excellent</div>
+<div class="gutf-mseg s5">Superior</div>
+</div>
+<div class="gutf-meternote">Bands follow ACSM / Cooper Institute norms (see the full table below). What matters most is the <strong>trend</strong> — test monthly under similar conditions and watch the number move.</div>
+</div>
+<h3>What your score means</h3>
+<div class="gutf-vo2c-intro">Your band in one glance — what it says about your fitness and the single best next move.</div>
+<style>
+.gutf-vo2c{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0 28px}
+.gutf-vo2card{border-radius:14px;padding:16px;border:1px solid #e2e8f0;background:#fff;box-shadow:0 6px 18px rgba(15,42,82,.05)}
+.gutf-vo2card .band{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin:0 0 8px;color:#fff}
+.gutf-vo2card .what{font-size:.92rem;color:#263244;line-height:1.6;margin:0 0 8px}
+.gutf-vo2card .next{font-size:.85rem;line-height:1.55;margin:0;color:#334155;background:#f8fafc;border-radius:8px;padding:8px 10px}
+.gutf-vo2card .next strong{color:#0f172a}
+</style>
+<div class="gutf-vo2c">
+<div class="gutf-vo2card">
+<div class="band" style="background:#b91c1c">Poor</div>
+<div class="what">Below average aerobic fitness for your age and sex — the starting line, not a verdict.</div>
+<div class="next"><strong>Next move:</strong> build mostly easy Zone 2 volume. VO<sub>2</sub> max responds to training — 5&#8211;20% gains over months are realistic.</div>
+</div>
+<div class="gutf-vo2card">
+<div class="band" style="background:#d97706">Fair</div>
+<div class="what">Around the middle of the pack. Your aerobic engine exists — it just needs structure.</div>
+<div class="next"><strong>Next move:</strong> add one weekly interval session (4&#8211;6 &#215; 3&#8211;4 min at ~95% max HR) while keeping ~80% of volume easy.</div>
+</div>
+<div class="gutf-vo2card">
+<div class="band" style="background:#a3a310">Good</div>
+<div class="what">Above average — a solid aerobic base that predicts strong endurance performance.</div>
+<div class="next"><strong>Next move:</strong> keep the 80/20 easy-to-hard mix and retest every 4&#8211;6 weeks under similar conditions.</div>
+</div>
+<div class="gutf-vo2card">
+<div class="band" style="background:#15803d">Excellent</div>
+<div class="what">Well above average. You are in strong aerobic shape with real speed to show for it.</div>
+<div class="next"><strong>Next move:</strong> maintain with consistent training and periodic threshold intervals; track the trend.</div>
+</div>
+<div class="gutf-vo2card">
+<div class="band" style="background:#0b5cff">Superior</div>
+<div class="what">Elite territory for your age and sex — the top band of the ACSM/Cooper norms.</div>
+<div class="next"><strong>Next move:</strong> keep doing what works. Test monthly under similar conditions and watch the trend.</div>
+</div>
+</div>
+<h2 style="scroll-margin-top:90px;" id="what-is">What Is VO<sub>2</sub> Max?</h2>
+<p>VO<sub>2</sub> max is the maximum volume of oxygen your body can use per minute during intense exercise, expressed in milliliters of oxygen per kilogram of body weight per minute (ml/kg/min). It is widely regarded as the single best laboratory measure of <a class="wpil_keyword_link" href="https://gearuptofit.com/fitness/how-does-hiit-improve-cardiovascular-endurance/" target="_blank"  rel="noopener" title="cardiovascular fitness" data-wpil-keyword-link="linked"  data-wpil-monitor-id="2256">cardiovascular fitness</a> and aerobic endurance.</p>
+<p>Why it matters for runners and athletes:</p>
+<ul>
+<li><strong>It predicts endurance performance.</strong> All else equal, a higher VO<sub>2</sub> max means you can sustain faster paces.</li>
+<li><strong>It responds to training.</strong> Consistent aerobic work — especially intervals near your threshold — can raise it 5–20% over months.</li>
+<li><strong>It tracks health.</strong> Research links higher cardiorespiratory fitness to lower all-cause mortality, independent of other risk factors.</li>
+</ul>
+<p>A lab test with a metabolic cart (graded exercise test) is the gold standard, but field estimates like the ones above correlate well enough to track your own progress over time. What matters most is the <em>trend</em>: test monthly under similar conditions and watch the number move.</p>
+<h2 style="scroll-margin-top:90px;" id="methods">The 3 Methods &amp; Their Sources</h2>
+<div style="overflow-x:auto;">
+<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:560px;">
+<thead>
+<tr style="background:#0f172a;color:#fff;">
+<th style="padding:12px 14px;text-align:left;">Method</th>
+<th style="padding:12px 14px;text-align:left;">Formula</th>
+<th style="padding:12px 14px;text-align:left;">Source</th>
+<th style="padding:12px 14px;text-align:left;">Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:12px 14px;"><strong>Cooper 12-min run</strong></td>
+<td style="padding:12px 14px;">VO<sub>2</sub>max = (distance in meters − 504.9) ÷ 44.73</td>
+<td style="padding:12px 14px;">Cooper, K.H. (1968). <em>A means of assessing maximal oxygen intake.</em> JAMA.</td>
+<td style="padding:12px 14px;">Runners comfortable with hard efforts</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:12px 14px;"><strong>Rockport 1-mile walk</strong></td>
+<td style="padding:12px 14px;">132.853 − 0.0769×weight(lb) − 0.3877×age + 6.315×sex − 3.2649×time(min) − 0.1565×HR</td>
+<td style="padding:12px 14px;">Kline, G.M. et al. (1987). <em>Estimation of VO<sub>2</sub>max from a one-mile track walk.</em> Medicine &amp; Science in Sports &amp; Exercise.</td>
+<td style="padding:12px 14px;">Beginners, older adults, low-impact</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:12px 14px;"><strong>Heart-rate ratio</strong></td>
+<td style="padding:12px 14px;">VO<sub>2</sub>max = 15.3 × (HRmax ÷ HRrest)</td>
+<td style="padding:12px 14px;">Uth, N. et al. (2004). <em>Estimation of VO<sub>2</sub>max from the ratio between HRmax and HRrest.</em> European Journal of Applied Physiology.</td>
+<td style="padding:12px 14px;">Quick checks, trend tracking</td>
+</tr>
+<tr>
+<td style="padding:12px 14px;"><strong>Max HR estimate</strong></td>
+<td style="padding:12px 14px;">HRmax = 208 − 0.7 × age</td>
+<td style="padding:12px 14px;">Tanaka, H. et al. (2001). <em>Age-predicted maximal heart rate revisited.</em> J. American College of Cardiology.</td>
+<td style="padding:12px 14px;">Used when max HR is unknown</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:13px;color:#64748b;">Estimates are just that — estimates. The Cooper test has a standard error of roughly ±3 ml/kg/min versus lab measurement; the heart-rate ratio method is less precise (±5 ml/kg/min) but excellent for tracking trends. Medications (especially beta-blockers), caffeine, illness, heat, and altitude all shift heart-rate-based estimates.</p>
+<h2 style="scroll-margin-top:90px;" id="norms">VO<sub>2</sub> Max Norms by Age &amp; Sex</h2>
+<p>Reference bands based on American College of Sports Medicine (ACSM) and Cooper Institute norms, in ml/kg/min:</p>
+<div style="overflow-x:auto;">
+<table style="width:100%;border-collapse:collapse;font-size:13px;min-width:620px;">
+<thead>
+<tr style="background:#0f172a;color:#fff;">
+<th style="padding:10px 12px;text-align:left;">Age</th>
+<th style="padding:10px 12px;text-align:left;">Sex</th>
+<th style="padding:10px 12px;">Superior</th>
+<th style="padding:10px 12px;">Excellent</th>
+<th style="padding:10px 12px;">Good</th>
+<th style="padding:10px 12px;">Fair</th>
+<th style="padding:10px 12px;">Poor</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">20–29</td>
+<td style="padding:10px 12px;">M</td>
+<td style="padding:10px 12px;text-align:center;">≥56</td>
+<td style="padding:10px 12px;text-align:center;">47–55</td>
+<td style="padding:10px 12px;text-align:center;">42–46</td>
+<td style="padding:10px 12px;text-align:center;">37–41</td>
+<td style="padding:10px 12px;text-align:center;">&lt;37</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">20–29</td>
+<td style="padding:10px 12px;">F</td>
+<td style="padding:10px 12px;text-align:center;">≥50</td>
+<td style="padding:10px 12px;text-align:center;">40–49</td>
+<td style="padding:10px 12px;text-align:center;">35–39</td>
+<td style="padding:10px 12px;text-align:center;">30–34</td>
+<td style="padding:10px 12px;text-align:center;">&lt;30</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">30–39</td>
+<td style="padding:10px 12px;">M</td>
+<td style="padding:10px 12px;text-align:center;">≥54</td>
+<td style="padding:10px 12px;text-align:center;">44–53</td>
+<td style="padding:10px 12px;text-align:center;">40–43</td>
+<td style="padding:10px 12px;text-align:center;">35–39</td>
+<td style="padding:10px 12px;text-align:center;">&lt;35</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">30–39</td>
+<td style="padding:10px 12px;">F</td>
+<td style="padding:10px 12px;text-align:center;">≥48</td>
+<td style="padding:10px 12px;text-align:center;">38–47</td>
+<td style="padding:10px 12px;text-align:center;">33–37</td>
+<td style="padding:10px 12px;text-align:center;">28–32</td>
+<td style="padding:10px 12px;text-align:center;">&lt;28</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">40–49</td>
+<td style="padding:10px 12px;">M</td>
+<td style="padding:10px 12px;text-align:center;">≥52</td>
+<td style="padding:10px 12px;text-align:center;">42–51</td>
+<td style="padding:10px 12px;text-align:center;">38–41</td>
+<td style="padding:10px 12px;text-align:center;">33–37</td>
+<td style="padding:10px 12px;text-align:center;">&lt;33</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">40–49</td>
+<td style="padding:10px 12px;">F</td>
+<td style="padding:10px 12px;text-align:center;">≥45</td>
+<td style="padding:10px 12px;text-align:center;">36–44</td>
+<td style="padding:10px 12px;text-align:center;">31–35</td>
+<td style="padding:10px 12px;text-align:center;">26–30</td>
+<td style="padding:10px 12px;text-align:center;">&lt;26</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">50–59</td>
+<td style="padding:10px 12px;">M</td>
+<td style="padding:10px 12px;text-align:center;">≥48</td>
+<td style="padding:10px 12px;text-align:center;">39–47</td>
+<td style="padding:10px 12px;text-align:center;">35–38</td>
+<td style="padding:10px 12px;text-align:center;">30–34</td>
+<td style="padding:10px 12px;text-align:center;">&lt;30</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">50–59</td>
+<td style="padding:10px 12px;">F</td>
+<td style="padding:10px 12px;text-align:center;">≥41</td>
+<td style="padding:10px 12px;text-align:center;">33–40</td>
+<td style="padding:10px 12px;text-align:center;">28–32</td>
+<td style="padding:10px 12px;text-align:center;">23–27</td>
+<td style="padding:10px 12px;text-align:center;">&lt;23</td>
+</tr>
+<tr style="border-bottom:1px solid #e2e8f0;">
+<td style="padding:10px 12px;">60+</td>
+<td style="padding:10px 12px;">M</td>
+<td style="padding:10px 12px;text-align:center;">≥43</td>
+<td style="padding:10px 12px;text-align:center;">36–42</td>
+<td style="padding:10px 12px;text-align:center;">31–35</td>
+<td style="padding:10px 12px;text-align:center;">26–30</td>
+<td style="padding:10px 12px;text-align:center;">&lt;26</td>
+</tr>
+<tr>
+<td style="padding:10px 12px;">60+</td>
+<td style="padding:10px 12px;">F</td>
+<td style="padding:10px 12px;text-align:center;">≥37</td>
+<td style="padding:10px 12px;text-align:center;">30–36</td>
+<td style="padding:10px 12px;text-align:center;">25–29</td>
+<td style="padding:10px 12px;text-align:center;">20–24</td>
+<td style="padding:10px 12px;text-align:center;">&lt;20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 style="scroll-margin-top:90px;" id="improve">How to Improve Your VO<sub>2</sub> Max</h2>
+<ul>
+<li><strong>Do one interval session weekly.</strong> 4–6 × 3–4 minutes at ~95% max heart rate with equal recovery is the most research-backed protocol.</li>
+<li><strong>Keep 80% of volume easy.</strong> Zone 2 base building grows the aerobic engine that intervals sharpen.</li>
+<li><strong>Retest every 4–6 weeks</strong> with the same method, similar conditions, and similar warm-up.</li>
+<li><strong>Track with a GPS watch.</strong> Many Garmin watches estimate VO<sub>2</sub> max automatically from your runs — see our <a href="https://gearuptofit.com/review/best-smartwatches-for-runners/" style="color:#0ea5e9;font-weight:600;" target="_blank">best smartwatches for runners</a> guide and our <a href="https://gearuptofit.com/review/garmin-forerunner-570/" style="color:#0ea5e9;font-weight:600;" target="_blank">Garmin Forerunner 570 breakdown</a>.</li>
+</ul>
+<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:18px 22px;margin:28px 0;">
+<div style="font-weight:800;color:#92400e;font-size:14px;margin-bottom:6px;">&#9878;&#65039; Health note</div>
+<div style="color:#57534e;font-size:13px;line-height:1.7;">This calculator gives fitness estimates, not medical diagnoses. Maximal tests are demanding — if you have a heart condition, chest pain, dizziness, or take heart-rate-affecting medication, check with your doctor first. See our <a href="https://gearuptofit.com/medical-disclaimer/" style="color:#0ea5e9;font-weight:600;" target="_blank">medical disclaimer</a>.</div>
+</div>
+<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:16px;padding:28px;margin:36px 0;">
+<div style="font-size:18px;font-weight:800;color:#0f172a;margin-bottom:12px;">📚 Want to Learn More About VO2 Max?</div>
+<div style="color:#334155;line-height:1.7;font-size:15px;margin-bottom:16px;">This calculator estimates your VO2 max. For the science behind it, training methods, and health implications, explore our in-depth guides:</div>
+<ul style="margin:0;padding-left:20px;color:#334155;line-height:2;">
+<li><a href="https://gearuptofit.com/fitness/vo2-max-aerobic-fitness-cardio-health/" style="color:#0ea5e9;font-weight:600;" target="_blank">VO2 Max Guide: Boost Aerobic Fitness &#038; Cardio Health</a> — the complete beginner&#8217;s guide</li>
+<li><a href="https://gearuptofit.com/fitness/vo2-max-improving-running-performance/" style="color:#0ea5e9;font-weight:600;" target="_blank">VO2 Max Training for Runners</a> — science-backed training methods</li>
+<li><a href="https://gearuptofit.com/fitness/vo2-max-for-endurance-performance/" style="color:#0ea5e9;font-weight:600;" target="_blank">Increase VO2 Max for Endurance Performance</a> — advanced strategies</li>
+<li><a href="https://gearuptofit.com/fitness/vo2-max-testing-predicts-mortality/" style="color:#0ea5e9;font-weight:600;" target="_blank">VO2 Max Testing &#038; Longevity</a> — what the science says about lifespan</li>
+</ul>
+</div>
+<h2 style="scroll-margin-top:90px;" id="faq">Frequently Asked Questions</h2>
+<div class="vo2-faq">
+<details open>
+<summary>What is a good VO2 max for my age?</summary>
+<div class="vo2-a">
+<p>It depends on age and sex — use the norms table above. As a rough guide, a VO<sub>2</sub> max above 45 ml/kg/min (men) or 38 (women) in your 30s lands in the &#8220;excellent&#8221; range by ACSM standards.</p>
+</div>
+</details>
+<details>
+<summary>How accurate is the Cooper test?</summary>
+<div class="vo2-a">
+<p>Well validated since 1968, with a standard error around ±3 ml/kg/min versus lab measurement — provided you run a genuine all-out effort with even pacing. Starting too fast and fading underestimates your score.</p>
+</div>
+</details>
+<details>
+<summary>Which method should I choose?</summary>
+<div class="vo2-a">
+<p>Runners: the Cooper 12-minute run. Beginners or anyone avoiding hard running: the Rockport walk. For a 60-second check with zero exercise: the heart-rate ratio method.</p>
+</div>
+</details>
+<details>
+<summary>Why does my Garmin show a different VO2 max?</summary>
+<div class="vo2-a">
+<p>Garmin estimates VO<sub>2</sub> max from weeks of GPS + heart-rate data using its own Firstbeat algorithms — a different method from these field tests, so small differences are normal. Compare trends, not single numbers.</p>
+</div>
+</details>
+<details>
+<summary>How often should I retest?</summary>
+<div class="vo2-a">
+<p>Every 4–6 weeks, using the same method under similar conditions (time of day, surface, warm-up, rested state). Fitness changes slowly; monthly testing captures real trends without noise.</p>
+</div>
+</details>
+<details>
+<summary>Can VO2 max be improved after 50?</summary>
+<div class="vo2-a">
+<p>Yes. Studies show structured <a class="wpil_keyword_link" href="https://gearuptofit.com/running/mastering-the-art-of-interval-running-boosting-endurance-and-fat-loss/" target="_blank"  rel="noopener" title="interval training" data-wpil-keyword-link="linked"  data-wpil-monitor-id="2255">interval training</a> raises VO<sub>2</sub> max at any age, though the ceiling lowers with age. Consistency matters far more than any single workout.</p>
+</div>
+</details>
+</div>
+<p><script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a good VO2 max for my age?","acceptedAnswer":{"@type":"Answer","text":"It depends on age and sex. Roughly, above 45 ml/kg/min (men) or 38 (women) in your 30s is excellent by ACSM standards."}},
+{"@type":"Question","name":"How accurate is the Cooper test?","acceptedAnswer":{"@type":"Answer","text":"Well validated since 1968, with a standard error around ±3 ml/kg/min versus lab measurement when run as a genuine all-out effort."}},
+{"@type":"Question","name":"Which VO2 max method should I choose?","acceptedAnswer":{"@type":"Answer","text":"Runners: Cooper 12-minute run. Beginners: Rockport walk. Quick check with no exercise: heart-rate ratio method."}},
+{"@type":"Question","name":"Why does my Garmin show a different VO2 max?","acceptedAnswer":{"@type":"Answer","text":"Garmin uses its own Firstbeat algorithms on weeks of GPS and heart-rate data — a different method from field tests, so small differences are normal."}},
+{"@type":"Question","name":"How often should I retest VO2 max?","acceptedAnswer":{"@type":"Answer","text":"Every 4-6 weeks with the same method under similar conditions to capture real trends."}},
+{"@type":"Question","name":"Can VO2 max be improved after 50?","acceptedAnswer":{"@type":"Answer","text":"Yes — structured interval training raises VO2 max at any age, though the ceiling lowers with age."}}
+]}
+</script><br />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"VO2 Max Calculator: Estimate Your Aerobic Fitness (3 Science-Backed Methods)","author":{"@type":"Organization","name":"GearUpToFit"},"datePublished":"2026-10-09","description":"Free VO2 max calculator with three validated methods: Cooper 12-minute run, Rockport 1-mile walk, and heart-rate ratio. Includes ACSM fitness norms by age and sex."}
+</script></p>
+</div>

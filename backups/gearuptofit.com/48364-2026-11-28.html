@@ -1,0 +1,676 @@
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     GEAR UP TO FIT · "How Body Fat Is Calculated" · Complete Build v3.1
+     Last updated: May 5, 2026
+     Self-contained: CSS + HTML + JS + JSON-LD
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<style>
+/* Sidebar hide */
+.widget-container,.widget-title,[class*="widget_"],aside:not(.gutf-author):not(.gutf-answer),
+#sidebar,.sidebar,#secondary,.widget-area{display:none!important}
+#primary,.site-content,.content-area,article{width:100%!important;max-width:100%!important;float:none!important}
+
+/* Design tokens */
+.gutf-wrap{
+  --g-primary:#2563eb; --g-primary-dark:#1d4ed8;
+  --g-accent:#10b981; --g-warn:#ea580c; --g-danger:#dc2626;
+  --g-bg:#ffffff; --g-surface:#f8fafc;
+  --g-border:#e2e8f0; --g-text:#0f172a; --g-muted:#64748b;
+  --g-radius:14px; --g-radius-sm:8px;
+  --g-shadow-sm:0 1px 3px rgba(2,6,23,.06);
+  --g-shadow-md:0 4px 20px rgba(2,6,23,.08);
+  --g-shadow-lg:0 10px 40px rgba(37,99,235,.12);
+  --g-font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family:var(--g-font); color:var(--g-text); line-height:1.7;
+}
+@media (prefers-color-scheme:dark){
+  .gutf-wrap{--g-bg:#0b1220; --g-surface:#0f172a; --g-border:#1e293b;
+    --g-text:#f1f5f9; --g-muted:#94a3b8;}
+}
+
+.gutf-wrap h2{font-size:1.75rem;font-weight:700;margin:2rem 0 1rem;line-height:1.3;color:var(--g-text)}
+.gutf-wrap h3{font-size:1.25rem;font-weight:600;margin:1.5rem 0 .75rem;color:var(--g-text)}
+.gutf-wrap p{margin:0 0 1rem}
+.gutf-wrap ul{margin:0 0 1rem;padding-left:1.5rem}
+.gutf-wrap li{margin-bottom:.4rem}
+.gutf-wrap a{color:var(--g-primary);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.gutf-wrap a:hover{color:var(--g-primary-dark)}
+.gutf-wrap img{max-width:100%;height:auto;border-radius:var(--g-radius);display:block;margin:1.5rem auto}
+.gutf-wrap figure{margin:1.5rem 0}
+.gutf-wrap figcaption{text-align:center;font-size:.875rem;color:var(--g-muted);margin-top:.5rem}
+.gutf-wrap hr{border:none;border-top:1px solid var(--g-border);margin:2.5rem 0}
+
+/* Trust bar */
+.gutf-trust{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;align-items:center;
+  background:var(--g-surface);padding:.75rem 1rem;border:1px solid var(--g-border);
+  border-radius:var(--g-radius);font-size:.875rem;color:var(--g-muted);margin:1rem 0 1.5rem}
+.gutf-trust b{color:var(--g-text);font-weight:600}
+.gutf-trust span{display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
+
+/* Answer / TL;DR / Callouts */
+.gutf-answer,.gutf-tldr,.gutf-callout{padding:1.25rem 1.5rem;border-radius:var(--g-radius);margin:1.5rem 0}
+.gutf-answer{background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  border-left:5px solid var(--g-primary);box-shadow:var(--g-shadow-sm)}
+.gutf-answer h3{margin:0 0 .5rem;color:var(--g-primary-dark);font-size:1.1rem}
+.gutf-tldr{background:#ecfdf5;border:1px solid #a7f3d0;border-left:5px solid var(--g-accent)}
+.gutf-tldr h3{margin:0 0 .75rem;color:#047857}
+.gutf-callout{background:#f1f8ff;border-left:4px solid var(--g-primary)}
+
+/* Table of Contents */
+.gutf-toc{background:var(--g-surface);border:1px solid var(--g-border);
+  border-radius:var(--g-radius);padding:1.25rem 1.5rem;margin:1.5rem 0}
+.gutf-toc>strong{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--g-muted);margin-bottom:.75rem}
+.gutf-toc ol{margin:0;padding-left:1.25rem;columns:2;column-gap:2rem;font-size:.95rem}
+.gutf-toc a{text-decoration:none;color:var(--g-primary);line-height:1.9}
+.gutf-toc a:hover{text-decoration:underline}
+@media (max-width:640px){.gutf-toc ol{columns:1}}
+
+/* Tables */
+.gutf-table{width:100%;border-collapse:collapse;margin:1.5rem 0;
+  box-shadow:var(--g-shadow-sm);border-radius:var(--g-radius);overflow:hidden}
+.gutf-table th{background:#eff6ff;color:var(--g-primary-dark);
+  font-weight:600;text-align:left;padding:.85rem 1rem;font-size:.92rem}
+.gutf-table td{padding:.85rem 1rem;border-top:1px solid var(--g-border);vertical-align:top;font-size:.95rem}
+.gutf-table tbody tr:nth-child(even){background:var(--g-surface)}
+.gutf-table tbody tr:hover{background:#eff6ff}
+.gutf-table-scroll{overflow-x:auto}
+
+/* Myth vs Reality */
+.gutf-myths{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1.5rem 0}
+.gutf-myth,.gutf-reality{padding:1rem 1.25rem;border-radius:var(--g-radius);font-size:.95rem}
+.gutf-myth{background:#fef2f2;border-left:4px solid var(--g-danger)}
+.gutf-reality{background:#ecfdf5;border-left:4px solid var(--g-accent)}
+.gutf-myth b,.gutf-reality b{display:block;font-size:.78rem;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:.35rem}
+.gutf-myth b{color:var(--g-danger)}
+.gutf-reality b{color:#047857}
+
+/* FAQ */
+.gutf-faq details{background:var(--g-surface);border:1px solid var(--g-border);
+  border-radius:var(--g-radius);padding:1rem 1.25rem;margin-bottom:.5rem;transition:background .2s}
+.gutf-faq details[open]{background:#eff6ff;border-color:#bfdbfe}
+.gutf-faq summary{font-weight:600;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.gutf-faq summary::-webkit-details-marker{display:none}
+.gutf-faq summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--g-primary);
+  transition:transform .2s;flex-shrink:0}
+.gutf-faq details[open] summary::after{transform:rotate(45deg)}
+.gutf-faq details>p:first-of-type{margin:.75rem 0 0}
+
+/* Author */
+.gutf-author{display:flex;gap:1rem;align-items:center;background:var(--g-surface);
+  padding:1rem 1.25rem;border:1px solid var(--g-border);border-radius:var(--g-radius);margin:2rem 0}
+.gutf-author img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;margin:0}
+.gutf-author-meta b{display:block;font-size:1rem;color:var(--g-text)}
+.gutf-author-meta small{color:var(--g-muted);font-size:.9rem;line-height:1.5}
+
+/* Share */
+.gutf-share{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}
+.gutf-share a{padding:.5rem 1rem;border-radius:var(--g-radius-sm);
+  background:var(--g-primary);color:#fff!important;text-decoration:none;
+  font-size:.875rem;font-weight:600;transition:transform .15s,background .15s}
+.gutf-share a:hover{transform:translateY(-2px);background:var(--g-primary-dark)}
+
+/* Calculator */
+.gutf-calc{max-width:640px;margin:2rem auto;border-radius:var(--g-radius);
+  overflow:hidden;box-shadow:var(--g-shadow-lg);border:1px solid var(--g-border);background:var(--g-bg)}
+.gutf-calc__head{background:linear-gradient(135deg,var(--g-primary),var(--g-primary-dark));
+  color:#fff;padding:1.5rem;text-align:center}
+.gutf-calc__head h3{margin:0;font-size:1.4rem;color:#fff}
+.gutf-calc__head p{margin:.25rem 0 0;opacity:.9;font-size:.9rem;color:#fff}
+.gutf-calc__body{padding:1.75rem}
+.gutf-field{margin-bottom:1rem}
+.gutf-field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:.35rem;color:var(--g-text)}
+.gutf-field .req{color:var(--g-danger);margin-left:.15rem}
+.gutf-field input,.gutf-field select{width:100%;padding:.7rem .85rem;
+  border:1.5px solid var(--g-border);border-radius:var(--g-radius-sm);
+  font-size:1rem;background:var(--g-bg);color:var(--g-text);
+  transition:border-color .15s,box-shadow .15s;font-family:inherit;box-sizing:border-box}
+.gutf-field input:focus,.gutf-field select:focus{outline:none;
+  border-color:var(--g-primary);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.gutf-field .hint{display:block;font-size:.8rem;color:var(--g-muted);margin-top:.25rem}
+.gutf-unit-toggle{display:inline-flex;background:var(--g-surface);
+  border-radius:var(--g-radius-sm);padding:3px;gap:3px;width:100%;max-width:280px}
+.gutf-unit-toggle button{flex:1;padding:.5rem .9rem;border:none;background:transparent;
+  cursor:pointer;border-radius:6px;font-weight:600;font-size:.85rem;color:var(--g-muted);
+  transition:all .15s;font-family:inherit}
+.gutf-unit-toggle button[aria-pressed="true"]{background:var(--g-bg);color:var(--g-primary);
+  box-shadow:var(--g-shadow-sm)}
+.gutf-calc__btn{width:100%;padding:.9rem;background:var(--g-accent);color:#fff;
+  border:none;border-radius:var(--g-radius-sm);font-size:1rem;font-weight:700;
+  cursor:pointer;transition:transform .1s,box-shadow .15s;margin-top:.5rem;font-family:inherit}
+.gutf-calc__btn:hover{box-shadow:0 6px 20px rgba(16,185,129,.3);transform:translateY(-1px)}
+.gutf-calc__result{display:none;padding:1.75rem;background:var(--g-surface);
+  border-top:1px solid var(--g-border);text-align:center}
+.gutf-calc__result.is-active{display:block;animation:gutfFade .4s ease-out}
+@keyframes gutfFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.gutf-calc__number{font-size:3.5rem;font-weight:800;line-height:1;color:var(--g-primary);
+  margin:.25rem 0;font-variant-numeric:tabular-nums}
+.gutf-calc__number::after{content:"%";font-size:2rem;margin-left:.1em;opacity:.6}
+.gutf-calc__badge{display:inline-block;padding:.35rem 1rem;border-radius:999px;
+  font-weight:600;font-size:.9rem;margin:.5rem 0}
+.gutf-calc__badge[data-cat="essential"]{background:#fee2e2;color:#991b1b}
+.gutf-calc__badge[data-cat="athletic"]{background:#dbeafe;color:#1e40af}
+.gutf-calc__badge[data-cat="fitness"]{background:#d1fae5;color:#065f46}
+.gutf-calc__badge[data-cat="average"]{background:#fef3c7;color:#92400e}
+.gutf-calc__badge[data-cat="high"]{background:#fee2e2;color:#991b1b}
+.gutf-calc__actions{display:flex;gap:.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.gutf-calc__actions button{padding:.5rem 1rem;background:transparent;
+  border:1.5px solid var(--g-border);border-radius:var(--g-radius-sm);
+  cursor:pointer;font-size:.85rem;font-weight:600;color:var(--g-text);
+  transition:all .15s;font-family:inherit}
+.gutf-calc__actions button:hover{border-color:var(--g-primary);color:var(--g-primary)}
+.gutf-calc__note{font-size:.8rem;color:var(--g-muted);margin-top:1rem}
+
+@media (prefers-reduced-motion:reduce){
+  .gutf-wrap *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+@media print{
+  .gutf-share,.gutf-calc__actions,.gutf-toc{display:none!important}
+  .gutf-calc{box-shadow:none;border:1px solid #ccc}
+}
+</style>
+
+<div class="gutf-wrap">
+
+<p>If the number on your scale has ever lied to you — welcome. Your bathroom scale can&#8217;t tell a pound of muscle from a pound of fat. <strong>Your body fat percentage can.</strong> It&#8217;s the single most useful metric for understanding your metabolic health, training progress, and long-term disease risk.</p>
+
+<div class="gutf-trust" role="note" aria-label="Article trust indicators">
+  <span>✅ <b>Fact-checked</b></span>
+  <span>📅 Updated <b>May 5, 2026</b></span>
+  <span>👤 Reviewed by <b>Alexios Papaioannou, CPT</b></span>
+  <span>⏱ <b>12-min</b> read</span>
+  <span>🔬 <b>12 sources</b> cited</span>
+</div>
+
+<aside class="gutf-answer">
+  <h3>⚡ Quick Answer: How Is Body Fat Calculated?</h3>
+  <p><strong>Body fat percentage = (fat mass ÷ total body weight) × 100.</strong> Because fat mass can&#8217;t be weighed directly, it&#8217;s estimated using one of six methods: DEXA scan (±1–2%), hydrostatic weighing (±2%), BodPod (±2–3%), skinfold calipers (±3–5%), US Navy tape-measure (±3–4%), or bioelectrical impedance scales (±4–8%). DEXA is the clinical gold standard; the US Navy method is the best free at-home option — and the calculator below uses it.</p>
+</aside>
+
+<nav class="gutf-toc" aria-label="Table of Contents">
+  <strong>📑 In This Guide</strong>
+  <ol>
+    <li><a href="#key-takeaways">Key Takeaways</a></li>
+    <li><a href="#calculator">Free Body Fat Calculator</a></li>
+    <li><a href="#what-is-body-fat">What Is Body Fat Percentage?</a></li>
+    <li><a href="#why-matters">Why It Matters More Than Weight</a></li>
+    <li><a href="#methods">The 6 Methods Compared</a></li>
+    <li><a href="#healthy-ranges">Healthy Ranges by Age &amp; Gender</a></li>
+    <li><a href="#risks">Health Risks of Excess Body Fat</a></li>
+    <li><a href="#fat-types">Visceral vs. Subcutaneous Fat</a></li>
+    <li><a href="#how-to-reduce">How to Reduce Body Fat Safely</a></li>
+    <li><a href="#myths">Myths vs. Reality</a></li>
+    <li><a href="#faqs">FAQs</a></li>
+  </ol>
+</nav>
+
+<p>According to 2026 CDC data, roughly <strong>36% of U.S. adults</strong> carry an unhealthy amount of body fat. The first step to changing your number is knowing it.</p>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<figure><img loading="lazy" src="https://gearuptofit.com/wp-content/uploads/2025/04/key-takeaways.jpg" alt="Key takeaways on how body fat is calculated" loading="lazy" decoding="async" width="1024" height="574"></figure>
+
+<div class="gutf-tldr">
+  <h3>🔑 The 60-Second Summary</h3>
+  <ul>
+    <li><strong>Formula:</strong> body fat % = (fat mass ÷ total weight) × 100</li>
+    <li><strong>Gold standard:</strong> DEXA scan (±1–2%)</li>
+    <li><strong>Best free method:</strong> US Navy tape-measure (used below)</li>
+    <li><strong>Healthy ranges:</strong> Men 8–22% · Women 21–35%</li>
+    <li><strong>Visceral fat</strong> — around the organs — is the dangerous kind</li>
+    <li><strong>How to reduce it:</strong> modest deficit + strength training + protein + sleep</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2 id="calculator">Free Body Fat Calculator (US Navy Method)</h2>
+
+<p>Validated against DEXA within ±3% for most adults. All you need: a flexible tape measure and 60 seconds.</p>
+
+<section class="gutf-calc" aria-labelledby="gutf-calc-title">
+  <header class="gutf-calc__head">
+    <h3 id="gutf-calc-title">Body Fat Percentage Calculator</h3>
+    <p>Free · Private · No signup · Instant results</p>
+  </header>
+  <div class="gutf-calc__body">
+    <form class="gutf-calc__form" novalidate autocomplete="off">
+
+      <div class="gutf-field">
+        <label for="gutf-gender">Gender <span class="req" aria-hidden="true">*</span></label>
+        <select id="gutf-gender" name="gender" required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div class="gutf-field">
+        <label>Units</label>
+        <div class="gutf-unit-toggle" role="group" aria-label="Measurement units">
+          <button type="button" data-unit="inches" aria-pressed="true">Inches</button>
+          <button type="button" data-unit="cm" aria-pressed="false">Centimeters</button>
+        </div>
+      </div>
+
+      <div class="gutf-field">
+        <label for="gutf-height">Height (<span data-unit-label>in</span>) <span class="req" aria-hidden="true">*</span></label>
+        <input id="gutf-height" name="height" type="number" min="30" max="300" step="0.1" required placeholder="e.g., 70">
+      </div>
+
+      <div class="gutf-field">
+        <label for="gutf-neck">Neck (<span data-unit-label>in</span>) <span class="req" aria-hidden="true">*</span></label>
+        <input id="gutf-neck" name="neck" type="number" min="5" max="100" step="0.1" required placeholder="Measure below larynx">
+        <small class="hint">Wrap the tape just below your Adam&#8217;s apple, sloping slightly down.</small>
+      </div>
+
+      <div class="gutf-field">
+        <label for="gutf-waist">Waist (<span data-unit-label>in</span>) <span class="req" aria-hidden="true">*</span></label>
+        <input id="gutf-waist" name="waist" type="number" min="15" max="200" step="0.1" required placeholder="Measure at navel">
+        <small class="hint">Men: at the navel. Women: at the narrowest point.</small>
+      </div>
+
+      <div class="gutf-field" data-hip-group hidden>
+        <label for="gutf-hip">Hip (<span data-unit-label>in</span>) <span class="req" aria-hidden="true">*</span></label>
+        <input id="gutf-hip" name="hip" type="number" min="15" max="200" step="0.1" placeholder="Widest point">
+      </div>
+
+      <button class="gutf-calc__btn" type="submit">Calculate My Body Fat %</button>
+    </form>
+  </div>
+
+  <div class="gutf-calc__result" role="status" aria-live="polite">
+    <p style="margin:0 0 .25rem;color:var(--g-muted);font-size:.9rem">Your body fat percentage</p>
+    <div class="gutf-calc__number">0</div>
+    <span class="gutf-calc__badge" hidden></span>
+    <p class="gutf-calc__interp"></p>
+    <div class="gutf-calc__actions">
+      <button type="button" data-action="copy">📋 Copy result</button>
+      <button type="button" data-action="print">🖨 Print</button>
+      <button type="button" data-action="reset">↻ Reset</button>
+    </div>
+    <p class="gutf-calc__note">Estimate only. Consult a healthcare professional for a comprehensive evaluation.</p>
+  </div>
+</section>
+
+<hr>
+
+<h2 id="what-is-body-fat">What Is Body Fat Percentage?</h2>
+
+<figure>
+  <img loading="lazy" src="https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965.png" alt="Mountain trail leading to a sunrise — symbolizing the journey beyond BMI" loading="lazy" decoding="async" width="1024" height="1024">
+  <figcaption>Going beyond BMI means understanding what your body is actually made of.</figcaption>
+</figure>
+
+<p><strong>Body fat percentage</strong> is the share of your total body mass made up of fat tissue. The rest — muscle, bone, water, organs, and connective tissue — is called <em>lean mass</em>. Unlike weight or BMI, body fat percentage tells you <em>what your body is made of</em>, not just how much gravity is pulling on it.</p>
+
+<h3>Why Your Body Actually Needs Some Fat</h3>
+<ul>
+  <li><strong>Energy reserve</strong> — long-term fuel storage.</li>
+  <li><strong>Thermoregulation &amp; cushioning</strong> — insulation and organ protection.</li>
+  <li><strong>Hormone production</strong> — leptin, estrogen, adiponectin.</li>
+  <li><strong>Nutrient absorption</strong> — fat-soluble vitamins A, D, E, K.</li>
+  <li><strong>Brain function</strong> — ~60% of brain dry weight is fat.</li>
+</ul>
+
+<p>The problem isn&#8217;t fat — it&#8217;s <strong>too much</strong> of it, especially <strong>visceral fat</strong> wrapped around abdominal organs, which drives heart disease, type 2 diabetes, and several cancers.</p>
+
+<hr>
+
+<h2 id="why-matters">Why Body Fat % Beats the Scale</h2>
+
+<div class="gutf-callout">
+  <strong>Real example:</strong> Two clients, both 180 lbs at 5&#8217;9&#8243;. Client A is 15% body fat (27 lbs fat). Client B is 32% body fat (58 lbs fat). Same scale weight — completely different disease risk, metabolic rate, and training needs.
+</div>
+
+<ul>
+  <li><strong>Real risk assessment</strong> — body fat % correlates with cardiometabolic disease better than BMI.</li>
+  <li><strong>Accurate progress tracking</strong> — the scale stalls while composition improves.</li>
+  <li><strong>Smarter goals</strong> — &#8220;drop 4% body fat&#8221; beats &#8220;lose 10 pounds.&#8221;</li>
+</ul>
+
+<hr>
+
+<h2 id="methods">The 6 Methods Compared</h2>
+
+<div class="gutf-table-scroll">
+<table class="gutf-table">
+  <thead>
+    <tr><th>Method</th><th>Accuracy</th><th>Cost</th><th>Convenience</th><th>Best For</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>DEXA Scan</strong></td><td>±1–2%</td><td>$75–$200</td><td>Clinic visit</td><td>Gold-standard accuracy</td></tr>
+    <tr><td><strong>Hydrostatic Weighing</strong></td><td>±2%</td><td>$50–$150</td><td>Lab only</td><td>Research settings</td></tr>
+    <tr><td><strong>BodPod</strong></td><td>±2–3%</td><td>$50–$100</td><td>Clinic visit</td><td>Fast, non-invasive</td></tr>
+    <tr><td><strong>Skinfold Calipers</strong></td><td>±3–5%</td><td>$10–$50</td><td>At home</td><td>Regular tracking</td></tr>
+    <tr><td><strong>US Navy Tape</strong></td><td>±3–4%</td><td>Free</td><td>60 sec at home</td><td>Most people</td></tr>
+    <tr><td><strong>BIA Smart Scale</strong></td><td>±4–8%</td><td>$30–$300</td><td>Daily at home</td><td>Tracking trends</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>1. BMI — Quick, but Limited</h3>
+<p>BMI = <strong>weight (kg) ÷ height (m)²</strong>. Useful for population screening, but treats a lean linebacker and a sedentary office worker as identical at the same weight and height. <strong>BMI is not a body-fat measurement</strong> — only a weight-class estimate.</p>
+
+<h3>2. Skinfold Calipers</h3>
+<p>Calipers pinch standardized sites (triceps, suprailiac, thigh, subscapular). With a trained tester using Jackson-Pollock or Durnin-Womersley equations, accuracy is excellent.</p>
+
+<h3>3. Bioelectrical Impedance (BIA)</h3>
+<p>Smart scales (Withings, Renpho, Garmin Index) and clinical InBody/Omron units send a harmless current and estimate fat-free mass from resistance. For reliable readings: measure in the morning, hydrated but 3+ hours post-meal, avoid caffeine/alcohol/intense exercise the day before.</p>
+
+<div class="gutf-callout"><strong>Pro tip:</strong> BIA scales drift ±4–8% in absolute terms — but the <em>trend</em> over weeks is what matters.</div>
+
+<h3>4. DEXA Scan</h3>
+<p>The clinical gold standard. Two low-dose X-ray beams distinguish bone, lean tissue, and fat — with regional breakdowns. Radiation ≈ one cross-country flight.</p>
+
+<h3>5. Hydrostatic (Underwater) Weighing</h3>
+<p>Extremely accurate via Archimedes&#8217; principle — but increasingly rare as labs switch to DEXA and BodPod.</p>
+
+<h3>6. US Navy Tape Method</h3>
+<p>Only needs a flexible tape measure. Uses neck, waist, and (for women) hip circumferences plus height. Cost-effective, private, and surprisingly robust with good technique — it&#8217;s the method in the calculator above.</p>
+
+<hr>
+
+<h2 id="healthy-ranges">Healthy Ranges (By Age &amp; Gender)</h2>
+
+<figure><img loading="lazy" src="https://gearuptofit.com/wp-content/uploads/2024/04/Body-Fat-Percentage-3-1024x682.webp" alt="Healthy body fat percentage ranges chart by age and gender" loading="lazy" decoding="async" width="1024" height="682"></figure>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
+
+<div class="gutf-table-scroll">
+<table class="gutf-table">
+  <thead><tr><th colspan="2">Men (ACE Guidelines)</th></tr></thead>
+  <tbody>
+    <tr><td>18–30</td><td>8% – 19%</td></tr>
+    <tr><td>31–50</td><td>9% – 21%</td></tr>
+    <tr><td>51–70</td><td>10% – 22%</td></tr>
+    <tr><td>Over 70</td><td>11% – 23%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="gutf-table-scroll">
+<table class="gutf-table">
+  <thead><tr><th colspan="2">Women (ACE Guidelines)</th></tr></thead>
+  <tbody>
+    <tr><td>18–30</td><td>21% – 33%</td></tr>
+    <tr><td>31–50</td><td>24% – 36%</td></tr>
+    <tr><td>51–70</td><td>25% – 37%</td></tr>
+    <tr><td>Over 70</td><td>26% – 38%</td></tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+<hr>
+
+<h2 id="risks">Health Risks of Excess Body Fat</h2>
+<ul>
+  <li><strong>Cardiovascular disease</strong> — hypertension, heart attack, stroke.</li>
+  <li><strong>Type 2 diabetes</strong> — driven by visceral insulin resistance.</li>
+  <li><strong>Certain cancers</strong> — postmenopausal breast, colorectal, pancreatic, endometrial.</li>
+  <li><strong>Metabolic syndrome</strong> — high BP, blood sugar, triglycerides, low HDL.</li>
+  <li><strong>Osteoarthritis</strong> — especially knees and hips.</li>
+  <li><strong>Obstructive sleep apnea</strong> — neck fat narrows the airway.</li>
+  <li><strong>NAFLD</strong> — now the most common chronic liver condition in the U.S.</li>
+</ul>
+
+<hr>
+
+<h2 id="fat-types">Visceral vs. Subcutaneous Fat</h2>
+
+<div class="gutf-myths">
+  <div class="gutf-reality"><b>Subcutaneous (Safer)</b>Just beneath the skin — the fat you can pinch. Provides insulation and energy reserve. Low risk at normal levels.</div>
+  <div class="gutf-myth"><b>Visceral (Dangerous)</b>Deep in the abdomen, wrapped around organs. Metabolically active, releases inflammatory cytokines. Strongly linked to heart disease and type 2 diabetes.</div>
+</div>
+
+<p>A <strong>waist-to-height ratio over 0.5</strong> is a quick visceral-fat warning. For targeted strategies, see <a href="https://gearuptofit.com/weight-loss/10-ways-to-lose-belly-fat/" target="_blank" rel="noopener">How to Lose Belly Fat</a>.</p>
+
+<hr>
+
+<h2 id="how-to-reduce">How to Reduce Body Fat Safely</h2>
+
+<h3>1. Build a Modest Calorie Deficit</h3>
+<ul>
+  <li><strong>10–20% daily deficit</strong> — aggressive cuts cost muscle and hormones.</li>
+  <li><strong>0.7–1.0 g protein per pound</strong> of goal weight to preserve muscle.</li>
+  <li>Whole foods first — vegetables, fruit, legumes, lean protein, whole grains.</li>
+  <li>Cap ultra-processed foods and sugary drinks — the easiest wins.</li>
+</ul>
+<p>Related: <a href="https://gearuptofit.com/nutrition/meal-planning-for-weight-loss/" target="_blank" rel="noopener">Meal Planning for Weight Loss</a> · <a href="https://gearuptofit.com/nutrition/how-to-eat-a-balanced-and-healthy-diet-with-whole-foods/" target="_blank" rel="noopener">Balanced Whole-Foods Diet</a></p>
+
+<h3>2. Lift Weights</h3>
+<ul>
+  <li><strong>Strength train 2–4×/week</strong> to preserve muscle during a deficit.</li>
+  <li><strong>Zone 2 cardio / brisk walks</strong> — 150+ min/week.</li>
+  <li><strong>1–2 HIIT sessions</strong> for insulin sensitivity.</li>
+</ul>
+<p>Related: <a href="https://gearuptofit.com/fitness/strength-training-for-weight-loss-for-beginners/" target="_blank" rel="noopener">Strength Training for Beginners</a> · <a href="https://gearuptofit.com/fitness/the-ultimate-guide-to-hiit-workout/" target="_blank" rel="noopener">Ultimate HIIT Guide</a></p>
+
+<h3>3. Hydrate, Sleep, De-stress</h3>
+<ul>
+  <li><strong>Hydration</strong> — pale-yellow urine target. See <a href="https://gearuptofit.com/nutrition/importance-of-hydration/" target="_blank" rel="noopener">Importance of Hydration</a>.</li>
+  <li><strong>Sleep 7+ hours</strong> — less can double muscle loss during a deficit. See <a href="https://gearuptofit.com/fitness/the-role-of-sleep-in-fitness-health/" target="_blank" rel="noopener">Sleep and Fitness</a>.</li>
+  <li><strong>Stress</strong> — chronic cortisol promotes visceral fat. Add walking, breathwork, or meditation.</li>
+</ul>
+
+<h3>4. Be Consistent, Not Perfect</h3>
+<p>Target 1–2% body fat reduction per month. Track <em>trends</em>, adjust every 4–6 weeks. Learn <a href="https://gearuptofit.com/fitness/how-to-track-your-fitness-progress/" target="_blank" rel="noopener">How to Track Your Fitness Progress</a>.</p>
+
+<hr>
+
+<h2 id="myths">Myths vs. Reality</h2>
+
+<div class="gutf-myths">
+  <div class="gutf-myth"><b>❌ Myth</b>&#8220;Crunches burn belly fat.&#8221;</div>
+  <div class="gutf-reality"><b>✅ Reality</b>Spot reduction is debunked. Fat loss is systemic.</div>
+  <div class="gutf-myth"><b>❌ Myth</b>&#8220;Cardio is the best way to lose fat.&#8221;</div>
+  <div class="gutf-reality"><b>✅ Reality</b>Strength training + protein reshapes your body better.</div>
+  <div class="gutf-myth"><b>❌ Myth</b>&#8220;Lower body fat = healthier.&#8221;</div>
+  <div class="gutf-reality"><b>✅ Reality</b>Below essential fat harms hormones, bones, fertility.</div>
+  <div class="gutf-myth"><b>❌ Myth</b>&#8220;Smart scales are accurate.&#8221;</div>
+  <div class="gutf-reality"><b>✅ Reality</b>BIA drifts ±4–8%. Track trends, not single readings.</div>
+  <div class="gutf-myth"><b>❌ Myth</b>&#8220;Eating every 2 hours boosts metabolism.&#8221;</div>
+  <div class="gutf-reality"><b>✅ Reality</b>Meal frequency has minimal effect. Total intake matters most.</div>
+  <div class="gutf-myth"><b>❌ Myth</b>&#8220;BMI measures body fat.&#8221;</div>
+  <div class="gutf-reality"><b>✅ Reality</b>BMI ignores muscle — many athletes score &#8220;overweight.&#8221;</div>
+</div>
+
+<hr>
+
+<h2 id="faqs">Frequently Asked Questions</h2>
+
+<div class="gutf-faq">
+  <details><summary>How accurate are home body fat scales?</summary><p>Smart scales using BIA are typically within ±4–8% of lab measurements — best for trends, not exact numbers. Use DEXA for precision.</p></details>
+  <details><summary>Is BMI a reliable indicator of body fat?</summary><p>Not really. BMI ignores muscle, bone density, and fat distribution. Athletes often score &#8220;overweight&#8221; despite low body fat.</p></details>
+  <details><summary>What&#8217;s the most accurate method?</summary><p>DEXA scans at ±1–2%. For home tracking, the US Navy method or a quality BIA scale are most practical.</p></details>
+  <details><summary>Can I target fat loss in specific areas?</summary><p>No — spot reduction is a myth. Genetics decide where fat is lost first.</p></details>
+  <details><summary>How often should I measure?</summary><p>Every 4–6 weeks. Daily readings add noise, not signal.</p></details>
+  <details><summary>What&#8217;s a healthy body fat % for women?</summary><p>Generally 21–35% depending on age. Below 15% can cause hormonal and bone issues.</p></details>
+  <details><summary>What&#8217;s a healthy body fat % for men?</summary><p>Typically 8–22%. Below 5% is the essential-fat minimum.</p></details>
+  <details><summary>How fast can I safely lose body fat?</summary><p>About 1–2% per month is sustainable. Faster rates cost muscle and disrupt hormones.</p></details>
+  <details><summary>Does body fat change with age?</summary><p>Yes — metabolism slows ~1–2% per decade after 30. Strength training slows this dramatically.</p></details>
+  <details><summary>Is this guide updated for 2026?</summary><p>Yes — reviewed May 5, 2026, with current CDC data, ACE guidelines, and best-practice research.</p></details>
+</div>
+
+<hr>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Understanding how body fat is calculated — and where <em>you</em> fall — is one of the most useful things you can do for your long-term health. Pick a method, retest every 4–6 weeks, and focus on the habits that actually move the needle: calorie-aware nutrition, strength training, sleep, hydration, and stress management.</p>
+
+<div class="gutf-share">
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgearuptofit.com%2Ffitness-and-health-calculators%2Fhow-body-fat-is-calculated%2F&#038;text=Ultimate%202026%20Guide%3A%20How%20Body%20Fat%20Is%20Calculated" target="_blank" rel="noopener">Share on X</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgearuptofit.com%2Ffitness-and-health-calculators%2Fhow-body-fat-is-calculated%2F" target="_blank" rel="noopener">Facebook</a>
+  <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fgearuptofit.com%2Ffitness-and-health-calculators%2Fhow-body-fat-is-calculated%2F" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fgearuptofit.com%2Ffitness-and-health-calculators%2Fhow-body-fat-is-calculated%2F&#038;description=How%20Body%20Fat%20Is%20Calculated" target="_blank" rel="noopener">Pinterest</a>
+</div>
+
+<aside class="gutf-author">
+  <img loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2023/01/author-alexios.jpg" alt="Alexios Papaioannou, CPT" width="64" height="64" loading="lazy" onerror="this.style.display='none'">
+  <div class="gutf-author-meta">
+    <b>Alexios Papaioannou, CPT</b>
+    <small>Certified Personal Trainer &amp; Nutrition Educator. Founder of Gear Up to Fit — writing evidence-based guides on body composition, strength, and sustainable habit change.</small>
+  </div>
+</aside>
+
+<p style="font-size:.875rem;color:var(--g-muted)"><em>Disclaimer: Educational only. Not medical advice. Consult a qualified professional before significant dietary or exercise changes.</em></p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5771660/" target="_blank" rel="noopener">NIH — Body Composition Measurement</a></li>
+  <li><a href="https://pubmed.ncbi.nlm.nih.gov/31256194/" target="_blank" rel="noopener">American Journal of Clinical Nutrition</a></li>
+  <li><a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm" target="_blank" rel="noopener">NHLBI — Health Risks of Overweight/Obesity</a></li>
+  <li><a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener">WHO — Obesity &amp; Overweight Fact Sheet</a></li>
+</ul>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var root = document.querySelector('.gutf-calc');
+  if (!root || root.dataset.init === '1') return;
+  root.dataset.init = '1';
+  var form = root.querySelector('.gutf-calc__form');
+  var result = root.querySelector('.gutf-calc__result');
+  var bfEl = root.querySelector('.gutf-calc__number');
+  var badge = root.querySelector('.gutf-calc__badge');
+  var interp = root.querySelector('.gutf-calc__interp');
+  var hipGroup = root.querySelector('[data-hip-group]');
+  var STORAGE = 'gutf-bf-v3';
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORAGE) || '{}');
+    Object.keys(saved).forEach(function(k){
+      var el = form.elements[k];
+      if (el && typeof saved[k] === 'string') el.value = saved[k];
+    });
+    toggleHip();
+    toggleUnits(saved.units || 'inches');
+  } catch (e) {}
+  function toggleHip(){
+    var isFem = form.elements.gender.value === 'female';
+    hipGroup.hidden = !isFem;
+    form.elements.hip.required = isFem;
+  }
+  function toggleUnits(u){
+    root.querySelectorAll('[data-unit-label]').forEach(function(el){
+      el.textContent = u === 'cm' ? 'cm' : 'in';
+    });
+    root.querySelectorAll('.gutf-unit-toggle button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.unit === u ? 'true' : 'false');
+    });
+    form.dataset.units = u;
+  }
+  form.elements.gender.addEventListener('change', toggleHip);
+  root.querySelectorAll('.gutf-unit-toggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){ toggleUnits(btn.dataset.unit); });
+  });
+  function categorize(bf, gender){
+    var map = gender === 'male'
+      ? [[5,'essential','Essential Fat','Below healthy minimum — consult a professional.'],
+         [13,'athletic','Athletic','Elite performance range.'],
+         [17,'fitness','Fitness','Lean and fit.'],
+         [24,'average','Average','Typical healthy range for most men.'],
+         [Infinity,'high','Above Healthy Range','Consider consulting a healthcare provider.']]
+      : [[13,'essential','Essential Fat','Below healthy minimum — consult a professional.'],
+         [20,'athletic','Athletic','Elite performance range.'],
+         [24,'fitness','Fitness','Lean and fit.'],
+         [31,'average','Average','Typical healthy range for most women.'],
+         [Infinity,'high','Above Healthy Range','Consider consulting a healthcare provider.']];
+    for (var i=0;i<map.length;i++) if (bf <= map[i][0]) return {cat:map[i][1], label:map[i][2], msg:map[i][3]};
+  }
+  function calculate(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var data = {};
+    new FormData(form).forEach(function(v,k){ data[k]=v; });
+    var units = form.dataset.units || 'inches';
+    var k = units === 'inches' ? 2.54 : 1;
+    var neck = parseFloat(data.neck) * k;
+    var waist = parseFloat(data.waist) * k;
+    var height = parseFloat(data.height) * k;
+    var hip = parseFloat(data.hip || 0) * k;
+    var bf;
+    if (data.gender === 'male') {
+      bf = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+    } else {
+      bf = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.221 * Math.log10(height)) - 450;
+    }
+    if (!isFinite(bf) || bf < 2 || bf > 60) {
+      interp.textContent = 'Please double-check your measurements — result out of expected range.';
+      badge.hidden = true;
+      bfEl.textContent = '—';
+      result.classList.add('is-active');
+      return;
+    }
+    bf = Math.round(bf * 10) / 10;
+    var res = categorize(bf, data.gender);
+    bfEl.textContent = bf;
+    badge.setAttribute('data-cat', res.cat);
+    badge.textContent = res.label;
+    badge.hidden = false;
+    interp.textContent = res.msg;
+    result.classList.add('is-active');
+    setTimeout(function(){
+      result.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 100);
+    try {
+      data.units = units;
+      localStorage.setItem(STORAGE, JSON.stringify(data));
+    } catch (e) {}
+    if (window.gtag) window.gtag('event','bodyfat_calculated',{value:bf, gender:data.gender});
+  }
+  form.addEventListener('submit', calculate);
+  var copyBtn = root.querySelector('[data-action="copy"]');
+  var printBtn = root.querySelector('[data-action="print"]');
+  var resetBtn = root.querySelector('[data-action="reset"]');
+  if (copyBtn) copyBtn.addEventListener('click', function(){
+    var text = 'My body fat: ' + bfEl.textContent + '% (' + badge.textContent + ') — calculated at gearuptofit.com';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function(){ alert('Copied to clipboard!'); })
+        .catch(function(){ alert('Copy failed — please copy manually.'); });
+    } else { alert('Copy not supported in this browser.'); }
+  });
+  if (printBtn) printBtn.addEventListener('click', function(){ window.print(); });
+  if (resetBtn) resetBtn.addEventListener('click', function(){
+    form.reset();
+    result.classList.remove('is-active');
+    toggleHip();
+    try { localStorage.removeItem(STORAGE); } catch (e) {}
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","@id":"https://gearuptofit.com#organization","name":"Gear Up to Fit","url":"https://gearuptofit.com","logo":{"@type":"ImageObject","url":"https://gearuptofit.com/wp-content/uploads/2026/01/cropped-Gear-Up-to-Fit-new-Logo-272-%C3%97-40-px.png","width":600,"height":60},"sameAs":["https://www.facebook.com/gearuptofit","https://twitter.com/gearuptofit","https://www.pinterest.com/gearuptofit"]},
+    {"@type":"Person","@id":"https://gearuptofit.com/author/admin/#person","name":"Alexios Papaioannou","jobTitle":"Certified Personal Trainer & Nutrition Educator","url":"https://gearuptofit.com/author/admin/","knowsAbout":["Body Composition","Body Fat Percentage","Strength Training","Nutrition","Weight Loss"]},
+    {"@type":["Article","MedicalWebPage"],"@id":"https://gearuptofit.com/fitness-and-health-calculators/how-body-fat-is-calculated/#article","mainEntityOfPage":{"@type":"WebPage","@id":"https://gearuptofit.com/fitness-and-health-calculators/how-body-fat-is-calculated/"},"headline":"Ultimate 2026 Guide: How Body Fat Is Calculated","description":"Evidence-based 2026 guide to how body fat is calculated — methods, accuracy, healthy ranges, and how to reduce body fat safely. Free US Navy calculator included.","image":["https://gearuptofit.com/wp-content/uploads/2024/04/Body-Fat-Percentage-3-1024x682.webp"],"datePublished":"2023-08-01T08:00:00Z","dateModified":"2026-05-05T00:00:00Z","author":{"@id":"https://gearuptofit.com/author/admin/#person"},"publisher":{"@id":"https://gearuptofit.com#organization"},"inLanguage":"en-US","isAccessibleForFree":true,"lastReviewed":"2026-05-05","reviewedBy":{"@id":"https://gearuptofit.com/author/admin/#person"},"speakable":{"@type":"SpeakableSpecification","cssSelector":["h1","h2","h3",".gutf-answer",".gutf-tldr"]}},
+    {"@type":"HowTo","name":"How to Calculate Body Fat with the US Navy Method","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Flexible tape measure"}],"step":[{"@type":"HowToStep","name":"Measure height","text":"Stand tall, no shoes."},{"@type":"HowToStep","name":"Measure neck","text":"Just below the larynx, tape sloping slightly down."},{"@type":"HowToStep","name":"Measure waist","text":"Men: at the navel. Women: narrowest point."},{"@type":"HowToStep","name":"Measure hips (women only)","text":"Widest point of hips."},{"@type":"HowToStep","name":"Enter values","text":"Plug numbers into the calculator on this page."}]},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gearuptofit.com"},{"@type":"ListItem","position":2,"name":"Fitness and Health Calculators","item":"https://gearuptofit.com/fitness-and-health-calculators/"},{"@type":"ListItem","position":3,"name":"How Body Fat Is Calculated","item":"https://gearuptofit.com/fitness-and-health-calculators/how-body-fat-is-calculated/"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How accurate are home body fat scales?","acceptedAnswer":{"@type":"Answer","text":"BIA smart scales are typically within ±4–8% of lab measurements — best for trends."}},
+      {"@type":"Question","name":"Is BMI a reliable indicator of body fat?","acceptedAnswer":{"@type":"Answer","text":"No. BMI ignores muscle, bone, and fat distribution."}},
+      {"@type":"Question","name":"What's the most accurate method?","acceptedAnswer":{"@type":"Answer","text":"DEXA scans at ±1–2%. At home, the US Navy method is the most practical."}},
+      {"@type":"Question","name":"Can I target fat loss in specific areas?","acceptedAnswer":{"@type":"Answer","text":"No. Spot reduction is a debunked myth."}},
+      {"@type":"Question","name":"How often should I measure?","acceptedAnswer":{"@type":"Answer","text":"Every 4–6 weeks."}},
+      {"@type":"Question","name":"Healthy body fat for women?","acceptedAnswer":{"@type":"Answer","text":"Generally 21–35% by age. Below 15% can cause hormonal issues."}},
+      {"@type":"Question","name":"Healthy body fat for men?","acceptedAnswer":{"@type":"Answer","text":"Typically 8–22% by age. Below 5% is the essential minimum."}},
+      {"@type":"Question","name":"How fast can I lose body fat?","acceptedAnswer":{"@type":"Answer","text":"1–2% per month sustainably."}},
+      {"@type":"Question","name":"Does body fat change with age?","acceptedAnswer":{"@type":"Answer","text":"Yes. Metabolism slows ~1–2% per decade after 30."}},
+      {"@type":"Question","name":"Is this guide updated for 2026?","acceptedAnswer":{"@type":"Answer","text":"Yes, reviewed May 5, 2026."}}
+    ]}
+  ]
+}
+</script>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/health/metabolic-health/">Metabolic Health Guide</a></li><li><a href="https://gearuptofit.com/weight-loss/40-40-20-diet-meal-plans/">40-40-20 Diet Meal Plan</a></li><li><a href="https://gearuptofit.com/running/running-for-weight-loss/">Running for Weight Loss</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"⚡ Quick Answer: How Is Body Fat Calculated?","@type":"Question","acceptedAnswer":{"text":"Body fat percentage = (fat mass ÷ total body weight) × 100. Because fat mass can&#8217;t be weighed directly, it&#8217;s estimated using one of six methods: DEXA scan (±1–2%), hydrostatic weighing (±2%), BodPod (±2–3%), skinfold calipers (±3–5%), US Navy tape-measure (±3–4%), or bioelectrical impedance scales (±4–8%). DEXA is the clinical gold standard; the US Navy method is the best free at-home option — and the calculator below uses it.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

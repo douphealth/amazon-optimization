@@ -1,0 +1,680 @@
+<style>
+/* Forerunner 570 review - component styling */
+.fr570-faq details.pw5-faq-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  transition: box-shadow .25s ease, border-color .25s ease;
+}
+.fr570-faq details.pw5-faq-item[open] {
+  border-color: #34d399;
+  box-shadow: 0 6px 20px rgba(16,185,129,.12);
+}
+.fr570-faq summary.pw5-faq-q {
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #0f172a !important;
+  font-size: 16px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.fr570-faq summary.pw5-faq-q::-webkit-details-marker { display: none; }
+.fr570-faq summary.pw5-faq-q::after {
+  content: "+";
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #059669;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: transform .25s ease, background .2s ease, color .2s ease;
+}
+.fr570-faq details.pw5-faq-item[open] summary.pw5-faq-q::after {
+  content: "\2212";
+  transform: rotate(180deg);
+  background: #10b981;
+  color: #fff;
+}
+.fr570-faq summary.pw5-faq-q:hover { background: #f8fafc; }
+.fr570-faq .pw5-faq-a {
+  padding: 16px 20px 20px 20px;
+  color: #334155 !important;
+  line-height: 1.8;
+  font-size: 15px;
+  border-top: 1px solid #f1f5f9;
+}
+.fr570-faq .pw5-faq-a p { margin: 0; color: #334155 !important; }
+.fr570-faq .pw5-faq-a strong { color: #0f172a !important; }
+@media (max-width: 640px) {
+  .fr570-faq summary.pw5-faq-q { font-size: 15px; padding: 16px; }
+  .fr570-faq .pw5-faq-a { font-size: 14px; padding: 0 16px 16px 16px; }
+}
+/* Stat cards */
+.fr570-stats{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 32px 0;}
+.fr570-stat{flex:1 1 150px;background:linear-gradient(135deg,#0f172a 0%,#14532d 55%,#065f46 100%);border:1px solid rgba(148,163,184,.16);border-top:3px solid #34d399;border-radius:16px;padding:24px 14px;text-align:center;box-shadow:0 8px 24px rgba(15,23,42,.16);transition:transform .25s ease,box-shadow .25s ease;}
+.fr570-stat:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(16,185,129,.22);}
+.fr570-stat-ico{font-size:26px;line-height:1;margin-bottom:8px;}
+.fr570-stat-num{font-size:30px;font-weight:800;color:#ffffff !important;letter-spacing:-.5px;line-height:1.1;}
+.fr570-stat-num span{font-size:15px;font-weight:700;color:#a7f3d0 !important;margin-left:2px;}
+.fr570-stat-lbl{font-size:11px;font-weight:700;color:#a7f3d0 !important;margin-top:10px;letter-spacing:1.8px;}
+@media(max-width:640px){.fr570-stat{flex:1 1 calc(50% - 7px);padding:20px 10px;}.fr570-stat-num{font-size:26px;}.fr570-stat-ico{font-size:22px;}}
+/* Takeaways top accent */
+.fr570-takeaways{position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(16,185,129,.14);}
+.fr570-takeaways::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#10b981,#34d399,#10b981);}
+/* Section divider */
+.fr570-divider{height:2px;margin:44px auto;max-width:680px;border-radius:99px;background:linear-gradient(90deg,transparent,#a7f3d0 20%,#10b981 50%,#a7f3d0 80%,transparent);opacity:.65;}
+/* Card hover micro-interactions */
+.fr570-cards>div,.fr570-proscons>div,.fr570-srccards>a{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+.fr570-cards>div:hover,.fr570-proscons>div:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,23,42,.1);}
+.fr570-srccards>a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,23,42,.08);border-color:#6ee7b7 !important;}
+/* Table row hover */
+.entry-content table tbody tr:hover td{background:#ecfdf5 !important;}
+/* Amazon CTA hover */
+.entry-content a[href*="amazon.com"]{transition:filter .2s ease;}
+.entry-content a[href*="amazon.com"]:hover{filter:brightness(1.07);}
+/* Hide empty next-post nav card */
+#nav-below .nav-next:not(:has(a)) { display: none !important; }
+#nav-below .nav-next:empty { display: none !important; }
+</style>
+<div style="position:relative;background:#fff;border:2px solid #e0f2fe;border-radius:20px;padding:32px;margin:32px 0;box-shadow:0 8px 32px rgba(14,165,233,0.12);">
+<div style="position:absolute;top:-12px;left:24px;background:linear-gradient(135deg,#0ea5e9,#8b5cf6);color:#fff;font-size:12px;font-weight:800;padding:6px 16px;border-radius:20px;letter-spacing:0.5px;">★ TOP PICK</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;">
+<div style="flex:0 0 220px;min-width:180px;text-align:center;">
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/garmin-fr570.webp" alt="Garmin Forerunner 570 GPS watch" style="max-width:100%;height:auto;border-radius:12px;" loading="lazy" />
+</div>
+<div style="flex:1;min-width:250px;">
+<div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:6px;">Garmin Forerunner 570</div>
+<div style="font-size:15px;color:#64748b;margin-bottom:16px;">AMOLED brilliance meets pro training</div>
+<div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> 1.4&#8243; AMOLED display</div>
+<div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> Elevate v5 HR sensor</div>
+<div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> Multi-band GPS</div>
+<div style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:#334155;"><span style="color:#0ea5e9;">✓</span> 11-day battery</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:20px;">
+<div style="font-size:28px;font-weight:800;color:#0f172a;">$549.99</div>
+<p><a href="https://www.amazon.com/s?k=Garmin+Forerunner+570&#038;tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;font-weight:800;font-size:16px;padding:14px 32px;border-radius:12px;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.4);">🛒 Check Price on Amazon</a>
+</div>
+<div style="font-size:12px;color:#94a3b8;margin-top:12px;">As an Amazon Associate we earn from qualifying purchases. Price checked at time of writing.</div>
+</div>
+</div>
+</div>
+<style>
+.fr570-aeo{background:#f0fdfa;border-left:5px solid #0d9488;border-radius:10px;padding:18px 22px;margin:1.6em 0;}
+.fr570-feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.8em 0;}
+.fr570-feat{background:linear-gradient(150deg,#0f3b36,#14532d);border-radius:14px;padding:20px;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+.fr570-feat.in{opacity:1;transform:none;}
+.fr570-feat .fr570-feat-ico{font-size:1.8em;}
+.fr570-feat h4{color:#fff;margin:10px 0 6px;font-size:1.02em;}
+.fr570-feat .fr570-feat-txt{font-size:.92em;color:#d1fae5;line-height:1.55;}
+.fr570-prev{border-radius:16px;padding:3px;background:linear-gradient(135deg,#0d9488,#34d399,#0d9488);margin:2em 0;}
+.fr570-prev-inner{background:#f0fdfa;border-radius:14px;padding:26px 30px;text-align:center;}
+.fr570-prev-inner h3{margin-top:0;font-size:1.3em;color:#0f172a;}
+.fr570-prev-inner .fr570-prev-sub{font-size:15px;color:#334155;margin-bottom:8px;}
+.fr570-prev-inner a.fr570-cta{display:inline-block;background:linear-gradient(135deg,#0d9488,#0f766e);color:#fff !important;font-weight:800;padding:14px 36px;border-radius:12px;text-decoration:none;margin-top:14px;font-size:1.05em;transition:transform .15s,box-shadow .15s;}
+.fr570-prev-inner a.fr570-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(13,148,136,.4);}
+.fr570-decide{background:#f4f8ff;border:1px solid #c9dcff;border-radius:14px;padding:22px 26px;margin:1.8em 0;}
+.fr570-decide h3{margin-top:0;}
+.fr570-opts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;}
+.fr570-opt{flex:1 1 200px;background:#fff;border:2px solid #c9dcff;border-radius:10px;padding:14px 16px;cursor:pointer;text-align:left;font-size:.95em;transition:border-color .2s,box-shadow .2s;}
+.fr570-opt:hover{border-color:#0d9488;box-shadow:0 4px 14px rgba(13,148,136,.18);}
+.fr570-opt.active{border-color:#0d9488;background:#ecfdf5;}
+.fr570-result{display:none;background:#fff;border-left:4px solid #0d9488;border-radius:8px;padding:16px 20px;margin-top:14px;}
+.fr570-result.show{display:block;animation:fr570fade .4s ease;}
+@keyframes fr570fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.fr570-bridge{font-style:italic;color:#4b5563;margin:1.6em 0 .4em;font-size:1.02em;}
+</style>
+<p><script>
+(function(){var n=document.querySelectorAll('#nav-below .nav-next,#nav-above .nav-next');for(var i=0;n.length>i;i++){if(!n[i].querySelector('a')){n[i].style.display='none';}}})();
+</script></p>
+<p><script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does the Garmin Forerunner 570 cost?","acceptedAnswer":{"@type":"Answer","text":"The Garmin Forerunner 570 launched at $549.99 in May 2025, and both sizes (42mm and 47mm) carry the same price. It sits between the Forerunner 165 ($249.99) and the Forerunner 970 ($749.99) in Garmin's running-watch lineup, and replaces the Forerunner 265 ($449) as the mid-range sweet spot."}},{"@type":"Question","name":"When was the Garmin Forerunner 570 released?","acceptedAnswer":{"@type":"Answer","text":"Garmin announced and launched the Forerunner 570 on May 15, 2025, alongside the flagship Forerunner 970. It is the direct successor to the Forerunner 265."}},{"@type":"Question","name":"What sizes and colors does the Forerunner 570 come in?","acceptedAnswer":{"@type":"Answer","text":"The Forerunner 570 comes in two sizes: 42mm (42.4 x 42.4 x 12.9mm, 42g) and 47mm (47 x 47 x 12.9mm, 50g). The 42mm is available in Cloud Blue, Raspberry/Mango, and Slate Grey; the 47mm comes in Slate Grey, Amp Yellow/Turquoise, and Indigo."}},{"@type":"Question","name":"Forerunner 570 vs 265: is it worth upgrading?","acceptedAnswer":{"@type":"Answer","text":"If you own a Forerunner 265, the biggest reasons to upgrade are the built-in speaker and microphone (wrist calls), the newer Elevate v5 heart-rate sensor, the triathlon coach, and the evening report. The 265 still delivers the core training metrics and multi-band GPS, so casual upgraders can wait — but runners who want calling from the wrist or the latest training insights will notice the jump."}},{"@type":"Question","name":"Does the Forerunner 570 have an LED flashlight or ECG?","acceptedAnswer":{"@type":"Answer","text":"No. The LED flashlight and the ECG app are exclusive to the flagship Forerunner 970 ($749.99). The Forerunner 570 skips both to hit its $549.99 price point."}},{"@type":"Question","name":"How long does the Forerunner 570 battery last?","acceptedAnswer":{"@type":"Answer","text":"Garmin rates the Forerunner 570 at up to 10 days of smartwatch use on the 42mm model and up to 11 days on the 47mm model. In GPS mode, both sizes deliver up to 18 hours. Garmin's SatIQ technology automatically selects the GPS mode to balance accuracy and battery life."}},{"@type":"Question","name":"Can you take calls on the Garmin Forerunner 570?","acceptedAnswer":{"@type":"Answer","text":"Yes. Unlike the Forerunner 165 and 265, the 570 has a built-in speaker and microphone, so you can make and take wrist calls when paired with your phone — the same feature the flagship Forerunner 970 offers."}},{"@type":"Question","name":"Does the Forerunner 570 have offline maps?","acceptedAnswer":{"@type":"Answer","text":"No full offline maps. Like the Forerunner 265 before it, the 570 offers breadcrumb-style navigation rather than the detailed onboard maps found on the Forerunner 970 and Garmin's Fenix line."}},{"@type":"Question","name":"Does the Forerunner 570 play music without a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. The 8GB of onboard storage lets you download playlists from Spotify, Amazon Music, or Deezer directly to the watch, so you can run phone-free with Bluetooth headphones. The entry-level Forerunner 165 offers only 4GB (and only on its Music variant)."}},{"@type":"Question","name":"Is the Forerunner 570 good for triath&shy;letes?","acceptedAnswer":{"@type":"Answer","text":"Yes — the 570 adds a dedicated triathlon coach alongside Garmin Coach, 30+ activity profiles including multisport and brick workouts, 5ATM water resistance for open-water swims, and multi-band GPS with SatIQ. It is arguably the most affordable Garmin that takes triathlon training seriously; the 970 goes further with the flashlight, ECG, and onboard maps."}}]}
+</script><br />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Garmin Forerunner 570 Review (2026): Specs, Price, Battery & vs 265/970","description":"Garmin Forerunner 570 review (2026): full specs, $549.99 price, battery life, what's new vs the Forerunner 265, and how it compares to the 970 and Coros Pace Pro.","author":{"@type":"Person","name":"Alexios Papaioannou","url":"https://gearuptofit.com"},"publisher":{"@type":"Organization","name":"GearUpToFit","url":"https://gearuptofit.com"},"datePublished":"2026-10-09","dateModified":"2026-10-09"}
+</script></p>
+<div style="margin:0 0 24px 0;">
+<div style="font-size:12px;font-weight:800;letter-spacing:2.5px;color:#059669;margin-bottom:10px;">GARMIN FORERUNNER 570 &middot; SPEC-BASED REVIEW</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;">
+<span style="background:#ecfdf5;border:1px solid #6ee7b7;color:#065f46;font-size:12px;font-weight:700;border-radius:999px;padding:6px 14px;">Launched May 2025</span><br />
+<span style="background:#ecfdf5;border:1px solid #6ee7b7;color:#065f46;font-size:12px;font-weight:700;border-radius:999px;padding:6px 14px;">$549.99</span><br />
+<span style="background:#ecfdf5;border:1px solid #6ee7b7;color:#065f46;font-size:12px;font-weight:700;border-radius:999px;padding:6px 14px;">42mm &amp; 47mm</span><br />
+<span style="background:#ecfdf5;border:1px solid #6ee7b7;color:#065f46;font-size:12px;font-weight:700;border-radius:999px;padding:6px 14px;">AMOLED</span>
+</div>
+</div>
+<p>Garmin had a problem. The Forerunner 265 was the internet&#8217;s favorite running watch — brilliant AMOLED screen, serious training metrics, reasonable price — but it was starting to look plain next to rivals with built-in calling and ever-brighter displays. The answer, launched May 15, 2025, is the <strong>Garmin Forerunner 570</strong>: a $549.99 sequel that adds a speaker and microphone, the new Elevate v5 heart-rate sensor, and a fresh coat of paint in two case sizes.</p>
+<p>Here&#8217;s the honest question this review exists to answer: is the 570 the new default recommendation for runners, or should you save money on the 265 — or stretch to the 970? This is a spec-based analysis built from Garmin&#8217;s official specifications and independent reviews (we&#8217;ll say exactly which, below). No lab tests, no invented mile splits. Just what the numbers, the feature list, and the lineup logic tell us.</p>
+<div class="fr570-takeaways" style="background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);border:2px solid #6ee7b7;border-radius:16px;padding:28px;margin:32px 0;">
+<p style="font-size:13px;font-weight:700;letter-spacing:1.5px;color:#065f46;margin:0 0 12px 0;">&#9889; KEY TAKEAWAYS</p>
+<ul style="margin:0;padding-left:20px;color:#14532d;line-height:1.9;font-size:15px;">
+<li><strong>$549.99</strong> for both the 42mm and 47mm — the new mid-range anchor between the $249.99 Forerunner 165 and the $749.99 Forerunner 970.</li>
+<li><strong>Speaker + microphone</strong> finally arrives in the mid-range: take calls from your wrist, a feature the 165 and 265 never had.</li>
+<li><strong>Elevate v5</strong> heart-rate sensor, <strong>multi-band GPS with SatIQ</strong>, and <strong>8GB</strong> for offline music from Spotify, Amazon Music, and Deezer.</li>
+<li><strong>No flashlight, no ECG</strong> — those stay exclusive to the Forerunner 970. If either matters to you, that&#8217;s your $200 decision.</li>
+<li><strong>Battery:</strong> up to 10 days (42mm) / 11 days (47mm) smartwatch use; 18 hours of GPS on both sizes.</li>
+</ul>
+</div>
+<div class="fr570-stats">
+<div class="fr570-stat">
+<div class="fr570-stat-ico">&#128176;</div>
+<div class="fr570-stat-num">$549.99</div>
+<div class="fr570-stat-lbl">LAUNCH PRICE</div>
+</div>
+<div class="fr570-stat">
+<div class="fr570-stat-ico">&#128267;</div>
+<div class="fr570-stat-num">11<span>-day</span></div>
+<div class="fr570-stat-lbl">BATTERY (47MM)</div>
+</div>
+<div class="fr570-stat">
+<div class="fr570-stat-ico">&#127911;</div>
+<div class="fr570-stat-num">8<span>GB</span></div>
+<div class="fr570-stat-lbl">MUSIC STORAGE</div>
+</div>
+<div class="fr570-stat">
+<div class="fr570-stat-ico">&#9000;</div>
+<div class="fr570-stat-num">47<span>mm</span></div>
+<div class="fr570-stat-lbl">BIGGEST CASE</div>
+</div>
+</div>
+<div class="fr570-aeo">
+<div style="font-weight:800;margin-bottom:6px;">&#9889; The short answer</div>
+<div>The Garmin Forerunner 570 ($549.99) is the 2026 mid-range sweet spot: a bright AMOLED display, the full Garmin training suite, wrist calling via speaker and microphone, and the newer Elevate v5 heart-rate sensor in a slimmer aluminum case. It is the best pick for runners who want modern features without the 970&#8217;s price — while the older Forerunner 265 remains a smart-money buy at street prices.</div>
+</div>
+<h2 style="scroll-margin-top:90px;">Quick Verdict: Who Should Buy the Forerunner 570?</h2>
+<p>On paper, the Forerunner 570 is the most balanced running watch Garmin has ever made. It takes everything that made the 265 a bestseller — the gorgeous AMOLED display, multi-band GPS, the full Garmin training suite — and closes the two gaps that mattered most: <strong>no speaker/mic</strong> and an older heart-rate sensor. At $549.99, it undercuts the 970 by $200 while keeping the features most runners will actually use daily.</p>
+<p><strong>Buy it if:</strong> you want a serious training watch with AMOLED, wrist calls, and offline music; you&#8217;re upgrading from a Forerunner 165, 255, or an older model; you run triathlons on a budget (the new triathlon coach is a genuine step up).</p>
+<p><strong>Skip it if:</strong> you already own a Forerunner 265 and don&#8217;t care about wrist calls — the core training metrics overlap heavily. And if you need onboard maps, an LED flashlight, or ECG, the <strong>Forerunner 970</strong> is the only Garmin that has all three.</p>
+<p><strong>The Coros Pace Pro</strong> ($349 at launch) remains the value disruptor with its 38-hour GPS battery and 32GB of storage, but it gives up wrist calling, Garmin Pay, and ANT+ sensor support — trade-offs covered in the comparison table below. For the broader field, see our <a href="https://gearuptofit.com/review/best-smartwatches-for-runners/" target="_blank">roundup of the best smartwatches for runners</a>.</p>
+<div class="fr570-divider"></div>
+<h2 style="scroll-margin-top:90px;">Price &amp; Models: Two Sizes, One Price</h2>
+<p>Garmin kept pricing simple: <strong>$549.99</strong> regardless of size. That matters, because the two models are genuinely different watches on your wrist:</p>
+<div class="fr570-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0;">
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px;">
+<div style="font-size:13px;font-weight:800;letter-spacing:1.5px;color:#059669;margin-bottom:8px;">42MM MODEL</div>
+<div style="font-size:14px;color:#334155;line-height:1.8;">42.4 &times; 42.4 &times; 12.9mm, <strong>42g</strong>. 1.2&Prime; AMOLED, 390 &times; 390. Colors: <strong>Cloud Blue</strong>, <strong>Raspberry/Mango</strong>, <strong>Slate Grey</strong>. Up to <strong>10 days</strong> smartwatch battery.</div>
+</div>
+<div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px;">
+<div style="font-size:13px;font-weight:800;letter-spacing:1.5px;color:#059669;margin-bottom:8px;">47MM MODEL</div>
+<div style="font-size:14px;color:#334155;line-height:1.8;">47 &times; 47 &times; 12.9mm, <strong>50g</strong>. 1.4&Prime; AMOLED, 454 &times; 454. Colors: <strong>Slate Grey</strong>, <strong>Amp Yellow/Turquoise</strong>, <strong>Indigo</strong>. Up to <strong>11 days</strong> smartwatch battery.</div>
+</div>
+</div>
+<p>The 12.9mm thickness is shared across both sizes — noticeably slimmer than the 13.2mm Forerunner 965 it spiritually replaces, and the aluminum bezel with Corning Gorilla Glass 3 gives it a more premium feel than the 265&#8217;s polymer case. The Raspberry/Mango and Amp Yellow/Turquoise colorways are Garmin&#8217;s loudest Forerunner designs in years, which tells you who this watch is for: runners who wear their watch everywhere, not just on workouts.</p>
+<p>Lineup logic, in one line: the 165 ($249.99) is the entry ticket, the 265 ($449, now often discounted) is the value pick, the <strong>570 ($549.99)</strong> is the sweet spot, and the 970 ($749.99) is the flagship. If you&#8217;re cross-shopping smartwatches rather than pure running watches, our <a href="https://gearuptofit.com/review/pixel-watch-5/" target="_blank">Pixel Watch 5 review</a> covers the best of the other camp.</p>
+<div class="fr570-divider"></div>
+<h2 style="scroll-margin-top:90px;">Full Specs: Garmin Forerunner 570</h2>
+<div style="overflow-x:auto;">
+<table style="width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+<thead>
+<tr style="background:#065f46;">
+<th style="text-align:left;padding:12px 14px;color:#ffffff;font-weight:700;">Spec</th>
+<th style="text-align:left;padding:12px 14px;color:#ffffff;font-weight:700;">Forerunner 570</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Launch date</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">May 15, 2025</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Price</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">$549.99 (both sizes)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Case sizes</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">42mm: 42.4 &times; 42.4 &times; 12.9mm, 42g &middot; 47mm: 47 &times; 47 &times; 12.9mm, 50g</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Display</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">42mm: 1.2&Prime; AMOLED 390 &times; 390 &middot; 47mm: 1.4&Prime; AMOLED 454 &times; 454</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Lens / bezel</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Corning Gorilla Glass 3 &middot; aluminum bezel</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Battery (smartwatch)</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Up to 10 days (42mm) / 11 days (47mm)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Battery (GPS)</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Up to 18 hours (both sizes)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Heart-rate sensor</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Garmin Elevate v5 (optical)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Other sensors</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Pulse Ox (SpO2), barometric altimeter, compass, gyroscope, accelerometer, thermometer</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">GPS</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Multi-band with SatIQ &middot; GPS + GLONASS + GALILEO</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Speaker / microphone</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Yes — wrist calls when paired with phone</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Connectivity</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Bluetooth, ANT+, Wi-Fi, NFC (Garmin Pay)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Storage / music</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">8GB &middot; Spotify, Amazon Music, Deezer offline downloads</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Water rating</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">5ATM</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Training features</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Garmin Coach + Triathlon Coach, Training Readiness, Training Status, HRV status, Body Battery, sleep coach, morning &amp; evening reports, race predictor</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Safety</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Incident detection, LiveTrack</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Activity profiles</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">30+ (run, trail, track, triathlon, multisport, swim, bike, strength, and more)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Navigation</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">Breadcrumb navigation (no full offline maps)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">LED flashlight</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">No (Forerunner 970 only)</td>
+</tr>
+<tr>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">ECG app</td>
+<td style="padding:10px 14px;border-top:1px solid #f1f5f9;color:#334155;">No (Forerunner 970 only)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:13px;color:#64748b;">All figures per Garmin&#8217;s official spec sheet. Battery claims are Garmin&#8217;s rated figures; real-world life varies with GPS mode, music use, and display settings.</p>
+<div class="fr570-divider"></div>
+<h2 style="scroll-margin-top:90px;">What&#8217;s New vs the Forerunner 265</h2>
+<p>The 265 was — and at street prices still is — a phenomenal watch. So what does the extra ~$100 (at launch pricing) actually buy you? On paper, five things:</p>
+<ul style="color:#334155;line-height:1.9;font-size:15px;">
+<li><strong>Speaker + microphone.</strong> The single biggest functional addition. The 265 couldn&#8217;t take calls; the 570 can, straight from the wrist, plus voice assistant passthrough. This alone may justify the upgrade for runners who leave the phone at home but want to stay reachable.</li>
+<li><strong>Elevate v5 heart-rate sensor.</strong> The 265 uses the older Elevate v4. Garmin&#8217;s fifth-generation optical sensor promises better accuracy during high-intensity intervals and <a class="wpil_keyword_link" href="https://gearuptofit.com/fitness/beginners-guide-to-strength-training-for-women-over-50/" target="_blank"  rel="noopener" title="strength training" data-wpil-keyword-link="linked"  data-wpil-monitor-id="2262">strength training</a>, where wrist-based HR has traditionally struggled.</li>
+<li><strong>Triathlon coach + evening report.</strong> Garmin Coach gains a dedicated triathlon mode, and the new evening report previews tomorrow&#8217;s training, sleep needs, and weather — a planning layer the 265 lacks.</li>
+<li><strong>Sleep coach and upgraded insights.</strong> Sleep tracking gets Garmin&#8217;s coaching treatment (personalized sleep guidance), feeding into morning reports, HRV status, and Training Readiness scores.</li>
+<li><strong>Refined hardware.</strong> Aluminum bezel and Gorilla Glass 3 (up from the 265&#8217;s polymer case), a slimmer 12.9mm profile on both sizes, and bolder colorways.</li>
+</ul>
+<p>On paper, the jump from 265 to 570 is about modernizing: wrist calls, the newer Elevate v5 sensor, triathlon coaching, and a more premium build. The core training engine overlaps, which is why existing 265 owners can wait — but as a new purchase in 2026, the 570 is the fresher, longer-supported platform.</p>
+<div class="fr570-divider"></div>
+<h2 style="scroll-margin-top:90px;">Forerunner 570 vs 165 vs 265 vs 970 vs Coros Pace Pro</h2>
+<p>This is the table that matters. Every figure below is per the manufacturers&#8217; official spec sheets (Garmin for the Forerunners, COROS for the Pace Pro):</p>
+<div style="overflow-x:auto;">
+<table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e2e8f0;min-width:760px;">
+<thead>
+<tr style="background:#065f46;">
+<th style="text-align:left;padding:12px 12px;color:#ffffff;font-weight:700;">Spec</th>
+<th style="text-align:left;padding:12px 12px;color:#ffffff;font-weight:700;">FR 165</th>
+<th style="text-align:left;padding:12px 12px;color:#ffffff;font-weight:700;">FR 265</th>
+<th style="text-align:left;padding:12px 12px;color:#ffffff;font-weight:700;">FR 570 &#9733;</th>
+<th style="text-align:left;padding:12px 12px;color:#ffffff;font-weight:700;">FR 970</th>
+<th style="text-align:left;padding:12px 12px;color:#ffffff;font-weight:700;">Coros Pace Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Price</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">$249.99</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">$449</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>$549.99</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">$749.99</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">$349 (launch)</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Sizes / weight</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">43mm / 39g</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">42mm &amp; 46mm / 47g</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>42mm/42g &amp; 47mm/50g</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">47mm / 56g</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">46mm / 37g (nylon)</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Display</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">1.2&Prime; AMOLED 390&times;390</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">1.3&Prime; AMOLED 416&times;416</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>1.2&Prime; 390&times;390 / 1.4&Prime; 454&times;454</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">1.4&Prime; AMOLED 454&times;454</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">1.3&Prime; AMOLED 416&times;416</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">GPS</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Single-band</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Multi-band + SatIQ</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>Multi-band + SatIQ</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Multi-band + SatIQ</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Dual-frequency</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Battery (watch)</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">11 days</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">13 days</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>10 / 11 days</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">15 days</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">20 days</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Battery (GPS)</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">19 hours</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">20 hours</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>18 hours</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">26 hours</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">38 hours</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Storage / music</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">4GB (Music model)</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">8GB Spotify etc.</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>8GB Spotify etc.</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">32GB Spotify etc.</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">32GB (MP3 only)</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Speaker + mic</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>Yes</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Flashlight</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>No</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">ECG app</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>No</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes (non-medical)</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Offline maps</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>Breadcrumb only</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes (topo)</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Payments</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Garmin Pay</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Garmin Pay</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>Garmin Pay</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Garmin Pay</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">ANT+ sensors</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>Yes</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">Yes</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">No</td>
+</tr>
+<tr>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;font-weight:700;color:#0f172a;">Water rating</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">5ATM</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">5ATM</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;"><strong>5ATM</strong></td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">5ATM</td>
+<td style="padding:9px 12px;border-top:1px solid #f1f5f9;color:#334155;">5ATM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:13px;color:#64748b;">Read it this way: the 570 is a 265 with wrist calls, the newer HR sensor, and a triathlon coach — while the 970 is the 570 plus maps, flashlight, ECG, and double the storage. The Pace Pro wins on raw battery and price but loses on ecosystem (no Garmin Pay, no ANT+, MP3-only music).</p>
+<div class="fr570-divider"></div>
+<div class="fr570-feats">
+<div class="fr570-feat">
+<div class="fr570-feat-ico">&#128222;</div>
+<h4>Speaker + Microphone</h4>
+<div class="fr570-feat-txt">Take calls straight from the wrist and use voice assistant passthrough — the 265 can&#8217;t do either.</div>
+</div>
+<div class="fr570-feat">
+<div class="fr570-feat-ico">&#128147;</div>
+<h4>Elevate v5 HR Sensor</h4>
+<div class="fr570-feat-txt">Garmin&#8217;s fifth-generation optical sensor targets better accuracy in intervals and strength sessions.</div>
+</div>
+<div class="fr570-feat">
+<div class="fr570-feat-ico">&#127946;</div>
+<h4>Triathlon Coach</h4>
+<div class="fr570-feat-txt">Garmin Coach gains a dedicated triathlon mode, plus an evening report previewing tomorrow&#8217;s training.</div>
+</div>
+<div class="fr570-feat">
+<div class="fr570-feat-ico">&#8986;</div>
+<h4>Premium Build</h4>
+<div class="fr570-feat-txt">Aluminum bezel and Gorilla Glass 3 replace the 265&#8217;s polymer case; slimmer 12.9&nbsp;mm profile.</div>
+</div>
+</div>
+<div class="fr570-bridge">The spec sheet is one thing — here is what those features actually mean on the run, one by one.</div>
+<h2 style="scroll-margin-top:90px;">Running Features: The Full Garmin Training Suite, On Paper</h2>
+<p>The spec sheet is where the 570 quietly justifies its price. This is essentially the complete Garmin running platform — the same training intelligence that powers watches costing $200 more:</p>
+<ul style="color:#334155;line-height:1.9;font-size:15px;">
+<li><strong>Garmin Coach + Triathlon Coach.</strong> Adaptive training plans for 5K through marathon, now with a dedicated triathlon mode — the headline new coaching feature for multisport athletes.</li>
+<li><strong>Training Readiness &amp; Training Status.</strong> The recovery-aware &#8220;should I train hard today?&#8221; score, built from sleep, HRV, acute load, and training history.</li>
+<li><strong>HRV status, Body Battery, sleep coach.</strong> Overnight heart-rate variability tracking, Garmin&#8217;s energy-budget metric, and personalized sleep guidance — all feeding the morning report.</li>
+<li><strong>Morning &amp; evening reports.</strong> Wake up to readiness, weather, and today&#8217;s suggested workout; the new evening report previews tomorrow. It&#8217;s Garmin&#8217;s closest thing to a daily training briefing.</li>
+<li><strong>Race predictor &amp; 30+ activity profiles.</strong> Predicted finish times across distances, plus dedicated profiles for track running, trail, ultras, triathlon, brick workouts, and open-water swimming.</li>
+<li><strong>Multi-band GPS with SatIQ.</strong> Dual-frequency positioning for accurate tracks in cities and under tree cover, with SatIQ automatically switching modes to preserve battery.</li>
+<li><strong>Safety: incident detection &amp; LiveTrack.</strong> Automatic crash alerts to emergency contacts and real-time location sharing during activities.</li>
+</ul>
+<p>The honest caveat, per the spec sheet rather than testing: the Elevate v5 sensor is a generation newer than the 265&#8217;s v4, which <em>should</em> mean better wrist-HR during intervals — but if you want lab-grade heart-rate data, no wrist sensor replaces a chest strap (the 570 pairs with one over ANT+ or Bluetooth, which the Coros notably can&#8217;t match on ANT+). Serious ultra runners should also note our <a href="https://gearuptofit.com/review/garmin-enduro-4-vs-enduro-3/" target="_blank">Garmin Enduro 4 vs Enduro 3 comparison</a> — that&#8217;s the battery-king side of the Garmin family.</p>
+<div class="fr570-divider"></div>
+<div class="fr570-bridge">Training features are only half the story. A watch that dies mid-long-run is just a bracelet — so let’s talk battery.</div>
+<h2 style="scroll-margin-top:90px;">Battery Life: Good Enough, Not Class-Leading</h2>
+<p>Garmin rates the 570 at <strong>up to 10 days (42mm) and 11 days (47mm)</strong> in smartwatch mode, and <strong>up to 18 hours</strong> of GPS tracking on both sizes. In practice — based on how these rated figures translate across the Forerunner line — expect a full week of daily training with the always-on display, and a comfortable margin for a marathon plus a long run or two on one charge.</p>
+<p>The trade-off is visible in the comparison table: the Coros Pace Pro&#8217;s 38-hour GPS figure more than doubles the 570&#8217;s. Garmin&#8217;s counter is SatIQ and an AMOLED screen you&#8217;ll actually enjoy reading mid-run. Which matters more depends on your calendar: training for a 100-miler, the Coros (or the Enduro line) wins on paper; training for anything up to a marathon, 18 hours is plenty.</p>
+<div class="fr570-divider"></div>
+<h2 style="scroll-margin-top:90px;">Video: 4 Months of Daily Use</h2>
+<p>Specs tell you what a watch <em>can</em> do; long-term use tells you what it&#8217;s like to live with. This review from a creator who wore the Forerunner 570 daily for four months calls it their <strong>#1 fitness purchase of 2025</strong> — worth a watch before you buy:</p>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.12);margin:20px 0;">
+<iframe src="https://www.youtube.com/embed/a9gwkB9m7bg" title="Why the Garmin Forerunner 570 is My #1 Fitness Purchase of 2025 - 4 month daily use review" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="fr570-divider"></div>
+<div class="fr570-decide">
+<h3>&#129300; Forerunner 570 or 265: Which Should You Buy?</h3>
+<div>Same training engine at heart — the choice is features versus price. Tap your situation.</div>
+<div class="fr570-opts" role="group" aria-label="Choose your situation">
+    <button type="button" class="fr570-opt" data-rec="buy570"><strong>I want calls from the wrist</strong><br /><span>Speaker, mic, Elevate v5, aluminum build — go new.</span></button><br />
+    <button type="button" class="fr570-opt" data-rec="buy265"><strong>I just want great training data, cheap</strong><br /><span>The 265&#8217;s engine is still excellent at street prices.</span></button><br />
+    <button type="button" class="fr570-opt" data-rec="wait"><strong>I own a 265 already</strong><br /><span>Wait — the core training features overlap heavily.</span></button>
+  </div>
+<div class="fr570-result" id="fr570-result"></div>
+</div>
+<h2 style="scroll-margin-top:90px;">Pros &amp; Cons</h2>
+<div class="fr570-proscons" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0;">
+<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:14px;padding:22px;">
+<div style="font-size:14px;font-weight:800;color:#15803d;margin-bottom:12px;letter-spacing:1px;">&#10003; PROS</div>
+<ul style="margin:0;padding-left:18px;color:#14532d;font-size:14px;line-height:1.9;">
+<li>Speaker + mic with wrist calls — first time in the mid-range</li>
+<li>Elevate v5 HR sensor (a generation newer than the 265)</li>
+<li>Full Garmin training suite: Coach, Triathlon Coach, Readiness, HRV</li>
+<li>Bright AMOLED in two sizes, aluminum bezel, Gorilla Glass 3</li>
+<li>8GB offline music (Spotify/Amazon/Deezer)</li>
+<li>Garmin Pay, ANT+, 5ATM, incident detection</li>
+<li>$200 cheaper than the 970 with most daily-use features intact</li>
+</ul>
+</div>
+<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:14px;padding:22px;">
+<div style="font-size:14px;font-weight:800;color:#b91c1c;margin-bottom:12px;letter-spacing:1px;">&#10007; CONS</div>
+<ul style="margin:0;padding-left:18px;color:#7f1d1d;font-size:14px;line-height:1.9;">
+<li>No LED flashlight, no ECG — 970 exclusives</li>
+<li>No full offline maps (breadcrumb navigation only)</li>
+<li>18-hour GPS battery trails the Coros Pace Pro (38h) badly</li>
+<li>Modest upgrade for existing Forerunner 265 owners</li>
+<li>42mm drops to 10-day rated battery (265 manages 13)</li>
+<li>$549.99 is a $100 launch-price jump over the 265</li>
+</ul>
+</div>
+</div>
+<div style="background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:2px solid #f59e0b;border-radius:16px;padding:28px;margin:36px 0;text-align:center;">
+<div style="font-size:13px;font-weight:800;letter-spacing:2px;color:#92400e;margin-bottom:10px;">&#9733; CHECK CURRENT PRICE</div>
+<div style="font-size:24px;font-weight:800;color:#0f172a;margin-bottom:6px;">Garmin Forerunner 570 (42mm, Slate Gray)</div>
+<div style="font-size:15px;color:#57534e;margin-bottom:18px;">Around <strong style="color:#0f172a;">$549.99</strong> &middot; Free shipping with Prime &middot; 42mm &amp; 47mm models available</div>
+<p><a href="https://www.amazon.com/dp/B0F8R2BSKK?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#ffffff;font-weight:800;font-size:17px;padding:15px 44px;border-radius:12px;text-decoration:none;box-shadow:0 6px 20px rgba(217,119,6,.35);">View on Amazon</a></p>
+<div style="font-size:12px;color:#78716c;margin-top:12px;">As an Amazon Associate we earn from qualifying purchases. Price checked October 2026 — listings change, so confirm before buying.</div>
+</div>
+<div class="fr570-divider"></div>
+<div class="fr570-prev">
+<div class="fr570-prev-inner">
+<h3>&#128176; Still Excellent: Garmin Forerunner 265 — The Smart-Money Pick</h3>
+<div class="fr570-prev-sub">Launched at $449.99 and now frequently discounted, the Forerunner 265 remains a phenomenal training watch. You get the same bright AMOLED display and the core Garmin training engine — daily suggested workouts, Training Readiness, and full multisport tracking — with the older Elevate v4 heart-rate sensor and a polymer case. No speaker or wrist calling, but for runners who train with their phone nearby anyway, the savings are hard to argue with.</div>
+<p>    <a class="fr570-cta" href="https://www.amazon.com/s?k=Garmin+Forerunner+265&amp;tag=papalex-20" rel="nofollow sponsored noopener" target="_blank">Check Forerunner 265 Prices on Amazon &#8594;</a></p>
+<div style="font-size:.85em;color:#6b7280;margin-top:10px;">Prices change frequently — click through to see today&#8217;s deals.</div>
+</p>
+</div>
+</div>
+<div class="fr570-bridge">One more decision before the details: 570 or the discounted 265? And then, the questions everyone asks.</div>
+<h2 style="scroll-margin-top:90px;">Forerunner 570 FAQs</h2>
+<div class="fr570-faq">
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">How much does the Garmin Forerunner 570 cost?</summary>
+<div class="faq-a pw5-faq-a">
+<p>The <strong>$549.99</strong> launch price applies to both sizes. It sits between the Forerunner 165 ($249.99) and the flagship Forerunner 970 ($749.99), and replaces the Forerunner 265 ($449) as Garmin&#8217;s mid-range pick.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">When was the Garmin Forerunner 570 released?</summary>
+<div class="faq-a pw5-faq-a">
+<p>Garmin launched the Forerunner 570 on <strong>May 15, 2025</strong>, alongside the Forerunner 970. It is the direct successor to the Forerunner 265.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">What sizes and colors does the Forerunner 570 come in?</summary>
+<div class="faq-a pw5-faq-a">
+<p><strong>42mm</strong> (42.4 &times; 42.4 &times; 12.9mm, 42g): Cloud Blue, Raspberry/Mango, Slate Grey. <strong>47mm</strong> (47 &times; 47 &times; 12.9mm, 50g): Slate Grey, Amp Yellow/Turquoise, Indigo.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">Forerunner 570 vs 265: is it worth upgrading?</summary>
+<div class="faq-a pw5-faq-a">
+<p>The big upgrades are the <strong>speaker and microphone</strong> (wrist calls), the <strong>Elevate v5</strong> heart-rate sensor, the <strong>triathlon coach</strong>, and the evening report. The core training metrics overlap heavily with the 265, so existing 265 owners who don&#8217;t care about calls can comfortably wait.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">Does the Forerunner 570 have an LED flashlight or ECG?</summary>
+<div class="faq-a pw5-faq-a">
+<p><strong>No.</strong> Both the LED flashlight and the ECG app are exclusive to the Forerunner 970 ($749.99). The 570 skips them to hit its $549.99 price.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">How long does the Forerunner 570 battery last?</summary>
+<div class="faq-a pw5-faq-a">
+<p>Garmin rates it at <strong>up to 10 days</strong> (42mm) or <strong>11 days</strong> (47mm) in smartwatch mode, and <strong>up to 18 hours</strong> of GPS tracking on both sizes. SatIQ automatically balances GPS accuracy against battery drain.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">Can you take calls on the Garmin Forerunner 570?</summary>
+<div class="faq-a pw5-faq-a">
+<p><strong>Yes.</strong> Unlike the 165 and 265, the 570 has a built-in speaker and microphone for wrist calls when paired with your phone — the same capability the flagship 970 offers.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">Does the Forerunner 570 have offline maps?</summary>
+<div class="faq-a pw5-faq-a">
+<p><strong>No full offline maps</strong> — like the 265, the 570 offers breadcrumb-style navigation. Detailed onboard maps are reserved for the Forerunner 970 and Garmin&#8217;s Fenix line.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">Does the Forerunner 570 play music without a phone?</summary>
+<div class="faq-a pw5-faq-a">
+<p><strong>Yes.</strong> 8GB of onboard storage holds offline playlists from <strong>Spotify, Amazon Music, or Deezer</strong> — pair Bluetooth headphones and leave the phone at home. The Forerunner 165 only offers 4GB, and only on its Music variant.</p>
+</div>
+</details>
+<details class="faq-item pw5-faq-item">
+<summary class="faq-q pw5-faq-q">Is the Forerunner 570 good for triath&shy;letes?</summary>
+<div class="faq-a pw5-faq-a">
+<p><strong>Yes</strong> — arguably the most affordable serious triathlon watch Garmin makes: dedicated triathlon coach, 30+ activity profiles with multisport and brick workouts, 5ATM for open-water swims, and multi-band GPS. The 970 goes further with maps, flashlight, and ECG.</p>
+</div>
+</details>
+</div>
+<div class="fr570-divider"></div>
+<h2 style="scroll-margin-top:90px;">Sources</h2>
+<p>Specifications are per Garmin&#8217;s official product pages. Analysis cross-checked against these independent reviews:</p>
+<div class="fr570-srccards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0 8px 0;">
+<a href="https://www.tomsguide.com/wellness/smartwatches/garmin-forerunner-570-review" target="_blank" rel="noopener" style="display:block;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;text-decoration:none;"></p>
+<div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px;">Tom&#8217;s Guide</div>
+<div style="font-size:13px;color:#64748b;line-height:1.6;">Garmin Forerunner 570 review</div>
+<p></a><br />
+<a href="https://www.androidcentral.com/wearables/garmin/garmin-forerunner-570-review" target="_blank" rel="noopener" style="display:block;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;text-decoration:none;"></p>
+<div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px;">Android Central</div>
+<div style="font-size:13px;color:#64748b;line-height:1.6;">Garmin Forerunner 570 review</div>
+<p></a><br />
+<a href="https://www.t3.com/active/fitness-trackers/garmin-forerunner-570-review" target="_blank" rel="noopener" style="display:block;background:#fff;border:1px solid #f1f5f9;border-radius:12px;padding:18px;text-decoration:none;"></p>
+<div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px;">T3</div>
+<div style="font-size:13px;color:#64748b;line-height:1.6;">Garmin Forerunner 570 review</div>
+<p></a>
+</div>
+<div style="background:#fef2f2;border:2px solid #fecaca;border-radius:12px;padding:20px;margin:32px 0 0 0;">
+<p style="margin:0;color:#991b1b;line-height:1.7;font-size:14px;"><strong>Transparency note:</strong> This is a spec-based analysis built from Garmin&#8217;s official specifications and independent reviews (Tom&#8217;s Guide, Android Central, T3). We have not personally worn or tested the Forerunner 570 — and we won&#8217;t pretend otherwise. Specs and prices verified October 2026; prices and availability change, so confirm on the live listings before buying.</p>
+</div>
+<p><script>
+(function(){
+  var feats = document.querySelectorAll('.fr570-feat');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in'); io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.25});
+    feats.forEach(function(f){ io.observe(f); });
+  } else { feats.forEach(function(f){ f.classList.add('in'); }); }
+  var recs = {
+    buy570: { t: 'Forerunner 570 — your match.', d: 'Wrist calling, Elevate v5, triathlon coaching and the aluminum build make it the fresher, longer-supported platform for a new purchase in 2026.' },
+    buy265: { t: 'Forerunner 265 — your match.', d: 'Same AMOLED display and core training engine at a much lower street price. Skip the 570’s extras and pocket the difference.' },
+    wait: { t: 'Keep your 265 — your match.', d: 'The training engine overlaps heavily, so existing 265 owners gain little by upgrading now. Revisit when Garmin’s next generation lands.' }
+  };
+  var box = document.getElementById('fr570-result');
+  var opts = document.querySelectorAll('.fr570-opt');
+  opts.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      opts.forEach(function(o){ o.classList.remove('active'); });
+      btn.classList.add('active');
+      var r = recs[btn.getAttribute('data-rec')];
+      box.innerHTML = '';
+      var h = document.createElement('strong'); h.textContent = r.t; box.appendChild(h);
+      var dv = document.createElement('div'); dv.textContent = r.d; dv.style.marginTop = '8px'; box.appendChild(dv);
+      box.classList.add('show');
+    });
+  });
+})();
+</script></p>
+<div style="background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border:2px solid #fcd34d;border-radius:20px;padding:28px;margin:32px 0;box-shadow:0 6px 24px rgba(252,211,77,0.25);">
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+<div style="flex:0 0 180px;min-width:150px;text-align:center;">
+<img decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/10/garmin-fr265.webp" alt="Garmin Forerunner 265 GPS watch" style="max-width:100%;height:auto;border-radius:12px;background:#fff;padding:8px;" loading="lazy" />
+</div>
+<div style="flex:1;min-width:250px;">
+<div style="display:inline-block;background:#fef3c7;color:#92400e;font-size:13px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:12px;">💰 The smart-money pick</div>
+<div style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Garmin Forerunner 265</div>
+<div style="font-size:15px;color:#475569;line-height:1.7;margin-bottom:16px;">The Forerunner 265 remains the smart-money pick — AMOLED display, multi-band GPS, and full training metrics. The 570 adds speaker/mic and brighter screen, but the 265 does 90% for much less.</div>
+<p><a href="https://www.amazon.com/s?k=Garmin+Forerunner+265&#038;tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;font-weight:800;font-size:15px;padding:12px 28px;border-radius:12px;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.4);">👟 Check Garmin Forerunner 265 Price on Amazon</a>
+</div>
+</div>
+</div>

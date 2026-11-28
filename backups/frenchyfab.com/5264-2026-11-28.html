@@ -1,0 +1,353 @@
+<style>
+.ff-post{--ff-navy:#132238;--ff-blue:#255bff;--ff-soft:#f5f7fb;--ff-border:#dfe6f3;--ff-amber:#fff6df;--ff-green:#edf8ef;--ff-red:#fff1f1;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172033;line-height:1.72;font-size:18px;max-width:980px;margin:0 auto;padding:0 18px}
+.ff-post h1{font-size:clamp(34px,5vw,58px);line-height:1.05;margin:20px 0 18px;color:var(--ff-navy);letter-spacing:-.04em}
+.ff-post h2{font-size:clamp(26px,3vw,38px);line-height:1.18;margin:48px 0 16px;color:var(--ff-navy);letter-spacing:-.02em;border-top:1px solid var(--ff-border);padding-top:24px}
+.ff-post h3{font-size:24px;margin:30px 0 10px;color:#1a2b49}
+.ff-post p{margin:0 0 18px}
+.ff-eyebrow{font-weight:800;color:var(--ff-blue);text-transform:uppercase;letter-spacing:.1em;font-size:13px;margin-top:22px}
+.ff-quick,.ff-note,.ff-warning,.ff-greenbox{border-radius:20px;padding:22px 24px;margin:22px 0;border:1px solid var(--ff-border);background:var(--ff-soft)}
+.ff-quick{border-left:7px solid var(--ff-blue);font-size:20px}
+.ff-warning{background:var(--ff-red);border-left:7px solid #e84b4b}
+.ff-greenbox{background:var(--ff-green);border-left:7px solid #21a55b}
+.ff-note{background:var(--ff-amber);border-left:7px solid #f7b733}
+.ff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.ff-card{background:#fff;border:1px solid var(--ff-border);border-radius:18px;padding:18px;box-shadow:0 10px 25px rgba(19,34,56,.06)}
+.ff-card strong{color:var(--ff-navy)}
+.ff-table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--ff-border);border-radius:18px}
+.ff-post table{border-collapse:collapse;width:100%;min-width:720px;background:#fff}
+.ff-post th,.ff-post td{border-bottom:1px solid var(--ff-border);padding:14px;text-align:left;vertical-align:top}
+.ff-post th{background:#eef3ff;color:#132238}
+.ff-post tr:last-child td{border-bottom:none}
+.ff-step{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;margin:18px 0}
+.ff-step .ff-num{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ff-blue);color:#fff;font-weight:800}
+.ff-figure{margin:26px 0;background:#fff;border:1px solid var(--ff-border);border-radius:20px;overflow:hidden;box-shadow:0 10px 25px rgba(19,34,56,.06)}
+.ff-figure img{width:100%;height:auto;display:block}
+.ff-figure figcaption{font-size:14px;padding:12px 14px;color:#526071}
+.ff-toc{background:#fff;border:1px solid var(--ff-border);border-radius:20px;padding:18px;margin:24px 0}
+.ff-toc a{text-decoration:none}
+.ff-faq details{border:1px solid var(--ff-border);border-radius:16px;background:#fff;padding:16px 18px;margin:12px 0}
+.ff-faq summary{cursor:pointer;font-weight:800;color:var(--ff-navy)}
+.ff-schema-note{font-size:14px;color:#627082;border-top:1px solid var(--ff-border);padding-top:18px;margin-top:40px}
+.ff-post a{color:#174eea;font-weight:650}
+.ff-disclosure{font-size:14px;color:#526071;background:#f8fafc;border:1px dashed #b9c7dd;border-radius:16px;padding:14px;margin:18px 0}
+.ff-button{display:inline-block;margin-top:10px;background:var(--ff-blue);color:#fff!important;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:800}
+.ffc-box{border:1px solid var(--ff-border);border-radius:20px;background:#fff;padding:22px 24px;margin:22px 0}
+.ffc-list{list-style:none;margin:0;padding:0}
+.ffc-item{border-bottom:1px solid var(--ff-border);margin:0}
+.ffc-item:last-child{border-bottom:none}
+.ffc-item label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;cursor:pointer;margin:0}
+.ffc-item input{width:22px;height:22px;margin-top:3px;accent-color:#255bff;flex:none}
+.ffc-bar{height:12px;background:#eef3ff;border-radius:999px;overflow:hidden;margin:16px 0 8px}
+.ffc-fill{height:100%;width:0;background:#21a55b;border-radius:999px;transition:width .3s ease}
+.ffc-text{font-size:14px;color:#526071;margin:0}
+</style>
+<div class="ff-post">
+<p class="ff-eyebrow">Frenchy Fab Companion Guide</p>
+
+<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+<p style="margin:0 0 8px;font-weight:700">Quick links from this guide</p>
+<ul style="list-style:none;margin:0 0 10px;padding:0">
+<li style="margin:6px 0"><a href="https://www.amazon.com/s?k=unscented+dog+wrinkle+wipes&amp;tag=papalex-ff-20" rel="sponsored nofollow noopener" target="_blank">Unscented dog wrinkle wipes</a> <span style="font-size:13px;color:#555">(Amazon search)</span></li>
+<li style="margin:6px 0"><a href="https://www.amazon.com/s?k=dog+ear+cleaner&amp;tag=papalex-ff-20" rel="sponsored nofollow noopener" target="_blank">Dog ear cleaner</a> <span style="font-size:13px;color:#555">(Amazon search)</span></li>
+<li style="margin:6px 0"><a href="https://www.amazon.com/s?k=dog+nail+grinder&amp;tag=papalex-ff-20" rel="sponsored nofollow noopener" target="_blank">Dog nail grinder</a> <span style="font-size:13px;color:#555">(Amazon search)</span></li>
+</ul>
+<p style="margin:0;font-size:13px;color:#555">As an Amazon Associate, FrenchyFab earns from qualifying purchases.</p>
+</div>
+
+<p style="font-size:21px;color:#33415c;margin:6px 0 4px">A breed-specific blueprint for keeping your flat-faced companion safe, healthy, and comfortable at every life stage — no fluff, just the routine that actually works.</p>
+
+<div class="ff-quick"><strong>Quick answer:</strong> French Bulldog care comes down to five daily habits: keep your Frenchie lean, exercise only in cool hours, clean and dry the skin folds, protect the spine, and watch breathing closely. Frenchies are brachycephalic (flat-faced), so heat and extra weight are genuine dangers, not minor concerns. Feed measured meals twice a day, use a harness instead of a collar, and see a vet fast if breathing, appetite, or mobility changes.</div>
+
+<div class="ff-greenbox">
+<p style="margin:0 0 10px"><strong>Key takeaways</strong></p>
+<ul>
+<li><strong>Weight is the #1 care lever.</strong> A lean Frenchie breathes easier and puts less strain on its spine and joints.</li>
+<li><strong>Heat kills this breed.</strong> Above 80°F (27°C), exercise stops. Air conditioning is care equipment, not a luxury.</li>
+<li><strong>Folds need drying, not just cleaning.</strong> Moisture left in wrinkles is what grows yeast and bacteria.</li>
+<li><strong>Harness, never a collar, for walks.</strong> Neck pressure works against an already narrow airway.</li>
+<li><strong>Small changes are big signals.</strong> Louder breathing, skipped meals, or new limping deserve a vet call, not a wait-and-see.</li>
+</ul>
+</div>
+
+<div class="ff-toc">
+<p style="margin:0 0 10px"><strong>In this guide</strong></p>
+<ul>
+<li><a href="#at-a-glance">French Bulldog at a Glance</a></li>
+<li><a href="#daily-routine">The Daily Care Routine</a></li>
+<li><a href="#feeding">Feeding and Weight</a></li>
+<li><a href="#heat-safety">Breathing and Heat Safety</a></li>
+<li><a href="#grooming">Skin Folds, Ears, Nails, Teeth, and Coat</a></li>
+<li><a href="#exercise">Exercise and Enrichment</a></li>
+<li><a href="#life-stages">Puppy, Adult, and Senior Care</a></li>
+<li><a href="#home-comfort">Home Comfort and Safety</a></li>
+<li><a href="#vet">When to Call a Vet</a></li>
+<li><a href="#faq">French Bulldog Care FAQ</a></li>
+<li><a href="#sources">Sources and Review Notes</a></li>
+</ul>
+</div>
+
+<p style="font-size:14px;color:#526071">Updated: October 2026 · Author: Alexios Papaioannou · Editorially reviewed for conservative, vet-aligned owner guidance.</p>
+
+<h2 id="at-a-glance">French Bulldog at a Glance</h2>
+<p>The French Bulldog is a small, muscular companion breed with a smooth coat, a flat face, and upright “bat” ears. Per the AKC breed standard, a healthy adult typically weighs under 28 pounds and stands about 11 to 13 inches tall, with a typical lifespan of 10 to 12 years. The breed traces back to 1800s England, where lace workers kept toy Bulldogs that later crossed into France and developed into the Frenchie known today. Temperament is generally affectionate, adaptable, and even-tempered — a big reason the breed suits apartments and first-time owners. Because the breed is brachycephalic (flat-faced), breathing and heat tolerance shape nearly every care decision in this guide.</p>
+
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Trait</th><th>What to know</th></tr></thead>
+<tbody>
+<tr><td><strong>Size</strong></td><td>Small and muscular; 11–13 inches tall, under 28 pounds as an adult</td></tr>
+<tr><td><strong>Lifespan</strong></td><td>Typically 10–12 years</td></tr>
+<tr><td><strong>Coat</strong></td><td>Short, smooth, fine; sheds moderately all year</td></tr>
+<tr><td><strong>Exercise needs</strong></td><td>30–60 minutes a day, low intensity, split into short sessions</td></tr>
+<tr><td><strong>Grooming needs</strong></td><td>Easy coat, high-maintenance skin folds, ears, and teeth</td></tr>
+<tr><td><strong>Climate</strong></td><td>Very heat-sensitive; needs cool, air-conditioned indoor living in summer</td></tr>
+<tr><td><strong>Known sensitivities</strong></td><td>Brachycephalic airway (BOAS), spinal issues (IVDD), skin allergies — see our <a href="https://frenchyfab.com/french-bulldog-health-problems-guide/">French Bulldog health problems guide</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="daily-routine">The Daily Care Routine</h2>
+<p>Consistency keeps a French Bulldog comfortable, and a fixed routine makes health changes easy to spot — you notice what is different when you know what normal looks like. Run these four anchors every day:</p>
+
+<div class="ff-step"><div class="ff-num">1</div><div><h3>Morning airway and skin check (2 minutes)</h3><p>Listen to your Frenchie's resting breathing for 30 seconds — learn its normal sound so a change stands out. Check the eyes for redness or tearing, sniff the facial folds for a yeasty smell, and glance at stool consistency on the first bathroom break. This tiny check catches most problems while they are still small.</p></div></div>
+
+<div class="ff-step"><div class="ff-num">2</div><div><h3>Measured feeding sessions</h3><p>Divide the daily portion into two meals (three for puppies). Weigh food on a kitchen scale in grams instead of guessing with scoops — small overfeeds add up fast on a 25-pound dog. A shallow, wide bowl or slow feeder reduces gulped air, which matters for a breed prone to gassiness and regurgitation.</p></div></div>
+
+<div class="ff-step"><div class="ff-num">3</div><div><h3>Heat-smart exercise</h3><p>Schedule walks and play for the coolest hours — early morning and late evening. In warm weather, keep indoor spaces air-conditioned and swap outdoor exercise for indoor games. Details and safe durations are in the <a href="#exercise">exercise section</a> below.</p></div></div>
+
+<div class="ff-step"><div class="ff-num">4</div><div><h3>Evening hygiene and wrinkle dry</h3><p>Wipe facial folds and the <a href="https://frenchyfab.com/french-bulldog-tail-pocket-infections-guide/">tail pocket</a> with a damp, unscented cloth if debris is present, then dry the skin thoroughly with a soft tissue. Check paws for redness or licking, top up fresh water, and you are done.</p></div></div>
+
+<div class="ffc-box" id="ffcCare">
+<p style="margin:0 0 6px;font-size:19px"><strong>Today's Frenchie care checklist</strong></p>
+<p style="margin:6px 0 6px;font-size:15px;color:#526071">Tick each item off as you go — your progress bar fills as the day comes together.</p>
+<ul class="ffc-list">
+<li class="ffc-item"><label><input type="checkbox"><span>Morning breathing, eyes, and skin-fold check done</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Measured breakfast served (weighed, not scooped)</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Fresh water bowl washed and refilled</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Walk or play session done in cool conditions, harness on</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Facial folds and tail pocket wiped <em>and</em> dried</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Midday comfort check — cool room, shade, no panting at rest</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Measured dinner served; treats kept under 10% of calories</span></label></li>
+<li class="ffc-item"><label><input type="checkbox"><span>Evening paw, ear, and teeth check done</span></label></li>
+</ul>
+<div class="ffc-bar"><div class="ffc-fill" id="ffcFill"></div></div>
+<p class="ffc-text" id="ffcText">0 of 8 done (0%)</p>
+</div>
+
+<h3>The care calendar: daily, weekly, monthly</h3>
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Frequency</th><th>Tasks</th></tr></thead>
+<tbody>
+<tr><td><strong>Daily</strong></td><td>Two measured meals; fresh water; breathing and fold check; cool-hours exercise; fold wipe and dry; teeth brush (ideal)</td></tr>
+<tr><td><strong>Weekly</strong></td><td>Coat brush-out; ear inspection; paw and tail-pocket check; bedding washed; weight trend glance (ribs and waist)</td></tr>
+<tr><td><strong>Every 2–4 weeks</strong></td><td>Nail trim or grind; bath as needed (roughly every 4–6 weeks); harness and collar fit check</td></tr>
+<tr><td><strong>Every 6–12 months</strong></td><td>Vet wellness exam (twice yearly for seniors); dental check; vaccine and parasite-prevention review</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="feeding">Feeding and Weight</h2>
+<p>Excess weight is the single most damaging — and most preventable — problem in French Bulldog care. Extra fat presses on an already narrow airway and makes breathing harder, loads the spine and raises the risk of intervertebral disc disease (IVDD), and worsens joint strain. Keeping a Frenchie lean is not cosmetic; it is respiratory and spinal care.</p>
+
+<h3>How much to feed</h3>
+<p>Choose a complete-and-balanced food formulated for your dog's life stage, and treat the amounts below as starting points for an average adult eating standard kibble (roughly 350–400 kcal per cup). Your food's calorie density, your dog's build, and activity level move the real number — body condition, checked monthly, is the final judge. Our dedicated guide goes deeper: <a href="https://frenchyfab.com/how-much-should-french-bulldogs-eat/">how much should French Bulldogs eat</a>, and our tested shortlist is in the <a href="https://frenchyfab.com/best-dog-foods-for-french-bulldogs/">best dog food for French Bulldogs</a> comparison.</p>
+
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Adult weight</th><th>Typical daily amount</th><th>Meals</th></tr></thead>
+<tbody>
+<tr><td>16–20 lb</td><td>About 1 to 1¼ cups</td><td>2</td></tr>
+<tr><td>20–24 lb</td><td>About 1¼ to 1½ cups</td><td>2</td></tr>
+<tr><td>24–28 lb</td><td>About 1½ to 1¾ cups</td><td>2</td></tr>
+<tr><td>Puppies</td><td>Per the food's puppy feeding chart, split into 3–4 smaller meals</td><td>3–4</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="ff-note"><strong>The rib-and-waist test:</strong> you should feel your dog's ribs easily under a thin fat cover, and see a visible waist from above and from the side. If the back looks flat and round, talk to your vet about a gradual calorie reduction — our <a href="https://frenchyfab.com/french-bulldog-weight-management-framework/">weight management tips for overweight French Bulldogs</a> walk through it safely.</div>
+
+<p><strong>Treats count.</strong> Keep treats under 10% of daily calories, and subtract them from meals rather than adding them on top. Finally, some everyday foods are genuinely dangerous for dogs — chocolate, grapes, xylitol-sweetened products, onions, and cooked bones among them. Keep the full list on your fridge: <a href="https://frenchyfab.com/what-can-french-bulldogs-not-eat/">what French Bulldogs cannot eat</a>.</p>
+
+<h2 id="heat-safety">Breathing and Heat Safety</h2>
+<p>French Bulldogs cannot cool themselves efficiently by panting. Brachycephalic obstructive airway syndrome (BOAS) restricts airflow through the narrowed nose, throat, and trachea, so hot air moves slowly and body heat builds fast. Research from the Royal Veterinary College's VetCompass programme found French Bulldogs have around six times the odds of heat-related illness compared with Labradors. Heat management is therefore the most important safety skill a Frenchie owner can learn.</p>
+
+<figure class="ff-figure">
+<img src="https://frenchyfab.com/wp-content/uploads/2024/01/French-Bulldog-Heat-Intolerance-768x439.jpg" alt="French Bulldog resting in cool shade on a warm day" loading="lazy">
+<figcaption>Shade, rest, and cool air are not comforts for a Frenchie — they are how the breed regulates body temperature.</figcaption>
+</figure>
+
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Temperature</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Below 70°F (21°C)</strong></td><td>Comfortable for most Frenchies; normal walks and play.</td></tr>
+<tr><td><strong>70–75°F (21–24°C)</strong></td><td>Caution: shorten outings, stick to shade, carry water, watch breathing.</td></tr>
+<tr><td><strong>75–80°F (24–27°C)</strong></td><td>Short bathroom breaks only; exercise moves indoors or to the coolest hours.</td></tr>
+<tr><td><strong>Above 80°F (27°C) or humid</strong></td><td>No walks or outdoor play. Air-conditioned rooms only. Humidity raises risk at every temperature.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="ff-warning">
+<p style="margin:0 0 10px"><strong>Overheating red flags — act immediately:</strong></p>
+<ul>
+<li>Heavy, frantic panting with a wide, flat tongue</li>
+<li>Loud rasping, snorting, or gasping that does not settle with rest</li>
+<li>Dark red or blue-tinted gums</li>
+<li>Thick, ropey saliva or foaming at the mouth</li>
+<li>Unsteadiness, vomiting, or collapse</li>
+</ul>
+<p style="margin-bottom:0"><strong>If you suspect heat stress:</strong> move your dog to a cool, air-conditioned space at once, lay cool (not freezing) wet towels over the belly and groin, offer small sips of water, and transport to an emergency veterinary clinic immediately. Cooling while you travel saves lives; waiting to "see if it passes" is how Frenchies die of heatstroke. Never leave a French Bulldog in a parked car, under any circumstances, for any length of time.</p>
+</div>
+
+<p>Some snoring and snorting is normal for the breed, but breathing that gets louder over time, exercise intolerance, gagging, or fainting episodes are not — they can signal worsening BOAS and deserve a vet assessment. For a fuller protocol, read our <a href="https://frenchyfab.com/french-bulldog-overheating-playbook/">French Bulldog overheating playbook</a>.</p>
+
+<h2 id="grooming">Skin Folds, Ears, Nails, Teeth, and Coat</h2>
+<p>The coat is the easy part. The real grooming work on a Frenchie is folds, ears, nails, and teeth — the four places moisture, wax, length, and plaque quietly cause pain.</p>
+
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Task</th><th>How often</th><th>How</th></tr></thead>
+<tbody>
+<tr><td><strong>Facial folds and tail pocket</strong></td><td>2–3 times a week (daily for deep folds)</td><td>Wipe gently with an unscented wipe or damp cloth, then dry completely with a soft tissue</td></tr>
+<tr><td><strong>Ears</strong></td><td>Inspect weekly; clean as needed</td><td>Use a vet-recommended ear cleaner on a cotton pad for the visible outer ear; never push cotton swabs into the canal</td></tr>
+<tr><td><strong>Nails</strong></td><td>Every 2–3 weeks</td><td>Clip or grind a little at a time; if nails click on hard floors, they are too long</td></tr>
+<tr><td><strong>Teeth</strong></td><td>Brush daily if possible, several times a week at minimum</td><td>Dog toothpaste and a soft brush or finger brush; never human toothpaste (xylitol risk)</td></tr>
+<tr><td><strong>Coat</strong></td><td>Brush weekly; bathe every 4–6 weeks</td><td>A soft bristle brush or grooming mitt removes loose hair; use a gentle dog shampoo and rinse thoroughly</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Folds:</strong> the wrinkles that define the breed trap moisture and debris, and that combination grows the yeast and bacteria behind skin fold dermatitis. Cleaning without drying makes it worse — the dry step is the one that matters. Redness, a sour smell, or discharge means the skin is already irritated; persistent cases need a vet, not stronger wipes. Owners of allergy-prone Frenchies should also read our guide on whether <a href="https://frenchyfab.com/are-french-bulldogs-hypoallergenic/">French Bulldogs are hypoallergenic</a> and how dander management helps sensitive households.</p>
+
+<p><strong>Teeth:</strong> dental disease is one of the most common — and most overlooked — Frenchie <a href="https://frenchyfab.com/understanding-common-health-issues-in-french-bulldogs/">health issues</a>, and crowded teeth in a short jaw trap plaque faster than in longer-muzzled breeds. Bad breath, tartar buildup, red gums, or dropping food are all reasons for a dental check.</p>
+
+<h3>The basic care kit</h3>
+<div class="ff-grid">
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)">Unscented wrinkle wipes</p><p style="margin:8px 0 0">For daily fold and tail-pocket cleaning. Unscented matters — fragranced wipes irritate already-sensitive fold skin.</p><a class="ff-button" href="https://www.amazon.com/s?k=unscented+dog+wrinkle+wipes&tag=papalex-ff-20" target="_blank" rel="sponsored nofollow noopener">See options on Amazon</a></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)">Dog ear cleaner</p><p style="margin:8px 0 0">A gentle, vet-formulated cleaner for the weekly ear check. Skip any product that stings on broken skin.</p><a class="ff-button" href="https://www.amazon.com/s?k=dog+ear+cleaner&tag=papalex-ff-20" target="_blank" rel="sponsored nofollow noopener">See options on Amazon</a></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)">Nail grinder</p><p style="margin:8px 0 0">Quieter and more forgiving than clippers for small, frequent trims — ideal for anxious dogs.</p><a class="ff-button" href="https://www.amazon.com/s?k=dog+nail+grinder&tag=papalex-ff-20" target="_blank" rel="sponsored nofollow noopener">See options on Amazon</a></div>
+</div>
+
+<h2 id="exercise">Exercise and Enrichment</h2>
+<p>French Bulldogs are playful but built for short bursts, not endurance. The goal is a tired, happy dog without stressing the airway, spine, or joints — and without heat ever entering the equation.</p>
+
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Life stage</th><th>Daily exercise</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Puppy</strong></td><td>Short play sessions spread across the day</td><td>A common rule of thumb is about 5 minutes of structured exercise per month of age, twice a day; free play at home makes up the rest</td></tr>
+<tr><td><strong>Adult</strong></td><td>30–60 minutes total, split into 2–3 sessions</td><td>Easy-paced walks plus play; stop before heavy panting starts, not after</td></tr>
+<tr><td><strong>Senior</strong></td><td>20–40 minutes, gentle</td><td>Shorter, slower outings as tolerated; watch for stiffness the next day</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><strong>Always walk on a harness, never a collar.</strong> Collar pressure compresses the trachea of a dog whose airway is already narrow. A well-fitted harness distributes force across the chest instead — our guide to the <a href="https://frenchyfab.com/best-harness-for-french-bulldog-that-pulls/">best harness for a French Bulldog that pulls</a> covers fit and airway comfort in detail.</p>
+
+<figure class="ff-figure">
+<img src="https://frenchyfab.com/wp-content/uploads/2023/09/French-Bulldog-4.jpg" alt="French Bulldog playing with a toy indoors" loading="lazy">
+<figcaption>Indoor play and puzzle games burn Frenchie energy without heat, airway, or joint stress.</figcaption>
+</figure>
+
+<h3>Burn energy the safe way: mental enrichment</h3>
+<ul>
+<li><strong>Scent work:</strong> hide a few low-calorie treats around a room and let your dog hunt for them.</li>
+<li><strong>Puzzle feeders:</strong> serve part of a meal in an interactive toy to slow eating and work the brain.</li>
+<li><strong>Micro training:</strong> five-minute sessions on “place,” “leave it,” and recall with high-value rewards. Short, frequent, and positive beats long drills for this breed.</li>
+<li><strong>Chew time:</strong> appropriately sized, vet-safe chews satisfy a strong Frenchie chewing drive and support dental health.</li>
+</ul>
+
+<div class="ff-warning"><strong>Never with a Frenchie:</strong> jogging or cycling alongside you, midday summer walks, fetch until exhaustion, jumping on and off furniture or running stairs (spinal load, IVDD risk), and unsupervised swimming — most French Bulldogs cannot swim, so pools and deep water require a life vest and your eyes on the dog at all times.</div>
+
+<h2 id="life-stages">Puppy, Adult, and Senior Care</h2>
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Life stage</th><th>Primary focus</th><th>Safety watchouts</th></tr></thead>
+<tbody>
+<tr><td><strong>Puppy (0–12 months)</strong></td><td>Vaccination series, socialization, house training, and <a href="https://frenchyfab.com/crate-training-french-bulldog-guide/">crate training</a></td><td>No stairs or jumping off furniture while joints and spine develop; puppy-proof cables, chemicals, and small objects</td></tr>
+<tr><td><strong>Adult (1–8 years)</strong></td><td>Weight control, daily hygiene routines, dental care, annual vet exam</td><td>Keep the dog lean to protect airway and spine; folds checked weekly at minimum</td></tr>
+<tr><td><strong>Senior (8+ years)</strong></td><td>Twice-yearly vet checks, joint comfort, ramps, softer bedding</td><td>Watch for slowing down, stiffness, vision changes, and new lumps; adjust exercise, never stop it entirely</td></tr>
+</tbody>
+</table>
+</div>
+
+<figure class="ff-figure">
+<img src="https://frenchyfab.com/wp-content/uploads/2025/03/high-quality-realistic-photo-of-puppy-care-related-to-puppy-proof-your-yard-a-safe-haven-for-your-frenchie-professional-quality-detailed-excellent-lighting-clear-composition-67d85d829b3e6-768x401.jpg" alt="French Bulldog puppy exploring a safe, fenced yard" loading="lazy">
+<figcaption>Puppy care is mostly protection: safe spaces, gentle handling, and habits — folds, teeth, harness — started early and kept for life.</figcaption>
+</figure>
+
+<p><strong>Puppies</strong> need the full vaccination series, gentle socialization with people and calm dogs, and early practice with fold wiping, ear checks, and teeth brushing so adult care feels routine. Our <a href="https://frenchyfab.com/french-bulldog-puppy-care/">French Bulldog puppy care guide</a> covers the first year week by week.</p>
+<p><strong>Adults</strong> thrive on the routine in this guide: measured food, daily checks, weekly grooming, annual vet visits. Most Frenchie health problems are cheapest and easiest when caught at this stage — which is the entire point of the morning check.</p>
+<p><strong>Seniors</strong> slow down gradually. Add ramps, keep nails short for grip, and switch to twice-yearly vet visits so age-related changes are caught early. Our <a href="https://frenchyfab.com/senior-french-bulldog-care-guide/">senior French Bulldog care guide</a> goes deeper, and our <a href="https://frenchyfab.com/french-bulldog-lifespan/">French Bulldog lifespan guide</a> explains what actually shortens — and protects — those 10 to 12 years.</p>
+
+<h2 id="home-comfort">Home Comfort and Safety</h2>
+<ul>
+<li><strong>Temperature:</strong> keep living spaces at a comfortable room temperature, with air conditioning during heat waves. A Frenchie that pants at rest indoors is too warm.</li>
+<li><strong>Spine protection:</strong> provide ramps or steps for sofas and beds, use non-slip rugs on slick floors, and carry your dog on stairs where possible.</li>
+<li><strong>Sleep:</strong> a supportive, washable bed in a draft-free spot. Frenchies want to be near their people — a bed in the room you live in beats a fancy bed in an empty one.</li>
+<li><strong>Water safety:</strong> fence pools, supervise any water exposure, and use a fitted canine life vest for boats or docks.</li>
+<li><strong>Travel:</strong> in cars, use a secured harness or crate, plan AC breaks, and never leave the dog unattended in the vehicle. Flying with a brachycephalic breed has extra risks and airline restrictions — discuss any flight with your vet first, and compare coverage options in our <a href="https://frenchyfab.com/best-pet-insurance-for-french-bulldogs/">best pet insurance for French Bulldogs</a> guide before you need it.</li>
+</ul>
+
+<h2 id="vet">When to Call a Vet</h2>
+<p>Frenchies deteriorate fast when breathing is involved, so err on the side of calling. Use this table as your triage guide:</p>
+
+<div class="ff-table-wrap">
+<table>
+<thead><tr><th>Urgency</th><th>Signs</th></tr></thead>
+<tbody>
+<tr><td><strong>Emergency — go now</strong></td><td>Breathing distress or gasping; collapse or fainting; blue, grey, or very dark red gums; suspected heatstroke; seizure; repeated vomiting with a swollen, tight abdomen</td></tr>
+<tr><td><strong>Same day</strong></td><td>Breathing suddenly louder than normal; eye redness, cloudiness, or squinting; not eating for 24 hours; diarrhea beyond a day; sudden limping or refusal to bear weight; fold skin with strong odor, redness, or discharge</td></tr>
+<tr><td><strong>Book a checkup</strong></td><td>Gradual weight gain; tartar or bad breath; nails clicking on floors; new lumps; increased snoring over weeks; boosters or parasite prevention due</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="faq">French Bulldog Care FAQ</h2>
+<div class="ff-faq">
+<details><summary>How much should a French Bulldog eat each day?</summary><p>Most adults do well on roughly 1 to 1¾ cups of complete-and-balanced food per day depending on their weight, split into two measured meals. Weigh portions in grams, keep treats under 10% of daily calories, and adjust by body condition — you should feel the ribs easily and see a waist from above. Puppies eat smaller meals 3–4 times a day.</p></details>
+<details><summary>How often should you clean a French Bulldog's wrinkles?</summary><p>Two to three times a week for most dogs, and daily for deep facial folds or a pronounced tail pocket. Wipe gently with an unscented wipe or damp cloth, then dry the skin completely — trapped moisture is what allows yeast and bacteria to grow.</p></details>
+<details><summary>How much exercise does a French Bulldog need?</summary><p>Adults need about 30–60 minutes a day in total, split into two or three short, easy sessions during the coolest hours. Puppies need short play sessions spread across the day, and seniors do best with 20–40 gentle minutes. Stop before heavy panting starts.</p></details>
+<details><summary>What temperature is too hot for a French Bulldog?</summary><p>Start being careful above 75°F (24°C): shorten outings, use shade, and carry water. Above 80°F (27°C) — or at lower temperatures with high humidity — skip walks and outdoor play entirely and keep your Frenchie in air conditioning.</p></details>
+<details><summary>Can French Bulldogs swim?</summary><p>Most French Bulldogs cannot swim safely. Their heavy front end and short legs make staying afloat extremely difficult. Never leave a Frenchie unsupervised near a pool or deep water, and use a properly fitted canine life vest for boats or docks.</p></details>
+<details><summary>How often should a French Bulldog see the vet?</summary><p>Puppies need a series of visits to complete their vaccinations. Healthy adults should have a wellness exam at least once a year, and seniors (8 years and older) do best with twice-yearly checks so age-related changes are caught early.</p></details>
+<details><summary>Why does my French Bulldog snore and snort so much?</summary><p>Snoring and snorting come with the brachycephalic (flat-faced) anatomy — narrowed nostrils and a shortened airway. Some noise is normal, but breathing that gets louder over time, exercise intolerance, gagging, or fainting can signal brachycephalic obstructive airway syndrome (BOAS) and should be assessed by a vet.</p></details>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much should a French Bulldog eat each day?","acceptedAnswer":{"@type":"Answer","text":"Most adults do well on roughly 1 to 1¾ cups of complete-and-balanced food per day depending on their weight, split into two measured meals. Weigh portions in grams, keep treats under 10% of daily calories, and adjust by body condition — you should feel the ribs easily and see a waist from above. Puppies eat smaller meals 3–4 times a day."}},
+{"@type":"Question","name":"How often should you clean a French Bulldog's wrinkles?","acceptedAnswer":{"@type":"Answer","text":"Two to three times a week for most dogs, and daily for deep facial folds or a pronounced tail pocket. Wipe gently with an unscented wipe or damp cloth, then dry the skin completely — trapped moisture is what allows yeast and bacteria to grow."}},
+{"@type":"Question","name":"How much exercise does a French Bulldog need?","acceptedAnswer":{"@type":"Answer","text":"Adults need about 30–60 minutes a day in total, split into two or three short, easy sessions during the coolest hours. Puppies need short play sessions spread across the day, and seniors do best with 20–40 gentle minutes. Stop before heavy panting starts."}},
+{"@type":"Question","name":"What temperature is too hot for a French Bulldog?","acceptedAnswer":{"@type":"Answer","text":"Start being careful above 75°F (24°C): shorten outings, use shade, and carry water. Above 80°F (27°C) — or at lower temperatures with high humidity — skip walks and outdoor play entirely and keep your Frenchie in air conditioning."}},
+{"@type":"Question","name":"Can French Bulldogs swim?","acceptedAnswer":{"@type":"Answer","text":"Most French Bulldogs cannot swim safely. Their heavy front end and short legs make staying afloat extremely difficult. Never leave a Frenchie unsupervised near a pool or deep water, and use a properly fitted canine life vest for boats or docks."}},
+{"@type":"Question","name":"How often should a French Bulldog see the vet?","acceptedAnswer":{"@type":"Answer","text":"Puppies need a series of visits to complete their vaccinations. Healthy adults should have a wellness exam at least once a year, and seniors (8 years and older) do best with twice-yearly checks so age-related changes are caught early."}},
+{"@type":"Question","name":"Why does my French Bulldog snore and snort so much?","acceptedAnswer":{"@type":"Answer","text":"Snoring and snorting come with the brachycephalic (flat-faced) anatomy — narrowed nostrils and a shortened airway. Some noise is normal, but breathing that gets louder over time, exercise intolerance, gagging, or fainting can signal brachycephalic obstructive airway syndrome (BOAS) and should be assessed by a vet."}}
+]}
+</script>
+
+<div class="ff-disclosure"><strong>Affiliate disclosure:</strong> Frenchy Fab is a participant in the Amazon Associates Program. Some links in this guide are affiliate links, which means we may earn a small commission if you buy through them — at no extra cost to you. Recommendations are based on care needs, not commissions.</div>
+
+<h2 id="sources">Sources and Review Notes</h2>
+<ul>
+<li>American Kennel Club — <a href="https://www.akc.org/dog-breeds/french-bulldog/" target="_blank" rel="noopener">French Bulldog breed standard and care profile</a> (size, weight, lifespan, coat, temperament).</li>
+<li>Royal Veterinary College, <a href="https://www.rvc.ac.uk/vetcompass" target="_blank" rel="noopener">VetCompass programme</a> — breed health research, including heat-related illness risk in French Bulldogs (around six times the odds vs Labradors).</li>
+</ul>
+<p>This guide is general owner education reviewed against current veterinary guidance. It is not a substitute for advice from your own veterinarian, who knows your dog. When this guide and your vet disagree, follow your vet.</p>
+
+<h2>Related Guides</h2>
+<div class="ff-grid">
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)"><a href="https://frenchyfab.com/french-bulldog-health-problems-guide/">Health Problems Guide</a></p><p style="margin:8px 0 0">The complete map of Frenchie health issues, symptoms, and prevention.</p></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)"><a href="https://frenchyfab.com/french-bulldog-overheating-playbook/">Overheating Playbook</a></p><p style="margin:8px 0 0">The full heat-safety protocol: prevention, cooling, and emergency steps.</p></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)"><a href="https://frenchyfab.com/best-dog-foods-for-french-bulldogs/">Best Dog Food for French Bulldogs</a></p><p style="margin:8px 0 0">How to compare diets and ingredients for a sensitive, flat-faced breed.</p></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)"><a href="https://frenchyfab.com/french-bulldog-puppy-care/">Puppy Care Guide</a></p><p style="margin:8px 0 0">The first year, week by week: vaccines, training, and safe growth.</p></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)"><a href="https://frenchyfab.com/senior-french-bulldog-care-guide/">Senior Care Guide</a></p><p style="margin:8px 0 0">Comfort, joints, and vet care for Frenchies aged 8 and up.</p></div>
+<div class="ff-card"><p style="margin:0 0 8px;font-weight:800;color:var(--ff-navy)"><a href="https://frenchyfab.com/are-french-bulldogs-hypoallergenic/">Are French Bulldogs Hypoallergenic?</a></p><p style="margin:8px 0 0">The honest answer on dander, shedding, and allergy management.</p></div>
+</div>
+
+</div>
+<script>
+(function(){var box=document.getElementById('ffcCare');if(!box){return;}var boxes=box.querySelectorAll('input[type="checkbox"]');var fill=document.getElementById('ffcFill');var text=document.getElementById('ffcText');function upd(){var done=0;boxes.forEach(function(b){if(b.checked){done=done+1;}});var pct=Math.round(done*100/boxes.length);fill.style.width=pct+'%';if(done===boxes.length){text.textContent='All '+boxes.length+' done — your Frenchie is set for today.';}else{text.textContent=done+' of '+boxes.length+' done ('+pct+'%)';}}boxes.forEach(function(b){b.addEventListener('change',upd);});upd();})();
+</script>

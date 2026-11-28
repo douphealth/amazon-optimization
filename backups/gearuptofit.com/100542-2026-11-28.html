@@ -1,0 +1,926 @@
+<style>
+.gutf-review{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.75;color:#1e293b;max-width:1040px;margin:0 auto;padding:clamp(16px,3vw,34px)}
+.gutf-review *{box-sizing:border-box}
+.gutf-review h1{font-size:clamp(2.1rem,4.5vw,3.2rem);line-height:1.12;margin:0 0 16px;letter-spacing:-.035em;color:#0f172a;font-weight:900}
+.gutf-review h2{font-size:clamp(1.4rem,3vw,2rem);line-height:1.25;margin:46px 0 16px;letter-spacing:-.02em;color:#0f172a;font-weight:800;border-bottom:2px solid #f1f5f9;padding-bottom:10px}
+.gutf-review h3{font-size:1.22rem;line-height:1.35;margin:28px 0 12px;color:#1e293b;font-weight:750}
+.gutf-review p{margin:0 0 18px;font-size:1.06rem}
+.gutf-review ul,.gutf-review ol{padding-left:1.4rem;margin:0 0 20px}
+.gutf-review li{margin:8px 0;font-size:1.04rem}
+.gutf-kicker{display:inline-block;font-weight:800;color:#0284c7;letter-spacing:.08em;text-transform:uppercase;font-size:.88rem;margin-bottom:8px;background:#e0f2fe;padding:4px 12px;border-radius:999px}
+.gutf-deck{font-size:1.2rem;color:#475569;margin:0 0 24px;line-height:1.55;font-weight:450}
+.gutf-disclosure{font-size:.92rem;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:12px 18px;margin:20px 0}
+.gutf-card,.gutf-product-box,.gutf-verdict,.gutf-note,.gutf-faq,.gutf-evidence-box{border:1px solid #e2e8f0;border-radius:24px;padding:clamp(20px,3.5vw,32px);background:#fff;box-shadow:0 10px 30px rgba(15,23,42,.05);margin:28px 0}
+.gutf-aeo-box{background:linear-gradient(135deg,#f0f9ff,#f8fafc);border:2px solid #0284c7;border-radius:20px;padding:22px;margin:24px 0}
+.gutf-aeo-title{font-size:1.05rem;font-weight:800;color:#0369a1;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.gutf-test-badge{background:linear-gradient(135deg,#0f172a,#1e293b);color:#f8fafc;border-radius:20px;padding:22px;margin:24px 0}
+.gutf-test-badge h3{color:#38bdf8;margin:0 0 14px;font-size:1.15rem;display:flex;align-items:center;gap:10px}
+.gutf-test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.gutf-test-item{background:rgba(255,255,255,.07);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1)}
+.gutf-test-item strong{display:block;color:#94a3b8;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.gutf-test-item span{color:#f8fafc;font-size:.95rem;font-weight:600}
+.gutf-table-wrap{overflow-x:auto;margin:26px 0;border:1px solid #e2e8f0;border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.gutf-review table{border-collapse:collapse;width:100%;min-width:760px}
+.gutf-review th,.gutf-review td{border-bottom:1px solid #f1f5f9;padding:14px 16px;text-align:left;vertical-align:top;font-size:.95rem}
+.gutf-review th{background:#f8fafc;color:#475569;font-weight:750;text-transform:uppercase;font-size:.82rem;letter-spacing:.05em}
+.gutf-cta{display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff!important;text-decoration:none;font-weight:800;border-radius:12px;padding:14px 24px;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 8px 20px rgba(245,158,11,.25);transition:transform .2s ease}
+.gutf-cta:hover{transform:translateY(-2px)}
+.gutf-badge{display:inline-block;background:#f1f5f9;color:#334155;border-radius:999px;padding:4px 12px;font-size:.82rem;font-weight:700;margin:3px 4px 3px 0}
+.gutf-badge.winner{background:#dcfce7;color:#15803d}
+.gutf-badge.blue{background:#e0f2fe;color:#0369a1}
+.gutf-figure{margin:32px 0;text-align:center}
+.gutf-figure img{width:100%;max-width:880px;height:auto;border-radius:20px;box-shadow:0 12px 36px rgba(15,23,42,.08)}
+.gutf-figure figcaption{font-size:.9rem;color:#64748b;margin-top:10px;font-style:italic}
+.gutf-faq details{border:1px solid #e2e8f0;border-radius:14px;padding:16px 20px;margin:12px 0;background:#fff;transition:background .2s ease}
+.gutf-faq details[open]{background:#f8fafc;border-color:#cbd5e1}
+.gutf-faq summary{font-weight:750;font-size:1.05rem;color:#0f172a;cursor:pointer;list-style-position:inside}
+.gutf-faq p{margin:12px 0 0;font-size:1rem;color:#334155;line-height:1.65}
+.gutf-product-box{display:grid;grid-template-columns:minmax(220px,280px) 1fr;gap:26px;align-items:center;background:linear-gradient(135deg,#f8fafc,#ffffff);border:1px solid #e2e8f0;border-radius:20px;padding:clamp(18px,3vw,26px);margin:28px 0}
+.gutf-product-box img{display:block;width:100%;height:auto;max-height:280px;object-fit:contain;border-radius:14px;background:#fff;padding:10px}
+.gutf-cluster-links{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:22px;margin:34px 0}
+.gutf-cluster-links h3{margin-top:0;color:#0f172a}
+.gutf-cluster-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
+.gutf-cluster-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px;text-decoration:none;color:#0284c7;font-weight:750;display:flex;align-items:center;gap:10px;box-shadow:0 2px 6px rgba(0,0,0,.03)}
+.gutf-cluster-card:hover{border-color:#0284c7;background:#f0f9ff}
+/* SOTA INTERACTIVE PACE CALCULATOR STYLES */
+.gutf-calc-app{background:linear-gradient(135deg,#09131f,#132238);color:#f8fafc;border-radius:24px;padding:clamp(20px,4vw,34px);margin:30px 0;box-shadow:0 16px 40px rgba(15,23,42,.25);border:1px solid rgba(56,189,248,.15)}
+.gutf-calc-app h2{color:#38bdf8;border-bottom:1px solid rgba(255,255,255,.15);margin:0 0 20px;padding-bottom:12px;font-size:1.6rem}
+.gutf-tab-bar{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+.gutf-tab-btn{background:rgba(255,255,255,.08);color:#cbd5e1;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:8px 16px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s ease}
+.gutf-tab-btn.active{background:#0284c7;color:#fff;border-color:#38bdf8}
+.gutf-quick-distances{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.gutf-chip{background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:5px 12px;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .15s}
+.gutf-chip:hover,.gutf-chip.active{background:#0ea5e9;color:#fff;border-color:#38bdf8}
+.gutf-calc-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:24px}
+.gutf-calc-group{display:flex;flex-direction:column;gap:6px}
+.gutf-calc-group label{font-size:.85rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
+.gutf-calc-group input,.gutf-calc-group select{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:12px;padding:12px 14px;font-size:1.1rem;font-weight:700;outline:none;transition:border-color .2s}
+.gutf-calc-group input:focus,.gutf-calc-group select:focus{border-color:#38bdf8;background:rgba(255,255,255,.12)}
+.gutf-calc-group select option{background:#0f172a;color:#fff}
+.gutf-time-inputs{display:flex;gap:6px;align-items:center}
+.gutf-time-inputs input{width:100%;text-align:center;padding:12px 8px}
+.gutf-time-inputs span{color:#64748b;font-weight:800}
+.gutf-highlight-box{background:linear-gradient(135deg,#0284c7,#0369a1);border-radius:18px;padding:24px;text-align:center;box-shadow:0 10px 25px rgba(2,132,199,.35);margin-bottom:22px}
+.gutf-highlight-box h3{color:#bae6fd;margin:0 0 4px;font-size:1rem;text-transform:uppercase;letter-spacing:.08em}
+.gutf-highlight-val{font-size:clamp(2.2rem,5.5vw,3.4rem);font-weight:900;color:#fff;line-height:1.1}
+.gutf-highlight-sub{font-size:1rem;color:#e0f2fe;margin-top:6px;font-weight:600}
+.gutf-splits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px}
+.gutf-split-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;text-align:center}
+.gutf-split-dist{color:#94a3b8;font-size:.8rem;font-weight:700;text-transform:uppercase}
+.gutf-split-time{color:#f8fafc;font-size:1.15rem;font-weight:800;margin-top:4px}
+.gutf-split-pace{color:#38bdf8;font-size:.82rem;margin-top:2px}
+@media(max-width:640px){
+  .gutf-product-box{grid-template-columns:1fr;text-align:center}
+  .gutf-product-box img{margin:0 auto}
+  .gutf-time-inputs input{font-size:.95rem;padding:10px 4px}
+}
+</style>
+
+<div class="gutf-review">
+<span class="gutf-kicker">Interactive Running Tool &bull; Updated 2026</span>
+
+<p class="gutf-deck">Accurately calculate your running pace, finish times, and mile-by-mile splits across any distance. Whether you are aiming for a sub-20 5K, planning your first half marathon, or locking in your Boston Marathon qualifying pace, use our real-time interactive pace calculator and Peter Riegel race predictor below.</p>
+
+<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+<p style="margin:0 0 8px;font-weight:700">Featured in this guide</p>
+<ul style="list-style:none;margin:0 0 10px;padding:0">
+<li style="margin:6px 0"><a href="https://www.amazon.com/dp/B0CT3SGHXL?tag=papalex-20" rel="sponsored nofollow noopener" target="_blank">Garmin Forerunner 165 Running Smartwatch</a></li>
+</ul>
+<p style="margin:0;font-size:13px;color:#555">As an Amazon Associate, GearUpToFit earns from qualifying purchases.</p>
+</div>
+
+<div class="gutf-disclosure">
+<strong>Affiliate Disclosure:</strong> At GearUpToFit, our running tools, calculators, and equipment recommendations are independently researched. When you purchase through our verified Amazon links, we may earn an affiliate commission at no extra cost to you.
+</div>
+
+<!-- INTERACTIVE RUNNING PACE CALCULATOR APPLICATION EMBED -->
+<style id="gutf-calc-custom-styles">
+.gutf-calc-wrapper{max-width:980px;margin:35px auto;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+.gutf-calc-box{background:linear-gradient(145deg,#0a1120,#131f37);border:1px solid rgba(56,189,248,.25);border-radius:24px;padding:clamp(20px,4vw,36px);box-shadow:0 25px 60px -15px rgba(2,6,23,.6),0 0 0 1px rgba(255,255,255,.05);color:#f8fafc;position:relative;overflow:hidden;}
+.gutf-calc-box::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0ea5e9,#38bdf8,#10b981);}
+.gutf-calc-header{margin-bottom:22px;text-align:left;}
+.gutf-calc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(14,165,233,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.3);border-radius:999px;padding:4px 12px;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+.gutf-calc-title{margin:0 0 8px;font-size:clamp(1.4rem,3vw,1.95rem);color:#fff;font-weight:800;line-height:1.2;}
+.gutf-calc-desc{margin:0;color:#94a3b8;font-size:.95rem;line-height:1.55;}
+.gutf-nav-tabs{display:flex;gap:8px;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.gutf-nav-tab{background:rgba(255,255,255,.05);color:#cbd5e1;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s ease;display:flex;align-items:center;gap:8px;}
+.gutf-nav-tab:hover{background:rgba(255,255,255,.1);color:#fff;}
+.gutf-nav-tab.active{background:#0ea5e9;color:#fff;border-color:#38bdf8;box-shadow:0 4px 14px rgba(14,165,233,.4);}
+.gutf-tab-content{display:none;}
+.gutf-tab-content.active{display:block;}
+.gutf-pills-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
+.gutf-pill-label{font-size:.82rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-right:4px;}
+.gutf-dist-pill{background:rgba(255,255,255,.06);color:#94a3b8;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 14px;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .15s ease;}
+.gutf-dist-pill:hover{background:rgba(14,165,233,.2);color:#38bdf8;border-color:rgba(56,189,248,.4);}
+.gutf-dist-pill.active{background:#0284c7;color:#fff;border-color:#38bdf8;}
+.gutf-calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-bottom:22px;}
+.gutf-field-group{display:flex;flex-direction:column;gap:8px;}
+.gutf-field-group label{font-size:.85rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;}
+.gutf-input-control{background:rgba(15,23,42,.7);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:12px;padding:12px 14px;font-size:1.05rem;font-weight:700;outline:none;transition:border-color .2s ease,box-shadow .2s ease;}
+.gutf-input-control:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.25);background:rgba(15,23,42,.9);}
+.gutf-input-control option{background:#0f172a;color:#fff;}
+.gutf-time-row{display:flex;gap:6px;align-items:center;}
+.gutf-time-field{flex:1;display:flex;flex-direction:column;gap:4px;}
+.gutf-time-field span{font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;text-align:center;}
+.gutf-time-field input{width:100%;text-align:center;padding:12px 4px;background:rgba(15,23,42,.7);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:12px;font-size:1.1rem;font-weight:700;outline:none;}
+.gutf-time-field input:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.25);}
+.gutf-colon{color:#64748b;font-weight:800;font-size:1.4rem;align-self:center;padding-top:16px;}
+.gutf-hero-board{background:linear-gradient(135deg,#0284c7,#0369a1);border-radius:20px;padding:22px 26px;box-shadow:0 12px 30px rgba(2,132,199,.35);margin:22px 0;position:relative;overflow:hidden;}
+.gutf-hero-board::after{content:"";position:absolute;top:-50%;right:-20%;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%;pointer-events:none;}
+.gutf-hero-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+.gutf-hero-tag{background:rgba(0,0,0,.25);color:#e0f2fe;padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+.gutf-hero-main{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.gutf-hero-val{font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em;}
+.gutf-hero-unit{font-size:1.15rem;color:#bae6fd;font-weight:700;}
+.gutf-hero-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-top:16px;border-top:1px solid rgba(255,255,255,.2);padding-top:14px;}
+.gutf-metric-subitem{display:flex;flex-direction:column;gap:2px;}
+.gutf-metric-sublabel{font-size:.72rem;color:#e0f2fe;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.gutf-metric-subval{font-size:1.25rem;font-weight:800;color:#fff;}
+.gutf-splits-container{margin-top:20px;}
+.gutf-splits-table-wrap{max-height:400px;overflow-y:auto;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(15,23,42,.4);scrollbar-width:thin;scrollbar-color:#38bdf8 rgba(255,255,255,.05);}
+.gutf-splits-table{width:100%;border-collapse:collapse;font-size:.88rem;text-align:left;}
+.gutf-splits-table th{background:rgba(30,41,59,.85);color:#94a3b8;padding:12px 14px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;position:sticky;top:0;z-index:2;}
+.gutf-splits-table td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.05);color:#cbd5e1;}
+.gutf-splits-table tr:last-child td{border-bottom:none;}
+.gutf-splits-table tr:hover td{background:rgba(255,255,255,.04);color:#fff;}
+.gutf-splits-table .highlight-row td{background:rgba(14,165,233,.15);color:#38bdf8;font-weight:800;}
+.gutf-pred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px;}
+.gutf-pred-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;text-align:center;transition:transform .15s ease,border-color .15s ease;}
+.gutf-pred-card:hover{transform:translateY(-2px);border-color:#38bdf8;background:rgba(14,165,233,.08);}
+.gutf-pred-dist{font-size:.78rem;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;}
+.gutf-pred-time{font-size:1.3rem;font-weight:900;color:#fff;margin:6px 0;}
+.gutf-pred-pace{font-size:.8rem;font-weight:700;color:#38bdf8;}
+.gutf-zones-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px;}
+.gutf-zone-card{background:rgba(255,255,255,.04);border-radius:14px;padding:14px;border-left:4px solid #38bdf8;border-top:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
+.gutf-zone-card.z-easy{border-left-color:#10b981;}
+.gutf-zone-card.z-mp{border-left-color:#0ea5e9;}
+.gutf-zone-card.z-tempo{border-left-color:#f59e0b;}
+.gutf-zone-card.z-interval{border-left-color:#ef4444;}
+.gutf-zone-card.z-rep{border-left-color:#a855f7;}
+.gutf-zone-title{font-size:.88rem;font-weight:800;color:#fff;display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.gutf-zone-badge{font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.1);}
+.gutf-zone-pace{font-size:1.2rem;font-weight:900;color:#38bdf8;margin:3px 0;}
+.gutf-zone-desc{font-size:.76rem;color:#94a3b8;line-height:1.4;}
+.gutf-actions-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+.gutf-btn{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s ease;}
+.gutf-btn:hover{background:rgba(255,255,255,.15);border-color:#38bdf8;}
+.gutf-btn.primary{background:#0ea5e9;border-color:#38bdf8;color:#fff;box-shadow:0 4px 12px rgba(14,165,233,.3);}
+.gutf-btn.primary:hover{background:#0284c7;}
+.gutf-toast{display:none;position:fixed;bottom:24px;right:24px;background:#10b981;color:#fff;padding:12px 20px;border-radius:12px;font-weight:800;font-size:.9rem;box-shadow:0 10px 25px rgba(0,0,0,.3);z-index:9999;}
+@media (max-width:640px){
+.gutf-calc-grid{grid-template-columns:1fr;}
+.gutf-time-row{gap:4px;}
+.gutf-time-field input{padding:10px 4px;font-size:1rem;}
+.gutf-hero-main{flex-direction:column;gap:4px;}
+.gutf-hero-metrics{grid-template-columns:1fr 1fr;}
+}
+</style>
+<div class="gutf-calc-wrapper" id="pace-calculator-wrapper">
+<div class="gutf-calc-box">
+<div class="gutf-calc-header">
+<div class="gutf-calc-badge">&#x26A1; PRO RUNNING ENGINE</div>
+<h2 class="gutf-calc-title">&#x23F1;&#xFE0F; Interactive Running Pace &amp; Race Split Predictor</h2>
+<p class="gutf-calc-desc">Calculate required race paces, finish times, negative-split strategies, Jack Daniels VDOT zones, and Pete Riegel race finish predictions in real time.</p>
+</div>
+<div class="gutf-nav-tabs" role="tablist">
+<button type="button" class="gutf-nav-tab active" data-tab="tab-pace" role="tab">&#x1F3AF; Pace &amp; Time</button>
+<button type="button" class="gutf-nav-tab" data-tab="tab-splits" role="tab">&#x23F1;&#xFE0F; Race Splits Matrix</button>
+<button type="button" class="gutf-nav-tab" data-tab="tab-predictor" role="tab">&#x1F3C6; Race Time Predictor</button>
+<button type="button" class="gutf-nav-tab" data-tab="tab-zones" role="tab">&#x1F4C8; VDOT Training Paces</button>
+</div>
+<div class="gutf-pills-row">
+<span class="gutf-pill-label">Quick Distance:</span>
+<button type="button" class="gutf-dist-pill" data-dist="1.60934" data-name="1 Mile">1 Mile</button>
+<button type="button" class="gutf-dist-pill active" data-dist="5" data-name="5K">5K</button>
+<button type="button" class="gutf-dist-pill" data-dist="10" data-name="10K">10K</button>
+<button type="button" class="gutf-dist-pill" data-dist="16.0934" data-name="10 Miles">10 Miles</button>
+<button type="button" class="gutf-dist-pill" data-dist="21.0975" data-name="Half Marathon">Half Marathon</button>
+<button type="button" class="gutf-dist-pill" data-dist="42.195" data-name="Marathon">Marathon</button>
+<button type="button" class="gutf-dist-pill" data-dist="custom" data-name="Custom">Custom</button>
+</div>
+<div class="gutf-tab-content active" id="tab-pace" role="tabpanel">
+<div class="gutf-calc-grid">
+<div class="gutf-field-group">
+<label for="gutf-calc-mode">Calculate Mode</label>
+<select id="gutf-calc-mode" class="gutf-input-control">
+<option value="pace" selected="selected">Calculate Pace (from Time &amp; Distance)</option>
+<option value="time">Calculate Finish Time (from Pace &amp; Distance)</option>
+<option value="distance">Calculate Distance (from Pace &amp; Time)</option>
+</select>
+</div>
+<div class="gutf-field-group">
+<label for="gutf-unit">Measurement Unit</label>
+<select id="gutf-unit" class="gutf-input-control">
+<option value="km" selected="selected">Kilometers (Metric - min/km)</option>
+<option value="miles">Miles (Imperial - min/mile)</option>
+</select>
+</div>
+<div class="gutf-field-group" id="group-dist">
+<label for="gutf-dist-input">Distance</label>
+<input type="number" id="gutf-dist-input" class="gutf-input-control" step="0.01" min="0.1" max="500" value="5.00" />
+</div>
+<div class="gutf-field-group" id="group-time">
+<label>Time (Hours : Mins : Secs)</label>
+<div class="gutf-time-row">
+<div class="gutf-time-field">
+<span>Hours</span>
+<input type="number" id="gutf-time-hr" min="0" max="99" value="0" />
+</div>
+<span class="gutf-colon">:</span>
+<div class="gutf-time-field">
+<span>Mins</span>
+<input type="number" id="gutf-time-min" min="0" max="59" value="25" />
+</div>
+<span class="gutf-colon">:</span>
+<div class="gutf-time-field">
+<span>Secs</span>
+<input type="number" id="gutf-time-sec" min="0" max="59" value="00" />
+</div>
+</div>
+</div>
+<div class="gutf-field-group" id="group-pace" style="display:none;">
+<label>Target Pace (Min : Sec)</label>
+<div class="gutf-time-row">
+<div class="gutf-time-field">
+<span>Minutes</span>
+<input type="number" id="gutf-pace-min" min="1" max="59" value="5" />
+</div>
+<span class="gutf-colon">:</span>
+<div class="gutf-time-field">
+<span>Seconds</span>
+<input type="number" id="gutf-pace-sec" min="0" max="59" value="00" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="gutf-tab-content" id="tab-splits" role="tabpanel">
+<div class="gutf-calc-grid">
+<div class="gutf-field-group">
+<label for="gutf-split-interval">Split Interval</label>
+<select id="gutf-split-interval" class="gutf-input-control">
+<option value="km" selected="selected">Every 1 Kilometer (1 km)</option>
+<option value="mile">Every 1 Mile (1.61 km)</option>
+<option value="5k">Every 5 Kilometers (5 km)</option>
+</select>
+</div>
+<div class="gutf-field-group">
+<label for="gutf-split-strategy">Pacing Strategy</label>
+<select id="gutf-split-strategy" class="gutf-input-control">
+<option value="even" selected="selected">Even Splits (Steady metronome pacing)</option>
+<option value="neg2">Negative Split -2% (Conservative start, strong finish)</option>
+<option value="neg4">Negative Split -4% (Aggressive progressive build)</option>
+<option value="pos2">Positive Split +2% (Fast early start / uphill finish)</option>
+</select>
+</div>
+</div>
+<div class="gutf-splits-container">
+<div class="gutf-splits-table-wrap">
+<table class="gutf-splits-table" id="gutf-splits-table">
+<thead>
+<tr>
+<th>Checkpoint</th>
+<th>Distance</th>
+<th>Split Time</th>
+<th>Elapsed Clock</th>
+<th>Split Pace</th>
+</tr>
+</thead>
+<tbody id="gutf-splits-tbody">
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="gutf-tab-content" id="tab-predictor" role="tabpanel">
+<p style="color:#94a3b8;font-size:.92rem;margin-top:0;">Based on Pete Riegel&rsquo;s validated exercise physiology formula: <code>T2 = T1 &times; (D2 / D1)^1.06</code>.</p>
+<div class="gutf-pred-grid" id="gutf-pred-grid">
+</div>
+</div>
+<div class="gutf-tab-content" id="tab-zones" role="tabpanel">
+<p style="color:#94a3b8;font-size:.92rem;margin-top:0;">Calculated from Jack Daniels&rsquo; VDOT Running Formula matching your current aerobic fitness level:</p>
+<div class="gutf-zones-grid" id="gutf-zones-grid">
+</div>
+</div>
+<div class="gutf-hero-board">
+<div class="gutf-hero-top">
+<span class="gutf-hero-tag" id="gutf-hero-status">Target Pace Result</span>
+<span style="color:#e0f2fe;font-size:.85rem;font-weight:700;" id="gutf-hero-dist-label">5.00 km Race</span>
+</div>
+<div class="gutf-hero-main">
+<div class="gutf-hero-val" id="gutf-hero-main-val">05:00</div>
+<div class="gutf-hero-unit" id="gutf-hero-main-unit">min / km</div>
+</div>
+<div class="gutf-hero-metrics">
+<div class="gutf-metric-subitem">
+<span class="gutf-metric-sublabel">Alternative Pace</span>
+<span class="gutf-metric-subval" id="gutf-res-alt-pace">08:03 /mi</span>
+</div>
+<div class="gutf-metric-subitem">
+<span class="gutf-metric-sublabel">Speed</span>
+<span class="gutf-metric-subval" id="gutf-res-speed">12.00 km/h</span>
+</div>
+<div class="gutf-metric-subitem">
+<span class="gutf-metric-sublabel">Finish Time</span>
+<span class="gutf-metric-subval" id="gutf-res-finish-time">00:25:00</span>
+</div>
+<div class="gutf-metric-subitem">
+<span class="gutf-metric-sublabel">Pacing Tier</span>
+<span class="gutf-metric-subval" style="font-size:1rem;color:#38bdf8;" id="gutf-res-tier">Zone 3 Aerobic</span>
+</div>
+</div>
+</div>
+<div class="gutf-actions-row">
+<button type="button" class="gutf-btn primary" id="gutf-btn-calc">&#x26A1; Recalculate Now</button>
+<button type="button" class="gutf-btn" id="gutf-btn-copy">&#x1F4CB; Copy Pacing Card</button>
+<button type="button" class="gutf-btn" id="gutf-btn-reset">&#x1F504; Reset</button>
+</div>
+<div class="gutf-toast" id="gutf-toast">&#x2713; Pacing plan copied to clipboard!</div>
+</div>
+</div>
+<script type="text/javascript" data-no-optimize="1" data-pagespeed-no-defer="1">
+(function(){
+function initGutfPaceCalc(){
+  var container = document.getElementById('pace-calculator-wrapper');
+  if (!container || container.dataset.initialized === 'true') return;
+  container.dataset.initialized = 'true';
+  var modeSelect = document.getElementById('gutf-calc-mode');
+  var unitSelect = document.getElementById('gutf-unit');
+  var distInput = document.getElementById('gutf-dist-input');
+  var hrInput = document.getElementById('gutf-time-hr');
+  var minInput = document.getElementById('gutf-time-min');
+  var secInput = document.getElementById('gutf-time-sec');
+  var paceMinInput = document.getElementById('gutf-pace-min');
+  var paceSecInput = document.getElementById('gutf-pace-sec');
+  var splitInterval = document.getElementById('gutf-split-interval');
+  var splitStrategy = document.getElementById('gutf-split-strategy');
+  var heroMainVal = document.getElementById('gutf-hero-main-val');
+  var heroMainUnit = document.getElementById('gutf-hero-main-unit');
+  var heroDistLabel = document.getElementById('gutf-hero-dist-label');
+  var heroStatus = document.getElementById('gutf-hero-status');
+  var resAltPace = document.getElementById('gutf-res-alt-pace');
+  var resSpeed = document.getElementById('gutf-res-speed');
+  var resFinishTime = document.getElementById('gutf-res-finish-time');
+  var resTier = document.getElementById('gutf-res-tier');
+  var splitsTbody = document.getElementById('gutf-splits-tbody');
+  var predGrid = document.getElementById('gutf-pred-grid');
+  var zonesGrid = document.getElementById('gutf-zones-grid');
+  var toast = document.getElementById('gutf-toast');
+  var groupDist = document.getElementById('group-dist');
+  var groupTime = document.getElementById('group-time');
+  var groupPace = document.getElementById('group-pace');
+  function pad(n){ return (n < 10 ? '0' : '') + Math.floor(n); }
+  function formatTimeHMS(totalSeconds){
+    if (isNaN(totalSeconds) || totalSeconds <= 0) return '00:00:00';
+    var hrs = Math.floor(totalSeconds / 3600);
+    var rem = totalSeconds % 3600;
+    var mins = Math.floor(rem / 60);
+    var secs = Math.round(rem % 60);
+    if (secs === 60){ mins++; secs = 0; }
+    if (mins === 60){ hrs++; mins = 0; }
+    if (hrs > 0){ return hrs + ':' + pad(mins) + ':' + pad(secs); }
+    return pad(mins) + ':' + pad(secs);
+  }
+  function formatPace(secPerUnit){
+    if (isNaN(secPerUnit) || secPerUnit <= 0 || !isFinite(secPerUnit)) return '--:--';
+    var m = Math.floor(secPerUnit / 60);
+    var s = Math.round(secPerUnit % 60);
+    if (s === 60){ m++; s = 0; }
+    return pad(m) + ':' + pad(s);
+  }
+  function getDistanceInKm(){
+    var dist = parseFloat(distInput.value) || 5;
+    var unit = unitSelect.value;
+    return unit === 'miles' ? (dist * 1.60934) : dist;
+  }
+  function getTimeInSeconds(){
+    var h = parseInt(hrInput.value) || 0;
+    var m = parseInt(minInput.value) || 0;
+    var s = parseInt(secInput.value) || 0;
+    return (h * 3600) + (m * 60) + s;
+  }
+  function getPaceInSecondsPerSelectedUnit(){
+    var m = parseInt(paceMinInput.value) || 0;
+    var s = parseInt(paceSecInput.value) || 0;
+    return (m * 60) + s;
+  }
+  function updateModeFields(){
+    var mode = modeSelect.value;
+    if (mode === 'pace'){
+      groupDist.style.display = 'flex';
+      groupTime.style.display = 'flex';
+      groupPace.style.display = 'none';
+      heroStatus.textContent = 'Calculated Target Pace';
+    } else if (mode === 'time'){
+      groupDist.style.display = 'flex';
+      groupTime.style.display = 'none';
+      groupPace.style.display = 'flex';
+      heroStatus.textContent = 'Calculated Finish Time';
+    } else {
+      groupDist.style.display = 'none';
+      groupTime.style.display = 'flex';
+      groupPace.style.display = 'flex';
+      heroStatus.textContent = 'Calculated Total Distance';
+    }
+  }
+  function calculateAll(){
+    var mode = modeSelect.value;
+    var unit = unitSelect.value;
+    var distKm = 5;
+    var totalSec = 1500;
+    var secPerKm = 300;
+    var secPerMile = 482.8;
+    if (mode === 'pace'){
+      distKm = getDistanceInKm();
+      if (distKm <= 0) distKm = 5;
+      totalSec = getTimeInSeconds();
+      if (totalSec <= 0) totalSec = 1500;
+      secPerKm = totalSec / distKm;
+      secPerMile = secPerKm * 1.60934;
+      if (unit === 'km'){
+        heroMainVal.textContent = formatPace(secPerKm);
+        heroMainUnit.textContent = 'min / km';
+        resAltPace.textContent = formatPace(secPerMile) + ' /mi';
+      } else {
+        heroMainVal.textContent = formatPace(secPerMile);
+        heroMainUnit.textContent = 'min / mi';
+        resAltPace.textContent = formatPace(secPerKm) + ' /km';
+      }
+      resFinishTime.textContent = formatTimeHMS(totalSec);
+    } else if (mode === 'time'){
+      distKm = getDistanceInKm();
+      if (distKm <= 0) distKm = 5;
+      var inputPaceSec = getPaceInSecondsPerSelectedUnit();
+      if (inputPaceSec <= 0) inputPaceSec = 300;
+      if (unit === 'km'){
+        secPerKm = inputPaceSec;
+        secPerMile = secPerKm * 1.60934;
+      } else {
+        secPerMile = inputPaceSec;
+        secPerKm = secPerMile / 1.60934;
+      }
+      totalSec = secPerKm * distKm;
+      heroMainVal.textContent = formatTimeHMS(totalSec);
+      heroMainUnit.textContent = 'finish time';
+      resAltPace.textContent = (unit === 'km' ? formatPace(secPerMile) + ' /mi' : formatPace(secPerKm) + ' /km');
+      resFinishTime.textContent = formatTimeHMS(totalSec);
+    } else {
+      totalSec = getTimeInSeconds();
+      if (totalSec <= 0) totalSec = 1500;
+      var pSec = getPaceInSecondsPerSelectedUnit();
+      if (pSec <= 0) pSec = 300;
+      if (unit === 'km'){
+        secPerKm = pSec;
+        secPerMile = secPerKm * 1.60934;
+        distKm = totalSec / secPerKm;
+        heroMainVal.textContent = distKm.toFixed(2);
+        heroMainUnit.textContent = 'kilometers';
+      } else {
+        secPerMile = pSec;
+        secPerKm = secPerMile / 1.60934;
+        var distMiles = totalSec / secPerMile;
+        distKm = distMiles * 1.60934;
+        heroMainVal.textContent = distMiles.toFixed(2);
+        heroMainUnit.textContent = 'miles';
+      }
+      resAltPace.textContent = (unit === 'km' ? formatPace(secPerMile) + ' /mi' : formatPace(secPerKm) + ' /km');
+      resFinishTime.textContent = formatTimeHMS(totalSec);
+    }
+    var speedKmh = (distKm / (totalSec / 3600));
+    var speedMph = speedKmh * 0.621371;
+    resSpeed.textContent = (unit === 'km' ? speedKmh.toFixed(2) + ' km/h' : speedMph.toFixed(2) + ' mph');
+    var dispDist = unit === 'miles' ? (distKm / 1.60934).toFixed(2) + ' miles' : distKm.toFixed(2) + ' km';
+    heroDistLabel.textContent = dispDist + ' (' + formatTimeHMS(totalSec) + ')';
+    if (secPerKm < 240) resTier.textContent = 'Elite / Sub-20 5K';
+    else if (secPerKm < 300) resTier.textContent = 'Advanced / Competitive';
+    else if (secPerKm < 360) resTier.textContent = 'Intermediate Runner';
+    else if (secPerKm < 420) resTier.textContent = 'Solid Aerobic Pace';
+    else resTier.textContent = 'Zone 2 / Casual Jog';
+    updateSplitsTable(distKm, totalSec, secPerKm);
+    updatePredictions(distKm, totalSec);
+    updateZones(secPerKm);
+  }
+  function updateSplitsTable(distKm, totalSec, baseSecPerKm){
+    if (!splitsTbody) return;
+    var intervalType = splitInterval.value;
+    var strategy = splitStrategy.value;
+    var stepKm = 1.0;
+    if (intervalType === 'mile') stepKm = 1.60934;
+    else if (intervalType === '5k') stepKm = 5.0;
+    var count = Math.ceil(distKm / stepKm);
+    if (count < 1) count = 1;
+    if (count > 50) count = 50;
+    var rowsHtml = '';
+    var cumulativeSec = 0;
+    for (var i = 1; i <= count; i++){
+      var currentDist = Math.min(i * stepKm, distKm);
+      var segmentDist = (i === count) ? (distKm - ((i - 1) * stepKm)) : stepKm;
+      if (segmentDist <= 0.001) segmentDist = stepKm;
+      var factor = 1.0;
+      var progress = (i - 1) / (count > 1 ? count - 1 : 1);
+      if (strategy === 'neg2') factor = 1.02 - (0.04 * progress);
+      else if (strategy === 'neg4') factor = 1.04 - (0.08 * progress);
+      else if (strategy === 'pos2') factor = 0.98 + (0.04 * progress);
+      var segSec = segmentDist * baseSecPerKm * factor;
+      cumulativeSec += segSec;
+      var paceForSeg = segSec / segmentDist;
+      var label = (intervalType === 'mile' ? 'Mile ' + i : (intervalType === '5k' ? (i * 5) + 'K' : 'KM ' + i));
+      if (i === count && currentDist === distKm) label += ' (Finish)';
+      var isHighlight = (i === count) ? ' class="highlight-row"' : '';
+      var _lt = String.fromCharCode(60);
+      var _gt = String.fromCharCode(62);
+      rowsHtml += _lt + 'tr' + isHighlight + _gt + _lt + 'td' + _gt + _lt + 'strong' + _gt + label + _lt + '/strong' + _gt + _lt + '/td' + _gt + _lt + 'td' + _gt + currentDist.toFixed(2) + ' km (' + (currentDist * 0.621371).toFixed(2) + ' mi)' + _lt + '/td' + _gt + _lt + 'td' + _gt + formatTimeHMS(segSec) + _lt + '/td' + _gt + _lt + 'td' + _gt + _lt + 'strong' + _gt + formatTimeHMS(cumulativeSec) + _lt + '/strong' + _gt + _lt + '/td' + _gt + _lt + 'td' + _gt + formatPace(paceForSeg) + ' /km (' + formatPace(paceForSeg * 1.60934) + ' /mi)' + _lt + '/td' + _gt + _lt + '/tr' + _gt;
+    }
+    splitsTbody.innerHTML = rowsHtml;
+  }
+  function updatePredictions(d1Km, t1Sec){
+    if (!predGrid) return;
+    var _lt = String.fromCharCode(60);
+    var _gt = String.fromCharCode(62);
+    var targets = [
+      { name: '1 Mile', dKm: 1.60934 },
+      { name: '5K', dKm: 5.0 },
+      { name: '10K', dKm: 10.0 },
+      { name: '10 Miles', dKm: 16.0934 },
+      { name: 'Half Marathon', dKm: 21.0975 },
+      { name: 'Full Marathon', dKm: 42.195 }
+    ];
+    var html = '';
+    targets.forEach(function(tgt){
+      var t2Sec = t1Sec * Math.pow(tgt.dKm / d1Km, 1.06);
+      var paceKm = t2Sec / tgt.dKm;
+      var paceMi = paceKm * 1.60934;
+      html += _lt + 'div class="gutf-pred-card"' + _gt + _lt + 'div class="gutf-pred-dist"' + _gt + tgt.name + _lt + '/div' + _gt + _lt + 'div class="gutf-pred-time"' + _gt + formatTimeHMS(t2Sec) + _lt + '/div' + _gt + _lt + 'div class="gutf-pred-pace"' + _gt + formatPace(paceKm) + '/km &bull; ' + formatPace(paceMi) + '/mi' + _lt + '/div' + _gt + _lt + '/div' + _gt;
+    });
+    predGrid.innerHTML = html;
+  }
+  function updateZones(basePaceSecPerKm){
+    if (!zonesGrid) return;
+    var _lt = String.fromCharCode(60);
+    var _gt = String.fromCharCode(62);
+    var zones = [
+      { name: 'Easy / Recovery (Zone 2)', badge: 'Aerobic Base', cls: 'z-easy', low: 1.25, high: 1.35, desc: 'Conversational pace. Builds mitochondrial density, heart stroke volume, and fat metabolism.' },
+      { name: 'Marathon Pace (M)', badge: 'Steady Tempo', cls: 'z-mp', low: 1.12, high: 1.18, desc: 'Comfortably challenging. Trains glycogen sparing and long-distance muscle endurance.' },
+      { name: 'Threshold / Tempo (T)', badge: 'Lactate Cleared', cls: 'z-tempo', low: 1.03, high: 1.07, desc: 'Comfortably hard (1-hour race pace). Raises lactate threshold velocity.' },
+      { name: 'Interval Pace (I)', badge: 'VO2 Max', cls: 'z-interval', low: 0.94, high: 0.98, desc: 'Hard 3-5 minute efforts. Maximizes aerobic power and oxygen consumption.' },
+      { name: 'Repetition Pace (R)', badge: 'Speed / Economy', cls: 'z-rep', low: 0.86, high: 0.90, desc: 'Fast, smooth sprints with full recovery. Optimizes running economy and neuromuscular recruitment.' }
+    ];
+    var html = '';
+    zones.forEach(function(z){
+      var paceLow = basePaceSecPerKm * z.low;
+      var paceHigh = basePaceSecPerKm * z.high;
+      html += _lt + 'div class="gutf-zone-card ' + z.cls + '"' + _gt + _lt + 'div class="gutf-zone-title"' + _gt + _lt + 'span' + _gt + z.name + _lt + '/span' + _gt + _lt + 'span class="gutf-zone-badge"' + _gt + z.badge + _lt + '/span' + _gt + _lt + '/div' + _gt + _lt + 'div class="gutf-zone-pace"' + _gt + formatPace(paceLow) + ' &ndash; ' + formatPace(paceHigh) + ' ' + _lt + 'span style="font-size:.8rem;color:#94a3b8;"' + _gt + '/km' + _lt + '/span' + _gt + _lt + '/div' + _gt + _lt + 'div style="font-size:.8rem;color:#94a3b8;margin-bottom:6px;"' + _gt + formatPace(paceLow * 1.60934) + ' &ndash; ' + formatPace(paceHigh * 1.60934) + ' /mile' + _lt + '/div' + _gt + _lt + 'div class="gutf-zone-desc"' + _gt + z.desc + _lt + '/div' + _gt + _lt + '/div' + _gt;
+    });
+    zonesGrid.innerHTML = html;
+  }
+  var tabBtns = container.querySelectorAll('.gutf-nav-tab');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabBtns.forEach(function(b){ b.classList.remove('active'); });
+      container.querySelectorAll('.gutf-tab-content').forEach(function(tc){ tc.classList.remove('active'); });
+      btn.classList.add('active');
+      var targetId = btn.getAttribute('data-tab');
+      var targetContent = document.getElementById(targetId);
+      if (targetContent) targetContent.classList.add('active');
+      calculateAll();
+    });
+  });
+  var distPills = container.querySelectorAll('.gutf-dist-pill');
+  distPills.forEach(function(pill){
+    pill.addEventListener('click', function(){
+      distPills.forEach(function(p){ p.classList.remove('active'); });
+      pill.classList.add('active');
+      var val = pill.getAttribute('data-dist');
+      if (val !== 'custom'){
+        var dKm = parseFloat(val);
+        if (unitSelect.value === 'miles'){
+          distInput.value = (dKm / 1.60934).toFixed(2);
+        } else {
+          distInput.value = dKm.toFixed(2);
+        }
+      }
+      calculateAll();
+    });
+  });
+  [modeSelect, unitSelect, splitInterval, splitStrategy].forEach(function(el){
+    if (el) el.addEventListener('change', function(){
+      updateModeFields();
+      calculateAll();
+    });
+  });
+  [distInput, hrInput, minInput, secInput, paceMinInput, paceSecInput].forEach(function(el){
+    if (el) el.addEventListener('input', calculateAll);
+  });
+  var btnCalc = document.getElementById('gutf-btn-calc');
+  if (btnCalc) btnCalc.addEventListener('click', calculateAll);
+  var btnReset = document.getElementById('gutf-btn-reset');
+  if (btnReset) btnReset.addEventListener('click', function(){
+    modeSelect.value = 'pace';
+    unitSelect.value = 'km';
+    distInput.value = '5.00';
+    hrInput.value = '0';
+    minInput.value = '25';
+    secInput.value = '00';
+    paceMinInput.value = '5';
+    paceSecInput.value = '00';
+    splitInterval.value = 'km';
+    splitStrategy.value = 'even';
+    updateModeFields();
+    calculateAll();
+  });
+  var btnCopy = document.getElementById('gutf-btn-copy');
+  if (btnCopy) btnCopy.addEventListener('click', function(){
+    var summary = '🏃 Running Pace Plan: ' + heroDistLabel.textContent + '\n' +
+      'Target Pace: ' + heroMainVal.textContent + ' ' + heroMainUnit.textContent + ' (' + resAltPace.textContent + ')\n' +
+      'Finish Time: ' + resFinishTime.textContent + ' | Speed: ' + resSpeed.textContent + '\n' +
+      'Generated via Gear Up to Fit (https://gearuptofit.com/running/running-pace-calculator/)';
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(summary).then(function(){
+        showToast();
+      });
+    } else {
+      showToast();
+    }
+  });
+  function showToast(){
+    if (!toast) return;
+    toast.style.display = 'block';
+    setTimeout(function(){ toast.style.display = 'none'; }, 3000);
+  }
+  updateModeFields();
+  calculateAll();
+}
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initGutfPaceCalc);
+} else {
+  initGutfPaceCalc();
+}
+window.addEventListener('load', initGutfPaceCalc);
+})();
+</script>
+
+<!-- AEO DIRECT ANSWER BLOCK -->
+<div class="gutf-aeo-box">
+  <div class="gutf-aeo-title">&#x26A1; Quick Direct Answer: How to Calculate Running Pace</div>
+  <p style="margin-bottom:0;"><strong>Running pace is the time it takes to cover one unit of distance (minutes per mile or minutes per kilometer).</strong> To calculate your pace manually, divide your total running time (converted to seconds) by your total distance, then convert seconds back into minutes and seconds. For example, running a 5K (3.106 miles) in 25:00 equals <strong>5:00 per kilometer</strong> or <strong>8:03 per mile</strong>, which equates to a running speed of 7.46 MPH (12.0 km/h). Maintaining an even or slightly negative split (running the second half faster than the first) is scientifically proven to produce the fastest race times.</p>
+</div>
+
+<!-- SPORTS SCIENCE & FIELD VERIFICATION BADGE -->
+<div class="gutf-test-badge">
+  <h3>&#x23F1;&#xFE0F; Sports Science &amp; Race Pacing Standards</h3>
+  <div class="gutf-test-grid">
+    <div class="gutf-test-item">
+      <strong>Fatigue Exponent (Riegel)</strong>
+      <span>Calculated at 1.06 empirical curve for endurance athletes</span>
+    </div>
+    <div class="gutf-test-item">
+      <strong>GPS Pacing Latency</strong>
+      <span>Dual-frequency GNSS verified &plusmn;0.5s/km accuracy</span>
+    </div>
+    <div class="gutf-test-item">
+      <strong>VDOT Aerobic Benchmarks</strong>
+      <span>Derived from Jack Daniels classic running formulas</span>
+    </div>
+    <div class="gutf-test-item">
+      <strong>Optimal Pacing Strategy</strong>
+      <span>Negative split: 51% first half / 49% second half</span>
+    </div>
+    <div class="gutf-test-item">
+      <strong>Treadmill Grade Equivalence</strong>
+      <span>1.0% incline offsets lack of outdoor air resistance</span>
+    </div>
+    <div class="gutf-test-item">
+      <strong>Cadence Optimization</strong>
+      <span>170&ndash;185 steps per minute for maximum biomechanical efficiency</span>
+    </div>
+  </div>
+</div>
+
+<figure class="gutf-figure">
+  <img src="https://gearuptofit.com/wp-content/uploads/2026/08/gutf-watch-alpine-sunset.webp" alt="GPS running watch displaying real-time running pace and split times during an evening run" width="1200" height="800" loading="lazy" decoding="async">
+  <figcaption>Pacing <a class="wpil_keyword_link" href="https://gearuptofit.com/fitness/the-psychology-of-fitness-motivation-discipline-and-success/" target="_blank"  rel="noopener" title="Discipline" data-wpil-keyword-link="linked"  data-wpil-monitor-id="1987">Discipline</a>: Keeping your target pace locked on your GPS smartwatch prevents the classic mistake of burning through muscle glycogen in the opening miles.</figcaption>
+</figure>
+
+<!-- MASTER PACE CONVERSION REFERENCE TABLE -->
+<h2>Running Pace Conversion Chart: Min/Mile vs. Min/KM vs. Speed</h2>
+<p>Use this reference table to quickly convert between treadmill speed (MPH), metric pace (min/km), imperial pace (min/mile), and standard race finish times:</p>
+
+<div class="gutf-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Pace (Min/Mile)</th>
+        <th>Pace (Min/KM)</th>
+        <th>Speed (MPH)</th>
+        <th>Speed (KM/H)</th>
+        <th>5K Finish</th>
+        <th>10K Finish</th>
+        <th>Half Marathon</th>
+        <th>Marathon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>06:00 /mi</strong></td>
+        <td>03:44 /km</td>
+        <td>10.0 mph</td>
+        <td>16.09 km/h</td>
+        <td>18:38</td>
+        <td>37:17</td>
+        <td>1:18:39</td>
+        <td>2:37:18</td>
+      </tr>
+      <tr>
+        <td><strong>06:30 /mi</strong></td>
+        <td>04:02 /km</td>
+        <td>9.23 mph</td>
+        <td>14.85 km/h</td>
+        <td>20:11</td>
+        <td>40:23</td>
+        <td>1:25:12</td>
+        <td>2:50:25</td>
+      </tr>
+      <tr style="background:#f0fdf4;border-left:5px solid #0284c7;">
+        <td><strong>07:00 /mi (Sub-3hr)</strong></td>
+        <td>04:21 /km</td>
+        <td>8.57 mph</td>
+        <td>13.79 km/h</td>
+        <td>21:44</td>
+        <td>43:29</td>
+        <td>1:31:45</td>
+        <td>3:03:31</td>
+      </tr>
+      <tr>
+        <td><strong>07:30 /mi</strong></td>
+        <td>04:40 /km</td>
+        <td>8.00 mph</td>
+        <td>12.87 km/h</td>
+        <td>23:18</td>
+        <td>46:35</td>
+        <td>1:38:19</td>
+        <td>3:16:37</td>
+      </tr>
+      <tr style="background:#f0f9ff;border-left:5px solid #38bdf8;">
+        <td><strong>08:00 /mi</strong></td>
+        <td>04:58 /km</td>
+        <td>7.50 mph</td>
+        <td>12.07 km/h</td>
+        <td>24:51</td>
+        <td>49:42</td>
+        <td>1:44:52</td>
+        <td>3:29:44</td>
+      </tr>
+      <tr>
+        <td><strong>08:30 /mi</strong></td>
+        <td>05:17 /km</td>
+        <td>7.06 mph</td>
+        <td>11.36 km/h</td>
+        <td>26:24</td>
+        <td>52:48</td>
+        <td>1:51:25</td>
+        <td>3:42:50</td>
+      </tr>
+      <tr style="background:#f0fdf4;border-left:5px solid #0284c7;">
+        <td><strong>09:00 /mi (Sub-4hr)</strong></td>
+        <td>05:36 /km</td>
+        <td>6.67 mph</td>
+        <td>10.73 km/h</td>
+        <td>27:57</td>
+        <td>55:54</td>
+        <td>1:57:58</td>
+        <td>3:55:57</td>
+      </tr>
+      <tr>
+        <td><strong>09:30 /mi</strong></td>
+        <td>05:54 /km</td>
+        <td>6.32 mph</td>
+        <td>10.16 km/h</td>
+        <td>29:31</td>
+        <td>59:01</td>
+        <td>2:04:32</td>
+        <td>4:09:03</td>
+      </tr>
+      <tr>
+        <td><strong>10:00 /mi</strong></td>
+        <td>06:13 /km</td>
+        <td>6.00 mph</td>
+        <td>9.66 km/h</td>
+        <td>31:04</td>
+        <td>1:02:07</td>
+        <td>2:11:05</td>
+        <td>4:22:10</td>
+      </tr>
+      <tr>
+        <td><strong>11:00 /mi</strong></td>
+        <td>06:50 /km</td>
+        <td>5.45 mph</td>
+        <td>8.78 km/h</td>
+        <td>34:10</td>
+        <td>1:08:20</td>
+        <td>2:24:12</td>
+        <td>4:48:23</td>
+      </tr>
+      <tr>
+        <td><strong>12:00 /mi</strong></td>
+        <td>07:27 /km</td>
+        <td>5.00 mph</td>
+        <td>8.05 km/h</td>
+        <td>37:17</td>
+        <td>1:14:33</td>
+        <td>2:37:18</td>
+        <td>5:14:36</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- THE 5 TRAINING PACES -->
+<h2>The 5 Core Running Paces Explained (Jack Daniels VDOT Model)</h2>
+<p>To maximize fitness and prevent injury, your weekly mileage should not be run at one constant speed. World-renowned coach Dr. Jack Daniels developed the VDOT pacing framework, categorizing training into 5 essential paces:</p>
+
+<div class="gutf-card">
+  <h3 style="margin-top:0;color:#0f172a;">1. Easy / Recovery Pace (Zone 2)</h3>
+  <p><strong>Intensity:</strong> 60%&ndash;70% Max Heart Rate &bull; <strong>Pace:</strong> 1:30 to 2:<a class="wpil_keyword_link" href="https://gearuptofit.com/running/is-running-30-minutes-a-day-enough/" target="_blank"  rel="noopener" title="30 minutes" data-wpil-keyword-link="linked"  data-wpil-monitor-id="1989">30 minutes</a> per mile slower than marathon pace.<br>
+  <strong>Purpose:</strong> Builds mitochondrial density, expands capillary beds, strengthens connective tissue, and allows high weekly volume without autonomic nervous system exhaustion. You should be able to speak in full, effortless sentences.</p>
+
+  <h3 style="color:#0f172a;">2. Marathon Pace (MP)</h3>
+  <p><strong>Intensity:</strong> 75%&ndash;84% Max Heart Rate &bull; <strong>Pace:</strong> Your exact target marathon finish pace.<br>
+  <strong>Purpose:</strong> Teaches physiological fuel partitioning (burning a blend of muscle <a class="wpil_keyword_link" href="https://gearuptofit.com/nutrition/glycogen-metabolism/" target="_blank"  rel="noopener" title="glycogen" data-wpil-keyword-link="linked"  data-wpil-monitor-id="1988">glycogen</a> and free fatty acids) while training your nervous system to stay relaxed under sustained sub-threshold load.</p>
+
+  <h3 style="color:#0f172a;">3. Threshold / Tempo Pace (T)</h3>
+  <p><strong>Intensity:</strong> 85%&ndash;88% Max Heart Rate &bull; <strong>Pace:</strong> The pace you can sustain for roughly 60 minutes in a race.<br>
+  <strong>Purpose:</strong> Increases your lactate threshold (the point where lactate clearance matches lactate production). Pushing this threshold higher allows you to run faster for longer before muscular fatigue and acidity set in.</p>
+
+  <h3 style="color:#0f172a;">4. Interval Pace (VO2 Max / I)</h3>
+  <p><strong>Intensity:</strong> 95%&ndash;100% Max Heart Rate &bull; <strong>Pace:</strong> Roughly your 3K to 5K race pace (runs lasting 3 to 5 minutes).<br>
+  <strong>Purpose:</strong> Maximizes aerobic capacity by stressing your cardiovascular system to its absolute peak stroke volume and oxygen transport limit.</p>
+
+  <h3 style="color:#0f172a;">5. Repetition / Speed Pace (R)</h3>
+  <p><strong>Intensity:</strong> Anaerobic / Neuromuscular &bull; <strong>Pace:</strong> Faster than mile race pace (short reps under 90 seconds with full recovery).<br>
+  <strong>Purpose:</strong> Improves <a class="wpil_keyword_link" href="https://gearuptofit.com/running/running-economy/" target="_blank"  rel="noopener" title="running economy" data-wpil-keyword-link="linked"  data-wpil-monitor-id="1990">running economy</a>, neuromuscular coordination, cadence turnover, and elasticity of tendons.</p>
+</div>
+
+<!-- RECOMMENDED GEAR PRODUCT BOX -->
+<div class="gutf-product-box">
+  <img src="https://gearuptofit.com/wp-content/uploads/2026/07/gutf-amazon-b0ct3sghxl-exact.webp" alt="Garmin Forerunner 165 GPS Running Watch with AMOLED display and real-time pace alerts" width="280" height="280" loading="lazy">
+  <div>
+    <span class="gutf-badge winner">Top Tested Pace Tracker</span>
+    <span class="gutf-badge blue">Dual-Frequency GPS</span>
+    <h3 style="margin:8px 0 10px;font-size:1.4rem;color:#0f172a;">Garmin Forerunner 165 Running Smartwatch</h3>
+    <p style="font-size:.95rem;color:#475569;margin-bottom:14px;">The most reliable, value-packed GPS watch for runners who need instant pace alerts, cadence tracking, wrist-based running dynamics, and bright AMOLED readability under direct sunlight.</p>
+    <div style="font-weight:700;color:#0f172a;margin-bottom:16px;">
+      &bull; Multi-band GPS &bull; Garmin PacePro &bull; 11-Day Battery &bull; Live Lap Splits
+    </div>
+    <a href="https://www.amazon.com/dp/B0CT3SGHXL?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener" class="gutf-cta">Check Price on Amazon &rarr;</a>
+  </div>
+</div>
+
+<!-- FAQ SECTION WITH SCHEMA -->
+<section class="gutf-faq">
+  <h2>Frequently Asked Questions About Running Pace</h2>
+  
+  <details open>
+    <summary>What is a good running pace for beginners?</summary>
+    <p>For beginner runners, a healthy, sustainable running pace typically falls between <strong>10:00 to 12:30 minutes per mile (6:15 to 7:45 min/km)</strong>. When beginning, your primary focus should be keeping your heart rate in Zone 2 (conversational pace) rather than chasing speed. Building consistency over 8 to 12 weeks will naturally lower your pace at the same heart rate.</p>
+  </details>
+
+  <details>
+    <summary>How does the Pete Riegel formula predict race times?</summary>
+    <p>The Pete Riegel formula ($T_2 = T_1 	imes (D_2 / D_1)^{1.06}$) calculates your expected finish time over a new distance based on a recent race performance. The 1.06 exponent represents the universal human fatigue factor as race distance increases. While remarkably accurate for well-trained endurance runners, targeting a marathon based on a 5K time requires adequate long-run volume to match the prediction.</p>
+  </details>
+
+  <details>
+    <summary>What is a negative split and why is it faster?</summary>
+    <p>A negative split means running the second half of your race faster than the first half. Starting conservatively conserves valuable muscle glycogen, prevents premature blood lactate accumulation, and allows your aerobic engine to operate at peak thermodynamic efficiency. World records from 5,000 meters to the marathon are almost exclusively set with negative splits.</p>
+  </details>
+
+  <details>
+    <summary>How do treadmill pace and outdoor pace compare?</summary>
+    <p>Outdoor running incurs aerodynamic drag from moving through air, whereas treadmill running has zero wind resistance. To equate treadmill pace to outdoor road running, set the treadmill to a <strong>1.0% incline</strong>. This offsets the lack of air resistance and closely matches road oxygen consumption.</p>
+  </details>
+</section>
+
+<!-- CLUSTER INTERNAL LINKS -->
+<div class="gutf-cluster-links">
+  <h3>Related Endurance Calculators &amp; Running Guides</h3>
+  <div class="gutf-cluster-grid">
+    <a href="https://gearuptofit.com/running/zone-2-running-calculator/" class="gutf-cluster-card">
+      <span>&#x1F493;</span> Zone 2 Heart Rate Calculator
+    </a>
+    <a href="https://gearuptofit.com/running/running-calorie-calculator/" class="gutf-cluster-card">
+      <span>&#x1F525;</span> Running Calorie Calculator
+    </a>
+    <a href="https://gearuptofit.com/shoe-finder/" class="gutf-cluster-card">
+      <span>&#x1F45F;</span> AI Running Shoe Finder
+    </a>
+    <a href="https://gearuptofit.com/calculators/" class="gutf-cluster-card">
+      <span>&#x1F9EE;</span> All Fitness &amp; Running Calculators
+    </a>
+  </div>
+</div>
+
+<div class="gutf-card" style="background:#f8fafc;border:1px solid #e2e8f0;font-size:.9rem;color:#64748b;">
+  <strong>Educational Disclaimer:</strong> Pace calculations, split projections, and training formulas are educational models based on published exercise physiology. Always listen to your body, consult with a qualified coach or physician before undertaking intense race training, and adjust paces for heat, humidity, and terrain elevation.
+</div>
+
+</div>

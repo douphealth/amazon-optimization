@@ -1,0 +1,1997 @@
+
+<style>
+    :root {
+      --gutf-navy: #0f172a;
+      --gutf-blue: #2563eb;
+      --gutf-blue-dark: #1e40af;
+      --gutf-slate: #334155;
+      --gutf-muted: #64748b;
+      --gutf-light: #f8fafc;
+      --gutf-soft-blue: #eff6ff;
+      --gutf-border: rgba(15, 23, 42, 0.12);
+      --gutf-green-bg: #dcfce7;
+      --gutf-green: #166534;
+      --gutf-orange: #ff9900;
+      --gutf-yellow: #ffb703;
+      --gutf-radius: 22px;
+      --gutf-shadow: 0 20px 55px rgba(15, 23, 42, 0.11);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--gutf-slate);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.75;
+      font-size: 18px;
+    }
+
+    .gutf-review-page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .gutf-hero {
+      padding: 42px 30px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #f8fafc 48%, #eef2ff 100%);
+      border: 1px solid var(--gutf-border);
+      box-shadow: var(--gutf-shadow);
+      margin-bottom: 30px;
+    }
+
+    .gutf-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--gutf-navy);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--gutf-navy);
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      margin: 0 0 18px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.2vw, 40px);
+      margin: 48px 0 16px;
+    }
+
+    h3 {
+      font-size: clamp(22px, 2.4vw, 28px);
+      margin: 34px 0 12px;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    a {
+      color: var(--gutf-blue);
+      font-weight: 750;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--gutf-blue-dark);
+    }
+
+    .gutf-deck {
+      font-size: 21px;
+      color: #475569;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .gutf-meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      color: var(--gutf-muted);
+      font-size: 14px;
+    }
+
+    .gutf-meta-pill {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--gutf-blue-dark);
+      font-weight: 850;
+    }
+
+    .gutf-ai-summary,
+    .gutf-editor-note,
+    .gutf-verdict-box,
+    .gutf-disclosure,
+    .gutf-source-box {
+      margin: 28px 0;
+      padding: 24px;
+      border-radius: var(--gutf-radius);
+      border: 1px solid var(--gutf-border);
+      background: var(--gutf-light);
+    }
+
+    .gutf-ai-summary {
+      border-left: 7px solid var(--gutf-blue);
+      background: var(--gutf-soft-blue);
+    }
+
+    .gutf-ai-summary strong,
+    .gutf-verdict-box strong {
+      color: var(--gutf-navy);
+    }
+
+    .gutf-disclosure {
+      background: #fff7ed;
+      border-left: 7px solid var(--gutf-orange);
+      font-size: 15px;
+      color: #7c2d12;
+    }
+
+    .gutf-toc {
+      margin: 30px 0;
+      padding: 24px;
+      border-radius: var(--gutf-radius);
+      background: #ffffff;
+      border: 1px solid var(--gutf-border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .gutf-toc h2 {
+      margin-top: 0;
+      font-size: 25px;
+    }
+
+    .gutf-toc ol {
+      columns: 2;
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .gutf-toc li {
+      margin-bottom: 8px;
+      break-inside: avoid;
+    }
+
+    .gutf-product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin: 34px 0;
+      font-family: inherit;
+    }
+
+    .gutf-product-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #eef2ff 100%);
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+      padding: 24px;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .gutf-product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
+      border-color: rgba(37, 99, 235, 0.36);
+    }
+
+    .gutf-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--gutf-navy);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .gutf-product-image-wrap {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 18px;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .gutf-product-image-wrap img {
+      max-width: 100%;
+      height: 240px;
+      object-fit: contain;
+      transition: transform 260ms ease;
+    }
+
+    .gutf-product-card:hover img {
+      transform: scale(1.035);
+    }
+
+    .gutf-product-title {
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      color: var(--gutf-navy);
+      font-weight: 950;
+      letter-spacing: -0.025em;
+    }
+
+    .gutf-product-subtitle {
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.65;
+      margin: 0 0 16px;
+    }
+
+    .gutf-feature-list {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gutf-feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .gutf-feature-list li::before {
+      content: "✓";
+      flex: 0 0 auto;
+      width: 21px;
+      height: 21px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gutf-green-bg);
+      color: var(--gutf-green);
+      font-size: 12px;
+      font-weight: 950;
+      margin-top: 1px;
+    }
+
+    .gutf-product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+
+    .gutf-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--gutf-blue-dark);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .gutf-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gutf-orange) 0%, var(--gutf-yellow) 100%);
+      color: #111827 !important;
+      text-decoration: none !important;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.30);
+      transition: filter 180ms ease, transform 180ms ease;
+    }
+
+    .gutf-button:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    .gutf-product-disclaimer {
+      margin: 14px 0 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #64748b;
+    }
+
+    .gutf-table-wrap {
+      overflow-x: auto;
+      margin: 24px 0;
+      border-radius: 18px;
+      border: 1px solid var(--gutf-border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+      background: #ffffff;
+    }
+
+    th,
+    td {
+      padding: 15px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: var(--gutf-navy);
+      font-weight: 900;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .gutf-score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .gutf-score-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid var(--gutf-border);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .gutf-score-card strong {
+      display: block;
+      color: var(--gutf-navy);
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .gutf-score-card span {
+      color: var(--gutf-muted);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .gutf-pro-con {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin: 28px 0;
+    }
+
+    .gutf-pro,
+    .gutf-con {
+      padding: 22px;
+      border-radius: var(--gutf-radius);
+      border: 1px solid var(--gutf-border);
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .gutf-pro h3,
+    .gutf-con h3 {
+      margin-top: 0;
+    }
+
+    .gutf-pro {
+      border-left: 7px solid #22c55e;
+    }
+
+    .gutf-con {
+      border-left: 7px solid #f97316;
+    }
+
+    ul,
+    ol {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 9px;
+    }
+
+    .gutf-video-box {
+      margin: 38px 0;
+      padding: 20px;
+      border-radius: 24px;
+      background: var(--gutf-navy);
+      color: #ffffff;
+      box-shadow: var(--gutf-shadow);
+    }
+
+    .gutf-video-box h2 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+
+    .gutf-video-box p {
+      color: #cbd5e1;
+    }
+
+    .gutf-video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #000000;
+    }
+
+    .gutf-video-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+    }
+
+    .gutf-faq details {
+      border: 1px solid var(--gutf-border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+    }
+
+    .gutf-faq summary {
+      cursor: pointer;
+      color: var(--gutf-navy);
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .gutf-faq details p {
+      margin-top: 14px;
+      margin-bottom: 0;
+    }
+
+    .gutf-source-box {
+      font-size: 15px;
+      color: #475569;
+    }
+
+    .gutf-source-box h2 {
+      margin-top: 0;
+    }
+
+    .gutf-footer-cta {
+      margin-top: 46px;
+      padding: 28px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 153, 0, 0.18), transparent 34%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      box-shadow: var(--gutf-shadow);
+    }
+
+    .gutf-footer-cta h2 {
+      color: #ffffff;
+      margin-top: 0;
+    }
+
+    .gutf-footer-cta p {
+      color: #e2e8f0;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        font-size: 17px;
+      }
+
+      .gutf-product-grid,
+      .gutf-pro-con {
+        grid-template-columns: 1fr;
+      }
+
+      .gutf-score-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gutf-toc ol {
+        columns: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gutf-review-page {
+        width: min(100% - 22px, 1120px);
+        padding-top: 18px;
+      }
+
+      .gutf-hero {
+        padding: 28px 18px;
+        border-radius: 22px;
+      }
+
+      .gutf-product-card {
+        padding: 18px;
+      }
+
+      .gutf-product-title {
+        font-size: 20px;
+      }
+
+      .gutf-score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        min-width: 560px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://gearuptofit.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Running Shoes",
+        "item": "https://gearuptofit.com/running/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Nike Pegasus Trail 5 GORE-TEX Review",
+        "item": "https://gearuptofit.com/nike-pegasus-trail-5-gore-tex-review/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "headline": "Nike Pegasus Trail 5 GORE-TEX Review: Waterproof Road-to-Trail Comfort for Rain, Gravel & Light Trails",
+    "description": "A detailed GearUpToFit review of the Nike Pegasus Trail 5 GORE-TEX waterproof road-to-trail running shoe, covering fit, cushioning, waterproofing, traction, walking comfort, hiking use, pros, cons, comparisons, and buying advice.",
+    "author": {
+      "@type": "Organization",
+      "name": "GearUpToFit",
+      "url": "https://gearuptofit.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GearUpToFit",
+      "url": "https://gearuptofit.com"
+    },
+    "datePublished": "2026-04-20",
+    "dateModified": "2026-04-20",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gearuptofit.com/nike-pegasus-trail-5-gore-tex-review/"
+    },
+    "itemReviewed": {
+      "@type": "Product",
+      "name": "Nike Pegasus Trail 5 GORE-TEX",
+      "brand": {
+        "@type": "Brand",
+        "name": "Nike"
+      },
+      "category": "Waterproof Trail Running Shoes",
+      "image": [
+        "https://m.media-amazon.com/images/I/61YzbH7XIgL._AC_SY695_.jpg",
+        "https://m.media-amazon.com/images/I/71wH9qPlMrL._AC_SY695_.jpg"
+      ],
+      "description": "A waterproof road-to-trail running shoe with a GORE-TEX Invisible Fit upper, ReactX foam midsole, and Nike Trail All Terrain Compound rubber outsole."
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "4.5",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "positiveNotes": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Waterproof GORE-TEX upper helps keep feet dry in wet weather."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ReactX foam provides responsive cushioning for daily road-to-trail training."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Versatile enough for running, walking, commuting, travel, and light hiking."
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Nike Trail ATC outsole works well on wet pavement, gravel, and smooth trails."
+        }
+      ]
+    },
+    "negativeNotes": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Less breathable than non-waterproof running shoes."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Not aggressive enough for deep mud or highly technical mountain terrain."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Nike says the shoe fits small, so many buyers should consider sizing up."
+        }
+      ]
+    },
+    "reviewBody": "The Nike Pegasus Trail 5 GORE-TEX is best for runners and active walkers who want one waterproof shoe for roads, gravel, smooth trails, walking, light hiking, rainy commutes, and wet-weather daily training. It offers strong waterproof protection, responsive cushioning, and excellent road-to-trail versatility, but it is less breathable than the non-GORE-TEX version and is not designed for deep mud or highly technical terrain."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is the Nike Pegasus Trail 5 GORE-TEX waterproof?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Nike Pegasus Trail 5 GORE-TEX uses a GORE-TEX Invisible Fit upper designed to provide waterproof protection and help keep feet dry in wet conditions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Nike Pegasus Trail 5 GORE-TEX good for road running?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Nike Pegasus Trail 5 GORE-TEX works well for road-to-trail running. It is comfortable enough for pavement and better suited to wet, mixed-surface routes than a standard road shoe."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Nike Pegasus Trail 5 GORE-TEX good for hiking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It works well for light hiking, walking, travel, and less technical outdoor trails. It is not designed for rugged alpine terrain or deep mud."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the Nike Pegasus Trail 5 GORE-TEX fit true to size?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nike says the Pegasus Trail 5 GORE-TEX fits small and recommends ordering a half size up."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Nike Pegasus Trail 5 GORE-TEX good for wide feet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It may not be ideal for wide feet. The shoe has a traditional Nike-style fit and a waterproof upper that may feel less forgiving than mesh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Nike Pegasus Trail 5 GORE-TEX breathable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is breathable for a waterproof shoe, but it is less breathable than non-waterproof mesh running shoes. It is better for cool, wet weather than hot summer running."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the heel drop of the Nike Pegasus Trail 5 GORE-TEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Nike Pegasus Trail 5 GORE-TEX has a 9.5 mm heel-to-toe drop."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does the Nike Pegasus Trail 5 GORE-TEX weigh?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nike lists the Pegasus Trail 5 GORE-TEX at approximately 300 g or 10.5 to 10.6 oz for a men's US size 10."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Nike Pegasus Trail 5 GORE-TEX good for technical trails?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is best for less technical trails, gravel, wet pavement, and smooth dirt paths. It is not the best choice for deep mud, loose rock, roots, or technical mountain terrain."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the Nike Pegasus Trail 5 and the Pegasus Trail 5 GORE-TEX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The main difference is waterproofing. The Pegasus Trail 5 GORE-TEX adds a waterproof GORE-TEX upper for rain and wet conditions, while the regular Pegasus Trail 5 is more breathable and better for warm, dry weather."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Nike Pegasus 42 100% Honest Review",
+    "description": "A helpful Nike Pegasus 42 video review included for Pegasus-family ride context. This video is not specific to the Nike Pegasus Trail 5 GORE-TEX, but it helps readers understand the modern Pegasus daily-trainer platform.",
+    "thumbnailUrl": "https://img.youtube.com/vi/ypjElZmr4CU/maxresdefault.jpg",
+    "embedUrl": "https://www.youtube.com/embed/ypjElZmr4CU",
+    "contentUrl": "https://www.youtube.com/watch?v=ypjElZmr4CU",
+    "publisher": {
+      "@type": "Organization",
+      "name": "YouTube"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Nike Pegasus Trail 5 GORE-TEX Review: Waterproof Road-to-Trail Comfort for Rain, Gravel & Light Trails",
+    "description": "A complete review of the Nike Pegasus Trail 5 GORE-TEX waterproof road-to-trail running shoe.",
+    "image": [
+      "https://m.media-amazon.com/images/I/61YzbH7XIgL._AC_SY695_.jpg",
+      "https://m.media-amazon.com/images/I/71wH9qPlMrL._AC_SY695_.jpg"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "GearUpToFit",
+      "url": "https://gearuptofit.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GearUpToFit",
+      "url": "https://gearuptofit.com"
+    },
+    "datePublished": "2026-04-20",
+    "dateModified": "2026-04-20",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gearuptofit.com/nike-pegasus-trail-5-gore-tex-review/"
+    }
+  }
+  </script>
+<main class="gutf-review-page">
+    <article itemscope itemtype="https://schema.org/Review">
+
+      <header class="gutf-hero">
+        <div class="gutf-kicker">GearUpToFit Review</div>
+
+
+        <p class="gutf-deck">
+          The <strong>Nike Pegasus Trail 5 GORE-TEX</strong> is built for runners, walkers, hikers, and commuters who want one waterproof shoe for wet pavement, gravel roads, light trails, rainy errands, and mixed-surface daily training.
+        </p>
+
+        <div class="gutf-meta-line">
+          <span class="gutf-meta-pill">Updated: April 20, 2026</span>
+          <span class="gutf-meta-pill">Best for: Wet-weather road-to-trail running</span>
+          <span class="gutf-meta-pill">Rating: 4.5 / 5</span>
+          <span class="gutf-meta-pill">Shoe type: Neutral waterproof trail shoe</span>
+        </div>
+      </header>
+
+      <section class="gutf-ai-summary" id="ai-summary">
+        <p>
+          <strong>AI Summary:</strong>
+          The Nike Pegasus Trail 5 GORE-TEX is a waterproof road-to-trail running shoe best for rain, wet pavement, gravel, smooth dirt trails, walking, light hiking, travel, and daily mixed-surface training. It uses a GORE-TEX Invisible Fit upper, ReactX foam midsole, and Nike Trail ATC rubber outsole. It is comfortable and versatile, but it is less breathable than non-waterproof shoes and not aggressive enough for deep mud or technical mountain terrain.
+        </p>
+      </section>
+
+      <section class="gutf-disclosure" id="affiliate-disclosure">
+        <p>
+          <strong>Affiliate disclosure:</strong>
+          GearUpToFit is reader-supported. When you buy through links on our site, we may earn a commission at no extra cost to you. This does not affect our editorial recommendations. We only recommend products that make sense for the use case, terrain, and runner profile described in the review.
+        </p>
+      </section>
+
+      <nav class="gutf-toc" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#quick-verdict">Quick Verdict</a></li>
+          <li><a href="#amazon-options">Amazon Product Options</a></li>
+          <li><a href="#specs">Specs</a></li>
+          <li><a href="#best-for">Who It Is Best For</a></li>
+          <li><a href="#not-for">Who Should Skip It</a></li>
+          <li><a href="#design">Design and First Impression</a></li>
+          <li><a href="#fit">Fit and Sizing</a></li>
+          <li><a href="#upper">Upper and Waterproofing</a></li>
+          <li><a href="#midsole">Cushioning and Ride</a></li>
+          <li><a href="#traction">Outsole and Traction</a></li>
+          <li><a href="#walking">Walking and Hiking Comfort</a></li>
+          <li><a href="#comparisons">Comparisons</a></li>
+          <li><a href="#video">Helpful Video</a></li>
+          <li><a href="#pros-cons">Pros and Cons</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ol>
+      </nav>
+
+      <section id="quick-verdict" class="gutf-verdict-box">
+        <h2>Quick Verdict</h2>
+
+        <p>
+          The <strong>Nike Pegasus Trail 5 GORE-TEX</strong> is best for runners and active walkers who want one waterproof shoe for roads, gravel, smooth trails, light hiking, wet-weather walks, and rainy everyday use.
+        </p>
+
+        <p>
+          Buy it if you want <strong>waterproof protection, responsive cushioning, familiar Pegasus comfort, reliable mixed-surface traction, and road-to-trail versatility</strong>. Skip it if you need maximum breathability, a wide toe box, deep mud traction, or a highly stable technical trail shoe for rough mountain terrain.
+        </p>
+      </section>
+
+      <section id="amazon-options" aria-label="Nike Pegasus Trail 5 GORE-TEX Amazon product options">
+        <h2>Best Nike Pegasus Trail 5 GORE-TEX Amazon Options</h2>
+
+        <p>
+          These are the two recommended Amazon options for the Nike Pegasus Trail 5 GORE-TEX. The white colorway is the cleaner lifestyle-friendly option, while the black colorway is the more practical wet-weather choice for dirt, rain, commuting, and daily outdoor use.
+        </p>
+
+        <div class="gutf-product-grid">
+          <article class="gutf-product-card">
+            <div class="gutf-badge">Best Light Colorway</div>
+
+            <div class="gutf-product-image-wrap">
+              <img loading="lazy" decoding="async"
+                src="https://m.media-amazon.com/images/I/61YzbH7XIgL._AC_SY695_.jpg"
+                alt="Nike Pegasus Trail 5 GORE-TEX white waterproof road-to-trail running shoe"
+                loading="lazy"
+                width="695"
+                height="695"
+              />
+            </div>
+
+            <h3 class="gutf-product-title">Nike Pegasus Trail 5 GORE-TEX — White / Photon Dust</h3>
+
+            <p class="gutf-product-subtitle">
+              A clean, versatile waterproof <a href="https://gearuptofit.com/review/nike-acg-pegasus-trail/">road-to-trail shoe</a> for wet pavement, gravel, light trails, travel, walking, and rainy-day training.
+            </p>
+
+            <ul class="gutf-feature-list">
+              <li>Waterproof GORE-TEX upper for wet-weather protection</li>
+              <li>ReactX foam midsole for responsive everyday comfort</li>
+              <li>Nike Trail ATC rubber outsole for mixed-surface traction</li>
+              <li>Best for runners who want a brighter, lifestyle-friendly trail shoe</li>
+            </ul>
+
+            <div class="gutf-product-meta">
+              <span class="gutf-chip">Waterproof</span>
+              <span class="gutf-chip">Road-to-trail</span>
+              <span class="gutf-chip">Neutral</span>
+            </div>
+
+            <a
+              class="gutf-button"
+              href="https://amzn.to/3OQL0qC"
+              target="_blank"
+              rel="nofollow noopener sponsored"
+              aria-label="Check Nike Pegasus Trail 5 GORE-TEX White Photon Dust price on Amazon"
+            >
+              Check Price on Amazon
+            </a>
+
+            <p class="gutf-product-disclaimer">
+              As an Amazon Associate, GearUpToFit may earn from qualifying purchases. Price and availability are subject to change.
+            </p>
+          </article>
+
+          <article class="gutf-product-card">
+            <div class="gutf-badge">Best Dark Colorway</div>
+
+            <div class="gutf-product-image-wrap">
+              <img loading="lazy" decoding="async"
+                src="https://m.media-amazon.com/images/I/71wH9qPlMrL._AC_SY695_.jpg"
+                alt="Nike Pegasus Trail 5 GORE-TEX black grey waterproof road-to-trail running shoe"
+                loading="lazy"
+                width="695"
+                height="695"
+              />
+            </div>
+
+            <h3 class="gutf-product-title">Nike Pegasus Trail 5 GORE-TEX — Black / Wolf Grey / Anthracite</h3>
+
+            <p class="gutf-product-subtitle">
+              The practical all-weather option for runners, hikers, commuters, and walkers who want a darker shoe that hides dirt better.
+            </p>
+
+            <ul class="gutf-feature-list">
+              <li>Waterproof upper helps protect against rain, puddles, and wet grass</li>
+              <li>Stable, cushioned ride for road, gravel, and smooth dirt paths</li>
+              <li>Built-in heel gaiter helps reduce trail debris entry</li>
+              <li>Best pick for everyday wet-weather use and darker outfits</li>
+            </ul>
+
+            <div class="gutf-product-meta">
+              <span class="gutf-chip">Rain-ready</span>
+              <span class="gutf-chip">Gravel</span>
+              <span class="gutf-chip">Light hiking</span>
+            </div>
+
+            <a
+              class="gutf-button"
+              href="https://amzn.to/4mDzdIT"
+              target="_blank"
+              rel="nofollow noopener sponsored"
+              aria-label="Check Nike Pegasus Trail 5 GORE-TEX Black Wolf Grey price on Amazon"
+            >
+              Check Price on Amazon
+            </a>
+
+            <p class="gutf-product-disclaimer">
+              As an Amazon Associate, GearUpToFit may earn from qualifying purchases. Price and availability are subject to change.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="intro">
+        <p>
+          The <strong>Nike Pegasus Trail 5 GORE-TEX</strong> is the shoe you reach for when the forecast looks miserable but skipping the run is not an option.
+        </p>
+
+        <p>
+          Rain on the pavement. Wet grass in the park. Gravel roads after a storm. Muddy shoulders on your usual route. Cold morning dog walks. Light trail loops where a standard road shoe feels underbuilt but a rugged mountain shoe feels like overkill. That is exactly where the Pegasus Trail 5 GORE-TEX makes sense.
+        </p>
+
+        <p>
+          This is Nike’s waterproof road-to-trail version of the Pegasus Trail 5. It combines a <strong>GORE-TEX Invisible Fit upper</strong>, <strong>ReactX foam cushioning</strong>, and a <strong>Nike Trail All Terrain Compound outsole</strong> in a package designed for wet-weather running, walking, hiking, gravel paths, forest roads, and less technical trails.
+        </p>
+
+        <p>
+          According to <a href="https://www.nike.com/t/pegasus-trail-5-gore-tex-mens-waterproof-trail-running-shoes-Tqyf11TS" target="_blank" rel="noopener">Nike’s official product details</a>, the Pegasus Trail 5 GORE-TEX is built for trail running and hiking, uses responsive ReactX foam, has a waterproof GORE-TEX upper, features Nike Trail ATC rubber, weighs approximately 300 g / 10.5–10.6 oz in men’s US 10, and has a 9.5 mm heel-to-toe drop.
+        </p>
+
+        <p>
+          It is not the most aggressive trail shoe in the world. It is not the most breathable warm-weather option. And it is not the best choice for deep mud, slick roots, alpine rock, or highly technical mountain terrain. But as an everyday <strong>waterproof road-to-trail running shoe</strong>, the Nike Pegasus Trail 5 GORE-TEX is one of Nike’s most practical shoes: cushioned, protective, versatile, familiar underfoot, and easy to wear beyond running.
+        </p>
+      </section>
+
+      <section id="specs">
+        <h2>Nike Pegasus Trail 5 GORE-TEX Specs</h2>
+
+        <div class="gutf-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Shoe type</td>
+                <td>Waterproof road-to-trail running shoe</td>
+              </tr>
+              <tr>
+                <td>Best use</td>
+                <td>Wet-weather running, gravel, light trails, walking, hiking, commuting</td>
+              </tr>
+              <tr>
+                <td>Support type</td>
+                <td>Neutral</td>
+              </tr>
+              <tr>
+                <td>Upper</td>
+                <td>GORE-TEX Invisible Fit waterproof upper</td>
+              </tr>
+              <tr>
+                <td>Midsole</td>
+                <td>Nike ReactX foam</td>
+              </tr>
+              <tr>
+                <td>Outsole</td>
+                <td>Nike Trail All Terrain Compound rubber</td>
+              </tr>
+              <tr>
+                <td>Terrain</td>
+                <td>Less technical trails, gravel, pavement, park paths, forest roads</td>
+              </tr>
+              <tr>
+                <td>Drop</td>
+                <td>9.5 mm</td>
+              </tr>
+              <tr>
+                <td>Weight</td>
+                <td>Approx. 300 g / 10.5–10.6 oz in men’s US 10</td>
+              </tr>
+              <tr>
+                <td>Fit</td>
+                <td>Nike says it fits small and recommends ordering a half size up</td>
+              </tr>
+              <tr>
+                <td>Reflective details</td>
+                <td>Yes, at the sides of the heel</td>
+              </tr>
+              <tr>
+                <td>Best season</td>
+                <td>Fall, winter, spring, rainy conditions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="best-for">
+        <h2>Who Is the Nike Pegasus Trail 5 GORE-TEX Best For?</h2>
+
+        <p>
+          The Nike Pegasus Trail 5 GORE-TEX is best for the runner who does not live in a neat category.
+        </p>
+
+        <p>
+          You are not always on the road. You are not always on the trail. You might leave your front door on pavement, cut through a park, cross wet grass, hit a gravel path, climb a mild dirt trail, then finish on sidewalks again.
+        </p>
+
+        <p>
+          That mixed-surface reality is where the Pegasus Trail 5 GORE-TEX shines.
+        </p>
+
+        <ul>
+          <li>Road runners who want to start trail running</li>
+          <li>Trail runners who also run pavement</li>
+          <li>Walkers who want waterproof comfort</li>
+          <li>Travelers who want one shoe for city streets and light hikes</li>
+          <li>Dog walkers dealing with wet grass and muddy parks</li>
+          <li>Runners in rainy climates</li>
+          <li>Winter runners who want weather protection without a heavy boot</li>
+          <li>Gym-goers who also walk, commute, and run outdoors</li>
+          <li>Beginners who want one versatile neutral running shoe for unpredictable routes</li>
+        </ul>
+
+        <p>
+          For more general shoe-selection guidance, GearUpToFit’s
+          <a href="https://gearuptofit.com/running/how-to-choose-the-right-running-shoes/" target="_blank">complete guide to choosing the right running shoes</a>
+          is a useful companion because it explains cushioning, heel drop, fit, surface, and pronation in more detail.
+        </p>
+      </section>
+
+      <section id="not-for">
+        <h2>Who Should Not Buy It?</h2>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX is versatile, but it is not magic. Do not buy it if you mainly need:
+        </p>
+
+        <ul>
+          <li>A breathable summer trail shoe</li>
+          <li>A very wide toe box</li>
+          <li>A zero-drop or low-drop trail shoe</li>
+          <li>A mud-specific trail shoe</li>
+          <li>A technical mountain running shoe</li>
+          <li>A plated trail racing shoe</li>
+          <li>A stability shoe for heavy overpronation</li>
+          <li>A soft max-cushion cruiser for ultra distances</li>
+        </ul>
+
+        <p>
+          If your main concern is fit width, check GearUpToFit’s
+          <a href="https://gearuptofit.com/review/best-running-shoes-for-wide-feet/" target="_blank">best running shoes for wide feet guide</a>
+          before buying, because the Pegasus Trail 5 GORE-TEX has a more traditional Nike fit.
+        </p>
+
+        <p>
+          If you want something more aggressive for rough trails, the
+          Hoka Speedgoat 7 review
+          is a better comparison point because the Speedgoat line is built more directly for technical terrain, steep descents, and stronger trail protection.
+        </p>
+      </section>
+
+      <section id="design">
+        <h2>Design and First Impression</h2>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX looks like a shoe that understands how most people actually move.
+        </p>
+
+        <p>
+          It is not a bulky hiking boot. It is not a stripped-down trail racer. It is not a road shoe pretending to be tough. It sits in the middle: athletic enough for running, protective enough for sloppy weather, and stylish enough to wear casually.
+        </p>
+
+        <p>
+          The overall shape feels familiar if you have worn Nike Pegasus shoes before. The difference is that this version adds a more weather-ready trail personality: a waterproof upper, a protective toe area, a grippier outsole, and a more secure outdoor-ready build.
+        </p>
+
+        <p>
+          The built-in gaiter-like heel collar is a practical touch. It helps limit small stones, dirt, and trail debris entering the back of the shoe. This is not the same as wearing a full trail gaiter, but for park trails, gravel roads, wet grass, and mild dirt paths, it is a useful detail.
+        </p>
+
+        <p>
+          The best part is that the shoe does not scream “technical trail gear.” You can wear it with running shorts, hiking pants, joggers, jeans, or commuter gear and it still looks natural.
+        </p>
+      </section>
+
+      <section id="fit">
+        <h2>Fit and Sizing</h2>
+
+        <p>
+          Nike states that the Pegasus Trail 5 GORE-TEX <strong>fits small</strong> and recommends ordering a <strong>half size up</strong>.
+        </p>
+
+        <p>
+          That is the most important buying advice in this entire review.
+        </p>
+
+        <ul>
+          <li>Go half a size up from your usual casual shoe size.</li>
+          <li>Use your normal running socks when trying it on.</li>
+          <li>Leave a thumb’s width of space in front of your longest toe.</li>
+          <li>Make sure the midfoot feels secure, not squeezed.</li>
+          <li>Test the heel lock before committing.</li>
+        </ul>
+
+        <p>
+          This matters even more in a waterproof shoe. GORE-TEX uppers typically have less stretch than airy mesh uppers. That can make a slightly tight fit feel more noticeable during longer runs, descents, or warm conditions when your feet swell.
+        </p>
+
+        <p>
+          For trail shoes specifically, GearUpToFit’s
+          <a href="https://gearuptofit.com/running/how-should-trail-running-shoes-fit/" target="_blank">trail running shoe fit guide</a>
+          recommends enough toe space for swelling and descents, a snug midfoot, and a locked-in heel. That advice applies perfectly here.
+        </p>
+      </section>
+
+      <section id="upper">
+        <h2>Upper: Waterproof, Protective, and Warmer Than Mesh</h2>
+
+        <p>
+          The upper is the main reason to choose the GORE-TEX version over the standard Pegasus Trail 5.
+        </p>
+
+        <p>
+          Nike uses a <strong>GORE-TEX Invisible Fit upper</strong> designed to keep water out while preserving a more flexible running-shoe feel. Nike also mentions waterproof protection and a 3-D printed toe cap that helps keep water away from the foot.
+        </p>
+
+        <p>
+          In real-world terms, this upper is useful for rainy runs, wet grass, puddles, damp gravel, cold-weather walks, spring and fall trail conditions, slushy sidewalks, and travel days when weather is unpredictable.
+        </p>
+
+        <p>
+          The tradeoff is breathability. Waterproof shoes almost always run warmer than standard mesh running shoes. <a href="https://runrepeat.com/nike-pegasus-trail-5-gtx" target="_blank" rel="noopener">RunRepeat’s lab review</a> praised the Pegasus Trail 5 GTX as a reliable all-in-one option for cold, wet winter conditions, but also noted that it sacrifices breathability compared with more ventilated shoes.
+        </p>
+
+        <p>
+          That makes the buying decision simple: choose the <strong>Pegasus Trail 5 GORE-TEX</strong> if you hate wet feet. Choose the <strong>regular Pegasus Trail 5</strong> if you run mostly in dry, warm weather.
+        </p>
+      </section>
+
+      <section id="midsole">
+        <h2>Midsole: ReactX Foam Makes It Feel Like a Real Running Shoe</h2>
+
+        <p>
+          The biggest compliment you can give the Pegasus Trail 5 GORE-TEX is that it does not feel like a waterproof hiking brick.
+        </p>
+
+        <p>
+          The ReactX foam midsole gives it a cushioned, responsive ride that feels familiar for road runners. It has enough protection for gravel and mild trails, but it is still smooth enough for pavement. That is the core of the shoe’s appeal.
+        </p>
+
+        <p>
+          Some waterproof trail shoes feel stiff and clunky. The Pegasus Trail 5 GORE-TEX feels more like a daily trainer that gained weather protection and trail traction.
+        </p>
+
+        <p>
+          <a href="https://www.treelinereview.com/gearreviews/nike-pegasus-trail-5-trail-running-shoes-review" target="_blank" rel="noopener">Treeline Review’s testing of the Pegasus Trail 5 platform</a> described it as comfortable for daily training runs and longer distances on both trail and road, with a responsive yet cushioned platform that works across easy runs, tempo workouts, road running, gravel, casual wear, and gym use.
+        </p>
+
+        <p>
+          That versatility matters. Most runners do not need a hyper-specialized shoe for every surface. They need a shoe that feels good for the messy middle: half road, half trail, a little gravel, a little rain, and maybe a coffee stop afterward.
+        </p>
+      </section>
+
+      <section id="traction">
+        <h2>Outsole and Traction</h2>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX uses Nike’s <strong>Trail All Terrain Compound</strong>, often shortened to <strong>Nike Trail ATC</strong>.
+        </p>
+
+        <p>
+          Nike describes the outsole as a wet-traction and high-abrasion rubber compound designed to provide reliable grip in all conditions.
+        </p>
+
+        <p>
+          In practical use, the outsole is best for wet pavement, gravel paths, smooth dirt trails, park loops, forest roads, light hiking trails, mild inclines, and mixed road-to-trail routes.
+        </p>
+
+        <p>
+          It is not best for deep mud, wet roots, loose scree, sharp alpine rock, off-camber technical descents, mountain racing, or long ultras on rugged terrain.
+        </p>
+
+        <p>
+          That is the right framing: this shoe is excellent for <strong>less technical wet-weather running</strong>, not elite mountain terrain.
+        </p>
+
+        <p>
+          For broader outdoor-shoe comparisons, GearUpToFit’s
+          <a href="https://gearuptofit.com/running/best-outdoor-running-shoes/" target="_blank">best outdoor running shoes guide</a>
+          is a strong internal next step for readers comparing road-to-trail, waterproof, and trail-specific options.
+        </p>
+      </section>
+
+      <section id="ride">
+        <h2>Ride Feel: Smooth, Protective, and Easygoing</h2>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX has a comfortable, familiar ride.
+        </p>
+
+        <p>
+          It is not explosive like a racing shoe. It is not ultra-soft like a max-cushion recovery shoe. It is not as nimble as a low-stack technical trail shoe. Instead, it feels balanced.
+        </p>
+
+        <p>
+          The 9.5 mm drop will feel natural to many road runners, especially beginners and heel strikers. The ReactX midsole absorbs road impact well, and the outsole adds enough trail confidence without making the shoe feel awkward on pavement.
+        </p>
+
+        <p>
+          The ride is best for easy runs, daily training, recovery runs, rainy base miles, gravel loops, walking and run-walk sessions, travel workouts, light trail runs, and cold-weather casual miles.
+        </p>
+
+        <p>
+          If you are building aerobic fitness, the Pegasus Trail 5 GORE-TEX pairs nicely with easy-effort training. GearUpToFit’s
+          <a href="https://gearuptofit.com/running/zone-2-running-calculator/" target="_blank">Zone 2 running calculator</a>
+          can help readers estimate easy-run intensity and avoid turning every wet-weather run into a hard session.
+        </p>
+      </section>
+
+      <section id="walking">
+        <h2>Walking, Hiking, and Everyday Comfort</h2>
+
+        <p>
+          This might be the shoe’s secret weapon.
+        </p>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX is not only a running shoe. It is also a very useful everyday outdoor shoe.
+        </p>
+
+        <p>
+          Because it is waterproof, cushioned, and not overly aggressive, it works well for long walks, rainy errands, dog walking, travel, light hiking, standing for long periods, outdoor workdays, casual winter wear, and commuting in bad weather.
+        </p>
+
+        <p>
+          That all-in-one usefulness is a major reason this shoe deserves attention. A hardcore trail shoe may be better on mountains. A pure road shoe may be better on dry pavement. But the Pegasus Trail 5 GORE-TEX can handle the unpredictable daily reality between those extremes.
+        </p>
+
+        <p>
+          If your readers are looking for comfort beyond running, link them naturally to GearUpToFit’s
+          <a href="https://gearuptofit.com/review/best-walking-shoes/" target="_blank">best walking shoes for comfort and support</a>,
+          which covers long-mile walking, commuting, and travel use.
+        </p>
+      </section>
+
+      <section id="breathability">
+        <h2>Breathability: The Main Tradeoff</h2>
+
+        <p>
+          The main weakness is breathability.
+        </p>
+
+        <p>
+          This is not a design failure. It is the predictable tradeoff of waterproof footwear.
+        </p>
+
+        <p>
+          A GORE-TEX upper helps block water from entering, but it also traps more warmth than open mesh. On cold, wet days, that is a benefit. On hot summer runs, it can feel clammy.
+        </p>
+
+        <p>
+          The shoe is best used in rain, cold weather, wet spring conditions, damp fall training, winter walking, morning dew, mild snow, and slush.
+        </p>
+
+        <p>
+          It is less ideal for hot summer runs, humid weather, long dry trail runs, and runners with very sweaty feet.
+        </p>
+
+        <p>
+          For hot weather, the non-GORE-TEX Pegasus Trail 5 makes more sense. For wet weather, the GORE-TEX version is the better tool.
+        </p>
+      </section>
+
+      <section id="stability">
+        <h2>Stability and Trail Control</h2>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX is a neutral shoe. It does not have a medial post or traditional stability system.
+        </p>
+
+        <p>
+          On pavement, gravel, and smooth trails, it feels stable enough for most neutral runners. The midsole has a comfortable platform, and the outsole adds confidence on mixed surfaces.
+        </p>
+
+        <p>
+          On technical terrain, stability becomes less convincing. This is not a low, wide, highly planted mountain shoe. The cushioning and road-to-trail geometry make it more comfortable than precise.
+        </p>
+
+        <p>
+          Use it confidently on smooth dirt, fire roads, park trails, gravel, mild climbs, wet sidewalks, and easy hiking paths. Be cautious on off-camber trails, rooty descents, loose rock, muddy singletrack, and fast downhill technical sections.
+        </p>
+
+        <p>
+          If your reader’s main goal is outdoor training rather than technical trail racing, GearUpToFit’s
+          <a href="https://gearuptofit.com/running/outdoor-running-vs-treadmill/" target="_blank">outdoor running vs treadmill comparison</a>
+          is a relevant internal link because it helps explain how terrain, weather, impact, and control change the running experience.
+        </p>
+      </section>
+
+      <section id="durability">
+        <h2>Durability Expectations</h2>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX should be durable enough for road-to-trail training, walking, commuting, and light hiking.
+        </p>
+
+        <p>
+          The outsole is designed with high-abrasion rubber, which helps when the shoe sees pavement, gravel, and trail surfaces.
+        </p>
+
+        <p>
+          However, durability depends on use. Pavement wears trail lugs faster than dirt. Sharp rock stresses the outsole and upper more than smooth gravel. Waterproof uppers can last well, but they should be cleaned properly and allowed to dry naturally.
+        </p>
+
+        <ul>
+          <li>Rotate it with a dry-weather running shoe.</li>
+          <li>Do not put it in a dryer.</li>
+          <li>Rinse off mud after trail use.</li>
+          <li>Air dry away from direct heat.</li>
+          <li>Use it for wet, mixed, less technical terrain.</li>
+          <li>Avoid using it as a technical hiking boot replacement.</li>
+        </ul>
+      </section>
+
+      <section id="comparisons">
+        <h2>Nike Pegasus Trail 5 GORE-TEX Comparisons</h2>
+
+        <h3>Nike Pegasus Trail 5 GORE-TEX vs Regular Pegasus Trail 5</h3>
+
+        <p>
+          The regular Pegasus Trail 5 and the Pegasus Trail 5 GORE-TEX share the same general road-to-trail personality, but they serve different weather conditions.
+        </p>
+
+        <div class="gutf-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Pegasus Trail 5 GORE-TEX</th>
+                <th>Regular Pegasus Trail 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Best for</td>
+                <td>Rain, wet grass, cold weather, puddles</td>
+                <td>Dry trails, warmer weather, daily mixed-surface runs</td>
+              </tr>
+              <tr>
+                <td>Upper</td>
+                <td>Waterproof GORE-TEX</td>
+                <td>More breathable standard upper</td>
+              </tr>
+              <tr>
+                <td>Breathability</td>
+                <td>Lower</td>
+                <td>Higher</td>
+              </tr>
+              <tr>
+                <td>Warmth</td>
+                <td>Warmer</td>
+                <td>Cooler</td>
+              </tr>
+              <tr>
+                <td>Everyday weather protection</td>
+                <td>Better</td>
+                <td>Lower</td>
+              </tr>
+              <tr>
+                <td>Best buyer</td>
+                <td>Runners who hate wet feet</td>
+                <td>Runners who prioritize airflow</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Choose the <strong>GORE-TEX version</strong> if you run in wet, cold, unpredictable weather. Choose the <strong>regular version</strong> if you mostly run in dry or warm conditions.
+        </p>
+
+        <h3>Nike Pegasus Trail 5 GORE-TEX vs Nike Pegasus 42</h3>
+
+        <p>
+          The Nike Pegasus 42 is a road running shoe. The Nike Pegasus Trail 5 GORE-TEX is a waterproof road-to-trail shoe.
+        </p>
+
+        <div class="gutf-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Pegasus Trail 5 GORE-TEX</th>
+                <th>Pegasus 42</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primary use</td>
+                <td>Road-to-trail, rain, gravel, light trails</td>
+                <td>Road running and daily training</td>
+              </tr>
+              <tr>
+                <td>Waterproof</td>
+                <td>Yes</td>
+                <td>No standard GORE-TEX upper</td>
+              </tr>
+              <tr>
+                <td>Outsole</td>
+                <td>Trail-focused ATC rubber</td>
+                <td>Road-focused outsole</td>
+              </tr>
+              <tr>
+                <td>Best terrain</td>
+                <td>Wet pavement, gravel, smooth dirt, light trails</td>
+                <td>Pavement, treadmill, road routes</td>
+              </tr>
+              <tr>
+                <td>Best weather</td>
+                <td>Rain, cold, wet conditions</td>
+                <td>Dry or normal road conditions</td>
+              </tr>
+              <tr>
+                <td>Trail ability</td>
+                <td>Better</td>
+                <td>Limited</td>
+              </tr>
+              <tr>
+                <td>Road smoothness</td>
+                <td>Good</td>
+                <td>Better</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Nike Pegasus Trail 5 GORE-TEX vs Hoka Speedgoat 7</h3>
+
+        <p>
+          The Pegasus Trail 5 GORE-TEX is the better pick for road-to-trail versatility and wet everyday use. The Hoka Speedgoat 7 is the better pick for more serious trail terrain.
+        </p>
+
+        <div class="gutf-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Nike Pegasus Trail 5 GORE-TEX</th>
+                <th>Hoka Speedgoat 7</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Best for</td>
+                <td>Rain, gravel, pavement-to-trail, walking</td>
+                <td>Technical trails, longer trail runs, rougher terrain</td>
+              </tr>
+              <tr>
+                <td>Waterproof</td>
+                <td>Yes</td>
+                <td>Depends on version</td>
+              </tr>
+              <tr>
+                <td>Road comfort</td>
+                <td>Better</td>
+                <td>Less road-friendly</td>
+              </tr>
+              <tr>
+                <td>Trail aggression</td>
+                <td>Moderate</td>
+                <td>Higher</td>
+              </tr>
+              <tr>
+                <td>Everyday wear</td>
+                <td>Better</td>
+                <td>More trail-specific</td>
+              </tr>
+              <tr>
+                <td>Best buyer</td>
+                <td>Mixed-surface runner</td>
+                <td>Dedicated trail runner</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          If readers want a more technical trail option, point them to the
+          GearUpToFit Hoka Speedgoat 7 review for rugged trail running.
+        </p>
+
+        <p>
+          For readers who want to compare more Nike-specific trail options, GearUpToFit’s
+          <a href="https://gearuptofit.com/review/running-shoes/nike-trail-running-shoes/" target="_blank">guide to the best Nike trail running shoes</a>
+          is the most relevant internal destination.
+        </p>
+
+        <p>
+          For broader daily-trainer comparisons, GearUpToFit’s
+          <a href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">best running shoes for daily training guide</a>
+          can help readers compare road shoes, trail shoes, walking shoes, and all-around trainers.
+        </p>
+      </section>
+
+      <section id="video" class="gutf-video-box">
+        <h2>Helpful Video: Nike Pegasus Ride Feel Explained</h2>
+
+        <p>
+          This video covers the Nike Pegasus 42, not the Pegasus Trail 5 GORE-TEX. Still, it is useful if you want to understand the current Pegasus road-running platform, daily-trainer feel, and how the Pegasus family compares before choosing between a road shoe and a waterproof road-to-trail shoe.
+        </p>
+
+        <div class="gutf-video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/ypjElZmr4CU"
+            title="Nike Pegasus 42 100% Honest Review"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <section id="colorway">
+        <h2>Best Colorway: White or Black?</h2>
+
+        <p>
+          Both Amazon options make sense, but they serve different buyers.
+        </p>
+
+        <p>
+          The <strong>White / Photon Dust</strong> style is the better fashion-forward option. It looks clean, modern, and more lifestyle-friendly. It is the one to choose for travel, gym use, walking, and casual outfits.
+        </p>
+
+        <p>
+          The <strong>Black / Wolf Grey / Anthracite</strong> style is the better practical option. It hides dirt better, looks more understated, and makes more sense for rainy runs, trail use, dog walks, and winter commuting.
+        </p>
+
+        <ul>
+          <li>Choose <strong>White / Photon Dust</strong> if style matters most.</li>
+          <li>Choose <strong>Black / Wolf Grey / Anthracite</strong> if practicality matters most.</li>
+          <li>Choose black if you plan to use the shoe often on wet trails or muddy paths.</li>
+        </ul>
+      </section>
+
+      <section id="pros-cons">
+        <h2>Pros and Cons</h2>
+
+        <div class="gutf-pro-con">
+          <div class="gutf-pro">
+            <h3>Pros</h3>
+            <ul>
+              <li>Waterproof GORE-TEX upper helps keep feet dry.</li>
+              <li>ReactX foam feels cushioned, responsive, and familiar.</li>
+              <li>Excellent road-to-trail versatility.</li>
+              <li>Works for running, walking, light hiking, commuting, and travel.</li>
+              <li>Nike Trail ATC outsole handles wet pavement, gravel, and smooth trails.</li>
+              <li>Built-in heel collar helps reduce debris entry.</li>
+              <li>Reflective heel details improve low-light visibility.</li>
+              <li>More comfortable on pavement than many aggressive trail shoes.</li>
+              <li>Stylish enough for casual wear.</li>
+              <li>Strong option for rainy climates and winter training.</li>
+            </ul>
+          </div>
+
+          <div class="gutf-con">
+            <h3>Cons</h3>
+            <ul>
+              <li>Less breathable than non-waterproof running shoes.</li>
+              <li>Not ideal for hot summer runs.</li>
+              <li>Not aggressive enough for deep mud or technical mountain trails.</li>
+              <li>Nike says it fits small, so sizing requires attention.</li>
+              <li>Not the best choice for very wide feet.</li>
+              <li>Waterproof upper can feel warm during long efforts.</li>
+              <li>Neutral platform may not suit runners who need stability support.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="performance">
+        <h2>Performance by Use Case</h2>
+
+        <div class="gutf-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Use Case</th>
+                <th>Rating</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Wet pavement</td>
+                <td>Excellent</td>
+                <td>Comfortable, protective, and confidence-inspiring.</td>
+              </tr>
+              <tr>
+                <td>Gravel roads</td>
+                <td>Excellent</td>
+                <td>One of the best use cases for the shoe.</td>
+              </tr>
+              <tr>
+                <td>Smooth trails</td>
+                <td>Very good</td>
+                <td>Protective enough without feeling bulky.</td>
+              </tr>
+              <tr>
+                <td>Light hiking</td>
+                <td>Very good</td>
+                <td>Great for casual hikes and travel.</td>
+              </tr>
+              <tr>
+                <td>Daily walking</td>
+                <td>Excellent</td>
+                <td>Waterproofing and cushioning make it very practical.</td>
+              </tr>
+              <tr>
+                <td>Road running</td>
+                <td>Good</td>
+                <td>Smooth enough, but not as road-efficient as Pegasus 42.</td>
+              </tr>
+              <tr>
+                <td>Technical trails</td>
+                <td>Average</td>
+                <td>Not the best for roots, rocks, mud, and steep descents.</td>
+              </tr>
+              <tr>
+                <td>Hot weather</td>
+                <td>Below average</td>
+                <td>Waterproof upper limits airflow.</td>
+              </tr>
+              <tr>
+                <td>Winter commuting</td>
+                <td>Excellent</td>
+                <td>One of its strongest non-running uses.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="alternatives">
+        <h2>Best Alternatives</h2>
+
+        <div class="gutf-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Shoe</th>
+                <th>Better If You Want</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Regular Nike Pegasus Trail 5</td>
+                <td>More breathability for dry weather.</td>
+              </tr>
+              <tr>
+                <td>Nike Pegasus 42</td>
+                <td>A smoother dedicated road running shoe.</td>
+              </tr>
+              <tr>
+                <td>Hoka Speedgoat 7</td>
+                <td>More grip and protection for technical trails.</td>
+              </tr>
+              <tr>
+                <td>Brooks Cascadia</td>
+                <td>A more traditional trail platform.</td>
+              </tr>
+              <tr>
+                <td>Salomon Speedcross GTX</td>
+                <td>More aggressive mud and soft-ground traction.</td>
+              </tr>
+              <tr>
+                <td>Nike Zegama Trail</td>
+                <td>More cushioning for longer trail runs.</td>
+              </tr>
+              <tr>
+                <td>Nike Ultrafly Trail</td>
+                <td>A faster, premium Nike trail option.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="size-guide">
+        <h2>How to Choose the Right Size</h2>
+
+        <p>
+          Because Nike says this shoe fits small, do not rush sizing.
+        </p>
+
+        <ol>
+          <li>Start with a half size up from your everyday shoe size.</li>
+          <li>Try the shoe on with the socks you actually run in.</li>
+          <li>Stand up and check for a thumb’s width of space at the front.</li>
+          <li>Walk downhill or simulate a descent to check toe pressure.</li>
+          <li>Make sure your heel does not lift.</li>
+          <li>Confirm the midfoot feels secure but not squeezed.</li>
+          <li>If your foot spills over the platform, consider a wider shoe instead.</li>
+        </ol>
+
+        <p>
+          A waterproof upper will not stretch like soft mesh. A snug fit in the living room can become an annoying fit after 45 minutes of running in wet weather.
+        </p>
+      </section>
+
+      <section id="conditions">
+        <h2>Best Conditions for the Nike Pegasus Trail 5 GORE-TEX</h2>
+
+        <p>
+          This shoe is at its best when conditions are mixed, damp, and unpredictable.
+        </p>
+
+        <h3>Ideal Conditions</h3>
+
+        <ul>
+          <li>35°F to 60°F / 2°C to 16°C</li>
+          <li>Rainy fall runs</li>
+          <li>Wet spring trails</li>
+          <li>Winter walking</li>
+          <li>Damp gravel roads</li>
+          <li>City-to-park routes</li>
+          <li>Morning dew</li>
+          <li>Light mud</li>
+          <li>Wet grass</li>
+          <li>Travel days with uncertain weather</li>
+        </ul>
+
+        <h3>Less Ideal Conditions</h3>
+
+        <ul>
+          <li>Hot summer afternoons</li>
+          <li>Long dry trail runs</li>
+          <li>Technical mountain routes</li>
+          <li>Deep mud</li>
+          <li>Stream crossings above the collar</li>
+          <li>Fast trail racing</li>
+          <li>Minimalist running</li>
+        </ul>
+
+        <p>
+          The key is to treat it as a waterproof hybrid shoe, not a dedicated mountain racing tool.
+        </p>
+      </section>
+
+      <section id="editorial-methodology" class="gutf-editor-note">
+        <h2>Editorial Testing Framework</h2>
+
+        <p>
+          This review evaluates the Nike Pegasus Trail 5 GORE-TEX across the factors that matter most to real runners and active users:
+        </p>
+
+        <ul>
+          <li>Fit and sizing</li>
+          <li>Waterproof protection</li>
+          <li>Breathability tradeoff</li>
+          <li>Cushioning and responsiveness</li>
+          <li>Road-to-trail comfort</li>
+          <li>Outsole grip</li>
+          <li>Walking and hiking usefulness</li>
+          <li>Durability expectations</li>
+          <li>Best and worst use cases</li>
+          <li>Value for mixed-surface training</li>
+        </ul>
+
+        <p>
+          This review is based on verified manufacturer specifications, current product information, independent lab and field-review data, and GearUpToFit’s running-shoe evaluation framework.
+        </p>
+      </section>
+
+      <section id="final-verdict">
+        <h2>Final Verdict</h2>
+
+        <p>
+          The <strong>Nike Pegasus Trail 5 GORE-TEX</strong> is one of the most useful shoes in Nike’s trail lineup because it solves a problem that many runners actually have: wet feet on mixed-surface routes.
+        </p>
+
+        <p>
+          It gives you waterproof protection without feeling like a stiff hiking boot. It has enough cushioning for pavement, enough grip for gravel and light trails, and enough style for everyday wear. That makes it more versatile than many traditional trail shoes and far more weather-ready than most road shoes.
+        </p>
+
+        <p>
+          The drawbacks are real. It is warmer than a mesh shoe. It is not built for deep mud. It is not the best choice for technical mountain terrain. And runners with wide feet should be careful with fit.
+        </p>
+
+        <p>
+          But for rainy road-to-trail runs, gravel paths, daily walking, light hiking, travel, commuting, and winter training, the Pegasus Trail 5 GORE-TEX is a strong buy.
+        </p>
+
+        <p>
+          <strong>Bottom line:</strong>
+          Buy the Nike Pegasus Trail 5 GORE-TEX if you want a waterproof, cushioned, neutral, road-to-trail shoe that can handle real-world weather and everyday mixed-surface use.
+        </p>
+      </section>
+
+      <section id="faq" class="gutf-faq">
+        <h2>FAQ</h2>
+
+        <details open>
+          <summary>Is the Nike Pegasus Trail 5 GORE-TEX waterproof?</summary>
+          <p>
+            Yes. The Nike Pegasus Trail 5 GORE-TEX uses a GORE-TEX Invisible Fit upper designed to provide waterproof protection and help keep feet dry in wet conditions.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is the Nike Pegasus Trail 5 GORE-TEX good for road running?</summary>
+          <p>
+            Yes, it works well for road-to-trail running. It is not as smooth as a dedicated road shoe like the Nike Pegasus 42, but it is comfortable enough for pavement and better suited to wet, mixed-surface routes.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is the Nike Pegasus Trail 5 GORE-TEX good for hiking?</summary>
+          <p>
+            Yes, it works well for light hiking, walking, travel, and less technical outdoor trails. It is not designed for rugged alpine terrain or deep mud.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does the Nike Pegasus Trail 5 GORE-TEX fit true to size?</summary>
+          <p>
+            Nike says the shoe fits small and recommends ordering a half size up.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is the Nike Pegasus Trail 5 GORE-TEX good for wide feet?</summary>
+          <p>
+            It may not be the best option for wide feet. The shoe has a traditional Nike-style fit and a waterproof upper that may feel less forgiving than mesh. Wide-footed runners should compare alternatives before buying.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is the Nike Pegasus Trail 5 GORE-TEX breathable?</summary>
+          <p>
+            It is breathable for a waterproof shoe, but less breathable than non-waterproof running shoes. Waterproof shoes are usually better for cool, wet weather than hot summer running.
+          </p>
+        </details>
+
+        <details>
+          <summary>What is the heel drop of the Nike Pegasus Trail 5 GORE-TEX?</summary>
+          <p>
+            The Nike Pegasus Trail 5 GORE-TEX has a 9.5 mm heel-to-toe drop, according to Nike’s official product details.
+          </p>
+        </details>
+
+        <details>
+          <summary>How much does the Nike Pegasus Trail 5 GORE-TEX weigh?</summary>
+          <p>
+            Nike lists the shoe at approximately 300 g / 10.5–10.6 oz for a men’s US size 10.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is the Nike Pegasus Trail 5 GORE-TEX good for technical trails?</summary>
+          <p>
+            It is best for less technical trails, gravel, wet pavement, and smooth dirt paths. It is not the best choice for deep mud, loose rock, roots, or technical mountain terrain.
+          </p>
+        </details>
+
+        <details>
+          <summary>What is the difference between the Nike Pegasus Trail 5 and the Pegasus Trail 5 GORE-TEX?</summary>
+          <p>
+            The main difference is waterproofing. The Pegasus Trail 5 GORE-TEX adds a waterproof GORE-TEX upper for rain and wet conditions, while the regular Pegasus Trail 5 is more breathable and better for warm, dry weather.
+          </p>
+        </details>
+      </section>
+
+      <section id="sources" class="gutf-source-box">
+        <h2>Sources and References</h2>
+
+        <p>
+          This review uses verified product information and independent shoe-review data from the following sources:
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://www.nike.com/t/pegasus-trail-5-gore-tex-mens-waterproof-trail-running-shoes-Tqyf11TS" target="_blank" rel="noopener">Nike official Pegasus Trail 5 GORE-TEX product page</a>
+          </li>
+          <li>
+            <a href="https://runrepeat.com/nike-pegasus-trail-5-gtx" target="_blank" rel="noopener">RunRepeat Nike Pegasus Trail 5 GTX lab review</a>
+          </li>
+          <li>
+            <a href="https://www.treelinereview.com/gearreviews/nike-pegasus-trail-5-trail-running-shoes-review" target="_blank" rel="noopener">Treeline Review Nike Pegasus Trail 5 review</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=ypjElZmr4CU" target="_blank" rel="noopener">Nike Pegasus 42 YouTube video used for Pegasus-family ride context</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="gutf-footer-cta">
+        <h2>Final Buying Recommendation</h2>
+
+        <p>
+          The Nike Pegasus Trail 5 GORE-TEX is the right shoe if you want waterproof comfort for real-world mixed routes: pavement, gravel, light trails, wet grass, walking, commuting, and rainy everyday use.
+        </p>
+
+        <p>
+          Choose the white version if you want a cleaner, brighter look. Choose the black version if you want the more practical all-weather colorway that hides dirt better.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/review/best-running-shoes/">choosing the right running shoes</a></li><li><a href="https://gearuptofit.com/running/running-outside-for-beginners/">running outside for beginners</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"Who Is the Nike Pegasus Trail 5 GORE-TEX Best For?","@type":"Question","acceptedAnswer":{"text":"The Nike Pegasus Trail 5 GORE-TEX is best for the runner who does not live in a neat category.","@type":"Answer"}},{"name":"Who Should Not Buy It?","@type":"Question","acceptedAnswer":{"text":"The Pegasus Trail 5 GORE-TEX is versatile, but it is not magic. Do not buy it if you mainly need:","@type":"Answer"}},{"name":"Best Colorway: White or Black?","@type":"Question","acceptedAnswer":{"text":"Both Amazon options make sense, but they serve different buyers.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

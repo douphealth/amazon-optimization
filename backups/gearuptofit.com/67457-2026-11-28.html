@@ -1,0 +1,1334 @@
+
+<style>
+  .gutf-article {
+    --gutf-text: #111827;
+    --gutf-muted: #475569;
+    --gutf-soft: #f8fafc;
+    --gutf-card: #ffffff;
+    --gutf-border: #e5e7eb;
+    --gutf-accent: #0f766e;
+    --gutf-accent-dark: #115e59;
+    --gutf-blue: #155e75;
+    --gutf-orange: #f59e0b;
+    --gutf-green-soft: #ecfdf5;
+    --gutf-blue-soft: #eff6ff;
+    --gutf-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+    max-width: 980px;
+    margin: 0 auto;
+    color: var(--gutf-text);
+    font-family: inherit;
+    line-height: 1.75;
+    font-size: 18px;
+  }
+
+  .gutf-article *,
+  .gutf-article *::before,
+  .gutf-article *::after {
+    box-sizing: border-box;
+  }
+
+  .gutf-article h1,
+  .gutf-article h2,
+  .gutf-article h3,
+  .gutf-article h4 {
+    color: #0f172a;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-top: 0;
+  }
+
+  .gutf-article h1 {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    margin-bottom: 18px;
+  }
+
+  .gutf-article h2 {
+    font-size: clamp(1.65rem, 3vw, 2.45rem);
+    margin: 56px 0 18px;
+  }
+
+  .gutf-article h3 {
+    font-size: clamp(1.22rem, 2vw, 1.55rem);
+    margin: 32px 0 12px;
+  }
+
+  .gutf-article p {
+    margin: 0 0 18px;
+  }
+
+  .gutf-article a {
+    color: var(--gutf-blue);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 700;
+  }
+
+  .gutf-article img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .gutf-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(24px, 5vw, 54px);
+    margin: 0 0 30px;
+    border: 1px solid #ccfbf1;
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at top left, rgba(20, 184, 166, 0.20), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.18), transparent 30%),
+      linear-gradient(135deg, #ecfeff 0%, #f0fdf4 50%, #fff7ed 100%);
+  }
+
+  .gutf-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #ccfbf1;
+    color: #134e4a;
+    border: 1px solid #99f6e4;
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+  }
+
+  .gutf-dek {
+    max-width: 820px;
+    margin-bottom: 22px !important;
+    color: #334155;
+    font-size: clamp(1.08rem, 2vw, 1.32rem);
+    line-height: 1.65;
+  }
+
+  .gutf-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .gutf-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    color: #334155;
+    font-size: 0.93rem;
+    font-weight: 750;
+  }
+
+  .gutf-disclosure,
+  .gutf-answer-box,
+  .gutf-note,
+  .gutf-callout {
+    margin: 24px 0;
+    padding: clamp(18px, 3vw, 26px);
+    border-radius: 24px;
+    border: 1px solid var(--gutf-border);
+  }
+
+  .gutf-disclosure {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 0.96rem;
+  }
+
+  .gutf-answer-box {
+    background: linear-gradient(135deg, #ecfdf5, #f0fdfa);
+    border-color: #99f6e4;
+  }
+
+  .gutf-answer-box h2 {
+    margin-top: 0;
+  }
+
+  .gutf-note {
+    background: #fff7ed;
+    border-color: #fed7aa;
+  }
+
+  .gutf-callout {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  .gutf-toc {
+    margin: 28px 0 36px;
+    padding: 22px;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid var(--gutf-border);
+    box-shadow: var(--gutf-shadow);
+  }
+
+  .gutf-toc strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #0f172a;
+    font-size: 1.08rem;
+  }
+
+  .gutf-toc ol {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .gutf-toc li {
+    margin: 8px 0;
+  }
+
+  .gutf-figure {
+    margin: 34px 0;
+  }
+
+  .gutf-figure img {
+    display: block;
+    width: 100%;
+    border-radius: 26px;
+    border: 1px solid var(--gutf-border);
+    box-shadow: var(--gutf-shadow);
+    background: #f8fafc;
+  }
+
+  .gutf-figure figcaption {
+    margin-top: 10px;
+    color: #64748b;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .gutf-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 18px;
+    margin: 26px 0;
+  }
+
+  .gutf-card {
+    grid-column: span 6;
+    padding: 22px;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid var(--gutf-border);
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+  }
+
+  .gutf-card-full {
+    grid-column: 1 / -1;
+  }
+
+  .gutf-stat {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gutf-accent);
+    font-size: 1.85rem;
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+  }
+
+  .gutf-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--gutf-border);
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  }
+
+  .gutf-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+  }
+
+  .gutf-table th,
+  .gutf-table td {
+    padding: 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--gutf-border);
+  }
+
+  .gutf-table th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 900;
+  }
+
+  .gutf-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .gutf-checklist {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .gutf-checklist li {
+    position: relative;
+    padding: 14px 16px 14px 46px;
+    border: 1px solid var(--gutf-border);
+    border-radius: 18px;
+    background: #ffffff;
+  }
+
+  .gutf-checklist li::before {
+    content: "✓";
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ccfbf1;
+    color: #115e59;
+    font-weight: 950;
+    line-height: 22px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .gutf-video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin: 24px 0 10px;
+    border-radius: 26px;
+    border: 1px solid var(--gutf-border);
+    background: #0f172a;
+    box-shadow: var(--gutf-shadow);
+  }
+
+  .gutf-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gutf-cta {
+    margin: 42px 0;
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 30px;
+    background: linear-gradient(135deg, #0f766e, #155e75);
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(15, 118, 110, 0.24);
+  }
+
+  .gutf-cta h2,
+  .gutf-cta p {
+    color: #ffffff;
+  }
+
+  .gutf-cta h2 {
+    margin-top: 0;
+  }
+
+  .gutf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 13px 18px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #155e75 !important;
+    text-decoration: none !important;
+    font-weight: 950;
+  }
+
+  .gutf-smartwatch-affiliate {
+    margin: 52px 0;
+    padding: clamp(22px, 4vw, 36px);
+    border: 1px solid #bfdbfe;
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 30%),
+      linear-gradient(135deg, #f8fafc 0%, #eff6ff 52%, #ecfdf5 100%);
+  }
+
+  .gutf-smartwatch-affiliate .gutf-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 0.88rem;
+    font-weight: 950;
+  }
+
+  .gutf-smartwatch-affiliate h2 {
+    margin-top: 0;
+  }
+
+  .gutf-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 26px 0 18px;
+  }
+
+  .gutf-product-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--gutf-border);
+    border-radius: 26px;
+    background: #ffffff;
+    box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+  }
+
+  .gutf-product-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 265px;
+    padding: 18px;
+    background: #f8fafc;
+  }
+
+  .gutf-product-image img {
+    width: 100%;
+    max-width: 260px;
+    height: 225px;
+    object-fit: contain;
+  }
+
+  .gutf-product-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+  }
+
+  .gutf-product-body h3 {
+    margin: 0 0 10px;
+    font-size: 1.18rem;
+  }
+
+  .gutf-product-body p {
+    color: #475569;
+    font-size: 0.98rem;
+  }
+
+  .gutf-product-body ul {
+    margin: 0 0 18px;
+    padding-left: 20px;
+    color: #334155;
+    font-size: 0.95rem;
+  }
+
+  .gutf-amazon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+    padding: 13px 15px;
+    border-radius: 999px;
+    background: #f59e0b;
+    color: #111827 !important;
+    font-weight: 950;
+    text-align: center;
+    text-decoration: none !important;
+    box-shadow: 0 12px 24px rgba(245, 158, 11, 0.24);
+    transition: transform 160ms ease, background 160ms ease;
+  }
+
+  .gutf-amazon-button:hover,
+  .gutf-amazon-button:focus {
+    background: #fbbf24;
+    transform: translateY(-1px);
+  }
+
+  .gutf-affiliate-note {
+    margin: 20px 0 0;
+    padding: 15px 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.93rem;
+    line-height: 1.58;
+  }
+
+  .gutf-faq {
+    margin-top: 48px;
+  }
+
+  .gutf-faq details {
+    margin: 12px 0;
+    padding: 18px 20px;
+    border: 1px solid var(--gutf-border);
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  }
+
+  .gutf-faq summary {
+    cursor: pointer;
+    color: #0f172a;
+    font-weight: 950;
+  }
+
+  .gutf-faq details p {
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 920px) {
+    .gutf-article {
+      font-size: 17px;
+    }
+
+    .gutf-card {
+      grid-column: 1 / -1;
+    }
+
+    .gutf-product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gutf-product-card {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+    }
+
+    .gutf-product-image {
+      min-height: 100%;
+    }
+
+    .gutf-product-image img {
+      max-width: 190px;
+      height: 190px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .gutf-article {
+      font-size: 16.5px;
+      line-height: 1.72;
+    }
+
+    .gutf-hero,
+    .gutf-smartwatch-affiliate,
+    .gutf-cta {
+      border-radius: 22px;
+    }
+
+    .gutf-card,
+    .gutf-toc,
+    .gutf-disclosure,
+    .gutf-answer-box,
+    .gutf-note,
+    .gutf-callout {
+      border-radius: 20px;
+    }
+
+    .gutf-product-card {
+      display: flex;
+      border-radius: 22px;
+    }
+
+    .gutf-product-image {
+      min-height: 220px;
+    }
+
+    .gutf-product-image img {
+      max-width: 230px;
+      height: 200px;
+    }
+
+    .gutf-meta {
+      gap: 8px;
+    }
+
+    .gutf-pill {
+      font-size: 0.86rem;
+      padding: 7px 10px;
+    }
+
+    .gutf-figure img,
+    .gutf-video {
+      border-radius: 18px;
+    }
+  }
+</style>
+
+<article class="gutf-article" itemscope itemtype="https://schema.org/Article">
+
+  <header class="gutf-hero">
+    <span class="gutf-kicker">Fitness Nutrition Guide</span>
+    <p class="gutf-dek" itemprop="description">
+      Healthy eating for fitness is not about eating perfectly, cutting out every food you enjoy, or following a complicated meal plan. It is about giving your body the right mix of protein, carbohydrates, healthy fats, fluids, fiber, and micronutrients so you can train harder, recover faster, build lean muscle, manage weight, and feel better every day.
+    </p>
+
+<div class="gutf-meta">
+      <span class="gutf-pill">Updated: 2026</span>
+      <span class="gutf-pill">Goal: energy, recovery, strength, fat loss</span>
+      <span class="gutf-pill">Reading time: 14 minutes</span>
+      <span class="gutf-pill">Beginner-friendly</span>
+    </div>
+  </header>
+
+  <div class="gutf-disclosure">
+    <strong>Editorial note:</strong> This guide is for educational purposes and does not replace medical advice. If you have diabetes, kidney disease, gastrointestinal disease, pregnancy-related nutrition needs, a history of eating disorders, or any medical condition, speak with a qualified healthcare professional or registered dietitian before changing your diet. GearUpToFit may earn a commission from qualifying purchases through affiliate links at no extra cost to you.
+  </div>
+
+  <figure class="gutf-figure">
+    <img
+      src="https://gearuptofit.com/wp-content/uploads/2023/09/how-to-eat-healthy-for-fitness_665.png"
+      alt="Colorful fruits, vegetables, smoothies, and healthy foods for fitness nutrition"
+      width="1000"
+      height="1000"
+      loading="eager"
+      decoding="async">
+    <figcaption>
+      A healthy fitness diet starts with whole foods, enough protein, smart carbohydrates, healthy fats, hydration, and consistency.
+    </figcaption>
+  </figure>
+
+  <section class="gutf-answer-box" id="quick-answer">
+
+<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px;margin:18px 0;border-radius:6px">
+<p style="margin:0 0 8px;font-weight:700">Quick picks from this guide</p>
+<ul style="margin:0 0 10px 18px;padding:0">
+<li><a href="https://www.amazon.com/dp/B0DGHQ2QH6?tag=papalex-gutf-20" rel="sponsored nofollow noopener" target="_blank">Apple Watch Series 10 GPS 46mm Jet Black Aluminum Case</a></li>
+<li><a href="https://www.amazon.com/dp/B0D1YNVD88?tag=papalex-gutf-20" rel="sponsored nofollow noopener" target="_blank">Samsung Galaxy Watch 7 40mm Bluetooth AI Smartwatch Cream</a></li>
+<li><a href="https://www.amazon.com/dp/B0CDC6H66Y?tag=papalex-gutf-20" rel="sponsored nofollow noopener" target="_blank">Garmin Venu 3 Slate Stainless Steel Bezel 45mm Black Case</a></li>
+</ul>
+<p style="margin:0;font-size:13px;color:#555">As an Amazon Associate, GearUpToFit earns from qualifying purchases.</p>
+</div>
+
+<h2>Quick Answer: What Should You Eat to Be Healthy and Fit?</h2>
+    <p>
+      To eat healthy for fitness, build most meals around a lean protein source, high-fiber carbohydrates, colorful vegetables or fruit, healthy fats, and water. Eat more carbohydrates around harder training days, prioritize protein for muscle repair, stay hydrated, and adjust portions based on your goal: fat loss, muscle gain, endurance, or general health.
+    </p>
+    <p>
+      The best fitness diet is not a perfect diet. It is a repeatable system you can follow most days.
+    </p>
+  </section>
+
+  <nav class="gutf-toc" aria-label="Table of contents">
+    <strong>Table of Contents</strong>
+    <ol>
+      <li><a href="#fitness-plate">The Fitness Plate Method</a></li>
+      <li><a href="#macros">Protein, Carbs, and Fats for Fitness</a></li>
+      <li><a href="#pre-workout">What to Eat Before a Workout</a></li>
+      <li><a href="#post-workout">What to Eat After a Workout</a></li>
+      <li><a href="#hydration">Hydration and Electrolytes</a></li>
+      <li><a href="#meal-plan">Simple 1-Day Fitness Meal Plan</a></li>
+      <li><a href="#mistakes">Common Nutrition Mistakes</a></li>
+      <li><a href="#smartwatches">Optional Smartwatches for Seniors</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <section id="fitness-plate">
+    <h2>The Fitness Plate Method: The Easiest Way to Eat Better</h2>
+    <p>
+      If nutrition feels confusing, start with the plate method. You do not need to weigh every gram of food to improve your eating habits. A strong fitness meal usually includes protein, carbohydrates, plants, fats, and fluid.
+    </p>
+
+    <div class="gutf-grid">
+      <div class="gutf-card">
+        <span class="gutf-stat">25–35%</span>
+        <h3>Lean Protein</h3>
+        <p>
+          Choose chicken, turkey, eggs, Greek yogurt, fish, lean beef, tofu, tempeh, cottage cheese, lentils, beans, or a quality protein powder when convenience matters. Protein supports muscle repair, recovery, and satiety.
+        </p>
+      </div>
+
+      <div class="gutf-card">
+        <span class="gutf-stat">25–40%</span>
+        <h3>Smart Carbohydrates</h3>
+        <p>
+          Carbs fuel hard training. Choose oats, rice, potatoes, quinoa, whole-grain bread, beans, lentils, fruit, and starchy vegetables. Increase portions on harder training days and reduce slightly on rest days if fat loss is the goal.
+        </p>
+      </div>
+
+      <div class="gutf-card">
+        <span class="gutf-stat">30–50%</span>
+        <h3>Colorful Plants</h3>
+        <p>
+          Vegetables and fruit provide fiber, potassium, magnesium, vitamin C, antioxidants, and volume. They help you feel full while supporting overall health and recovery.
+        </p>
+      </div>
+
+      <div class="gutf-card">
+        <span class="gutf-stat">1–2 thumbs</span>
+        <h3>Healthy Fats</h3>
+        <p>
+          Add olive oil, avocado, nuts, seeds, salmon, sardines, chia seeds, flaxseed, or natural nut butter. Fats support hormones, cell function, and meal satisfaction, but portions matter because fats are calorie-dense.
+        </p>
+      </div>
+    </div>
+
+    <p>
+      For a personalized starting point, use the <a href="https://gearuptofit.com/fitness-and-health-calculators/macro-calculator/" target="_blank">GearUpToFit macro calculator for protein, carbs, and fat targets</a>. Then match your nutrition to a structured plan with the <a href="https://gearuptofit.com/free-fitness-plan/" target="_blank">free personalized fitness plan</a>.
+    </p>
+  </section>
+
+  <section id="macros">
+    <h2>Protein, Carbs, and Fats: What Each Macro Does for Fitness</h2>
+
+    <h3>Protein: The Muscle Repair and Recovery Macro</h3>
+    <p>
+      Protein is essential for active people because training creates a stimulus that your body must recover from. Protein gives your body amino acids to repair tissue, preserve lean mass during fat loss, and support muscle growth when paired with resistance training.
+    </p>
+    <p>
+      A practical target for many exercising adults is <strong>1.4–2.0 grams of protein per kilogram of body weight per day</strong>. If you are older, dieting, strength training hard, or trying to preserve muscle while losing fat, you may benefit from the higher end of that range.
+    </p>
+
+    <ul class="gutf-checklist">
+      <li><strong>Best animal protein options:</strong> eggs, Greek yogurt, chicken, turkey, fish, lean beef, cottage cheese, milk, and whey protein.</li>
+      <li><strong>Best plant protein options:</strong> tofu, tempeh, edamame, lentils, beans, chickpeas, soy milk, pea protein, and mixed plant protein powders.</li>
+      <li><strong>Simple habit:</strong> include a palm-sized protein source at each main meal.</li>
+    </ul>
+
+    <p>
+      For a more specific number, use the <a href="https://gearuptofit.com/fitness-and-health-calculators/fat-loss-protein-calculator/" target="_blank">GearUpToFit protein calculator for fat loss and muscle retention</a>.
+    </p>
+
+    <h3>Carbohydrates: Your Training Fuel</h3>
+    <p>
+      Carbohydrates are often misunderstood. For intense lifting, running, cycling, HIIT, sports, and endurance training, carbs are one of the most useful performance nutrients. They help replenish glycogen and support higher-quality sessions.
+    </p>
+
+    <div class="gutf-table-wrap">
+      <table class="gutf-table">
+        <thead>
+          <tr>
+            <th>Fitness Goal</th>
+            <th>Best Carb Choices</th>
+            <th>How to Use Them</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>General fitness</td>
+            <td>Oats, potatoes, rice, fruit, beans, whole grains</td>
+            <td>Include one fist-sized portion at most meals and adjust based on hunger and energy.</td>
+          </tr>
+          <tr>
+            <td>Strength training</td>
+            <td>Rice, potatoes, oats, bananas, wraps, pasta</td>
+            <td>Place more carbs before and after lifting to support performance and recovery.</td>
+          </tr>
+          <tr>
+            <td>Running or endurance</td>
+            <td>Rice, pasta, potatoes, fruit, bagels, sports fuel for long sessions</td>
+            <td>Increase carbs as weekly mileage, session length, or intensity rises.</td>
+          </tr>
+          <tr>
+            <td>Fat loss</td>
+            <td>Beans, lentils, berries, potatoes, vegetables, oats</td>
+            <td>Keep carbs, but prioritize high-fiber choices and control portions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Healthy Fats: Essential, But Easy to Overdo</h3>
+    <p>
+      Fats are important for hormones, cell membranes, nutrient absorption, brain health, and satisfaction. The mistake is not eating fat. The mistake is forgetting that oils, nuts, nut butters, and avocado are calorie-dense.
+    </p>
+    <p>
+      Good choices include extra-virgin olive oil, avocado, walnuts, chia seeds, flaxseed, pumpkin seeds, salmon, sardines, and natural nut butter.
+    </p>
+  </section>
+
+  <figure class="gutf-figure">
+    <img loading="lazy"
+      src="https://gearuptofit.com/wp-content/uploads/2025/03/Healthy-food-to-boost-your-energy-levels1.avif"
+      alt="Healthy foods that support steady energy levels for workouts and active living"
+      width="1200"
+      height="675"
+      loading="lazy"
+      decoding="async">
+    <figcaption>
+      Choose meals that support steady energy, not quick spikes and crashes.
+    </figcaption>
+  </figure>
+
+  <section id="pre-workout">
+    <h2>What to Eat Before a Workout</h2>
+    <p>
+      Your pre-workout meal should help you train without making you feel heavy or uncomfortable. The harder and longer your session, the more important pre-workout fuel becomes.
+    </p>
+
+    <div class="gutf-table-wrap">
+      <table class="gutf-table">
+        <thead>
+          <tr>
+            <th>Timing</th>
+            <th>Best Choice</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2–3 hours before training</td>
+            <td>A balanced meal with protein, carbs, and moderate fat</td>
+            <td>Chicken rice bowl, tofu stir-fry with rice, turkey sandwich with fruit, eggs with potatoes</td>
+          </tr>
+          <tr>
+            <td>30–90 minutes before training</td>
+            <td>Easy carbohydrates plus light protein</td>
+            <td>Banana with Greek yogurt, oats with berries, toast with honey, smoothie</td>
+          </tr>
+          <tr>
+            <td>Early morning workout</td>
+            <td>Small carb snack if tolerated</td>
+            <td>Banana, dates, applesauce, sports drink, half a bagel</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      If you run or train endurance, read this detailed guide on <a href="https://gearuptofit.com/nutrition/what-to-eat-before-a-half-marathon/" target="_blank">what to eat before a half marathon for peak performance</a>.
+    </p>
+  </section>
+
+  <figure class="gutf-figure">
+    <img loading="lazy"
+      src="https://gearuptofit.com/wp-content/uploads/2024/03/What-To-Eat-Before-A-Half-Marathon-Nutrition-Strategies-for-Peak-Performance-5-1024x585.avif"
+      alt="Pre-workout nutrition foods for endurance training and peak fitness performance"
+      width="1024"
+      height="585"
+      loading="lazy"
+      decoding="async">
+    <figcaption>
+      Pre-workout nutrition works best when it is simple, familiar, and easy to digest.
+    </figcaption>
+  </figure>
+
+  <section id="post-workout">
+    <h2>What to Eat After a Workout</h2>
+    <p>
+      Post-workout nutrition should help your body repair muscle, restore energy, and rehydrate. You do not need to panic if you cannot eat immediately, but you should have a recovery meal or snack within a few hours.
+    </p>
+
+    <ul class="gutf-checklist">
+      <li><strong>Protein:</strong> supports muscle repair and lean mass.</li>
+      <li><strong>Carbohydrates:</strong> replenish energy, especially after hard or long sessions.</li>
+      <li><strong>Fluids:</strong> replace sweat losses and support normal performance.</li>
+      <li><strong>Micronutrients:</strong> fruits and vegetables support overall recovery and health.</li>
+    </ul>
+
+    <h3>Simple Post-Workout Meal Ideas</h3>
+    <ul>
+      <li>Greek yogurt with oats, berries, and honey</li>
+      <li>Chicken burrito bowl with rice, beans, salsa, and avocado</li>
+      <li>Salmon with potatoes and vegetables</li>
+      <li>Tofu stir-fry with rice and mixed vegetables</li>
+      <li>Protein smoothie with banana, berries, and milk or soy milk</li>
+      <li>Eggs with whole-grain toast and fruit</li>
+    </ul>
+
+    <p>
+      For deeper recovery guidance, read <a href="https://gearuptofit.com/fitness/how-to-recover-from-workouts/" target="_blank">how to recover from workouts effectively</a> and try these <a href="https://gearuptofit.com/fitness/recovery-smoothies-post-running/" target="_blank">post-run recovery smoothie ideas</a>.
+    </p>
+  </section>
+
+  <section id="hydration">
+    <h2>Hydration and Electrolytes: The Fitness Foundation Most People Ignore</h2>
+    <p>
+      Hydration affects energy, focus, temperature regulation, digestion, and workout quality. Your needs depend on body size, sweat rate, climate, sodium intake, training intensity, and session duration.
+    </p>
+
+    <div class="gutf-callout">
+      <h3>Simple Hydration Check</h3>
+      <p>
+        You are probably in a reasonable hydration zone if your urine is usually pale yellow, you are not regularly getting dehydration headaches, your body weight does not drop sharply after normal training, and you can complete workouts without unusual dizziness or early fatigue.
+      </p>
+    </div>
+
+    <p>
+      For long, hot, or sweat-heavy sessions, water alone may not be enough. Sodium and other electrolytes can help maintain fluid balance, especially during long runs, outdoor summer training, cycling, and high-sweat gym sessions.
+    </p>
+
+    <p>
+      If you cycle, this guide on what to eat while cycling to fuel your ride gives practical endurance fueling and hydration tips.
+    </p>
+  </section>
+
+  <section id="meal-plan">
+    <h2>A Simple 1-Day Healthy Fitness Meal Plan</h2>
+    <p>
+      Use this as a flexible template. Increase portions if you are trying to gain muscle or training hard. Reduce portions slightly if fat loss is your goal. Keep protein consistent.
+    </p>
+
+    <div class="gutf-table-wrap">
+      <table class="gutf-table">
+        <thead>
+          <tr>
+            <th>Meal</th>
+            <th>Example</th>
+            <th>Why It Works</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Breakfast</td>
+            <td>Greek yogurt bowl with oats, berries, chia seeds, and honey</td>
+            <td>Protein, fiber, carbs, antioxidants, and steady morning energy.</td>
+          </tr>
+          <tr>
+            <td>Lunch</td>
+            <td>Chicken or tofu rice bowl with greens, beans, salsa, avocado, and olive oil</td>
+            <td>Balanced protein, carbs, fats, fiber, and micronutrients.</td>
+          </tr>
+          <tr>
+            <td>Pre-workout snack</td>
+            <td>Banana with cottage cheese, or toast with peanut butter</td>
+            <td>Easy fuel without making digestion difficult.</td>
+          </tr>
+          <tr>
+            <td>Dinner</td>
+            <td>Salmon or lentils with potatoes, roasted vegetables, and salad</td>
+            <td>Supports recovery with protein, potassium-rich carbs, healthy fats, and plants.</td>
+          </tr>
+          <tr>
+            <td>Optional snack</td>
+            <td>Protein smoothie, skyr, boiled eggs, or fruit with nuts</td>
+            <td>Helps hit protein or calorie targets when needed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      To customize this plan, estimate your daily needs with the <a href="https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/" target="_blank">advanced fitness calculator</a>, then read <a href="https://gearuptofit.com/nutrition/nutrition-101-fueling-your-fitness-journey-with-precision/" target="_blank">Nutrition 101: Fueling Your Fitness Journey with Precision</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Helpful Video: Meal Planning Made Easier</h2>
+    <p>
+      This Mayo Clinic meal-planning video is a useful companion if you want healthier meals without overcomplicating your routine.
+    </p>
+
+    <div class="gutf-video" aria-label="Mayo Clinic meal planning video">
+      <iframe
+        src="https://www.youtube.com/embed/JDZfLkXWd4k"
+        title="Mastering Meal Planning and Prep: Your Path to Healthier Eating | Mayo Clinic Diet Tips"
+        frameborder="0"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section id="mistakes">
+    <h2>7 Healthy Eating Mistakes That Slow Fitness Progress</h2>
+
+    <h3>1. Eating “Clean” But Not Enough Protein</h3>
+    <p>
+      A vegetable salad with olive oil can be healthy, but it may not provide enough protein to support training. Add a clear protein source to most meals.
+    </p>
+
+    <h3>2. Cutting Carbs Too Low for Hard Training</h3>
+    <p>
+      Many people feel flat, slow, and under-recovered when they remove carbs while lifting, running, cycling, or doing high-intensity workouts.
+    </p>
+
+    <h3>3. Drinking Calories Without Noticing</h3>
+    <p>
+      Smoothies, coffees, juices, alcohol, and sports drinks can add up quickly. Use them intentionally instead of automatically.
+    </p>
+
+    <h3>4. Using Supplements Before Fixing Meals</h3>
+    <p>
+      Protein powder, creatine, caffeine, and electrolytes can help, but they do not replace consistent meals, sleep, hydration, and smart training.
+    </p>
+
+    <h3>5. Copying Someone Else’s Diet</h3>
+    <p>
+      Your body size, goal, budget, food preferences, training schedule, culture, and medical history matter. Use templates, then personalize.
+    </p>
+
+    <h3>6. Going All-or-Nothing</h3>
+    <p>
+      One imperfect meal does not ruin progress. The bigger issue is letting one meal turn into a week of giving up. Return to your normal routine at the next meal.
+    </p>
+
+    <h3>7. Ignoring Sleep and Recovery</h3>
+    <p>
+      Nutrition works best when paired with enough sleep and smart programming. If soreness, fatigue, poor mood, and low performance keep stacking up, review your recovery habits.
+    </p>
+  </section>
+
+  <section class="gutf-smartwatch-affiliate" id="smartwatches" aria-labelledby="smartwatch-heading">
+    <span class="gutf-eyebrow">Optional Fitness Tracking Tools</span>
+    <h2 id="smartwatch-heading">Best Smartwatches for Seniors Who Want to Track Fitness, Safety, and Daily Activity</h2>
+    <p>
+      This article is about healthy eating for fitness, so nutrition should remain the main focus. However, a smartwatch can help older adults track steps, workouts, heart-rate trends, reminders, and daily activity consistency. The products below use exact product-specific Amazon links with your affiliate tag <strong>papalex-20</strong>.
+    </p>
+
+    <div class="gutf-note">
+      <strong>Important:</strong> Smartwatches are not medical devices and cannot detect every emergency, fall, heart issue, or health problem. They should support, not replace, medical care, emergency planning, caregiver check-ins, or professional advice.
+    </div>
+
+    <div class="gutf-product-grid">
+
+      <article class="gutf-product-card">
+        <div class="gutf-product-image">
+          <a href="https://www.amazon.com/Apple-Watch-Smartwatch-Aluminium-Always/dp/B0DGHQ2QH6?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            <img loading="lazy"
+              src="https://m.media-amazon.com/images/I/71XMTLtZd5L._AC_SL1500_.jpg"
+              alt="Apple Watch Series 10 GPS 46mm Jet Black Aluminum Case with Black Sport Band"
+              width="1000"
+              height="1000"
+              loading="lazy"
+              decoding="async">
+          </a>
+        </div>
+        <div class="gutf-product-body">
+          <h3>Apple Watch Series 10 GPS 46mm</h3>
+          <p>
+            Best for iPhone users who want a bright display, daily activity tracking, heart-health features, Emergency SOS, and strong Apple ecosystem support.
+          </p>
+          <ul>
+            <li>Best fit: seniors with iPhone</li>
+            <li>Large readable display</li>
+            <li>Strong everyday fitness tracking</li>
+          </ul>
+          <a class="gutf-amazon-button" href="https://www.amazon.com/Apple-Watch-Smartwatch-Aluminium-Always/dp/B0DGHQ2QH6?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            View Apple Watch Series 10 on Amazon
+          </a>
+        </div>
+      </article>
+
+      <article class="gutf-product-card">
+        <div class="gutf-product-image">
+          <a href="https://www.amazon.com/SAMSUNG-Bluetooth-Smartwatch-Wellness-Manufacturer/dp/B0D1YNVD88?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            <img loading="lazy"
+              src="https://m.media-amazon.com/images/I/61BT0WhQmsL._AC_SL1500_.jpg"
+              alt="Samsung Galaxy Watch 7 40mm Bluetooth AI Smartwatch Cream"
+              width="1000"
+              height="1000"
+              loading="lazy"
+              decoding="async">
+          </a>
+        </div>
+        <div class="gutf-product-body">
+          <h3>Samsung Galaxy Watch 7 40mm Bluetooth</h3>
+          <p>
+            Best for Samsung and Android users who want activity tracking, heart-rate monitoring, sleep tracking, wellness insights, and a compact smartwatch design.
+          </p>
+          <ul>
+            <li>Best fit: Samsung and Android users</li>
+            <li>Compact 40mm case</li>
+            <li>Fitness, sleep, and wellness tracking</li>
+          </ul>
+          <a class="gutf-amazon-button" href="https://www.amazon.com/SAMSUNG-Bluetooth-Smartwatch-Wellness-Manufacturer/dp/B0D1YNVD88?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            View Galaxy Watch 7 on Amazon
+          </a>
+        </div>
+      </article>
+
+      <article class="gutf-product-card">
+        <div class="gutf-product-image">
+          <a href="https://www.amazon.com/Garmin-Stainless-1-4-Inch-Touchscreen-Silicone/dp/B0CDC6H66Y?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            <img loading="lazy"
+              src="https://m.media-amazon.com/images/I/61NOTGgLWJL._AC_SY300_SX300_QL70_FMwebp_.jpg"
+              alt="Garmin Venu 3 Slate Stainless Steel Bezel 45mm Black Case Silicone Band"
+              width="600"
+              height="600"
+              loading="lazy"
+              decoding="async">
+          </a>
+        </div>
+        <div class="gutf-product-body">
+          <h3>Garmin Venu 3 45mm</h3>
+          <p>
+            Best for active older adults who want long battery life, GPS activity tracking, health insights, and Garmin’s fitness-focused ecosystem.
+          </p>
+          <ul>
+            <li>Best fit: active seniors</li>
+            <li>Strong battery life</li>
+            <li>GPS and health-tracking features</li>
+          </ul>
+          <a class="gutf-amazon-button" href="https://www.amazon.com/Garmin-Stainless-1-4-Inch-Touchscreen-Silicone/dp/B0CDC6H66Y?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">
+            View Garmin Venu 3 on Amazon
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="gutf-affiliate-note">
+      As an Amazon Associate, GearUpToFit may earn from qualifying purchases. Product prices, availability, colors, seller details, sizes, and included bands can change on Amazon. Always confirm the exact model, compatibility, and seller before buying.
+    </p>
+  </section>
+
+  <section class="gutf-cta">
+    <h2>Build Your Fitness Nutrition Plan Today</h2>
+    <p>
+      Start simple: choose a protein source, add smart carbohydrates, include colorful plants, control fats, drink enough fluids, and repeat meals that make your life easier. Consistency beats complexity.
+    </p>
+    <a class="gutf-btn" href="https://gearuptofit.com/nutrition/" target="_blank">Explore More GearUpToFit Nutrition Guides</a>
+  </section>
+
+  <section id="faq" class="gutf-faq">
+    <h2>FAQ: How to Eat Healthy for Fitness</h2>
+
+    <details>
+      <summary>What is the healthiest diet for fitness?</summary>
+      <p>
+        The healthiest diet for fitness is a balanced, repeatable diet that supports your training and recovery. Most people do best with lean protein, high-fiber carbohydrates, fruits, vegetables, healthy fats, and enough fluids.
+      </p>
+    </details>
+
+    <details>
+      <summary>How much protein do I need for fitness?</summary>
+      <p>
+        Many active adults do well around 1.4–2.0 grams of protein per kilogram of body weight per day. Your ideal amount depends on your size, age, goal, training, and health status.
+      </p>
+    </details>
+
+    <details>
+      <summary>Should I eat carbs if I want to lose fat?</summary>
+      <p>
+        Yes. You can lose fat while eating carbs if your total calorie intake supports fat loss. Choose high-fiber carbs like potatoes, oats, beans, lentils, fruit, and whole grains most of the time.
+      </p>
+    </details>
+
+    <details>
+      <summary>What should I eat before a workout?</summary>
+      <p>
+        For harder workouts, eat carbohydrates with some protein. Good options include banana with Greek yogurt, oats with berries, toast with honey, a smoothie, or a rice bowl eaten a few hours before training.
+      </p>
+    </details>
+
+    <details>
+      <summary>What should I eat after a workout?</summary>
+      <p>
+        Eat protein, carbohydrates, and fluids. Good examples include Greek yogurt with oats and berries, chicken with rice and vegetables, tofu stir-fry, salmon with potatoes, or a protein smoothie.
+      </p>
+    </details>
+
+    <details>
+      <summary>Do I need supplements to get fit?</summary>
+      <p>
+        No. Supplements are optional. Protein powder can help with convenience, creatine may support strength goals, and electrolytes can help during long or sweaty sessions, but food, sleep, hydration, and training matter most.
+      </p>
+    </details>
+
+    <details>
+      <summary>How many meals should I eat per day for fitness?</summary>
+      <p>
+        Most people do well with 3–4 meals per day, but meal frequency is flexible. Total daily intake, protein consistency, food quality, and adherence matter more than eating at a perfect time.
+      </p>
+    </details>
+
+    <details>
+      <summary>Can I lose fat and gain muscle at the same time?</summary>
+      <p>
+        Yes, especially if you are newer to training, returning after a break, or carrying extra body fat. Prioritize strength training, adequate protein, sleep, and a modest calorie deficit or maintenance calories.
+      </p>
+    </details>
+  </section>
+
+  <section>
+    <h2>Final Takeaway</h2>
+    <p>
+      Healthy eating for fitness does not need to be extreme. Eat enough protein, use carbohydrates to fuel training, include fruits and vegetables daily, add healthy fats in reasonable portions, hydrate well, and adjust your portions based on results. The best plan is the one you can repeat.
+    </p>
+  </section>
+
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/"
+      },
+      "headline": "How to Eat Healthy for Fitness: The Complete Guide to Fuel, Recovery, Energy, and Real Results",
+      "description": "A practical, science-backed guide to eating healthy for fitness, including protein, carbohydrates, fats, hydration, pre-workout meals, post-workout recovery, meal planning, and common mistakes.",
+      "image": [
+        "https://gearuptofit.com/wp-content/uploads/2023/09/how-to-eat-healthy-for-fitness_665.png",
+        "https://gearuptofit.com/wp-content/uploads/2025/03/Healthy-food-to-boost-your-energy-levels1.avif",
+        "https://gearuptofit.com/wp-content/uploads/2024/03/What-To-Eat-Before-A-Half-Marathon-Nutrition-Strategies-for-Peak-Performance-5-1024x585.avif"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "GearUpToFit",
+        "url": "https://gearuptofit.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GearUpToFit",
+        "url": "https://gearuptofit.com/"
+      },
+      "dateModified": "2026-05-12",
+      "datePublished": "2023-09-01",
+      "inLanguage": "en-US",
+      "about": [
+        "fitness nutrition",
+        "healthy eating",
+        "pre-workout nutrition",
+        "post-workout recovery",
+        "hydration",
+        "protein intake"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the healthiest diet for fitness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The healthiest diet for fitness is a balanced, repeatable diet that supports your training and recovery. Most people do best with lean protein, high-fiber carbohydrates, fruits, vegetables, healthy fats, and enough fluids."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much protein do I need for fitness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many active adults do well around 1.4 to 2.0 grams of protein per kilogram of body weight per day. Your ideal amount depends on your size, age, goal, training, and health status."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I eat carbs if I want to lose fat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can lose fat while eating carbs if your total calorie intake supports fat loss. Choose high-fiber carbs like potatoes, oats, beans, lentils, fruit, and whole grains most of the time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I eat before a workout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For harder workouts, eat carbohydrates with some protein. Good options include banana with Greek yogurt, oats with berries, toast with honey, a smoothie, or a rice bowl eaten a few hours before training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I eat after a workout?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eat protein, carbohydrates, and fluids. Good examples include Greek yogurt with oats and berries, chicken with rice and vegetables, tofu stir-fry, salmon with potatoes, or a protein smoothie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need supplements to get fit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Supplements are optional. Protein powder can help with convenience, creatine may support strength goals, and electrolytes can help during long or sweaty sessions, but food, sleep, hydration, and training matter most."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many meals should I eat per day for fitness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most people do well with 3 to 4 meals per day, but meal frequency is flexible. Total daily intake, protein consistency, food quality, and adherence matter more than eating at a perfect time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I lose fat and gain muscle at the same time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, especially if you are newer to training, returning after a break, or carrying extra body fat. Prioritize strength training, adequate protein, sleep, and a modest calorie deficit or maintenance calories."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/#video",
+      "name": "Mastering Meal Planning and Prep: Your Path to Healthier Eating",
+      "description": "A Mayo Clinic meal-planning video embedded as a practical companion to this healthy eating for fitness guide.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JDZfLkXWd4k/hqdefault.jpg",
+      "uploadDate": "2024-01-01",
+      "embedUrl": "https://www.youtube.com/embed/JDZfLkXWd4k"
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://gearuptofit.com/fitness/how-to-eat-healthy-for-fitness/#smartwatch-products",
+      "name": "Best Smartwatches for Seniors Who Want to Track Fitness, Safety, and Daily Activity",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Product",
+            "name": "Apple Watch Series 10 GPS 46mm",
+            "image": "https://m.media-amazon.com/images/I/71XMTLtZd5L._AC_SL1500_.jpg",
+            "url": "https://www.amazon.com/Apple-Watch-Smartwatch-Aluminium-Always/dp/B0DGHQ2QH6?tag=papalex-20",
+            "brand": {
+              "@type": "Brand",
+              "name": "Apple"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Product",
+            "name": "Samsung Galaxy Watch 7 40mm Bluetooth",
+            "image": "https://m.media-amazon.com/images/I/61BT0WhQmsL._AC_SL1500_.jpg",
+            "url": "https://www.amazon.com/SAMSUNG-Bluetooth-Smartwatch-Wellness-Manufacturer/dp/B0D1YNVD88?tag=papalex-20",
+            "brand": {
+              "@type": "Brand",
+              "name": "Samsung"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Product",
+            "name": "Garmin Venu 3 45mm",
+            "image": "https://m.media-amazon.com/images/I/61NOTGgLWJL._AC_SY300_SX300_QL70_FMwebp_.jpg",
+            "url": "https://www.amazon.com/Garmin-Stainless-1-4-Inch-Touchscreen-Silicone/dp/B0CDC6H66Y?tag=papalex-20",
+            "brand": {
+              "@type": "Brand",
+              "name": "Garmin"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/weight-loss/40-40-20-diet-meal-plans/">40-40-20 diet meal plan</a></li><li><a href="https://gearuptofit.com/running/fueling-tips-for-every-runner/">fueling guide for runners</a></li><li><a href="https://gearuptofit.com/review/5k-training-plan/">5K training plan 2026</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"Quick Answer: What Should You Eat to Be Healthy and Fit?","@type":"Question","acceptedAnswer":{"text":"To eat healthy for fitness, build most meals around a lean protein source, high-fiber carbohydrates, colorful vegetables or fruit, healthy fats, and water. Eat more carbohydrates around harder training days, prioritize protein for muscle repair, stay hydrated, and adjust portions based on your goal: fat loss, muscle gain, endurance, or general health.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

@@ -1,0 +1,1254 @@
+<p><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&#038;family=JetBrains+Mono:wght@500&#038;display=swap" rel="stylesheet">
+<style>/* Site-wide sidebar hide */
+.widget-container,.widget-title,.widget_archive,.widget_meta,.widget_recent_entries,.widget_recent_comments,.widget_categories,.widget_tag_cloud,.widget_search,aside,#sidebar,.sidebar,[class*="widget-archives"],[class*="widget-meta"],#secondary,.widget-area{display:none!important;height:0!important;overflow:hidden!important}
+#primary,.site-content,.content-area,article{width:100%!important;max-width:100%!important;float:none!important}
+/* ═══════════════════════════════════════════════
+   GUTF 2.0 — Enterprise Design System
+   ═══════════════════════════════════════════════ */
+:root {
+  --gutf-bg: #f8f9fc;
+  --gutf-surface: #ffffff;
+  --gutf-surface-alt: #f1f3f8;
+  --gutf-border: #e2e6ef;
+  --gutf-border-light: #eef1f6;
+  --gutf-text-primary: #111827;
+  --gutf-text-secondary: #4b5563;
+  --gutf-text-muted: #6b7280;
+  --gutf-text-faint: #9ca3af;
+  --gutf-accent: #4f46e5;
+  --gutf-accent-light: #eef2ff;
+  --gutf-accent-hover: #4338ca;
+  --gutf-success: #059669;
+  --gutf-success-light: #ecfdf5;
+  --gutf-success-border: #a7f3d0;
+  --gutf-warning: #d97706;
+  --gutf-warning-light: #fffbeb;
+  --gutf-warning-border: #fcd34d;
+  --gutf-danger: #dc2626;
+  --gutf-danger-light: #fef2f2;
+  --gutf-danger-border: #fca5a5;
+  --gutf-info: #2563eb;
+  --gutf-info-light: #eff6ff;
+  --gutf-info-border: #93c5fd;
+  --gutf-radius-sm: 8px;
+  --gutf-radius-md: 14px;
+  --gutf-radius-lg: 20px;
+  --gutf-radius-xl: 28px;
+  --gutf-shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --gutf-shadow-md: 0 4px 16px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
+  --gutf-shadow-lg: 0 12px 40px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+  --gutf-shadow-xl: 0 20px 60px rgba(0,0,0,.1), 0 8px 20px rgba(0,0,0,.05);
+  --gutf-transition: all .25s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Article Container */
+.gutf-article {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.75;
+  color: var(--gutf-text-secondary);
+  font-size: 16.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* ── Typography ── */
+.gutf-article h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 900;
+  color: var(--gutf-text-primary);
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  margin: 0 0 20px;
+}
+.gutf-article h2 {
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--gutf-text-primary);
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  margin: 56px 0 16px;
+  padding-top: 32px;
+  border-top: 2px solid var(--gutf-border-light);
+}
+.gutf-article h2:first-child,
+.gutf-article section:first-child h2 { margin-top: 0; border-top: none; padding-top: 0; }
+.gutf-article h3 {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--gutf-text-primary);
+  margin: 32px 0 12px;
+  line-height: 1.35;
+}
+.gutf-article h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gutf-text-primary);
+  margin: 20px 0 8px;
+}
+.gutf-article p {
+  margin: 0 0 18px;
+  color: var(--gutf-text-secondary);
+}
+.gutf-article strong { font-weight: 700; color: var(--gutf-text-primary); }
+.gutf-article em { color: var(--gutf-text-muted); }
+/* ── Links ── */
+.gutf-article a {
+  color: var(--gutf-accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1.5px solid transparent;
+  transition: var(--gutf-transition);
+}
+.gutf-article a:hover {
+  color: var(--gutf-accent-hover);
+  border-bottom-color: var(--gutf-accent-hover);
+}
+/* ── Lists ── */
+.gutf-article ul, .gutf-article ol { margin: 12px 0 18px; padding-left: 22px; }
+.gutf-article li { margin: 6px 0; color: var(--gutf-text-secondary); }
+.gutf-article li::marker { color: var(--gutf-accent); }
+/* ── Images ── */
+.gutf-article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--gutf-radius-lg);
+  margin: 24px 0;
+  box-shadow: var(--gutf-shadow-lg);
+}
+/* ══════════════════════════════════════
+   COMPONENT LIBRARY
+   ══════════════════════════════════════ */
+/* Hero Banner */
+.gutf-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+  border-radius: var(--gutf-radius-xl);
+  padding: clamp(32px, 6vw, 56px) clamp(24px, 5vw, 48px);
+  margin: 0 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+.gutf-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99,102,241,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.gutf-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16,185,129,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.gutf-hero h1 { color: #fff; position: relative; z-index: 1; }
+.gutf-hero .gutf-hero__subtitle {
+  color: rgba(255,255,255,.7);
+  font-size: clamp(.95rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+.gutf-hero .gutf-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+/* Card — Glass Surface */
+.gutf-card {
+  background: var(--gutf-surface);
+  border: 1px solid var(--gutf-border);
+  border-radius: var(--gutf-radius-md);
+  padding: 24px;
+  box-shadow: var(--gutf-shadow-sm);
+  transition: var(--gutf-transition);
+}
+.gutf-card:hover { box-shadow: var(--gutf-shadow-md); }
+/* Grid Layout */
+.gutf-grid {
+  display: grid;
+  gap: 16px;
+}
+.gutf-grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.gutf-grid--3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+/* Flex helpers */
+.gutf-flex { display: flex; }
+.gutf-flex--col { flex-direction: column; }
+.gutf-flex--gap { gap: 14px; }
+.gutf-flex--center { align-items: center; }
+/* Callout Boxes */
+.gutf-callout {
+  border-radius: 0 var(--gutf-radius-md) var(--gutf-radius-md) 0;
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-left: 4px solid;
+}
+.gutf-callout--warning {
+  background: var(--gutf-warning-light);
+  border-color: var(--gutf-warning);
+}
+.gutf-callout--warning .gutf-callout__title { color: #92400e; }
+.gutf-callout--warning .gutf-callout__body { color: #78350f; }
+.gutf-callout--info {
+  background: var(--gutf-info-light);
+  border-color: var(--gutf-info);
+}
+.gutf-callout--info .gutf-callout__title { color: #1e40af; }
+.gutf-callout--info .gutf-callout__body { color: #1e3a5f; }
+.gutf-callout--success {
+  background: var(--gutf-success-light);
+  border-color: var(--gutf-success);
+}
+.gutf-callout--success .gutf-callout__title { color: #065f46; }
+.gutf-callout--success .gutf-callout__body { color: #064e3b; }
+.gutf-callout--danger {
+  background: var(--gutf-danger-light);
+  border-color: var(--gutf-danger);
+}
+.gutf-callout--danger .gutf-callout__title { color: #991b1b; }
+.gutf-callout--danger .gutf-callout__body { color: #7f1d1d; }
+.gutf-callout__title {
+  font-weight: 800;
+  font-size: 15px;
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gutf-callout__body { margin: 0; font-size: 15px; }
+/* Insight Banner (gradient) */
+.gutf-insight {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+  border-radius: var(--gutf-radius-md);
+  padding: 22px 28px;
+  margin: 28px 0;
+  position: relative;
+  overflow: hidden;
+}
+.gutf-insight::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.gutf-insight p {
+  margin: 0;
+  color: #fff;
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+/* Execution Checklist */
+.gutf-checklist {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  border-radius: var(--gutf-radius-lg);
+  padding: 32px 28px;
+  margin: 28px 0;
+  color: #fff;
+}
+.gutf-checklist__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.gutf-checklist__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.gutf-checklist__title { font-size: 20px; font-weight: 800; margin: 0; }
+.gutf-checklist__items { display: flex; flex-direction: column; gap: 12px; }
+.gutf-checklist__item {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--gutf-radius-sm);
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: var(--gutf-transition);
+  border-left: 3px solid #6366f1;
+}
+.gutf-checklist__item:hover { background: rgba(255,255,255,.08); }
+.gutf-checklist__num {
+  min-width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.gutf-checklist__item-title { font-weight: 700; font-size: 15.5px; margin: 0 0 3px; }
+.gutf-checklist__item-desc { margin: 0; color: rgba(255,255,255,.55); font-size: 14px; }
+.gutf-checklist__footer {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--gutf-radius-sm);
+}
+.gutf-checklist__footer p {
+  margin: 0;
+  color: rgba(255,255,255,.7);
+  font-size: 14px;
+}
+/* Table — Premium Style */
+.gutf-table-wrap {
+  margin: 24px 0;
+  border-radius: var(--gutf-radius-md);
+  overflow: hidden;
+  box-shadow: var(--gutf-shadow-md);
+  border: 1px solid var(--gutf-border);
+}
+.gutf-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--gutf-surface);
+  font-size: .93rem;
+}
+.gutf-table-wrap thead tr {
+  background: linear-gradient(135deg, #f8fafc, #eef1f8);
+}
+.gutf-table-wrap th {
+  padding: 14px 18px;
+  text-align: left;
+  font-weight: 800;
+  font-size: .8rem;
+  color: var(--gutf-text-primary);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  border-bottom: 2px solid var(--gutf-border);
+}
+.gutf-table-wrap td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gutf-border-light);
+  color: var(--gutf-text-secondary);
+}
+.gutf-table-wrap tbody tr:last-child td { border-bottom: none; }
+.gutf-table-wrap tbody tr { transition: var(--gutf-transition); }
+.gutf-table-wrap tbody tr:hover td { background: #f8fafd; }
+/* Dark header table variant */
+.gutf-table-wrap--dark thead tr {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+.gutf-table-wrap--dark th { color: #fff; border-bottom-color: #334155; }
+/* Plate template */
+.gutf-plate {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.gutf-plate__item {
+  background: var(--gutf-surface-alt);
+  border: 1px solid var(--gutf-border);
+  border-radius: var(--gutf-radius-sm);
+  padding: 16px;
+  text-align: center;
+  transition: var(--gutf-transition);
+}
+.gutf-plate__item:hover { transform: translateY(-2px); box-shadow: var(--gutf-shadow-md); }
+.gutf-plate__portion {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gutf-accent);
+  margin: 0 0 4px;
+}
+.gutf-plate__label { margin: 0; font-size: 14px; color: var(--gutf-text-muted); }
+/* FAQ Accordion */
+.gutf-faq { margin: 8px 0; }
+.gutf-faq__item {
+  border: 1px solid var(--gutf-border);
+  border-radius: var(--gutf-radius-sm);
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: var(--gutf-transition);
+}
+.gutf-faq__item:hover { box-shadow: var(--gutf-shadow-sm); }
+.gutf-faq__q {
+  background: var(--gutf-surface-alt);
+  padding: 16px 20px;
+  font-weight: 800;
+  font-size: 15.5px;
+  color: var(--gutf-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gutf-faq__q::before {
+  content: 'Q';
+  min-width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gutf-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.gutf-faq__a {
+  padding: 16px 20px;
+  background: var(--gutf-surface);
+  color: var(--gutf-text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+/* Shopping List */
+.gutf-shop {
+  background: var(--gutf-surface-alt);
+  border: 1px solid var(--gutf-border);
+  border-radius: var(--gutf-radius-md);
+  padding: 24px;
+  margin: 20px 0;
+}
+.gutf-shop__title {
+  font-weight: 900;
+  font-size: 17px;
+  margin: 0 0 16px;
+  color: var(--gutf-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gutf-shop__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.gutf-shop__cat-title {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--gutf-text-primary);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.gutf-shop ul { margin: 0; padding-left: 18px; }
+.gutf-shop li { font-size: 14.5px; margin: 4px 0; }
+/* Sources Box */
+.gutf-sources {
+  background: var(--gutf-surface-alt);
+  border-radius: var(--gutf-radius-md);
+  padding: 28px;
+  margin-top: 32px;
+}
+.gutf-sources__title {
+  font-weight: 800;
+  font-size: 18px;
+  margin: 0 0 14px;
+  color: var(--gutf-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gutf-sources ul { margin: 0; padding-left: 18px; }
+.gutf-sources li { font-size: 14px; margin: 6px 0; }
+.gutf-sources a { font-weight: 600; }
+/* Author Card */
+.gutf-author {
+  background: var(--gutf-surface);
+  border: 1px solid var(--gutf-border);
+  border-radius: var(--gutf-radius-md);
+  padding: 28px;
+  margin-top: 32px;
+}
+.gutf-author__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gutf-text-faint);
+  margin: 0 0 4px;
+}
+.gutf-author__name {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--gutf-text-primary);
+  margin: 0 0 10px;
+}
+.gutf-author__bio { margin: 0 0 16px; font-size: 15px; color: var(--gutf-text-secondary); }
+.gutf-author__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--gutf-text-muted);
+  margin-bottom: 16px;
+}
+.gutf-author__standards {
+  background: var(--gutf-surface-alt);
+  border-radius: var(--gutf-radius-sm);
+  padding: 16px;
+}
+.gutf-author__standards-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gutf-text-primary);
+  margin: 0 0 8px;
+}
+.gutf-author__standards ul { margin: 0; padding-left: 18px; }
+.gutf-author__standards li { font-size: 13px; margin: 4px 0; }
+/* Video Embed */
+.gutf-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--gutf-radius-md);
+  border: 1px solid var(--gutf-border);
+  box-shadow: var(--gutf-shadow-md);
+  margin: 12px 0;
+}
+.gutf-video iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.gutf-video__caption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--gutf-text-faint);
+}
+/* Workout Option Cards */
+.gutf-option-card {
+  background: var(--gutf-surface);
+  border: 1px solid var(--gutf-border);
+  border-radius: var(--gutf-radius-md);
+  padding: 20px;
+  transition: var(--gutf-transition);
+}
+.gutf-option-card:hover { box-shadow: var(--gutf-shadow-md); transform: translateY(-1px); }
+.gutf-option-card__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gutf-accent-light);
+  color: var(--gutf-accent);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.gutf-option-card__title { font-weight: 800; font-size: 16px; margin: 0 0 8px; color: var(--gutf-text-primary); }
+.gutf-option-card__body { margin: 0; font-size: 14.5px; color: var(--gutf-text-secondary); }
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gutf-article { padding: 20px 16px 48px; }
+  .gutf-hero { padding: 28px 20px; border-radius: var(--gutf-radius-lg); }
+  .gutf-checklist { padding: 24px 18px; }
+  .gutf-table-wrap { border-radius: var(--gutf-radius-sm); }
+  .gutf-table-wrap table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .gutf-table-wrap th, .gutf-table-wrap td { padding: 11px 14px; font-size: .88rem; white-space: nowrap; }
+  .gutf-plate { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .gutf-article { padding: 14px 12px 40px; font-size: 15.5px; }
+  .gutf-article h1 { font-size: 1.6rem; }
+  .gutf-article h2 { font-size: 1.25rem; margin-top: 40px; }
+  .gutf-grid--2, .gutf-grid--3 { grid-template-columns: 1fr; }
+  .gutf-checklist__item { flex-direction: column; gap: 8px; }
+}
+</style>
+</p>
+<article class="gutf-article" itemscope itemtype="https://schema.org/Article">
+<p>  <!-- ══════════════════════════════════
+       HERO
+       ══════════════════════════════════ --></p>
+<header class="gutf-hero">
+<div class="gutf-hero__badge">📋 Evidence-Based · 14-Day Plan · Updated Feb 2026</div>
+<p class="gutf-hero__subtitle speakable-summary">A no-BS blueprint for losing weight in two weeks — built on a moderate calorie deficit, high-protein meals, daily walking, short strength sessions, and the tracking habits that prevent self-sabotage. No crash diets. No miracle supplements. Just the levers that actually move the needle.</p>
+</header>
+<p>  <!-- ══════════════════════════════════
+       WHAT CHANGES IN 14 DAYS — TABLE
+       ══════════════════════════════════ --></p>
+<section aria-label="What changes in 14 days">
+<div class="gutf-table-wrap">
+<table>
+<thead>
+<tr>
+<th>What changes in 14 days</th>
+<th>What it is</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fat loss</strong></td>
+<td>Stored energy burned over time</td>
+<td>This is the <em>real</em> goal — and it&#8217;s slower than most people want.</td>
+</tr>
+<tr>
+<td><strong>Water + glycogen</strong></td>
+<td>Carb/sodium shifts change how much water you hold</td>
+<td>Explains why Week 1 often looks dramatic… and why it can bounce back.</td>
+</tr>
+<tr>
+<td><strong>&#8220;Food volume&#8221; + bloat</strong></td>
+<td>Gut contents, fiber changes, alcohol</td>
+<td>You can look tighter fast by cleaning this up (without starving).</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<p>  <!-- WARNING CALLOUT --></p>
+<div class="gutf-callout gutf-callout--warning" role="alert">
+<p class="gutf-callout__title">⚠️ The biggest mistake</p>
+<p class="gutf-callout__body">Most people try to &#8220;win&#8221; the scale in 14 days by crashing calories. The scale moves. Their hunger, sleep, and training crash. Then the rebound hits. The right play is a <strong>moderate deficit</strong> you can execute perfectly for 14 days.</p>
+</p>
+</div>
+<p>  <!-- INSIGHT --></p>
+<div class="gutf-insight" role="note">
+<p>The &#8220;2-week transformation&#8221; is mostly a <strong>consistency challenge</strong>. The biology is boring. Your execution isn&#8217;t.</p>
+</p>
+</div>
+<div style="background:linear-gradient(135deg,#fff 0%,#fef2f2 100%);border-left:5px solid #dc2626;border-radius:0 16px 16px 0;padding:20px 22px;margin:28px 0;">
+<h2 style="margin-top:0;">⚕️ Health Disclaimer — Read Before You Start</h2>
+<p><strong>This article is for educational purposes only and is not medical advice.</strong> Rapid weight loss is not appropriate for everyone. <strong>Talk to your doctor before starting any weight-loss plan</strong> — especially if you are pregnant or breastfeeding, have diabetes, heart disease, kidney disease, thyroid conditions, a history of eating disorders, or take prescription medications. A clinician can help you set a safe calorie target for your individual situation.</p>
+<p style="margin-bottom:0;">If you have a history of disordered eating, restrictive dieting can be harmful. Consider working with a registered dietitian or therapist who specializes in eating behaviors rather than following a structured deficit plan on your own. The National Eating Disorders Association helpline (1-800-931-2237) is a free, confidential resource.</p>
+</div>
+<div style="background:linear-gradient(135deg,#f0fdf4 0%,#fff 100%);border:1px solid #bbf7d0;border-radius:16px;padding:20px 22px;margin:28px 0;">
+<h2 style="margin-top:0;"><div class="gutf-aeo-direct" style="border:1px solid #d9e2f1;border-left:5px solid #0b5cff;border-radius:14px;padding:16px 18px;margin:16px 0 20px;background:#f8fbff;">
+<div style="font-weight:800;color:#07142b;font-size:1.02rem;line-height:1.65;margin:0">To lose weight in 2 weeks, use a moderate calorie deficit with high protein and fiber, daily walking, and a few strength sessions to protect muscle. A realistic outcome is 2&#8211;4 pounds of true fat loss in 14 days (the CDC recommends 1&#8211;2 lbs/week). Avoid very-low-calorie crash diets &#8212; they cost muscle and trigger rebound.</div>
+</div>
+
+<h2>📊 What&#8217;s a Safe Rate of Weight Loss?</h2>
+<p>The <strong>U.S. Centers for Disease Control and Prevention (CDC)</strong> recommends a gradual weight loss of <strong>1 to 2 pounds per week</strong> — roughly 4 to 8 pounds per month. This pace is more likely to come from fat (not muscle or water), is easier on your metabolism and hormones, and dramatically improves your odds of keeping the weight off.</p>
+<p><strong>What this means for a 2-week plan:</strong> A realistic, healthy outcome is <strong>2 to 4 pounds of true fat loss</strong> in 14 days. You may see a larger number on the scale in week one — but most of that early drop is water and glycogen, not fat. Anyone promising 10+ pounds of fat loss in two weeks is selling something, not science.</p>
+<p style="margin-bottom:0;"><strong>Why crash dieting backfires:</strong> Very-low-calorie diets (under ~1,200/day for most women, ~1,500/day for most men, unless medically supervised) can cause muscle loss, nutrient deficiencies, gallstones, hormonal disruption, extreme hunger, and rapid rebound weight gain. The plan below deliberately avoids this — it uses a <em>moderate</em> deficit you can actually sustain.</p>
+</div>
+<h3>The safe-rate gauge: where your 2 weeks should land</h3>
+<div class="gutf-gauge-intro">Numbers are easier to trust when you can see them. Find your target on this gauge — the green band is where healthy, keepable fat loss lives.</div>
+<style>
+.gutf-gauge{margin:18px 0 26px;border:1px solid #d9e2f1;border-radius:16px;padding:18px;background:#fff;box-shadow:0 8px 22px rgba(15,42,82,.05)}
+.gutf-gaugebar{position:relative;height:34px;border-radius:999px;overflow:hidden;display:flex;margin:10px 0 6px}
+.gutf-gseg{display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:#fff;white-space:nowrap}
+.gutf-gseg.red{background:#b91c1c;flex:0 0 26%}
+.gutf-gseg.green{background:#15803d;flex:0 0 48%}
+.gutf-gseg.dark{background:#451a03;flex:0 0 26%}
+.gutf-glabels{display:flex;font-size:.82rem;color:#5b6678;line-height:1.5}
+.gutf-glabels div{padding:0 6px}
+.gutf-glabels .gl1{flex:0 0 26%}.gutf-glabels .gl2{flex:0 0 48%}.gutf-glabels .gl3{flex:0 0 26%}
+.gutf-glabels strong{color:#07142b;display:block;font-size:.86rem}
+.gutf-gnote{font-size:.88rem;color:#5b6678;margin:10px 0 0;line-height:1.6}
+</style>
+<div class="gutf-gauge">
+<div class="gutf-gaugebar" role="img" aria-label="Weight-loss rate gauge: crash zone, healthy 1 to 2 pounds per week, unrealistic claims">
+<div class="gutf-gseg red">Crash zone</div><div class="gutf-gseg green">Healthy rate</div><div class="gutf-gseg dark">Fantasy claims</div>
+</div>
+<div class="gutf-glabels">
+<div class="gl1"><strong>Under ~1,200 / 1,500 cal/day</strong>Very-low-calorie diets risk muscle loss, gallstones, and rebound.</div>
+<div class="gl2"><strong>1&#8211;2 lbs/week (CDC)</strong>= 2&#8211;4 lbs of true fat loss in 14 days. Mostly fat, easier on metabolism, far more keepable.</div>
+<div class="gl3"><strong>&#8220;10+ lbs of fat in 2 weeks&#8221;</strong>Not science — anyone promising this is selling something.</div>
+</div>
+<div class="gutf-gnote">Week-one scale drops bigger than this are usually water and glycogen, not fat — that is normal, not a bonus.</div>
+</div>
+
+<h3>Your 14 days at a glance</h3>
+<div class="gutf-wk-intro">Five steps is a lot to hold in your head, so here is the whole fortnight on one timeline. Screenshot it — this is the plan you will actually live.</div>
+<style>
+.gutf-wk{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0 30px}
+.gutf-wkcard{border-radius:16px;padding:18px;border:1px solid #d9e2f1;background:#fff;box-shadow:0 8px 22px rgba(15,42,82,.05)}
+.gutf-wkcard.wk1{border-top:5px solid #0b5cff}
+.gutf-wkcard.wk2{border-top:5px solid #0f766e}
+.gutf-wkdays{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 12px;margin:0 0 10px}
+.wk1 .gutf-wkdays{background:#eaf1ff;color:#0b5cff}
+.wk2 .gutf-wkdays{background:#e6f7f0;color:#0f766e}
+.gutf-wktitle{font-weight:800;color:#07142b;font-size:1.02rem;margin:0 0 8px}
+.gutf-wkcard ul{margin:0;padding-left:1.15rem}
+.gutf-wkcard li{margin:.35rem 0;font-size:.92rem;line-height:1.6;color:#263244}
+</style>
+<div class="gutf-wk">
+<div class="gutf-wkcard wk1"><div class="gutf-wkdays">Days 1&#8211;2 &#183; Set up</div><div class="gutf-wktitle">Build your foundation</div><ul>
+<li>Set your calorie target for the 2 weeks (Step 1).</li>
+<li>Stock protein + fiber foods; pick your day templates.</li>
+<li>Baseline weigh-in, photos, and waist measurement — same conditions each time.</li>
+</ul></div>
+<div class="gutf-wkcard wk1"><div class="gutf-wkdays">Days 3&#8211;7 &#183; Rhythm</div><div class="gutf-wktitle">Stack the four levers</div><ul>
+<li>Moderate deficit + protein and fiber at every meal.</li>
+<li>Daily step goal plus 2 strength sessions to protect muscle.</li>
+<li>Expect a fast early scale drop — mostly water and glycogen, not fat.</li>
+</ul></div>
+<div class="gutf-wkcard wk2"><div class="gutf-wkdays">Days 8&#8211;11 &#183; Lock in</div><div class="gutf-wktitle">Protect the routine</div><ul>
+<li>Repeat the day templates; keep the deficit moderate, not extreme.</li>
+<li>Guard sleep and stress — the &#8220;silent&#8221; accelerators from Step 4.</li>
+<li>Track beyond the scale: energy, hunger, measurements, photos.</li>
+</ul></div>
+<div class="gutf-wkcard wk2"><div class="gutf-wkdays">Days 12&#8211;14 &#183; Finish</div><div class="gutf-wktitle">Assess, then decide</div><ul>
+<li>Final weigh-in under identical conditions.</li>
+<li>Compare photos and measurements, not just the scale.</li>
+<li>Choose your next move: another 2-week block or shift to maintenance.</li>
+</ul></div>
+</div>
+
+<p><!-- ══════════════════════════════════
+       THE 14-DAY BLUEPRINT
+       ══════════════════════════════════ --></p>
+<section aria-label="14-day blueprint">
+<h2>How to Lose Weight in 2 Weeks: The 14-Day Blueprint&nbsp;(Do&nbsp;This, Not&nbsp;That)</h2>
+<p class="speakable-answer"><strong>This 14-day blueprint works by stacking four levers:</strong> a measurable calorie deficit, higher protein and fiber for satiety, daily low-stress movement (steps), and a few strength sessions to protect muscle. It&#8217;s built to be repeatable — because repeatable is what works.</p>
+<p>    <!-- EXECUTION CHECKLIST --></p>
+<div class="gutf-checklist" role="list" aria-label="14-Day Execution Checklist">
+<div class="gutf-checklist__header">
+<div class="gutf-checklist__icon" aria-hidden="true">⚡</div>
+<h3 class="gutf-checklist__title">Your 14-Day Execution Checklist</h3>
+</p>
+</div>
+<div class="gutf-checklist__items">
+<div class="gutf-checklist__item" role="listitem">
+<div class="gutf-checklist__num" aria-hidden="true">1</div>
+<div>
+<p class="gutf-checklist__item-title">Pick your deficit target (not a random calorie number)</p>
+<p class="gutf-checklist__item-desc">Use a planner, then aim for a moderate daily deficit you can maintain for 14 days.</p>
+</p>
+</div>
+</div>
+<div class="gutf-checklist__item" role="listitem">
+<div class="gutf-checklist__num" aria-hidden="true">2</div>
+<div>
+<p class="gutf-checklist__item-title">Anchor every meal with protein + plants</p>
+<p class="gutf-checklist__item-desc">This controls hunger and protects lean mass during a short cut.</p>
+</p>
+</div>
+</div>
+<div class="gutf-checklist__item" role="listitem">
+<div class="gutf-checklist__num" aria-hidden="true">3</div>
+<div>
+<p class="gutf-checklist__item-title">Hit a daily step floor</p>
+<p class="gutf-checklist__item-desc">Steps burn calories with low recovery cost. Think &#8220;sustainable daily burn.&#8221;</p>
+</p>
+</div>
+</div>
+<div class="gutf-checklist__item" role="listitem">
+<div class="gutf-checklist__num" aria-hidden="true">4</div>
+<div>
+<p class="gutf-checklist__item-title">Strength train 2–4×/week (short, focused)</p>
+<p class="gutf-checklist__item-desc">Two weeks is short — your goal is to keep muscle while you diet.</p>
+</p>
+</div>
+</div>
+<div class="gutf-checklist__item" role="listitem">
+<div class="gutf-checklist__num" aria-hidden="true">5</div>
+<div>
+<p class="gutf-checklist__item-title">Sleep 7–9 hours &amp; protect your mornings</p>
+<p class="gutf-checklist__item-desc">Poor sleep increases hunger and lowers training quality. That&#8217;s the hidden tax.</p>
+</p>
+</div>
+</div>
+<div class="gutf-checklist__item" role="listitem">
+<div class="gutf-checklist__num" aria-hidden="true">6</div>
+<div>
+<p class="gutf-checklist__item-title">Track the right things (not just the scale)</p>
+<p class="gutf-checklist__item-desc">Use weekly averages + waist measurement + photos to avoid false panic.</p>
+</p>
+</div>
+</div>
+</div>
+<div class="gutf-checklist__footer">
+<p><strong style="color:#fff">⏱️ Time cost:</strong> 45–75 minutes/day total (steps + short training + meal prep). You&#8217;re buying results with focused time.</p>
+</p>
+</div>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       STEP 1: CALORIE TARGET
+       ══════════════════════════════════ --></p>
+<section aria-label="Step 1 — Calorie target">
+<h2>Step 1: Set Your Calorie Target for 2&nbsp;Weeks (Without&nbsp;Guessing)</h2>
+<p class="speakable-answer"><strong>Your calorie target should be personalized,</strong> because your starting weight, height, and activity level change the math. A practical approach is to use a validated calculator (like the NIH Body Weight Planner), then choose a deficit you can execute for 14 straight days without breaking.</p>
+<div class="gutf-grid gutf-grid--2">
+<div class="gutf-card">
+<p style="margin:0 0 10px;font-weight:800;font-size:15.5px;display:flex;align-items:center;gap:8px"><span aria-hidden="true">🧮</span> Quick way to pick a deficit</p>
+<ol style="margin:0;padding-left:18px">
+<li><strong>Estimate maintenance</strong> using the NIH Body Weight Planner.</li>
+<li><strong>Start with a moderate cut</strong> you can stick to for 14 days.</li>
+<li><strong>Adjust with data</strong> after 7 days (not 2).</li>
+</ol>
+<p style="margin:12px 0 0;font-size:13px;color:var(--gutf-text-muted)">Tool: <a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener">NIH/NIDDK Body Weight Planner</a></p>
+</p>
+</div>
+<div class="gutf-card" style="background:var(--gutf-success-light);border-color:var(--gutf-success-border)">
+<p style="margin:0 0 10px;font-weight:800;font-size:15.5px;color:#065f46;display:flex;align-items:center;gap:8px"><span aria-hidden="true">✅</span> What &#8220;safe &amp; sustainable&#8221; usually means</p>
+<p style="margin:0;color:#064e3b;font-size:15px">Health guidance commonly describes <strong>gradual loss (~1–2 lb/week)</strong> as more likely to stick long-term. In 2 weeks, that&#8217;s often a realistic fat-loss band — while your scale may move more due to water shifts.</p>
+<p style="margin:10px 0 0;font-size:13px;color:#065f46">Source: <a href="https://www.cdc.gov/healthy-weight-growth/losing-weight/index.html" target="_blank" rel="noopener" style="color:#065f46">CDC — Steps for Losing Weight</a></p>
+</p>
+</div>
+</div>
+<div class="gutf-callout gutf-callout--info">
+<p class="gutf-callout__title">💡 The 14-day rule that prevents rebounds</p>
+<p class="gutf-callout__body"><strong>Choose the biggest deficit you can execute perfectly</strong> — not the biggest deficit you can &#8220;survive.&#8221; Perfect execution beats heroic suffering every time.</p>
+</p>
+</div>
+<div class="gutf-insight">
+<p>If your plan requires willpower every hour, it&#8217;s not a plan. It&#8217;s a countdown to quitting.</p>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       STEP 2: NUTRITION
+       ══════════════════════════════════ --></p>
+<section aria-label="Step 2 — Nutrition">
+<h2>Step 2: Eat for 2-Week Fat Loss (Protein + Fiber = Hunger&nbsp;Control)</h2>
+<p class="speakable-answer"><strong>Your food strategy in 14 days is simple:</strong> eat meals that keep you full on fewer calories. The easiest way to do that is to prioritize <strong>protein</strong> and <strong>high-volume plants</strong> (vegetables, fruit, beans, whole grains if they fit you).</p>
+<p>    <!-- PLATE TEMPLATE --></p>
+<div class="gutf-card">
+<h3 style="margin:0 0 14px">The &#8220;Plate Template&#8221; <span style="font-weight:500;font-size:14px;color:var(--gutf-text-muted)">(works in restaurants too)</span></h3>
+<div class="gutf-plate">
+<div class="gutf-plate__item">
+<p class="gutf-plate__portion">½</p>
+<p class="gutf-plate__label">Non-starchy vegetables<br />(volume + fiber)</p>
+</p>
+</div>
+<div class="gutf-plate__item">
+<p class="gutf-plate__portion">¼</p>
+<p class="gutf-plate__label">Protein<br />(chicken, fish, eggs, tofu, Greek yogurt)</p>
+</p>
+</div>
+<div class="gutf-plate__item">
+<p class="gutf-plate__portion">¼</p>
+<p class="gutf-plate__label">Carbs or fats<br />(choose whichever you overeat less)</p>
+</p>
+</div>
+</div>
+</div>
+<div class="gutf-callout gutf-callout--success">
+<p class="gutf-callout__title">✅ Your easiest upgrade</p>
+<p class="gutf-callout__body">If you&#8217;re not sure what to change, <strong>increase protein at breakfast and lunch</strong>. It&#8217;s one of the most reliable ways to reduce cravings and protect lean mass while dieting. For a plug-and-play structure, use this guide: <a href="https://gearuptofit.com/weight-loss/protein-rich-diet-plan/" target="_blank">Build a Protein-Rich Diet Plan That Keeps You Full →</a></p>
+</p>
+</div>
+<p>    <!-- LIQUID CALORIES --></p>
+<div class="gutf-card" style="background:var(--gutf-warning-light);border-color:var(--gutf-warning-border)">
+<p style="margin:0 0 10px;font-weight:800;font-size:15.5px;color:#92400e;display:flex;align-items:center;gap:8px"><span aria-hidden="true">🥤</span> The &#8220;liquid calories&#8221; rule (fastest win in 14 days)</p>
+<ul style="margin:0;padding-left:18px;color:#78350f">
+<li><strong>Cut</strong> soda, juice, sweet coffee drinks, alcohol.</li>
+<li><strong>Replace</strong> with water, unsweetened tea, black coffee, or zero-cal drinks.</li>
+<li><strong>Reason:</strong> liquid calories don&#8217;t satisfy hunger the same way food does.</li>
+</ul>
+</div>
+<div class="gutf-insight">
+<p>Your diet doesn&#8217;t fail because you &#8220;lack discipline.&#8221; It fails because your meals don&#8217;t control hunger.</p>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       STEP 3: WORKOUT PLAN
+       ══════════════════════════════════ --></p>
+<section aria-label="Step 3 — Workout plan">
+<h2>Step 3: The 2-Week Workout Plan (Steps + Strength = Fastest&nbsp;Combo)</h2>
+<p class="speakable-answer"><strong>The best 2-week exercise plan is the one you won&#8217;t quit.</strong> That&#8217;s usually a daily step goal plus short strength workouts a few times per week. It&#8217;s aligned with public-health guidance that emphasizes regular aerobic activity and muscle-strengthening days.</p>
+<div class="gutf-table-wrap">
+<table>
+<thead>
+<tr>
+<th>Weekly target</th>
+<th>Minimum effective dose</th>
+<th>Why it works in 14 days</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Daily steps</strong></td>
+<td>30–60 min total walking (split as needed)</td>
+<td>Burns calories with low fatigue; easy to repeat daily.</td>
+</tr>
+<tr>
+<td><strong>Strength training</strong></td>
+<td>2–4 sessions/week (20–40 min)</td>
+<td>Preserves muscle while dieting; improves &#8220;tight&#8221; look.</td>
+</tr>
+<tr>
+<td><strong>Optional HIIT</strong></td>
+<td>1–2 sessions/week (10–20 min)</td>
+<td>Time-efficient, but not required if it increases quitting risk.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gutf-callout gutf-callout--info">
+<p class="gutf-callout__title">💡 The simplest weekly schedule</p>
+<p class="gutf-callout__body"><strong>Mon / Wed / Fri:</strong> strength + steps &nbsp;•&nbsp; <strong>Tue / Thu / Sat:</strong> longer walk &nbsp;•&nbsp; <strong>Sun:</strong> easy walk + mobility.</p>
+<p>If you want a structured cardio add-on: <a href="https://gearuptofit.com/running/running-for-weight-loss/" target="_blank">Use This Running-for-Weight-Loss Plan to Boost Your Weekly Burn →</a></p>
+</p>
+</div>
+<p>    <!-- PRESS-PLAY OPTIONS --></p>
+<div class="gutf-card" style="margin-top:20px">
+<h3 style="margin:0 0 16px">Need a &#8220;press play&#8221; option?</h3>
+<p style="margin:0 0 16px;font-size:15px;color:var(--gutf-text-secondary)">Keep it simple. Pick one low-impact full-body workout and repeat it. Consistency beats variety for 14 days.</p>
+<div class="gutf-grid gutf-grid--2">
+<div class="gutf-option-card">
+<div class="gutf-option-card__label">Option A</div>
+<p class="gutf-option-card__title">Our 30-Minute Template</p>
+<p class="gutf-option-card__body"><a href="https://gearuptofit.com/fitness/dynamic-full-body-hiit-workout/" target="_blank">Try Our 30-Minute Dynamic Full-Body HIIT Blueprint →</a> and scale intensity to your level.</p>
+</p>
+</div>
+<div class="gutf-option-card">
+<div class="gutf-option-card__label">Option B</div>
+<p class="gutf-option-card__title">1 Helpful YouTube Video</p>
+<p class="gutf-option-card__body" style="margin-bottom:12px">A credible, simple message from the CDC to reinforce the basics:</p>
+<div class="gutf-video">
+            <iframe src="https://www.youtube.com/embed/1DloJanE-OQ" title="CDC — Finding A Balance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+<p class="gutf-video__caption">Video: Centers for Disease Control and Prevention (CDC) — &#8220;Finding A Balance&#8221;</p>
+</p>
+</div>
+</div>
+</div>
+<div class="gutf-insight">
+<p>Two weeks is too short for &#8220;perfect programming.&#8221; It&#8217;s the perfect window for <strong>perfect consistency</strong>.</p>
+</p>
+</div>
+<p style="font-size:13px;color:var(--gutf-text-faint);margin-top:8px">Activity guidance reference: <a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener">CDC Adult Activity Guidelines</a></p>
+</section>
+<p>  <!-- ══════════════════════════════════
+       STEP 4: SLEEP, STRESS, WATER
+       ══════════════════════════════════ --></p>
+<section aria-label="Step 4 — Sleep, stress, water">
+<h2>Step 4: Sleep, Stress &amp; Water Weight (The &#8220;Silent&#8221; 2-Week&nbsp;Accelerators)</h2>
+<p class="speakable-answer"><strong>In 14 days, sleep and stress management improve results because they improve adherence.</strong> Better sleep typically makes it easier to control appetite, train with energy, and avoid &#8220;I deserve a treat&#8221; decision-making. If you want to look noticeably tighter fast, manage sodium, alcohol, and sleep first.</p>
+<div class="gutf-grid gutf-grid--2">
+<div class="gutf-card" style="background:var(--gutf-success-light);border-color:var(--gutf-success-border)">
+<p style="margin:0 0 10px;font-weight:800;color:#065f46;display:flex;align-items:center;gap:8px"><span aria-hidden="true">✅</span> The &#8220;tighten up&#8221; checklist (safe)</p>
+<ul style="margin:0;padding-left:18px;color:#064e3b">
+<li>Sleep 7–9 hours consistently.</li>
+<li>Limit alcohol for 14 days.</li>
+<li>Reduce ultra-processed, high-sodium meals.</li>
+<li>Keep water intake consistent (don&#8217;t dehydrate).</li>
+<li>Walk after meals (10 minutes).</li>
+</ul>
+</div>
+<div class="gutf-card" style="background:var(--gutf-danger-light);border-color:var(--gutf-danger-border)">
+<p style="margin:0 0 10px;font-weight:800;color:#991b1b;display:flex;align-items:center;gap:8px"><span aria-hidden="true">✗</span> Avoid these &#8220;fast&#8221; tricks</p>
+<ul style="margin:0;padding-left:18px;color:#7f1d1d">
+<li>Sauna / water-cutting &#8220;just to drop pounds.&#8221;</li>
+<li>&#8220;Detox teas&#8221; or laxative-style products.</li>
+<li>Extreme carb elimination if it triggers binges.</li>
+<li>Going to very low calories without medical supervision.</li>
+</ul>
+</div>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       STEP 5: TRACKING
+       ══════════════════════════════════ --></p>
+<section aria-label="Step 5 — Tracking">
+<h2>Step 5: Track Progress Beyond the Scale (So You Don&#8217;t&nbsp;Self-Sabotage)</h2>
+<p class="speakable-answer"><strong>The scale is noisy in 14 days.</strong> The smartest tracking method is a simple dashboard: daily weigh-ins under the same conditions, a weekly average, waist measurement 1–2×/week, and front/side photos. This shows real trend changes even when water fluctuates.</p>
+<div class="gutf-card">
+<h3 style="margin:0 0 16px">Your 2-Week Tracking Dashboard</h3>
+<div class="gutf-grid gutf-grid--3">
+<div class="gutf-plate__item">
+<p style="margin:0;font-weight:900;font-size:15px;color:var(--gutf-text-primary)">Daily</p>
+<p style="margin:6px 0 0;font-size:14px;color:var(--gutf-text-muted)">Weight (same time) + steps + protein &#8220;hit?&#8221;</p>
+</p>
+</div>
+<div class="gutf-plate__item">
+<p style="margin:0;font-weight:900;font-size:15px;color:var(--gutf-text-primary)">2× / week</p>
+<p style="margin:6px 0 0;font-size:14px;color:var(--gutf-text-muted)">Waist measurement + photos</p>
+</p>
+</div>
+<div class="gutf-plate__item">
+<p style="margin:0;font-weight:900;font-size:15px;color:var(--gutf-text-primary)">Weekly</p>
+<p style="margin:6px 0 0;font-size:14px;color:var(--gutf-text-muted)">7-day weight average + plan adjustment</p>
+</p>
+</div>
+</div>
+</div>
+<div class="gutf-insight">
+<p>If you only track weight, you&#8217;ll panic on water days and sabotage on the spot.</p>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       MEAL TEMPLATES
+       ══════════════════════════════════ --></p>
+<section aria-label="Meal templates">
+<h2>The 2-Week &#8220;Menu&#8221; — 3 Simple Day Templates You Can&nbsp;Repeat</h2>
+<p class="speakable-answer"><strong>The best 14-day meal plan is the one you repeat.</strong> Pick one breakfast, two lunches, and two dinners you like. Rotate them. Repetition reduces decision fatigue, improves consistency, and makes your deficit easier to maintain.</p>
+<div class="gutf-table-wrap gutf-table-wrap--dark">
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Breakfast</th>
+<th>Lunch</th>
+<th>Dinner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Omnivore</strong></td>
+<td>Greek yogurt + berries + nuts</td>
+<td>Chicken salad bowl + olive oil</td>
+<td>Fish or lean meat + vegetables + carb or fat</td>
+</tr>
+<tr>
+<td><strong>Vegetarian</strong></td>
+<td>Tofu scramble + veggies</td>
+<td>Lentil/bean bowl + salad</td>
+<td>Tempeh or eggs + roasted veg + grain</td>
+</tr>
+<tr>
+<td><strong>No-Cook</strong></td>
+<td>Protein shake + fruit</td>
+<td>Tuna/beans + bagged salad</td>
+<td>Rotisserie chicken/tofu + microwave veg</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>    <!-- SHOPPING LIST --></p>
+<div class="gutf-shop">
+<p class="gutf-shop__title"><span aria-hidden="true">🛒</span> Shopping List (14-Day Basics)</p>
+<div class="gutf-shop__grid">
+<div>
+<p class="gutf-shop__cat-title">Protein</p>
+<ul>
+<li>Chicken, fish, lean meat</li>
+<li>Eggs, Greek yogurt</li>
+<li>Tofu / tempeh, beans / lentils</li>
+</ul>
+</div>
+<div>
+<p class="gutf-shop__cat-title">Plants</p>
+<ul>
+<li>Leafy greens, cruciferous veg</li>
+<li>Berries, apples, citrus</li>
+<li>Frozen veg (cheap + easy)</li>
+</ul>
+</div>
+<div>
+<p class="gutf-shop__cat-title">Carbs &amp; Fats</p>
+<ul>
+<li>Rice / oats / potatoes (as needed)</li>
+<li>Olive oil, nuts, avocado</li>
+<li>Spices, salsa, mustard</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       COMMON MISTAKES
+       ══════════════════════════════════ --></p>
+<section aria-label="Common mistakes">
+<h2>Common 2-Week Mistakes That Kill Results (And How to Fix&nbsp;Them)</h2>
+<p class="speakable-answer"><strong>Most people don&#8217;t fail because the plan is wrong.</strong> They fail because the plan is too complex, too aggressive, or too fragile for real life. Fix the weak points — liquid calories, snack drift, low protein, poor sleep — and the 14-day outcome improves fast.</p>
+<div class="gutf-grid gutf-grid--2">
+<div class="gutf-card" style="background:var(--gutf-danger-light);border-color:var(--gutf-danger-border)">
+<p style="margin:0 0 10px;font-weight:800;color:#991b1b">❌ Mistake</p>
+<ul style="margin:0;padding-left:18px;color:#7f1d1d">
+<li>&#8220;Healthy snacking&#8221; all day</li>
+<li>Protein only at dinner</li>
+<li>Weekend &#8220;cheat&#8221; that wipes 5 days of progress</li>
+<li>Overtraining + under-eating</li>
+</ul>
+</div>
+<div class="gutf-card" style="background:var(--gutf-success-light);border-color:var(--gutf-success-border)">
+<p style="margin:0 0 10px;font-weight:800;color:#065f46">✅ Fix</p>
+<ul style="margin:0;padding-left:18px;color:#064e3b">
+<li>Set meal times; plan 1 snack max</li>
+<li>25–40 g protein per meal (most meals)</li>
+<li>Pre-decide &#8220;event meals&#8221; and return to plan</li>
+<li>Prioritize steps + strength; keep HIIT optional</li>
+</ul>
+</div>
+</div>
+<div class="gutf-card" style="margin-top:20px">
+<p style="margin:0 0 10px;font-weight:800;font-size:15.5px;color:var(--gutf-text-primary)">🔄 Optional accelerator (only if it helps adherence)</p>
+<p style="margin:0;font-size:15px">Some people like time-restricted eating (like 12–8 pm) because it reduces decisions and snacking — not because it&#8217;s magic. If that structure makes you more consistent, this guide can help: <a href="https://gearuptofit.com/fitness/intermittent-fasting-and-hiit-synergy/" target="_blank">See How Intermittent Fasting + HIIT Can Fit Your Schedule →</a></p>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       TIMELINES COMPARISON
+       ══════════════════════════════════ --></p>
+<section aria-label="Timeline comparison">
+<h2>If You Have More Time: 2 Weeks vs. 4 Weeks vs. 12&nbsp;Weeks</h2>
+<p class="speakable-answer"><strong>The longer your timeline, the easier the plan gets.</strong> Two weeks is a sprint for consistency. Four weeks gives you room for adjustments. Twelve weeks is where you build a body you can keep. If your goal is big, don&#8217;t force it into 14 days — choose the timeline that matches the stakes.</p>
+<div class="gutf-table-wrap">
+<table>
+<thead>
+<tr>
+<th>Timeline</th>
+<th>Realistic expectation</th>
+<th>Best strategy</th>
+<th>Risk level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>14 days</strong></td>
+<td>Visible change + momentum; fat loss often modest; water changes vary</td>
+<td>Moderate deficit + protein + daily steps</td>
+<td>Medium (if too aggressive)</td>
+</tr>
+<tr>
+<td><strong>4 weeks</strong></td>
+<td>More consistent fat-loss trend; easier adherence</td>
+<td>Same plan + one adjustment cycle</td>
+<td>Low–medium</td>
+</tr>
+<tr>
+<td><strong>12 weeks</strong></td>
+<td>Meaningful body-comp change; habits stick</td>
+<td>Periodize training + diet breaks if needed</td>
+<td>Low (most sustainable)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gutf-card" style="margin-top:20px">
+<p style="margin:0 0 8px;font-weight:800;font-size:15.5px;color:var(--gutf-text-primary)">📊 Credible reality check</p>
+<p style="margin:0;font-size:15px">Public health sources commonly emphasize steady, gradual loss (often ~1–2 lb/week) as more likely to be maintained long-term. See: <a href="https://www.cdc.gov/healthy-weight-growth/losing-weight/index.html" target="_blank" rel="noopener">CDC guidance</a> and <a href="https://assets.nhs.uk/tools/download-panels/data/weight-loss/pdf/all-weeks.pdf" target="_blank" rel="noopener">NHS 12-week plan (PDF)</a>.</p>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       FAQ
+       ══════════════════════════════════ --></p>
+<section aria-label="Frequently asked questions">
+<h2><span aria-hidden="true">❓</span> Frequently Asked Questions</h2>
+<div class="gutf-faq">
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">Can you lose 10 pounds in 2 weeks?</div>
+<div class="gutf-faq__a">It&#8217;s possible for the scale to drop quickly in two weeks, but <strong>10 lb of pure fat in 14 days is not realistic for most people</strong>. Bigger early drops are often water and glycogen changes. A safer and more sustainable approach targets a moderate deficit, higher protein, daily movement, and consistency.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">How much weight can you lose in 2 weeks safely?</div>
+<div class="gutf-faq__a">Many guidelines describe gradual loss (often around 1–2 lb/week) as more sustainable. In a two-week window, that typically means modest fat loss, with additional scale changes depending on water retention, sodium, and carbs.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">What&#8217;s the fastest way to look leaner in 14 days?</div>
+<div class="gutf-faq__a">Focus on what changes fast: eliminate liquid calories, reduce alcohol, keep sodium consistent, eat higher protein with lots of vegetables, walk daily, and sleep consistently. This improves adherence and can reduce bloating and water swings.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">Do I need to do cardio every day for 2 weeks?</div>
+<div class="gutf-faq__a">You don&#8217;t need intense cardio daily. A better approach is <strong>daily steps</strong> (low recovery cost) plus <strong>2–4 strength sessions per week</strong>. Add short cardio sessions if they don&#8217;t increase fatigue or quitting.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">Is intermittent fasting required to lose weight in 2 weeks?</div>
+<div class="gutf-faq__a">No. Intermittent fasting can help some people reduce snacking and total calories, but it&#8217;s not necessary. If it makes you binge or feel miserable, skip it and focus on the core levers: deficit, protein, steps, and sleep.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">Why did I lose weight in week 1 but stall in week 2?</div>
+<div class="gutf-faq__a">Week 1 often includes water and glycogen changes. Week 2 tends to reflect &#8220;truer&#8221; fat-loss pace. Stick to the plan, track weekly averages, and adjust only after a full week of data.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">Should I cut carbs to lose weight faster in 2 weeks?</div>
+<div class="gutf-faq__a">Lowering carbs can change water weight quickly, which may look motivating on the scale. But it&#8217;s optional. Choose the approach you can execute consistently without rebound eating.</div>
+</p>
+</div>
+<div class="gutf-faq__item">
+<div class="gutf-faq__q">What if I have a medical condition or take medication?</div>
+<div class="gutf-faq__a">Medical conditions and medications can affect appetite, fluid balance, and weight loss. If you have diabetes, heart/kidney disease, are pregnant, or take medications that influence weight, <strong>consult your clinician</strong> before changing diet or exercise.</div>
+</p>
+</div>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       SOURCES
+       ══════════════════════════════════ --></p>
+<section aria-label="Sources">
+<div class="gutf-sources">
+<p class="gutf-sources__title"><span aria-hidden="true">📚</span> Sources &amp; References</p>
+<ul>
+<li><a href="https://www.cdc.gov/healthy-weight-growth/losing-weight/index.html" target="_blank" rel="noopener">CDC: Steps for Losing Weight</a></li>
+<li><a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener">CDC: Adult Physical Activity Guidelines Overview</a></li>
+<li><a href="https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf" target="_blank" rel="noopener">Physical Activity Guidelines for Americans (2nd edition) — PDF</a></li>
+<li><a href="https://www.niddk.nih.gov/bwp" target="_blank" rel="noopener">NIH / NIDDK: Body Weight Planner</a></li>
+<li><a href="https://assets.nhs.uk/tools/download-panels/data/weight-loss/pdf/all-weeks.pdf" target="_blank" rel="noopener">NHS: 12-Week Weight Loss Plan (PDF)</a></li>
+<li><a href="https://www.medicinenet.com/can_i_slim_down_in_2_weeks/article.htm" target="_blank" rel="noopener">MedicineNet: Can I Slim Down in 2 Weeks?</a></li>
+<li><a href="https://ajcn.nutrition.org/article/S0002-9165(23)27427-4/fulltext" target="_blank" rel="noopener">American Journal of Clinical Nutrition: Protein in Weight Loss/Maintenance (Review)</a></li>
+</ul>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════
+       AUTHOR CARD
+       ══════════════════════════════════ --></p>
+<section aria-label="Author">
+<div class="gutf-author">
+<p class="gutf-author__label">Written &amp; Researched By</p>
+<h4 class="gutf-author__name" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Alexios Papaioannou</span></h4>
+<p class="gutf-author__bio">Founder &amp; Fitness Technology Analyst at GearUpToFit. Research-first methodology, transparent analysis, and practical fitness guidance grounded in reputable sources and real-world usability.</p>
+<div class="gutf-author__meta">
+        <span><strong>Last Updated:</strong> 2026-02-08</span><br />
+        <span><strong>Fact-Check:</strong> 2026-02-08</span>
+      </div>
+<div class="gutf-author__standards">
+<p class="gutf-author__standards-title">Editorial Standards (Plain English):</p>
+<ul>
+<li>No guaranteed outcomes or miracle claims.</li>
+<li>Health guidance framed conservatively and responsibly.</li>
+<li>Primary sources prioritized (CDC, NIH, NHS, peer-reviewed journals).</li>
+<li>Clear separation between evidence, practical tips, and personal preference.</li>
+</ul>
+</div>
+</div>
+</section>
+</article>
+<p><!-- ══════════════════════════════════
+     STRUCTURED DATA (JSON-LD)
+     ══════════════════════════════════ --><br />
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "HowTo", "@id": "https://gearuptofit.com/weight-loss/how-to-lose-weight-in-2-weeks/#howto", "name": "How to lose weight in 2 weeks: 14-day blueprint", "description": "A 14-day weight loss blueprint based on a measurable calorie deficit, higher protein and fiber intake, daily steps, strength training, and consistent sleep.", "totalTime": "P14D", "tool": [{"@type": "HowToTool", "name": "Food tracking app (optional)"}, {"@type": "HowToTool", "name": "Scale and measuring tape (optional)"}], "supply": [{"@type": "HowToSupply", "name": "Protein foods (e.g., poultry, fish, eggs, tofu, Greek yogurt)"}, {"@type": "HowToSupply", "name": "Vegetables and fruit"}, {"@type": "HowToSupply", "name": "Hydration (water, unsweetened tea)"}], "step": [{"@type": "HowToStep", "position": 1, "name": "Set a calorie target without guessing", "text": "Estimate your maintenance intake using a reputable planner, then choose a moderate daily deficit you can sustain for 14 days."}, {"@type": "HowToStep", "position": 2, "name": "Anchor every meal with protein and plants", "text": "Prioritize protein and high-volume plants to reduce hunger and protect lean mass during a short calorie deficit."}, {"@type": "HowToStep", "position": 3, "name": "Hit a daily step floor", "text": "Use daily walking to increase energy expenditure with low recovery cost. Split walks into small blocks if needed."}, {"@type": "HowToStep", "position": 4, "name": "Strength train 2–4 times per week", "text": "Use short, focused strength sessions to preserve muscle and improve body composition while dieting."}, {"@type": "HowToStep", "position": 5, "name": "Limit liquid calories and alcohol", "text": "Remove sugary drinks and minimize alcohol to reduce calories without increasing hunger."}, {"@type": "HowToStep", "position": 6, "name": "Sleep consistently", "text": "Aim for consistent sleep to improve appetite control, training quality, and adherence."}, {"@type": "HowToStep", "position": 7, "name": "Track the right metrics", "text": "Use weekly weight averages plus waist and photos to track trend progress despite daily fluctuations."}, {"@type": "HowToStep", "position": 8, "name": "Adjust only after 7 days of data", "text": "Make changes based on a full week of trend data, not a single weigh-in."}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can you lose 10 pounds in 2 weeks?", "acceptedAnswer": {"@type": "Answer", "text": "The scale can drop quickly in two weeks, but 10 pounds of pure fat loss in 14 days is not realistic for most people. Larger early losses are often water and glycogen changes. A safer approach uses a moderate calorie deficit, higher protein, daily movement, and consistency."}}, {"@type": "Question", "name": "How much weight can you lose in 2 weeks safely?", "acceptedAnswer": {"@type": "Answer", "text": "Many guidelines describe gradual loss around 1–2 pounds per week as more sustainable. Over two weeks, that typically means modest fat loss, with additional scale changes depending on water retention and diet composition."}}, {"@type": "Question", "name": "What's the fastest way to look leaner in 14 days?", "acceptedAnswer": {"@type": "Answer", "text": "Eliminate liquid calories, limit alcohol, keep sodium consistent, eat higher protein with plenty of vegetables, walk daily, and sleep consistently. These steps improve adherence and can reduce bloating and water swings."}}, {"@type": "Question", "name": "Do I need to do cardio every day for 2 weeks?", "acceptedAnswer": {"@type": "Answer", "text": "You don't need intense cardio daily. A better plan is daily steps plus 2–4 strength sessions per week. Add short cardio sessions only if they don't increase fatigue or quitting."}}, {"@type": "Question", "name": "Is intermittent fasting required to lose weight in 2 weeks?", "acceptedAnswer": {"@type": "Answer", "text": "No. Intermittent fasting can help some people reduce snacking and total calories, but it's not necessary. If it worsens hunger or triggers overeating, skip it and focus on the core levers: deficit, protein, steps, and sleep."}}, {"@type": "Question", "name": "Why did I lose weight in week 1 but stall in week 2?", "acceptedAnswer": {"@type": "Answer", "text": "Week 1 often includes water and glycogen changes. Week 2 tends to reflect a truer fat-loss pace. Track weekly averages and adjust only after a full week of data."}}, {"@type": "Question", "name": "Should I cut carbs to lose weight faster in 2 weeks?", "acceptedAnswer": {"@type": "Answer", "text": "Lowering carbs can change water weight quickly, but it's optional. Choose the approach you can execute consistently without rebound eating."}}, {"@type": "Question", "name": "What if I have a medical condition or take medication?", "acceptedAnswer": {"@type": "Answer", "text": "Medical conditions and medications can affect appetite, fluid balance, and weight loss. If you have diabetes, heart or kidney disease, are pregnant, or take medications that influence weight, consult your clinician before changing diet or exercise."}}, {"name": "Need a &#8220;press play&#8221; option?", "@type": "Question", "acceptedAnswer": {"text": "Keep it simple. Pick one low-impact full-body workout and repeat it. Consistency beats variety for 14 days.", "@type": "Answer"}}]}]}</script></p>
+</p>
+<p><!-- gs-internal-links:start --></p>
+<div class="gs-internal-links"><strong>Related reading:</strong></p>
+<ul>
+<li><a href="https://gearuptofit.com/weight-loss/40-40-20-diet-meal-plans/" target="_blank">40-40-20 macro guide</a></li>
+<li><a href="https://gearuptofit.com/fitness/core-exercises-for-beginners-routine-runners/" target="_blank">core exercises for beginners</a></li>
+<li><a href="https://gearuptofit.com/health/metabolic-health/" target="_blank">metabolic health guide</a></li>
+</ul>
+</div>
+<p><!-- gs-internal-links:end --><br />
+</p>

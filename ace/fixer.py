@@ -148,11 +148,18 @@ def run(
     if require_login:  # unattended runs: leave sites alone unless their login is configured
         actions = [a for a in actions if auth_for(a.row.site.domain)]
     actions = actions[: limit or None]
+    per_site: Counter = Counter()
+    for action in actions:  # a fragile server gets its edits spread over several runs
+        cap = action.row.site.max_fixes_per_run
+        per_site[action.row.site.domain] += 1
+        if cap and per_site[action.row.site.domain] > cap:
+            action.status = "left_for_next_run_site_limit"
+    actions_to_do = [a for a in actions if a.status == "planned"]
     clients: dict[str, WordPress] = {}
     locked_sites: set[str] = set()
     errors_in_a_row: Counter = Counter()
     deadline = time.monotonic() + max_minutes * 60 if max_minutes else None
-    for action in actions:
+    for action in actions_to_do:
         site, url = action.row.site, action.row.page.url
         if deadline and time.monotonic() > deadline:
             action.status = "left_for_next_run_time_budget"  # stop cleanly so the run can still commit its work
@@ -203,7 +210,7 @@ def run(
                 log(f"[{site.domain}] 5 errors in a row, skipping the rest of this site: {action.detail}")
             continue
         errors_in_a_row[site.domain] = 0
-        time.sleep(pause)
+        time.sleep(site.fix_pause or pause)
         sep = "&" if "?" in url else "?"
         live = verify(f"{url}{sep}ace_verify={int(time.time())}", site)
         targeted = set().union(*(CLEARS[f] for f in action.fixes))

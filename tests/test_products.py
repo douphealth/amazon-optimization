@@ -528,3 +528,14 @@ def test_an_old_box_with_search_links_is_kept_when_no_product_qualifies():
     row = Row(site=site, page=Page(url="https://example.com/privacy/", status=200, has_box=True), gsc=None)
     new, counts = fixer.transform_post(cfg, fixer.Action(row=row, fixes=["box"]), post, picker(FakeAPI()))
     assert new == post and counts["old_box_kept_no_product"] == 1
+
+
+def test_a_fragile_site_gets_a_few_edits_per_run(tmp_path, monkeypatch):
+    site = Site(domain="example.com", name="Example", tags=["ex-20"], max_fixes_per_run=2, fix_pause=8)
+    cfg = Config(account_tag_prefix="x", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    api = FakeAPI(searches={("Dog Harness for French Bulldogs", "All"): [item("B0HARN0001", "Dog Harness")]})
+    slept = []
+    monkeypatch.setattr(fixer.time, "sleep", slept.append)
+    acts = fixer.run(cfg, _rows(site, 5), tmp_path / "r", apply=True, picker=picker(api), registry=tmp_path / "boxes.json",
+                     backups=tmp_path / "bk", wp_factory=FakeWP, verify=lambda u, s: Page(url=u, status=200), log=lambda *a: None)
+    assert [a.status for a in acts][2:] == ["left_for_next_run_site_limit"] * 3 and slept == [8, 8]

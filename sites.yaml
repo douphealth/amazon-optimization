@@ -82,6 +82,10 @@ sites:
 
   - domain: mysticaldigits.com
     name: Mystical Digits
+    # Its server timed out twice on 2026-11-28 under a run of saves (even 8 s apart): at most 40
+    # edits per run, 8 s apart, so the remaining product boxes go in over a few runs.
+    max_fixes_per_run: 40
+    fix_pause: 8
     gsc_property: "sc-domain:mysticaldigits.com"
     ga4_properties: [387055444]
     tags: [papalex-md-20]

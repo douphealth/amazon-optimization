@@ -23,6 +23,8 @@ class Site:
     skip_fix: str = ""      # regex of URL paths the fixer must not touch (non-WordPress sections)
     ga4_properties: list[str] = field(default_factory=list)  # Google Analytics 4 property IDs, first with data wins
     bing_site: str = ""     # Bing Webmaster site URL; found automatically when empty
+    max_fixes_per_run: int = 0   # 0 = no limit; a small number spreads edits over runs for a fragile server
+    fix_pause: float = 0.0       # seconds to wait after each save on this site (0 = the run's default)
 
 
 @dataclass

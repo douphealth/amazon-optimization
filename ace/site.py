@@ -452,6 +452,20 @@ def schedule(workflow: Path = Path(".github/workflows/weekly-audit.yml")) -> str
     return m.group(1) if m else ""
 
 
+def _product_boxes() -> dict:
+    """Live product boxes (data/products/boxes.json): page URL -> product names and where each came from."""
+    path = Path("data/products/boxes.json")
+    reg = json.loads(path.read_text()) if path.exists() else {}
+    return {url: {"names": r.get("names", []), "sources": r.get("sources", []), "run": r.get("run", "")} for url, r in reg.items()}
+
+
+def _box_plan() -> dict:
+    """How many pages the product plan gives a box, and each such page's topic."""
+    path = Path("data/products/plan.json")
+    plan = json.loads(path.read_text()) if path.exists() else {}
+    return {e["url"]: e.get("topic", "") for e in plan.values() if e.get("box")}
+
+
 def _box_files(root: Path, urls: set[str], by_site: dict[str, list[dict]]) -> dict[str, str]:
     """{page url: repository path} for the box files under root/<domain>/, matched to audited pages."""
     found: dict[str, str] = {}
@@ -607,6 +621,7 @@ def build_data(cfg=None, reports: Path = Path("reports"), docs: Path = Path("doc
         "last_run": json.loads(Path("data/last-run.json").read_text()) if Path("data/last-run.json").exists() else None,
         "pull_status": json.loads(Path("data/pull-status.json").read_text()) if Path("data/pull-status.json").exists() else None,
         "drafts": _box_files(report / "fixes", known, by_site), "boxes": _box_files(Path("boxes"), known, by_site),
+        "product_boxes": _product_boxes(), "box_plan": _box_plan(),
         "sites": sites, "cols": COLS, "pages": [_page_row(r, index) for r in rows],
         "issues": {
             c: {

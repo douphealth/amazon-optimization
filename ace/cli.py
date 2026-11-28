@@ -8,7 +8,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from pathlib import Path
 
-from . import bing, changes, config, crawl, data, fixer, fixes, ga4, gcp, gsc, indexnow, report, score, site
+from . import amazon, bing, changes, config, crawl, data, fixer, fixes, ga4, gcp, gsc, indexnow, products, report, score, site
+from .page import Page
 from .config import norm_url
 
 
@@ -59,11 +60,62 @@ def _scored(cfg, args):
     return _score(cfg, pages_by_site, _load_inputs(cfg))
 
 
+def _picker(cfg):
+    """Real-product boxes need Creators API credentials; without them boxes reuse page links only."""
+    client = amazon.Creators.from_env(marketplace=cfg.marketplace)
+    if client is None:
+        print("Creators API credentials not set (AMAZON_CREATORS_CREDENTIAL_ID/SECRET): product boxes reuse the page's own links only")
+        return None
+    picker = products.Picker(client, products.load_plan(), blocked=set(cfg.blocked_asins))
+    picker.known = set(products.load_registry())
+    return picker
+
+
 def cmd_fix(cfg, args) -> None:
+    picker = _picker(cfg)
+    if picker and args.rebuild_boxes:
+        picker.known = set()  # re-render registered boxes too (e.g. after a design change)
     actions = fixer.run(cfg, _scored(cfg, args), args.out, apply=args.apply, sites=args.site, limit=args.limit,
-                        require_login=args.only_with_login)
+                        require_login=args.only_with_login, picker=picker,
+                        registry=products.REGISTRY if picker else None)
+    if picker:
+        print(f"Creators API calls: {picker.client.calls}")
     print(fixer.summarize(actions))
     print(f"log: {args.out}/fix-log.csv" + ("" if args.apply else "  (dry run: nothing was changed; add --apply)"))
+
+
+def cmd_refresh_boxes(cfg, args) -> None:
+    """Keep live product boxes current: a box whose product went out of stock, lost its image or
+    changed its name or image is rebuilt (same rules as when it was placed). Others are left alone."""
+    picker = _picker(cfg)
+    if picker is None:
+        raise SystemExit("refresh-boxes needs Creators API credentials")
+    registry = products.load_registry()
+    by_tag: dict[str, list[str]] = {}
+    for url, rec in registry.items():  # ten ASINs per call across all pages, then per page from the cache
+        site = cfg.site(rec["site"])
+        by_tag.setdefault(site.tags[0] if site.tags else cfg.default_tag, []).extend(rec["asins"])
+    for tag, asins in by_tag.items():
+        picker.client.get_items(sorted(set(asins)), tag)
+    stale = []
+    for url, rec in registry.items():
+        if args.site and rec["site"] not in args.site:
+            continue
+        site = cfg.site(rec["site"])
+        tag = site.tags[0] if site.tags else cfg.default_tag
+        live = picker.client.get_items(rec["asins"], tag)
+        current = [live.get(a) for a in rec["asins"]]
+        reasons = [f"{a} gone" for a, it in zip(rec["asins"], current) if not it or not it.available or not it.image]
+        reasons += [f"{a} changed" for a, it, img in zip(rec["asins"], current, rec.get("images") or [None] * len(current))
+                    if it and img and it.image != img]
+        if reasons:
+            print(f"{url}: {', '.join(reasons)}")
+            stale.append(score.Row(site=site, page=Page(url=url, status=200, has_box=True), gsc=None))
+    print(f"{len(registry)} boxes checked, {len(stale)} to rebuild, {picker.client.calls} Creators API calls")
+    if stale:
+        actions = fixer.run(cfg, stale, args.out, apply=args.apply, require_login=args.only_with_login,
+                            picker=picker, registry=products.REGISTRY)
+        print(fixer.summarize(actions))
 
 
 def cmd_submit(cfg, args) -> None:
@@ -182,6 +234,7 @@ def main(argv=None) -> None:
         ("pull", cmd_pull, "download Search Console, URL inspection, Bing and Analytics data (whatever has credentials)"),
         ("gsc-pull", cmd_gsc_pull, "download Search Console data only (needs a service account)"),
         ("fix", cmd_fix, "apply the safe fixes to WordPress (dry run unless --apply)"),
+        ("refresh-boxes", cmd_refresh_boxes, "rebuild product boxes whose products went out of stock or changed (dry run unless --apply)"),
         ("submit", cmd_submit, "send new and changed pages to search engines via IndexNow (dry run unless --apply)"),
         ("site", cmd_site, "build the static dashboard from the latest report"),
     ]:
@@ -196,6 +249,7 @@ def main(argv=None) -> None:
         p.add_argument("--site-out", type=Path, default=Path("dist"), help="site: folder to write the dashboard to")
         p.add_argument("--mirror", nargs="*", help="site: extra folders to receive a copy of the dashboard")
         p.add_argument("--only-with-login", action="store_true", help="fix: skip sites that have no WP_AUTH_<DOMAIN> variable")
+        p.add_argument("--rebuild-boxes", action="store_true", help="fix: also rebuild product boxes that are already live")
         p.add_argument("--sources", help="pull: comma-separated subset of gsc,bing,ga4,inspect (default: all)")
     args = parser.parse_args(argv)
     if hasattr(sys.stdout, "reconfigure"):

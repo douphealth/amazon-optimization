@@ -202,6 +202,20 @@ GENERATED_BOX = re.compile(
     r"(?:<!-- wp:html -->\s*)?<div class=\"" + BOX_CLASS + r"\"(?:(?!<div\b).)*?</div>\s*(?:<!-- /wp:html -->\s*)?", re.S)
 
 
+def find_box(html: str) -> str:
+    """The generated box div in a post, or ""."""
+    m = GENERATED_BOX.search(html)
+    return re.search(r"<div.*?</div>", m.group(0), re.S).group(0) if m else ""
+
+
+def replace_box(html: str, box: str) -> tuple[str, int]:
+    """Swap the post's generated box for `box`, in the same place. (html, 1) when it changed."""
+    old = find_box(html)
+    if not old or " ".join(old.split()) == " ".join(box.split()):
+        return html, 0
+    return html.replace(old, box.strip(), 1), 1
+
+
 def remove_box(html: str) -> tuple[str, str]:
     """Take a generated box (one with no nested <div>) out of a post. Returns (html, the box div)."""
     m = GENERATED_BOX.search(html)

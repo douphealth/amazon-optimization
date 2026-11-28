@@ -1,0 +1,1615 @@
+<p><!-- 
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  BEST RUNNING SUNGLASSES 2026 — GEAR UP TO FIT             ║
+  ║  Complete Rewrite · Enterprise-Grade Design · SOTA Layout   ║
+  ╚══════════════════════════════════════════════════════════════╝
+--></p>
+<style>/* Site-wide sidebar hide */
+.widget-container,.widget-title,.widget_archive,.widget_meta,.widget_recent_entries,.widget_recent_comments,.widget_categories,.widget_tag_cloud,.widget_search,aside,#sidebar,.sidebar,[class*="widget-archives"],[class*="widget-meta"],#secondary,.widget-area{display:none!important;height:0!important;overflow:hidden!important}
+#primary,.site-content,.content-area,article{width:100%!important;max-width:100%!important;float:none!important}
+/* ═══════════════════════════════════════════
+   🎨 DESIGN SYSTEM — VARIABLES & RESET
+   ═══════════════════════════════════════════ */
+:root {
+  --gutf-black: #0d0f13;
+  --gutf-dark: #1a1c24;
+  --gutf-gray-900: #1e2029;
+  --gutf-gray-800: #2a2d38;
+  --gutf-gray-700: #3b3f4f;
+  --gutf-gray-600: #555a6e;
+  --gutf-gray-500: #71768a;
+  --gutf-gray-400: #9499ae;
+  --gutf-gray-300: #c0c4d4;
+  --gutf-gray-200: #dfe2ec;
+  --gutf-gray-100: #f0f2f8;
+  --gutf-gray-50: #f7f8fc;
+  --gutf-white: #ffffff;
+  --gutf-accent: #00b894;
+  --gutf-accent-dark: #009d80;
+  --gutf-accent-light: #e6faf5;
+  --gutf-accent-glow: rgba(0, 184, 148, .15);
+  --gutf-blue: #3b82f6;
+  --gutf-blue-light: #eff6ff;
+  --gutf-amber: #f59e0b;
+  --gutf-amber-light: #fffbeb;
+  --gutf-red: #ef4444;
+  --gutf-red-light: #fef2f2;
+  --gutf-purple: #8b5cf6;
+  --gutf-purple-light: #f5f3ff;
+  --gutf-gradient-hero: linear-gradient(135deg, #0d1117 0%, #161b28 50%, #1a2332 100%);
+  --gutf-gradient-card: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
+  --gutf-gradient-cta: linear-gradient(135deg, #00b894 0%, #00a085 50%, #008f77 100%);
+  --gutf-gradient-badge: linear-gradient(135deg, #00b894 0%, #00d2a0 100%);
+  --gutf-shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --gutf-shadow-md: 0 4px 16px rgba(0,0,0,.07), 0 2px 6px rgba(0,0,0,.04);
+  --gutf-shadow-lg: 0 12px 40px rgba(0,0,0,.1), 0 4px 12px rgba(0,0,0,.05);
+  --gutf-shadow-xl: 0 20px 60px rgba(0,0,0,.12), 0 8px 20px rgba(0,0,0,.06);
+  --gutf-shadow-accent: 0 8px 30px rgba(0, 184, 148, .25);
+  --gutf-radius-sm: 8px;
+  --gutf-radius-md: 14px;
+  --gutf-radius-lg: 20px;
+  --gutf-radius-xl: 28px;
+  --gutf-radius-full: 9999px;
+  --gutf-font: 'Inter', 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --gutf-font-display: 'Inter', 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+  --gutf-transition: all .25s cubic-bezier(.4,0,.2,1);
+}
+/* BASE RESET */
+.gutf-article *,
+.gutf-article *::before,
+.gutf-article *::after {
+  box-sizing: border-box;
+}
+.gutf-article {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: var(--gutf-font);
+  line-height: 1.75;
+  color: var(--gutf-gray-600);
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* ═══════════════════════════════════════════
+   📝 TYPOGRAPHY
+   ═══════════════════════════════════════════ */
+.gutf-article h1 {
+  font-family: var(--gutf-font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--gutf-dark);
+  margin: 0 0 16px;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+.gutf-article h2 {
+  font-family: var(--gutf-font-display);
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--gutf-dark);
+  margin: 56px 0 20px;
+  letter-spacing: -.025em;
+  line-height: 1.25;
+  position: relative;
+  padding-bottom: 14px;
+}
+.gutf-article h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 4px;
+  background: var(--gutf-gradient-badge);
+  border-radius: var(--gutf-radius-full);
+}
+.gutf-article h3 {
+  font-family: var(--gutf-font-display);
+  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+  font-weight: 700;
+  margin: 36px 0 14px;
+  color: var(--gutf-gray-800);
+  letter-spacing: -.015em;
+  line-height: 1.35;
+}
+.gutf-article h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  color: var(--gutf-gray-800);
+}
+.gutf-article p {
+  margin: 0 0 20px;
+  font-size: clamp(.95rem, 2vw, 1.06rem);
+  color: var(--gutf-gray-600);
+  line-height: 1.8;
+}
+.gutf-article strong {
+  font-weight: 700;
+  color: var(--gutf-gray-800);
+}
+.gutf-article em {
+  font-style: italic;
+  color: var(--gutf-gray-500);
+}
+.gutf-article a {
+  color: var(--gutf-accent-dark);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1.5px solid transparent;
+  transition: var(--gutf-transition);
+}
+.gutf-article a:hover {
+  color: var(--gutf-accent);
+  border-bottom-color: var(--gutf-accent);
+}
+/* ═══════════════════════════════════════════
+   🦸 HERO SECTION
+   ═══════════════════════════════════════════ */
+.gutf-hero {
+  background: var(--gutf-gradient-hero);
+  border-radius: var(--gutf-radius-xl);
+  padding: clamp(32px, 6vw, 56px) clamp(24px, 5vw, 48px);
+  margin: 20px 0 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--gutf-shadow-xl);
+}
+.gutf-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,184,148,.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.gutf-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.gutf-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--gutf-accent);
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  background: rgba(0,184,148,.1);
+  border-radius: var(--gutf-radius-full);
+  border: 1px solid rgba(0,184,148,.15);
+  position: relative;
+  z-index: 1;
+}
+.gutf-hero h1 {
+  color: var(--gutf-white) !important;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 18px;
+}
+.gutf-hero__subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.15rem) !important;
+  color: var(--gutf-gray-400) !important;
+  line-height: 1.75 !important;
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 28px !important;
+}
+/* Hero winner pills */
+.gutf-hero__winners {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin: 24px 0 0;
+  position: relative;
+  z-index: 1;
+}
+.gutf-hero__winner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--gutf-radius-md);
+  padding: 14px 18px;
+  transition: var(--gutf-transition);
+}
+.gutf-hero__winner:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(0,184,148,.2);
+  transform: translateY(-1px);
+}
+.gutf-hero__winner-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,184,148,.1);
+  border-radius: var(--gutf-radius-sm);
+}
+.gutf-hero__winner-text {
+  font-size: .9rem;
+  line-height: 1.4;
+}
+.gutf-hero__winner-label {
+  display: block;
+  font-weight: 700;
+  color: var(--gutf-white);
+  font-size: .92rem;
+}
+.gutf-hero__winner-desc {
+  display: block;
+  color: var(--gutf-gray-400);
+  font-size: .82rem;
+  margin-top: 2px;
+}
+/* Hero stats bar */
+.gutf-hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  position: relative;
+  z-index: 1;
+}
+.gutf-hero__stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(0,184,148,.08);
+  border: 1px solid rgba(0,184,148,.12);
+  border-radius: var(--gutf-radius-full);
+}
+.gutf-hero__stat-num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--gutf-accent);
+}
+.gutf-hero__stat-label {
+  font-size: .82rem;
+  color: var(--gutf-gray-400);
+  line-height: 1.3;
+}
+/* ═══════════════════════════════════════════
+   🧭 NAVIGATION BAR
+   ═══════════════════════════════════════════ */
+.gutf-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--gutf-gray-200);
+  border-radius: var(--gutf-radius-lg);
+  padding: 8px;
+  margin: 0 0 40px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  box-shadow: var(--gutf-shadow-md);
+}
+.gutf-nav::-webkit-scrollbar { display: none; }
+.gutf-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--gutf-gray-600);
+  white-space: nowrap;
+  border-radius: var(--gutf-radius-sm);
+  transition: var(--gutf-transition);
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+.gutf-nav a:hover {
+  background: var(--gutf-accent-light);
+  color: var(--gutf-accent-dark);
+  border-bottom: none !important;
+}
+/* ═══════════════════════════════════════════
+   🃏 CONTENT CARDS (SECTIONS)
+   ═══════════════════════════════════════════ */
+.gutf-section {
+  background: var(--gutf-gradient-card);
+  border: 1px solid var(--gutf-gray-200);
+  border-radius: var(--gutf-radius-lg);
+  padding: clamp(24px, 4vw, 40px);
+  margin-bottom: 28px;
+  box-shadow: var(--gutf-shadow-sm);
+  transition: var(--gutf-transition);
+}
+.gutf-section:hover {
+  box-shadow: var(--gutf-shadow-md);
+}
+.gutf-section h2:first-child {
+  margin-top: 0;
+}
+/* ═══════════════════════════════════════════
+   📦 PRODUCT CARDS — PREMIUM DESIGN
+   ═══════════════════════════════════════════ */
+.gutf-product {
+  background: var(--gutf-white);
+  border: 1px solid var(--gutf-gray-200);
+  border-radius: var(--gutf-radius-lg);
+  overflow: hidden;
+  margin: 28px 0;
+  box-shadow: var(--gutf-shadow-md);
+  transition: var(--gutf-transition);
+  position: relative;
+}
+.gutf-product:hover {
+  box-shadow: var(--gutf-shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--gutf-accent);
+}
+/* Product badge */
+.gutf-product__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-size: .76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--gutf-white);
+  background: var(--gutf-gradient-cta);
+  border-radius: var(--gutf-radius-full);
+  box-shadow: var(--gutf-shadow-accent);
+}
+/* Product image area */
+.gutf-product__image {
+  position: relative;
+  background: linear-gradient(135deg, #f8faff 0%, #f0f4fd 50%, #eef2fb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  min-height: 260px;
+  overflow: hidden;
+}
+.gutf-product__image::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0,184,148,.06) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gutf-product__image img {
+  max-width: 280px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.12));
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+.gutf-product:hover .gutf-product__image img {
+  transform: scale(1.05);
+}
+/* Product body */
+.gutf-product__body {
+  padding: 28px 30px 32px;
+}
+.gutf-product__title {
+  font-family: var(--gutf-font-display);
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  color: var(--gutf-dark) !important;
+  margin: 0 0 8px !important;
+  letter-spacing: -.02em;
+}
+.gutf-product__subtitle {
+  font-size: .95rem !important;
+  color: var(--gutf-gray-500) !important;
+  line-height: 1.65 !important;
+  margin: 0 0 20px !important;
+}
+/* Feature tags */
+.gutf-product__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.gutf-product__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  font-size: .79rem;
+  font-weight: 600;
+  color: var(--gutf-accent-dark);
+  background: var(--gutf-accent-light);
+  border: 1px solid rgba(0,184,148,.15);
+  border-radius: var(--gutf-radius-full);
+}
+.gutf-product__tag svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--gutf-accent);
+}
+/* CTA button */
+.gutf-product__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gutf-white) !important;
+  background: var(--gutf-gradient-cta);
+  border: none;
+  border-radius: var(--gutf-radius-md);
+  cursor: pointer;
+  transition: var(--gutf-transition);
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: var(--gutf-shadow-accent);
+  letter-spacing: .01em;
+}
+.gutf-product__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0,184,148,.35);
+  color: var(--gutf-white) !important;
+  border-bottom: none !important;
+}
+.gutf-product__cta svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--gutf-white);
+  transition: transform .25s ease;
+}
+.gutf-product__cta:hover svg {
+  transform: translateX(4px);
+}
+/* Prime badge */
+.gutf-product__prime {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: .8rem;
+  color: var(--gutf-gray-400);
+}
+.gutf-product__prime svg {
+  width: 14px;
+  height: 14px;
+  fill: #00a8e1;
+}
+/* Pros & cons grid */
+.gutf-proscons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0 24px;
+}
+.gutf-proscons__col {
+  padding: 18px;
+  border-radius: var(--gutf-radius-md);
+}
+.gutf-proscons__col--pros {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e8faf0 100%);
+  border: 1px solid #bbf7d0;
+}
+.gutf-proscons__col--cons {
+  background: linear-gradient(135deg, #fef2f2 0%, #fde8e8 100%);
+  border: 1px solid #fecaca;
+}
+.gutf-proscons__label {
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.gutf-proscons__col--pros .gutf-proscons__label { color: #16a34a; }
+.gutf-proscons__col--cons .gutf-proscons__label { color: #dc2626; }
+.gutf-proscons ul {
+  margin: 0 !important;
+  padding-left: 18px !important;
+}
+.gutf-proscons li {
+  font-size: .9rem !important;
+  margin: 6px 0 !important;
+  line-height: 1.5 !important;
+}
+/* ═══════════════════════════════════════════
+   📊 TABLES
+   ═══════════════════════════════════════════ */
+.gutf-article table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  border-radius: var(--gutf-radius-md);
+  overflow: hidden;
+  box-shadow: var(--gutf-shadow-md);
+  border: 1px solid var(--gutf-gray-200);
+  font-size: .92rem;
+}
+.gutf-article th {
+  background: linear-gradient(135deg, var(--gutf-gray-50), var(--gutf-gray-100));
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--gutf-gray-800);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  border-bottom: 2px solid var(--gutf-gray-200);
+}
+.gutf-article td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gutf-gray-100);
+  color: var(--gutf-gray-600);
+  line-height: 1.6;
+}
+.gutf-article tr:last-child td {
+  border-bottom: none;
+}
+.gutf-article tr:hover td {
+  background: var(--gutf-gray-50);
+}
+/* ═══════════════════════════════════════════
+   💡 CALLOUT BOXES
+   ═══════════════════════════════════════════ */
+.gutf-callout {
+  border-radius: var(--gutf-radius-md);
+  padding: 22px 26px;
+  margin: 24px 0;
+  font-size: .95rem;
+  line-height: 1.7;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.gutf-callout__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.gutf-callout--tip {
+  background: var(--gutf-accent-light);
+  border: 1px solid rgba(0,184,148,.2);
+  border-left: 4px solid var(--gutf-accent);
+}
+.gutf-callout--warning {
+  background: var(--gutf-amber-light);
+  border: 1px solid rgba(245,158,11,.2);
+  border-left: 4px solid var(--gutf-amber);
+}
+.gutf-callout--info {
+  background: var(--gutf-blue-light);
+  border: 1px solid rgba(59,130,246,.15);
+  border-left: 4px solid var(--gutf-blue);
+}
+.gutf-callout--key {
+  background: linear-gradient(135deg, #0d1117, #161b28);
+  border: 1px solid rgba(0,184,148,.2);
+  color: var(--gutf-gray-300);
+}
+.gutf-callout--key strong { color: var(--gutf-white); }
+/* ═══════════════════════════════════════════
+   🏷️ PILL TAGS
+   ═══════════════════════════════════════════ */
+.gutf-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.gutf-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 16px;
+  font-size: .82rem;
+  font-weight: 600;
+  border-radius: var(--gutf-radius-full);
+  background: var(--gutf-gray-50);
+  border: 1px solid var(--gutf-gray-200);
+  color: var(--gutf-gray-700);
+  transition: var(--gutf-transition);
+}
+.gutf-pill:hover {
+  border-color: var(--gutf-accent);
+  background: var(--gutf-accent-light);
+  color: var(--gutf-accent-dark);
+}
+/* ═══════════════════════════════════════════
+   ❓ FAQ ACCORDION
+   ═══════════════════════════════════════════ */
+.gutf-faq {
+  margin: 16px 0;
+}
+.gutf-faq details {
+  background: var(--gutf-white);
+  border: 1px solid var(--gutf-gray-200);
+  border-radius: var(--gutf-radius-md);
+  margin-bottom: 10px;
+  transition: var(--gutf-transition);
+  overflow: hidden;
+}
+.gutf-faq details:hover {
+  border-color: var(--gutf-accent);
+}
+.gutf-faq details[open] {
+  box-shadow: var(--gutf-shadow-md);
+  border-color: var(--gutf-accent);
+}
+.gutf-faq summary {
+  padding: 18px 24px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--gutf-gray-800);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: var(--gutf-transition);
+}
+.gutf-faq summary::-webkit-details-marker { display: none; }
+.gutf-faq summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--gutf-accent);
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+.gutf-faq details[open] summary::after {
+  content: '−';
+}
+.gutf-faq details[open] summary {
+  border-bottom: 1px solid var(--gutf-gray-100);
+}
+.gutf-faq .gutf-faq__answer {
+  padding: 18px 24px;
+  font-size: .95rem;
+  color: var(--gutf-gray-600);
+  line-height: 1.75;
+}
+/* ═══════════════════════════════════════════
+   🎬 VIDEO EMBED
+   ═══════════════════════════════════════════ */
+.gutf-video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--gutf-radius-lg);
+  box-shadow: var(--gutf-shadow-lg);
+  margin: 20px 0;
+}
+.gutf-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--gutf-radius-lg);
+}
+/* ═══════════════════════════════════════════
+   🏁 DECISION CTA (FINAL)
+   ═══════════════════════════════════════════ */
+.gutf-decision {
+  background: var(--gutf-gradient-hero);
+  border-radius: var(--gutf-radius-xl);
+  padding: clamp(28px, 5vw, 44px);
+  margin: 36px 0;
+  position: relative;
+  overflow: hidden;
+}
+.gutf-decision::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0,184,148,.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.gutf-decision h2 {
+  color: var(--gutf-white) !important;
+  position: relative;
+  z-index: 1;
+}
+.gutf-decision h2::after {
+  background: var(--gutf-gradient-badge);
+}
+.gutf-decision ul {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.gutf-decision li {
+  padding: 14px 20px;
+  margin: 8px 0;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--gutf-radius-md);
+  color: var(--gutf-gray-300) !important;
+  font-size: .95rem !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--gutf-transition);
+}
+.gutf-decision li:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(0,184,148,.2);
+}
+.gutf-decision li strong {
+  color: var(--gutf-white) !important;
+}
+.gutf-decision li a {
+  color: var(--gutf-accent) !important;
+  border-bottom: 1px dashed rgba(0,184,148,.4) !important;
+}
+.gutf-decision li a:hover {
+  border-bottom-style: solid !important;
+}
+/* ═══════════════════════════════════════════
+   📚 REFERENCES
+   ═══════════════════════════════════════════ */
+.gutf-refs ol {
+  padding-left: 20px;
+}
+.gutf-refs li {
+  font-size: .88rem !important;
+  color: var(--gutf-gray-500) !important;
+  margin: 6px 0 !important;
+  line-height: 1.6 !important;
+}
+.gutf-refs a {
+  font-weight: 500 !important;
+  font-size: .88rem;
+}
+/* ═══════════════════════════════════════════
+   🔏 DISCLOSURE BOX
+   ═══════════════════════════════════════════ */
+.gutf-disclosure {
+  background: var(--gutf-gray-50);
+  border: 1px solid var(--gutf-gray-200);
+  border-radius: var(--gutf-radius-md);
+  padding: 20px 24px;
+  margin: 28px 0;
+  font-size: .85rem;
+  color: var(--gutf-gray-500);
+  line-height: 1.7;
+}
+.gutf-disclosure strong {
+  color: var(--gutf-gray-700);
+}
+/* ═══════════════════════════════════════════
+   ✅ CHECKLIST
+   ═══════════════════════════════════════════ */
+.gutf-checklist {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+.gutf-checklist li {
+  position: relative;
+  padding-left: 32px !important;
+  margin: 10px 0 !important;
+}
+.gutf-checklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--gutf-white);
+  background: var(--gutf-gradient-badge);
+  border-radius: 50%;
+}
+/* ═══════════════════════════════════════════
+   📱 RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .gutf-article { padding: 0 14px; }
+  .gutf-hero { padding: 28px 20px; border-radius: var(--gutf-radius-lg); }
+  .gutf-hero__winners { grid-template-columns: 1fr; }
+  .gutf-hero__stats { gap: 8px; }
+  .gutf-hero__stat { padding: 8px 14px; }
+  .gutf-nav { border-radius: var(--gutf-radius-md); }
+  .gutf-section { padding: 22px 18px; border-radius: var(--gutf-radius-md); }
+  .gutf-product__image { padding: 30px 20px; min-height: 200px; }
+  .gutf-product__image img { max-width: 220px; }
+  .gutf-product__body { padding: 22px 20px 26px; }
+  .gutf-proscons { grid-template-columns: 1fr; }
+  .gutf-article table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .gutf-article th, .gutf-article td { padding: 11px 14px; font-size: .87rem; }
+  .gutf-decision { border-radius: var(--gutf-radius-lg); padding: 24px 18px; }
+}
+@media (max-width: 480px) {
+  .gutf-article { font-size: 16px; padding: 0 10px; }
+  .gutf-hero { padding: 24px 16px; }
+  .gutf-hero h1 { font-size: 1.6rem !important; }
+  .gutf-article h2 { font-size: 1.25rem; }
+  .gutf-product__title { font-size: 1.15rem !important; }
+  .gutf-nav a { padding: 8px 14px; font-size: .8rem; }
+}
+</style>
+<div class="gutf-article">
+<p>  <!-- ══════════════════════════════════════
+       🦸 HERO
+       ══════════════════════════════════════ --></p>
+<div class="gutf-hero">
+<div class="gutf-hero__eyebrow">🏃 Comparison Review · Road, Trail, Low Light &amp; Budget · Updated 2026</div>
+<p class="gutf-hero__subtitle">Most running sunglasses fail in boring, predictable ways — they slide when you sweat, fog when you climb, pinch at the temples, dim your vision too much, or bounce just enough to annoy you for an entire run. The best pairs <strong style="color:#fff;">disappear on your face</strong>, sharpen what you see, and protect your eyes without asking for attention. That is the only standard this guide uses.</p>
+<div class="gutf-hero__winners">
+<div class="gutf-hero__winner">
+<div class="gutf-hero__winner-icon">🏆</div>
+<div class="gutf-hero__winner-text">
+          <span class="gutf-hero__winner-label">Best Overall</span><br />
+          <span class="gutf-hero__winner-desc">Oakley Radar EV Path — wide FOV, secure fit, road-proven</span>
+        </div>
+</p>
+</div>
+<div class="gutf-hero__winner">
+<div class="gutf-hero__winner-icon">🥾</div>
+<div class="gutf-hero__winner-text">
+          <span class="gutf-hero__winner-label">Best for Trail</span><br />
+          <span class="gutf-hero__winner-desc">Smith Motive — coverage, airflow, terrain confidence</span>
+        </div>
+</p>
+</div>
+<div class="gutf-hero__winner">
+<div class="gutf-hero__winner-icon">💰</div>
+<div class="gutf-hero__winner-text">
+          <span class="gutf-hero__winner-label">Best Value</span><br />
+          <span class="gutf-hero__winner-desc">goodr OG — real utility, no premium price tag</span>
+        </div>
+</p>
+</div>
+<div class="gutf-hero__winner">
+<div class="gutf-hero__winner-icon">🌤️</div>
+<div class="gutf-hero__winner-text">
+          <span class="gutf-hero__winner-label">Best Changing Light</span><br />
+          <span class="gutf-hero__winner-desc">Rudy Project Propulse — dawn to dusk intelligence</span>
+        </div>
+</p>
+</div>
+<div class="gutf-hero__winner">
+<div class="gutf-hero__winner-icon">👤</div>
+<div class="gutf-hero__winner-text">
+          <span class="gutf-hero__winner-label">Best Small Faces</span><br />
+          <span class="gutf-hero__winner-desc">Julbo Spark — sport performance, proportional fit</span>
+        </div>
+</p>
+</div>
+<div class="gutf-hero__winner">
+<div class="gutf-hero__winner-icon">☀️</div>
+<div class="gutf-hero__winner-text">
+          <span class="gutf-hero__winner-label">Best All-Day Comfort</span><br />
+          <span class="gutf-hero__winner-desc">Tifosi Sanctum — low-drama reliability for long miles</span>
+        </div>
+</p>
+</div>
+</div>
+<div class="gutf-hero__stats">
+<div class="gutf-hero__stat">
+        <span class="gutf-hero__stat-num">7</span><br />
+        <span class="gutf-hero__stat-label">category winners<br />explained clearly</span>
+      </div>
+<div class="gutf-hero__stat">
+        <span class="gutf-hero__stat-num">6</span><br />
+        <span class="gutf-hero__stat-label">buying variables<br />that actually matter</span>
+      </div>
+<div class="gutf-hero__stat">
+        <span class="gutf-hero__stat-num">1</span><br />
+        <span class="gutf-hero__stat-label">simple goal: buy<br />the right pair once</span>
+      </div>
+<div class="gutf-hero__stat">
+        <span class="gutf-hero__stat-num">0</span><br />
+        <span class="gutf-hero__stat-label">time wasted on<br />generic filler</span>
+      </div>
+</p>
+</div>
+</div>
+<p>  <!-- ══════════════════════════════════════
+       🧭 NAVIGATION
+       ══════════════════════════════════════ --></p>
+<nav class="gutf-nav" aria-label="Article navigation">
+    <a href="#quick-picks">🎯 Quick Picks</a><br />
+    <a href="#how-we-tested">🔬 How We Tested</a><br />
+    <a href="#winners">🏅 Category Winners</a><br />
+    <a href="#lens-guide">🔍 Lens Guide</a><br />
+    <a href="#fit-guide">📐 Fit Guide</a><br />
+    <a href="#faq">❓ FAQ</a><br />
+    <a href="#references">📚 References</a><br />
+  </nav>
+<p>  <!-- ══════════════════════════════════════
+       📖 INTRODUCTION
+       ══════════════════════════════════════ --></p>
+<section class="gutf-section">
+<p style="font-size:1.1rem; color:var(--gutf-gray-800); font-weight:500; line-height:1.85;">If you search for the best running sunglasses, you will find plenty of pages that all say roughly the same thing: <em>lightweight frames, UV protection, polarized options, maybe a few product names — done.</em> That is not enough. Real buyers do not need more adjectives. They need help matching the <strong>right frame shape, lens type, ventilation pattern, and price point</strong> to the way they actually run.</p>
+<p>This guide is built for that decision. We are not asking which pair looks coolest in a studio photo. We are asking: <strong>which pair gives you the clearest, calmest, least distracting experience at mile 1, mile 8, and mile 18?</strong></p>
+<p>For <strong>road runners</strong>, that usually means glare control, comfort, and a stable fit at tempo pace. For <strong>trail runners</strong>, it means contrast, eye coverage, debris protection, and enough ventilation to stop lenses from turning into a steam room on climbs. For runners training in <strong>mixed weather</strong>, photochromic lenses and smart tint selection can matter more than brand prestige.</p>
+<p>Just as important — the &#8220;best&#8221; pair is only one part of a better running setup. If you are building out your kit, our guide to <a href="https://gearuptofit.com/running/running-gear-for-beginners/" rel="internal" target="_blank">running gear for beginners</a> covers the essentials that make daily training smoother. Refreshing footwear? Our review of the <a href="https://gearuptofit.com/review/best-daily-running-shoes/" rel="internal" target="_blank">best daily running shoes</a> is a strong next read, and our explainer on <a href="https://gearuptofit.com/running/how-to-choose-the-right-running-shoes/" rel="internal" target="_blank">how to choose the right running shoes</a> helps you avoid mismatches between your eyewear, stride, and training goals.</p>
+<div class="gutf-callout gutf-callout--key">
+      <span class="gutf-callout__icon">⚡</span></p>
+<div>
+        <strong>The fast answer:</strong> Buy for conditions, not hype. The right running sunglasses should deliver 100% UVA/UVB protection, stay put when you sweat, avoid cheek contact, maintain useful visual contrast, and feel almost invisible after ten minutes. If they are stylish but distracting, they are the wrong pair.
+      </div>
+</p>
+</div>
+<div class="gutf-pills">
+      <span class="gutf-pill">✓ UV400 protection</span><br />
+      <span class="gutf-pill">✓ No bounce</span><br />
+      <span class="gutf-pill">✓ No cheek slap</span><br />
+      <span class="gutf-pill">✓ Useful contrast</span><br />
+      <span class="gutf-pill">✓ Ventilation that works</span><br />
+      <span class="gutf-pill">✓ Comfort for long runs</span>
+    </div>
+<p>To make this article more useful than a generic roundup, it is organized around the <strong>actual buyer journey</strong>: quick recommendations first, then the test method, then category winners, then the lens and fit education that helps you make a smarter long-term choice. We also cover the terms and concerns that often get missed: <em>VLT, wraparound coverage, interchangeable lenses, photochromic performance, anti-fog behavior, hydrophobic coatings, small-face fit, half-rim versus full-rim stability, and whether polarized lenses are truly better for every run.</em></p>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🎯 QUICK PICKS
+       ══════════════════════════════════════ --></p>
+<section id="quick-picks">
+<h2>Quick Picks: The Best Running Sunglasses for Every Type of Runner</h2>
+<p>    <!-- ──────────────────────────────────
+         1 — BEST OVERALL: Oakley Radar EV Path
+         ────────────────────────────────── --></p>
+<div class="gutf-product">
+      <span class="gutf-product__badge">🏆 Best Overall</span></p>
+<div class="gutf-product__image">
+        <img decoding="async" src="https://m.media-amazon.com/images/I/51UERrox9GL._AC_SX679_.jpg" alt="Oakley Radar EV Path running sunglasses" loading="lazy" />
+      </div>
+<div class="gutf-product__body">
+<h3 class="gutf-product__title" style="margin-top:0;">Oakley Radar EV Path</h3>
+<p class="gutf-product__subtitle">The safest premium recommendation for serious road runners. A big field of view, rock-solid fit, lightweight feel, and polished Prizm optics that make pace work, long runs, and bright open routes dramatically easier on the eyes.</p>
+<div class="gutf-product__tags">
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            UV400<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            No-Slip Unobtainium® Grip<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Wide Extended Lens<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Ultra-Lightweight<br />
+          </span>
+        </div>
+<div class="gutf-proscons">
+<div class="gutf-proscons__col gutf-proscons__col--pros">
+<div class="gutf-proscons__label">✅ What Stands Out</div>
+<ul>
+<li>Wide upper field of view for forward posture</li>
+<li>Secure nose &amp; temple grip without over-clamping</li>
+<li>Outstanding lens quality in bright light</li>
+</ul>
+</div>
+<div class="gutf-proscons__col gutf-proscons__col--cons">
+<div class="gutf-proscons__label">⚠️ Trade-offs</div>
+<ul>
+<li>Premium pricing</li>
+<li>May feel large on narrower faces</li>
+<li>Not the most budget-friendly entry point</li>
+</ul>
+</div>
+</div>
+<p>        <a class="gutf-product__cta" href="https://amzn.to/4sE3CbL" target="_blank" rel="nofollow noopener sponsored"><br />
+          Check Price on Amazon<br />
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+        </a><br />
+        <span class="gutf-product__prime"><br />
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 19.5c3.6 2.3 8.4 3.1 13.2 1.8 2.4-.7 4.6-1.9 6.4-3.5-.6.1-4.3.9-8.3-.3C9.3 16.2 5.4 13.2 2 9v10.5z"/></svg><br />
+          Eligible for Prime shipping<br />
+        </span>
+      </div>
+</p>
+</div>
+<p>    <!-- ──────────────────────────────────
+         2 — BEST TRAIL: Smith Motive
+         ────────────────────────────────── --></p>
+<div class="gutf-product">
+      <span class="gutf-product__badge">🥾 Best Trail</span></p>
+<div class="gutf-product__image">
+        <img decoding="async" src="https://m.media-amazon.com/images/I/61T+CtVocDL._AC_SL1500_.jpg" alt="Smith Motive trail running sunglasses" loading="lazy" />
+      </div>
+<div class="gutf-product__body">
+<h3 class="gutf-product__title" style="margin-top:0;">Smith Motive</h3>
+<p class="gutf-product__subtitle">Purpose-built for runners who spend real time on dirt, roots, switchbacks, and changing light. Excellent wraparound coverage, ChromaPop™ lenses for enhanced contrast, and anti-fog ventilation that keeps up on the hardest climbs.</p>
+<div class="gutf-product__tags">
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            ChromaPop™ Lenses<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Anti-Fog Ventilation<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Full Wraparound<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Debris Shield<br />
+          </span>
+        </div>
+<p>        <a class="gutf-product__cta" href="https://amzn.to/4dk92Ea" target="_blank" rel="nofollow noopener sponsored"><br />
+          Check Price on Amazon<br />
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+        </a><br />
+        <span class="gutf-product__prime"><br />
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 19.5c3.6 2.3 8.4 3.1 13.2 1.8 2.4-.7 4.6-1.9 6.4-3.5-.6.1-4.3.9-8.3-.3C9.3 16.2 5.4 13.2 2 9v10.5z"/></svg><br />
+          Eligible for Prime shipping<br />
+        </span>
+      </div>
+</p>
+</div>
+<p>    <!-- ──────────────────────────────────
+         3 — BEST BUDGET: goodr OG
+         ────────────────────────────────── --></p>
+<div class="gutf-product">
+      <span class="gutf-product__badge">💰 Best Value</span></p>
+<div class="gutf-product__image">
+        <img decoding="async" src="https://m.media-amazon.com/images/I/31OJaQ+3UIL._AC_SX679_.jpg" alt="goodr OG budget running sunglasses" loading="lazy" />
+      </div>
+<div class="gutf-product__body">
+<h3 class="gutf-product__title" style="margin-top:0;">goodr OG Running Sunglasses</h3>
+<p class="gutf-product__subtitle">No-slip, no-bounce, polarized running sunglasses at a price that takes the sting out of losing or replacing a pair. For newer runners, casual runners, or anyone who values practicality over prestige — this is still one of the smartest low-risk buys in the entire category.</p>
+<div class="gutf-product__tags">
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Polarized<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            No-Slip Coating<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            No-Bounce Design<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Under $30<br />
+          </span>
+        </div>
+<p>        <a class="gutf-product__cta" href="https://amzn.to/4cFpxdP" target="_blank" rel="nofollow noopener sponsored"><br />
+          Check Price on Amazon<br />
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+        </a><br />
+        <span class="gutf-product__prime"><br />
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 19.5c3.6 2.3 8.4 3.1 13.2 1.8 2.4-.7 4.6-1.9 6.4-3.5-.6.1-4.3.9-8.3-.3C9.3 16.2 5.4 13.2 2 9v10.5z"/></svg><br />
+          Eligible for Prime shipping<br />
+        </span>
+      </div>
+</p>
+</div>
+<p>    <!-- ──────────────────────────────────
+         4 — BEST CHANGING LIGHT: Rudy Project Propulse
+         ────────────────────────────────── --></p>
+<div class="gutf-product">
+      <span class="gutf-product__badge">🌤️ Best Versatility</span></p>
+<div class="gutf-product__image">
+        <img decoding="async" src="https://m.media-amazon.com/images/I/41fIXeu+JrL._AC_SX679_.jpg" alt="Rudy Project Propulse photochromic running sunglasses" loading="lazy" />
+      </div>
+<div class="gutf-product__body">
+<h3 class="gutf-product__title" style="margin-top:0;">Rudy Project Propulse</h3>
+<p class="gutf-product__subtitle">If your routes move from open sun to tree cover, or your training often starts at dawn and ends in brighter light — this is the practical answer. Photochromic lenses that adapt intelligently, adjustable nose pads and temples for a truly custom fit, and the kind of versatility that eliminates second-guessing.</p>
+<div class="gutf-product__tags">
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Photochromic Lens<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Adjustable Nose &amp; Temples<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            UV400 Protection<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Dawn-to-Dusk Ready<br />
+          </span>
+        </div>
+<p>        <a class="gutf-product__cta" href="https://amzn.to/4b7fQSU" target="_blank" rel="nofollow noopener sponsored"><br />
+          Check Price on Amazon<br />
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+        </a><br />
+        <span class="gutf-product__prime"><br />
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 19.5c3.6 2.3 8.4 3.1 13.2 1.8 2.4-.7 4.6-1.9 6.4-3.5-.6.1-4.3.9-8.3-.3C9.3 16.2 5.4 13.2 2 9v10.5z"/></svg><br />
+          Eligible for Prime shipping<br />
+        </span>
+      </div>
+</p>
+</div>
+<p>    <!-- ──────────────────────────────────
+         5 — BEST SMALL FACE: Julbo Spark
+         ────────────────────────────────── --></p>
+<div class="gutf-product">
+      <span class="gutf-product__badge">👤 Best Small Fit</span></p>
+<div class="gutf-product__image">
+        <img decoding="async" src="https://m.media-amazon.com/images/I/51IMOoReeHL._AC_SX679_.jpg" alt="Julbo Spark running sunglasses for small faces" loading="lazy" />
+      </div>
+<div class="gutf-product__body">
+<h3 class="gutf-product__title" style="margin-top:0;">Julbo Spark</h3>
+<p class="gutf-product__subtitle">Most &#8220;best&#8221; lists quietly assume an average-to-large face. That leaves smaller-faced runners dealing with slipping, cheek contact, and oversized wrap. The Julbo Spark finally delivers real sport performance in a proportional, compact frame — with an optional Reactiv photochromic lens for variable conditions.</p>
+<div class="gutf-product__tags">
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Small-Face Fit<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Ultra-Lightweight<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Reactiv Photochromic<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            No Cheek Rub<br />
+          </span>
+        </div>
+<p>        <a class="gutf-product__cta" href="https://amzn.to/4b0FQ3M" target="_blank" rel="nofollow noopener sponsored"><br />
+          Check Price on Amazon<br />
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+        </a><br />
+        <span class="gutf-product__prime"><br />
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 19.5c3.6 2.3 8.4 3.1 13.2 1.8 2.4-.7 4.6-1.9 6.4-3.5-.6.1-4.3.9-8.3-.3C9.3 16.2 5.4 13.2 2 9v10.5z"/></svg><br />
+          Eligible for Prime shipping<br />
+        </span>
+      </div>
+</p>
+</div>
+<p>    <!-- ──────────────────────────────────
+         6 — BEST ALL-DAY COMFORT: Tifosi Sanctum
+         ────────────────────────────────── --></p>
+<div class="gutf-product">
+      <span class="gutf-product__badge">☀️ Best Comfort</span></p>
+<div class="gutf-product__image">
+        <img decoding="async" src="https://m.media-amazon.com/images/I/51VyQxsaVwL._AC_SX695_.jpg" alt="Tifosi Sanctum all-day comfort running sunglasses" loading="lazy" />
+      </div>
+<div class="gutf-product__body">
+<h3 class="gutf-product__title" style="margin-top:0;">Tifosi Sanctum</h3>
+<p class="gutf-product__subtitle">Not every buyer needs the sharpest premium lens or the most aggressive race-day silhouette. Some runners want a comfortable, dependable pair that handles easy runs, long runs, errands, and outdoor life — with zero drama. The Tifosi Sanctum is that pair: well-priced, broadly useful, and endlessly comfortable.</p>
+<div class="gutf-product__tags">
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            All-Day Wearable<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Lightweight Frame<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            Run + Lifestyle<br />
+          </span><br />
+          <span class="gutf-product__tag"><br />
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><br />
+            No Hot Spots<br />
+          </span>
+        </div>
+<p>        <a class="gutf-product__cta" href="https://amzn.to/4cyYdho" target="_blank" rel="nofollow noopener sponsored"><br />
+          Check Price on Amazon<br />
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+        </a><br />
+        <span class="gutf-product__prime"><br />
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 19.5c3.6 2.3 8.4 3.1 13.2 1.8 2.4-.7 4.6-1.9 6.4-3.5-.6.1-4.3.9-8.3-.3C9.3 16.2 5.4 13.2 2 9v10.5z"/></svg><br />
+          Eligible for Prime shipping<br />
+        </span>
+      </div>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🔬 HOW WE TESTED
+       ══════════════════════════════════════ --></p>
+<section id="how-we-tested" class="gutf-section">
+<h2>How We Evaluated Running Sunglasses</h2>
+<p>The biggest problem with many review pages is not that they recommend bad products — it is that they <strong>do not explain the filter they used</strong>. Without a filter, every recommendation sounds equally valid. Our framework is simple and transparent. We prioritize six things:</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>What It Means in Practice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fit Security</strong></td>
+<td>No slide on sweat, no bouncing at faster cadence, no constant adjustment on climbs or descents.</td>
+</tr>
+<tr>
+<td><strong>Optical Clarity</strong></td>
+<td>Clean vision, low distortion, usable contrast, and a lens tint that helps rather than fights the terrain around you.</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>Protection from wind, dust, debris, and side glare without creating blind spots or cheek interference.</td>
+</tr>
+<tr>
+<td><strong>Ventilation</strong></td>
+<td>A frame and lens design that manages fogging well enough for hard efforts, hills, and humid days.</td>
+</tr>
+<tr>
+<td><strong>Comfort</strong></td>
+<td>No temple pain, no nose pressure, and no fatigue during long runs or multi-hour wear.</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>The benefit has to justify the price — whether you spend budget money or go premium.</td>
+</tr>
+</tbody>
+</table>
+<div class="gutf-callout gutf-callout--info">
+      <span class="gutf-callout__icon">🔎</span></p>
+<div>
+        <strong>Reviewer note:</strong> For running sunglasses, &#8220;lightweight&#8221; is not enough. A pair can be light and still be irritating if the grip points are wrong, the lens tint is too dark, or the frame shape collides with your face when you smile.
+      </div>
+</p>
+</div>
+<p>We also pay close attention to the details that influence real-world satisfaction more than any spec sheet: <em>nose pad texture, temple arm retention, lens curvature, photochromic responsiveness, anti-scratch durability, hydrophobic behavior in sweat and light rain, and whether the frame works with hats or visors.</em> Runners rarely wear sunglasses in perfect conditions. A great pair should still feel boringly dependable in heat, wind, humidity, dust, drizzle, and changing light.</p>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🏅 CATEGORY WINNERS (DETAILED)
+       ══════════════════════════════════════ --></p>
+<section id="winners" class="gutf-section">
+<h2>Category Winners: Detailed Breakdowns</h2>
+<h3>🏆 Best Overall: Oakley Radar EV Path</h3>
+<p>This is the pick for runners who want <strong>one premium pair</strong> that can cover the largest number of road-running situations. The oversized lens shape gives you strong peripheral vision and excellent upward field of view — which matters more than people think when posture changes during harder efforts. The frame is light, stable, and proven. For runners who care about performance first, this is still one of the most complete packages in the category.</p>
+<p><strong>Who should buy it:</strong> Runners doing most of their mileage on roads, bike paths, or open mixed-surface routes who want strong optics, a reliable fit, and a premium feel.</p>
+<div style="text-align:center;margin:20px 0;">
+      <a class="gutf-product__cta" href="https://amzn.to/4sE3CbL" target="_blank" rel="nofollow noopener sponsored" style="display:inline-flex;width:auto;"><br />
+        👉 Get the Oakley Radar EV Path on Amazon<br />
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+      </a>
+    </div>
+<h3>🥾 Best for Technical Trails: Smith Motive</h3>
+<p>Trail running changes the job description for sunglasses. You need enough coverage to block wind and dust, enough contrast to read texture and contour, and enough airflow to avoid fogging when the trail tilts upward. The Smith Motive is <strong>designed around movement and terrain</strong>, not just style. It feels purpose-built without becoming overly aggressive.</p>
+<p>If trail running is your world, also browse our <a href="https://gearuptofit.com/running/trail-running/" rel="internal" target="_blank">trail running hub</a> and the <a href="https://gearuptofit.com/nutrition/trail-running-nutrition-guide/" rel="internal" target="_blank">trail running nutrition guide</a> so your eyewear, fueling, and route strategy all work together.</p>
+<div style="text-align:center;margin:20px 0;">
+      <a class="gutf-product__cta" href="https://amzn.to/4dk92Ea" target="_blank" rel="nofollow noopener sponsored" style="display:inline-flex;width:auto;"><br />
+        👉 Get the Smith Motive on Amazon<br />
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+      </a>
+    </div>
+<h3>💰 Best Budget Option: goodr OG</h3>
+<p>Budget picks often win by being &#8220;surprisingly decent.&#8221; goodr wins because it <strong>solves the right problem</strong>: not every runner wants to spend premium money on every training accessory. Polarized protection, low fuss, decent grip, and a casual frame that transitions from run to errands — it is still one of the most approachable buys in the space.</p>
+<p><strong>Best for:</strong> Beginner runners, occasional runners, travel pairs, backup pairs, and anyone who values practicality over prestige.</p>
+<div style="text-align:center;margin:20px 0;">
+      <a class="gutf-product__cta" href="https://amzn.to/4cFpxdP" target="_blank" rel="nofollow noopener sponsored" style="display:inline-flex;width:auto;"><br />
+        👉 Get the goodr OG on Amazon<br />
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+      </a>
+    </div>
+<h3>🌤️ Best for Low Light &amp; Changing Weather: Rudy Project Propulse</h3>
+<p>Low-light running is where many sunglasses become liabilities. If the tint is too dark, contrast collapses, and your feet stop trusting what your eyes report. The Propulse handles <strong>mixed light intelligently</strong>. In cloud cover, shaded roads, forests, or dawn training, this kind of lens behavior can be more valuable than raw glare reduction.</p>
+<div style="text-align:center;margin:20px 0;">
+      <a class="gutf-product__cta" href="https://amzn.to/4b7fQSU" target="_blank" rel="nofollow noopener sponsored" style="display:inline-flex;width:auto;"><br />
+        👉 Get the Rudy Project Propulse on Amazon<br />
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+      </a>
+    </div>
+<h3>👤 Best for Small Faces: Julbo Spark</h3>
+<p>Smaller-faced runners often deal with slipping, cheek contact, oversized wrap, or distorted visual proportions from frames designed for larger heads. The Julbo Spark keeps performance features while offering <strong>a friendlier fit profile</strong>. If many premium sport frames feel too big on you, this is the category to prioritize over &#8220;best overall.&#8221;</p>
+<div style="text-align:center;margin:20px 0;">
+      <a class="gutf-product__cta" href="https://amzn.to/4b0FQ3M" target="_blank" rel="nofollow noopener sponsored" style="display:inline-flex;width:auto;"><br />
+        👉 Get the Julbo Spark on Amazon<br />
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+      </a>
+    </div>
+<h3>☀️ Best for All-Day Comfort: Tifosi Sanctum</h3>
+<p>Some runners simply want a comfortable, dependable pair that handles easy runs, long runs, errands, and outdoor life in general. The Tifosi Sanctum sits in that sweet spot — <strong>well-priced, low-drama, broadly useful</strong>. It is often the answer for runners who want a single pair with no headaches.</p>
+<div style="text-align:center;margin:20px 0;">
+      <a class="gutf-product__cta" href="https://amzn.to/4cyYdho" target="_blank" rel="nofollow noopener sponsored" style="display:inline-flex;width:auto;"><br />
+        👉 Get the Tifosi Sanctum on Amazon<br />
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg><br />
+      </a>
+    </div>
+<h3>🏁 Best Race-Focused Fit: Shield Styles</h3>
+<p>If your priority is speed, race posture, and a distraction-free forward view, the best options usually come from large shield or semi-rimless designs with secure contact points and low visual clutter (like the Oakley or Rudy Project shield models). These work best for runners who already know they enjoy the sport-performance look.</p>
+<div class="gutf-callout gutf-callout--warning">
+      <span class="gutf-callout__icon">⚠️</span></p>
+<div>
+        <strong>Do not overbuy.</strong> Many runners would be happier with a solid mid-range pair that fits perfectly than with a flagship lens in a frame that never quite settles on the face.
+      </div>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🔍 LENS GUIDE
+       ══════════════════════════════════════ --></p>
+<section id="lens-guide" class="gutf-section">
+<h2>Lens Guide: How to Choose the Right Lens for Your Runs</h2>
+<p>The lens is the heart of the experience. The frame determines comfort and stability, but <strong>the lens determines what kind of visual world you run through</strong>. This is where many buyers get lost, because terms like polarized, mirrored, photochromic, Prizm, contrast-enhancing, and interchangeable all get thrown around as if they mean the same thing. They do not.</p>
+<h3>1. Start with UV Protection — Not Tint Darkness</h3>
+<p>Darker is not safer. A dark lens without proper UV protection is actually <em>worse</em> than a clear lens with proper protection (your pupils dilate behind dark tint, allowing more UV in). Your non-negotiable baseline: <strong>100% UVA/UVB protection (UV400)</strong>. Everything else comes after that.</p>
+<h3>2. Understand VLT (Visible Light Transmission)</h3>
+<p>VLT tells you how much light passes through the lens. Lower VLT = darker lens. High-sun road runs usually feel best with lower VLT (8–18%). Overcast runs, shaded routes, and wooded trails usually need higher VLT (25–60%) or a lighter tint. If you constantly run at dawn or dusk, your ideal lens choice looks very different from someone who trains at midday.</p>
+<h3>3. Polarized vs. Non-Polarized</h3>
+<p><strong>Polarized lenses</strong> reduce reflected glare — helpful on roads, water-adjacent routes, and open terrain with harsh sun. <strong>Non-polarized or contrast-focused lenses</strong> may work better for technical terrain where depth cues and surface detail matter more. Polarization is helpful, but it is <em>not automatically the best answer</em> for every runner.</p>
+<h3>4. Photochromic Lenses</h3>
+<p>Photochromic lenses darken and lighten as conditions change. They are often the best option for runners who go through forests, clouds, tunnels, or early/late-day light shifts. The upside is convenience. The trade-off is cost and the fact that not every photochromic lens adapts equally fast or equally well.</p>
+<h3>5. Contrast-Enhancing Tints</h3>
+<p>Amber, rose, bronze, and some sport-specific tints can improve the separation between shadows, roots, rocks, and surface texture. This is <strong>one of the most underrated buying factors</strong>, especially if you regularly run on terrain that changes underfoot.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Best Lens Type</th>
+<th>What to Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bright road running</strong></td>
+<td>Polarized or dark sport lens</td>
+<td>Glare control, broad field of view, stable fit</td>
+</tr>
+<tr>
+<td><strong>Technical trails</strong></td>
+<td>Contrast-enhancing non-polarized or adaptable lens</td>
+<td>Texture definition, coverage, anti-fog ventilation</td>
+</tr>
+<tr>
+<td><strong>Dawn or dusk</strong></td>
+<td>Light amber, rose, clear, or photochromic</td>
+<td>Higher VLT, useful detail, no over-darkening</td>
+</tr>
+<tr>
+<td><strong>Mixed weather</strong></td>
+<td>Photochromic</td>
+<td>Adaptation speed, versatility, comfort</td>
+</tr>
+<tr>
+<td><strong>Casual daily training</strong></td>
+<td>Balanced mid-tint lens</td>
+<td>Good comfort, enough flexibility for multiple conditions</td>
+</tr>
+</tbody>
+</table>
+<div class="gutf-callout gutf-callout--tip">
+      <span class="gutf-callout__icon">💡</span></p>
+<div>
+        <strong>Simple rule:</strong> If you do mostly sunny road running, prioritize glare reduction. If you do mostly shaded or technical running, prioritize contrast and detail recognition.
+      </div>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       📐 FIT GUIDE
+       ══════════════════════════════════════ --></p>
+<section id="fit-guide" class="gutf-section">
+<h2>Fit Guide: How Running Sunglasses Should Actually Feel</h2>
+<p>Fit is where good products become bad purchases. A brilliant lens in a bad fit is still a bad running experience. The right pair should feel <strong>secure but not tight</strong>, protective but not claustrophobic, and stable without demanding your attention every few minutes.</p>
+<h3>What Good Fit Looks Like</h3>
+<ul class="gutf-checklist">
+<li>The frame stays in place during easy running, tempo running, and descents</li>
+<li>The nose pads grip without leaving pressure pain or hot spots</li>
+<li>The temples feel secure but do not squeeze or create headaches</li>
+<li>The lower edge of the lens does not touch your cheeks when you smile</li>
+<li>The frame works with your hat, visor, or headphones if you use them</li>
+</ul>
+<h3>Common Fit Mistakes Buyers Make</h3>
+<p><strong>Buying oversized shield frames for a small face:</strong> often causes bounce, cheek rub, and poor stability. <strong>Choosing lifestyle frames instead of sport frames:</strong> they may look good but often lack retention and ventilation. <strong>Ignoring bridge fit:</strong> if the nose fit is wrong, the entire experience deteriorates from there.</p>
+<h3>Full-Rim, Half-Rim, or Shield?</h3>
+<p>Full-rim frames often feel more conventional and durable. Half-rim or semi-rimless designs reduce lower-frame distraction and improve downward visibility. Shield styles maximize coverage and visual continuity. <strong>There is no universal winner</strong> — your face shape and route type decide the answer.</p>
+<p>If your training is aimed at longer races, pairing your eyewear choice with your race-prep tools helps more than people think. Our roundup of the <a href="https://gearuptofit.com/review/best-gps-running-watches-for-marathon-beginners/" rel="internal" target="_blank">best GPS running watches for marathon beginners</a> can help you build a smarter training setup, and our broader review of the <a href="https://gearuptofit.com/review/best-running-shoes/" rel="internal" target="_blank">best running shoes</a> is worth reading if your current kit needs a full refresh.</p>
+<div class="gutf-callout gutf-callout--tip">
+      <span class="gutf-callout__icon">🎯</span></p>
+<div>
+        <strong>Practical buying advice:</strong> If you are between two styles, choose the pair you can imagine <em>forgetting you are wearing</em>. The best running gear gets out of your way.
+      </div>
+</p>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🎬 VIDEO
+       ══════════════════════════════════════ --></p>
+<section class="gutf-section">
+<h2>A Helpful Video for Understanding Running Sunglasses</h2>
+<p>If you want a visual explainer for sport sunglass fit, lens shape, and on-face stability, this video is useful because you can actually see how wrap, coverage, and nose retention work in motion:</p>
+<div class="gutf-video-wrap">
+      <iframe src="https://www.youtube.com/embed/3-mRqh4YnNU" title="Running sunglasses guide video" allowfullscreen loading="lazy"></iframe>
+    </div>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🏁 FINAL DECISION FRAMEWORK
+       ══════════════════════════════════════ --></p>
+<div class="gutf-decision">
+<h2>The Buying Advice Most Readers Actually Need</h2>
+<p style="color:var(--gutf-gray-400);position:relative;z-index:1;">If you have read this far, here is the real decision framework:</p>
+<ul>
+<li><strong>Newer to running or budget-conscious?</strong> → <a href="https://amzn.to/4cFpxdP" target="_blank" rel="nofollow noopener sponsored">Get the goodr OG</a>. Smart, simple, low-risk.</li>
+<li><strong>Serious road runner who wants one great pair?</strong> → <a href="https://amzn.to/4sE3CbL" target="_blank" rel="nofollow noopener sponsored">Get the Oakley Radar EV Path</a>. Best all-around road performance.</li>
+<li><strong>Trail runner who needs coverage &amp; contrast?</strong> → <a href="https://amzn.to/4dk92Ea" target="_blank" rel="nofollow noopener sponsored">Get the Smith Motive</a>. Purpose-built for dirt.</li>
+<li><strong>Run in changing light constantly?</strong> → <a href="https://amzn.to/4b7fQSU" target="_blank" rel="nofollow noopener sponsored">Get the Rudy Project Propulse</a>. Photochromic intelligence.</li>
+<li><strong>Smaller face, tired of oversized frames?</strong> → <a href="https://amzn.to/4b0FQ3M" target="_blank" rel="nofollow noopener sponsored">Get the Julbo Spark</a>. Finally, a real fit.</li>
+<li><strong>Want all-day comfort for runs and life?</strong> → <a href="https://amzn.to/4cyYdho" target="_blank" rel="nofollow noopener sponsored">Get the Tifosi Sanctum</a>. Low-drama reliability.</li>
+</ul>
+<p style="color:var(--gutf-gray-400);position:relative;z-index:1;margin-top:20px;">Remember: your <strong style="color:#fff;">route matters more than your self-image</strong>. The right choice is the one that fits your actual training life — not a fantasy version of it.</p>
+</p>
+</div>
+<p>  <!-- ══════════════════════════════════════
+       ❓ FAQ
+       ══════════════════════════════════════ --></p>
+<section id="faq" class="gutf-section">
+<div class="gutf-box" style="margin:28px 0;padding:20px 22px;background:#f7fbff;border:1px solid #dbeafe;border-radius:18px;"><strong style="display:block;margin-bottom:10px;color:#0f172a;">Complete your running gear setup</strong></p>
+<p style="margin:0 0 10px;">Sunglasses matter more when the rest of your training setup is dialed in too.</p>
+<ul style="margin:0;padding-left:20px;">
+<li><a href="https://gearuptofit.com/running/" target="_blank">Browse the running hub</a></li>
+<li><a href="https://gearuptofit.com/review/best-gps-running-watches-for-marathon-beginners/" target="_blank">Compare beginner-friendly GPS running watches</a></li>
+<li><a href="https://gearuptofit.com/running/zone-2-running-calculator/" target="_blank">Use the Zone 2 calculator for easier effort control on sunny long runs</a></li>
+</ul>
+</div>
+<p><!-- GUTF_KW_RUNNING_SUNGLASSES_2026_20260621 START --></p>
+<section class="gutf-seo-upgrade">
+<h2>Anti-Fog Performance in Running Eyewear</h2>
+<p>To avoid vision obstruction during high-humidity or cold-morning efforts, choosing the <strong>best running sunglasses that don&#8217;t fog</strong> is paramount. Look for frames with integrated ventilation ports along the brow and temples, which promote consistent airflow and prevent vapor buildup when your body heat spikes.</p>
+<h3>Goodr vs Oakley for Running</h3>
+<p>When comparing <strong>goodr vs oakley for running</strong>, budget and premium technology are the main deciding factors:</p>
+<figure class="wp-block-table">
+<table>
+<thead>
+<tr>
+<th>Brand/Model</th>
+<th>Ideal Use Case</th>
+<th>Key Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goodr Sunglasses</td>
+<td>Casual runs &amp; budget-conscious runners</td>
+<td>Affordable price, no-slip grip, stylish colors</td>
+</tr>
+<tr>
+<td>Oakley Sunglasses</td>
+<td>Elite performance &amp; variable light conditions</td>
+<td>Prizm lens contrast, superior optical clarity, durable frames</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<h3>Best for Small Faces, Low Light, and Trail Needs</h3>
+<ul>
+<li><strong>Small Faces:</strong> The search for the <strong>best running sunglasses for small faces</strong> leads to compact frames that hug the temples tightly without sliding down the nose bridge during sweaty speed workouts.</li>
+<li><strong>Low Light &amp; Trails:</strong> Selecting the best <strong>running sunglasses for trail running</strong> often requires <strong>photochromic running sunglasses</strong> that dynamically adapt their tint. Alternatively, specialized tint options serve as the <strong>best running sunglasses for low light</strong>, enhancing depth perception under dense tree canopies.</li>
+</ul>
+</section>
+<p><!-- GUTF_KW_RUNNING_SUNGLASSES_2026_20260621 END --></p>
+<h2>Frequently Asked Questions</h2>
+<div class="gutf-faq">
+<details open>
+<summary>Are running sunglasses really necessary?</summary>
+<div class="gutf-faq__answer">For many runners, yes. They help with UV protection, glare reduction, wind, bugs, dust, and road spray. They are especially useful on long sunny runs, exposed trails, and routes where eye comfort directly affects your confidence and pace.</div>
+</details>
+<details>
+<summary>Are polarized lenses always better for running?</summary>
+<div class="gutf-faq__answer">No. Polarized lenses are excellent in strong glare, but some runners prefer non-polarized contrast lenses on technical terrain where detail recognition matters more than reflected-glare reduction.</div>
+</details>
+<details>
+<summary>What color lens is best for running?</summary>
+<div class="gutf-faq__answer">Gray and darker lenses are common for bright sun. Amber, rose, and bronze can improve contrast in mixed conditions. Clear or very light tints make more sense for low light. The right answer depends entirely on where and when you run.</div>
+</details>
+<details>
+<summary>Can I use cycling sunglasses for running?</summary>
+<div class="gutf-faq__answer">Often yes, especially if they fit well and ventilate properly. Just make sure they do not feel too bulky, too aggressive, or unstable at <a href="https://gearuptofit.com/running/master-your-running-cadence/" target="_blank" rel="noopener">running cadence</a>.</div>
+</details>
+<details>
+<summary>How much should I spend on running sunglasses?</summary>
+<div class="gutf-faq__answer">Budget pairs (like the goodr OG) can be perfectly useful. Spend more when you know you care about optical clarity, all-day comfort, premium materials, or highly adaptable lenses. Fit still matters more than price.</div>
+</details>
+<details>
+<summary>What is the biggest mistake people make when buying running sunglasses?</summary>
+<div class="gutf-faq__answer">Buying by looks alone. The wrong fit, wrong tint, or wrong use case can ruin the experience — even if the product is popular and well-reviewed by others.</div>
+</details>
+</div>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       📚 REFERENCES
+       ══════════════════════════════════════ --></p>
+<section id="references" class="gutf-section gutf-refs">
+<h2>References</h2>
+<ol>
+<li><a href="https://www.aao.org/eye-health/glasses-contacts/sunglasses-3" target="_blank" rel="noopener">American Academy of Ophthalmology — Sunglasses and UV eye protection</a></li>
+<li><a href="https://www.220triathlon.com/gear/run/best-running-sunglasses" target="_blank" rel="noopener">220 Triathlon — Best running sunglasses guide</a></li>
+<li><a href="https://www.irunfar.com/best-running-sunglasses" target="_blank" rel="noopener">iRunFar — Best running sunglasses</a></li>
+<li><a href="https://www.runnersworld.com/gear/g20848946/best-running-sunglasses/" target="_blank" rel="noopener">Runner&#8217;s World — Running sunglasses recommendations</a></li>
+<li><a href="https://www.rei.com/learn/expert-advice/sunglasses.html" target="_blank" rel="noopener">REI Expert Advice — How to choose sunglasses</a></li>
+<li><a href="https://www.outdoorgearlab.com/topics/camping-and-hiking/best-sunglasses" target="_blank" rel="noopener">OutdoorGearLab — Sunglasses testing insights</a></li>
+<li><a href="https://www.smithoptics.com/" target="_blank" rel="noopener">Smith Optics — Product and lens technology information</a></li>
+<li><a href="https://www.oakley.com/" target="_blank" rel="noopener">Oakley — Sport eyewear product information</a></li>
+<li><a href="https://www.rudyprojectna.com/" target="_blank" rel="noopener">Rudy Project — Sport sunglass technology information</a></li>
+<li><a href="https://goodr.com/" target="_blank" rel="noopener">goodr — Product fit and lens information</a></li>
+</ol>
+</section>
+<p>  <!-- ══════════════════════════════════════
+       🔏 DISCLOSURES
+       ══════════════════════════════════════ --></p>
+<div class="gutf-disclosure">
+    <strong>Affiliate Disclosure:</strong> As an Amazon Associate, <a href="https://gearuptofit.com/fitness/gear-up-to-fit/" target="_blank" rel="noopener">Gear Up to Fit</a> earns from qualifying purchases. This does not affect our editorial recommendations or the price you pay. We only recommend products we believe provide genuine value to runners.
+  </div>
+<div class="gutf-disclosure" style="margin-top:12px;">
+    <strong>Editorial Disclosure:</strong> This guide reflects the editorial opinion of the Gear Up to Fit team. All recommendations are based on practical evaluation criteria. Product images are sourced from Amazon and used in accordance with the Amazon Associates program.
+  </div>
+</div>
+<div class="gutf-next-setup" style="margin:28px 0 0;padding:20px 22px;border:1px solid #dbe4f0;border-radius:18px;background:#f8fbff;">
+<h2 style="margin:0 0 10px;font-size:1.45rem;line-height:1.3;">Build the rest of your running setup</h2>
+<p style="margin:0 0 12px;">Sunglasses solve glare and comfort, but they work best as part of a complete beginner-friendly running kit. If you are still dialing in pacing, navigation, or your broader gear stack, start here next.</p>
+<ul style="margin:0 0 12px;padding-left:20px;">
+<li><a href="https://gearuptofit.com/review/best-gps-running-watches-for-marathon-beginners/" target="_blank">Best GPS running watches for marathon beginners</a> for pacing, heart-rate tracking, and race-day basics.</li>
+<li><a href="https://gearuptofit.com/running/zone-2-running-calculator/" target="_blank">Zone 2 running calculator</a> to turn your watch data into useful easy-run decisions.</li>
+<li><a href="https://gearuptofit.com/running/" target="_blank">Running hub</a> for shoe, training, and fueling guides that support the same running journey.</li>
+</ul>
+<p style="margin:0;"><strong>Editorial trust:</strong> For how Gear Up to Fit evaluates gear recommendations, see the <a href="https://gearuptofit.com/review-methodology/" target="_blank">review methodology</a>.</p>
+</div>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/review/best-daily-running-shoes/">best daily running shoes</a></li><li><a href="https://gearuptofit.com/review/best-running-shoes/">how to choose the right running shoes</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"Full-Rim, Half-Rim, or Shield?","@type":"Question","acceptedAnswer":{"text":"Full-rim frames often feel more conventional and durable. Half-rim or semi-rimless designs reduce lower-frame distraction and improve downward visibility. Shield styles maximize coverage and visual continuity. There is no universal winner — your face shape and route type decide the answer.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

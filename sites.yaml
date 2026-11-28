@@ -10,6 +10,8 @@ repository: douphealth/amazon-optimization
 
 account_tag_prefix: papalex
 marketplace: www.amazon.com
+# The tracking ID product boxes use on sites with no tag of their own (tags: []).
+default_tag: papalex-20
 
 # Products whose links should no longer be used. The fixer points each link at an Amazon search:
 # the link's own text when it is descriptive, otherwise the fallback phrase given here.

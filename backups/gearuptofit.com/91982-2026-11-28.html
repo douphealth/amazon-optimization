@@ -1,0 +1,524 @@
+<p><!-- GearUpToFit — Best Running Shoes for Supination and High Arches --></p>
+<style>
+  .gutf-sup-compact, .gutf-sup-compact * { box-sizing: border-box; }
+  .gutf-sup-compact {
+    --gutf-ink:#101828; --gutf-text:#344054; --gutf-muted:#667085;
+    --gutf-bg:#f6f8fc; --gutf-card:#fff; --gutf-soft:#f8fafc;
+    --gutf-line:#e5e9f0; --gutf-blue:#155eef; --gutf-blue-dark:#0f3f9e;
+    --gutf-blue-soft:#edf4ff; --gutf-orange:#f97316; --gutf-orange-soft:#fff4e8;
+    --gutf-green:#078658; --gutf-green-soft:#ecfdf3;
+    --gutf-shadow:0 14px 34px rgba(16,24,40,.07);
+    --gutf-shadow-soft:0 8px 22px rgba(16,24,40,.05);
+    --gutf-radius-xl:26px; --gutf-radius-lg:20px; --gutf-radius-md:16px;
+    color:var(--gutf-ink); background:linear-gradient(180deg,#fff 0%,var(--gutf-bg) 42%,#fff 100%);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.66; overflow-wrap:break-word;
+  }
+  .gutf-sup-compact a{color:var(--gutf-blue);text-decoration:underline;text-underline-offset:3px;}
+  .gutf-sup-compact a:hover{color:var(--gutf-blue-dark);}
+  .gutf-sup-compact img{display:block;max-width:100%;height:auto;}
+  .gutf-wrap{width:min(100%,1160px);margin:0 auto;padding:14px;}
+  .gutf-top{margin:0 0 16px;padding:18px;border:1px solid var(--gutf-line);border-radius:var(--gutf-radius-xl);background:#fff;box-shadow:var(--gutf-shadow-soft);}
+  .gutf-eyebrow{display:inline-flex;width:fit-content;margin:0 0 10px;padding:6px 10px;border-radius:999px;background:var(--gutf-blue-soft);color:var(--gutf-blue-dark);font-size:.78rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+  .gutf-sup-compact h1,.gutf-sup-compact h2,.gutf-sup-compact h3,.gutf-sup-compact h4{margin:0 0 12px;color:var(--gutf-ink);line-height:1.14;letter-spacing:-.035em;}
+  .gutf-sup-compact h1{max-width:900px;font-size:clamp(1.85rem,7.2vw,3.8rem);}
+  .gutf-sup-compact h2{font-size:clamp(1.45rem,5vw,2.55rem);}
+  .gutf-sup-compact h3{font-size:clamp(1.16rem,3.7vw,1.65rem);}
+  .gutf-lede{max-width:880px;margin:0;color:var(--gutf-text);font-size:clamp(1rem,3.2vw,1.18rem);}
+  .gutf-meta-line{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .gutf-meta{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;background:var(--gutf-soft);border:1px solid var(--gutf-line);color:var(--gutf-muted);font-size:.78rem;font-weight:850;}
+  .gutf-section{margin:28px 0;}
+  .gutf-intro{max-width:860px;color:var(--gutf-text);margin:0 0 16px;}
+  .gutf-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:14px 0;}
+  .gutf-summary-card{padding:16px;border:1px solid var(--gutf-line);border-radius:var(--gutf-radius-md);background:#fff;box-shadow:var(--gutf-shadow-soft);}
+  .gutf-summary-card span{display:block;color:var(--gutf-blue-dark);font-size:.78rem;font-weight:950;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;}
+  .gutf-summary-card strong{display:block;font-size:1.1rem;margin-bottom:6px;}
+  .gutf-summary-card p{margin:0;color:var(--gutf-muted);font-size:.88rem;}
+  .gutf-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.88rem;overflow-x:auto;display:block;}
+  .gutf-table th,.gutf-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--gutf-line);vertical-align:top;}
+  .gutf-table th{background:#f8fafc;color:var(--gutf-ink);font-weight:950;white-space:nowrap;}
+  .gutf-table tr:last-child td{border-bottom:0;}
+  .gutf-product{display:grid;gap:15px;padding:14px;border:1px solid var(--gutf-line);border-radius:24px;background:#fff;box-shadow:var(--gutf-shadow);}
+  .gutf-product+.gutf-product{margin-top:16px;}
+  .gutf-product-media{display:grid;place-items:center;min-height:180px;padding:14px;border-radius:20px;border:1px solid #edf1f6;background:radial-gradient(circle at 50% 20%,#fff 0%,#eef4ff 56%,#f8fafc 100%);}
+  .gutf-product-media img{width:auto;max-width:min(100%,290px);max-height:205px;object-fit:contain;margin:0 auto;mix-blend-mode:multiply;}
+  .gutf-label{display:inline-flex;width:fit-content;margin-bottom:9px;padding:6px 10px;border-radius:999px;background:var(--gutf-blue-soft);color:var(--gutf-blue-dark);border:1px solid rgba(21,94,239,.16);font-size:.75rem;font-weight:950;letter-spacing:.04em;text-transform:uppercase;}
+  .gutf-tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0;}
+  .gutf-tag{display:inline-flex;align-items:center;min-height:28px;padding:5px 9px;border-radius:999px;background:#f1f5f9;color:#344054;font-size:.78rem;font-weight:850;}
+  .gutf-specs{display:grid;gap:8px;margin:13px 0;}
+  .gutf-spec{display:flex;justify-content:space-between;gap:12px;padding:9px 11px;border:1px solid var(--gutf-line);border-radius:13px;background:#fff;}
+  .gutf-spec span:first-child{color:var(--gutf-muted);font-weight:850;}
+  .gutf-spec span:last-child{color:var(--gutf-ink);font-weight:950;text-align:right;}
+  .gutf-procon{display:grid;gap:10px;margin-top:13px;}
+  .gutf-pro,.gutf-con{padding:13px;border-radius:var(--gutf-radius-md);border:1px solid transparent;}
+  .gutf-pro{background:var(--gutf-green-soft);border-color:#bbf7d0;}
+  .gutf-con{background:var(--gutf-orange-soft);border-color:#fed7aa;}
+  .gutf-pro h4,.gutf-con h4{margin-bottom:7px;font-size:1rem;letter-spacing:-.015em;}
+  .gutf-sup-compact ul,.gutf-sup-compact ol{margin:7px 0 0;padding-left:1.18rem;}
+  .gutf-sup-compact li{margin:4px 0;}
+  .gutf-cta{display:grid;gap:9px;margin-top:14px;}
+  .gutf-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 15px;border-radius:14px;background:linear-gradient(135deg,var(--gutf-blue),var(--gutf-blue-dark));color:#fff!important;font-weight:950;text-align:center;text-decoration:none!important;box-shadow:0 10px 22px rgba(21,94,239,.25);transition:transform .15s,box-shadow .15s;}
+  .gutf-btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(21,94,239,.32);}
+  .gutf-btn-light{background:#fff;color:var(--gutf-blue)!important;border:2px solid var(--gutf-line);box-shadow:none;}
+  .gutf-btn-light:hover{border-color:var(--gutf-blue);background:var(--gutf-blue-soft);}
+  .gutf-callout{padding:16px 18px;border-radius:var(--gutf-radius-md);background:var(--gutf-orange-soft);border:1px solid #fed7aa;color:var(--gutf-text);margin:18px 0;}
+  .gutf-callout strong{color:var(--gutf-ink);}
+  .gutf-faq{margin:28px 0;}
+  .gutf-faq-item{padding:16px;border:1px solid var(--gutf-line);border-radius:var(--gutf-radius-md);background:#fff;margin-bottom:10px;}
+  .gutf-faq-item h3{font-size:1.1rem;margin-bottom:8px;}
+  .gutf-faq-item p{margin:0;color:var(--gutf-text);}
+  .gutf-sources{font-size:.85rem;color:var(--gutf-muted);margin:24px 0;}
+  .gutf-sources ul{margin:6px 0 0;padding-left:1.18rem;}
+  .gutf-sources li{margin:3px 0;}
+  .gutf-author{padding:16px;border:1px solid var(--gutf-line);border-radius:var(--gutf-radius-md);background:var(--gutf-soft);margin:24px 0;}
+  .gutf-author p{margin:0;color:var(--gutf-text);font-size:.88rem;}
+  .gutf-author strong{color:var(--gutf-ink);}
+  @media(min-width:768px){
+    .gutf-product{grid-template-columns:280px 1fr;}
+    .gutf-procon{grid-template-columns:1fr 1fr;}
+    .gutf-table{display:table;}
+  }
+</style>
+<article class="gutf-sup-compact">
+<div class="gutf-wrap">
+<header class="gutf-top">
+<p class="gutf-eyebrow">2026 running shoe guide</p>
+<p class="gutf-lede">Supinators need cushioned neutral shoes — not stability shoes. This guide compares the best max-cushion, daily-trainer, and wide-foot options for runners with high arches and outward foot roll, with real Amazon links and product images.</p>
+<div class="gutf-meta-line"><span class="gutf-meta">Updated July 2026</span><span class="gutf-meta">Mobile-first</span><span class="gutf-meta">Amazon affiliate links</span><span class="gutf-meta">Evidence-informed</span></div>
+</header>
+<section class="gutf-section" id="best-picks">
+<div style="margin:32px 0;text-align:center;">
+<img src="https://gearuptofit.com/wp-content/uploads/2026/07/Best-running-shoes-for-supination-Infographic.webp" alt="Best running shoes for supination infographic" style="width:100%;max-width:800px;height:auto;border-radius:12px;border:1px solid #e8e8e8;" loading="lazy" decoding="async" /></p>
+<p style="font-size:0.85em;color:#666;margin-top:8px;">Infographic: Key features to look for in running shoes for supination.</p>
+</div>
+<h2>Best picks at a glance</h2>
+<p class="gutf-intro">Start here. For most supinators with high arches, the safest choice is a max-cushion neutral shoe with a broad, stable platform.</p>
+<div class="gutf-summary">
+<div class="gutf-summary-card"><span>Best overall</span><strong>Brooks Ghost Max 3</strong></p>
+<p>A cushioned neutral shoe that hits the sweet spot for supinators.</p>
+</div>
+<div class="gutf-summary-card"><span>Best max cushion</span><strong>ASICS Gel-Nimbus 27</strong></p>
+<p>The most cushioned shoe in ASICS neutral lineup.</p>
+</div>
+<div class="gutf-summary-card"><span>Best daily trainer</span><strong>HOKA Clifton 10</strong></p>
+<p>The everyday workhorse for supinators who want cushioning without bulk.</p>
+</div>
+<div class="gutf-summary-card"><span>Best for long runs</span><strong>Saucony Triumph 23</strong></p>
+<p>A max-cushion neutral trainer using PWRRUN PB foam.</p>
+</div>
+</div>
+</section>
+<section class="gutf-section" id="comparison-table">
+<h2>Quick comparison</h2>
+<table class="gutf-table">
+<thead>
+<tr>
+<th>Best for</th>
+<th>Shoe</th>
+<th>Why it works</th>
+<th>Skip it if</th>
+<th>Amazon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Best overall</td>
+<td><strong>Brooks Ghost Max 3</strong></td>
+<td>A cushioned neutral shoe that hits the sweet spot for supinators.</td>
+<td>Not enough support for overpronators</td>
+<td><a href="https://www.amazon.com/dp/B0DM3R5JM5?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+<tr>
+<td>Best max cushion</td>
+<td><strong>ASICS Gel-Nimbus 27</strong></td>
+<td>The most cushioned shoe in ASICS neutral lineup.</td>
+<td>Premium pricing</td>
+<td><a href="https://www.amazon.com/dp/B0D42DTM2X?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+<tr>
+<td>Best daily trainer</td>
+<td><strong>HOKA Clifton 10</strong></td>
+<td>The everyday workhorse for supinators who want cushioning without bulk.</td>
+<td>EVA compresses faster than premium foam</td>
+<td><a href="https://www.amazon.com/dp/B0D5GBVS8F?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+<tr>
+<td>Best for long runs</td>
+<td><strong>Saucony Triumph 23</strong></td>
+<td>A max-cushion neutral trainer using PWRRUN PB foam.</td>
+<td>May feel too soft for tempo</td>
+<td><a href="https://www.amazon.com/dp/B0FFKQ5TYQ?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+<tr>
+<td>Best for wide feet</td>
+<td><strong>New Balance 1080v14</strong></td>
+<td>Fresh Foam X 1080v14 is New Balance softest shoe and a top pick for supinators with wide feet.</td>
+<td>Heavier than lighter trainers</td>
+<td><a href="https://www.amazon.com/dp/B0DJVB6W83?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+<tr>
+<td>Best for beginners</td>
+<td><strong>Brooks Glycerin 23</strong></td>
+<td>The Glycerin 23 is Brooks traditional max-cushion neutral shoe, ideal for beginners with high arches who are building mileage.</td>
+<td>Heavier than daily trainers</td>
+<td><a href="https://www.amazon.com/dp/B0F5NB8NGZ?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+<tr>
+<td>Best for outer-foot pain</td>
+<td><strong>Brooks Glycerin Max</strong></td>
+<td>The Glycerin Max uses nitrogen-infused DNA Tuned cushioning with a broad platform that is ideal for supinators who experience pain on the outer edge of the foot.</td>
+<td>Expensive retail price</td>
+<td><a href="https://www.amazon.com/dp/B0CZND7D73?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Amazon</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="gutf-section" id="detailed-reviews">
+<h2>Detailed shoe reviews</h2>
+<p class="gutf-intro">Each shoe is evaluated for its ability to absorb impact, accommodate high arches, and avoid the medial posting that supinators should avoid.</p>
+<section class="gutf-product" id="brooks-ghost-max-3">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/brooks-ghost-max-3.webp" alt="Brooks Ghost Max 3 running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best overall</span></p>
+<h3>Brooks Ghost Max 3</h3>
+<p>A cushioned neutral shoe that hits the sweet spot for supinators. DNA Loft v3 foam absorbs the impact that high-arched underpronating feet cannot. The wide stable base prevents lateral rolling while the subtle rocker smooths transitions without medial posting that high arches find uncomfortable.</p>
+<div class="gutf-tags"><span class="gutf-tag">Cushioned</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">Wide base</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Daily, long runs</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>DNA Loft v3</span></div>
+<div class="gutf-spec"><span>Drop</span><span>6 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Soft cushioning for rigid supinating feet</li>
+<li>Wide stable base prevents lateral wobble</li>
+<li>Smooth transition without medial posting</li>
+<li>Versatile daily and long runs</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>Not enough support for overpronators</li>
+<li>May feel firm vs max-stack</li>
+<li>Less energetic than lighter trainers</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0DM3R5JM5?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Brooks Ghost Max 3 on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+<section class="gutf-product" id="asics-gel-nimbus-27">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/asics-gel-nimbus-27.webp" alt="ASICS Gel-Nimbus 27 running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best max cushion</span></p>
+<h3>ASICS Gel-Nimbus 27</h3>
+<p>The most cushioned shoe in ASICS neutral lineup. FF Blast Plus Sky foam is ASICS softest, paired with PureGel in the heel for impact absorption at landing. The broad platform gives high-arched runners the protection they need on long road runs.</p>
+<div class="gutf-tags"><span class="gutf-tag">Max cushion</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">PureGel</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Easy, long runs</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>FF Blast Plus Sky</span></div>
+<div class="gutf-spec"><span>Drop</span><span>8 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Softest ASICS foam for max absorption</li>
+<li>PureGel in heel absorbs landing shock</li>
+<li>Broad platform for stability</li>
+<li>Excellent for long mileage</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>Premium pricing</li>
+<li>May feel too soft for tempo</li>
+<li>Heavier than daily trainers</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0D42DTM2X?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check ASICS Gel-Nimbus 27 on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+<section class="gutf-product" id="hoka-clifton-10">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/hoka-clifton-10.webp" alt="HOKA Clifton 10 running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best daily trainer</span></p>
+<h3>HOKA Clifton 10</h3>
+<p>The everyday workhorse for supinators who want cushioning without bulk. The MetaRocker encourages a smooth forward roll, helping supinators who land on the outer edge and struggle to transition weight across the foot. Best value cushioned neutral shoe for high-arched runners.</p>
+<div class="gutf-tags"><span class="gutf-tag">Cushioned</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">MetaRocker</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Daily easy mileage</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>EVA</span></div>
+<div class="gutf-spec"><span>Drop</span><span>5 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Lightweight for its cushioning</li>
+<li>MetaRocker smooths outer-edge landing</li>
+<li>Best price-to-cushioning ratio</li>
+<li>Ideal daily workhorse</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>EVA compresses faster than premium foam</li>
+<li>5 mm drop lower than some expect</li>
+<li>Not for runners needing max cushion</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0D5GBVS8F?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check HOKA Clifton 10 on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+<section class="gutf-product" id="saucony-triumph-23">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/saucony-triumph-23.webp" alt="Saucony Triumph 23 running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best for long runs</span></p>
+<h3>Saucony Triumph 23</h3>
+<p>A max-cushion neutral trainer using PWRRUN PB foam. The Triumph 23 absorbs impact beautifully on long runs where supinators need the most protection. The center of pressure is shifted forward to reduce heel-strike braking, and the 8 mm drop suits runners transitioning from traditional shoes.</p>
+<div class="gutf-tags"><span class="gutf-tag">Max cushion</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">PWRRUN PB</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Long, easy, recovery</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>PWRRUN PB</span></div>
+<div class="gutf-spec"><span>Drop</span><span>8 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Springy PWRRUN PB foam</li>
+<li>Forward-shifted pressure reduces braking</li>
+<li>Less bulky than other max-cushion</li>
+<li>Durable for high mileage</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>May feel too soft for tempo</li>
+<li>Premium pricing</li>
+<li>Less rocker than HOKA options</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0FFKQ5TYQ?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Saucony Triumph 23 on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+<section class="gutf-product" id="new-balance-1080v14">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/new-balance-1080v14.webp" alt="New Balance 1080v14 running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best for wide feet</span></p>
+<h3>New Balance 1080v14</h3>
+<p>Fresh Foam X 1080v14 is New Balance softest shoe and a top pick for supinators with wide feet. The plush Fresh Foam X cushioning absorbs impact while the wide toe box accommodates high-volume feet. Available in multiple widths (D, 2E, 4E) which is critical for supinators who need room to splay.</p>
+<div class="gutf-tags"><span class="gutf-tag">Max cushion</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">Wide fit</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Easy, long, wide feet</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>Fresh Foam X</span></div>
+<div class="gutf-spec"><span>Drop</span><span>6 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Available in multiple widths</li>
+<li>Plush Fresh Foam X cushioning</li>
+<li>Wide toe box for foot splay</li>
+<li>Excellent for high-volume feet</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>Heavier than lighter trainers</li>
+<li>May feel too plush for speed</li>
+<li>Limited color options in wide sizes</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0DJVB6W83?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check New Balance 1080v14 on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+<section class="gutf-product" id="brooks-glycerin-23">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/brooks-glycerin-23.webp" alt="Brooks Glycerin 23 running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best for beginners</span></p>
+<h3>Brooks Glycerin 23</h3>
+<p>The Glycerin 23 is Brooks traditional max-cushion neutral shoe, ideal for beginners with high arches who are building mileage. DNA Loft v3 cushioning is soft and protective, and the 10 mm drop suits runners transitioning from everyday sneakers. A reliable, comfortable entry into cushioned running.</p>
+<div class="gutf-tags"><span class="gutf-tag">Cushioned</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">DNA Loft v3</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Easy, long, beginner</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>DNA Loft v3</span></div>
+<div class="gutf-spec"><span>Drop</span><span>10 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Soft protective cushioning</li>
+<li>Higher drop suits beginners</li>
+<li>Reliable and durable</li>
+<li>Comfortable from day one</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>Heavier than daily trainers</li>
+<li>10 mm drop may not suit midfoot strikers</li>
+<li>Less rocker than HOKA options</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0F5NB8NGZ?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Brooks Glycerin 23 on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+<section class="gutf-product" id="brooks-glycerin-max">
+<div class="gutf-product-media"><img loading="lazy" loading="lazy" decoding="async" src="https://gearuptofit.com/wp-content/uploads/2026/07/brooks-glycerin-max.webp" alt="Brooks Glycerin Max running shoe product image from Amazon" width="395" height="395"></div>
+<div><span class="gutf-label">Best for outer-foot pain</span></p>
+<h3>Brooks Glycerin Max</h3>
+<p>The Glycerin Max uses nitrogen-infused DNA Tuned cushioning with a broad platform that is ideal for supinators who experience pain on the outer edge of the foot. The dual-layer foam absorbs lateral impact while the wide base distributes pressure evenly, reducing the concentrated outer-edge loading that causes pain.</p>
+<div class="gutf-tags"><span class="gutf-tag">Max cushion</span><span class="gutf-tag">Neutral</span><span class="gutf-tag">DNA Tuned</span><span class="gutf-tag">Road</span></div>
+<div class="gutf-specs">
+<div class="gutf-spec"><span>Best use</span><span>Easy, long, outer-foot pain</span></div>
+<div class="gutf-spec"><span>Cushioning</span><span>DNA Tuned</span></div>
+<div class="gutf-spec"><span>Drop</span><span>8 mm</span></div>
+<div class="gutf-spec"><span>Support</span><span>Neutral stable</span></div>
+</div>
+<div class="gutf-procon">
+<div class="gutf-pro">
+<h4>Buy it if</h4>
+<ul>
+<li>Broad platform reduces lateral loading</li>
+<li>Dual-layer foam absorbs outer-edge impact</li>
+<li>Smooth rocker for transitions</li>
+<li>Excellent for outer-foot pain sufferers</li>
+</ul>
+</div>
+<div class="gutf-con">
+<h4>Skip it if</h4>
+<ul>
+<li>Expensive retail price</li>
+<li>Tall stack may feel unstable</li>
+<li>Not ideal for speed work</li>
+</ul>
+</div>
+</div>
+<div class="gutf-cta"><a class="gutf-btn" href="https://www.amazon.com/dp/B0CZND7D73?tag=papalex-20" target="_blank" rel="nofollow sponsored noopener">Check Brooks Glycerin Max on Amazon</a><a class="gutf-btn gutf-btn-light" href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Compare best running shoes</a></div>
+</div>
+</section>
+</section>
+<section class="gutf-section" id="who-this-is-for">
+<h2>Who this guide is for</h2>
+<p class="gutf-intro">This guide is for runners who supinate (underpronate) and have high arches. You will benefit most if you:</p>
+<ul>
+<li>Notice excessive wear on the outer edge of your running shoe outsoles</li>
+<li>Have high arches that feel rigid and do not absorb shock well</li>
+<li>Experience outer-foot or outer-ankle pain during or after runs</li>
+<li>Feel uncomfortable in stability or motion-control shoes</li>
+<li>Have been told by a running store or podiatrist that you underpronate</li>
+</ul>
+<p><strong>Who should skip this:</strong> If you overpronate (flat feet, inward ankle roll), this guide is not for you. If you have severe foot pain or a structural deformity, see a podiatrist before buying shoes.</p>
+</section>
+<section class="gutf-section" id="what-is-supination">
+<h2>What is supination and why does shoe choice matter?</h2>
+<p class="gutf-intro">Supination — also called underpronation — is when the foot rolls outward during the running gait cycle instead of inward. The foot lands on the outer edge and stays there, failing to roll inward to absorb shock. This means the impact of each step travels directly up the leg rather than being distributed through the foot&#8217;s natural shock-absorption mechanism.</p>
+<p>Supination is strongly associated with high arches. High-arched feet are rigid — they do not flatten enough during the gait cycle to absorb impact. The result is that more shock reaches the shins, knees, hips, and lower back, increasing injury risk. Live Science notes that supination contributes to injury risk because the foot cannot adequately absorb the forces of running.</p>
+</section>
+<section class="gutf-section" id="outsole-wear">
+<h2>How to check your outsole wear pattern</h2>
+<p class="gutf-intro">The easiest way to determine if you supinate is to examine the wear pattern on your current running shoes:</p>
+<ul>
+<li><strong>Supination:</strong> Excessive wear on the outer edge of the heel and forefoot. The shoe may tilt outward when placed on a flat surface.</li>
+<li><strong>Neutral gait:</strong> Even wear across the ball of the foot with slight concentration on the outer heel and inner forefoot.</li>
+<li><strong>Overpronation:</strong> Excessive wear on the inner edge of the heel and forefoot. The shoe may tilt inward.</li>
+</ul>
+<p>If your shoes show supination wear, cushioned neutral shoes are the right category. Stability shoes with medial posting will not help and may feel uncomfortable or increase injury risk.</p>
+</section>
+<section class="gutf-section" id="key-features">
+<h2>Key shoe features for supination and high arches</h2>
+<ul>
+<li><strong>Maximum cushioning:</strong> Since supinators cannot absorb shock naturally, the shoe must do it. Look for high-stack shoes (30+ mm) with soft foams.</li>
+<li><strong>Neutral support (no medial posting):</strong> Supinators need neutral shoes. Stability shoes are designed for overpronators and can push a supinating foot further outward.</li>
+<li><strong>Flexible forefoot:</strong> A shoe that bends naturally encourages the foot to pronate slightly during push-off, improving shock distribution.</li>
+<li><strong>Broad, stable platform:</strong> A wide base prevents lateral rolling and distributes pressure evenly.</li>
+<li><strong>Rocker geometry (optional):</strong> A subtle rocker can help supinators who struggle to transition weight from the outer edge across the foot.</li>
+<li><strong>Wide toe box (if needed):</strong> High arches are sometimes accompanied by wider feet. Look for brands that offer multiple widths.</li>
+</ul>
+</section>
+<section class="gutf-section" id="shoes-to-avoid">
+<h2>Shoes to avoid if you supinate</h2>
+<ul>
+<li><strong>Stability shoes with medial posting:</strong> Shoes designed for overpronators add medial support that pushes the foot further outward — the opposite of what supinators need.</li>
+<li><strong>Aggressive motion-control shoes:</strong> The most rigid stability shoes, designed for severe overpronation. They will feel uncomfortable and potentially harmful for supinators.</li>
+<li><strong>Firm, low-cushion trainers:</strong> Racing flats and minimalist shoes provide almost no shock absorption, which supinators need most.</li>
+<li><strong>Narrow toe box shoes:</strong> If your high arches come with wider feet, narrow shoes compress the toes and alter natural foot mechanics.</li>
+</ul>
+</section>
+<div class="gutf-callout"><strong>Important:</strong> If you experience persistent outer-foot pain, ankle instability, or recurring stress fractures, see a sports medicine physician or podiatrist. Custom orthotics can complement cushioned neutral shoes for runners with severe supination.</div>
+<section class="gutf-section" id="common-mistakes">
+<h2>Common mistakes supinators make</h2>
+<ul>
+<li><strong>Buying stability shoes by mistake:</strong> Many runners assume more support is better. For supinators, stability shoes are counterproductive.</li>
+<li><strong>Choosing shoes that are too narrow:</strong> High arches often come with wider feet. A narrow shoe compresses the arch and worsens supination.</li>
+<li><strong>Ignoring cushioning degradation:</strong> Supinators are harder on cushioning because all impact concentrates on the outer edge. Replace shoes at 350-400 miles.</li>
+<li><strong>Not strengthening the foot and ankle:</strong> Cushioned shoes help, but strengthening ankle stabilizers and improving foot mobility can reduce supination over time.</li>
+</ul>
+</section>
+<section class="gutf-section gutf-faq" id="faq">
+<h2>Frequently asked questions</h2>
+<div class="gutf-faq-item">
+<h3>What are the best running shoes for supination and high arches?</h3>
+<p>The best running shoes for supination and high arches are cushioned neutral shoes with maximum shock absorption. Top picks include the Brooks Ghost Max 3 (best overall), ASICS Gel-Nimbus 27 (best max cushion), and HOKA Clifton 10 (best daily trainer). Avoid stability shoes with medial posting — they are designed for overpronators and can worsen supination.</p>
+</div>
+<div class="gutf-faq-item">
+<h3>Can supination be corrected with running shoes?</h3>
+<p>Running shoes cannot change your foot structure, but cushioned neutral shoes compensate for the lack of natural shock absorption in supinators. This reduces injury risk and makes running more comfortable. Custom orthotics from a podiatrist can further improve foot mechanics if needed.</p>
+</div>
+<div class="gutf-faq-item">
+<h3>Should supinators wear stability shoes?</h3>
+<p>No. Supinators should wear neutral cushioned shoes, not stability shoes. Stability shoes have medial posting designed to slow inward rolling (overpronation). For a supinator who rolls outward, these features are counterproductive and can push the foot further outward, increasing injury risk.</p>
+</div>
+<div class="gutf-faq-item">
+<h3>How do I know if I supinate?</h3>
+<p>Check the wear pattern on your current running shoes. If the outer edge of the heel and forefoot shows excessive wear while the inner edge looks new, you likely supinate. A gait analysis at a running store or a visit to a podiatrist can confirm this. High arches are also a strong indicator.</p>
+</div>
+<div class="gutf-faq-item">
+<h3>What drop is best for supinators?</h3>
+<p>Most supinators do well with a 6-10 mm heel-to-toe drop. Higher drops suit heel strikers by reducing Achilles load. Lower drops encourage midfoot striking. Start with what feels comfortable and avoid extreme changes. Zero-drop shoes require a transition period.</p>
+</div>
+</section>
+<div class="gutf-sources"><strong>Sources:</strong></p>
+<ul>
+<li>Live Science. &#8220;Best running shoes for supination.&#8221; <a href="https://www.livescience.com/" target="_blank" rel="nofollow noopener">livescience.com</a></li>
+<li>NIH/PMC. &#8220;Foot type and lower extremity injury.&#8221; <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="nofollow noopener">PubMed</a></li>
+<li>Mayo Clinic. &#8220;High arches.&#8221; <a href="https://www.mayoclinic.org/" target="_blank" rel="nofollow noopener">mayoclinic.org</a></li>
+</ul>
+</div>
+<section class="gutf-section">
+<h2>Related reading</h2>
+<ul>
+<li><a href="https://gearuptofit.com/review/best-running-shoes/" target="_blank">Best Running Shoes 2026</a></li>
+<li><a href="https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/" target="_blank">Best Running Shoes for Heavy Runners</a></li>
+<li><a href="https://gearuptofit.com/health/" target="_blank">Runner Health &#038; Injury Prevention</a></li>
+<li><a href="https://gearuptofit.com/running/" target="_blank">Running Guides</a></li>
+</ul>
+</section>
+<div class="gutf-author">
+<p><strong>GearUpToFit Editorial Team</strong> — Educational content based on publicly available medical references. Not medical advice. As an Amazon Associate, GearUpToFit earns from qualifying purchases.</p>
+</div>
+<p style="font-size:0.82rem;color:#667085;margin-top:20px;">This article is educational, not medical advice. Consult a qualified physician or podiatrist for persistent foot pain. As an Amazon Associate, GearUpToFit earns from qualifying purchases.</p>
+</div>
+</article>
+<p><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Best Running Shoes for Supination and High Arches 2026","datePublished":"2026-07-03","author":{"@type":"Organization","name":"GearUpToFit"},"publisher":{"@type":"Organization","name":"GearUpToFit"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gearuptofit.com/review/best-running-shoes-for-supination-high-arches/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "What are the best running shoes for supination and high arches?", "acceptedAnswer": {"@type": "Answer", "text": "The best running shoes for supination and high arches are cushioned neutral shoes with maximum shock absorption. Top picks include the Brooks Ghost Max 3 (best overall), ASICS Gel-Nimbus 27 (best max cushion), and HOKA Clifton 10 (best daily trainer). Avoid stability shoes with medial posting \u2014 they are designed for overpronators and can worsen supination."}}, {"@type": "Question", "name": "Can supination be corrected with running shoes?", "acceptedAnswer": {"@type": "Answer", "text": "Running shoes cannot change your foot structure, but cushioned neutral shoes compensate for the lack of natural shock absorption in supinators. This reduces injury risk and makes running more comfortable. Custom orthotics from a podiatrist can further improve foot mechanics if needed."}}, {"@type": "Question", "name": "Should supinators wear stability shoes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Supinators should wear neutral cushioned shoes, not stability shoes. Stability shoes have medial posting designed to slow inward rolling (overpronation). For a supinator who rolls outward, these features are counterproductive and can push the foot further outward, increasing injury risk."}}, {"@type": "Question", "name": "How do I know if I supinate?", "acceptedAnswer": {"@type": "Answer", "text": "Check the wear pattern on your current running shoes. If the outer edge of the heel and forefoot shows excessive wear while the inner edge looks new, you likely supinate. A gait analysis at a running store or a visit to a podiatrist can confirm this. High arches are also a strong indicator."}}, {"@type": "Question", "name": "What drop is best for supinators?", "acceptedAnswer": {"@type": "Answer", "text": "Most supinators do well with a 6-10 mm heel-to-toe drop. Higher drops suit heel strikers by reducing Achilles load. Lower drops encourage midfoot striking. Start with what feels comfortable and avoid extreme changes. Zero-drop shoes require a transition period."}}]}</script></p>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/review/asics-gel-nimbus-27/">ASICS Gel-Nimbus 27 Review</a></li><li><a href="https://gearuptofit.com/review/most-comfortable-shoes/">most comfortable running shoes for 2026</a></li><li><a href="https://gearuptofit.com/fitness/mobility-training/">mobility training drills</a></li><li><a href="https://gearuptofit.com/review/best-daily-running-shoes/">best daily running shoes for 2026</a></li></ul></div><!-- gs-internal-links:end -->
+<!-- gs-jsonld:start --><script type="application/ld+json">{"@type":"FAQPage","@context":"https://schema.org","mainEntity":[{"name":"What is supination and why does shoe choice matter?","@type":"Question","acceptedAnswer":{"text":"Supination — also called underpronation — is when the foot rolls outward during the running gait cycle instead of inward. The foot lands on the outer edge and stays there, failing to roll inward to absorb shock. This means the impact of each step travels directly up the leg rather than being distributed through the foot&#8217;s natural shock-absorption mechanism.","@type":"Answer"}},{"name":"What are the best running shoes for supination and high arches?","@type":"Question","acceptedAnswer":{"text":"The best running shoes for supination and high arches are cushioned neutral shoes with maximum shock absorption. Top picks include the Brooks Ghost Max 3 (best overall), ASICS Gel-Nimbus 27 (best max cushion), and HOKA Clifton 10 (best daily trainer). Avoid stability shoes with medial posting — they are designed for overpronators and can worsen supination.","@type":"Answer"}},{"name":"Can supination be corrected with running shoes?","@type":"Question","acceptedAnswer":{"text":"Running shoes cannot change your foot structure, but cushioned neutral shoes compensate for the lack of natural shock absorption in supinators. This reduces injury risk and makes running more comfortable. Custom orthotics from a podiatrist can further improve foot mechanics if needed.","@type":"Answer"}},{"name":"Should supinators wear stability shoes?","@type":"Question","acceptedAnswer":{"text":"No. Supinators should wear neutral cushioned shoes, not stability shoes. Stability shoes have medial posting designed to slow inward rolling (overpronation). For a supinator who rolls outward, these features are counterproductive and can push the foot further outward, increasing injury risk.","@type":"Answer"}},{"name":"How do I know if I supinate?","@type":"Question","acceptedAnswer":{"text":"Check the wear pattern on your current running shoes. If the outer edge of the heel and forefoot shows excessive wear while the inner edge looks new, you likely supinate. A gait analysis at a running store or a visit to a podiatrist can confirm this. High arches are also a strong indicator.","@type":"Answer"}},{"name":"What drop is best for supinators?","@type":"Question","acceptedAnswer":{"text":"Most supinators do well with a 6-10 mm heel-to-toe drop. Higher drops suit heel strikers by reducing Achilles load. Lower drops encourage midfoot striking. Start with what feels comfortable and avoid extreme changes. Zero-drop shoes require a transition period.","@type":"Answer"}}]}</script><!-- gs-jsonld:end -->

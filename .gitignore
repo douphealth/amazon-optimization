@@ -31,3 +31,5 @@ reports/*/audit.json
 /_headers
 /robots.txt
 node_modules/
+# Amazon product data: cached for a day at most, never published
+data/amazon/

@@ -362,3 +362,4 @@ details.numbers summary:hover{color:var(--ink)}
 table.q td:first-child{overflow-wrap:anywhere}
 
 .chips-row .chip{white-space:normal;max-width:100%;text-align:left}
+.dr-body p .sub{display:block;color:var(--ink-2);font-size:13px;margin-top:4px}

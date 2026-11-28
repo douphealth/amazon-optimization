@@ -440,7 +440,7 @@ function overview() {
         ${tile("Amazon clicks", withGa.length ? num(sum(withGa, s => s.ga_clicks)) : "–", withGa.length ? `Recorded by Analytics on ${plural(withGa.filter(s => s.ga_clicks).length, "site")}` : "No Analytics data yet")}
         ${indexTile(S)}
         ${trendTile("Pages to fix", D.history, "to_fix")}
-        ${trendTile("Pages with Amazon links", D.history, "with_links")}
+        ${boxTile()}
       </div>
       ${trendCard("all", D.trend, "Search clicks per day", "All sites · Google and Bing")}
       <div class="grid cols-wide">
@@ -538,7 +538,23 @@ const PAGE_COLS = [
   { key: "bclicks", label: "Bing clicks", n: 1, cell: p => num(p.bclicks), sort: p => p.bclicks ?? -1 },
   { key: "score", label: "Priority", n: 1, cell: p => (p.score ? p.score.toFixed(1) : "–"), sort: p => p.score },
 ];
+const LIVE_BOXES = D.product_boxes || {}, BOX_PLAN = D.box_plan || {};
+function boxTile() {
+  const live = Object.keys(LIVE_BOXES).length, planned = Object.keys(BOX_PLAN).length;
+  if (!live && !planned) return tile("Product boxes", "–", "No product plan yet");
+  const fromSearch = Object.values(LIVE_BOXES).filter(b => (b.sources || []).includes("search")).length;
+  return tile("Product boxes live", `${num(live)}<span class="of"> of ${num(Math.max(planned, live))}</span>`,
+    `${num(fromSearch)} with products found by the engine · checked daily`);
+}
+const boxLine = p => {
+  const b = LIVE_BOXES[p.url];
+  if (b) return status("good", "Product box live") + `<span class="sub">${esc((b.names || []).join(" · "))}</span>`;
+  if (BOX_PLAN[p.url] !== undefined) return status("info", "Product box planned") + `<span class="sub">Placed automatically on the next run${BOX_PLAN[p.url] ? `: picks for ${esc(BOX_PLAN[p.url])}` : ""}</span>`;
+  return "";
+};
 const nextStep = p => {
+  const live = boxLine(p);
+  if (live && LIVE_BOXES[p.url]) return live;
   const done = FIXED.get(p.url);
   if (done) return done.status === "fixed" ? status("good", "Fixed by the engine") : status("warning", "Saved, not visible on the live page");
   const gap = ["no_amazon_links", "first_link_very_late", "first_link_late"].find(c => p.codes.includes(c));
@@ -606,7 +622,7 @@ function openPage(url) {
       <section><h3>Google index</h3>${indexDetail(p)}</section>
       <section><h3>Findings</h3>${findings}</section>
       <section><h3>Search queries</h3><div id="dr-queries"><p class="muted small">Loading…</p></div></section>
-      ${box ? `<section><h3>Product box</h3>${box}</section>` : ""}
+      ${box || boxLine(p) ? `<section><h3>Product box</h3>${boxLine(p) ? `<p>${boxLine(p)}</p>` : ""}${box}</section>` : ""}
       <section><h3>Amazon links on this page</h3><div id="dr-links"><p class="muted small">${p.links ? "Loading…" : "This page has no Amazon links in its article."}</p></div></section>
     </div>`;
   scrim.hidden = drawer.hidden = false;

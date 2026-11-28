@@ -21,7 +21,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from . import crawl, fixes, transform
+from . import crawl, fixes, products, transform
 from .config import Config
 from .score import Row, page_issues
 from .wp import NoAccess, WordPress, auth_for
@@ -45,10 +45,16 @@ class Action:
     detail: str = ""
     post_id: int | None = None
     remaining: list[str] = field(default_factory=list)
+    products: list = field(default_factory=list)  # what the product box holds, when it was built
 
 
-def plan(cfg: Config, rows: list[Row], sites: list[str] | None = None) -> list[Action]:
-    """Decide which fixes each audited page needs. Reads only the audit, not WordPress."""
+def plan(cfg: Config, rows: list[Row], sites: list[str] | None = None, picker=None) -> list[Action]:
+    """Decide which fixes each audited page needs. Reads only the audit (and the product plan),
+    not WordPress or Amazon.
+
+    With a product picker (Creators API credentials set), a page gets a product box when its
+    product plan says so, when it links Amazon products late in the article, or when it already
+    carries a generated box (kept current: dead products replaced, old text boxes upgraded)."""
     actions = []
     for row in rows:
         if row.page.status != 200 or (sites and row.site.domain not in sites) or not row.site.wordpress:
@@ -63,7 +69,14 @@ def plan(cfg: Config, rows: list[Row], sites: list[str] | None = None) -> list[A
                 wanted.append(name)
         clicks = row.visits  # real visitors from any source, not only Google
         late = issues & {"first_link_late", "first_link_very_late"}
-        if fixes.curated(row) or (late and clicks >= cfg.box_min_clicks and fixes.box(row, cfg.blocked_asins)):
+        if fixes.curated(row):
+            wanted.append("box")
+        elif picker is not None:
+            own = any(l.kind == "product" for l in row.page.content_links)
+            fresh = row.page.url not in picker.known  # registered boxes are kept current by refresh-boxes
+            if fresh and (picker.wants_box(row.page.url, row.page.h1 or row.page.title) or row.page.has_box or (late and own and clicks >= cfg.box_min_clicks)):
+                wanted.append("box")
+        elif late and clicks >= cfg.box_min_clicks and fixes.box(row, cfg.blocked_asins):
             wanted.append("box")
         wanted = [f for f in wanted if f in cfg.auto_fix]
         if wanted:
@@ -71,7 +84,7 @@ def plan(cfg: Config, rows: list[Row], sites: list[str] | None = None) -> list[A
     return actions
 
 
-def transform_post(cfg: Config, action: Action, raw: str) -> tuple[str, Counter]:
+def transform_post(cfg: Config, action: Action, raw: str, picker=None) -> tuple[str, Counter]:
     """Run the planned edits over a post body."""
     site, counts, html = action.row.site, Counter(), raw
     site_tag = site.tags[0] if site.tags else ""
@@ -83,8 +96,24 @@ def transform_post(cfg: Config, action: Action, raw: str) -> tuple[str, Counter]
     if "rel" in action.fixes:
         html, counts["rel_added"] = transform.fix_rel(html)
     if "box" in action.fixes:
-        box = fixes.curated(action.row) or fixes.box(action.row, cfg.blocked_asins) or ""
-        html, counts["box_added"] = transform.insert_box(html, box)
+        curated = fixes.curated(action.row)
+        if curated:
+            html, counts["box_added"] = transform.insert_box(html, curated)
+        elif picker is not None and not (site_tag or cfg.default_tag):
+            counts["no_tracking_id"] = 1  # never place an untagged box
+        elif picker is not None:
+            # The article's own products, not the ones the generated box already shows (those are re-picked).
+            box, chosen = picker.box(action.row.page.url, products.own_asins(transform.remove_box(html)[0]), site_tag or cfg.default_tag, site.name)
+            action.products = chosen
+            if box and transform.find_box(html):
+                html, counts["box_updated"] = transform.replace_box(html, box)
+            elif box:
+                html, counts["box_added"] = transform.insert_box(html, box)
+            elif not chosen and picker.wants_box(action.row.page.url):
+                counts["no_matching_product"] = 1
+        else:
+            box = fixes.box(action.row, cfg.blocked_asins) or ""
+            html, counts["box_added"] = transform.insert_box(html, box)
     if "disclosure" in action.fixes:
         html, counts["disclosure_added"] = transform.add_disclosure(html, site.name)
     return html, +counts
@@ -94,9 +123,9 @@ def run(
     cfg: Config, rows: list[Row], out: Path, apply: bool = False, sites: list[str] | None = None,
     limit: int | None = None, backups: Path = Path("backups"), pause: float = 0.5,
     require_login: bool = False,
-    wp_factory=WordPress, verify=crawl.audit_url, log=print,
+    wp_factory=WordPress, verify=crawl.audit_url, log=print, picker=None, registry: Path | None = None,
 ) -> list[Action]:
-    actions = plan(cfg, rows, sites)
+    actions = plan(cfg, rows, sites, picker)
     if require_login:  # unattended runs: leave sites alone unless their login is configured
         actions = [a for a in actions if auth_for(a.row.site.domain)]
     actions = actions[: limit or None]
@@ -114,10 +143,14 @@ def run(
                 action.status = "not_in_wordpress"
                 continue
             action.post_id = post["id"]
-            new, counts = transform_post(cfg, action, post["raw"])
+            new, counts = transform_post(cfg, action, post["raw"], picker)
             action.detail = ", ".join(f"{k}={v}" for k, v in counts.items())
+            if action.products:  # the audit trail: which products the box holds and where each came from
+                action.detail += " | " + "; ".join(f"{p.item.asin} {p.name} ({p.source})" for p in action.products)
             if new == post["raw"]:
                 action.status = "nothing_to_change_in_post_body"
+                if apply and action.products and registry is not None and transform.find_box(new):
+                    record_box(registry, action, out.name)  # a box that is already current
                 continue
             if len(new) < 0.9 * len(post["raw"]):
                 action.status = "aborted_would_shrink_post"
@@ -147,8 +180,21 @@ def run(
         targeted = set().union(*(CLEARS[f] for f in action.fixes))
         action.remaining = sorted(targeted & set(page_issues(live, site, cfg)[0])) if live.status == 200 else ["live page did not load"]
         action.status = "fixed" if not action.remaining else "saved_but_live_page_unchanged"
+        if action.products and registry is not None:
+            record_box(registry, action, out.name)
     write_log(out, actions)
     return actions
+
+
+def record_box(path: Path, action: Action, run: str) -> None:
+    """Remember a live product box, so the daily refresh knows what to keep current."""
+    reg = products.load_registry(path)
+    reg[action.row.page.url] = {
+        "site": action.row.site.domain, "post_id": action.post_id, "run": run,
+        "asins": [p.item.asin for p in action.products], "sources": [p.source for p in action.products],
+        "names": [p.name for p in action.products], "images": [p.item.image for p in action.products],
+    }
+    products.save_registry(reg, path)
 
 
 LOG_FIELDS = ["site", "url", "post_id", "fixes", "status", "changes", "still_failing_on_live_page"]

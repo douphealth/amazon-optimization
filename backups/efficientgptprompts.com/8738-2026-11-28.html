@@ -1,0 +1,98 @@
+<!-- HERMES-REMAINDER-PUBLICATION-20260803 -->
+<!-- HERMES-NEW-ASSET-DRAFT-20260803 | HUMAN_REVIEW_REQUIRED | EXPANDED_EDITORIAL_DRAFT -->
+<p class="answer-first"><strong>Quick answer:</strong> A reliable prompt engineering framework defines the task, audience, source material, constraints, output contract, and quality checks before asking a large language model to produce an answer. Then you test the prompt on representative cases and revise the part that failed.</p>
+<figure class="hermes-first-party-image"><img src="https://efficientgptprompts.com/wp-content/uploads/2024/01/Creative-Writing-Prompts.webp" alt="Creative writing prompts poster above a desk with a notebook and pen" loading="lazy" decoding="async"><figcaption>Prompt structure is useful across creative and analytical tasks; the evaluation criteria still have to match the task.</figcaption></figure>
+
+<p>Prompt engineering for LLMs is often presented as a hunt for a magic phrase. In practice, better results usually come from better task design: the model receives the right context, knows what it must return, and has a clear way to signal uncertainty. The same discipline applies whether you are working with OpenAI, Anthropic, Google, or another provider; exact syntax and capabilities still need to be checked against the model’s current documentation.</p>
+
+<h2 id="framework">The eight-part prompt engineering framework</h2>
+<table><thead><tr><th>Part</th><th>Question to answer</th><th>Example</th></tr></thead><tbody>
+<tr><td>Goal</td><td>What outcome should the model produce?</td><td>Turn interview notes into a factual briefing.</td></tr>
+<tr><td>Audience</td><td>Who will use the result and what do they already know?</td><td>A beginner who needs a decision, not a research paper.</td></tr>
+<tr><td>Source material</td><td>Which text or data is authoritative?</td><td>Use only the supplied notes and linked primary documents.</td></tr>
+<tr><td>Boundaries</td><td>What must the model not assume or invent?</td><td>Mark missing dates, prices, and evidence as unknown.</td></tr>
+<tr><td>Output contract</td><td>What exact structure should be returned?</td><td>Summary, table, open questions, and source mapping.</td></tr>
+<tr><td>Examples</td><td>What does a good input/output pair look like?</td><td>One short, representative example with the desired style.</td></tr>
+<tr><td>Evaluation</td><td>How will a human decide whether the answer is good?</td><td>Every factual claim traces to a source; no duplicate sections.</td></tr>
+<tr><td>Failure behavior</td><td>What should happen when evidence or access is missing?</td><td>Return a blocked item with the missing evidence instead of guessing.</td></tr>
+</tbody></table>
+
+<h2 id="write">Write instructions that change the decision</h2>
+<p>Start with the job, not a role-play flourish. “You are an expert” is weaker than a specific requirement such as “compare the two options using price, setup time, maintenance, and documented limitations.” Add only context that changes the answer. Repetition makes a prompt longer without making it clearer.</p>
+<p>Separate instructions from the source text with a delimiter and state which part is authoritative. If the model may see untrusted web text, tell it that the text is evidence to analyze, not instructions to follow. This is especially important for research, browsing, email, and code workflows.</p>
+
+<h2 id="template">A reusable prompt engineering template</h2>
+<pre><code>Goal: [the decision or artifact to produce]
+Audience: [who will use the result]
+Authoritative sources: [documents, fields, URLs, or dataset]
+Task steps: [research, extract, compare, draft, review]
+Constraints: [must include / must avoid]
+Unknowns: [what to flag instead of inventing]
+Output format: [headings, table, JSON schema, or code contract]
+Quality checks: [accuracy, completeness, tone, links, safety]
+Example: [one representative input and ideal output]
+Return: [the final artifact plus a short uncertainty report]</code></pre>
+<p>The template is intentionally plain. A prompt should be easy for another editor or engineer to inspect, version, test, and update.</p>
+
+<h2 id="techniques">Prompt engineering techniques that generalize</h2>
+<ol>
+<li><strong>Use structured inputs.</strong> Put fields such as audience, source, date, and constraints in a predictable format.</li>
+<li><strong>Request evidence mapping.</strong> Ask for a source beside each claim when factual traceability matters.</li>
+<li><strong>Split complex work.</strong> Research, extraction, drafting, and QA are easier to measure as separate steps.</li>
+<li><strong>Use examples sparingly.</strong> One good example can clarify output shape; several conflicting examples can confuse the task.</li>
+<li><strong>Ask for uncertainty explicitly.</strong> “Unknown,” “needs verification,” and “conflicting sources” are valid outputs.</li>
+<li><strong>Make the output machine-checkable.</strong> Use JSON Schema, fixed headings, or a small table when downstream code depends on the result.</li>
+<li><strong>Test difficult cases.</strong> Include missing fields, ambiguous wording, long inputs, and adversarial instructions—not only the easy example.</li>
+</ol>
+
+<h2 id="evaluation">Evaluate a prompt like a small software change</h2>
+<p>A prompt can look excellent and still fail when the input changes. Build a small test set that represents real use. Record the input, expected properties, output, failure type, and revision. Do not rely on a single impressive answer.</p>
+<table><thead><tr><th>Test</th><th>What to inspect</th></tr></thead><tbody>
+<tr><td>Happy path</td><td>Does the model follow the requested structure and tone?</td></tr>
+<tr><td>Missing evidence</td><td>Does it flag the gap instead of filling it with a plausible claim?</td></tr>
+<tr><td>Conflicting sources</td><td>Does it preserve the conflict and identify what needs <a class="wpil_keyword_link" href="https://efficientgptprompts.com/silent-film-script-ideas/"   title="resolution" data-wpil-keyword-link="linked"  data-wpil-monitor-id="1679">resolution</a>?</td></tr>
+<tr><td>Long context</td><td>Does it keep the important constraints near the answer?</td></tr>
+<tr><td>Prompt injection</td><td>Does it treat quoted or retrieved text as data rather than new instructions?</td></tr>
+<tr><td>Repeatability</td><td>Do several runs satisfy the same acceptance criteria?</td></tr>
+</tbody></table>
+<p>The <a href="https://developers.openai.com/api/docs/guides/prompt-engineering">OpenAI prompt-engineering guide</a> describes prompting as a mix of art and science because model output is non-deterministic. That is a reason to evaluate representative outputs, not a reason to abandon structure.</p>
+
+<h2 id="workflow">A practical workflow for better AI outputs</h2>
+<ol>
+<li><strong>Define the decision.</strong> State what the reader or system must be able to do after the response.</li>
+<li><strong>Collect the minimum useful context.</strong> Remove irrelevant text and label the source date.</li>
+<li><strong>Draft the output contract.</strong> Write headings, fields, limits, and acceptance checks before the prose.</li>
+<li><strong>Run a small test set.</strong> Include at least one incomplete and one ambiguous example.</li>
+<li><strong>Diagnose the failure.</strong> Was the problem missing context, vague instructions, bad retrieval, or an unrealistic format?</li>
+<li><strong>Change one major variable.</strong> This makes the next test informative.</li>
+<li><strong>Review as a human.</strong> A model can satisfy a format while still being wrong, stale, or unhelpful.</li>
+</ol>
+
+<h2 id="faq">FAQ</h2>
+<h3>Is there one best prompt engineering technique?</h3>
+<p>No. The useful technique depends on the task, model, tools, and evaluation. A small test set and clear acceptance criteria are more reliable than copying a prompt that solved a different problem.</p>
+<h3>Does a longer prompt produce a better answer?</h3>
+<p>Not necessarily. Add context that changes the decision, remove repetition, and keep the output contract explicit. Very long prompts can also make maintenance and testing harder.</p>
+<h3>Should I ask the model to “think step by step”?</h3>
+<p>Focus on the observable result you need: assumptions, checks, calculations, citations, or a concise rationale. The best instruction depends on the model and workflow; do not treat one phrase as a universal quality control.</p>
+<h3>How can I reduce hallucinations?</h3>
+<p>Use authoritative source material, require uncertainty labels, ask for claim-to-source mapping, constrain the output, and verify important claims independently. Prompt wording alone cannot create evidence that was never supplied.</p>
+<h3>Can the same prompt work across providers?</h3>
+<p>The framework can transfer, but model capabilities, context limits, tool APIs, and instruction priorities differ. Test the prompt with the actual model and version used in production.</p>
+
+<figure class="hermes-first-party-image"><img src="https://efficientgptprompts.com/wp-content/uploads/2024/01/Non-Fiction-and-Essay-Writing-Prompts.webp" alt="Non-fiction and essay writing prompts illustration" loading="lazy" decoding="async"><figcaption>A clear output contract helps a model serve an audience without hiding uncertainty.</figcaption></figure>
+<h2 id="sources">Sources and editorial note</h2>
+<ul>
+<li><a href="https://developers.openai.com/api/docs/guides/prompt-engineering">OpenAI API: prompt engineering</a></li>
+<li><a href="https://cloud.google.com/discover/what-is-prompt-engineering">Google Cloud: what is prompt engineering?</a></li>
+<li><a href="https://efficientgptprompts.com/chatgpt-prompt-template-for-seo-content-briefs/">SEO content-brief prompt template</a></li>
+<li><a href="https://efficientgptprompts.com/ai-future-tech-writing-prompts/">AI and future-tech writing prompts</a></li>
+</ul>
+<p><em>Editorial boundary:</em> Prompt frameworks improve clarity and testability; they do not guarantee factual accuracy, model availability, rankings, or business outcomes.</p>
+<!-- wp:html -->
+<section class="egp-operator-cta" aria-labelledby="promptgrade-next-step">
+  <h2 id="promptgrade-next-step">Test the prompt before you depend on the output</h2>
+  <p>A framework is most useful when it produces a prompt that can be inspected, improved, and reused. Use <a href="https://promptgrade.efficientgptprompts.com/">PromptGrade</a> to assess clarity, context, constraints, structure, and review readiness before you rely on an important AI-assisted asset.</p>
+  <p>For business workflows that apply these principles to offers, pages, emails, SEO content, ecommerce, CTAs, and quality assurance, review the <a href="https://efficientgptprompts.com/product/ai-revenue-operator-pack-product/">AI Revenue Operator Pack</a>.</p>
+</section>
+<!-- /wp:html -->

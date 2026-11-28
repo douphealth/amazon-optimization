@@ -14,8 +14,10 @@ more than 10%; after saving, the live page is fetched again and re-audited.
 from __future__ import annotations
 
 import csv
+import fcntl
 import re
 import time
+from contextlib import contextmanager
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -186,8 +188,25 @@ def run(
     return actions
 
 
+@contextmanager
+def locked(path: Path):
+    """Hold an exclusive lock beside `path` while reading and rewriting it (parallel runs)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path.with_name(path.name + ".lock"), "w") as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle, fcntl.LOCK_UN)
+
+
 def record_box(path: Path, action: Action, run: str) -> None:
     """Remember a live product box, so the daily refresh knows what to keep current."""
+    with locked(path):
+        _record_box(path, action, run)
+
+
+def _record_box(path: Path, action: Action, run: str) -> None:
     reg = products.load_registry(path)
     reg[action.row.page.url] = {
         "site": action.row.site.domain, "post_id": action.post_id, "run": run,
@@ -204,6 +223,11 @@ def write_log(out: Path, actions: list[Action]) -> None:
     """Write fix-log.csv, keeping earlier rows from the same report. A later run that finds
     nothing left to do on a page must not erase the record that the page was fixed."""
     out.mkdir(parents=True, exist_ok=True)
+    with locked(out / "fix-log.csv"):
+        _write_log(out, actions)
+
+
+def _write_log(out: Path, actions: list[Action]) -> None:
     path = out / "fix-log.csv"
     rows: dict[str, dict] = {}
     if path.exists():

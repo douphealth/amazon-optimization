@@ -1,4 +1,48 @@
 {
+ "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/": {
+  "site": "gearuptofit.com",
+  "post_id": 72726,
+  "run": "2026-11-28",
+  "title": "Advanced Fitness Calculator 2026: BMI, BMR & Body Fat Tool",
+  "asins": [
+   "B095YJW56C",
+   "B00DEGIVVW"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "f73a554bf204",
+   "3b960d035c96"
+  ],
+  "image_fp": [
+   "dce1bdecc0e3",
+   "739a1587d933"
+  ]
+ },
+ "https://gearuptofit.com/fitness-and-health-calculators/bmi-and-body-composition/": {
+  "site": "gearuptofit.com",
+  "post_id": 72868,
+  "run": "2026-11-28",
+  "title": "2026 Body Composition & BMI Guide: Tracking True Health",
+  "asins": [
+   "B095YJW56C",
+   "B07NYHQYN4"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "f73a554bf204",
+   "11e94a83ad45"
+  ],
+  "image_fp": [
+   "dce1bdecc0e3",
+   "7961be871afb"
+  ]
+ },
  "https://gearuptofit.com/fitness-and-health-calculators/bmi-and-metabolic-health/": {
   "site": "gearuptofit.com",
   "post_id": 72866,
@@ -18,6 +62,50 @@
   ],
   "image_fp": [
    "dce1bdecc0e3",
+   "739a1587d933"
+  ]
+ },
+ "https://gearuptofit.com/fitness-and-health-calculators/bmi-for-active-lifestyles/": {
+  "site": "gearuptofit.com",
+  "post_id": 72871,
+  "run": "2026-11-28",
+  "title": "BMI for Active Lifestyles: Why It Fails Athletes (2026)",
+  "asins": [
+   "B00DEGIVVW",
+   "B095YJW56C"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "3b960d035c96",
+   "f73a554bf204"
+  ],
+  "image_fp": [
+   "739a1587d933",
+   "dce1bdecc0e3"
+  ]
+ },
+ "https://gearuptofit.com/fitness-and-health-calculators/bmi-guide-for-beginners/": {
+  "site": "gearuptofit.com",
+  "post_id": 72840,
+  "run": "2026-11-28",
+  "title": "BMI Guide 2026: Calculate & Interpret Your BMI Score",
+  "asins": [
+   "B01HI1W1V4",
+   "B00DEGIVVW"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "355aa28ca171",
+   "3b960d035c96"
+  ],
+  "image_fp": [
+   "bb35e418114d",
    "739a1587d933"
   ]
  },
@@ -273,6 +361,58 @@
    "5d43bfd723a0"
   ]
  },
+ "https://gearuptofit.com/fitness/crossfit-workouts-for-beginners/": {
+  "site": "gearuptofit.com",
+  "post_id": 68658,
+  "run": "2026-11-28",
+  "title": "CrossFit for Beginners: 30-Day Guide & Workouts",
+  "asins": [
+   "B0892XB8MD",
+   "B0731DWW5K",
+   "B0FS8VFNJ1"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "6a058095b45a",
+   "46f0552c8dd8",
+   "5d08b159da0e"
+  ],
+  "image_fp": [
+   "63b6e63d77af",
+   "8bc227b46044",
+   "7bf3f2e05e4f"
+  ]
+ },
+ "https://gearuptofit.com/fitness/deadlift-squat-program/": {
+  "site": "gearuptofit.com",
+  "post_id": 71478,
+  "run": "2026-11-28",
+  "title": "Deadlift Squat Program: 8-Week Strength & Hypertrophy Plan",
+  "asins": [
+   "B074KKQJYH",
+   "B0CK2MTXXK",
+   "B0CKK4VG26"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "e8c54d48471a",
+   "574ca7bc1e80",
+   "6d70042e5a97"
+  ],
+  "image_fp": [
+   "c08c21b3bb28",
+   "ccedbf2a4057",
+   "3757da4bd03b"
+  ]
+ },
  "https://gearuptofit.com/fitness/does-planet-fitness-have-showers/": {
   "site": "gearuptofit.com",
   "post_id": 48896,
@@ -295,6 +435,42 @@
    "a8c06043bd5b"
   ]
  },
+ "https://gearuptofit.com/fitness/essential-oils-in-sports-recovery/": {
+  "site": "gearuptofit.com",
+  "post_id": 71918,
+  "run": "2026-11-28",
+  "title": "Essential Oils for Sports Recovery: 2026 Aromatherapy Guide",
+  "asins": [
+   "B00PV15BPW"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "1e94e4c2a636"
+  ],
+  "image_fp": [
+   "574cafd079b7"
+  ]
+ },
+ "https://gearuptofit.com/fitness/hiit-for-endurance-athletes/": {
+  "site": "gearuptofit.com",
+  "post_id": 64287,
+  "run": "2026-11-28",
+  "title": "HIIT for Endurance Athletes: 2026 VO2 Max Training Guide",
+  "asins": [
+   "B08411DQ96"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "463acba7a9f9"
+  ],
+  "image_fp": [
+   "71baf39101a9"
+  ]
+ },
  "https://gearuptofit.com/fitness/how-to-do-hiit-on-rowing-machine/": {
   "site": "gearuptofit.com",
   "post_id": 63243,
@@ -315,6 +491,28 @@
   "image_fp": [
    "0f1e176cebdc",
    "832ee19335e1"
+  ]
+ },
+ "https://gearuptofit.com/fitness/indoor-climbing-fitness-benefits/": {
+  "site": "gearuptofit.com",
+  "post_id": 71901,
+  "run": "2026-11-28",
+  "title": "7 Indoor Climbing Fitness Benefits: 2026 Health Guide",
+  "asins": [
+   "B09M82QQ2Z",
+   "B087NWZDNT"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "a876680cd93b",
+   "ef63ce9b69ff"
+  ],
+  "image_fp": [
+   "0ced671e3d1a",
+   "863281029eef"
   ]
  },
  "https://gearuptofit.com/fitness/mobility-flow-routines/": {
@@ -379,6 +577,46 @@
    "bd6d00c523c6"
   ]
  },
+ "https://gearuptofit.com/fitness/push-ups-with-rings/": {
+  "site": "gearuptofit.com",
+  "post_id": 71390,
+  "run": "2026-11-28",
+  "title": "Master Ring Push-Ups: Strength & Stability Guide (2026)",
+  "asins": [
+   "B0CPPFYJFN"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "36492a55b2a1"
+  ],
+  "image_fp": [
+   "5defac7ea88f"
+  ]
+ },
+ "https://gearuptofit.com/fitness/stretching-101-a-beginners-guide-to-flexibility-and-mobility/": {
+  "site": "gearuptofit.com",
+  "post_id": 67444,
+  "run": "2026-11-28",
+  "title": "Stretching for Beginners: 2026 Guide to Flexibility & Mobility",
+  "asins": [
+   "B00065X222",
+   "B07H4G664R"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "1aa619fdd961",
+   "975f67f63356"
+  ],
+  "image_fp": [
+   "6ad7e82cf48e",
+   "ff47fd469c73"
+  ]
+ },
  "https://gearuptofit.com/fitness/the-best-full-body-stretching-routine-for-flexibility/": {
   "site": "gearuptofit.com",
   "post_id": 67437,
@@ -399,6 +637,28 @@
   "image_fp": [
    "6ad7e82cf48e",
    "946476ccbd71"
+  ]
+ },
+ "https://gearuptofit.com/fitness/top-10-strength-training-exercises/": {
+  "site": "gearuptofit.com",
+  "post_id": 38515,
+  "run": "2026-11-28",
+  "title": "10 Best Strength Training Exercises to Build Muscle (2026)",
+  "asins": [
+   "B0FRNG2N5H",
+   "B0CTMKNWF7"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "4eb76bb45ded",
+   "7edc1b024bed"
+  ],
+  "image_fp": [
+   "16590c94499e",
+   "a90a3ab2efc1"
   ]
  },
  "https://gearuptofit.com/fitness/video-workout/full-body-stretch-routine-15-mins/": {
@@ -663,6 +923,32 @@
    "05e064e51c4d"
   ]
  },
+ "https://gearuptofit.com/nutrition/post-workout-protein-shakes-recipes/": {
+  "site": "gearuptofit.com",
+  "post_id": 72925,
+  "run": "2026-11-28",
+  "title": "Post-Workout Protein Shakes: Timing, Science & Muscle Growth",
+  "asins": [
+   "B000GISU1M",
+   "B0CXPWMSX6",
+   "B0DB8ZN253"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "cf8addc62aaa",
+   "41888eb6526a",
+   "a55e1086cc7b"
+  ],
+  "image_fp": [
+   "c0f44be4d51a",
+   "696f45bbbd49",
+   "cbdbeea825ed"
+  ]
+ },
  "https://gearuptofit.com/nutrition/vegan-diet-for-fitness/": {
   "site": "gearuptofit.com",
   "post_id": 76786,
@@ -687,6 +973,28 @@
    "0bfe7266b1d6",
    "1aebf576161a",
    "fb6fafb5bb46"
+  ]
+ },
+ "https://gearuptofit.com/nutrition/vegan-nutrition-for-athletes/": {
+  "site": "gearuptofit.com",
+  "post_id": 72901,
+  "run": "2026-11-28",
+  "title": "Vegan Nutrition for Athletes: Plant-Based Performance Guide",
+  "asins": [
+   "B00J074W7Q",
+   "B00GL2HMES"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "70bf913164bc",
+   "ecbdfac344d8"
+  ],
+  "image_fp": [
+   "aeabd065f490",
+   "3d3ac2715db6"
   ]
  },
  "https://gearuptofit.com/review/adidas-adios-9/": {
@@ -837,6 +1145,32 @@
    "1b0577e23e9e",
    "6791b9503cc1",
    "af17d2e2eaa0"
+  ]
+ },
+ "https://gearuptofit.com/review/best-crossfit-skipping-rope/": {
+  "site": "gearuptofit.com",
+  "post_id": 70870,
+  "run": "2026-11-28",
+  "title": "Best CrossFit Skipping Ropes 2026: Speed Rope Reviews",
+  "asins": [
+   "B00ZWFYR98",
+   "B097M4LJPP",
+   "B0CLJVMSWG"
+  ],
+  "sources": [
+   "page",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "16f20cae659f",
+   "0e2c7fe675e8",
+   "f2fcb0d1698d"
+  ],
+  "image_fp": [
+   "96125e9709df",
+   "4f23604367fb",
+   "dc8dc3cdd319"
   ]
  },
  "https://gearuptofit.com/review/best-racquetball-glove/": {
@@ -1045,6 +1379,28 @@
    "3a0cee9c477b"
   ]
  },
+ "https://gearuptofit.com/review/headphones/aftershokz-trekz-air-review/": {
+  "site": "gearuptofit.com",
+  "post_id": 48693,
+  "run": "2026-11-28",
+  "title": "AfterShokz Trekz Air Review: Best Bone Conduction Audio 2026",
+  "asins": [
+   "B09BW1QVVT",
+   "B08BZF5W7N"
+  ],
+  "sources": [
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "c832a3c3bc2b",
+   "651876c9bb32"
+  ],
+  "image_fp": [
+   "1b1581b9585a",
+   "fac73ec23c2d"
+  ]
+ },
  "https://gearuptofit.com/review/new-balance-fresh-foam-x-more-v6/": {
   "site": "gearuptofit.com",
   "post_id": 86762,
@@ -1105,6 +1461,32 @@
   ],
   "image_fp": [
    "8638d162ae79"
+  ]
+ },
+ "https://gearuptofit.com/review/polar-pacer-pro-gps-watch/": {
+  "site": "gearuptofit.com",
+  "post_id": 70894,
+  "run": "2026-11-28",
+  "title": "Polar Pacer Pro Review 2026: GPS, Battery & Hill Splitter",
+  "asins": [
+   "B09V7V45XG",
+   "B0FM8LD1D3",
+   "B0BS1T9J4Y"
+  ],
+  "sources": [
+   "search",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "7bec1918e10e",
+   "6c25b3fc7d55",
+   "6501ae2975a0"
+  ],
+  "image_fp": [
+   "405a38b5dbc9",
+   "95af6b6cc29f",
+   "e21d080ff052"
   ]
  },
  "https://gearuptofit.com/review/puma-deviate-nitro-elite-2-review/": {
@@ -1219,6 +1601,24 @@
    "0482ce951742"
   ]
  },
+ "https://gearuptofit.com/running/barefoot-running/": {
+  "site": "gearuptofit.com",
+  "post_id": 64686,
+  "run": "2026-11-28",
+  "title": "Barefoot Running Guide: 12-Week Transition Protocol (2026)",
+  "asins": [
+   "B0BQR1V8F2"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "6236e9c1cdd4"
+  ],
+  "image_fp": [
+   "db300d094951"
+  ]
+ },
  "https://gearuptofit.com/running/benefits-of-aqua-jogging-for-runners/": {
   "site": "gearuptofit.com",
   "post_id": 10513,
@@ -1329,6 +1729,28 @@
    "a4111e1a72c8"
   ]
  },
+ "https://gearuptofit.com/running/running-for-seniors/": {
+  "site": "gearuptofit.com",
+  "post_id": 64959,
+  "run": "2026-11-28",
+  "title": "Running for Seniors: Safe Training Plans & Gear Guide",
+  "asins": [
+   "B0DPHTLDYK",
+   "B07S1S4ZQH"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "c3b28474309b",
+   "b39b3874cd66"
+  ],
+  "image_fp": [
+   "fa4bb47c3fcd",
+   "ece2fa4baf32"
+  ]
+ },
  "https://gearuptofit.com/running/running-outside-weather-conditions/": {
   "site": "gearuptofit.com",
   "post_id": 76901,
@@ -1360,6 +1782,28 @@
   "post_id": 56489,
   "run": "2026-11-28",
   "title": "40-40-20 Diet Meal Plan: Macro Guide & Calculator",
+  "asins": [
+   "B0113UZJE2",
+   "B0GCSDLL3B"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "6ba3bda7c169",
+   "088f6208337d"
+  ],
+  "image_fp": [
+   "05e064e51c4d",
+   "11462aa5b71a"
+  ]
+ },
+ "https://gearuptofit.com/weight-loss/a-guide-to-calorie-cycling-for-weight-loss/": {
+  "site": "gearuptofit.com",
+  "post_id": 52953,
+  "run": "2026-11-28",
+  "title": "Calorie Cycling for Weight Loss: 7-Day Guide & Meal Plans",
   "asins": [
    "B0113UZJE2",
    "B0GCSDLL3B"
@@ -1459,6 +1903,54 @@
   "image_fp": [
    "7fca861c781b",
    "8fb8ab4443d2"
+  ]
+ },
+ "https://plantastichaven.com/air-purifying-houseplants/": {
+  "site": "plantastichaven.com",
+  "post_id": 3432,
+  "run": "2026-11-28",
+  "title": "Air-Purifying Houseplants: Best Indoor Picks With Realistic Expectations",
+  "asins": [
+   "B0D8RC536Q",
+   "B09XWWKRQW",
+   "B0DHSLHNN5"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "2d9fd35a1278",
+   "6c0b2b20465e",
+   "203e2e36a8b7"
+  ],
+  "image_fp": [
+   "7fca861c781b",
+   "15710cf93346",
+   "2838dc6bde8c"
+  ]
+ },
+ "https://plantastichaven.com/are-spider-plants-toxic-to-cats/": {
+  "site": "plantastichaven.com",
+  "post_id": 11876,
+  "run": "2026-11-28",
+  "title": "Are Spider Plants Toxic to Cats? The ASPCA-Verified Answer",
+  "asins": [
+   "B0B4Q22R1M",
+   "B0DFBYRXG5"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "685c1b967cd8",
+   "0943b166326e"
+  ],
+  "image_fp": [
+   "5b2eddc9fce9",
+   "8f7adbb63ef9"
   ]
  },
  "https://plantastichaven.com/best-environment-for-philodendron-care/": {
@@ -1627,6 +2119,28 @@
    "2075cf68f2ee"
   ]
  },
+ "https://plantastichaven.com/diy-macrame-plant-hangers/": {
+  "site": "plantastichaven.com",
+  "post_id": 3446,
+  "run": "2026-11-28",
+  "title": "10 Complete DIY Macrame Plant Hangers for Boho Decor",
+  "asins": [
+   "B08ZMVBT4F",
+   "B0D874MBH6"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "0f8469b0f115",
+   "51c0ffa80dc2"
+  ],
+  "image_fp": [
+   "d54af9c1964d",
+   "36806e63a168"
+  ]
+ },
  "https://plantastichaven.com/fertilizing-philodendron-plants-for-optimal-growth/": {
   "site": "plantastichaven.com",
   "post_id": 3421,
@@ -1697,6 +2211,28 @@
    "83f431852ddd"
   ]
  },
+ "https://plantastichaven.com/house-plants-with-purple-leaves/": {
+  "site": "plantastichaven.com",
+  "post_id": 3324,
+  "run": "2026-11-28",
+  "title": "Houseplants With Purple Leaves: Best Indoor Picks and Care Tips",
+  "asins": [
+   "B085CDPSMR",
+   "B01EWH83FU"
+  ],
+  "sources": [
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "a184627999c9",
+   "5e36d77dd993"
+  ],
+  "image_fp": [
+   "1d20a3978481",
+   "206753c8a235"
+  ]
+ },
  "https://plantastichaven.com/house-plants-with-variegated-leaves/": {
   "site": "plantastichaven.com",
   "post_id": 3314,
@@ -1759,6 +2295,32 @@
    "806ffab84763"
   ]
  },
+ "https://plantastichaven.com/houseplant-subscription-boxes/": {
+  "site": "plantastichaven.com",
+  "post_id": 3448,
+  "run": "2026-11-28",
+  "title": "Houseplant Subscription Boxes: How to Choose One",
+  "asins": [
+   "B014MJ8J2U",
+   "B0828SMZNS",
+   "B0B4K39S1W"
+  ],
+  "sources": [
+   "search",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "7b8a2a710715",
+   "82833c869a77"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "725e610d84ce",
+   "92683dc73ae9"
+  ]
+ },
  "https://plantastichaven.com/houseplants-for-bathrooms/": {
   "site": "plantastichaven.com",
   "post_id": 3443,
@@ -1811,6 +2373,32 @@
    "1d20a3978481"
   ]
  },
+ "https://plantastichaven.com/houseplants-for-low-light/": {
+  "site": "plantastichaven.com",
+  "post_id": 3431,
+  "run": "2026-11-28",
+  "title": "Houseplants for Low Light: What Survives, What Grows, and When to Add Light",
+  "asins": [
+   "B0C36WZBWC",
+   "B0GK1NG9NH",
+   "B0D8RC536Q"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "74519878cd86",
+   "bd4c4babebf7",
+   "2d9fd35a1278"
+  ],
+  "image_fp": [
+   "2876da2b28a9",
+   "8fb8ab4443d2",
+   "7fca861c781b"
+  ]
+ },
  "https://plantastichaven.com/houseplants-for-mental-health/": {
   "site": "plantastichaven.com",
   "post_id": 3441,
@@ -1855,6 +2443,28 @@
    "2876da2b28a9"
   ]
  },
+ "https://plantastichaven.com/houseplants-with-fragrant-flowers/": {
+  "site": "plantastichaven.com",
+  "post_id": 3439,
+  "run": "2026-11-28",
+  "title": "Fragrant Houseplants: Fill Your Home with Amazing Natural Scents!",
+  "asins": [
+   "B000HACFUQ",
+   "B07G7VYN6L"
+  ],
+  "sources": [
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "cec755074309",
+   "cb6a7c0ce1f6"
+  ],
+  "image_fp": [
+   "a89f9fb07c5c",
+   "a79a5966eb1d"
+  ]
+ },
  "https://plantastichaven.com/how-often-to-water-pothos/": {
   "site": "plantastichaven.com",
   "post_id": 8451,
@@ -1879,6 +2489,32 @@
    "3fdae8e9ccf2",
    "68a3c962249d",
    "297d0fcaef6c"
+  ]
+ },
+ "https://plantastichaven.com/how-to-make-spider-plant-bushier/": {
+  "site": "plantastichaven.com",
+  "post_id": 3331,
+  "run": "2026-11-28",
+  "title": "Bushy Spider Plant: 7 Tips for Lush Growth",
+  "asins": [
+   "B0BRTJB518",
+   "B0C36WZBWC",
+   "B01EWH83FU"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "a1e3466f6132",
+   "74519878cd86",
+   "5e36d77dd993"
+  ],
+  "image_fp": [
+   "ed01663d4d2c",
+   "2876da2b28a9",
+   "206753c8a235"
   ]
  },
  "https://plantastichaven.com/how-to-propagate-a-philodendron-birkin/": {
@@ -1983,6 +2619,32 @@
    "3eda0ca51da4",
    "c636a0747bdc",
    "de471f142a82"
+  ]
+ },
+ "https://plantastichaven.com/how-to-start-a-philodendron/": {
+  "site": "plantastichaven.com",
+  "post_id": 3371,
+  "run": "2026-11-28",
+  "title": "How to Grow a Philodendron: Beginner Setup, Light, Soil & Watering",
+  "asins": [
+   "B0CZPPGMWN",
+   "B0CF48K7FY",
+   "B014MJ8J2U"
+  ],
+  "sources": [
+   "page",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "fb3f2a4017b6",
+   "8e5181f82413",
+   "3610c76ebc8e"
+  ],
+  "image_fp": [
+   "de471f142a82",
+   "5182eea57361",
+   "3fdae8e9ccf2"
   ]
  },
  "https://plantastichaven.com/humidity-and-spider-plants/": {
@@ -2181,6 +2843,54 @@
    "a98d5d017b47"
   ]
  },
+ "https://plantastichaven.com/mold-on-houseplant-soil/": {
+  "site": "plantastichaven.com",
+  "post_id": 9899,
+  "run": "2026-11-28",
+  "title": "Mold on Houseplant Soil: Is It Dangerous and How Do You Fix It?",
+  "asins": [
+   "B014MJ8J2U",
+   "B0DGPWT2Q3"
+  ],
+  "sources": [
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "ca1cff861f27"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "57bba9ce61fb"
+  ]
+ },
+ "https://plantastichaven.com/monstera-care-guide/": {
+  "site": "plantastichaven.com",
+  "post_id": 7072,
+  "run": "2026-11-28",
+  "title": "Monstera Deliciosa Care: Light, Watering, Soil and Climbing Support",
+  "asins": [
+   "B0GKJ634WP",
+   "B0DJ3KLTQM",
+   "B014MJ8J2U"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "921c77c9921e",
+   "ab5fdcd186cf",
+   "3610c76ebc8e"
+  ],
+  "image_fp": [
+   "3eda0ca51da4",
+   "573ddee61b32",
+   "3fdae8e9ccf2"
+  ]
+ },
  "https://plantastichaven.com/monstera-light-requirements/": {
   "site": "plantastichaven.com",
   "post_id": 8460,
@@ -2205,6 +2915,84 @@
    "0b7caa7532a2",
    "1d20a3978481",
    "78a59e5023f1"
+  ]
+ },
+ "https://plantastichaven.com/monstera-not-splitting/": {
+  "site": "plantastichaven.com",
+  "post_id": 8463,
+  "run": "2026-11-28",
+  "title": "Why Your Monstera Is Not Splitting: Real Causes of Missing Fenestrations",
+  "asins": [
+   "B0B4K39S1W",
+   "B00OBZ28QE",
+   "B0828SMZNS"
+  ],
+  "sources": [
+   "page",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "82833c869a77",
+   "e76bcf0bac4f",
+   "7b8a2a710715"
+  ],
+  "image_fp": [
+   "92683dc73ae9",
+   "5f7a400a7873",
+   "725e610d84ce"
+  ]
+ },
+ "https://plantastichaven.com/monstera-watering-guide/": {
+  "site": "plantastichaven.com",
+  "post_id": 8461,
+  "run": "2026-11-28",
+  "title": "Monstera Watering Guide: How to Water Without Root Stress",
+  "asins": [
+   "B014MJ8J2U",
+   "B0CS8MBLGW",
+   "B0828SMZNS"
+  ],
+  "sources": [
+   "search",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "9ec8473db364",
+   "7b8a2a710715"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "6eb8b3159f58",
+   "725e610d84ce"
+  ]
+ },
+ "https://plantastichaven.com/monstera-yellow-leaves/": {
+  "site": "plantastichaven.com",
+  "post_id": 8462,
+  "run": "2026-11-28",
+  "title": "Why Are My Monstera Leaves Turning Yellow? Common Causes and Fixes",
+  "asins": [
+   "B014MJ8J2U",
+   "B0BRTJB518",
+   "B0828SMZNS"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "a1e3466f6132",
+   "7b8a2a710715"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "ed01663d4d2c",
+   "725e610d84ce"
   ]
  },
  "https://plantastichaven.com/orange-spider-plant/": {
@@ -2283,6 +3071,32 @@
    "de471f142a82",
    "3eda0ca51da4",
    "1d20a3978481"
+  ]
+ },
+ "https://plantastichaven.com/pet-friendly-houseplants/": {
+  "site": "plantastichaven.com",
+  "post_id": 3433,
+  "run": "2026-11-28",
+  "title": "Pet-Friendly Houseplants: Non-Toxic Indoor Plants and Safer Setup Tips",
+  "asins": [
+   "B0DG6QMXPG",
+   "B0DFBYRXG5",
+   "B09234GQXV"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "743d9ed67ee2",
+   "0943b166326e",
+   "bbb5f0d91fa1"
+  ],
+  "image_fp": [
+   "7ec9ab426d3e",
+   "8f7adbb63ef9",
+   "05ac80833159"
   ]
  },
  "https://plantastichaven.com/philodendron-billietiae-care/": {
@@ -2465,6 +3279,28 @@
    "3fdae8e9ccf2",
    "a98d5d017b47",
    "ed01663d4d2c"
+  ]
+ },
+ "https://plantastichaven.com/philodendron-light-requirements/": {
+  "site": "plantastichaven.com",
+  "post_id": 3426,
+  "run": "2026-11-28",
+  "title": "Philodendron Light Requirements: How Much Light They Need and Where to Place Them",
+  "asins": [
+   "B085CDPSMR",
+   "B075DC6X25"
+  ],
+  "sources": [
+   "page",
+   "search"
+  ],
+  "name_fp": [
+   "a184627999c9",
+   "12f988e8870d"
+  ],
+  "image_fp": [
+   "1d20a3978481",
+   "c26c3f532cd9"
   ]
  },
  "https://plantastichaven.com/philodendron-mayoi/": {
@@ -2699,6 +3535,32 @@
    "2876da2b28a9",
    "3fdae8e9ccf2",
    "573ddee61b32"
+  ]
+ },
+ "https://plantastichaven.com/philodendron-soil-mix/": {
+  "site": "plantastichaven.com",
+  "post_id": 3425,
+  "run": "2026-11-28",
+  "title": "Philodendron Soil Mix: The Best Potting Mix for Healthy Philodendrons",
+  "asins": [
+   "B0CZPPGMWN",
+   "B07CND4WV9",
+   "B00KWXTH36"
+  ],
+  "sources": [
+   "page",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "fb3f2a4017b6",
+   "4063407878f8",
+   "dff982c908fc"
+  ],
+  "image_fp": [
+   "de471f142a82",
+   "4152da2b5682",
+   "9993246029fa"
   ]
  },
  "https://plantastichaven.com/philodendron-splendid/": {
@@ -2961,6 +3823,32 @@
    "78a59e5023f1"
   ]
  },
+ "https://plantastichaven.com/pothos-propagation/": {
+  "site": "plantastichaven.com",
+  "post_id": 8453,
+  "run": "2026-11-28",
+  "title": "How to Propagate Pothos: Where to Cut, Root and Transfer to Soil",
+  "asins": [
+   "B0FNLK66BM",
+   "B0CNRJW3WM",
+   "B09WZHXNQ2"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "dfc4be61cfd2",
+   "86d17abd0c3d",
+   "42a0a4a3f201"
+  ],
+  "image_fp": [
+   "bb774e9a464d",
+   "4da0e97d4c6e",
+   "ebb351dd9200"
+  ]
+ },
  "https://plantastichaven.com/pothos-toxic-to-cats-and-dogs/": {
   "site": "plantastichaven.com",
   "post_id": 9893,
@@ -3007,6 +3895,32 @@
    "3fdae8e9ccf2",
    "ed01663d4d2c",
    "297d0fcaef6c"
+  ]
+ },
+ "https://plantastichaven.com/preventing-drooping-leaves-in-philodendrons/": {
+  "site": "plantastichaven.com",
+  "post_id": 3383,
+  "run": "2026-11-28",
+  "title": "Preventing Drooping Leaves in Philodendrons: Real Causes and Fixes",
+  "asins": [
+   "B014MJ8J2U",
+   "B0CS8MBLGW",
+   "B0828SMZNS"
+  ],
+  "sources": [
+   "search",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "9ec8473db364",
+   "7b8a2a710715"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "6eb8b3159f58",
+   "725e610d84ce"
   ]
  },
  "https://plantastichaven.com/prince-of-orange-philodendron/": {
@@ -3085,6 +3999,32 @@
    "206753c8a235",
    "d31e0b8ad6c4",
    "8ebcbeffcf68"
+  ]
+ },
+ "https://plantastichaven.com/purple-spider-plant/": {
+  "site": "plantastichaven.com",
+  "post_id": 3347,
+  "run": "2026-11-28",
+  "title": "Purple Spider Plant: Is It Real? Identification, Lookalikes and Care",
+  "asins": [
+   "B0BRTJB518",
+   "B0DFBYRXG5",
+   "B01EWH83FU"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "a1e3466f6132",
+   "0943b166326e",
+   "5e36d77dd993"
+  ],
+  "image_fp": [
+   "ed01663d4d2c",
+   "8f7adbb63ef9",
+   "206753c8a235"
   ]
  },
  "https://plantastichaven.com/rare-houseplants-2025-guide/": {
@@ -3183,6 +4123,32 @@
    "b11860f4653c"
   ]
  },
+ "https://plantastichaven.com/snake-plant-light-requirements/": {
+  "site": "plantastichaven.com",
+  "post_id": 8472,
+  "run": "2026-11-28",
+  "title": "Snake Plant Light Requirements: Best Light for Stronger Upright Growth",
+  "asins": [
+   "B0B4K39S1W",
+   "B075DC6X25",
+   "B0D6QRFLSX"
+  ],
+  "sources": [
+   "page",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "82833c869a77",
+   "12f988e8870d",
+   "133f49ff5f36"
+  ],
+  "image_fp": [
+   "92683dc73ae9",
+   "c26c3f532cd9",
+   "7335bb742e38"
+  ]
+ },
  "https://plantastichaven.com/snake-plant-mushy-leaves/": {
   "site": "plantastichaven.com",
   "post_id": 8475,
@@ -3235,6 +4201,32 @@
    "ebb351dd9200"
   ]
  },
+ "https://plantastichaven.com/snake-plant-soil-mix/": {
+  "site": "plantastichaven.com",
+  "post_id": 10718,
+  "run": "2026-11-28",
+  "title": "Snake Plant Soil Mix: Can You Use Cactus Soil?",
+  "asins": [
+   "B0BV2YW11X",
+   "B0DGPWT2Q3",
+   "B0C9J5RKRB"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "b3b4dd2714d8",
+   "ca1cff861f27",
+   "f4499b0d6117"
+  ],
+  "image_fp": [
+   "b11860f4653c",
+   "57bba9ce61fb",
+   "d38e638d8959"
+  ]
+ },
  "https://plantastichaven.com/snake-plant-toxic-to-cats-and-dogs/": {
   "site": "plantastichaven.com",
   "post_id": 9896,
@@ -3255,6 +4247,58 @@
   "image_fp": [
    "3846bfb2b192",
    "5b2eddc9fce9"
+  ]
+ },
+ "https://plantastichaven.com/snake-plant-watering-guide/": {
+  "site": "plantastichaven.com",
+  "post_id": 8473,
+  "run": "2026-11-28",
+  "title": "Snake Plant Watering Guide: How to Water Without Causing Rot",
+  "asins": [
+   "B014MJ8J2U",
+   "B0D6QRFLSX",
+   "B0CS8MBLGW"
+  ],
+  "sources": [
+   "search",
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "133f49ff5f36",
+   "9ec8473db364"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "7335bb742e38",
+   "6eb8b3159f58"
+  ]
+ },
+ "https://plantastichaven.com/snake-plant-yellow-leaves/": {
+  "site": "plantastichaven.com",
+  "post_id": 8474,
+  "run": "2026-11-28",
+  "title": "Why Is My Snake Plant Turning Yellow? Causes, Fixes, and Rescue Steps",
+  "asins": [
+   "B014MJ8J2U",
+   "B0BV2YW11X",
+   "B0CS8MBLGW"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "b3b4dd2714d8",
+   "9ec8473db364"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "b11860f4653c",
+   "6eb8b3159f58"
   ]
  },
  "https://plantastichaven.com/solid-green-spider-plants/": {
@@ -3383,6 +4427,72 @@
    "206753c8a235"
   ]
  },
+ "https://plantastichaven.com/spider-plant-repotting/": {
+  "site": "plantastichaven.com",
+  "post_id": 3374,
+  "run": "2026-11-28",
+  "title": "Spider Plant Repotting: Complete 2026 Guide (Root Health & Pot Size)",
+  "asins": [
+   "B0CF48K7FY",
+   "B09QDT5GVM"
+  ],
+  "sources": [
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "8e5181f82413",
+   "1fa55728f31a"
+  ],
+  "image_fp": [
+   "5182eea57361",
+   "630e48292fc9"
+  ]
+ },
+ "https://plantastichaven.com/succulent-soil-mix/": {
+  "site": "plantastichaven.com",
+  "post_id": 10720,
+  "run": "2026-11-28",
+  "title": "Succulent Soil Mix for Indoors: Drainage, Ingredients & pH",
+  "asins": [
+   "B0BV2YW11X",
+   "B0DGPWT2Q3",
+   "B08YRXPFDN"
+  ],
+  "sources": [
+   "search",
+   "search",
+   "search"
+  ],
+  "name_fp": [
+   "b3b4dd2714d8",
+   "ca1cff861f27",
+   "2553b8f7a0f4"
+  ],
+  "image_fp": [
+   "b11860f4653c",
+   "57bba9ce61fb",
+   "a933678e2a97"
+  ]
+ },
+ "https://plantastichaven.com/terracotta-pots-for-indoor-plants/": {
+  "site": "plantastichaven.com",
+  "post_id": 10719,
+  "run": "2026-11-28",
+  "title": "Are Terracotta Pots Good for Indoor Plants? Pros & Cons",
+  "asins": [
+   "B0C9J5RKRB"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "f4499b0d6117"
+  ],
+  "image_fp": [
+   "d38e638d8959"
+  ]
+ },
  "https://plantastichaven.com/terrarium-building-for-beginners/": {
   "site": "plantastichaven.com",
   "post_id": 3449,
@@ -3457,6 +4567,32 @@
    "8619f65ccf7c"
   ]
  },
+ "https://plantastichaven.com/watering-needs-of-philodendrons/": {
+  "site": "plantastichaven.com",
+  "post_id": 3391,
+  "run": "2026-11-28",
+  "title": "How Often to Water Philodendrons: Smarter Watering Guide for Healthy Growth",
+  "asins": [
+   "B014MJ8J2U",
+   "B09G6KPS4K",
+   "B0CZPPGMWN"
+  ],
+  "sources": [
+   "page",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "767138b84dd3",
+   "fb3f2a4017b6"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "68a3c962249d",
+   "de471f142a82"
+  ]
+ },
  "https://plantastichaven.com/where-to-buy-a-philodendron/": {
   "site": "plantastichaven.com",
   "post_id": 3384,
@@ -3505,6 +4641,54 @@
    "78a59e5023f1"
   ]
  },
+ "https://plantastichaven.com/why-is-my-philodendron-turning-brown/": {
+  "site": "plantastichaven.com",
+  "post_id": 3387,
+  "run": "2026-11-28",
+  "title": "Philodendron Brown Leaves: Diagnose Brown Tips, Edges & Spots",
+  "asins": [
+   "B014MJ8J2U",
+   "B01EWH83FU"
+  ],
+  "sources": [
+   "page",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "5e36d77dd993"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "206753c8a235"
+  ]
+ },
+ "https://plantastichaven.com/why-is-philodendron-turning-yellow/": {
+  "site": "plantastichaven.com",
+  "post_id": 3400,
+  "run": "2026-11-28",
+  "title": "Why Is My Philodendron Turning Yellow? Causes, Diagnosis, and Fast Fixes",
+  "asins": [
+   "B014MJ8J2U",
+   "B0BRTJB518",
+   "B01EWH83FU"
+  ],
+  "sources": [
+   "page",
+   "search",
+   "page"
+  ],
+  "name_fp": [
+   "3610c76ebc8e",
+   "a1e3466f6132",
+   "5e36d77dd993"
+  ],
+  "image_fp": [
+   "3fdae8e9ccf2",
+   "ed01663d4d2c",
+   "206753c8a235"
+  ]
+ },
  "https://plantastichaven.com/winter-houseplant-care-guide/": {
   "site": "plantastichaven.com",
   "post_id": 7055,
@@ -3529,6 +4713,24 @@
    "78120de6f49e",
    "1d20a3978481",
    "3fdae8e9ccf2"
+  ]
+ },
+ "https://plantastichaven.com/yellow-house-plants/": {
+  "site": "plantastichaven.com",
+  "post_id": 8391,
+  "run": "2026-11-28",
+  "title": "Yellow House Plants: Best Golden and Yellow Indoor Plants",
+  "asins": [
+   "B0C36WZBWC"
+  ],
+  "sources": [
+   "search"
+  ],
+  "name_fp": [
+   "74519878cd86"
+  ],
+  "image_fp": [
+   "2876da2b28a9"
   ]
  }
 }

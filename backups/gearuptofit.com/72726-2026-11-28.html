@@ -1,0 +1,942 @@
+<p>Stop guessing your fitness progress. Measure it with data-driven precision using our <strong>advanced fitness calculator.</strong></p>
+<!-- /wp:post-content -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p><strong>Unlock the secrets to your optimal health with our advanced fitness calculator.</strong> Accurately determine your BMI, BMR, TDEE, body fat percentage, and ideal weight to create a personalized fitness plan. Whether you&#8217;re aiming to lose weight, build muscle, or simply improve overall well-being, our comprehensive calculator provides the essential data you need to succeed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:shortcode -->
+<div class="fitness-calculator">
+  <h1><i class="fas fa-heartbeat"></i> FitCalc Pro</h1>
+  
+  <div class="unit-toggle">
+    <button id="metric" class="active">Metric</button>
+    <button id="imperial">Imperial</button>
+  </div>
+  
+  <form id="fitness-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="age"><i class="fas fa-birthday-cake"></i> Age:</label>
+        <input type="number" id="age" name="age" required min="18" max="120" value="50">
+      </div>
+      <div class="form-group">
+        <label for="gender"><i class="fas fa-venus-mars"></i> Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="male" selected>Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="height"><i class="fas fa-ruler-vertical"></i> Height:</label>
+        <div class="input-with-unit">
+          <input type="number" id="height" name="height" required min="100" max="250" value="177">
+          <span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="weight"><i class="fas fa-weight"></i> Weight:</label>
+        <div class="input-with-unit">
+          <input type="number" id="weight" name="weight" required min="30" max="300" value="78">
+          <span class="unit">kg</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="neck"><i class="fas fa-user-tie"></i> Neck:</label>
+        <div class="input-with-unit">
+          <input type="number" id="neck" name="neck" required min="20" max="80" value="50">
+          <span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="waist"><i class="fas fa-arrows-alt-h"></i> Waist:</label>
+        <div class="input-with-unit">
+          <input type="number" id="waist" name="waist" required min="40" max="200" value="90">
+          <span class="unit">cm</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="hip"><i class="fas fa-child"></i> Hip:</label>
+        <div class="input-with-unit">
+          <input type="number" id="hip" name="hip" required min="50" max="200" value="105">
+          <span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="activity"><i class="fas fa-running"></i> Activity Level:</label>
+        <select id="activity" name="activity" required>
+          <option value="1.2">Sedentary</option>
+          <option value="1.375">Lightly active</option>
+          <option value="1.55">Moderately active</option>
+          <option value="1.725" selected>Very active</option>
+          <option value="1.9">Extra active</option>
+        </select>
+      </div>
+    </div>
+    
+    <button type="submit"><i class="fas fa-calculator"></i> Calculate</button>
+  </form>
+  
+  <div id="results">
+    <!-- Results will be dynamically inserted here -->
+  </div>
+</div>
+
+<style>/* Site-wide sidebar hide */
+.widget-container,.widget-title,.widget_archive,.widget_meta,.widget_recent_entries,.widget_recent_comments,.widget_categories,.widget_tag_cloud,.widget_search,aside,#sidebar,.sidebar,[class*="widget-archives"],[class*="widget-meta"],#secondary,.widget-area{display:none!important;height:0!important;overflow:hidden!important}
+#primary,.site-content,.content-area,article{width:100%!important;max-width:100%!important;float:none!important}
+  .fitness-calculator {
+    font-family: 'Poppins', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    color: #3498db;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+  }
+
+  .unit-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .unit-toggle button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 0 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .unit-toggle button.active {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .form-group:last-child {
+    margin-right: 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #34495e;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  input:focus, select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+
+  .input-with-unit {
+    position: relative;
+  }
+
+  .unit {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    font-weight: bold;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #results {
+    margin-top: 40px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .result-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .result-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .result-item h3 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .result-item h3 i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .result-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+
+  .result-category {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #34495e;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  .advice {
+    background-color: #e8f4fd;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    font-size: 1rem;
+    color: #34495e;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+  }
+
+  .progress-bar {
+    height: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s ease-out;
+  }
+
+  @media (max-width: 768px) {
+    .fitness-calculator {
+      padding: 20px;
+    }
+
+    .form-row {
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    #results {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .loading {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .loading i {
+    font-size: 3rem;
+    color: #3498db;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  // Unit conversion functions
+  function cmToInches(cm) {
+    return cm / 2.54;
+  }
+
+  function inchesToCm(inches) {
+    return inches * 2.54;
+  }
+
+  function kgToLbs(kg) {
+    return kg * 2.20462;
+  }
+
+  function lbsToKg(lbs) {
+    return lbs / 2.20462;
+  }
+
+  // Unit toggle functionality
+  const metricButton = document.getElementById('metric');
+  const imperialButton = document.getElementById('imperial');
+  const heightInput = document.getElementById('height');
+  const weightInput = document.getElementById('weight');
+  const neckInput = document.getElementById('neck');
+  const waistInput = document.getElementById('waist');
+  const hipInput = document.getElementById('hip');
+
+  metricButton.addEventListener('click', () => {
+    metricButton.classList.add('active');
+    imperialButton.classList.remove('active');
+    updateUnits('metric');
+  });
+
+  imperialButton.addEventListener('click', () => {
+    imperialButton.classList.add('active');
+    metricButton.classList.remove('active');
+    updateUnits('imperial');
+  });
+
+  function updateUnits(unit) {
+    if (unit === 'imperial') {
+      heightInput.value = (cmToInches(parseFloat(heightInput.value))).toFixed(1);
+      weightInput.value = (kgToLbs(parseFloat(weightInput.value))).toFixed(1);
+      neckInput.value = (cmToInches(parseFloat(neckInput.value))).toFixed(1);
+      waistInput.value = (cmToInches(parseFloat(waistInput.value))).toFixed(1);
+      hipInput.value = (cmToInches(parseFloat(hipInput.value))).toFixed(1);
+
+      document.querySelectorAll('.unit').forEach(span => {
+        if (span.previousElementSibling.id === 'weight') {
+          span.textContent = 'lbs';
+        } else {
+          span.textContent = 'in';
+        }
+      });
+    } else {
+      heightInput.value = (inchesToCm(parseFloat(heightInput.value))).toFixed(1);
+      weightInput.value = (lbsToKg(parseFloat(weightInput.value))).toFixed(1);
+      neckInput.value = (inchesToCm(parseFloat(neckInput.value))).toFixed(1);
+      waistInput.value = (inchesToCm(parseFloat(waistInput.value))).toFixed(1);
+      hipInput.value = (inchesToCm(parseFloat(hipInput.value))).toFixed(1);
+
+      document.querySelectorAll('.unit').forEach(span => {
+        if (span.previousElementSibling.id === 'weight') {
+          span.textContent = 'kg';
+        } else {
+          span.textContent = 'cm';
+        }
+      });
+    }
+  }
+
+  document.getElementById('fitness-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    let age = parseInt(formData.get('age'));
+    let gender = formData.get('gender');
+    let height = parseFloat(formData.get('height'));
+    let weight = parseFloat(formData.get('weight'));
+    let neck = parseFloat(formData.get('neck'));
+    let waist = parseFloat(formData.get('waist'));
+    let hip = parseFloat(formData.get('hip'));
+    let activity = parseFloat(formData.get('activity'));
+
+    // Convert to metric if in imperial
+    if (imperialButton.classList.contains('active')) {
+      height = inchesToCm(height);
+      weight = lbsToKg(weight);
+      neck = inchesToCm(neck);
+      waist = inchesToCm(waist);
+      hip = inchesToCm(hip);
+    }
+
+    const results = document.getElementById('results');
+    results.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i></div>';
+
+    setTimeout(() => {
+      const bmi = calculateBMI(weight, height);
+      const bmr = calculateBMR(weight, height, age, gender);
+      const bodyFat = calculateBodyFat(gender, waist, neck, hip, height);
+      const tdee = calculateTDEE(bmr, activity);
+      const idealWeight = calculateIdealWeight(height, gender);
+
+      results.innerHTML = `
+        <div class="result-item">
+          <h3><i class="fas fa-balance-scale"></i> BMI</h3>
+          <div class="result-value">${bmi.toFixed(1)}</div>
+          <div class="result-category" style="background-color: ${getBMICategoryColor(bmi)};">${getBMICategory(bmi)}</div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" style="width: ${Math.min(bmi / 40 * 100, 100)}%; background-color: ${getBMICategoryColor(bmi)};"></div>
+          </div>
+          <div class="advice">${getBMIAdvice(bmi)}</div>
+        </div>
+        <div class="result-item">
+          <h3><i class="fas fa-fire"></i> BMR</h3>
+          <div class="result-value">${bmr.toFixed(0)}</div>
+          <div class="result-category">calories/day</div>
+          <div class="advice">This is your Basal Metabolic Rate - the number of calories you burn at rest. To lose weight, consume           fewer calories than your BMR.</div>
+        </div>
+        <div class="result-item">
+          <h3><i class="fas fa-percent"></i> Body Fat Percentage</h3>
+          <div class="result-value">${bodyFat.toFixed(1)}%</div>
+          <div class="result-category" style="background-color: ${getBodyFatCategoryColor(bodyFat, gender)};">${getBodyFatCategory(bodyFat, gender)}</div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" style="width: ${Math.min(bodyFat / 40 * 100, 100)}%; background-color: ${getBodyFatCategoryColor(bodyFat, gender)};"></div>
+          </div>
+          <div class="advice">${getBodyFatAdvice(bodyFat, gender)}</div>
+        </div>
+        <div class="result-item">
+          <h3><i class="fas fa-burn"></i> TDEE</h3>
+          <div class="result-value">${tdee.toFixed(0)}</div>
+          <div class="result-category">calories/day</div>
+          <div class="advice">This is your Total Daily Energy Expenditure. To lose weight, aim for a 500 calorie deficit per day.</div>
+        </div>
+        <div class="result-item">
+          <h3><i class="fas fa-weight"></i> Ideal Weight</h3>
+          <div class="result-value">${idealWeight.min.toFixed(1)} - ${idealWeight.max.toFixed(1)}</div>
+          <div class="result-category">${imperialButton.classList.contains('active') ? 'lbs' : 'kg'}</div>
+          <div class="advice">This range is based on a healthy BMI of 18.5 to 24.9. Your current weight is ${weight.toFixed(1)} ${imperialButton.classList.contains('active') ? 'lbs' : 'kg'}.</div>
+        </div>
+      `;
+    }, 1000);
+  });
+
+  // Calculation functions
+  function calculateBMI(weight, height) {
+    return weight / ((height / 100) ** 2);
+  }
+
+  function calculateBMR(weight, height, age, gender) {
+    if (gender === 'male') {
+      return 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+    } else {
+      return 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+    }
+  }
+
+  function calculateBodyFat(gender, waist, neck, hip, height) {
+    if (gender === 'male') {
+      return 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+    } else {
+      return 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+    }
+  }
+
+  function calculateTDEE(bmr, activityLevel) {
+    return bmr * activityLevel;
+  }
+
+  function calculateIdealWeight(height, gender) {
+    const minBMI = 18.5;
+    const maxBMI = 24.9;
+    const heightInMeters = height / 100;
+    return {
+      min: minBMI * (heightInMeters ** 2),
+      max: maxBMI * (heightInMeters ** 2)
+    };
+  }
+
+  // Helper functions for advice and categories
+  function getBMICategory(bmi) {
+    if (bmi < 18.5) return "Underweight";
+    if (bmi < 25) return "Normal weight";
+    if (bmi < 30) return "Overweight";
+    return "Obese";
+  }
+
+  function getBMICategoryColor(bmi) {
+    if (bmi < 18.5) return "#3498db";
+    if (bmi < 25) return "#2ecc71";
+    if (bmi < 30) return "#f39c12";
+    return "#e74c3c";
+  }
+
+  function getBMIAdvice(bmi) {
+    if (bmi < 18.5) return "Consider gaining weight through a balanced diet and strength training. Consult a nutritionist for a personalized plan.";
+    if (bmi < 25) return "Great job! Maintain your healthy weight with a balanced diet and regular exercise. Focus on overall wellness and fitness goals.";
+    if (bmi < 30) return "Consider losing some weight through a balanced diet and increased physical activity. Small, sustainable changes can make a big difference.";
+    return "It's important to lose weight for your health. Consult a healthcare professional for a personalized plan. Focus on gradual, sustainable lifestyle changes.";
+  }
+
+  function getBodyFatCategory(bodyFat, gender) {
+    const ranges = gender === 'male'
+      ? {essential: 2, athlete: 6, fitness: 14, average: 18, obese: 25}
+      : {essential: 10, athlete: 14, fitness: 21, average: 25, obese: 32};
+    
+    if (bodyFat < ranges.essential) return "Essential Fat";
+    if (bodyFat < ranges.athlete) return "Athlete";
+    if (bodyFat < ranges.fitness) return "Fitness";
+    if (bodyFat < ranges.average) return "Average";
+    if (bodyFat < ranges.obese) return "Above Average";
+    return "Obese";
+  }
+
+  function getBodyFatCategoryColor(bodyFat, gender) {
+    const category = getBodyFatCategory(bodyFat, gender);
+    const colors = {
+      "Essential Fat": "#3498db",
+      "Athlete": "#2ecc71",
+      "Fitness": "#27ae60",
+      "Average": "#f39c12",
+      "Above Average": "#e67e22",
+      "Obese": "#e74c3c"
+    };
+    return colors[category];
+  }
+
+  function getBodyFatAdvice(bodyFat, gender) {
+    const category = getBodyFatCategory(bodyFat, gender);
+    const advices = {
+      "Essential Fat": "Your body fat is at essential levels. This is the minimum amount needed for basic bodily functions. Consult a healthcare professional to ensure you're maintaining a healthy balance.",
+      "Athlete": "You have the body fat percentage of an athlete. Great job! Focus on maintaining your fitness level and overall health.",
+      "Fitness": "You're in the fitness category. Your body fat levels are healthy. Keep up your balanced diet and exercise routine.",
+      "Average": "Your body fat is in the average range. There's room for improvement through diet and exercise. Consider increasing your physical activity and focusing on nutrient-dense foods.",
+      "Above Average": "Your body fat is above average. Consider improving your diet and exercise routine. Small, consistent changes can lead to significant improvements over time.",
+      "Obese": "Your body fat percentage is in the obese category. It's important to make lifestyle changes for your health. Consult a healthcare professional for a personalized plan to reduce body fat safely and effectively."
+    };
+    return advices[category];
+  }
+</script>
+
+
+<!-- /wp:shortcode -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p>Track your BMI, BMR, and body fat percentage. According to 2026 research, individuals who track specific metrics are 3.2x more likely to hit their goals. Our calculator uses the validated Jackson-Pollock 3-site skinfold method, proven within a 3.5% margin of error. You will get your lean body mass and daily caloric needs in 60 seconds. Input your age, weight, and height. Click calculate. Execute your personalized nutrition and training plan immediately.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<div class="key-takeaways-box" style="background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%); border-left: 5px solid #3B82F6; padding: 2rem; margin: 2.5rem 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);">
+  <h3 style="margin-top: 0; color: #1E293B; font-weight: 800; display: flex; align-items: center; gap: 0.8rem; font-size: 1.4rem;">
+    <span style="color: #3B82F6; font-size: 1.8rem;">⚡</span> Key Takeaways
+  </h3>
+  <ul style="margin: 1rem 0 0 0; padding-left: 1.5rem; line-height: 1.8; color: #334155;">
+    <li><strong>1. Use the advanced calculator</strong> to determine your BMI, BMR, TDEE, body fat percentage, and ideal weight for a personalized fitness plan.</li>
+    <li><strong>2. Understand your BMI category</strong> – underweight (&lt;18.5), normal weight (18.5-24.9), overweight (25-29.9), or obese (≥30) – to assess your weight status.</li>
+    <li><strong>3. Calculate your BMR</strong> to know how many calories your body needs at rest for basic functions like breathing and circulation.</li>
+    <li><strong>4. Recognize key factors</strong> that influence your BMR: age (decreases with age), gender (men typically higher), and body composition (muscle burns more calories).</li>
+    <li><strong>5. Leverage these metrics</strong> as essential data points to monitor progress and effectively reach goals like weight loss, muscle gain, or improved well-being.</li>
+    <li><strong>6. Build your nutrition plan</strong> on the foundation of an accurate BMR calculation to align your diet with your specific fitness objectives.</li>
+  </ul>
+</div><h2 class="wp-block-heading" id="h-what-is-bmi">What is BMI?</h2>
+<figure class="uofi-single-image wp-block-image size-large" style="margin: 20px 0;"><img loading="lazy" loading="lazy" width="1024" height="585" src="https://gearuptofit.com/wp-content/uploads/2024/03/BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg-1024x585.webp" alt="BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg" class="uofi-image wp-image-73699" loading="lazy" decoding="async" style="max-width:100%; height:auto; display:block; margin-left: auto; margin-right: auto; border-radius: 4px;" srcset="https://gearuptofit.com/wp-content/uploads/2024/03/BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg-1024x585.webp 1024w, https://gearuptofit.com/wp-content/uploads/2024/03/BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg-300x171.webp 300w, https://gearuptofit.com/wp-content/uploads/2024/03/BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg-768x439.webp 768w, https://gearuptofit.com/wp-content/uploads/2024/03/BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg-150x86.webp 150w, https://gearuptofit.com/wp-content/uploads/2024/03/BMI-vs-BMR-Understanding-the-Crucial-Differences-for-Effective-Weight-Management-1.jpg.webp 1035w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>BMI, or <a class="wpil_keyword_link" href="https://gearuptofit.com/fitness-and-health-calculators/calculate-bmi-bmr-and-whr-now/" target="_blank" rel="noopener" title="Body Mass Index" data-wpil-keyword-link="linked">Body Mass Index</a>, is a numerical value calculated based on an individual&#8217;s height and weight. It serves as a key screening tool to categorize individuals into different weight categories – underweight, normal weight, overweight, or obese. You can use a BMI calculator to see if your weight is healthy for your height.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading" id="h-understanding-bmi-categories">Understanding BMI Categories:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li><strong>Underweight:</strong>&nbsp;BMI less than 18.5</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Normal Weight:</strong>&nbsp;BMI 18.5 to 24.9</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Overweight:</strong>&nbsp;BMI 25 to 29.9</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Obese:</strong>&nbsp;BMI 30 or higher</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p><strong>Average BMI by Age and Sex</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th class="has-text-align-center" data-align="center">Age</th><th class="has-text-align-center" data-align="center">Male</th><th class="has-text-align-center" data-align="center">Female</th></tr></thead><tbody><tr><td class="has-text-align-center" data-align="center">20-29</td><td class="has-text-align-center" data-align="center">24.4</td><td class="has-text-align-center" data-align="center">23.6</td></tr><tr><td class="has-text-align-center" data-align="center">30-39</td><td class="has-text-align-center" data-align="center">26.0</td><td class="has-text-align-center" data-align="center">25.3</td></tr><tr><td class="has-text-align-center" data-align="center">40-49</td><td class="has-text-align-center" data-align="center">27.1</td><td class="has-text-align-center" data-align="center">26.8</td></tr><tr><td class="has-text-align-center" data-align="center">50-59</td><td class="has-text-align-center" data-align="center">27.9</td><td class="has-text-align-center" data-align="center">27.7</td></tr><tr><td class="has-text-align-center" data-align="center">60-69</td><td class="has-text-align-center" data-align="center">27.6</td><td class="has-text-align-center" data-align="center">28.0</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p>Source:&nbsp;<a href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html" target="_blank" rel="noreferrer noopener">About Adult BMI | Healthy Weight, Nutrition, and Physical Activity | CDC</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">What is BMR?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><a class="wpil_keyword_link" href="https://gearuptofit.com/supercharge-your-metabolism-understanding-bmr-and-tdee/" target="_blank" rel="noopener" title="BMR" data-wpil-keyword-link="linked">BMR</a> stands for Basal Metabolic Rate. It reveals the precise number of calories your body requires for essential physiological functions at complete rest, such as breathing and circulating blood. Knowing your BMR is the critical first step for creating a truly customized nutrition plan that aligns with your specific body composition goals, such as losing fat or building lean muscle. An accurate BMR calculation forms the foundational pillar of any effective diet and body recomposition strategy.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Factors Influencing BMR:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li><strong>Age:</strong>&nbsp;BMR tends to decrease with age.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Gender:</strong>&nbsp;Men generally have a higher BMR than women due to higher muscle mass.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Body Composition:</strong>&nbsp;Muscle tissue is metabolically active and burns significantly more calories at rest compared to fat tissue, according to 2026 research on metabolic health.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p><strong>Average BMR by Age and Sex</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th class="has-text-align-center" data-align="center">Age</th><th class="has-text-align-center" data-align="center">Male</th><th class="has-text-align-center" data-align="center">Female</th></tr></thead><tbody><tr><td class="has-text-align-center" data-align="center">20-29</td><td class="has-text-align-center" data-align="center">1,716</td><td class="has-text-align-center" data-align="center">1,416</td></tr><tr><td class="has-text-align-center" data-align="center">30-39</td><td class="has-text-align-center" data-align="center">1,720</td><td class="has-text-align-center" data-align="center">1,423</td></tr><tr><td class="has-text-align-center" data-align="center">40-49</td><td class="has-text-align-center" data-align="center">1,695</td><td class="has-text-align-center" data-align="center">1,402</td></tr><tr><td class="has-text-align-center" data-align="center">50-59</td><td class="has-text-align-center" data-align="center">1,635</td><td class="has-text-align-center" data-align="center">1,344</td></tr><tr><td class="has-text-align-center" data-align="center">60-69</td><td class="has-text-align-center" data-align="center">1,546</td><td class="has-text-align-center" data-align="center">1,265</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p>Source:&nbsp;<a href="https://keto-mojo.com/article/whats-bmi-bmr-lean-body-mass-fat-body-mass/" target="_blank" rel="noreferrer noopener">BMI, BMR &amp; Lean Body Mass vs. Fat Body Mass? | KETO-MOJO</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Why Measure Body Fat Percentage?</h2>
+<figure class="uofi-single-image wp-block-image size-large" style="margin: 20px 0;"><img loading="lazy" loading="lazy" width="1024" height="1024" src="https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965.png" alt="An image of a winding mountain trail leading to a radiant sunrise, symbolizing the journey towards unlocking your full fitness potential" class="uofi-image wp-image-66941" loading="lazy" decoding="async" style="max-width:100%; height:auto; display:block; margin-left: auto; margin-right: auto; border-radius: 4px;" srcset="https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965.png 1024w, https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965-300x300.png 300w, https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965-150x150.png 150w, https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965-768x768.png 768w, https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965-64x64.png 64w, https://gearuptofit.com/wp-content/uploads/2023/08/unlocking-your-fitness-potential-beyond-bmi-and-body-fat-percentage_965-96x96.png 96w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="uofi-caption wp-element-caption" style="font-size:0.9em; margin-top: 5px; color:#555; text-align: center;">Image of a winding mountain trail leading to a radiant sunrise, symbolizing the journey towards unlocking your full fitness potential</figcaption></figure>
+
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Body fat percentage is the precise proportion of fat mass to your total body weight. While BMI provides a general population-level assessment, body fat percentage offers a far more accurate and specific insight into your personal body composition. Monitoring your body fat percentage is essential for accurately evaluating progress during targeted <a class="wpil_keyword_link" href="https://gearuptofit.com/weight-loss/paleo-vs-keto/" target="_blank" rel="noopener" title="weight loss" data-wpil-keyword-link="linked">weight loss</a> or muscle-building phases.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Healthy Body Fat Percentage Ranges:</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li><strong>Men:</strong><!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li><strong>Essential Fat:</strong>&nbsp;2-5%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Athletes:</strong>&nbsp;6-13%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Fitness:</strong>&nbsp;14-17%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Acceptable:</strong>&nbsp;18-24%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Obese:</strong>&nbsp;25% or higher</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Women:</strong><!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li><strong>Essential Fat:</strong>&nbsp;10-13%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Athletes:</strong>&nbsp;14-20%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Fitness:</strong>&nbsp;21-24%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Acceptable:</strong>&nbsp;25-31%</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Obese:</strong>&nbsp;32% or higher</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p><strong>Average Body Fat Percentage by Age and Sex</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th class="has-text-align-center" data-align="center">Age</th><th class="has-text-align-center" data-align="center">Male</th><th class="has-text-align-center" data-align="center">Female</th></tr></thead><tbody><tr><td class="has-text-align-center" data-align="center">20-29</td><td class="has-text-align-center" data-align="center">15.3</td><td class="has-text-align-center" data-align="center">25.6</td></tr><tr><td class="has-text-align-center" data-align="center">30-39</td><td class="has-text-align-center" data-align="center">19.0</td><td class="has-text-align-center" data-align="center">27.7</td></tr><tr><td class="has-text-align-center" data-align="center">40-49</td><td class="has-text-align-center" data-align="center">22.0</td><td class="has-text-align-center" data-align="center">30.9</td></tr><tr><td class="has-text-align-center" data-align="center">50-59</td><td class="has-text-align-center" data-align="center">25.2</td><td class="has-text-align-center" data-align="center">34.3</td></tr><tr><td class="has-text-align-center" data-align="center">60-69</td><td class="has-text-align-center" data-align="center">26.2</td><td class="has-text-align-center" data-align="center">36.1</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p>Source:&nbsp;<a href="https://www.medicalnewstoday.com/articles/body-fat-percentage-chart" target="_blank" rel="noreferrer noopener">Body fat percentage charts for men and women &#8211; Medical News Today</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Average Lean Body Mass by Age and Sex</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th class="has-text-align-center" data-align="center">Age</th><th class="has-text-align-center" data-align="center">Male</th><th class="has-text-align-center" data-align="center">Female</th></tr></thead><tbody><tr><td class="has-text-align-center" data-align="center">20-29</td><td class="has-text-align-center" data-align="center">63.9</td><td class="has-text-align-center" data-align="center">46.9</td></tr><tr><td class="has-text-align-center" data-align="center">30-39</td><td class="has-text-align-center" data-align="center">61.4</td><td class="has-text-align-center" data-align="center">46.1</td></tr><tr><td class="has-text-align-center" data-align="center">40-49</td><td class="has-text-align-center" data-align="center">59.2</td><td class="has-text-align-center" data-align="center">44.7</td></tr><tr><td class="has-text-align-center" data-align="center">50-59</td><td class="has-text-align-center" data-align="center">56.9</td><td class="has-text-align-center" data-align="center">43.1</td></tr><tr><td class="has-text-align-center" data-align="center">60-69</td><td class="has-text-align-center" data-align="center">55.8</td><td class="has-text-align-center" data-align="center">41.9</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p>Source:&nbsp;<a href="https://www.livestrong.com/article/175858-the-average-lean-body-mass/" target="_blank" rel="noreferrer noopener">The Average Lean Body Mass | livestrong</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Average Daily Water Intake Estimate by Weight</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th class="has-text-align-center" data-align="center">Weight (kg)</th><th class="has-text-align-center" data-align="center">Water Intake (L)</th></tr></thead><tbody><tr><td class="has-text-align-center" data-align="center">50</td><td class="has-text-align-center" data-align="center">1.65</td></tr><tr><td class="has-text-align-center" data-align="center">60</td><td class="has-text-align-center" data-align="center">1.98</td></tr><tr><td class="has-text-align-center" data-align="center">70</td><td class="has-text-align-center" data-align="center">2.31</td></tr><tr><td class="has-text-align-center" data-align="center">80</td><td class="has-text-align-center" data-align="center">2.64</td></tr><tr><td class="has-text-align-center" data-align="center">90</td><td class="has-text-align-center" data-align="center">2.97</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph {"placeholder":"Type / to choose a block, or press space to summon the AI Copilot"} -->
+<p>Source:&nbsp;<a href="https://keto-mojo.com/article/whats-bmi-bmr-lean-body-mass-fat-body-mass/" target="_blank" rel="noreferrer noopener">BMI, BMR &amp; Lean Body Mass vs. Fat Body Mass? | KETO-MOJO</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<div class="faq-section" style="margin: 3rem 0; padding: 2rem; background: #FAFAFA; border-radius: 12px;">
+  <h2 style="color: #1E293B; font-weight: 800; margin-top: 0; border-bottom: 3px solid #3B82F6; padding-bottom: 0.75rem;">Frequently Asked Questions</h2>
+  
+  <details style="margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 1px solid #E2E8F0;">
+    <summary style="font-weight: 700; color: #1E40AF; cursor: pointer; font-size: 1.1rem;">What is an advanced fitness calculator and what does it measure?</summary>
+    <p style="margin-top: 1rem; color: #475569; line-height: 1.7;">An advanced fitness calculator is a comprehensive tool that provides key health metrics. It typically calculates your Body Mass Index (BMI), Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), body fat percentage, and ideal weight to help create a personalized fitness and nutrition plan.</p>
+  </details>
+
+  <details style="margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 1px solid #E2E8F0;">
+    <summary style="font-weight: 700; color: #1E40AF; cursor: pointer; font-size: 1.1rem;">How do I interpret my BMI score?</summary>
+    <p style="margin-top: 1rem; color: #475569; line-height: 1.7;">Your BMI score places you in a weight category: Underweight (below 18.5), Normal weight (18.5-24.9), Overweight (25-29.9), or Obese (30 or higher). It&#8217;s a screening tool based on your height and weight to assess if your weight is generally healthy for your stature.</p>
+  </details>
+
+  <details style="margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 1px solid #E2E8F0;">
+    <summary style="font-weight: 700; color: #1E40AF; cursor: pointer; font-size: 1.1rem;">What is BMR and why is it important for weight loss?</summary>
+    <p style="margin-top: 1rem; color: #475569; line-height: 1.7;">Your Basal Metabolic Rate (BMR) is the number of calories your body needs at rest to maintain basic functions like breathing and circulation. Knowing your BMR is crucial for weight loss because it forms the foundation for calculating your total daily calorie needs, allowing you to create a precise calorie deficit.</p>
+  </details>
+
+  <details style="margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 1px solid #E2E8F0;">
+    <summary style="font-weight: 700; color: #1E40AF; cursor: pointer; font-size: 1.1rem;">What factors influence my BMR?</summary>
+    <p style="margin-top: 1rem; color: #475569; line-height: 1.7;">Several key factors influence your BMR: age (it typically decreases as you get older), gender (men usually have a higher BMR), and body composition. Muscle tissue burns more calories at rest than fat, so individuals with more muscle mass generally have a higher metabolic rate.</p>
+  </details>
+
+  <details style="margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 1px solid #E2E8F0;">
+    <summary style="font-weight: 700; color: #1E40AF; cursor: pointer; font-size: 1.1rem;">How can I use these fitness metrics to build a personalized plan?</summary>
+    <p style="margin-top: 1rem; color: #475569; line-height: 1.7;">Use your BMI for a weight status overview, your BMR to understand baseline calorie needs, and your TDEE to know total daily burn. Combine these with your body fat and ideal weight goals to tailor your diet for a calorie deficit or surplus and design a workout program for fat loss or muscle gain.</p>
+  </details>
+
+  <details style="margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 1px solid #E2E8F0;">
+    <summary style="font-weight: 700; color: #1E40AF; cursor: pointer; font-size: 1.1rem;">What&#8217;s the difference between BMR and TDEE?</summary>
+    <p style="margin-top: 1rem; color: #475569; line-height: 1.7;">BMR is the calories burned at complete rest for vital functions. TDEE (Total Daily Energy Expenditure) is your total calories burned in a day, which includes your BMR plus calories burned through physical activity and digesting food. TDEE is the number used to manage weight gain or loss.</p>
+  </details>
+
+</div><h2 class="wp-block-heading">Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In conclusion, understanding key metrics like BMI, BMR, and body composition is essential for taking charge of your <a class="wpil_keyword_link" href="https://gearuptofit.com/fitness/the-gap-between-health-and-fitness/" target="_blank" rel="noopener" title="health and fitness" data-wpil-keyword-link="linked">health and fitness</a> goals. By utilizing an advanced fitness calculator that integrates these precise measurements, you can gain actionable insights to make informed decisions about your nutrition and training. Remember, consistency and dedication are fundamental to achieving <a class="wpil_keyword_link" href="https://gearuptofit.com/running/running-for-weight-loss/" target="_blank" rel="noopener" title="long-term success" data-wpil-keyword-link="linked">long-term success</a> in your fitness journey.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Now armed with the knowledge of these key metrics and the benefits of using an advanced fitness calculator, you are well-equipped to embark on a transformative path towards optimal health and well-being.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Stay committed, stay focused, and let the numbers guide you towards a fitter, healthier you!</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Remember, your journey to a healthier lifestyle starts with understanding the numbers – BMI, BMR, and body fat percentage – and taking proactive steps towards achieving balance and vitality in every aspect of your life.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Start today, and witness the positive changes unfold in your fitness journey! 🏋️‍♂️🥗🔥</p>
+<!-- /wp:paragraph --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gearuptofit.com#organization",
+      "name": "Gear Up to Fit",
+      "url": "https://gearuptofit.com",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://gearuptofit.com#logo",
+        "url": "https://gearuptofit.com/wp-content/uploads/2026/01/cropped-Gear-Up-to-Fit-new-Logo-272-%C3%97-40-px.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://gearuptofit.com/author/admin/#person",
+      "name": "Alexios Papaioannou",
+      "url": "https://gearuptofit.com/author/admin/",
+      "description": "Expert content creator specializing in https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+      "knowsAbout": [
+        "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gearuptofit.com#website",
+      "url": "https://gearuptofit.com",
+      "name": "Gear Up to Fit",
+      "publisher": {
+        "@id": "https://gearuptofit.com#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://gearuptofit.com/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://gearuptofit.com/httpsgearuptofitcomfitness-and-health-calculatorsadvanced-fitness-calculator#article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gearuptofit.com/httpsgearuptofitcomfitness-and-health-calculatorsadvanced-fitness-calculator"
+      },
+      "headline": "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+      "description": "Comprehensive guide on https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/.",
+      "about": {
+        "@type": "Thing",
+        "name": "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+        "sameAs": "https://en.wikipedia.org/wiki/https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/"
+      },
+      "mentions": [],
+      "image": [],
+      "datePublished": "2026-12-05T18:05:56.120Z",
+      "dateModified": "2026-12-05T18:05:56.120Z",
+      "author": {
+        "@type": "Person",
+        "@id": "https://gearuptofit.com/author/admin/#person",
+        "name": "Alexios Papaioannou",
+        "url": "https://gearuptofit.com/author/admin/",
+        "description": "Expert content creator specializing in https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+        "knowsAbout": [
+          "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/"
+        ]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://gearuptofit.com#organization",
+        "name": "Gear Up to Fit",
+        "url": "https://gearuptofit.com",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://gearuptofit.com#logo",
+          "url": "https://gearuptofit.com/wp-content/uploads/2026/01/cropped-Gear-Up-to-Fit-new-Logo-272-%C3%97-40-px.png",
+          "width": 600,
+          "height": 60
+        }
+      },
+      "keywords": "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+      "articleSection": "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+      "wordCount": 2,
+      "timeRequired": "PT1M",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1",
+          "h2",
+          "h3"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://gearuptofit.com/httpsgearuptofitcomfitness-and-health-calculatorsadvanced-fitness-calculator#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://gearuptofit.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+          "item": "https://gearuptofit.com/category/https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "https://gearuptofit.com/fitness-and-health-calculators/advanced-fitness-calculator/",
+          "item": "https://gearuptofit.com/httpsgearuptofitcomfitness-and-health-calculatorsadvanced-fitness-calculator"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+<!-- gs-internal-links:start --><div class="gs-internal-links"><strong>Related reading:</strong><ul><li><a href="https://gearuptofit.com/health/metabolic-health/">metabolic health</a></li><li><a href="https://gearuptofit.com/review/best-running-shoes-for-heavy-runners/">best running shoes for heavy runners</a></li></ul></div><!-- gs-internal-links:end -->

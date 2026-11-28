@@ -513,3 +513,7 @@ def test_the_time_budget_stops_new_pages_but_keeps_finished_work(tmp_path, monke
     assert [a.status for a in acts][1:] == ["left_for_next_run_time_budget"] * 2
     assert list(json.loads(reg.read_text())) == [acts[0].row.page.url]  # the finished page is registered
     assert set(json.loads(reg.read_text())[acts[0].row.page.url]) >= {"asins", "name_fp", "image_fp", "title"}
+
+
+def test_a_brand_alone_is_never_the_name():
+    assert products.display_name(Item(asin="X", title="KONG - Classic Dog Toy, Durable Natural Rubber")) == "KONG Classic Dog Toy"

@@ -103,7 +103,10 @@ def display_name(item: Item, limit: int = 60) -> str:
     "Mixed Media Sketchbook 9"x12" Multimedia Sketchbook, 60 Sheets" -> "Mixed Media Sketchbook";
     "Character Development Sheets: 20 Templates..." -> "Character Development Sheets"."""
     title = " ".join(item.title.split())
-    name = CUT.split(title, maxsplit=1)[0].strip()
+    parts = [x.strip() for x in CUT.split(title) if x and x.strip()]
+    name = parts[0] if parts else title
+    if len(name.split()) < 2 and len(parts) > 1:  # "KONG - Classic Dog Toy": a brand alone is not a name
+        name = f"{name} {parts[1]}"
     if ":" in name:
         head, tail = name.split(":", 1)
         if len(head.split()) >= 2 and (len(name) > limit or re.match(r"\s*\d", tail) or len(tail.split()) <= 2):

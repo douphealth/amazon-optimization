@@ -122,9 +122,11 @@ def transform_post(cfg: Config, action: Action, raw: str, picker=None) -> tuple[
             elif box and not transform.find_box(html, any_box=True):
                 html, counts["box_added"] = transform.insert_box(html, box)
                 action.products = chosen if counts["box_added"] else []
-            elif not box and current:
+            elif not box and current and 'data-ace-box="' in current:
                 html, _ = transform.remove_box(html)  # every product is gone: no box beats dead links
                 counts["box_removed_no_product"] = 1
+            elif not box and current:
+                counts["old_box_kept_no_product"] = 1  # an old box also links Amazon searches: keep it
             elif not box and picker.wants_box(url, title):
                 counts["no_matching_product"] = 1
         else:

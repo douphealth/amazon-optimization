@@ -517,3 +517,14 @@ def test_the_time_budget_stops_new_pages_but_keeps_finished_work(tmp_path, monke
 
 def test_a_brand_alone_is_never_the_name():
     assert products.display_name(Item(asin="X", title="KONG - Classic Dog Toy, Durable Natural Rubber")) == "KONG Classic Dog Toy"
+
+
+def test_an_old_box_with_search_links_is_kept_when_no_product_qualifies():
+    site = Site(domain="example.com", name="Example", tags=["ex-20"])
+    cfg = Config(account_tag_prefix="ex", marketplace="www.amazon.com", sites=[site], auto_fix=["box"], default_tag="papalex-20")
+    old = ('<div class="ace-quick-picks" style="border:1px solid #d9d9d9;border-left:4px solid #2f7d32;background:#f7faf7;padding:14px 16px">'
+           '<p>Quick links from this guide</p><ul><li><a href="https://www.amazon.com/s?k=writing+prompts&tag=ex-20">Writing prompts</a></li></ul></div>')
+    post = "<p>" + "w " * 40 + "</p>" + old + "<h2>x</h2>"
+    row = Row(site=site, page=Page(url="https://example.com/privacy/", status=200, has_box=True), gsc=None)
+    new, counts = fixer.transform_post(cfg, fixer.Action(row=row, fixes=["box"]), post, picker(FakeAPI()))
+    assert new == post and counts["old_box_kept_no_product"] == 1
